@@ -1,0 +1,390 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+        if($inner_data[9]){
+            $h = $inner_data[9];
+        }else{
+            $h = 0;
+        }
+        </php>
+    <style>
+        .inner4_procateitem:hover a{
+            background: #{$color};
+        }
+        .main_page .current{
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+       .inner_3__innerContent,#HJZF_Z__wrapper{margin-bottom: 0;overflow-x: hidden; }
+       .inner-3__probox .inner-3__proMask{
+           background: #{$inner_data[10]};
+       }
+       .inner-3_title-fu span{
+           border-bottom-color: #{$inner_data[10]};
+       }
+    </style>
+    <div id="HJZF_Z__wrapper" class="inner_3__innerwrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+            <if condition="$prolist['banner']">
+                <div class="in_banner"><img
+                        src="{:getimgurl($prolist['banner'])}" alt=""/></div>
+                <elseif condition="$banner neq '' "/>
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+        <script>
+
+        </script>
+        <div class="HJZF_Z__innerContent inner_3__innerContent">
+            <php>
+                $id= strtolower(str_replace(' ', '', $prolist['class_name']));
+            </php>
+            <div class="inner-3__anchor" id="{$id}">
+                <div class="container">
+                    <div class="row et-hero-tabs">
+                        <ul class="inner-3__anchorUl flex et-hero-tabs-container">
+                            <php>
+                                $anchor = htmlspecialchars_decode($inner_data['2']);
+                                $arry = explode(',', $anchor);
+                            </php>
+                            <volist name="arry" id="arryitem">
+                                <php>
+                                    $arryitem2= str_replace(' ', '', $arryitem);
+                                </php>
+                                <li <if condition="$key eq '0'">class="active"</if>><a href="#{$arryitem2}" class="topLink et-hero-tab">{$arryitem}</a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-3__maincontent">
+                <div class="container">
+                    <div class="row">
+                        <div class="inner-3_titlepart">
+
+                            <div class="col-xs-12 inner-3_title">
+                                    <p>{$inner_data[3]}</p>
+                            </div>
+                            <div class="col-xs-12 inner-3_title-fu">
+                                <if condition="$inner_data['5']"><a href="{$inner_data[5]}">{$inner_data['4']}</a><else/><span>{$inner_data[4]}</span></if>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <section class="inner-3__content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="inner-3__proWrap">
+                                <php>
+                                    $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                                </php>
+                                <volist empty="$no_empty" name="pro" id="pro" key="k">
+                                    <div class="col-xs-6  col-md-4 col-lg-3 inner-3__probox">
+                                        <figure class="inner-3__pro">
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <div>
+                                                    <div class="inner-3__proimg">
+                                                        <img src="{:getmainimgurl($pro['main_img'])}" alt="{$pro['pro_name']}"/>
+                                                    </div>
+                                                    <figcaption class="inner-3__proName ellipsis_two">
+                                                        <h3 title="{$pro['pro_name']}">{$pro['pro_name']}</h3>
+                                                    </figcaption>
+                                                </div>
+                                                <div class="inner-3__proMask">
+                                                    <div class="inner-3__proMask__name inner-3__proMask__font">
+                                                        {$pro['pro_name']}
+                                                    </div>
+                                                    <div class="inner-3__proMask__desc inner-3__proMask__font ellipsis_four">
+                                                        {$pro['pro_description']}
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </figure>
+
+                                    </div>
+                                </volist>
+                                <div class="clear"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="inner-3__cateprofile">
+                            {:htmlspecialchars_decode($prolist['cate_profile'])}
+                        </div>
+                        <!--<style>
+                            .inner-3__cateprofile__part1{width: 100%;margin: auto}
+                            .inner-3__cateprofile__part1 h3.title{font-size: 36px;color: #333333;line-height: 45px;font-weight: normal;margin-bottom: 36px;}
+                            .inner-3__cateprofile__part1 ul{width: 50%;padding-right: 10px;float: left;}
+                            .inner-3__cateprofile__part1 ul li{padding-left: 26px;padding-bottom:10px;position: relative;font-size: 18px;color: #333333;line-height: 24px;list-style-type: none;}
+                            .inner-3__cateprofile__part1 ul li i,.inner-3__cateprofile__part1 ul li em{position: absolute;left: 0;top: 3px;color: #96daf0;}
+                            .inner-3__cateprofile__part1 .clear{clear: both}
+                        </style>
+                        <div class="inner-3__cateprofile__part1">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h3 class="title strong wow fadeInLeft" data-wow-delay="0" data-wow-duration="2s">Product Description</h3>
+                                        <ul>
+                                            <li class="wow fadeInUp" data-wow-delay="0" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>We have various colors and styles for you to choose.</li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>Most of patterns are our unique design.</li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>It will provide your products a unique advantage over other sellers' products.</li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>Using ultrasonic composite technology, the blanket will be more durable and will not split. Compared to fleece,pvc or acrylic blanket, Ultrasonic Pattern Blanket can be washed by </li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>washing machine.</li>
+                                        </ul>
+                                        <ul>
+                                            <li class="wow fadeInUp" data-wow-delay="0" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>It can be recycled to use many times and easy to clean.</li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>The material is eco-friendly, there is no chemical smell on the marterial.</li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>Inner filling with cotton, it will be more comfortable to sit on it.</li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>Really fit for grass, beach, camping or any other outdoor activities</li>
+                                            <li class="wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s"><i class="fa fa-check" aria-hidden="true"></i>Each corner with windproof stake is convenient for grass or beach.</li>
+                                        </ul>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                            .inner-3__cateprofile__part2{width: 100%;margin: auto;padding: 60px 0;background: #f1f1f1;}
+                            .inner-3__cateprofile__part2 h3.title{text-align:center;font-size: 36px;color: #333333;line-height: 45px;font-weight: normal;margin-bottom: 36px;}
+                            .inner-3__cateprofile__part2__img{width: 100%;margin: auto;text-align: center;}
+                            .inner-3__cateprofile__part2__img img{max-width: 100%;}
+                        </style>
+                        <div class="inner-3__cateprofile__part2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h3 class="title strong wow fadeInUp" data-wow-delay="0">Thermal Composite Technolog</h3>
+                                        <div class="inner-3__cateprofile__part2__img wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="2s"><img src="" alt=""/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    <!--<style>
+                        .inner-3__cateprofile__part3{width: 100%;margin: auto;padding-top: 70px;padding-bottom: 70px;}
+                        .inner-3__cateprofile__part3  h3.title{text-align:center;font-size: 36px;color: #333333;line-height: 45px;font-weight: bold;margin-bottom: 36px;}
+                        .inner-3__cateprofile__part3Process{margin: auto;width: 100%;}
+                        .inner-3__cateprofile__part3Process ul{width: 100%;margin: auto;}
+                        .inner-3__cateprofile__part3Process ul li{position: relative}
+                        .inner-3__cateprofile__part3Process ul li .inner-3__processbox{position:relative;width: 90%;height: 0;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;margin:auto;margin-bottom: 20px;padding-bottom: 90%;background: #fff;}
+                        .inner-3__cateprofile__part3Process ul li .inner-3__processbox:after{content: '';display: block;width: 100%;height: 2px;border-bottom: 1px solid #c3c3c3;position: absolute;left: -50%;top: 50%;z-index: -2;}
+                        .inner-3__cateprofile__part3Process ul li:first-child .inner-3__processbox:after{content: '';display: none;}
+                        .inner-3__cateprofile__part3Process ul li .inner-3__processbox .inner-3__processimg{width: calc(90% - 2px);height:calc(90% - 2px);padding: 4px;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;text-align: center;justify-content: center;align-items: center;overflow: hidden;border: 1px solid #c3c3c3;position: absolute;left: 50%;
+                            top: 50%;transform: translate3d(-50%,-50%,0);-webkit-transform:translate3d(-50%,-50%,0);-moz-transform: translate3d(-50%,-50%,0);z-index: 2}
+                        .inner-3__cateprofile__part3Process ul li .inner-3__processbox svg{position: absolute;left: 0;top: 0;transition: 0.6s all ease;-moz-transition: 0.6s all ease;-webkit-transition: 0.6s all ease;}
+                        .inner-3__cateprofile__part3Process ul li .inner-3__processbox .processborder{stroke-dasharray: 130, 362;stroke-dashoffset: 0;stroke: #c3c3c3;}
+                        .inner-3__cateprofile__part3Process ul li .inner-3__processbox .processborder2{stroke-dasharray: 250, 421;stroke-dashoffset: -190;stroke: #c3c3c3;}
+                        .inner-3__cateprofile__part3Process ul li .inner-3__processimg img{width: 100%;}
+                        .inner-3__processname h3{width: 100%;text-align: center;font-size: 16px;line-height: 24px;font-weight: normal;}
+                        .inner-3__cateprofile__part3Process ul li:hover .inner-3__processbox svg{transform: rotate(36deg);-moz-transform: rotate(36deg);-webkit-transform: rotate(36deg);transition: 0.6s all ease;-moz-transition: 0.6s all ease;-webkit-transition: 0.6s all ease;}
+                        @media (max-width:457px) {
+                            .inner-3__cateprofile__part3Process ul li .inner-3__processbox:after{display: none}
+                        }
+
+                    </style>
+                        <div class="inner-3__cateprofile__part3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h3 class="title wow fadeInUp" data-wow-delay="0">Our Production Process</h3>
+                                        <div class="inner-3__cateprofile__part3Process">
+                                            <ul class="part3Process_ul">
+                                                <li class="col-xs-6 col-md-2 col-lg-2 wow fadeInUp" data-wow-delay="0" data-wow-duration="2s">
+                                                    <div class="inner-3__processbox">
+                                                        <svg width="100%" height="100%" version="1.1"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                            <circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                    stroke-width="1" fill="none" class="processborder"/>
+                                                            </g>
+                                                            <g><circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                       stroke-width="1" fill="none" class="processborder2"/></g>
+                                                        </svg>
+                                                        <div class="inner-3__processimg flex"><img src="http://yun.one-all.com/uploadfiles/107.151.154.88/webid1078/source/202003/15839102921.jpg" alt=""/></div>
+
+                                                    </div>
+                                                    <div class="inner-3__processname"><h3>Steps1</h3></div>
+                                                </li>
+                                                <li class="col-xs-6 col-md-2 col-lg-2 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="2s">
+                                                    <div class="inner-3__processbox">
+                                                        <svg width="100%" height="100%" version="1.1"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                        stroke-width="1" fill="none" class="processborder"/>
+                                                            </g>
+                                                            <g><circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                       stroke-width="1" fill="none" class="processborder2"/></g>
+                                                        </svg>
+                                                        <div class="inner-3__processimg flex"><img src="http://yun.one-all.com/uploadfiles/107.151.154.88/webid1078/source/202003/15839102921.jpg" alt=""/></div>
+
+                                                    </div>
+                                                    <div class="inner-3__processname"><h3>Steps1</h3></div>
+                                                </li>
+                                                <li class="col-xs-6 col-md-2 col-lg-2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="2s">
+                                                    <div class="inner-3__processbox">
+                                                        <svg width="100%" height="100%" version="1.1"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                        stroke-width="1" fill="none" class="processborder"/>
+                                                            </g>
+                                                            <g><circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                       stroke-width="1" fill="none" class="processborder2"/></g>
+                                                        </svg>
+                                                        <div class="inner-3__processimg flex"><img src="http://yun.one-all.com/uploadfiles/107.151.154.88/webid1078/source/202003/15839102921.jpg" alt=""/></div>
+                                                    </div>
+                                                    <div class="inner-3__processname"><h3>Steps1</h3></div>
+                                                </li>
+                                                <li class="col-xs-6 col-md-2 col-lg-2 wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="2s">
+                                                    <div class="inner-3__processbox">
+                                                        <svg width="100%" height="100%" version="1.1"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                        stroke-width="1" fill="none" class="processborder"/>
+                                                            </g>
+                                                            <g><circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                       stroke-width="1" fill="none" class="processborder2"/></g>
+                                                        </svg>
+                                                        <div class="inner-3__processimg flex"><img src="http://yun.one-all.com/uploadfiles/107.151.154.88/webid1078/source/202003/15839102921.jpg" alt=""/></div>
+                                                    </div>
+                                                    <div class="inner-3__processname"><h3>Steps1</h3></div>
+                                                </li>
+                                                <li class="col-xs-6 col-md-2 col-lg-2 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s">
+                                                    <div class="inner-3__processbox">
+                                                        <svg width="100%" height="100%" version="1.1"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                        stroke-width="1" fill="none" class="processborder"/>
+                                                            </g>
+                                                            <g><circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                       stroke-width="1" fill="none" class="processborder2"/></g>
+                                                        </svg>
+                                                        <div class="inner-3__processimg flex"><img src="http://yun.one-all.com/uploadfiles/107.151.154.88/webid1078/source/202003/15839102921.jpg" alt=""/></div>
+                                                    </div>
+                                                    <div class="inner-3__processname"><h3>Steps1</h3></div>
+                                                </li>
+                                                <li class="col-xs-6 col-md-2 col-lg-2 wow fadeInUp" data-wow-delay="0.9s" data-wow-duration="2s">
+                                                    <div class="inner-3__processbox">
+                                                        <svg width="100%" height="100%" version="1.1"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <g>
+                                                                <circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                        stroke-width="1" fill="none" class="processborder"/>
+                                                            </g>
+                                                            <g><circle cx="50%" cy="50%" r="48%" stroke="#c3c3c3"
+                                                                       stroke-width="1" fill="none" class="processborder2"/></g>
+                                                        </svg>
+                                                        <div class="inner-3__processimg flex"><img src="http://yun.one-all.com/uploadfiles/107.151.154.88/webid1078/source/202003/15839102921.jpg" alt=""/></div>
+                                                    </div>
+                                                    <div class="inner-3__processname"><h3>Steps1</h3></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    <if condition="$inner_data[6] eq ''">
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_inner3.html" />
+                    </if>
+                    <!--<style>
+                        .inner-3__cateprofile__part5{width: 100%;margin: auto;padding-bottom: 20px;}
+                        .cateprofile__part5box{width: calc(50% - 10px);padding:200px 0 280px;text-align: center;}
+                        .cateprofile__part5&#45;&#45;left{float: left;background: url('http://yun.one-all.com/pcuploadfiles/107.151.154.88/webid1078/MOD/202004/1586754761228.jpeg') no-repeat center/cover}
+                        .cateprofile__part5&#45;&#45;right{float: right;background: url('http://yun.one-all.com/pcuploadfiles/107.151.154.88/webid1078/MOD/202004/1586754761228.jpeg') no-repeat center/cover}
+                        .cateprofile__part5&#45;&#45;leftname{font-size: 0.4rem;line-height: 0.6rem;color: #ffffff;font-weight: bold;margin-bottom: 50px;text-transform: uppercase}
+                        .cateprofile__part5&#45;&#45;more{position:relative;overflow:hidden;display: inline-block;padding: 10px 50px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;background: #1d90d0;}
+                        .cateprofile__part5&#45;&#45;more:before{content: '';display: block;width: 220px;height: 200px;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;position: absolute;
+                            top: -74px;left: -120px; z-index: 1;transform: scale(0);-moz-transform: scale(0);-webkit-transform: scale(0);transition: 0.6s;background: rgba(0,0,0,0.3);
+                        }
+                        .cateprofile__part5&#45;&#45;more:hover:before{transform: scale(1.5);left: -50px;-moz-transform: scale(1.5); -webkit-transform: scale(1.5);transition: 0.6s;}
+                        .cateprofile__part5&#45;&#45;more span{color: #fff;font-size: 0.16rem;line-height: 0.24rem;text-transform: uppercase;position: relative;z-index: 2;}
+                        @media (max-width:768px) {
+                            .cateprofile__part5box{width: 100%;float: none;padding:100px 20px 140px;}
+                            .cateprofile__part5box:first-child{margin-bottom: 20px;}
+                        }
+                    </style>
+                    <div class="inner-3__cateprofile__part5">
+                        <div class="cateprofile__part5box cateprofile__part5&#45;&#45;left">
+                            <div class="cateprofile__part5&#45;&#45;leftname">leeping bag</div>
+                            <a href="" class="cateprofile__part5&#45;&#45;more"><span>show more</span></a>
+                        </div>
+                        <div class="cateprofile__part5box cateprofile__part5&#45;&#45;right">
+                            <div class="cateprofile__part5&#45;&#45;leftname">More products</div>
+                            <a href="" class="cateprofile__part5&#45;&#45;more"><span>show more</span></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>-->
+
+                </section>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script>
+        /*inpage two product detail*/
+        $(document).ready(function () {
+
+            if($("#menu_tab").length>0){
+                /*$("#menu_tab ul li a").click(function(){
+                    event.preventDefault();
+                    var index = $(this).parent().index();
+                    $('html,body').animate({scrollTop: ($(".pro_detail_box").eq(index).offset().top-80)}, 1000);
+                });*/
+            }
+        });
+    </script>
+</block>
+<block name="footer_js">
+<script>
+
+require(['jquery'], function ($){
+$(document).ready(function(){
+	//首先获取导航栏距离浏览器顶部的高度
+
+	var nav_top={$h};
+	if(nav_top>0 && $('.inner-3__anchor').offset().top){
+	var top = $('.inner-3__anchor').offset().top;
+	//开始监控滚动栏scroll
+	$(document).scroll(function(){
+		//获取当前滚动栏scroll的高度并赋值
+		var scrTop = $(window).scrollTop();
+		scrTop=scrTop+nav_top;
+		//console.log("scrTop",scrTop);
+		//开始判断如果导航栏距离顶部的高度等于当前滚动栏的高度则开启悬浮
+		if(scrTop >= top){
+			$('.inner-3__anchor').css({'position':'fixed','top':nav_top,'width':'100%','z-index':'99'});
+		}else{
+			//否则清空悬浮
+			$('.inner-3__anchor').css({'position':'','top':''});
+		}
+	});
+        $(".inner-3__anchorUl li a.topLink").click(function() {
+            $("html, body").animate({
+                scrollTop: $($(this).attr("href")).offset().top-100 + "px"
+            }, {
+                duration: 500,
+                easing: "swing"
+            });
+            $(this).parent().addClass("active").siblings("li").removeClass("active");
+        });
+
+	}
+})
+
+});
+
+</script>
+</block>

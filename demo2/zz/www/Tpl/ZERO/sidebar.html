@@ -1,0 +1,75 @@
+<style>
+#skypeCheckNotice{position:fixed !important;}
+#skypedetectionswf{ display:none !important;}
+</style>
+<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+<div class="sidebar">
+  <ul>
+    <li style="border:none; height:25px;"><img src="__TMPL__demo2/img/r_top1.png" border="0"></li>
+    <!--<li style="height:48px;">
+        <div class="skype-container">
+          <div class="skype-show">
+            <div class="skype-txt">Skype:<br /><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,4);gtag_report_conversion_Skype();">{:chaifen($about['msn'],0)}</a></div>
+            <div class="skype-sanjiao"></div>
+            <div class="skype-sanjiao-big"></div>
+          </div>
+        </div>
+        <div style="clear:both"></div>
+    </li>-->
+    <li style="height:48px">
+        <div class="whatsapp-container">
+          <div class="whatsapp-show">
+            <div class="whatsapp-txt">WhatsApp:<br />+86-{:chaifen($about['whatsapp'],0)}</div>
+            <div class="whatsapp-sanjiao"></div>
+            <div class="whatsapp-sanjiao-big"></div>
+          </div>
+        </div>
+        <div style="clear:both"></div>
+    </li>
+    <li style="height:48px">
+       <div class="email-container">
+          <div class="email-show">
+            <div class="email-txt">E-mail:<br /><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);gtag_report_conversion_email();">{:chaifen($about[email],0)}</a></div>
+            <div class="email-sanjiao"></div>
+            <div class="email-sanjiao-big"></div>
+          </div>
+        </div>
+        <div style="clear:both"></div>
+    </li>
+    <li style="height:48px"><div class="sidebox1"><a href="{:U('/contactus#inquiry')}" onClick="turn_sta(1,4)"><img src="__TMPL__demo2/img/r_xp.png" border="0"></a></div></li>
+    <li style="height:48px; background:#fff;"><a href="javascript:goTop();" class="sidetop"><img src="__TMPL__demo2/img/r_top.png" width="50" height="48" alt="top" border="0"/></a></li>
+    <li style="border:none; height:25px;"><img src="__TMPL__demo2/img/r_top2.png" border="0"></li>
+  </ul>
+</div>
+<style>
+/*右侧二维码*/
+.sidebar{ width:52px; position:fixed;top:250px; right:0px; z-index:99999}
+.sidebar ul li{ position:relative; list-style:none; height:48px; border-left:1px solid #dcdcdc; border-right:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc;}
+.sidebar ul li img{ float:left;}
+.sidebar ul li .sidebox{position:absolute;width:50px; height:48px;top:0;right:0;transition:all 0.3s;background:#fff;overflow:hidden;color:#fff; font-size:14px;}
+.sidebar ul li .sidebox1{position:absolute;width:50px; height:48px;top:0;right:0;transition:all 0.3s;background:#fff;overflow:hidden;color:#fff; font-size:14px;}
+.sidebar ul li .sidebox2{position:absolute;width:50px; height:48px;top:0;right:0;transition:all 0.3s;background:#fff;overflow:hidden;color:#fff; font-size:14px;}
+.sidebar ul li .sidebox3{position:absolute;width:50px; height:48px;top:0;right:0;transition:all 0.3s;background:#fff;overflow:hidden;color:#fff; font-size:14px;}
+.skype-container {width: 50px; height: 48px;background: url(__TMPL__demo2/img/r_skype.png) no-repeat #fff;}
+.skype-container:hover{ background:url(__TMPL__demo2/img/r_skype.png) no-repeat #FFFFFF;}
+.skype-show {width: 220px; background: #fff; border-radius: 10px; border: 1px solid #dddddd; position: absolute; left: -235px; top: 0px; }
+.skype-show .skype-sanjiao {width:0; height: 0; border-style: solid; border-color: transparent transparent transparent #ffffff; border-width: 6px; left: 220px; top: 26px; position: absolute; z-index: 2;}
+.skype-show .skype-sanjiao-big { width: 0; height: 0; border-style: solid; border-color: transparent transparent transparent #dddddd; border-width: 8px; left: 221px; top: 25px; position: absolute; }
+.skype-show .skype-txt{ float:left; width:200px; padding:10px 12px 10px 10px; text-align:left; font-size:15px; color:#4c4c4c; }
+
+
+.whatsapp-container {width: 50px; height: 48px;background: url(__TMPL__demo2/img/r_tel.png) no-repeat #fff;}
+.whatsapp-container:hover{ background:url(__TMPL__demo2/img/r_tel.png) no-repeat #FFFFFF;}
+.whatsapp-show {width: 220px; background: #fff; border-radius: 10px; border: 1px solid #dddddd; position: absolute; left: -235px; top: 0px; }
+.whatsapp-show .whatsapp-sanjiao {width:0; height: 0; border-style: solid; border-color: transparent transparent transparent #ffffff; border-width: 6px; left: 220px; top: 26px; position: absolute; z-index: 2;}
+.whatsapp-show .whatsapp-sanjiao-big { width: 0; height: 0; border-style: solid; border-color: transparent transparent transparent #dddddd; border-width: 8px; left: 221px; top: 25px; position: absolute; }
+.whatsapp-show .whatsapp-txt{ float:left; width:200px; padding:10px 12px 10px 10px; text-align:left; font-size:15px; color:#4c4c4c; }
+
+
+.email-container {width: 50px; height: 48px;background: url(__TMPL__demo2/img/r_email.png) no-repeat #fff;}
+.email-container:hover{ background:url(__TMPL__demo2/img/r_email.png) no-repeat #FFFFFF;}
+.email-show {width: 235px; background: #fff; border-radius: 10px; border: 1px solid #dddddd; position: absolute; left: -245px; top: 0px; }
+.email-show .email-sanjiao {width:0; height: 0; border-style: solid; border-color: transparent transparent transparent #ffffff; border-width: 6px; left: 235px; top: 26px; position: absolute; z-index: 2;}
+.email-show .email-sanjiao-big { width: 0; height: 0; border-style: solid; border-color: transparent transparent transparent #fff; border-width: 8px; left: 221px; top: 25px; position: absolute; }
+.email-show .email-txt{ float:left; width:200px; padding:10px 12px 10px 10px; text-align:left; font-size:15px; color:#4c4c4c; }
+</style>

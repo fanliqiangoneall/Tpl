@@ -1,0 +1,155 @@
+<!--{$pagename}-->
+<style>
+    .adContainer{
+        width: 100%;
+        margin-bottom: 120px;
+    }
+    .adContentLeft{
+        width: 43%;
+        height: 645px;
+        float: left;
+        position: relative;
+    }
+    .adContentLeft>img{
+        width: 100%;
+        height: 645px;
+    }
+    .adLeftList{
+        position: absolute;
+        top:215px;
+        right:90px;
+    }
+    .adLeftListText{
+        width: 360px;
+        font-size: 40px;
+        line-height: 50px;
+        font-weight: bold;
+        color: #fff;
+    }
+    .adMore{
+        width: 200px;
+        height: 50px;
+        border: 1px solid #fff;
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        text-align: left;
+        line-height: 50px;
+        padding-left: 20px;
+        position: relative;
+        margin-top: 50px;
+    }
+    .adMore:before{content: '';display: table;width: 50px;height: 2px;background: #fff;position: absolute;right: 24px;top: 24px;}
+    .border{position: absolute;background: none;transition: all .5s ease-in-out;}
+    .adMore .border:nth-of-type(1){
+        top:0;
+        left:0;
+        width:0;
+        height:0;
+        border-top:1px solid white;
+    }
+    .adMore .border:nth-of-type(2){
+        top:0;
+        right:0;
+        width:10px;
+        height:0;
+        border-right:1px solid white;
+    }
+    .adMore .border:nth-of-type(3){
+        bottom:0;
+        right:0;
+        width:0;
+        height:0;
+        border-bottom:1px solid white;
+    }
+    .adMore .border:nth-of-type(4){
+        bottom:0;
+        left:0;
+        width:0;
+        height:0;
+        border-left:1px solid white;
+    }
+    .adMore:hover .border:nth-of-type(1){
+        width:221px;
+    }
+    .adMore:hover .border:nth-of-type(2){
+        height:51px;
+    }
+    .adMore:hover .border:nth-of-type(3){
+        width:221px;
+    }
+    .adMore:hover .border:nth-of-type(4){
+        height:51px;
+    }
+    .adContentRight{
+        width: 57%;
+        height: 645px;
+        float: right;
+        position: relative;
+    }
+    .adContentRight img{width: 100%;height: 645px;}
+    .adContentRightList{position: absolute;top: 70px;left: 0;width: 730px;height: 638px;background: #fff;    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;}
+    .adIconBg{float: left;margin-left: 30px;margin-right: 40px;}
+    .adIconBg01{width: 95px;height: 79px;}
+    .adIconBg02{width: 93px;height: 93px;}
+    .adIconBg03{width: 93px;height: 93px;}
+    .adTitle{font-size: 30px;color: #333;margin: 10px 0 20px 0;}
+    .adText{font-size: 18px;color: #333;}
+    .adTextContainer{float: left;}
+    .adContentRightList>li{margin-top:110px;}
+    .adContentRightList>li:first-child{margin-top: 60px;}
+</style>
+<div class="adContainer">
+    <div class="adContentLeft">
+        <img src="{:getindeximgurl($data6[0])}" alt=""/>
+        <div class="adLeftList">
+            <p class="adLeftListText">{$data6[1]}</p>
+            <a href="{$data6[15]}" class="adMore">
+                Learn More
+                <border class="border"></border>
+                <border class="border"></border>
+                <border class="border"></border>
+                <border class="border"></border>
+            </a>
+        </div>
+    </div>
+    <div class="adContentRight">
+        <img src="{:getindeximgurl($data6[2])}" alt=""/>
+        <ul class="adContentRightList">
+            <li>
+                <a href="{$data6[12]}">
+                    <div class="adIconBg adIconBg01" style="background: url({:getindeximgurl($data6[3])}) no-repeat;"></div>
+                    <div class="adTextContainer">
+                        <p class="adTitle">{$data6[4]}</p>
+                        <p class="adText">{$data6[5]}</p>
+                    </div>
+                    <div class="clear"></div>
+                </a>
+            </li>
+            <li>
+                <a href="{$data6[13]}">
+                    <div class="adIconBg adIconBg02" style="background: url({:getindeximgurl($data6[6])}) no-repeat;"></div>
+                    <div class="adTextContainer">
+                        <p class="adTitle">{$data6[7]}</p>
+                        <p class="adText">{$data6[8]}</p>
+                    </div>
+                    <div class="clear"></div>
+                </a>
+            </li>
+            <li>
+                <a href="{$data6[14]}">
+                    <div class="adIconBg adIconBg03" style="background: url({:getindeximgurl($data6[9])}) no-repeat;"></div>
+                    <div class="adTextContainer">
+                        <p class="adTitle">{$data6[10]}</p>
+                        <p class="adText">{$data6[11]}</p>
+                    </div>
+                    <div class="clear"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+

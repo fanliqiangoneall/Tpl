@@ -1,0 +1,30 @@
+.service-19{width: 100%;height: auto;margin: auto;}
+.service-19_tabs{width: 100%;overflow: auto;}
+.service-19_tabs li{border: 1px solid #d2d2d2;border-radius: 20px;display: inline-block;padding: 6px 15px;margin-left: 10px;margin-bottom: 30px;}
+.service-19_tabs li:first-child{margin-left: 0;}
+.service-19_itemlist{width: 100%;}
+.service-19_itemlist ul{width: 100%;position: relative;}
+.service-19_itemlist ul li{width: 100%;display: block;position: absolute;left: 0;top: 0;z-index: -1;opacity:0;visibility: hidden;}
+.service-19_itemlist ul li.active{display: block;position: relative;z-index: 1;visibility: visible;opacity: 1;}
+.service-19_itemlist ul li .service-19_item{display: flex;display: -webkit-flex;display: -ms-flexbox;width: 100%;}
+.service-19_itemlist ul li div.right,.service-19_itemlist ul li div.left{width: 50%;height: auto;}
+.service-19_itemlist ul li div.right{background: #6c6c6c;}
+.service-19_itemlist ul li div.right .content{width: 75%;padding: 40px 45px;}
+.service-19_itemlist ul li div.right .content .service-19_itemName{color: #fff;}
+.service-19_itemlist ul li div.right .content p{color: #fff;min-height: 200px;}
+.service-19_itemlist ul li div.right .content a{color: #fff;}
+.left_swiperContainer{width: 100%;height: 100%;}
+@media(max-width:1200px) {
+    .service-19_itemlist ul li div.right,.service-19_itemlist ul li div.left{width: 100%;height: auto;}
+    .service-19_itemlist ul li .service-19_item{flex-wrap: wrap;}
+    .service-19_itemlist ul li div.left{height: 400px;}
+}
+@media(max-width:576px){
+    .service-19_tabs li{padding: 5px 10px;margin-bottom: 10px;margin-left: 5px;margin-right: 5px;}
+    .service-19_tabs li:first-child{margin-left: 5px;}
+    .service-19_itemlist ul li .service-19_item{flex-wrap: wrap;}
+    .service-19_itemlist ul li div.right,.service-19_itemlist ul li div.left{width: 100%;height: auto;}
+    .service-19_itemlist ul li div.left{height: 200px;}
+    .service-19_itemlist ul li div.right .content{width: 100%;padding: 20px 15px;}
+    .service-19_itemlist ul li div.right .content p{margin-bottom: 40px;}
+}

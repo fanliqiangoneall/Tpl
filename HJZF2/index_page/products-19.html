@@ -1,0 +1,66 @@
+<style>
+    .products-19__content--down__wrap li .products-19__item:hover h3,.products-19__content--down__wrap li .products-19__item:hover a,.products-19__content ul.products-19__categroy li:hover .catename a{
+        color: #{$data195[0]};
+    }
+    .products-19-top{
+        background: url({:getindeximgurl($data195[1])}) no-repeat center;
+    }
+</style>
+
+
+
+<section id="products-19">
+    <div class="products-19-top">
+        <div class="container">
+            <div class="products-19-top_content">
+                <h3>{$data195[2]}</h3>
+                <div>{:HtmlEncode(subtxt($data195[3],200))}</div>
+                <a href="{$data195[4]}">{:__('Read More')}</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="products-19__content">
+            <php>
+                $arr_str=$data195[5];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $k=>$a){
+                $list[$k]=get_index_products_categoryname($a);
+                }
+                foreach($arr as $c=>$b){
+                $class[$c]['data']=get_index_products_category($b,$all_pro);
+                }
+            </php>
+            <ul class="products-19__categroy">
+                <volist empty="" name="list" id="li" key="k">
+                    <li>
+                        <div class="cateimg"><img src="{:getmainimgurl($li['fid'])}" alt=""/></div>
+                        <div class="catename"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a></div>
+                    </li>
+                </volist>
+            </ul>
+
+            <div class="products-19__content--down wow bounceInLeft" data-wow-duration="1s" data-wow-offset="0">
+                <ul class="products-19__content--down__wrap">
+
+                    <volist empty="" name="class" id="li" key="k">
+                        <li class="products-19__content__itemBox">
+                            <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="3">
+                                <div class="products-19__item">
+
+                                    <div class="products-19__proName">
+                                        <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><h3>{$indexpro['pro_name']}</h3></a>
+                                        <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}" class="products-19__proMore">{:__('Read More')}</a>
+                                    </div>
+                                    <div class="products-19__proImg"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" width="437px" height="320px"/></div>
+                                </div>
+                            </volist>
+                        </li>
+                    </volist>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

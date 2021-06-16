@@ -1,0 +1,115 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        @media(min-width: 1200px) {
+            .main_newslist3 .newslist_left{
+                min-height: 120px;
+            }
+        }
+        .HJZF_Z__Breadcrumbs span.current,
+        ul.InsidePages_left_navlist>li>a>h3:hover,
+        ul.InsidePages_left_navlist>li.yijion>a>h3 {
+            color: #{$color};
+        }
+        .main_page .current{
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before {
+            background: #{$color};
+        }
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+        .main_newslist3 li:hover a.more{
+            background-color: #{$color};height: 35px;
+        }
+        @media(min-width: 1200px) {
+            #lightbox-container-image {
+                min-height: 400px;
+            }
+        }
+        @media(max-width: 1199px) {
+            #lightbox-container-image {
+                min-height: 80px;
+            }
+            #lightbox-container-image-box,
+            #lightbox-container-image-data-box {
+                width: 80% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('News')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container" id="payment">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left">
+                        <Include file="./Tpl/HJZF2_Z/inner/news_left15.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftnews_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="main_newslist3 ul_li_list clearfix">
+                                    <!-- loop start -->
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allnews" id="allnews">
+                                        <li class="clearfix">
+                                            <div class="newslist_img col-md-3 col-xs-12 fr">
+                                                <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"
+                                                    onFocus="blur()">
+                                                    <img <if
+                                                        condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"
+                                                    <else />src="{:getindeximgurl($inner_data[3])}"</if> border="0"
+                                                    class="img-responsive" />
+                                                </a>
+                                            </div>
+                                            <div class="newslist_left col-md-8 col-xs-12 fl">
+                                                <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                                                    <h5 class="fz16">{$allnews['title']}</h5>
+                                                </a>
+                                                <span>{:date('Y-m-d ',$allnews['created'])}</span>
+                                                <p class="hidden-xs">{:subtxt($allnews['news_description'],200)}</p>
+                                                <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"
+                                                    class="more">{:__('Read More')}</a>
+                                            </div>
+                                            
+                                        </li>
+                                    </volist>
+                                    <!-- loop end -->
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

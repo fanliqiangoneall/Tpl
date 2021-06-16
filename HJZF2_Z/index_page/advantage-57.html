@@ -1,0 +1,53 @@
+<!--{$pagename}-->
+<php>
+    if($data487[3]){
+        $color = $data487[3];
+    }
+</php>
+<style>
+.HJZF2_Z_advantage_57_wrapper .swiper-slide:hover span{
+    background-color: #{$color};
+}
+</style>
+<section class="HJZF2_Z_advantage_57 clearfix index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title pb20 text-center">{$data487[0]}</div>
+                <div class="index_sub_title pb40 text-center">{$data487[1]}</div>
+                <div class="por">
+                <div class="HJZF2_Z_advantage_57_wrapper swiper-container">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arr = get_list_val($data487[2]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <div class="swiper-slide text-center">
+                                <em></em>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                <span>
+                                    <img src="{$a[ico]}" alt="{$a[title]}">
+                                </span>
+                                <div class="index_sub_title pb20 tft">
+                                    {$a[title]}
+                                </div>
+                                <p class="tft">
+                                    {$a[info]}
+                                </p>
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </div>
+                        </volist>
+                    </div>
+                    
+                </div>
+                <div class="swiper-button-prev advantage_57-prev swiper-button-black"></div>
+                <div class="swiper-button-next advantage_57-next swiper-button-black"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>

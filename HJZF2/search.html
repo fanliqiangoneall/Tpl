@@ -1,0 +1,195 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        ul.InsidePages_left_navlist>li:hover >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion>ul li:hover >a>h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yiji:hover >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yiji:hover  span.class_button:before{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion:hover  span.class_button:before{
+            color: #{$inner_data[0]};
+        }
+        .main_proitem_second .hj05-index-more{
+            background: #{$inner_data[0]};
+        }
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$inner_data[0]};
+        }
+
+        .main_product_more span{
+            color: #{$inner_data[0]};}
+
+        .main_product_more:hover span{
+            color:#fff;
+        }
+        .main_product_title_right a:hover{
+            background: #{$inner_data[0]};
+        }
+        .InsidePages_content-left__contact2 h2{
+            color: #{$inner_data[0]};
+        }
+    </style>
+    <if condition="$inner_data[2] neq ''">
+            <style>
+                .main_proitem_second h6{
+                    font-size: {$inner_data[2]}px;
+                }    
+            </style>
+        </if>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+                <div class="Breadcrumbs">
+                    <div class="Breadcrumbs_down">
+                        <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Search result')}</span></div>
+                </div>
+
+        <if condition="$searchpro neq ''">
+            <div class="InsidePages_content" id="main-content-wrapper" data-myli="1">
+                <section class="InsidePages_content-left">
+                    <Include file="./Tpl/HJZF2/left.html" />
+
+                        <div class="InsidePages_content-left__contact" <if condition="$inner_data[5]">style="display:block;background:url({:getindeximgurl($inner_data[4])}) center top no-repeat"<else/>style="display:none;"</if>>
+                            <div class="InsidePages_content-left__contactwrap">
+                                <div class="InsidePages_content-left__contactName">
+                                    {$about['company_name']}
+                                </div>
+                                <ul>
+                                    <li><span>{:__('Free sales hotline: ')}</span><p>{:chaifen($about['phone'],0)}</p></li>
+                                    <li><span>{:__('Tel: ')}</span><p>{:chaifen($about['phone'],1)}<br/>{:chaifen($about['phone'],2)}</p></li>
+                                    <li><span>{:__('Fax: ')}</span><p>{:chaifen($about['fax'],0)}</p></li>
+                                    <li><span>{:__('Email: ')}</span><p><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,3);">{:chaifen($about['email'],0)}</a></p></li>
+                                    <li><span>{:__('Add: ')}</span><p>{$about['address']}</p></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="InsidePages_content-left__contact2" <if condition="$inner_data[6]">style="display:none;" <else/>style="display:none"</if>>
+                            <img src="{:getindeximgurl($inner_data[7])}">
+                            <h2>{:__('Contact Us')}</h2>
+                            <ul>
+                                <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[8])}">{:__('Contact: ')}{:chaifen($about['contact'],0)}</li>
+                                <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[9])}">{:__('Tel: ')}{:chaifen($about['phone'],0)}</li>
+                                <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[10])}">{:__('Mobile: ')}{:chaifen($about['mobile'],0)}</li>
+                                <li style="line-height:30px; padding-top:8px;"><img src="{:getindeximgurl($inner_data[11])}">{:__('Email: ')}<a href="mailto:{:chaifen($about['email'],0)}" onClick="turn_sta(3,3)" rel="nofollow">{:chaifen($about['email'],0)}</a></li>
+                                <if condition="C('language') eq 'en'">
+                                    <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[12])}">Skype: <a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3)" rel="nofollow">{:chaifen($about['msn'],0)}</a></li>
+                                    <elseif condition="C('language') eq 'cn'"/>
+                                    <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[12])}">QQ: <a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,4)" target="_blank">{:chaifen($about['msn'],0)}</a></li>
+                                </if>
+
+                            </ul>
+                        </div>
+
+                </section>
+                <section class="InsidePages_content-right">
+                    <div class="InsidePages_content-right_content ">
+
+                            <h5 class="InsidePages_content-right_content_title">{:__('Search result')}</h5>
+                            <div class="InsidePages_content-right_content-main">
+                                <volist empty="" name="searchpro" id="pro" key="h">
+                                    <div class="main_proitem">
+                                        <div class="main_proitem_box">
+                                            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <if condition="$pro['main_img']">
+                                                    <img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> />
+                                                    <else/>
+                                                    <img src="{:getindeximgurl($inner_data[3])}" alt=""/>
+                                                </if>
+                                                </a></div>
+                                            <div class="main_proitem_second">
+                                                <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                    <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],60)}</h6></div>
+                                                    <php>
+                                                        $addval = product_add($pro);
+                                                        foreach($addval as $k=>$a){
+                                                        $list[$k]=$a;
+                                                        }
+                                                    </php>
+                                                    <if condition="$addval">
+                                                        <volist empty="" name="list" id="li">
+                                                            <div class="proItem_add">
+                                                                <span  class="proItem">{$li['title']}: </span>
+                                                                <div class="proItemDesc">{$li['val']}</div>
+                                                                <div class="clear"></div>
+                                                            </div>
+                                                        </volist>
+
+                                                    </if>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="($h)%3 neq 0">
+                                        <div style="width:35px; height:10px; background:none; float:left;"></div>
+                                    </if>
+                                </volist>
+                                <div class="clear"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+            <else/>
+            <div class="InsidePages_content" id="main-content-wrapper" data-myli="0" style="min-height: 500px;">
+                <section class="InsidePages_content-right2">
+                    <div class="InsidePages_content-right_content ">
+
+                            <h5 class="nosecrch_title margin-40px-bottom">{:__('SEARCH ON THIS WEBSITE')}</h5>
+                            <div class="nosearch_box">
+                                <if condition="LANGUAGE eq 'en'">
+                                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                        <li style="float: left;width: 540px;height: 60px;"><input style="height: 60px;width:530px;border-width:0px;padding-left: 10px;color:#888888;outline: none;background: transparent" type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                                        <li style="float: left;width:60px;height: 60px;"><button type="submit" id="search-submit" style="padding-top:16px;outline: none;border: none;background: none;"><img
+                                                src="__TMPL__HJ02/img/head_search.png" alt=""  width="30px" height="30px"/></button></li>
+                                        <div class="clear"></div>
+                                    </form>
+                                    <else/>
+                                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                        <li style="float: left;width: 540px;height: 60px;"><input style="height: 60px;width:530px;border-width:0px;padding-left: 10px;color:#888888;outline: none;background: transparent" type="text" value="{:__('Product Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                                        <li style="float: left;width:60px;height: 60px;"><button type="submit" id="search-submit" style="padding-top:16px;outline: none;border: none;background: none;"><img
+                                                src="__TMPL__HJ02/img/head_search.png" alt=""  width="30px" height="30px"/></button></li>
+                                        <div class="clear"></div>
+                                    </form>
+                                </if>
+
+                            </div>
+                            <p style="font-family: OpenSans;font-size: 16px;color: #333333;letter-spacing: 0;text-align: center;line-height: 24px;" class="margin-40px-top">{:__('No results found, please change search keywords!')}</p>
+
+                    </div>
+                </section>
+            </div>
+        </if>
+
+
+    </div>
+</block>

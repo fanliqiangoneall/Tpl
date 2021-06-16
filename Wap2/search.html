@@ -1,0 +1,83 @@
+<extend name="Wap2:base" />
+<block name="content">
+<php>
+if($inner_data[2]){
+	$product_category_bj=getindeximgurl($inner_data[2]);
+}else{
+	$product_category_bj="none";	
+}
+    $product__title_color=$inner_data[3] or $product__title_color="#333";
+</php>
+<style>
+.product_category__content{ padding:10px 0;}
+.product_category__Breadcrumbs{padding:  0 10px 10px;}
+.product_category__Breadcrumbs, .product_category__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+.product_category__title{
+    color:{$product__title_color};font-size:24px; font-weight:200; padding:5px 10px; background:url({$product_category_bj}) no-repeat;
+}
+.product_category_main_page{ margin-top:5px;}
+.product_category_main_page,.product_category_main_page a{text-align:center; padding:10px;}
+.product_category_main_page a{ 
+border-radius:5px;
+color:#fff;
+text-decoration:none;
+background:#{$color}
+}
+.product_category__product_category{padding: 20px 10px;}
+.product_category_main_page .current{padding:10px;}
+.labelprod__product{ width:32%; float:left;}
+.labelprod__img{ width:100%; margin:0 0; border:1px solid #e3e3e3;}
+.labelprod__txt{ padding:10px;}
+.labelprod__txt a{line-height: 20px;font-size: 16px;color: #333;text-decoration: none;text-align: center;display: block;width: 100%;}
+.new_hjzf_products__products_indexhotpro__txt a{line-height: 20px;font-size: 16px; color:#333; text-decoration:none; text-align:center; display: block; width:100%;}
+    .product__banner{width: 100%}
+</style>
+    <div>
+        <if condition="$inner_data[0] neq ''">
+            <img class="product__banner" src="{:getindeximgurl($inner_data[0])}">
+        </if>
+    </div>
+    <div class="product_category__content">
+
+
+        <div class="product_category__Breadcrumbs"><a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<a
+                        href="{:U('/product')}">{:__('Products')}</a>&nbsp;>>&nbsp;<span class="current">{:__('Search result')}</span></div>
+
+        <div class="" id="">
+
+            <section class="">
+
+                        <h5 class="product_category__title">{:__('Search result')}</h5>
+
+                            <div class="product_category__product_category">
+                                <volist empty="" name="searchpro" id="pro" key="k">
+                                    <div class="labelprod__product">
+                                        <if condition="$pro['main_img']">
+                                        <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                            <div class="labelprod__img" style="background:url({:getmainimgurl($pro['main_img'])}) no-repeat center center / contain">
+                                            </div>
+                                            </a>
+                                            <else/>
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                            <div class="labelprod__img" style="background:url({:getmainimgurl($inner_data[3])}) no-repeat center center / contain">
+                                            </div>
+                                            </a>
+                                        </if>
+
+                                        <div class="labelprod__txt"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a></div>
+                                    </div>
+                                    <if condition="($k)%3 eq 0">
+                                        <div class="clear"></div>
+                                        <else/>
+                                        <div style="width: 2%;height:10px;float: left;"></div>
+                                    </if>
+                                </volist>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="product_category_main_page">{$page}</div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>

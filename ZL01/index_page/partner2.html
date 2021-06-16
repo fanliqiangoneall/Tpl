@@ -1,0 +1,37 @@
+<!--{$pagename}-->
+<style>
+    .ZL01_class3_partner{
+        min-width: 1190px;
+        max-width: 1920px;
+        height: 280px;
+        margin: auto;
+        padding-top: 50px;
+        padding-bottom: 30px;
+        border-top: 2px solid #{$color};
+    }
+    .index_customer_hezuo{margin-top: 40px;}
+</style>
+<div id="index_customer_animate" style="visibility:hidden;">
+<div class="ZL01_class3_partner" style="background:url({:getindeximgurl($data40[8])}) center no-repeat;">
+    <div id="ZL01_class3_partner__animate1" > <div class="ZL01_class3_products_head" style="color: {$data40[9]}">{$data40[6]}</div></div>
+    <div id="ZL01_class3_partner__animate2" > <div class="ZL01_class3_products_head2"  style="color: {$data40[9]}">{$data40[7]}</div></div>
+   <div class="index_customer_hezuo">
+      <div class="index_customer_List" id="index_customer_c1_slide">
+         <div class="index_customer_section1">
+          <volist name="data40" id="customer1" key="key" offset="0" length="6">
+            <if condition="$key%6 eq 1"><ul class="index_customer_c1_lc"></if>
+            <li>
+            <div class="customer_logo" <if condition="$key%6 eq 0">style="margin-right:0;"</if>><img src="{:getindeximgurl($customer1)}" /></div>
+            </li>
+            <if condition="$key%6 neq 0">
+            <div style="width:26px; float:left; height:10px; background:none;"></div>
+            </if>
+            <if condition="$key%6 eq 0"></ul></if>
+          </volist>
+         </div>
+       </div>
+       <!--<a href="javascript:;" class="leftbtn" id="index_customer_c1_slide_prev"></a>
+       <a href="javascript:;" class="rightbtn" id="index_customer_c1_slide_next"></a>-->
+    </div>
+</div>
+</div>

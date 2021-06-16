@@ -1,0 +1,93 @@
+<!--{$pagename}-->
+<php>
+    if($data434[1]){
+    $color = $data434[1];
+    }
+</php>
+
+<style>
+    <if condition="$data434[0]">.hjzf2_z_aboutus_23 {
+        background: url({:getindeximgurl($data434[0])}) no-repeat center/cover;
+    color: #fff;
+    }
+    </if>
+    .hjzf2_z_aboutus_23 a.more {
+        color: #{$color};
+    }
+    .hjzf2_z_aboutus_23_wrapper li:hover a,.hjzf2_z_aboutus_23_wrapper li.on a {
+        color: #{$color};
+    }
+    .hjzf2_z_aboutus_23 a.more:hover,.hjzf2_z_aboutus_23_wrapper li.on {
+        background-color: #{$color};
+    }
+</style>
+<script>
+    var qiehuan_aboutus_23 = '<?php echo $data434[7];?>';
+</script>
+<section class="hjzf2_z_aboutus_23 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <if condition="$data434[7]">
+                    <style>
+                        .hjzf2_z_aboutus_23_title{display: none;}
+                        .hjzf2_z_aboutus_23_title.on{display: block;}
+                        .hjzf2_z_aboutus_23_wrapper li.on span img.normal{opacity: 0;visibility: hidden;}
+                        .hjzf2_z_aboutus_23_wrapper li.on span img.hover{opacity: 1;visibility: visible;}
+                        .hjzf2_z_aboutus_23_wrapper li.on a,.hjzf2_z_aboutus_23_wrapper li.on{color: #fff;}
+
+                    </style>
+                    <php>
+                        $arra = get_list_val($data434[7]);
+                    </php>
+                    <volist name="arra" id="a">
+                    <div class="hjzf2_z_aboutus_23_title">
+                        <div class="index_title pb40 text-center">
+                            {$a[title]}
+                                <div class="index_sub_title mt-10">
+                                {$a[sub]}
+                            </div>
+                        </div>
+                        <div class="index_text pb40 hjzf2_z_aboutus_23_text">
+                            {$a[con]}
+                        </div>
+                    </div>
+                    </volist>
+                    <else/>
+                    <div class="index_title pb40 text-center wow fadeInDown">
+                        {$data434[2]}
+                        <if condition="$data434[6]">
+                            <div class="index_sub_title mt-10">
+                                {$data434[6]}
+                            </div>
+                        </if>
+                    </div>
+                    <div class="index_text pb40 hjzf2_z_aboutus_23_text wow fadeInDown">
+                        {:HtmlEncode($data434[3])}
+                    </div>
+                </if>
+                
+                <a href="{$data434[4]}" class="more wow fadeIn">{:__('Read More')} <i class="fa fa-angle-right"></i></a>
+                <ul class="hjzf2_z_aboutus_23_wrapper">
+                    <php>
+                        $arr = get_list_val($data434[5]);
+                    </php>
+                    <volist name="arr" id="a" key="k">
+                        <li class="wow fadeInRight" data-wow-delay=".{$k}s">
+                            <a href="{$a[link]}">
+                                <div class="aboutus_13_left">
+                                    <span>
+                                        <img src="{$a[ico]}" alt="{$a[title]}" class="normal">
+                                        <img src="{$a[icoh]}" alt="{$a[title]}" class="hover">
+                                    </span>
+                                    <div class="index_text">{$a[title]}</div>
+                                </div>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<style>
+	<if condition="$data168[0]">
+    .hjzf2__service-3 {
+        background-image: url({:getindeximgurl($data168[0])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+    .hjzf2__service-3__more a,.hjzf2__service-3__next:hover, .hjzf2__service-3__prev:hover {
+        background: #{$color};
+    }
+	
+</style>
+<section class="hjzf2__service-3 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf2__service-3_TitleWrap pb40">
+                <h2 class="hjzf2__service-3_mainTitle index_title pb20">{$data168[2]}</h2>
+                <div class="hjzf2__service-3_desTitle index_sub_title">{$data168[3]}</div>
+            </div>
+        </div>
+    </div>
+    <div class="hjzf2__service-3__content">
+        <div class="swiper-container hjzf2__service-3__swiper">
+            <div class="swiper-wrapper">
+                <volist name="indexcases" id="indexcase1" offset="0" length="8" key="h">
+                    <div class="swiper-slide hjzf2__service-3_item">
+                        <div class="hjzf2__service-3_pic">
+                            <a href="{:U('/case_detail',array('nid'=>$indexcase1['nid']))}" onFocus="blur()"><img
+                                    border="0" data-src="{:getimgurl($indexcase1['new_pro'])}" class="swiper-lazy"/></a>
+                        </div>
+                        <a href="{:U('/case_detail',array('nid'=>$indexcase1['nid']))}" onFocus="blur()">
+                            <div class="hjzf2__service-3__info">
+                                <div class="hjzf2__service-3__name index_sub_title">{:subtxt($indexcase1['title'],60)}</div>
+                                <div class="hjzf2__service-3__desc index_text">{:subtxt($indexcase1['news_description'],100)}</div>
+                            </div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-button-next hjzf2__service-3__next"><i class="fa fa-arrow-right"></i></div>
+            <div class="swiper-button-prev hjzf2__service-3__prev"><i class="fa fa-arrow-left"></i></div>
+        </div>
+        <div class="hjzf2__service-3__more">
+            <a href="{:U('/cases')}">{:__('Read More')}</a>
+        </div>
+    </div>
+</section>

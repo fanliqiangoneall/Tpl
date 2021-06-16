@@ -1,0 +1,174 @@
+<style>
+body{font-size:12px;}
+.inquiry{width:96%;padding:0 0;margin:0 auto;}
+.inquiry h2{border-bottom:1px solid #ccc;padding-bottom:5px; font-family:'Arial';color:#333333;}
+.inquiryinfo{padding-bottom:10px;width:100%;}
+.inquiryinfo input{height:20px;line-height:20px;padding:2px;border:1px solid #999;width:130px; font-family:'Arial';}
+.inquiryinfo textarea{padding:2px;border:1px solid #999; width:100%; font-family:'Arial';}
+
+.inquiryleft{float:left;width:100%;}
+.inquiryright{float:left;width:100%;}
+.productbutton{
+background: #353535;
+color: #ffffff;
+border: 0 !important;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+cursor: pointer;
+height: 30px !important;
+padding: 0 10px 0 10px !important;
+width:80px !important;
+font-family:'Arial';
+}
+.productbutton:hover {
+background: #353535;
+}
+.yz_alert{color:#ff0000;margin-left:10px;}
+.clear{clear:both;}
+</style>
+<script>
+$(function(){
+$("#message").focus(function(){
+$("#message_alert").html("");
+});
+$("#linkname").focus(function(){
+$("#linkname_alert").html("");
+});
+$("#phone").focus(function(){
+$("#phone_alert").html("");
+});
+$("#email").focus(function(){
+$("#email_alert").html("");
+});
+$("#code_char").focus(function(){
+$("#code_char_alert").html("");
+});
+
+$("#getcode_char").click(function(){
+		$(this).attr("src",'__APP__/code_char.php?' + Math.random());
+	});
+
+$("#getcode_char1").click(function(){
+		$("#getcode_char").attr("src",'__APP__/code_char.php?' + Math.random());
+	});
+
+})
+function yz_submit(){
+	var count=0;
+	var message=Trims($("#message").val());
+	var linkname=Trims($("#linkname").val());
+	var phone=Trims($("#phone").val());
+	var email=Trims($("#email").val());
+	if(message.length<=0){
+		$("#message_alert").html("*Consulting content cannot be empty");
+		count++;
+	}
+	else{
+		$("#message_alert").html("");
+	}
+
+	if(linkname.length<=0){
+		$("#linkname_alert").html("*The name cannot be empty");
+		count++;
+	}
+	else{
+		$("#linkname_alert").html("");
+	}
+
+	if(phone.length>0 && str.test(jQuery('#phone').val()))
+	{
+		jQuery("#phone_alert").html("*Telephone information is wrong!");
+		count++;
+
+	}else{
+		jQuery("#phone_alert").html("");
+
+	}
+
+	if(email.length<=0){
+		jQuery("#email_alert").html("*The email can not be empty");
+		count++;
+	}
+	else{
+		if(!is_email(email)){
+			jQuery("#email_alert").html("*Email format error");
+			count++;
+		}
+		else {
+			jQuery("#email_alert").html("");
+		}
+	}
+
+	var code_char = $("#code_char").val();
+	$.ajax({
+		type: "POST",
+		url: "__APP__/chk_code.php?act=char",
+		async:false,
+		data: {code:code_char},
+		success: function(data){
+			if(data==1){
+				$("#code_char_alert").html("");
+			}else{
+				count++;
+				$("#code_char_alert").html("*Verification code error");
+			}
+		}
+	});
+
+
+	if(count>0){
+		return false;
+	}
+	else{
+		jQuery("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+
+		return true;
+	}
+
+}
+
+</script>
+<script src="__TMPL__WAP/js/is_email.js"></script>
+<div class="inquiry" id="zixun">
+<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+<div class="inquiryinfo">
+    <div class="inquiryleft">Message *</div>
+	<div class="inquiryright"><textarea rows="5" cols="30" name="message" id="message">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+	<div class="clear"></div>
+	</div>
+</div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">Name *</div>
+	<div class="inquiryright"><input  name="linkname" id="linkname"><span class="yz_alert" id="linkname_alert"></span></div>
+	<div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">Phone</div>
+	<div class="inquiryright"><input  name="phone" id="phone"><span class="yz_alert" id="phone_alert"></span></div>
+	<div class="clear"></div>
+</div>
+
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">E-mail *</div>
+	<div class="inquiryright"><input  name="email" id="email"><span class="yz_alert" id="email_alert"></span></div>
+	<div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">Code *</div>
+	<div class="inquiryright"><input type="text" class="input" id="code_char" name="code" maxlength="6" style="width:60px;"/>&nbsp;<img src="__APP__/code_char.php" id="getcode_char" title="Click Refresh" align="absmiddle"><span class="yz_alert" id="code_char_alert"></span></div>
+	<div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+<input type="hidden" name="prodid" value="{$product['pid']}"/>
+<div id="inbut"><input class="productbutton" type="submit" value="Submit"  name="submit" data-ajax="false"/></div>
+</div>
+</form>
+
+<div class="clear"></div>
+</div>

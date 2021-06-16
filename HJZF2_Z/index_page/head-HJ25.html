@@ -1,0 +1,139 @@
+<!--{$pagename}-->
+<php>
+    if($data530[0]){
+    $color = $data530[0];
+    }
+    if($data530[1]){
+    $mobile_bg = $data530[1];
+    }else{
+    $mobile_bg = '333';
+    }
+    if($data530[2]){
+    $mobile_navbtn = $data530[2];
+    }else{
+    $mobile_navbtn = 'fff';
+    }
+    if($data530[3]){
+    $img_url = $data530[3];
+    }else{
+    $img_url = '';
+    }
+    $searchurl = 'mobile_search1';
+    $navs = get_list_val($data530[7]);
+</php>
+<style>
+    .top_bg {
+        background-color: #{$color};
+    }
+    .menu .nav_drop{
+        border-bottom-color: #{$color};
+    }
+    .menu > li:hover > a h2,.nav_drop li:hover span, .nav_drop li:hover h3{
+        color: #{$color};
+    }
+</style>
+<!--mobile nav content-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/index_page/_mobile.css">
+<script src="__TMPL__HJZF2_Z/index_page/_mobile.js"></script>
+<Include file="./Tpl/HJZF2_Z/index_page/_mobile.html" />
+
+<!-- pc nav -->
+<div class="nav_empty nav-hidden-mobile"></div>
+<header class="nav-hidden-mobile head_hj25_fixed">
+    <div class="top_bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 d-flex justify-between logobox">
+                <div class="logo">
+                    <a href="{:U('/')}">{$logo}</a>
+                </div>
+                <ul class="nav menu d-flex ">
+                    <volist name="web_navigation" id="vo" key="key">
+                        <li id="menu{$vo['id']}" class="nav_li" data-url="{$vo['url']}">
+                            <a href="{$vo['url']}" <if condition="$vo[child]">class="nav-more"</if>><span>{$vo['title']} <i class="fa fa-angle-down hidden"></i></span></a>
+                            <if condition="$vo[child] neq ''">
+                            	<if condition="$vo['id'] eq '21651' and $data535[4]">
+                                <php>
+                                $arr_a=get_list_val($data535[4]);
+                                </php>
+                                <ul class="nav_drop nav_products">
+                                    <volist empty="" name="arr_a" id="menu_a">
+                                        <li>
+                                            <a href="{$menu_a[link]}">
+                                                <span>{$menu_a[title]}</span>
+                                                <img src="{$menu_a[img]}" alt="">
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <elseif condition="$vo['id'] eq '21653' and $data535[5]" />
+                                <php>
+                                $arr_b=get_list_val($data535[5]);
+                                </php>
+                                <ul class="nav_drop nav_products">
+                                    <volist empty="" name="arr_b" id="menu_b">
+                                        <li>
+                                            <a href="{$menu_b[link]}">
+                                                <span>{$menu_b[title]}</span>
+                                                <img src="{$menu_b[img]}" alt="">
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <else/>
+                                <ul class="nav_drop">
+                                    <volist name="vo['child']" id="v" offset="0" key="key">
+                                        <li><a href="{$v['url']}"><span>{$v['title']}</span></a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                </if>
+                                <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+                                <if condition="$allcaseclass">
+                                <ul class="nav_drop nav_case">
+                                    <volist empty="" name="allcaseclass" id="allclass_head">
+                                        <li>
+                                            <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">
+                                                <span>{$allclass_head['class_name']}</span>
+                                                <img src="{:getmainimgurl($allclass_head['fid'])}" alt="">
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                </if>
+                                <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                                <if condition="$allclass">
+                                    <ul class="nav_drop nav_products">
+                                    <volist empty="" name="allclass" id="allclass_head">
+                                        <li>
+                                            <a
+                                                href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">
+                                                <span>{$allclass_head['class_name']}</span>
+                                                <if condition="$allclass_head['fid']">
+                                                <img src="{:getmainimgurl($allclass_head['fid'])}" alt="">
+                                                </if>
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                </if>
+                                <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+                                <if condition="$allnewclass">
+                                    <ul class="nav_drop nav_news">
+                                    <volist empty="" name="allnewclass" id="allclass_head">
+                                        <li>
+                                            <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}">
+                                                <span>{$allclass_head['class_name']}</span></a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </if>
+                        </if>
+                    </li>
+                    </volist>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</header>

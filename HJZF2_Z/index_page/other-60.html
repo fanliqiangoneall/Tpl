@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_60 {
+        background: url({:getindeximgurl($data353[0])
+    }
+
+    ) no-repeat center top/cover;
+    }
+    .hjzf2_other_60_top_pagination span.swiper-pagination-bullet-active{
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf2_other_60 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <!-- Swiper -->
+                <div class="swiper-container hjzf2_other_60_top">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arra = get_list_val($data353[1]);
+                        </php>
+                        <volist name="arra" id="a">
+                            <div class="swiper-slide">
+                                <video controls poster="{$a[ico]}">
+                                    <source src="{$a[add]}" type="video/mp4">
+                                    </source>
+                                </video>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="hjzf2_other_60_top_pagination text-center"></div>
+                </div>
+                <div class="swiper-container hjzf2_other_60_thumbs">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arr = get_list_val($data353[2]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <div class="swiper-slide">
+                                <img src="{$a[ico]}" alt="{$a[title]}">
+                                <p class="index_text text-center">{$a[title]}</p>
+                            </div>
+                        </volist>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next swiper-button-white other_60_next"></div>
+                    <div class="swiper-button-prev swiper-button-white other_60_prev"></div>
+                </div>
+
+                <!-- Swiper JS -->
+
+
+            </div>
+        </div>
+    </div>
+</section>

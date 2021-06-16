@@ -1,0 +1,27 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_54 {
+        background: url({:getindeximgurl($data346[0])
+    }
+
+    ) no-repeat center top/cover;
+    }
+</style>
+<section class="hjzf2_other_54 fx-center index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <if condition="$data346[1]">
+                    <if condition="$data346[2]">
+                        <video controls>
+                            <else />
+                            <video controls autoplay muted>
+                    </if>
+                    <source src="{$data346[1]}" type="video/mp4">
+                    </source>
+                    </video>
+                </if>
+            </div>
+        </div>
+    </div>
+</section>

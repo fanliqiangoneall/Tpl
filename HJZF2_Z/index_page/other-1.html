@@ -1,0 +1,42 @@
+<!--{$pagename}-->
+<php>
+    if($data14[0]){
+        $other__bj='url('.getindeximgurl($data14[0]).') no-repeat center/cover';
+    }
+</php>
+<if condition="$data14[0]">
+    <style>
+        .HJZF_Z_other--1{
+        background: {$other__bj};
+        }
+    </style>
+</if>
+<if condition="$data14[1]">
+    <style>
+        .HJZF_Z_other--1{
+            background: {$data14[1]};
+        }
+    </style>
+</if>
+<style>
+    .HJZF_Z_other__more{
+        background: #{$color};
+    }
+    .HJZF_Z_other__one{
+        color: #{$color};
+    }
+    .HJZF_Z_other__two{color: #fff}
+</style>
+<section class="HJZF_Z_other--1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="HJZF_Z_other--wrap index_pd">
+                    <if condition="$data14[2]"><div class="HJZF_Z_other__one index_sub_title pb20">{$data14[2]}</div></if>
+                    <if condition="$data14[3]"><div class="HJZF_Z_other__two index_title pb20">{$data14[3]}</div></if>                    
+                    <div class="HJZF_Z_other__more"><a href="{$data14[4]}" class="index_text hx_btn">{$data14[5]}</a></div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</section>

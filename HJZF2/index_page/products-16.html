@@ -1,0 +1,101 @@
+<!--{$pagename}-->
+
+<style>
+    .new_hjzf_products-16 .index_product_title_right_ul li:hover,.new_hjzf_products-16 .index_product_title_right_ul li.proClass_on,.new_hjzf_products-16 .hj02_pro_more:hover,.product--16__nav li.nav_on{
+        background: #{$data170[2]};
+    }
+    .new_hjzf_products-16 .index_product_title_right_ul li:hover a,.new_hjzf_products-16 .index_product_title_right_ul li.proClass_on a,.new_hjzf_products-16 .hj02_pro_more:hover a{color: #fff;}
+</style>
+
+<!--index-product start-->
+<div class="page_probg">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left" >
+                <div class="index_product_title_left_text"><h3>{$data170[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div class="index_product_title_right_ul">
+                    <if condition="$data170[3] eq ''">
+                         <div class="hj02_pro_more"><a href="{:U('/Product')}">{:__('More')}</a></div>
+                    </if>
+                    <ul class="hj02_proclasslist hj02_proclasslist2">
+                        <php>
+                            $arr_str=$data170[1];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                            $list[$k]=get_index_products_categoryname($a);
+                            }
+                        </php>
+                            <volist empty="" name="list" id="li" key="k">
+                                <if condition="$li">
+                                    <li><a data-ajax='false' href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a></li>
+                                </if>
+                            </volist>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <php>
+            $arr_str=$data170[1];
+            $arr=explode(',',$arr_str);
+            foreach($arr as $k=>$a){
+            $list[$k]['data']=get_index_products_category($a,$all_pro);
+            }
+        </php>
+        <div class="index_prolist_wai2" id="index_prolist_wai">
+            <div class="index_prolist_waibox index_prolist_waibox2">
+                <volist empty="" name="list" id="li" key="k">
+                    <div class="index_prolist_wai_cont">
+
+                        <div class="hj02-index-pro2-left">
+                            <div class="hj02-index-pro2-leftWrap">
+                                <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="3">
+                                    <div class="hj02-index-pro2-item ">
+                                        <div class="hj02-index-pro2-item-box">
+                                            <div class="hj02-index-pro2-item-img"><a <if condition="$data113[4] eq ''">href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}" </if> ><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                            <div class="hj02-index-pro2-item-second">
+                                                <a <if condition="$data113[4] eq ''">href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"</if>>
+                                                <div class="hj02-index-pro2-item-second-name"><h6 title="{:subtxt($indexpro['pro_name'],80)}" class="ellipsis_one">{:subtxt($indexpro['pro_name'],40)}</h6></div>
+                                                <div class="hj02-index-pro2-item-second-desc">{:subtxt($indexpro['pro_description'],100)}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </volist>
+                            </div>
+                            <ul class="product--16__nav">
+                                <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="3">
+                                    <li></li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <div class="hj02-index-pro2-right">
+                            <volist empty="" name="li['data']" id="indexpro" key="k" offset="4" length="4">
+                                <div class="hj02-index-pro2-item product--16__rightItem">
+                                    <div class="hj02-index-pro2-item-box">
+                                        <div class="hj02-index-pro2-item-img"><a <if condition="$data113[4] eq ''">href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"</if> ><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                        <div class="hj02-index-pro2-item-second">
+                                            <a <if condition="$data113[4] eq ''">href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"</if>>
+                                                <div class="hj02-index-pro2-item-second-name"><h6 title="{:subtxt($indexpro['pro_name'],80)}" class="ellipsis_one">{:subtxt($indexpro['pro_name'],40)}</h6></div>
+                                                <div class="hj02-index-pro2-item-second-desc ellipsis_one">{:subtxt($indexpro['pro_description'],40)}</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </volist>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div style="clear: both;"></div>
+<!--index-product end-->

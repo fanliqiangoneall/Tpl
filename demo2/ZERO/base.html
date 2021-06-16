@@ -1,0 +1,248 @@
+<Include file="./www/Tpl/ZERO/header.html" />
+<if condition="$friend_linktop neq ''">
+<div id="animate1">
+<div class="top_headbg">
+  <div class="top_head">
+     <ul>
+       <volist name="friend_linktop" id="friend_link1">
+          <if condition="$key neq 0"><li>&nbsp;|&nbsp;</li></if>
+          <li><a target="_new" href="{$friend_link1['link_url']}" title="{$friend_link1['link_title']}">{$friend_link1['link_title']}</a></li>
+       </volist>     
+     </ul>
+     <div class="clear"></div>
+  </div>
+</div>
+</div>
+</if>
+
+<script type="text/javascript">
+function CheckForm(theForm){
+	if (theForm.keywords.value=="" || theForm.keywords.value=="输入产品关键字" ){
+		alert('请输入产品关键词...');
+		theForm.keywords.focus();
+		return false;
+	}
+	return true; 
+}
+jQuery(document).ready(function(){
+	jQuery("#keywords").click(function(){
+		if(jQuery("#keywords").val() == '输入产品关键字') {
+		jQuery("#keywords").val('');
+		}
+	});
+	jQuery("#keywords").blur(function(){
+		if(jQuery("#keywords").val() == '') {
+			jQuery("#keywords").val('输入产品关键字');
+		 }
+	});
+});   
+</script>
+<div id="animate2">
+    <div class="page_Top">
+       <div class="page_Logo">
+         <a href="{:U('/')}">{$logo}</a>
+       </div>
+       <div class="page_HeadRight">
+             <div class="fav"><a href="{:U('/')}">中文</a>&nbsp;&nbsp;<a href="http://en.ruijiepac.cn/" target="_blank" onfocus="blur()">English</a></div>
+              <div class="Page_Search">
+                <form name="find" action="{:U('/search')}" method="post" accept-charset="UTF-8" onsubmit="return CheckForm(this)">
+                 <div class="select" style="width:121px; padding-right:7px;float:left; height:22px;">
+                 <select id="select" name="cate" style="width:121px; height:22px; border:#e2e3ea solid 1px;">
+                     <option value="">产品类型</option>
+                     <volist empty="" name="allclass" id="allclass_search">
+                        <option value={$allclass_search['pcid']}>{$allclass_search['class_name']}</option>
+                     </volist>
+                 </select>
+                 </div>
+                <div class="search_left"><input type="text" name="keywords" id="keywords" value="输入产品关键字"  style="border:#d8d0c9 solid 1px"/></div>
+                <div class='search_right'><img src="__TMPL__demo2/img/search_line.jpg" style="float:left; "/><input type='image' src='__TMPL__demo2/img/search_btn.jpg' name='submit' class='submit'/></div>
+                <div class="search_clear"></div>
+                </form>
+              </div>
+       </div>
+       <div class="clear"></div>
+    </div>
+    <div class="Page_menu">
+        <ul>
+          <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+            <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+          </volist>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<block name="content"></block>
+<div id="animate5">
+<div class="bottom_bg">
+    <div class="foot_menu">
+         <ul>
+            <volist name="web_navigation" id="vo_bottom" offset="0" length='7' key="key1">
+              <li><if condition="$key1 eq 1">|&nbsp;&nbsp;</if><a href="{$vo_bottom['url']}" <if condition="strstr($vo_bottom['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,2)"</if> onFocus="blur()">{$vo_bottom['title']}</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+            </volist> 
+              <li><a href="http://en.ruijiepac.cn/" target="_blank" onfocus="blur()">English</a></li>   
+              <div class="clear"></div>
+         </ul>
+         <div class="chose_lan">
+            <div style=" position: relative;">
+                <div class="chose"><a onMouseOver="mopen('m1')" onMouseOut="mclosetime()"><img src="__TMPL__demo2/img/language.jpg" /></a></div>
+                <div id="m1" onMouseOver="mcancelclosetime()" onMouseOut="mclosetime()" style="visibility:hidden;position: absolute; bottom:30px; left:0px; width:168px; background:white;" >
+                    <div class="kuai1">
+                    <div class="lian"><a href="{:U('/')}"><img src="__TMPL__demo2/img/lang/ico_cn.gif" width="20" height="13" alt="" /> 中文</a></div>
+                    <div class="lian"><a href="http://en.ruijiepac.cn/" target="_blank" onfocus="blur()"><img src="__TMPL__demo2/img/lang/ico_en.gif" width="20" height="13" alt="" /> English</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|fr')"><img src="__TMPL__demo2/img/lang/ico_fr.gif" width="20" height="13" alt="" /> Français</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|it')"><img src="__TMPL__demo2/img/lang/ico_it.gif" width="20" height="13" alt="" /> Italiano</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|pt')"><img src="__TMPL__demo2/img/lang/ico_pt.gif" width="20" height="13" alt="" /> Português</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|ja')"><img src="__TMPL__demo2/img/lang/ico_ja.gif" width="20" height="13" alt="" /> 日本の</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|ko')"><img src="__TMPL__demo2/img/lang/ico_ko.gif" width="20" height="13" alt="" /> 한국어</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|ar')"><img src="__TMPL__demo2/img/lang/ico_ar.gif" width="20" height="13"  alt=""/> العربية</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|de')"><img src="__TMPL__demo2/img/lang/ico_de.gif" width="20" height="13" alt="" /> Deutsch</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|cs')"><img src="__TMPL__demo2/img/lang/ico_cs.gif" width="20" height="13"  alt=""/> česky</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|da')"><img src="__TMPL__demo2/img/lang/ico_da.gif" width="20" height="13"  alt=""/> Dansk</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|nl')"><img src="__TMPL__demo2/img/lang/ico_nl.gif" width="20" height="13"  alt=""/> Nederlands</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|fi')"><img src="__TMPL__demo2/img/lang/ico_fi.gif" width="20" height="13"  alt=""/> suomi</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|el')"><img src="__TMPL__demo2/img/lang/ico_el.gif" width="20" height="13" alt="" /> Ελληνικά</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|hi')"><img src="__TMPL__demo2/img/lang/ico_hi.gif" width="20" height="13"  alt=""/> हिन्दी</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|no')"><img src="__TMPL__demo2/img/lang/ico_no.gif" width="20" height="13" alt="" /> norsk</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|tr')"><img src="__TMPL__demo2/img/lang/ico_tr.gif" width="20" height="13"  alt=""/> Türkiye</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|th')"><img src="__TMPL__demo2/img/lang/ico_th.gif" width="20" height="13" alt="" /> ประเทศไทย</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|bg')"><img src="__TMPL__demo2/img/lang/ico_bg.gif" width="20" height="13"  alt=""/> български</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|ru')"><img src="__TMPL__demo2/img/lang/ico_ru.gif" width="20" height="13"  alt=""/> русский</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|sv')"><img src="__TMPL__demo2/img/lang/ico_sv.gif" width="20" height="13" alt="" /> Svenska</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|pl')"><img src="__TMPL__demo2/img/lang/ico_pl.gif" width="20" height="13"  alt=""/> Polski</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|ro')"><img src="__TMPL__demo2/img/lang/ico_ro.gif" width="20" height="13"  alt=""/> Română</a></div>
+                    <div class="lian"><a href="javascript:translator('zh-hans|vi')"><img src="__TMPL__demo2/img/lang/ico_vi.gif" width="20" height="13" alt="" /> Việt Nam</a></div>
+                    </div>
+                </div>
+                 <script type="text/javascript">
+                var timeout = 100;
+                var closetimer= 0;
+                var ddmenuitem = 0;
+                // open hidden layer
+                function mopen(id)
+                {   
+                    // cancel close timer
+                    mcancelclosetime();
+                    // close old layer
+                    if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+                    // get new layer and show it
+                    ddmenuitem = document.getElementById(id);
+                    ddmenuitem.style.visibility = 'visible';
+                }
+                // close showed layer
+                function mclose()
+                {
+                    if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+                }
+                // go close timer
+                function mclosetime()
+                {
+                    closetimer = window.setTimeout(mclose, timeout);
+                }
+                // cancel close timer
+                function mcancelclosetime()
+                {
+                    if(closetimer)
+                    {
+                        window.clearTimeout(closetimer);
+                        closetimer = null;
+                    }
+                }
+                // close layer when click-out
+                document.onclick = mclose; 
+            </script>
+        </div>
+         <div class="clear"></div>
+     </div>
+      <div class="clear"></div>
+    </div>
+    <div class="foot_div"></div>
+    <div class="bot_body">
+    	<div style="position:absolute; top:5px; right:8px;"><img src="__TMPL__demo2/img/qrcode.png" border="0" /></div>
+        <div class="bot_contact">
+            电话：{:chaifen($about['phone'],0)}&nbsp;&nbsp; 传真：{:chaifen($about['fax'],0)}&nbsp;&nbsp; 邮箱：<a href="mailto:{:chaifen($about['email'],0)}"  onClick="turn_sta(3,2)" onFocus="blur()">{:chaifen($about['email'],0)}</a>&nbsp;&nbsp; 地址：{$about['address']}
+        </div>
+        <div class="fright">
+            <div class="copyright">
+            <php>
+                $nowtime=date("Y",time());
+                $currtime=2018;
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} 版权所有&nbsp;&nbsp;<a href="//www.miibeian.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>&nbsp;&nbsp;
+        <a href="https://www.one-all.com" title="中环互联网" target="_blank">常州网络公司</a>中环互联网设计制作&nbsp;&nbsp;<a id="test2" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;<a href="/feed.xml"><img src="__TMPL__demo2/img/xml.gif" alt=""/></a>&nbsp;&nbsp;<a href="/rss.xml"><img src="__TMPL__demo2/img/rss.gif" alt=""/></a>
+        {:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}
+            </div>
+            <if condition="$friend_link neq ''">
+            <div class="friend">
+             <span style="float:left; line-height:30px;">友情链接：</span>
+              <volist name="friend_link" id="friend_link">
+              <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+              <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+              </if>
+              </volist>     
+              <div style="clear:both"></div>
+            </div>
+            </if>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="__TMPL__demo2/layer/layer.js"></script>
+<script type="text/javascript">
+$('#test2').on('click', function(){
+    layer.open({
+      type: 2,
+      title: ['免责声明', 'font-size:18px;'],
+      area: ['70%', '85%'],
+      shadeClose: true, //点击遮罩关闭
+      content: 'https://www.one-all.com/mianze.html'
+    });
+  });
+
+
+jQuery('#animate1').removeClass().addClass('fadeInDown');
+jQuery('#animate2').removeClass().addClass('fadeInLeft');
+jQuery('#animate3').removeClass().addClass('fadeInRight');
+jQuery('#animate4').removeClass().addClass('fadeIn');
+jQuery('#animate5_1').removeClass().addClass('fadeInRight');
+jQuery('#animate5').removeClass().addClass('fadeInUp');
+jQuery('#animate6').removeClass().addClass('fadeIn');
+
+	
+jQuery(document).ready(function(){
+	jQuery(".sidebar ul li").hover(function(){
+		jQuery(this).find(".sidebox").stop().animate({"width":"230px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#ef8300"})
+		jQuery(this).find(".sidebox1").stop().animate({"width":"220px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#ef8300"})
+		jQuery(this).find(".sidebox2").stop().animate({"width":"260px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#ef8300"})
+	},function(){
+		jQuery(this).find(".sidebox").stop().animate({"width":"60px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#7e7e7e"})
+		jQuery(this).find(".sidebox1").stop().animate({"width":"60px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#7e7e7e"})	
+		jQuery(this).find(".sidebox2").stop().animate({"width":"60px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#7e7e7e"})
+	});	
+});
+//回到顶部
+function goTop(){
+	jQuery('html,body').animate({'scrollTop':0},600);
+}
+jQuery(function(){
+	jQuery('.mobile-show').hide();   
+	jQuery(".mobile-container").bind('mouseenter',function(){
+		jQuery('.mobile-show').show();
+	})
+	jQuery(".mobile-container").bind('mouseleave',function(){        
+		jQuery('.mobile-show').hide();
+	});
+});
+</script>
+
+<div class="sidebar">
+  <ul>
+    <li style="height:61px;"><div class="sidebox"><img src="__TMPL__demo2/img/r_tel.png" border="0"><span style="line-height:60px; color:#fff"><b>{:chaifen($about['mobile'],0)}</b></span></div></li>
+    <li style="height:60px"><div class="sidebox2"><img src="__TMPL__demo2/img/r_email.png" border="0"><span style="line-height:60px; color:#fff"><b><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);goog_report_conversion_email();" style="color:#fff">{:chaifen($about['email'],0)}</a></b></span></div></li>
+    <li style="height:60px;"><div class="sidebox3"><a href="{:U('/inquiry')}" onClick="turn_sta(1,4)" onFocus="blur()"><img src="__TMPL__demo2/img/r_xp.png" border="0"></a></div></li>    
+    <li style="height:60px; border-bottom:none;"><a href="javascript:goTop();" class="sidetop"><img src="__TMPL__demo2/img/top.png" width="60" height="60" alt="top" border="0"/></a></li>
+  </ul>
+</div>
+
+<Include file="./www/Tpl/ZERO/footer.html" />

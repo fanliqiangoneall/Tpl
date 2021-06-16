@@ -1,0 +1,82 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+<style>
+	.pageTitleActive{
+		color: #{$color};
+	}
+</style>
+	<div class="aboutUsContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                您的位置：&nbsp;
+                <a href="{:U('/')}">首页</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    {$intro_class['class_name']}
+                </span>
+            </div>
+        </div>
+		<if condition="$banner neq ''">
+			<volist name="banner" id="banner" offset="0" length="1">
+				<img src="{:getimgurl($banner['ad_pic'])}" alt="" width="100%"/>
+			</volist>
+			<else/>
+			<img src="{:getindeximgurl($data47[7])}" alt="" width="100%"/>
+		</if>
+		<div class="container">
+			<!--<div class="cateContainer">-->
+				<!--<p class="cateTitle">-->
+					<!--<if condition="$data47[4] eq ''">-->
+						<!--联系我们-->
+						<!--<else/>-->
+						<!--{$data47[4]}-->
+					<!--</if>-->
+				<!--</p>-->
+			<!--</div>-->
+			<if condition="$data47[9] neq ''and $data47[53] eq ''">
+				<iframe class="ueditor_baidumap" src="http://yun.one-all.com/Public/ueditor/dialogs/gmap/show.html#center={$data47[9]}&zoom=11&width=1188&height=498&markerStyles=l,A" frameborder="0" width="100%" height="500"></iframe>
+			</if>
+			<div class="page_Main">
+				<div class="HJ04_contact_editor">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+
+					<br/>
+					<if condition="$data47[9] neq ''and $data47[53] neq ''">
+					<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=upGY0a5lBdqWaMyAnslnGmpO"></script>
+
+					<style type="text/css">
+						#allmap{width:100%;height:500px;}
+						p{margin-left:5px; font-size:14px;}
+					</style>
+					<div id="allmap"></div>
+					<script type="text/javascript">
+						// 百度地图API功能
+						var map = new BMap.Map("allmap");
+						var point = new BMap.Point({$data47[9]});
+						var marker = new BMap.Marker(point);  // 创建标注
+						map.enableScrollWheelZoom(true);
+						map.addOverlay(marker);              // 将标注添加到地图中
+						map.centerAndZoom(point, 20);
+						var opts = {
+							width : 200,     // 信息窗口宽度
+							height: 100,     // 信息窗口高度
+							title : "{$about['company_name']}" , // 信息窗口标题
+							enableMessage:true,//设置允许信息窗发送短息
+
+						}
+						var infoWindow = new BMap.InfoWindow("地址：{$about['address']}", opts);  // 创建信息窗口对象
+						marker.addEventListener("click", function(){
+							map.openInfoWindow(infoWindow,point); //开启信息窗口
+						});
+					</script>
+				</if>
+				</div>
+				<div style="clear:both;height: 40px;"></div>
+				<div id="inquiry" class="HJ04_product_detail_title">
+					<span>立即咨询</span>
+				</div>
+				<div class="page_Main"><Include file="./Tpl/HJ04_CN/submitinquiry.html" /></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+</block>

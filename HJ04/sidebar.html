@@ -1,0 +1,64 @@
+<style>
+    #skypeCheckNotice{position:fixed !important;}
+    #skypedetectionswf{ display:none !important;}
+    .side ul li{
+        background: #{$color};
+    }
+    .sidetop{
+        background: #{$color};
+    }
+    .side ul li .sidebox,.side ul li .sidebox2,.side ul li .sidebox3,.side ul li:hover .sidebox,.side ul li:hover .sidebox2,.side ul li:hover .sidebox3{
+        background: #{$color};
+    }
+</style>
+<div class="side">
+    <ul>
+        <li style=" <if condition="chaifen($about['msn'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox">
+                <img src="__TMPL__HJ04/img/r_qq.png" border="0">
+                <span style="line-height:60px; color:#fff;margin-left: 5px">
+                    <b><a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,4)" target="_blank" style="color: #fff">{:chaifen($about['msn'],0)}</a></b>
+                </span>
+            </div>
+        </li>
+        <li  style=" <if condition="chaifen($about['phone'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox2">
+                <img src="__TMPL__HJ04/img/sider-2.png" border="0">
+                <span style="line-height:60px;margin-left: 5px;color:#fff;"><b>{:chaifen($about['phone'],0)}</b></span>
+            </div>
+        </li>
+        <li style=" <if condition="chaifen($about['email'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox2">
+                <img src="__TMPL__HJ04/img/sider-3.png" border="0">
+                <span style="line-height:60px;margin-left: 5px">
+                    <b><a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()" style="color:#fff" onclick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></b>
+                </span>
+            </div>
+        </li>
+        <li>
+            <a href="{:U('/contactus#zixun')}" onclick="turn_sta(1,4)"><img src="__TMPL__HJ04_CN/img/sider-4.png" border="0" alt="Top"></a>
+        </li>
+        <li style="height:60px;">
+            <a href="javascript:goTop();" class="sidetop">
+                <img src="__TMPL__HJ04/img/sider-top.png" border="0" alt="Top">
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        $(".side ul li").eq(4).css("background-image", "none");
+
+        var color_hover = "{$data47[37]}";
+        var color_hover2 = " #{$color}";
+        jQuery(".side ul li").hover(function () {
+            jQuery(this).find(".sidebox").stop().animate({"width": "220px"}, 200)
+            jQuery(this).find(".sidebox2").stop().animate({"width": "300px"}, 200)
+            jQuery(this).find(".sidebox3").stop().animate({"width": "220px"}, 200)
+        }, function () {
+            jQuery(this).find(".sidebox").stop().animate({"width": "60px"}, 200)
+            jQuery(this).find(".sidebox2").stop().animate({"width": "60px"}, 200)
+            jQuery(this).find(".sidebox3").stop().animate({"width": "60px"}, 200)
+        })
+    });
+</script>

@@ -1,0 +1,63 @@
+<!--{$pagename}-->
+<if condition="$data106[0]">
+    <style>
+        .HJZF2_Z_other_3hj04{
+            background: url({:getindeximgurl($data106[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+.HJZF2_Z_other_3hj04_line span{
+	border-color:#{$data106[18]};
+}
+.HJZF2_Z_other_3hj04_icon i,.HJZF2_Z_other_3hj04_contact .aio-ibd-block .aio-icon-header h3{
+	color: #{$data106[18]};
+}
+.HJZF2_Z_other_3hj04_icon:after{
+	border-color: #{$data106[18]};
+}
+.HJZF2_Z_other_3hj04_contact .aio-icon-left{
+	color: #{$data106[18]};
+	border-color:#{$data106[18]};
+}
+.HJZF2_Z_other_3hj04_inquiry .inquiry_box #inquiry_box6{
+	background: #{$data106[18]};
+}
+</style>
+<section class="HJZF2_Z_other_3hj04 index_pd">
+    <div class="container">
+        <div class="row">
+           <div class="HJZF2_Z_other_3hj04_body">
+                <div class="HJZF2_Z_other_3hj04_title index_title"><span>{$data106[1]}</span></div>
+                <div class="HJZF2_Z_other_3hj04_ms index_sub_title"><span>{$data106[2]}</span></div>
+                <div class="clear"></div>
+                <div class="HJZF2_Z_other_3hj04_list">
+                    <ul>
+                    <php>
+                        for($adv=3,$d=0.3;$adv<=14,$d<=1.1;$adv=$adv+4,$d=$d+0.3){
+                    </php>
+                        <li class="col-sm-12 col-lg-4 col-xl-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="{$d}s">
+                        	<div class="HJZF2_Z_other_3hj04_item">
+                                <div class="HJZF2_Z_other_3hj04_itemleft">
+                                    <img src="{:getindeximgurl($data106[$adv])}" alt="{$data106[$adv+1]}"/>
+                                </div>
+                                <div class="HJZF2_Z_other_3hj04_itemright">
+                                    <div class="HJZF2_Z_other_3hj04_itemheader">
+                                        <a href="{$data106[$adv+3]}" onFocus="blur()"><h3 class="index_sub_title">{$data106[$adv+1]}</h3></a>
+                                    </div>
+                                    <div class="HJZF2_Z_other_3hj04_itemdesc index_text">
+                                        {:HtmlEncode($data106[$adv+2])}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    <php>
+                        }
+                    </php>
+                    <div class="clear"></div>
+                    </ul>
+                </div>
+           </div>
+        </div>
+    </div>
+</section>

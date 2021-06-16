@@ -1,0 +1,48 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+
+	<div id="inner_module2__wrapper">
+		<div id="inner_module2__inbanner_box">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+			</if>
+		</div>
+		<div class="inner_module2__bread">
+			<div class="container">
+				<div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$intro_class['class_name']}</span></div>
+			</div>
+		</div>
+
+		<div class="inner_module2__inPage" id="main-content-wrapper">
+			<section  class="inner_module2__inPage-100">
+				<div class="inner_module2__inPageRight-content">
+					<div class="inner_module2__inPageRight-content-box">
+						<div class="HJZF_contact_editor">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+						<div style="background: #fff;width: 1150px;padding: 20px;">
+							<h5 id="inquiry" class="InsidePages_content-right_content_title" style="padding-left: 0;margin-bottom: 10px;">{:__('Inquiry Now')}</h5>
+							<if condition="$inner_data[2] eq '2' and C('language') eq 'en'">
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_2.html" /></div>
+								<elseif condition="C('language') eq 'rus'" />
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_ru.html" /></div>
+								<elseif condition="C('language') eq 'de'" />
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_de.html" /></div>
+								<elseif condition="$inner_data[2] eq '2' and C('language') eq 'cn'"/>
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_cn2.html" /></div>
+								<elseif condition="C('language') eq 'en'"/>
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry.html" /></div>
+								<else/>
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_cn.html" /></div>
+							</if>
+						</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>

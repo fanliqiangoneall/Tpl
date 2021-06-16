@@ -1,0 +1,142 @@
+<!--{$pagename}-->
+<php>
+    if($data477[0]){
+    $color = $data477[0];
+    }
+</php>
+<style>
+     <if condition="$is_index eq 1">
+        <if condition="$data477[3]">
+            .hjzf_Z_bottom_17{
+                background-image: url({:getindeximgurl($data477[3])});
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+        </if>
+    </if>
+    .hjzf_Z_bottom_17 {
+        background-color: #{$data477[1]};
+    }
+
+    .hjzf_Z_bottom_17_bottom a:hover,
+    .hjzf_Z_bottom_17_top_wrapper a:hover {
+        color: #{$color};
+    }
+   
+</style>
+<div class="hjzf_Z_bottom_17">
+    <if condition="$data477[2]">
+        <div class="hjzf_Z_bottom_17_top">
+            <div class="container">
+                <div class="row">
+                    <ul class="hjzf_Z_bottom_17_top_wrapper">
+                        <php>
+                            $arr = get_list_val($data477[2]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <li class="col-xs-6 col-md-3">
+                                <img src="{$a[img]}" alt="{$a[title]}">
+                                <if condition="$webid eq '1721' and $a[mico]">
+                                    <style>
+                                        .hjzf_Z_bottom_17_top_wrapper li{
+                                            display: block;
+                                        }
+                                        .hjzf_Z_bottom_17_top_wrapper li div{
+                                            margin-top: 8px;
+                                        }
+                                        .mobile_down_top{
+                                            display: none;
+                                        }
+                                    </style>
+                                    <img src="{$a[mico]}" alt="{$a[title]}" class="bottom_17_img nav-hidden-pc">
+                                </if>
+                                <span>{$a[title]}</span>
+                                
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                <div>{$a[content]}</div>
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                /* 站外链接就添加新建窗口 */
+                $('.hjzf_Z_bottom_17_top_wrapper a').each(function () {
+                    var h = $(this).attr('href');
+                    var reg = /.(com|cn)\\//;
+                    var f = reg.test(h);
+                    if(f){
+                        $(this).attr('target', '_blank');
+                    };
+                });
+            });
+        </script>
+    </if>
+    <php>
+        $nowtime=date("Y",time());
+    </php>
+
+    <div class="container hjzf_Z_bottom_17_bottom">
+        <div class="row">
+            <div class="hjzf_Z_bottom_17_bottom_wrapper col-xs-12">
+                <div class="left">
+                    CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;
+                    <php>
+                        $webid = C('webid');
+                    </php>
+                    <eq name="webid" value="1721">
+                            <!-- 成舍不要这个 -->
+                            <else/>
+                        {:__('All rights reserved')}&nbsp;
+                        <if condition="get_txtBeiAn()">
+                            <a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+                            </a>&nbsp;
+                        </if>
+                        <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                        <a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+                        <if condition="C('language') eq 'cn'">
+                            <if condition="$data50[15] eq ''"><a id="mianze" title="免责声明" target="_blank"
+                                    style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a
+                                    href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                            </if>
+                            <else />
+                            <if condition="$data50[15] eq ''">
+                                <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+                                    Zhonghuan Internet</a>
+                            </if>
+                        </if>
+                    </eq>
+                </div>
+                <if condition="$webid neq '1721'">
+                <div class="right nav-hidden-mobile">
+                    <if condition="chaifen($about['mobile'],0)">
+                        <span>
+                            <i class="fa fa-phone"></i>
+                            <div class="txt">{:chaifen($about['mobile'],0)}</div>
+                        </span>
+                    </if>
+                    <if condition="chaifen($about['email'],0)">
+                        <span class="email">
+                            <a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(3,2);">
+                                <i class="fa fa-envelope"></i>
+                                <div class="txt">{:chaifen($about['email'],0)}</div>
+                            </a>
+                        </span>
+                    </if>
+                    <span>
+                        <a class="toTop" onclick="gotoTop();"><i class="fa fa-angle-up"></i></a>
+                    </span>
+                </div>
+                </if>
+            </div>
+        </div>
+    </div>
+</div>

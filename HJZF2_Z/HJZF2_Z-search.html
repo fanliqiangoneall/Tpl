@@ -1,0 +1,155 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+		
+        </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .main_product_title_right{
+            background: #{$color};
+        }
+        .InsidePages_left_navlist li.yiji:hover >a>h3,.InsidePages_left_navlist li.yiji:hover >.class_button:before,.InsidePages_left_navlist li.yijion >a>h3,ul.InsidePages_left_navlist>li>ul > li:hover >a >h3,ul.InsidePages_left_navlist>li>ul > li.childon >a >h3,ul.InsidePages_left_navlist>li> ul > li>ul>li a h3:hover{
+            color: #{$color};
+        }
+        .main_page .current{
+            background: #{$color};border: 1px solid #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+    </style>
+<if condition="$inner_data[2]">
+    <style>
+        ul.InsidePages_left_navlist2 li h3:hover,ul.InsidePages_left_navlist2 > li.yiji > ul > li > a > h3:hover{
+            color: #{$color};
+        }
+    </style>
+</if>
+<php>
+    if($inner_data[2]){
+        $left = $inner_data[2];
+    }else{
+        $left = 1;
+    }
+</php>
+    <div class="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[1])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Search result')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <if condition="$searchpro neq ''">
+            <div class="HJZF_Z__innerContent" id="main-content-wrapper" data-myli="1">
+                <div class="container">
+                    <div class="row">
+                        <section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left">
+                            <eq name="left" value="2">
+                                <Include file="./Tpl/HJZF2_Z/left2.html" />
+                                <else/>
+                                    <Include file="./Tpl/HJZF2_Z/left.html" />
+                            </eq>
+                        </section>
+                        <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                           
+                            <eq name="left" value="2">
+                                <Include file="./Tpl/HJZF2_Z/left_mobile2.html" />
+                                <else/>
+                                    <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+                                    </eq>
+                        </section>
+                        <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+                            <div class="InsidePages_content-right__wrap">
+                                <div class="InsidePages_content-right_content-main">
+                                    <h5 class="InsidePages_content-right_content_title">{:__('Search result')}</h5>
+                                    <div class="InsidePages_content-right_proWrap">
+                                        <volist empty="" name="searchpro" id="pro" key="k">
+                                            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem">
+                                                <div class="main_proitem_box">
+                                                    <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                        <if condition="$pro['main_img']">
+                                                            <img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> />
+                                                            <else/>
+                                                            <img src="{:getindeximgurl($inner_data[3])}" alt=""/>
+                                                        </if>
+                                                    </a></div>
+                                                    <div class="main_proitem_second">
+                                                        <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                            <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],60)}</h6></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </volist>
+                                        <div class="clear"></div>
+                                        <div class="main_page">{$page}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <else/>
+            <div class="HJZF_Z__innerContent" id="main-content-wrapper" data-myli="0" style="padding-bottom: 160px;">
+                <section class="InsidePages_content-right2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="InsidePages_content-right__wrap">
+
+                                <h5 class="nosecrch_title">{:__('SEARCH ON THIS WEBSITE')}</h5>
+                                <div class="nosearch_box">
+                                    <if condition="C('LANGUAGE') eq 'cn'">
+                                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                            <li style="float: left;width: 90%;height: 60px;"><input style="height: 60px;width:100%;border-width:0px;padding-left: 10px;color:#888888;outline: none;background: transparent;box-sizing: border-box;" type="text" value="{:__('Product Search')}" name="keywords" id="keyword2" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                                            <li style="float: left;width:10%;height: 60px;"><button type="submit" id="search-submit"  style="padding-top:16px;outline: none;border: none;background: none;"><i class="fa fa-search"></i></button></li>
+                                            <div class="clear"></div>
+                                        </form>
+                                        <else/>
+                                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                            <li style="float: left;width: 90%;height: 60px;"><input style="height: 60px;width:100%;border-width:0px;padding-left: 10px;color:#888888;outline: none;background: transparent" type="text" 
+												value="{:__('keyword')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                                            <li style="float: left;width:10%;height: 60px;"><button type="submit" id="search-submit" style="padding-top:16px;outline: none;border: none;background: none;"><i class="fa fa-search"></i></button></li>
+                                            <div class="clear"></div>
+                                        </form>
+                                    </if>
+
+                                </div>
+                                <p style="font-size: 16px;color: #333333;letter-spacing: 0;text-align: center;line-height: 24px;">{:__('No results found, please change search keywords!')}</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </if>
+
+
+    </div>
+</block>

@@ -1,0 +1,35 @@
+<!--{$pagename}-->
+<div id="index_about_animate" style=" visibility:hidden;">
+<div class="index_aboutbg">
+  <div class="index_about_indexAbout">
+       <div class="index_about_aboutpic">
+           <if condition="$data4[3]">
+               <a href="javascript:void(0);" target="_blank" id="adv_video">
+                   <php>
+                       $imgs=aboutusimg();
+                   </php>
+                   <volist name="imgs" id="banerimg" offset="0" length="1">
+                       <div class="index_about_pic"><img src="{$banerimg['imgurl']}" style="display:block;" border="0" /></div>
+                   </volist>
+               </a>
+               <else/>
+               <php>
+                   $imgs=aboutusimg();
+               </php>
+               <volist name="imgs" id="banerimg" offset="0" length="1">
+                   <div class="index_about_pic"><img src="{$banerimg['imgurl']}" style="display:block;" border="0" /></div>
+               </volist>
+           </if>
+       </div>
+       <div class="index_about_right">
+           <div id="index_about_animate1" style=" visibility:hidden;"><div class="index_about_head">{$data4[0]}</div></div>
+            <div id="index_about_animate2" style=" visibility:hidden;"><div class="index_about_head2">{$about['company_name']}</div></div>
+           <div id="index_about_animate3" style=" visibility:hidden;"><p>{:HtmlEncode(htmlspecialchars_decode(subtxt($company_info['description'],250)))}</p></div>
+
+          <div class="index_about_more"><a href="{:U('/aboutus')}" onFocus="blur()">了解更多</a></div>
+          <div class="clear"></div>
+       </div>
+       <div class="clear"></div>
+  </div>
+</div>
+</div>

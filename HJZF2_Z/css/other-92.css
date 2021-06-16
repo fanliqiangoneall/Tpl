@@ -1,0 +1,112 @@
+.HJZF2_Z_other_92_title:after{
+    position: absolute;
+    display: block;
+    content:'';
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 2px;
+}
+.HJZF2_Z_other_92_title{
+    margin-bottom: 30px;
+}
+.HJZF2_Z_other_92_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.HJZF2_Z_other_92_wrapper li{
+    flex: 0 0 24%;
+    width: 24%;
+    margin-bottom: 20px;
+}
+.HJZF2_Z_other_92_wrapper li a{
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+.HJZF2_Z_other_92_wrapper_info{
+    display: block;
+    position: absolute;
+    padding: 10px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(calc(100% - 65px));
+    transition: all .5s;
+}
+.HJZF2_Z_other_92_wrapper_info:after{
+    content:'';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: .5;
+    z-index: -1;
+}
+.HJZF2_Z_other_92_wrapper_info span{
+    line-height: 55px;
+}
+.HJZF2_Z_other_92_wrapper{
+    margin-bottom: 30px;
+}
+.HJZF2_Z_other_92_wrapper li:hover .HJZF2_Z_other_92_wrapper_info:after{
+    opacity: .8;
+}
+.HJZF2_Z_other_92_wrapper li:hover .HJZF2_Z_other_92_wrapper_info{
+    transform: translateY(0);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.HJZF2_Z_other_92_wrapper div.more{
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+.HJZF2_Z_other_92_wrapper em{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+}
+.HJZF2_Z_other_92_wrapper em:after,.HJZF2_Z_other_92_wrapper em:before{
+    display: block;
+    position: absolute;
+    content:'';
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -1px;
+    margin-left: -1px;
+}
+.HJZF2_Z_other_92_wrapper em:after{
+    width: 1px;
+    height: 70%;
+}
+.HJZF2_Z_other_92_wrapper em:before{
+    width: 70%;
+    height: 1px;
+}
+.HJZF2_Z_other_92 .btn_more a{
+    color: #fff;
+}
+
+@media(max-width: 768px){
+    .HJZF2_Z_other_92_wrapper li{
+        flex: 0 0 48%;
+        width: 48%;
+    }
+}

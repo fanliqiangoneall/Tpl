@@ -1,0 +1,79 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style type="text/css">
+        .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li:hover{
+            background: #{$inner_data[0]};
+        }
+        .main-content_inner_news>ul>li.yijion_news>a>h3,.main-content_inner_news>ul>li:hover >a>h3{color: #fff}
+        .Breadcrumbs span.current{
+            color: #{$inner_data[0]};
+        }
+        .mian_content_casebox>ul>li:hover .hj05-news-pic img{transform: scale(1.1);-webkit-transform: scale(1.1);-moz-transform: scale(1.1);transition: .6s;-moz-transition: .6s;-webkit-transition: .6s;}
+        .mian_content_casebox>ul>li .news_item-title:hover a,.mian_content_casebox>ul>li .news_item_more:hover,.mian_content_casebox>ul>li .news_item_more:hover i{
+            color: #{$inner_data[0]};
+        }
+        .mian_content_casebox>ul>li .news_info .news_item_more:after{
+            border-bottom: #{$inner_data[0]} solid 3px;
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+                </volist>
+             <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+
+        <div class="Breadcrumbs">
+            <div class="Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/cases')}">{:__('Cases')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+            </div>
+        </div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left2">
+                <Include file="./Tpl/HJZF2/caseleft.html" />
+            </section>
+            <section class="InsidePages_content-right2">
+                <div class="InsidePages_content-right_content ">
+                    <div class="InsidePages_content-right_content-main">
+                        <ul class="mian_content_casebox">
+                           <if condition="$newscatelist neq ''">
+                               <ul class="main_caselist" data-myli="1">
+                                   <else/>
+                                   <ul class="main_caselist" data-myli="0">
+                           </if>
+
+                            <volist name="newscatelist" id="newscatelist" key="k">
+                                <li class="main_caseitem">
+                                    <div class="hj05-news-pic">
+                                        <a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($newscatelist['new_pro'])}" border="0" width="242" height="172"/></a>
+                                    </div>
+
+                                    <div class="news_info">
+                                        <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}" onFocus="blur()">{:subtxt($newscatelist['title'],60)}</a></div>
+                                    </div>
+                                </li>
+                                <if condition="$k % 4 neq 0">
+                                    <div style="float:left;height: 20px;width: 20px;"></div>
+                                </if>
+                            </volist>
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

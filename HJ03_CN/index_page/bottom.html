@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<style>
+    .HJ03_bottom{display: none}
+</style>
+<if condition="has_mould('bottom') eq true">
+    <style>
+        .HJ03_bottom{display: block}
+    </style>
+</if>
+<if condition="$data13[2] neq ''">
+    <style>
+        .HJ03_bottom{
+            background: url({:getindeximgurl($data13[2])}) left center no-repeat !important;
+        }
+    </style>
+</if>
+<style>
+    .bottom_xian{width: 100%;border-bottom: 1px solid rgba(255,255,255,.05);height: 2px;padding-bottom: 10px;padding-top: 50px;}
+</style>
+
+<div class="HJ03_bottom">
+    <div class="container">
+        <div class="hj03-bottom-header">
+            <p class="hj03-bottom-title">{$data13[0]}</p>
+            <p class="hj03-bottom-title2">{$data13[1]}</p>
+        </div>
+        <div class="hj03-bottom-contactlist">
+            <ul>
+                <if condition="$about['address']">
+                    <li>地址：{$about['address']}</li>
+                </if>
+                <if condition="$about['zip']">
+                    <li>邮编：{:chaifen($about['zip'],0)}</li>
+                </if>
+                <if condition="$about['phone']">
+                    <li>电话：{:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="$about['mobile']">
+                    <li>手机：{:chaifen($about['mobile'],0)}&nbsp;&nbsp;{:chaifen($about['mobile'],1)}</li>
+                </if>
+                <if condition="$about['fax']">
+                    <li>传真：{:chaifen($about['fax'],0)}</li>
+                </if>
+                <if condition="$about['email']">
+                    <li>邮件：<a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                </if>
+            </ul>
+        </div>
+       <div class="clear bottom_xian"></div>
+
+        <div class="hj02-copy">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data13[7]){
+                $currtime=2019;
+                }else{
+                $currtime=$data13[7];
+                }
+
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp;{$about['company_name']}版权所有&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;</if>
+            <a style="" href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>&nbsp;&nbsp;<span style="font-size:14px;"><a  href="{:U('/alltag','','')}">所有标签</a></span>&nbsp;&nbsp;<a href="https://www.one-all.com" title="常州网络公司" target="_blank">常州网络公司</a>中环互联网网站建设&nbsp;&nbsp;<a
+                id="mianze" title="常州网络公司中环互联网" target="_blank" style="cursor:pointer;">免责声明</a>
+        </div>
+    </div>
+</div>
+<if condition="$friend_link neq ''">
+<div class="friendlink" style="margin-top: 0px;">
+    <div class="container">
+		<div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">友情链接：</span>
+			<volist name="friend_link" id="friend_link">
+				<if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+					<div style="float:left; text-align:center;color: #fff;line-height: 30px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+				</if>
+			</volist>
+			<!--<div style="clear:both"></div>-->
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</div>
+</if>

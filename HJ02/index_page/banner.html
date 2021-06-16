@@ -1,0 +1,105 @@
+<!--{$pagename}-->
+<php>
+    if(!$data3[10]){
+    $data3[10]=500;
+    }
+</php>
+<style>
+
+    .HJ02-banner1-box{
+        height: {$data3[10]}px;
+    }
+    #HJ02-banner1{
+    height: {$data3[10]}px;
+    }
+    #HJ02-banner1 .slick-list{
+    height: {$data3[10]}px;
+    }
+    #HJ02-banner1 .slick-track{
+        height: {$data3[10]}px;
+    }
+    .HJ02-banner1-item{
+    height: {$data3[10]}px;
+    }
+    #HJ02-banner1 .slick-prev:hover{
+        background: #{$color};
+    }
+    #HJ02-banner1 .slick-next:hover{
+        background: #{$color};
+    }
+    #HJ02-banner1 .slick-dots li.slick-active button:before{
+        background: #{$color};opacity: 1;
+    }
+    .HJ02-banner1-box_other ul li:hover h4 a:before{
+       content: '';width: 100%;height: 2px;display: table;position: absolute;;bottom: -2px;left: 0;background: #{$color};transition: .6s;
+    }
+</style>
+<if condition="$data3[1] eq ''">
+    <style>
+        .HJ02-banner1-box{
+            margin-bottom: 50px;
+        }
+    </style>
+</if>
+<section class="HJ02-banner1-box">
+    <div id="HJ02-banner1">
+        <volist name="banner" id="banner_pic" key="k">
+            <div class="HJ02-banner1-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="display: block;width: 100%;height: 100%">
+
+                </a>
+            </div>
+        </volist>
+    </div>
+    <if condition="$data3[1]">
+    <div class="HJ02-banner1-box_other">
+        <div class="container">
+            <ul>
+
+                <if condition="$data3[1] neq ''">
+                    <div>
+                        <li>
+                            <p><a href="{$data3[3]}"><img src="{:getindeximgurl($data3[2])}" alt="{$data3[1]}"/></a></p>
+                            <h4><a href="{$data3[3]}">{$data3[1]}</a></h4>
+                        </li>
+                    </div>
+                </if>
+                <if condition="$data3[2] neq ''">
+                    <div>
+                        <li>
+                            <p><a href="{$data3[6]}"><img src="{:getindeximgurl($data3[5])}" alt="{$data3[4]}"/></a></p>
+                            <h4><a href="{$data3[6]}">{$data3[4]}</a></h4>
+                        </li>
+                    </div>
+                </if>
+                <if condition="$data3[7] neq ''">
+                    <div>
+                        <li>
+                            <p><a href="{$data3[9]}"><img src="{:getindeximgurl($data3[8])}" alt="{$data3[7]}"/></a></p>
+                            <h4><a href="{$data3[9]}">{$data3[7]}</a></h4>
+                        </li>
+                    </div>
+                </if>
+                <if condition="$data3[11] neq ''">
+                    <div>
+                        <li>
+                            <p><a href="{$data3[13]}"><img src="{:getindeximgurl($data3[12])}" alt="{$data3[11]}"/></a></p>
+                            <h4><a href="{$data3[13]}">{$data3[11]}</a></h4>
+                        </li>
+                    </div>
+                </if>
+            </ul>
+
+        </div>
+    </div>
+    </if>
+</section>
+<script>
+    $(document).ready(function(){
+        if($(".HJ02-banner1-box_other ul>div").length>3){
+            $(".HJ02-banner1-box_other ul li").css({"width":"286px","height":"140px"})
+            $(".HJ02-banner1-box_other h4").css({"fontSize":"18px"});
+            $(".HJ02-banner1-box_other").css({"height":"142px","bottom":'-71px'});
+        }
+    })
+</script>

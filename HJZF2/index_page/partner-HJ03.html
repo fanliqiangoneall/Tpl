@@ -1,0 +1,74 @@
+<!--{$pagename}-->
+
+<style>
+
+    .new_hjzf_partner-HJ03 .hj03-customer-prev:before{
+        content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:0;background:url({:getindeximgurl($data79[0])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+    .new_hjzf_partner-HJ03 .hj03-customer-next:before{
+        content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:0;background:url({:getindeximgurl($data79[1])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+    .new_hjzf_partner-HJ03 .hj03-customer-prev:after{
+        content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:40px;opacity:0.7;background:url({:getindeximgurl($data79[0])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+    .new_hjzf_partner-HJ03 .hj03-customer-next:after{
+        content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:40px;opacity:0.7;background:url({:getindeximgurl($data79[1])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+    .new_hjzf_partner-HJ03 .hj03-customer-prev:hover:before{
+        top:-40px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+    .new_hjzf_partner-HJ03 .hj03-customer-next:hover:before{
+        top:-40px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+    .new_hjzf_partner-HJ03 .hj03-customer-prev:hover:after{
+        top:0px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+    .new_hjzf_partner-HJ03 .hj03-customer-next:hover:after{
+        top:0px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+    }
+</style>
+<if condition="$data79[2]">
+    <style>
+        .new_hjzf_partner-HJ03 #customers{
+            background:url({:getindeximgurl($data79[2])}) no-repeat center;
+        }
+    </style>
+</if>
+
+<!--customers start -->
+<section id="customers">
+    <div class="container">
+        <if condition="$data79[7]">
+            <div class="hj03-customer_title">{$data79[7]}</div>
+        </if>
+        <div class="hj03-customer-wai">
+            <div class="swiper-container hj03-customer">
+                <div class="swiper-wrapper">
+                    <php>
+                        for($c=3;$c<6;$c=$c+1){
+                    </php>
+                    <if condition="$data79[$c] neq ''">
+                        <div class="swiper-slide wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                            <if condition="$data79[8]">
+                                <a href="{$data79[8]}">
+                            </if>
+                                <img src="{:getindeximgurl($data79[$c])}" alt=""/>
+                            <if condition="$data79[8]">
+                                </a>
+                            </if>
+                        </div>
+                    </if>
+                    <php>
+                        }
+                    </php>
+                </div>
+
+            </div>
+            <!-- Add Arrows -->
+            <div class="hj03-customer-next swiper-button-next"></div>
+            <div class="hj03-customer-prev swiper-button-prev"></div>
+        </div>
+
+    </div>
+</section>
+<!--customers end -->

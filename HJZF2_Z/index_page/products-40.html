@@ -1,0 +1,55 @@
+<!--{$pagename}-->
+<if condition="$data543[0]">
+    <style>
+        .HJZF2_Z__products-40{
+            background: url({:getindeximgurl($data543[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2_Z__products-40__img__contain a:hover i,.swiper-button-prev.HJZF2_Z__products-40__prev i, .swiper-button-next.HJZF2_Z__products-40__next i{
+        color: #{$data543[1]};
+    }
+    .HJZF2_Z__products-40__swiper .swiper-slide .HJZF2_Z__products-40__content .HJZF2_Z__products-40__more:before,.HJZF2_Z__products-40__swiper__pagination .swiper-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active,.HJZF2_Z__products-40__mainTitle:before{
+        background:#{$data543[1]} ;
+    }
+    .HJZF2_Z__products-40__swiper__pagination .swiper-pagination span.swiper-pagination-bullet{
+        border: 2px solid #{$data543[1]};
+    }
+</style>
+
+<section class="HJZF2_Z__products-40 index_pd">
+    <div class="HJZF2_Z__products-40__container">
+        <div class="HJZF2_Z__products-40__mainTitle index_title pb20">{$data543[2]}</div>
+        <div class="HJZF2_Z__products-40__swiperBox">
+            <div class="swiper-container HJZF2_Z__products-40__swiper">
+                <div class="swiper-wrapper">
+                    <volist name="indexhotpro" id="hotpro" offset="0" length="8" key="k">
+                        <div class="swiper-slide">
+                            <div class="HJZF2_Z__products-40__img">
+                                <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}" onFocus="blur()"><img   src="{:getmainimgurl($hotpro['main_img'])}" border="0" alt="{$hotpro['pro_name']}" /></a>
+                                <div class="HJZF2_Z__products-40__img__contain">
+                                    <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}" onFocus="blur()"><span class="plus"><i class="fa fa-plus"></i></span></a>
+                                </div>
+                            </div>
+                            <div class="HJZF2_Z__products-40__content">
+                                <div class="HJZF2_Z__products-40__name index_title"><a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}" onFocus="blur()">{:subtxt($hotpro['pro_name'],40)}</a></div>
+                                
+                                <div class="HJZF2_Z__products-40__desc index_text">
+                                    {:subtxt($hotpro['pro_description'],200)}
+                                </div>
+                                <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}" onFocus="blur()" class="HJZF2_Z__products-40__more index_title">{:__('Read More')} <i class="fa fa-caret-right"></i></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="swiper-button-prev HJZF2_Z__products-40__prev"><i class="fa fa-chevron-left"></i></div>
+                <div class="swiper-button-next HJZF2_Z__products-40__next"><i class="fa fa-chevron-right"></i></div>
+            </div>
+            <div class="HJZF2_Z__products-40__swiper__pagination">
+                <div class="swiper-pagination HJZF2_Z__products-40__pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>

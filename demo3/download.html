@@ -1,0 +1,40 @@
+<extend name="demo3:base" />
+<block name="content">
+    <Include file="./Tpl/demo3/in_head.html" />
+    <div id="">
+        <if condition="$banner neq ''">
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+            </volist>
+            <else/>
+            <div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+        </if>
+    </div>
+    <div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;资料下载</div>
+<div class="clear"></div>
+<!--代码块结束-->
+
+        <div  style="width: 1190px;margin:0 auto">
+            <Include file="./Tpl/demo3/leftdownload.html" />
+                <div class="page_Main">
+                    <div class="page_RightTitle"><span>资料下载</span></div>
+                    <div class="download">
+                        <div class="body" style="margin-top: 45px;">
+                            <ul class="donload_list">
+                                <volist name="download" id="download" key="k">
+                                    <li><span class="right_time"><a href="{:getimgurl($download['linkurl'])}" target="_blank">下载</a></span><a href="{:U('/download_detail',array('id'=>$download["id"]))}" >{$download['title']}</a></li>
+                                    <div class="clear"></div>
+                                </volist>
+                            </ul>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+
+            <div style="clear:both"></div>
+        </div>
+    <Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" /><Include file="./Tpl/demo3/index_page/bottom-5.html" />
+</block>

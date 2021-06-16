@@ -1,0 +1,188 @@
+.ruiyi_title{
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+.ruiyi_title:after,.ruiyi_title:before{
+    position: absolute;
+    display: block;
+    content:'';
+    width: 1px;
+    height: 42px;
+    background-color: #9d9d9d;
+    top: 30px;
+}
+.ruiyi_title:before{
+    left: 0;
+}
+.ruiyi_title:after{
+    right: 0;
+}
+.ruiyi_title div{
+    position: relative;
+}
+.ruiyi_title .index_title:before,.ruiyi_title .index_title:after,.ruiyi_title .index_text:after,.ruiyi_title .index_text:before{
+    position: absolute;
+    display: block;
+    content:'';
+    width: 100px;
+    height: 1px;
+    background-color: #9d9d9d;
+    top: 50%;
+}
+.ruiyi_title .index_text:after,.ruiyi_title .index_text:before{
+    width: 15px;
+}
+.ruiyi_title .index_title:before,.ruiyi_title .index_text:before{
+    left: 0;
+}
+.ruiyi_title .index_title:after,.ruiyi_title .index_text:after{
+    right: 0;
+}
+.ruiyi_title .index_text{
+    padding: 0 30px;
+}
+.ruiyi_title .index_title{
+    text-shadow: 2px 1px 4px rgba(0,0,0,.3);
+}
+@media(max-width: 1365px){
+    .ruiyi_title:after,.ruiyi_title:before{
+        top: 23px;
+        height:35px;
+    }
+}
+@media(max-width: 767px){
+    .ruiyi_title .index_title:before,.ruiyi_title .index_title:after{
+        width: 30px;
+    }
+    .ruiyi_title:after,.ruiyi_title:before{
+        top: 18px;
+        height: 29px;
+    }
+    .ruiyi_title .index_text:after, .ruiyi_title .index_text:before{
+        top: 11px;
+    }
+	.ruiyi_title .index_title:before, .ruiyi_title .index_title:after, .ruiyi_title .index_text:after, .ruiyi_title .index_text:before,.ruiyi_title:after, .ruiyi_title:before
+	{
+		display: none;
+	}
+}
+
+
+.hjzf2_news_32_wrapper_btn{
+	position: relative;
+}
+.hjzf2_news_32_wrapper_btn .swiper-button-prev,.hjzf2_news_32_wrapper_btn .swiper-button-next{
+	background-image: none;
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #bfbfbf;
+    font-size: 22px;
+    transition: all .5s;
+}
+.hjzf2_news_32_wrapper_btn .swiper-button-prev{
+	left: -50px;
+}
+.hjzf2_news_32_wrapper_btn .swiper-button-next{
+	right: -50px;
+}
+.hjzf2_news_32_box{
+	position: relative;
+	display: block;
+}
+.hjzf2_news_32_box:before{
+	position: absolute;
+	display: block;
+	content:'';
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background: rgba(0,0,0,.2);
+	transform: translateY(-100%);
+	transition: all .5s;
+	opacity: 0;
+}
+.hjzf2_news_32_box:hover:before{
+	opacity: 1;
+	transform: translateY(0);
+}
+.hjzf2_news_32_box_date{
+	position: absolute;
+	width: 140px;
+	height: 45px;
+	left: 15px;
+	top: 15px;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	z-index: 9;
+	padding-right: 15px;
+}
+.hjzf2_news_32_box_date b{
+	font-size: 22px;
+	line-height: 1;
+}
+.hjzf2_news_32_box_date p{
+	line-height: 1;
+}
+.hjzf2_news_32_box_title{
+	display: flex;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 9;
+	min-height: 42px;
+	padding-left: 15px;
+	padding-right: 15px;
+	color: #fff;
+}
+.hjzf2_news_32_box_con{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	padding-bottom: 25px;
+	padding-left: 15px;
+	padding-right: 15px;
+	color: #fff;
+	opacity: 0;
+	transform: translateY(100%);
+	transition: all .5s;
+	z-index: 9;
+}
+.hjzf2_news_32_box:hover .hjzf2_news_32_box_con{
+	opacity: 1;
+	transform: translateY(0);
+}
+.hjzf2_news_32_box:hover .hjzf2_news_32_box_title{
+	opacity: 0;
+}
+
+@media(max-width: 767px) {
+	.hjzf2_news_32_wrapper_btn .swiper-button-prev,.hjzf2_news_32_wrapper_btn .swiper-button-next{
+		display: none;
+	}
+	.hjzf2_news_32_wrapper_btn_pagination{
+		position: static;
+		margin-top: 10px;
+	}
+	.hjzf2_news_32_wrapper_btn_pagination span{
+		width: 12px;
+		height: 12px;
+	}
+}

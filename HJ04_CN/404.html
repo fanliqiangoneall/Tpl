@@ -1,0 +1,45 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+    </style>
+    <div id="wrapper">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                您的位置：&nbsp;
+                <a href="{:U('/')}">首页</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                    <span class="pageTitleActive">
+                       404
+                    </span>
+            </div>
+        </div>
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="pageBannerContainer">
+                    <div class="pageBannerImg">
+                        <img src="{:getindeximgurl($data47[8])}" alt="" width="100%"/>
+                    </div>
+                </div>
+            </if>
+        </div>
+        <div class="page_nei_main container" id="main-content-wrapper">
+            <section class="main-content-left lf">
+                <Include file="./Tpl/HJ04_CN/left.html" />
+            </section>
+            <section class="main-content-right rt">
+                    <div class="page_RightMain">
+                        <div class="page_Main" style="text-align:center;"><a href="{:U('/')}"><img src="__TMPL__HJ04_CN/img/404.png" border="0" alt="404" /></a></div>
+                        <div style="clear:both;height: 50px;"></div>
+                    </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,112 @@
+.products_hj07_title p{
+    display: inline-block;
+    position: relative;
+}
+.products_hj07_title_swiper{
+    padding-bottom: 60px;
+}
+.products_hj07_pagination span{
+    width: 12px;
+    height: 12px;
+}
+.hjzf2_other_69_slide{
+    margin-bottom: 60px;
+}
+.hjzf2_other_69_slide_box{
+    display: block;
+    position: relative;
+    padding-bottom: 90px;
+}
+.hjzf2_other_69_slide{
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding-bottom: 10px;
+}
+.hjzf2_other_69_slide_text{
+    color: #333;
+    line-height: 2;
+}
+.hjzf2_other_69_pagination{
+    margin-top: 30px;
+    position: static;
+}
+.hjzf2_other_69_pagination span{
+    width: 12px;
+    height: 12px;
+}
+.hjzf2_other_69_slide{
+	position: relative;
+	overflow: hidden;
+}
+.hjzf2_other_69_slide:hover .hjzf2_other_69_slide_con{
+	opacity: 1;
+	transform: translateX(0);
+}
+.hjzf2_other_69_slide_con{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99;
+	padding: 15px 0;
+	display: flex;
+	flex-direction: column;
+	color:#fff;
+	transition: all .5s;
+	opacity: 0;
+	transform: translateX(-50%);
+}
+.hjzf2_other_69_slide_con:before{
+	position: absolute;
+	display: block;
+	content:'';
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	opacity: 0.5;
+}
+.hjzf2_other_69_slide_con .hjzf2_other_69_slide_title{
+	border-bottom: 1px solid #fff;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+.hjzf2_other_69_slide_info{
+	margin: 0 30px;
+}
+
+@media (max-width: 1200px) {
+    .hjzf2_other_69_slide:hover .hjzf2_other_69_slide_text p,.hjzf2_other_69_slide:hover .hjzf2_other_69_slide_text span{
+        color: #333;
+    }
+    .hjzf2_other_69_slide:hover .hjzf2_other_69_slide_box:after{
+        background-color: transparent !important;
+    }
+    .hjzf2_other_69_slide:hover .hjzf2_other_69_slide_text{
+        bottom: 0;
+        text-align: center;
+    }
+    .hjzf2_other_69_slide{
+        margin-bottom: 20px;
+    }
+}
+@media(min-width: 1366px) {
+	.hjzf2_other_69_slide{
+		width: 476px;
+	}
+}
+@media(max-width: 1200px) {
+	.hjzf2_other_69_slide{
+		max-width: 310px;
+		margin-right: 20px;
+	}
+	
+}

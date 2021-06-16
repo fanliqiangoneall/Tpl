@@ -1,0 +1,202 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[0]){
+		$color = $inner_data[0];
+		}
+	</php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current {
+			color: #{$color};
+		}
+
+		.selInfo dl dd button {
+			background: #{$color};
+		}
+
+		.InsidePages_left_content-main {
+			border-top-color: #{$color};
+		}
+
+		.slide_mobile .InsidePages_left_navlist {
+			display: none;
+		}
+	</style>
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+				</volist>
+				<else />
+				<div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" alt="" /></div>
+			</if>
+
+		</div>
+
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12"><a href="{:U('/')}">{:__('Your location:')} {:__('Home')}</a>&nbsp;<i
+							class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Jobs')}</span></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="container">
+				<div class="row">
+
+					<!-- 自定义二级 -->
+					<if condition="$inner_data[2] neq ''">
+						<div class="col-lg-3 nav-hidden-mobile">
+							<div class="InsidePages_left_content-main">
+								<p>{$inner_data[3]}</p>
+								<ul class="InsidePages_left_navlist">
+									<php>
+										$arr = get_list_val($inner_data[2]);
+									</php>
+									<volist empty="" name="arr" id="alink" key="k">
+										<li <if condition="$k eq '1'">
+											class="yijion"
+											<else />
+											class="yiji"
+					</if>
+					><a href="{$alink['link']}">
+						<h3>{$alink['title']}</h3>
+					</a></li>
+					</volist>
+					</ul>
+				</div>
+			</div>
+			<!-- mobile -->
+			<div class="HJZF_Z__inner--left__content slide_mobile mb-20 nav-hidden-pc">
+
+				<div class="InsidePages_left_content-main">
+					<p>{$inner_data[3]}<span class="mobile--left_showButton"><i></i></span></p>
+					<ul class="InsidePages_left_navlist">
+						<volist empty="" name="arr" id="blikn" key="k">
+							<li <if condition="$k eq '1'">
+								class="yijion"
+								<else />
+								class="yiji"
+								</if>
+								><a href="{$blikn['link']}">
+									<h3>{$blikn['title']}</h3>
+								</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+			<script>
+				$(document).ready(function () {
+					$('.mobile--left_showButton').click(function () {
+						$(this).parents('.InsidePages_left_content-main').find('.InsidePages_left_navlist').slideToggle();
+					})
+				});
+			</script>
+			</if>
+			<!-- 自定义二级 -->
+
+			<if condition="$inner_data[2] neq ''">
+				<div class="col-xs-12 col-lg-9">
+					<else />
+					<div class="col-xs-12">
+			</if>
+			<section class="HJZF_Z__innerContent">
+				<if condition="$inner_data[4]">
+					{:htmlspecialchars_decode($inner_data[4])}
+				</if>
+				<div class="InsidePages_content-right__wrap">
+					<div class="InsidePages_content-right_content-main">
+						<div class="selInfo">
+							
+							<volist name="jobs" id="jobs" key="k">
+								<if condition="$k eq '1'">
+								<dl class="selInfo_title">
+									<dt class="w220 pl20">{:__('Position Name')}</dt>
+									<if condition="$webid eq '1800' or $webid eq '1830'">
+										<else />
+										<dd class="w110">{:__('Gender')}</dd>
+									</if>
+									<if condition="$jobs['age']">
+										<dd class="w90">{:__('Age')}</dd>
+									</if>
+									<if condition="$jobs['edu']">
+										<dd class="w140">{:__('Education')}</dd>
+									</if>
+									<if condition="$jobs['people']">
+										<dd class="w110">{:__('Number')}</dd>
+									</if> 
+									<if condition="$webid eq '1800' or $webid eq '1830'">
+										<else />
+										<if condition="$jobs['beizhu']">
+											<dd class="w370">{:__('Remarks')}</dd>
+										</if>
+									</if>
+									<if condition="$webid eq '1800' or $webid eq '1830'">
+										<else />
+										<dd class="w170">{:__('operating')}</dd>
+									</if>
+									<div style="clear: both"></div>
+								</dl>
+								</if>
+								<php>
+									if(LANGUAGE =='en'){
+
+									if($jobs['sex'] == 1){
+									$jobs['sex'] ='man';
+									}else if($jobs['sex'] == 2){
+									$jobs['sex'] ='women';
+									}else{
+									$jobs['sex'] ='unlimited';
+									}
+
+									}else{
+									if($jobs['sex'] == 1){
+									$jobs['sex'] ='男';
+									}else if($jobs['sex'] == 2){
+									$jobs['sex'] ='女';
+									}else{
+									$jobs['sex'] ='不限';
+									}
+									}
+
+								</php>
+								<dl class="selInfo_content">
+									<dt class="w220 pl20">{$jobs['jobname']}</dt>
+									<if condition="$webid eq '1800' or $webid eq '1830'">
+										<else />
+										<dd class="w110">{$jobs['sex']}</dd>
+									</if>
+									<dd class="w90">{$jobs['age']}</dd>
+									<dd class="w140">{$jobs['edu']}</dd>
+									<dd class="w110">{$jobs['people']}</dd>
+									<if condition="$webid eq '1800' or $webid eq '1830'">
+										<else />
+										<dd class="w370">{$jobs['beizhu']}</dd>
+									</if>
+									<dd class="w170"><a
+											href="{:U('/job',array('jobid'=>$jobs['jobid']))}"><button>{:__('Read More')}</button></a></dd>
+									<div style="clear: both"></div>
+								</dl>
+							</volist>
+
+						</div>
+						<ul>
+
+						</ul>
+
+					</div>
+					<div class="page_nei_space"></div>
+				</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+
+	</div>
+	</div>
+	</div>
+	</div>
+</block>

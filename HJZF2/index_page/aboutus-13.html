@@ -1,0 +1,54 @@
+<style>
+    #aboutus-13 .aboutus-13_futitle,#aboutus-13 .aboutus-13_more{
+        color: #{$data194[0]};
+    }
+    #aboutus-13 .aboutus-13_more,.aboutus-13-down .aboutus-13-tabs li.active{
+        border-color: #{$data194[0]};
+    }
+    #aboutus-13 .aboutus-13_more:hover:before,.aboutus-13-down .aboutus-13-tabs li.active{
+        background: #{$data194[0]};
+    }
+</style>
+
+<section id="aboutus-13">
+    <div class="container">
+        <div class="aboutus-13-left">
+            <h2 class="aboutus-13_title">{$data194[1]} <span>/{$data194[2]}</span></h2>
+            <p class="aboutus-13_futitle">{$data194[3]}</p>
+            <div class="aboutus-13_content">
+                <ul>
+                    <if condition="$data194[4]">
+                        <li class="aboutus-13_content active">{:HtmlEncode(subtxt($data194[4],200))}</li>
+                    </if>
+                    <if condition="$data194[16]">
+                        <li class="aboutus-13_content">{:HtmlEncode(subtxt($data194[16],200))}</li>
+                    </if>
+                    <if condition="$data194[17]">
+                        <li class="aboutus-13_content">{:HtmlEncode(subtxt($data194[17],200))}</li>
+                    </if>
+                    <if condition="$data194[18]">
+                        <li class="aboutus-13_content">{:HtmlEncode(subtxt($data194[18],200))}</li>
+                    </if>
+                </ul>
+            </div>
+            <a class="aboutus-13_more" href="{$data194[5]}" target="_blank">{:__('Inquiry Now')}</a>
+        </div>
+        <div class="aboutus-13-right">
+            <ul>
+                <if condition="$data194[7]"><li class="active"><img src="{:getindeximgurl($data194[7])}" alt="{$data194[6]}"/></li></if>
+                <if condition="$data194[9]"><li><img src="{:getindeximgurl($data194[9])}" alt="{$data194[8]}"/></li></if>
+                <if condition="$data194[11]"><li><img src="{:getindeximgurl($data194[11])}" alt="{$data194[10]}"/></li></if>
+                <if condition="$data194[13]"><li><img src="{:getindeximgurl($data194[13])}" alt="{$data194[12]}"/></li></if>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="aboutus-13-down">
+            <ul class="aboutus-13-tabs">
+                <if condition="$data194[6]"><li class="active"><div class="aboutus-13-tabimg hide"><img src="{:getindeximgurl($data194[14])}" alt=""/></div><div class="aboutus-13-tabimg "><img src="{:getindeximgurl($data194[15])}" alt=""/></div><h3>{$data194[6]}</h3></li></if>
+                <if condition="$data194[8]"><li><div class="aboutus-13-tabimg"><img src="{:getindeximgurl($data194[14])}" alt=""/></div><div class="aboutus-13-tabimg hide"><img src="{:getindeximgurl($data194[15])}" alt=""/></div><h3>{$data194[8]}</h3></li></if>
+                <if condition="$data194[10]"><li><div class="aboutus-13-tabimg"><img src="{:getindeximgurl($data194[14])}" alt=""/></div><div class="aboutus-13-tabimg hide"><img src="{:getindeximgurl($data194[15])}" alt=""/></div><h3>{$data194[10]}</h3></li></if>
+                <if condition="$data194[12]"><li><div class="aboutus-13-tabimg"><img src="{:getindeximgurl($data194[14])}" alt=""/></div><div class="aboutus-13-tabimg hide"><img src="{:getindeximgurl($data194[15])}" alt=""/></div><h3>{$data194[12]}</h3></li></if>
+            </ul>
+        </div>
+    </div>
+</section>

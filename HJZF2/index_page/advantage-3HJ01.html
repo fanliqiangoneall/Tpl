@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<style>
+        .new_hjzf_advantage-3HJ01{
+            height: 494px;
+            width: 100%;min-width: 1190px;max-width: 1920px; margin:auto; padding-top: 40px;padding-bottom: 40px;margin-bottom: 40px;
+            background: url({:getindeximgurl($data67[1])}) no-repeat center;
+        }
+    </style>
+    <!--choice start-->
+    <div class="new_hjzf_advantage-3HJ01Box">
+        <div class="new_hjzf_advantage-3HJ01__container">
+            <if condition="$data67[0]">
+                <div class="new_hjzf_advantage-3HJ01__title"><h3 class="new_hjzf_advantage-3HJ01__p">{$data67[0]}</h3></div>
+            </if>
+            <ul class="new_hjzf_advantage-3HJ01__list">
+                <php>
+                    for($adv=2;$adv<=23;$adv=$adv+3){
+                </php>
+                <if condition="$data67[$adv] neq ''">
+                    <li id="advantage{$adv}">
+                        <div class="new_hjzf_advantage-3HJ01__pic"><img src="{:getindeximgurl($data67[$adv])}" alt=""/></div>
+                        <div class="new_hjzf_advantage-3HJ01__item">
+                            <p class="new_hjzf_advantage-3HJ01__name">{$data67[$adv+1]}</p>
+                            <p class="new_hjzf_advantage-3HJ01__content">{$data67[$adv+2]}</p>
+                        </div>
+                    </li>
+                </if>
+    
+                <php>
+                }
+                </php>
+                <if condition="$data67[23] eq ''">
+                    <li>
+    
+                        <div class="new_hjzf_advantage-3HJ01__item">
+                            <p class="new_hjzf_advantage-3HJ01__span"><span></span><span></span><span></span></p>
+                            <p class="new_hjzf_advantage-3HJ01__name"><a href="{$data67[26]}">{:__('Read More')}</a></p>
+                        </div>
+                    </li>
+                </if>
+    
+            </ul>
+        </div>
+    </div>
+    <div class="clear" style="height: 10px;"></div>
+    <!--choice end-->
+    
+    
+    
+    

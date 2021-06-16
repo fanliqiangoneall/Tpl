@@ -1,0 +1,67 @@
+<!--{$pagename}-->
+<if condition="$data95[0]">
+    <style>
+        .hjzf_2hj02{
+            background: url({:getindeximgurl($data95[0])}) no-repeat center / cover;
+        }
+    </style>
+</if>
+<style>
+    #certify .swiper-slide{
+        box-shadow: 0 8px 30px #{$data95[21]};
+    }
+</style>
+
+
+<section class="hjzf_2hj02 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 hjzf_2hj02_tilte index_title pb40">{$data95[2]}</div>
+            <div class="col-xs-12 col-xl-6  col-xl-offset-3 hjzf_2hj02_swiperbox">
+                <div id="certify" class="wow fadeInUp" data-wow-duration="1s">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <php>
+                                for($i=3;$i<7;$i=$i+1){
+                            </php>
+                            <if condition="$data95[$i]">
+                                <div class="swiper-slide"><img src="{:getindeximgurl($data95[$i])}" alt="{$data95[2]}" /></div>
+                            </if>
+                            <php>
+                                }
+                            </php>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination hjzf_2hj02_pagination"></div>
+
+                </div>
+
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2 hjzf_2hj02_text index_text wow fadeInUp" data-wow-duration="1s" data-wow-offset="10">
+                {:HtmlEncode($data95[8])}
+            </div>
+            <div class="clear"></div>
+            <div class="hjzf_2hj02_number col-xs-8 col-xs-offset-2 col-lg-8 col-lg-offset-2">
+                <ul class="flex">
+                    <php>
+                        for($ab=9;$ab<=20;$ab=$ab+3){
+
+                    </php>
+                    <if condition="$data95[$ab]">
+                        <li class="hjzf_2hj02_item flex">
+                            <div class="hjzf_2hj02_itemContent">
+                                <div class="hjzf_2hj02_itemContent_shuzi count_shuzi timer index_title" data-to="{$data95[$ab]}" data-speed="1500" data-danwei="{$data95[$ab+1]}">{$data95[$ab]}</div>
+                                <div class="hjzf_2hj02_itemContent_name index_sub_title">{$data95[$ab+2]}</div>
+                            </div>
+                        </li>
+                    </if>
+
+                    <php>
+                        }
+                    </php>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

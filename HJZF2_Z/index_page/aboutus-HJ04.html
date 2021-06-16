@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_aboutus3 .hj05-abus-title1{
+        color: #{$data48[6]};
+    }
+    .hjzf_z_aboutus_hj04--leftMore a:hover :before,.aboutushj04_pagination .swiper-pagination-bullet-active{
+        background: #{$data99[0]};border-color: #{$data99[0]};
+    }
+</style>
+<if condition="$data48[7]">
+    <style>
+        .new_hjzf_aboutus3 .HJ05-aboutus-box{
+            background: url({:getindeximgurl($data48[7])}) no-repeat center;
+        }
+    </style>
+</if>
+<if condition="$data99[20]">
+    <style>
+        .hjzf_z_aboutus_hj04{
+            background: url({:getindeximgurl($data99[20])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .hjzf_z_aboutus_hj04--leftMore a:before{
+        background-color: #{$data99[21]};
+    }
+    
+</style>
+<script>
+	var $webid = '<?php echo $webid;?>';
+</script>
+<section class="hjzf_z_aboutus_hj04 index_pd">
+    <div class="container aboutushj04_container">
+
+    </div>
+    <div class="hjzf_z_aboutus_hj04--left">
+        <div class="left_box wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" >
+            <h1 class="hjzf_z_aboutus_hj04_title index_title pb40">{$data99[1]}</h1>
+            <div class="hjzf_z_aboutus_hj04_text index_text"> {:HtmlEncode($data99[2])}</div>
+            <ul class="hjzf_z_aboutus_hj04_ul clearfix">
+                <php>
+                    for($i=3;$i<14;$i=$i+3){
+                </php>
+                <li>
+                    <p class="hjzf_z_aboutus_hj04_item"><img src="{:getindeximgurl($data99[$i+2])}" alt="{$data99[$i]}"/><a href="{$data99[$i+1]}" class="index_text">{$data99[$i]}</a></p>
+                </li>
+                <php>
+                    }
+                </php>
+            </ul>
+            <div class="hjzf_z_aboutus_hj04--leftMore"><a href="{$data99[15]}" class="index_text hx_btn">{:__('Read More')}</a></div>
+        </div>
+    </div>
+    <div class="hjzf_z_aboutus_hj04--right">
+        <div class="aboutusRight_box">
+            <div class="swiper-container aboutushj04_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide aboutushj04_slide">
+                       <if condition="$data99[19]">
+                       <p data-src="{$data99[19]}" id="video">
+                           <img src="{:getindeximgurl($data99[16])}" alt="{$data99[1]}"/>
+                       </p>
+                       <else/>
+                       	   <img src="{:getindeximgurl($data99[16])}" alt="{$data99[1]}"/>
+                       </if>
+                    </div>
+                       <if condition="$data99[17]">
+						<div class="swiper-slide aboutushj04_slide">
+                            <img src="{:getindeximgurl($data99[17])}" alt="{$data99[1]}"/>
+                    </div>
+                       </if>
+                       <if condition="$data99[18]">
+						<div class="swiper-slide aboutushj04_slide">
+                            <img src="{:getindeximgurl($data99[18])}" alt="{$data99[1]}"/>
+                    </div>
+				</if>
+			</div>
+
+            </div>
+        </div>
+        <div class="swiper-pagination aboutushj04_pagination"></div>
+    </div>
+    <div class="clear"></div>
+</section>

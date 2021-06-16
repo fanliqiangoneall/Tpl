@@ -1,0 +1,244 @@
+<extend name="HJ04:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .caseList:hover .caseTitle{
+            color: #{$color};
+        }
+        .page_body_container{
+            background: {$data47[21]};
+        }
+        .moreIcon{
+            background: url({:getindeximgurl($data47[22])}) no-repeat 100% 100%;
+        }
+        .proDetailMore{
+            background: url({:getindeximgurl($data47[23])});
+            background-repeat: no-repeat;
+            background-position: 5px 6px;
+        }
+        .proContactContainer{
+            background-image: url({:getindeximgurl($data47[24])});
+            background-repeat: no-repeat;
+            background-position: 5px 6px;
+        }
+    </style>
+    <div class="productContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                Your location: &nbsp;
+                <a href="{:U('/')}">Home</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    <if condition="$data47[2] eq ''">
+                        Products
+                        <else/>
+                        {$data47[2]}
+                    </if>
+                </span>
+            </div>
+        </div>
+        <div class="pageBannerContainer">
+            <div class="pageBannerImg">
+                <if condition="$banner neq ''">
+                    <volist name="banner" id="banner" offset="0" length="1">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </volist>
+                    <else/>
+                    <img src="{:getindeximgurl($data47[7])}" alt=""/>
+                </if>
+            </div>
+        </div>
+        <div class="page_body_container">
+            <if condition="$data47[39] neq ''">
+                <Include file="./Tpl/HJ04/left02.html" />
+            </if>
+            <div class="pageMainContainer container">
+                <if condition="$data47[39] eq ''">
+                    <Include file="./Tpl/HJ04/left.html" />
+                </if>
+                <if condition="$data47[19] neq ''">
+                    <div <if condition="$data47[39] neq ''">class="proMainContainer02"<else/>class="rt proMainContainer"</if>>
+                        <div class="proTitleContainer">
+                            <span class="proTitle">News Products</span>
+                            <span class="proMore rt">
+                                <a href="{:U('/all_isnew')}">More<span class="moreIcon"></span></a>
+                            </span>
+                        </div>
+                        <div class="proContainer">
+                            <ul class="proContent">
+                                <volist name="newpro" id="newpro">
+                                    <li class="proList lf">
+                                        <div class="proImgContainer">
+                                            <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                <img src="{:getmainimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> />
+                                            </a>
+                                        </div>
+                                        <div class="proTextContaner">
+                                            <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                <div class="proName ellipsis_one">
+                                                    {$newpro['pro_name']}
+                                                </div>
+                                                <div class="proDesc ellipsis_one">
+                                                    {$newpro['pro_description']}
+                                                </div>
+                                            </a>
+                                            <div class="proLine"></div>
+                                        </div>
+                                        <div class="proListHover">
+                                            <div style="padding: 36px 20px 0 20px;">
+                                                <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                    <div class="proHName">
+                                                        {$newpro['pro_name']}
+                                                    </div>
+                                                    <div class="proHDesc">
+                                                        {$newpro['pro_description']}
+                                                    </div>
+                                                </a>
+                                                <div class="proBtnContainer">
+                                                    <div class="proDetailMore lf">
+                                                        <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                            <span>View Details</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="proContactContainer rt">
+                                                        <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                            <span>Immediately</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$data47[20] neq ''">
+                    <div <if condition="$data47[39] neq ''">class="proMainContainer02"<else/>class="rt proMainContainer"</if>>
+                        <div class="proTitleContainer">
+                            <span class="proTitle">Hot Product</span>
+                        <span class="proMore rt">
+                            <a href="{:U('/all_ishot')}">More<span class="moreIcon"></span></a>
+                        </span>
+                        </div>
+                        <div class="proContainer">
+                            <ul class="proContent">
+                                <volist name="hotpro" id="hotpro">
+                                    <li class="proList lf">
+                                        <div class="proImgContainer">
+                                            <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                <img src="{:getmainimgurl($hotpro['main_img'])}" <if condition="$hotpro['proalt'] neq ''">alt="{$hotpro['proalt']}"<else/>alt="{$hotpro['pro_name']}"</if> />
+                                            </a>
+                                        </div>
+                                        <div class="proTextContaner">
+                                            <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                <div class="proName ellipsis_one">
+                                                    {$hotpro['pro_name']}
+                                                </div>
+                                                <div class="proDesc ellipsis_one">
+                                                    {$hotpro['pro_description']}
+                                                </div>
+                                            </a>
+                                            <div class="proLine"></div>
+                                        </div>
+                                        <div class="proListHover">
+                                            <div style="padding: 36px 20px 0 20px;">
+                                                <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                    <div class="proHName">
+                                                        {$hotpro['pro_name']}
+                                                    </div>
+                                                    <div class="proHDesc">
+                                                        {$hotpro['pro_description']}
+                                                    </div>
+                                                </a>
+                                                <div class="proBtnContainer">
+                                                    <div class="proDetailMore lf">
+                                                        <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                            <span>View Details</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="proContactContainer rt">
+                                                        <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                            <span>Immediately</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$data47[18] neq ''">
+                    <div <if condition="$data47[39] neq ''">class="proMainContainer02"<else/>class="rt proMainContainer"</if>>
+                        <div class="proTitleContainer">
+                            <span class="proTitle">All Products</span>
+                        </div>
+                        <div class="proContainer">
+                            <ul class="proContent">
+                                <volist name="allpro" id="allpro">
+                                    <li class="proList lf">
+                                        <div class="proImgContainer">
+                                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                <img src="{:getmainimgurl($allpro['main_img'])}" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"<else/>alt="{$allpro['pro_name']}"</if> />
+                                            </a>
+                                        </div>
+                                        <div class="proTextContaner">
+                                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                <div class="proName ellipsis_one">
+                                                    {$allpro['pro_name']}
+                                                </div>
+                                                <div class="proDesc ellipsis_one">
+                                                    {$allpro['pro_description']}
+                                                </div>
+                                            </a>
+                                            <div class="proLine"></div>
+                                        </div>
+                                        <div class="proListHover">
+                                            <div style="padding: 36px 10px 0 10px;">
+                                                <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                    <div class="proHName">
+                                                        {$allpro['pro_name']}
+                                                    </div>
+                                                    <div class="proHDesc">
+                                                        {$allpro['pro_description']}
+                                                    </div>
+                                                </a>
+                                                <div class="proBtnContainer">
+                                                    <div class="proDetailMore lf">
+                                                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                            <span>View Details</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="proContactContainer rt">
+                                                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                            <span>Immediately</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="main_page">{$page}</div>
+                </if>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

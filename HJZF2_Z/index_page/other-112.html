@@ -1,0 +1,31 @@
+<!--{$pagename}-->
+<php>
+</php>
+<style>
+	<if condition="$data691[0]">.hjzf_other_112 {
+		background: url({:getindeximgurl($data691[0])}) no-repeat center / cover;}
+	</if>.hjzf_other_112 img {
+		max-width: 100%;
+	}
+</style>
+<section class="hjzf_other_112 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<div class="hjzf_other_112_wrapper">
+					<if condition="$data691[2]">
+						<php>
+							$arr = get_list_val($data691[2]);
+						</php>
+						<span class="other_112_1"><a href="{$arr[0][link1]}"></a></span>
+						<span class="other_112_2"><a href="{$arr[0][link2]}"></a></span>
+						<span class="other_112_3"><a href="{$arr[0][link3]}"></a></span>
+						<span class="other_112_4"><a href="{$arr[0][link4]}"></a></span>
+						<span class="other_112_5"><a href="{$arr[0][link5]}"></a></span>
+					</if>
+					<img src="{:getindeximgurl($data691[1])}" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

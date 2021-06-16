@@ -1,0 +1,63 @@
+<!--{$pagename}-->
+<header>
+<style>
+<php>
+$bj_color=$data1[1] or $bj_color="#000";
+$font_color=$data1[2] or $font_color="#fff";
+</php>
+.new_hjzf_head nav{ 
+width:100%;
+height:38px;
+color: {$font_color};
+background:{$bj_color};
+}
+.new_hjzf_head nav a{ 
+display:block;
+height:38px;
+line-height:38px;
+text-decoration:none;
+width:20%;
+float:left;
+font-size:16px;
+text-align:center;
+overflow:hidden;
+white-space:nowrap;
+color: {$font_color};
+}
+@media (max-width: 480px) {
+    .new_hjzf_head nav a{font-size:14px;overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+}
+</style>
+<php>
+    $arr = get_list_val($data1[3]);
+</php>
+<div class="new_hjzf_head">
+<a href="{:U('/')}">
+<img class="new_hjzf_head__logo" src="{:getindeximgurl($data1[0])}">
+</a>
+<if condition="$data1[3]">
+<div class="wap2_head_sideMenu_lan">
+    <div class="head-6__Language">
+        <ul>
+        	<li><p><if condition="C('language') eq 'cn'">语言<else/>Lang</if><i class="fa fa-angle-down"></i></p>
+            <div id="lang_ul_top">
+            <volist name="arr" id="a">
+                <a class="l_f" alt="{$a[title]}" href="{$a[url]}"><img src="{$a[img]}" alt="" border="0"/><span>{$a[title]}</span></a>
+            </volist>
+            </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</if>
+<!--导航-->
+
+<nav>
+<a href="{:U('/')}">{:__("Home")}</a>
+<a href="{:U('/product')}">{:__("Products")}</a>
+<a href="{:U('/aboutus')}">{:__("About Us")}</a>
+<a href="{:U('/news')}">{:__("News")}</a>
+<a onclick="turn_sta(2,1)" href="{:U('/contactus')}">{:__("Contact Us")}</a>
+</nav>
+</div>
+</header>

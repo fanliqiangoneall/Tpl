@@ -1,0 +1,93 @@
+<!--{$pagename}-->
+<style>
+        .new_hjzf_aboutus-HJ03 #tip ul li.current{
+            background: #{$color};
+        }
+        .new_hjzf_aboutus-HJ03 .more-button:hover{
+            color: #fff;background: #{$color};text-indent: 0;transition: all .36s ease;
+        }
+        .new_hjzf_aboutus-HJ03 .hj03-adv-left .hj03-adv-item .adv_icon, .hj03-adv-right .hj03-adv-item .adv_icon{
+            color: #{$color};
+        }
+        .new_hjzf_aboutus-HJ03 .swiper-pagination-bullet-active{
+            background: #{$data73[5]};border: 1px solid #fff;
+        }
+        .new_hjzf_aboutus-HJ03 .hj02_abus_right_content{
+            color: #{$data73[6]}
+        }
+    </style>
+    <if condition="$data73[4]">
+        <style>
+            .new_hjzf_aboutus-HJ03 #aboutus{
+                background: url({:getindeximgurl($data73[4])}) no-repeat center;
+            }
+        </style>
+    </if>
+    
+    
+    <!--about us start-->
+    <div id="aboutus" class="module">
+        <div class="container">
+            <div class="hj02_abus_left wow fadeInLeftBig" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <div id="ab_picbox">
+                    <div id="pic" class="swiper-container page_indexpic ">
+                        <ul class="swiper-wrapper">
+                            <php>
+                                $imgs=aboutusimg();
+                                if(!$data73[3]){
+                                $data73[3]=3;
+                                }
+                            </php>
+                            <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data73[3]">
+                                <if condition="$banerimg['imgurl'] neq ''">
+                                    <li class="swiper-slide"><a <if condition="$data73[7]">href="{$data73[7]}" <else/>href="javascript:void(0);"</if><if condition="$data73[2]">id="adv_videos{$k1}"</if>><img src="{$banerimg['imgurl']}" border="0" /></a></li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div id="tip" class="swiper-pagination">
+                        <ul>
+                            <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data73[3]">
+                                <if condition="$banerimg['imgurl'] neq ''">
+                                    <li id="smallimg_{$k1}" class="swiper-pagination-bullet" ></li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hj02_abus_right">
+                <div class="index_product_title_left wow fadeInRightBig" style="padding-top: 30px;padding-bottom: 50px;width: 100%" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                    <div id="index_product_title_left1"><p>{$data73[0]}</p><span>{$data73[1]}</span></div>
+                </div>
+                <div class="clear"></div>
+                <div class="hj02_abus_right_content wow fadeInRightBig" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                    {:HtmlEncode(subtxt($company_info['description'],300))}&nbsp;&nbsp;
+                </div>
+                <if condition="$data73[8]">
+                    <a href="{$data73[8]}" class="more-button wow fadeInRightBig" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{:__('More')}</a>
+                    <else/>
+                    <a href="{:U('/aboutus')}" class="more-button wow fadeInRightBig" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{:__('More')}</a>
+                </if>
+
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+    
+        </div>
+    </div>
+    <script>
+        $('.page_indexpic #adv_videos1').on('click', function(e){
+            e.preventDefault();
+            layer.open({
+                type: 2,
+                title: ['video', 'font-size:18px;'],
+                area: ['80%', '80%'],
+                shadeClose: true,
+                maxmin: true,
+                content: $('.page_indexpic #adv_videos1').attr("href")
+            });
+        });
+    </script>
+    <!--about us end-->
+    

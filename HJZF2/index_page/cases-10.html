@@ -1,0 +1,37 @@
+
+<section id="cases-10">
+    <div class="container">
+        <hgroup class="cases-10__title">
+            <h3 class="cases-10__title--miantitle">{$data153[2]}</h3>
+            <h5 class="cases-10__title--subtitle">{$data153[3]}</h5>
+        </hgroup>
+        <div class="cases-10__content">
+            <ul class="flex">
+                <php>
+                    for($i=4;$i<43;$i=$i+5){
+                </php>
+                <li class="cases-10__item" >
+                    <div class="cases-10__itemImg">
+                        <p class="cases-10__itemImg--before"><img src="{:getindeximgurl($data154[$i+2])}" alt=""/></p>
+                        <p class="cases-10__itemImg--after"><img src="{:getindeximgurl($data154[$i+3])}" alt=""/></p>
+                    </div>
+                    <div class="cases-10__itemName"><a href="{%data154[$i+1]}">{$data154[$i]}</a></div>
+                </li>
+                <php>
+                    }
+                </php>
+            </ul>
+        </div>
+    </div>
+    <ul class="cases-10__bg">
+        <php>
+            for($i=4;$i<43;$i=$i+5){
+        </php>
+        <li class="cases-10__bgItem" style="background: url({:getindeximgurl($data154[$i+4])}) no-repeat center;">
+
+        </li>
+        <php>
+            }
+        </php>
+    </ul>
+</section>

@@ -1,0 +1,107 @@
+
+<div class="in_left">
+    <div class="left_search">
+       <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm1(this);">
+          <div style="width:224px; float:left; height:27px; border:1px solid #e5e5e5; border-right:none;">
+            <input type="输入关键词..." name="keywords" id="keywords2" placeholder="输入关键词..." value="输入关键词..." style="color:#999999; width:214px; margin-left:10px; border:none; line-height:26px; height:26px; background:none;" onfocus="OnFocusFun1(this,&#39;输入关键词...&#39;)" onblur="OnBlurFun1(this,&#39;输入关键词...&#39;)">
+          </div>
+          <div class="left_searchbg" style="width:50px; float:right; text-align:center;">
+            <input type="image" src="__TMPL__ZL01/img/left_search.png" height="16" style="vertical-align:middle;" name="submit" class="submit">
+          </div>
+       </form>
+    </div>
+    <if condition="$data37[0]">
+        <style>
+            .in_pagepro{position: relative;height: 261px;}
+            .in_proimg{width: 100%;height: 100%;overflow: hidden}
+            .in_proimg img{width: 100%;height: 100%;}
+            .in_proname{position: absolute;bottom: 0;background: rgba(0,0,0,0.5);}
+            .in_proname a{color: #fff;}
+        </style>
+        <!--产品2-->
+        <div class="in_tophead">{$data37[2]}</div>
+        <elseif condition="$data9[2]"/>
+        <div class="in_tophead">{$data9[2]}</div>
+        <elseif condition="$data41[7]"/>
+        <div class="in_tophead">{$data39[2]}</div>
+        <else/>
+        <div class="in_tophead">产品中心</div>
+
+    </if>
+
+    <div class="page_LeftClassbg">
+        <div class="page_LeftClass">
+           <volist empty="" name="allclass" id="allclass_left">
+            <div <if condition="inthiscate($classid,$allclass_left['pcid'],$product)">class="parent1"<else/>class="parent"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}#pro_detail">{$allclass_left['class_name']}</a></div>
+              <if condition="inthiscate($classid,$allclass_left['pcid'],$product) neq ''">
+               <volist empty="" name="allclass_left['childs']" id="childs">
+                <div <if condition="inthiscate($classid,$childs['pcid'],$product)">class="parent3"<else/>class="parent2"</if>><a href="{:U('/product_category','','')}/{:getprocatename($childs['pcid'])}#pro_detail">{$childs['class_name']}</a></div>
+               </volist>
+              </if>
+           </volist>
+        </div>
+    </div>
+    <div class="left_contact_pic"><if condition="$data1[10] neq ''"><img src="{:getindeximgurl($data1[10])}" border="0" /><else/><img src="__TMPL__ZL01/img/left_contact.jpg" border="0" /></if></div>
+    <div class="left_contact">
+      <h2>联系我们</h2>
+      <ul>
+         <if condition="chaifen($about['phone'],0)">
+         <li>电话：{:chaifen($about['phone'],0)}</li>
+         </if>
+         <if condition="chaifen($about['fax'],0)">
+         <li>传真：{:chaifen($about['fax'],0)}</li>
+         </if>
+         <if condition="chaifen($about['email'],0)">
+         <li style="line-height:22px; padding-top:8px;">邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onClick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></li>
+         </if>
+         <if condition="chaifen($about['email'],1)">
+         <li style="margin-left:70px; line-height:22px; padding-bottom:6px;"><a href="mailto:{:chaifen($about['email'],1)}" onClick="turn_sta(3,3)">{:chaifen($about['email'],1)}</a></li>
+         </if>
+         <if condition="$about['address']">
+         <li>地址：{$about['address']}</li>
+         </if>
+      </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<script>
+$('#keywords2').keydown(function() {
+var ordernubmer=$("#keywords2").val();
+  if (event.keyCode == 13) {
+	if(ordernubmer.length<=0){
+		alert("请输入关键词");
+		return false ;
+	}
+  }
+});
+		 
+function CheckForm1(theForm)
+  {
+	  if (theForm.keywords.value=="输入关键词...")
+	  {
+		  alert('请输入关键词');
+		  theForm.keywords.focus();
+		  return false;
+	  }
+	  
+	  return true; 
+  }
+  
+function OnFocusFun1(element,elementvalue)
+  {
+	  if(element.value==elementvalue)
+	  {
+		  element.value="";
+		  element.style.color="#333";
+	  }
+  }
+  //离开输入框时触发事件
+  function OnBlurFun1(element,elementvalue)
+  {
+	  if(element.value==""||element.value.replace(/\s/g,"")=="")
+	  {
+		  element.value=elementvalue;    
+		  element.style.color="#333";
+	  }
+  }	  
+</script>

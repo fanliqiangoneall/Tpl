@@ -1,0 +1,75 @@
+<script src="__TMPL__WH01_DE/js/statitics.js"></script>
+    <script>
+//导航自动选定的方法
+jQuery(function(){
+	//var color="#{$color}";
+	var color = "#333";
+	var url=window.location.href;
+	jQuery("#index_navigation_animate_2 li a").each(function(){
+		
+		var href=jQuery(this).attr("href");
+		href=href.toLowerCase();
+		url=url.toLowerCase();
+		//区分出啥是啥，主要就是区分出new pro case 优先找顶级，找不到在按规则排
+		if(href==url){
+			jQuery(this).parents("li").addClass("menu_on");
+		}else{
+			//说明是关于我们
+			url=url.toLowerCase();
+			if(url.indexOf("aboutus")!=-1){
+				if(href.indexOf("aboutus")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			//说明是产品页
+			if(url.indexOf("product")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("all_ishot")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("all_isnew")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			//说明是新闻页
+			if(url.indexOf("news")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("new_category")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("new_detail")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("download_detail")!=-1){
+				if(href.indexOf("download")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			//说明是案例也
+			if(url.indexOf("case")!=-1){
+				if(href.indexOf("case")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+		}
+	})
+})
+var path="";
+    </script>
+<Include file="./Tpl/WH01_DE/sidebar.html" />
+  </body>
+</html>
+

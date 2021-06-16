@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="__TMPL__/HJZF2_Z/inner/product_dean/jcxz.css">
+<div class="othercate14_left_title">
+    <b>检查需知</b>
+</div>
+<!-- 检查须知 -->
+<volist empty="" name="allclass" id="allclass_neia">
+    <if condition="$allclass_neia['pcid'] eq 41524">
+        <div class="jian_type">
+            <ul class="clearfix">
+                <volist empty="" name="allclass_neia['childs']" id="allclass_nei_twoaa">
+                    <div>
+                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_nei_twoaa['pcid'])}">{$allclass_nei_twoaa['class_name']}</a>
+                        <span>
+                            <volist empty="no" name="allclass_nei_twoaa['childs']" id="proList" offset="0">
+                                <a href="{:U('/product_category','','')}/{:getprocatename($proList['pcid'])}">{$proList['class_name']}</a>
+                            </volist>
+                        </span>
+                    </div>
+                </volist>
+            </ul>
+        </div>
+        <ul class="jian_ul">
+            <volist empty="" name="allclass_neia['childs']" id="allclass_nei_twobb">
+                <volist empty="no" name="allclass_nei_twobb['childs']" id="proList" offset="0">
+                    <php>
+                        $zjfcjian = get_product_byclass_index_nei($proList['pcid']);
+                    </php>
+                    <foreach name="zjfcjian" item="vo">
+                    <li>
+                        <a href="{:U('/Product','','')}/{:getproname($vo['pid'])}">
+                            <b>{$vo['pro_name']}</b>
+                        </a>
+                    </li>
+                    </foreach>
+                </volist>
+            </volist>
+        </ul>
+    </if>
+</volist>

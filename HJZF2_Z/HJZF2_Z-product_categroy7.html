@@ -1,0 +1,143 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+<!-- banner start -->
+<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2 HJZF_Z__innerBanner7" style="position:relative; overflow: inherit;">
+    <if condition="$prolist['banner']">
+        <div class="in_banner">
+            <img src="{:getimgurl($prolist['banner'])}" alt="" />
+        </div>
+        <elseif condition="$banner neq '' " />
+        <volist name="banner" id="banner" offset="0" length="1">
+            <div class="in_banner ads">
+                <img src="{:getimgurl($banner['ad_pic'])}" alt="" />
+            </div>
+        </volist>
+        <else/>
+        <div class="in_banner">
+            <img src="{:getindeximgurl($inner_data[5])}" alt="" />
+        </div>
+    </if>
+    <if condition="$inner_data[0]">
+    <div class="product_categroy7__innerContent">
+    	<div class="HJZF_Z__inner_product_categroy7">
+              <div class="HJZF_Z__inner_product_categroy7_title pb40">
+                  <h2 class="index_title text-center">{$prolist['class_name']}</h2>
+              </div>
+              <Include file="./Tpl/HJZF2_Z/left_product_categroy7.html" />
+        </div>
+    </div>
+    </if>
+</div>
+<!-- banner end -->
+    <style>
+        .inner7__class:hover .inner7__className h3{
+            color: #{$color};
+        }
+		.inner7__products_inquire a.inquire.view_detail:hover{
+			border: 1px solid #{$color};
+			background: #{$color};
+		}
+		.inner7__products_inquire a.addToBasket,.product_categroy7__btn button{
+			background: #{$color};
+		}
+        .HJZF_Z__Breadcrumbs span.current,.inner4_title h3,.inner7__proName h3{
+            color: #{$color};
+        }
+        .main_page .current,.main_page span:hover,.main_page a:hover{
+            background: #{$color};
+			border: 1px solid #{$color};
+        } 
+		.HJZF_Z__inner_product_categroy7 .selectWrap .down li h3:hover, .HJZF_Z__inner_product_categroy7 .selectWrap .down li.active {
+			background: #{$color};
+			color: #ffffff;
+		}
+    </style>
+    <div id="HJZF_Z__wrapper" class="inner_7__innerwrapper">
+        <div class="HJZF_Z__Breadcrumbs inner7_breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent inner_7__innerContent">
+
+            <div class="inner-7__maincontent">
+            	<if condition="$prolist['cate_profile']">
+                <div class="container">
+                    <div class="row">
+                        <div class="inner-7_titlepart">
+                            <div class="col-xs-12 inner7_profile">
+                                {:htmlspecialchars_decode($prolist['cate_profile'])}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                </if>
+                <if condition="$prolist['child'] neq 0">
+                <section class="inner-3__content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="inner7__proWrap">
+                                <volist empty="" name="proschild" id="allclass_index1" key="k_class">
+                                    <div class="col-xs-6 col-md-4 col-lg-2-4 inner7__probox wow fadeInUp">
+                                        <figure class="inner7__class">
+                                            
+                                                <div class="inner7__classimg">
+                                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_index1['pcid'])}" style="background-image:url({:getimgurl($allclass_index1['fid'])})"></a>
+                                                </div>
+                                                <figcaption class="inner7__className ellipsis_two">
+                                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_index1['pcid'])}"><h3 class="index_text" title="{$allclass_index1['class_name']}">{$allclass_index1['class_name']}</h3></a>
+                                                </figcaption>
+                                        </figure>
+
+                                    </div>
+                                </volist>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <else/>
+                <section class="inner-3__content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="inner7__proWrap">
+                                <php>
+                                    $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                                </php>
+                                <volist empty="$no_empty" name="pro" id="pro" key="k">
+                                    <div class="col-xs-6  col-md-4 col-lg-2-4 inner7__probox wow fadeInUp">
+                                        <figure class="inner7__pro">
+                                                <div class="inner7__proimg">
+                                                    <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}" style=" background-image:url({:getmainimgurl($pro['main_img'])})"></a>
+                                                </div>
+                                                <figcaption class="inner7__proName ellipsis_two">
+                                                    <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><h3 title="{$pro['pro_name']}">{$pro['pro_name']}</h3></a>
+                                                </figcaption>
+                                                <div class="inner7__products_inquire">
+                                                    <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}#inquiry" style="cursor:pointer;" class="a1 inquire view_detail">{:__('Inquire Now')}</a>
+                                                    <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}#inquiry" class="addToBasket">+</a>
+                                                </div>
+                                        </figure>
+
+                                    </div>
+                                </volist>
+                                <div class="clear"></div>
+                                <div class="main_page innner4_page">{$page}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                </if>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>

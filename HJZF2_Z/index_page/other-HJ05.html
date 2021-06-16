@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+<php>
+    if($data233[8]){
+    $other_hj05bg = getindeximgurl($data233[8]);
+    }else{
+    $other_hj05bg ='';
+    }
+</php>
+<style>
+    .HJZF_Z_other_HJ05_box {
+        background: url('{$other_hj05bg}') center/cover;
+        background-color: #{$data233[1]};
+        color: #{$data233[7]};
+    }
+
+    .HJZF_Z_other_HJ05_box a.more {
+        background-color: #{$data233[6]};
+    }
+</style>
+<section class="HJZF_Z_other_HJ05">
+    <if condition="$data233[0]">
+        <if condition="$data233[10]">
+            <div class="nav-hidden-mobile">
+                <img src="{:getindeximgurl($data233[0])}" alt="{$data233[2]}" class="img-responsive">
+            </div>
+            <div class="nav-hidden-pc">
+                <img src="{:getindeximgurl($data233[10])}" alt="{$data233[2]}" class="img-responsive">
+            </div>
+            <else />
+            <img src="{:getindeximgurl($data233[0])}" alt="{$data233[2]}" class="img-responsive">
+        </if>
+    </if>
+
+    <if condition="$data233[0]">
+        <div class="HJZF_Z_other_HJ05_box text-center">
+            <if condition="$data233[2]">
+                <h2 class="index_title pb20 wow fadeInUp" data-wow-delay=".1s">{$data233[2]}</h2>
+            </if>
+            <if condition="$data233[3]">
+                <p class="pb20 index_text wow fadeInUp" data-wow-delay=".2s">{$data233[3]}</p>
+            </if>
+            <if condition="$data233[4]">
+                <a href="{$data233[4]}" class="more wow fadeInUp index_text" data-wow-delay=".3s">{$data233[5]}</a>
+            </if>
+    </div>
+    </if>
+
+    <if condition="$data233[9]">
+        <div class="index_pd">
+            <div class="container">
+                <div class="row">
+                    <img src="{:getindeximgurl($data233[9])}" alt="{$data233[2]}" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </if>
+
+
+</section>

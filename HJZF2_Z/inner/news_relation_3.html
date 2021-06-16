@@ -1,0 +1,32 @@
+<style>
+.inner_news3_right {
+	width:100%;
+	position:relative;
+	padding-top:30px;
+}
+.inner_news3_right__title{
+	text-align:left;
+}
+.inner_news3_right__info{
+	margin-top:20px;
+	width:100%;
+	position:relative;
+}
+.inner_news3_right__info i{ position:absolute; top:7px; left:0;}
+.inner_news3_right__info a{ display:inline-block; margin-left:20px;}
+.inner_news3_right__info a:hover{
+	text-decoration:underline;
+}
+</style>
+<if condition="$inner_data[2]">
+<div class="inner_news3_right">
+	<div class="inner_news3_right__title index_sub_title">{$inner_data[3]}</div>
+    <div class="inner_news3_right__list">
+    <volist name="in_newnews" id="indexnewb">
+        <div class="inner_news3_right__info">
+            <i class="fa fa-angle-right"></i><a href="{:U('/new_detail',array('nid'=>$indexnewb["nid"]))}" class="ellipsis_two index_text">{$indexnewb['title']}</a>
+        </div>
+    </volist>
+    </div>
+</div>
+</if>

@@ -1,0 +1,100 @@
+<!--hengxin-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/inner/css/hengxin.css">
+<div class="InsidePages_content-left_content" id="pc_leftMenu">
+    <div class="HJZF_Z__inner--left__content">
+        <div class="ougang_search">
+            
+            <ul class="ougang_search_list">
+        
+                <volist empty="" name="allclass" id="allclass_left">
+                    <li pro-class-id="{$allclass_left['pcid']}" <if
+                        condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">
+                        class="yijion"
+                        <else />class="yiji"</if>><a
+                            href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}" class="yiji_link"><img src="{:getimgurl($allclass_left['fid'])}" />{$allclass_left['class_name']}
+                            <if condition="count($allclass_left['childs']) gt 0"><i class="fa fa-caret-down"></i></if>
+                        </a>
+                        
+                        <if condition='$allclass_left["childs"] neq ""'>
+                            <ul class="erji">
+                                <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+
+                                    <li pro-class-id="{$allclass_leftchild['pcid']}" <if
+                                        condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">
+                                        class="childon"
+                                        <else />class="child"
+                        </if> ><a
+                            href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a>
+                        <if condition='$allclass_leftchild["childs"] neq ""'>
+                            <ul class="sanji">
+                                <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftthird">
+                                    <li <if
+                                        condition="$classid eq $allclass_leftthird['pcid'] or $prolist['parent_id'] eq $allclass_leftthird['pcid'] or $product['class_id'] eq $allclass_leftthird['pcid'] or $procate['parent_id'] eq $allclass_leftthird['pcid']">
+                                        class="thirdon"
+                                        <else />class="third"
+                        </if> ><a
+                            href="{:U('/product_category','','')}/{:getprocatename($allclass_leftthird['pcid'])}">{$allclass_leftthird['class_name']}</a>
+
+
+
+                    </li>
+                </volist>
+            </ul>
+            </if>
+            </li>
+            </volist>
+            </ul>
+            </if>
+            </li>
+            </volist>
+            </ul>
+        </div>
+        <Include file="./Tpl/HJZF2_Z/inner/hengxin_searchproleft.html" />
+        <if condition="$system_set['inpage_custom']">
+            <div class="inner_contact">
+                <span>{:__('Contact us ')}</span>
+                <div class="inner_contact_con">
+                    <pre>{:get_zifu(htmlspecialchars_decode($system_set['inpage_custom']))}
+            </pre>
+                </div>
+            </div>
+        </if>
+
+    </div>
+    <div class="clear"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#pc_leftMenu .class_button").on("click", function () {
+                $(this).next('ul').slideToggle(300);
+                $(this).parents('.yiji').siblings('li').find('.erji').slideUp();
+            });
+            $(".yijion ul.erji").addClass("active");
+            $(".yiji ul.erji").addClass("active");
+            $(".childon ul.sanji").addClass("active");
+            $(".child ul.sanji").addClass("active");
+            $('.thirdon').parent('.sanji').show();
+            $('.childon').find('.sanji.active').show();
+        });
+        $('.yiji,.yijion').each(function () {
+            var len = $(this).find('.erji').length;
+            if(len > 0){
+                $(this).children('a.yiji_link').attr('href', 'javascript: void(0);');
+            };
+        });
+        
+        
+        $('.childon').parents('.yiji').addClass('yijion').removeClass('yiji');
+        $('.dianjinb').click(function () {
+            $(this).next('dl').slideToggle();
+        })
+
+        $('.yijion a').each(function () {
+            var ul = $(this).next('ul').length;
+            if(ul > 0){
+                $(this).parents('.ougang_search').addClass('on');
+                $(this).addClass('noheight');
+            }
+        })
+    </script>
+</div>

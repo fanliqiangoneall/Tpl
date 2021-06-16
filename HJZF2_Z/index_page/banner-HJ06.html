@@ -1,0 +1,94 @@
+<!--{$pagename}-->
+<style>
+   
+    .hjzf_pagination_hj06.swiper-pagination-progressbar .swiper-pagination-progressbar-fill,
+    .hjzf_hj06_banner_search_box:before
+    {
+        background-color: #{$data236[0]};
+    }
+    .hjzf_hj06_banner_search_box,.hjzf_hj06_banner_search_box_right input, 
+    .hjzf_hj06_banner_search_box_right .search_second #search-submit{
+        color: #{$data236[4]} !important;
+    }
+    .hjzf_hj06_banner_search_box_right ul{
+    border-bottom-color:  #{$data236[4]};
+}
+.new_hjzf_banner-HJ06 .hjzf_hj06_swiper span.swiper-pagination-bullet-active{
+	background-color: #{$color};
+}
+
+</style>
+
+<style>
+    /*.new_hjzf_banner-hj06 .hjzf-hj06_bannerbox{
+            height: {$data52[1]}px;
+        }
+        @media (max-width: 1440px) {
+            .new_hjzf_banner-hj06 .hjzf-hj06_bannerbox{
+                height: 460px;
+            }
+        }
+	*/
+</style>
+<section class="hj-banner hjzf_hj06_bannerbox">
+    <div id="hjzf_hj06_banner">
+        <div class="swiper-container hjzf_hj06_swiper">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k" offset="0" length="10">
+                    <div class="swiper-slide hj-banner-item">
+                        <if condition="$banner_pic['ad_pic']">
+                            <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg has_nowapbanner"</if>>
+                                <a <if condition="$webid eq '1632' && $banner_pic['ad_link']">target="_blank"</if> href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}">
+                                    <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%" />
+                                </a>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_wap']">
+                            <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                                <a <if condition="$webid eq '1632' && $banner_pic['ad_link']">target="_blank"</if> href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}"><img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%"/></a>
+                            </div>
+                        </if>
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-pagination hjzf_pagination_hj06"></div>
+            <div class="swiper-button-next hjzf_hj06-banner-next">
+                <i class="fa fa-angle-right"></i>
+            </div>
+            <div class="swiper-button-prev hjzf_hj06-banner-prev">
+                <i class="fa fa-angle-left"></i>
+            </div>
+        </div>
+        <!-- search start -->
+        <div class="hjzf_hj06_banner_search hidden-sm hidden-xs hidden-md">
+            <div class="container">
+                <div class="row">
+                        <div class="hjzf_hj06_banner_search_box clearfix">
+                            <div class="col-md-7 col-xs-8 hjzf_hj06_banner_search_box_left">
+                                <strong>{$data236[2]}：</strong>
+                                <span>{:HtmlEncode($data236[3])}</span>
+                            </div>
+                            <div class="col-xs-4 col-md-4 col-md-offset-1 hjzf_hj06_banner_search_box_right">
+                                    <if condition="C('language') eq 'cn'">
+                                            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                                <ul class="clearfix">
+                                                <li class="search_first"><input type="text" value="{:__('Product Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                                                <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                                            </ul>
+                                            </form>
+                                            <else/>
+                                            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                                <ul class="clearfix">
+                                                        <li class="search_first"><input type="text" value="keyword" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)"></li>
+                                                <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                                                </ul>
+                                            </form>
+                                        </if>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- search end -->
+    </div>
+</section>

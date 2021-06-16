@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<if condition="$data56[2]">
+    <style>
+        #hj01_news{
+            background: url({:getindeximgurl($data56[2])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_news-HJ01 #index_product_title_left3 h3{
+        color: #{$color};
+    }
+    .new_hjzf_news-HJ01 .index_newsitem_title a{
+        color: #333;
+    }
+    .new_hjzf_news-HJ01 .index_newsitem_title a:hover{
+        color: #{$color};
+    }
+    .new_hjzf_news-HJ01 .index_product_more:hover{
+        background: #{$data56[3]};color:#fff;border-color: #{$data56[3]};
+    }
+    .new_hjzf_news-HJ01 .new_hjzf_news-HJ01-swiper-next,.new_hjzf_news-HJ01 .new_hjzf_news-HJ01-swiper-prev{
+        background: #646464;
+    }
+    .new_hjzf_news-HJ01 .new_hjzf_news-HJ01-swiper-next:hover,.new_hjzf_news-HJ01 .new_hjzf_news-HJ01-swiper-prev:hover{
+        background: #{$data56[3]};
+    }
+    .index_newsitem_box:hover .index_newsitem_title a{
+        color: #{$data56[3]};
+    }
+</style>
+<div id="hj01_news">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left">
+                <div id="index_product_title_left3"><h3>{$data56[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right3">
+                    <a href="{:U('/news')}" class="index_product_more font-weight-700">{$data56[1]}</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section class="index_newslist_wai">
+            <if condition="count($indexnews) gt 3 or count($indexnews) eq 3">
+                <div class="index_newslist_wai_box">
+                    <div class="swiper-container new_hjzf_news-HJ01-swiper">
+                        <div class="swiper-wrapper">
+                            <volist name="indexnews" id="indexnews" offset="0" length="6" key="h">
+                                <div class="swiper-slide ">
+                                    <div class="index_newsitem_box">
+                                        <div class="index_newsitem_img">
+                                            <if condition="$indexnews['new_pro'] neq ''">
+                                                <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" >
+                                                    <img src="{:getimgurl($indexnews['new_pro'])}" border="0" />
+                                                </a>
+                                            <else/>
+                                                <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" >
+                                                <img src="{:getindeximgurl($data56[4])}" border="0" />
+                                                </a>
+                                            </if>
+                                        </div>
+                                        <div class="index_newsitem_down">
+                                            <div class="index_newsdate"><span>
+                                                <if condition="C(Language) eq 'cn' or C(Language) eq 'zh'">
+                                                    {:zq_date($indexnews['created'])}
+                                                    <else/>
+                                                    {:date('M d,Y ',$indexnews['created'])}
+                                                </if>
+                                            </span></div>
+                                            <div class="index_newsitem_title"><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" class="font-weight-600">{:subtxt($indexnews['title'],50)}</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next new_hjzf_news-HJ01-swiper-next"></div>
+                    <div class="swiper-button-prev new_hjzf_news-HJ01-swiper-prev"></div>
+                </div>
+            </if>
+        </section>
+    </div>
+</div>

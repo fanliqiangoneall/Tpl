@@ -1,0 +1,113 @@
+.hj09_banner_top{
+    max-height: 100vh;
+    overflow: hidden;
+}
+.hj09_banner_top .hj09_banner_next,
+.hj09_banner_top .hj09_banner_prev{
+    opacity: 1 !important; 
+    display: block !important;
+}
+.hj09_banner_navigation{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: 10vw;
+    bottom: 6vw;
+    color: #fff;
+    text-align: center;
+    z-index: 9;
+    min-width: 200px;
+}
+.hj09_banner_navigation_btn{
+    width: 80px;
+    flex:0 0 80px;
+    position: relative;
+}
+.hj09_banner_navigation_btn .swiper-button-next,
+.hj09_banner_navigation_btn .swiper-button-prev{
+    width: 20px;
+    height: 40px;
+    background-size: 20px 40px;
+}
+.hj09_banner_top_btn{
+    position: relative;
+    display: flex;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+}
+.hj09_banner_top_btn i{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 9;
+}
+.hj09_banner_top_btn i.stop,.hj09_banner_top_btn.open i.start{
+    opacity: 0;
+    z-index: 8;
+}
+.hj09_banner_top_btn.open i.stop{
+    opacity: 1;
+    z-index: 9;
+}
+.hj09_banner_wrapper .texta{
+    font-size: 45px;
+    line-height: 1.1;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+.hj09_banner_wrapper .textb{
+    font-size: 18px;
+}
+.hj09_banner_wrapper{
+    position: absolute;
+    top: 30vh;
+    margin-left: 100px;
+    margin-right: 100px;
+    color: #fff;
+}
+@media(min-width: 1200px) {
+    .hjzf_banner_hj09{
+        min-height: 100vh;
+    }
+}
+@media (max-width: 1199px){
+    .hj09_banner_wrapper{
+        top:  10vw;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+    .hj09_banner_wrapper .texta{
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    .hj09_banner_wrapper .textb{
+        font-size: 16px;
+    }
+    .hj09_banner_navigation{
+        bottom: 3vw;
+    }    
+}
+@media (max-width:768px) {
+    .hj09_banner_wrapper{
+        top: 50%;
+        margin-left: 10vw;
+        margin-right: 8vw;
+        transform: translateY(-50%);
+    }
+    .hj09_banner_wrapper .texta{
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .hj09_banner_wrapper .textb{
+        font-size: 14px;
+    }
+    .hj09_banner_navigation,.hj09_banner_navigation_btn{
+        position: static;
+    }  
+}

@@ -1,0 +1,601 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style type="text/css">
+    .addthis_sharing_toolbox,.hj02_detail_mail i{
+        display: inline-block;
+        vertical-align: text-bottom;
+    }
+   
+    #product_detail .detail-gallery-top{
+        padding-bottom: 0;
+        height: auto;
+    }
+    .con_share{
+        margin-right: 5px;
+    }
+    .HJZF_Z__Breadcrumbs {
+            background-color: #eee;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            margin-bottom: 40px !important;
+        }
+        #product_detail .detail-gallery-thumbs .swiper-slide img,#product_detail .detail-gallery-top .swiper-slide img{
+            border: 1px solid #eee;
+        }
+        #product_detail .detail-gallery-thumbs .swiper-slide.swiper-slide-active img{
+            border-color: #{$color};
+        }
+        .HJZF_Z__Breadcrumbs .row {
+            text-align: left;
+        }
+        .HJZF_Z__Breadcrumbs span.current {
+            color: #{$color};
+        }
+        #product_detail .left{
+            background: transparent;
+        }
+        .InsidePages_left_navlist li.yiji:hover>a>h3,
+        .InsidePages_left_navlist li.yiji:hover>.class_button:before,
+        .InsidePages_left_navlist li.yijion>a>h3,
+        ul.InsidePages_left_navlist>li>ul>li:hover>a>h3,
+        ul.InsidePages_left_navlist>li>ul>li.childon>a>h3,
+        ul.InsidePages_left_navlist>li>ul>li>ul>li a h3:hover,
+        ul.InsidePages_left_navlist>li>ul>li>ul>li.thirdon a h3 {
+            color: #{$color};
+        }
+
+        .detail-gallery-thumbs .swiper-slide-thumb-active {
+            border: 1px solid #{$color};
+        }
+        .productbutton{
+            background-color: #{$color};
+        }
+        .detail_inquiry a:hover,
+        .detail_down a:hover {
+            background: #{$color};
+        }
+
+        .product_detail_editor_content_title {
+            border-left: 10px solid #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+        .InsidePages_content-right__wrap .mainDetail-tabs{
+            background-color: transparent !important;
+            border-bottom: 1px solid #eee;
+        }
+        .product_detail_editor_content_title{
+            border-left: 0 !important;
+            background-color: transparent;
+            border-bottom: 1px solid #eee;
+        }
+        .product_detail_editor_content_title span{
+            vertical-align: top;
+            margin: -4px;
+            background-color: #333;
+            border-bottom: 4px solid #{$color};
+            display: inline-block;
+            color: #fff;
+            padding: 0 20px;
+        }
+        .pro_info_box_contact {
+            bottom: 20px;
+        }
+        .pro_info_box h3{
+            line-height: 1.6;
+        }
+    </style>
+    <if condition="$inner_data[3]">
+        <style>
+            ul.InsidePages_left_navlist2 li h3:hover,
+            ul.InsidePages_left_navlist2>li.yiji>ul>li>a>h3:hover {
+                color: #{$color};
+            }
+
+            .yijion>a>h3,
+            .childon>a>h3,
+            .thirdon>a>h3,
+            .four_class_on>a>h3,
+            .fiv_class_on>a>h3 {
+                color: #{$color} !important;
+            }
+        </style>
+    </if>
+    <if condition="$inner_data[2]">
+        <style>
+            .InsidePages_content-right__wrap .tabsTitle {
+                display: inline-block;
+                vertical-align: top;
+                color: rgb(51, 51, 51);
+                cursor: pointer;
+                padding: 5px 20px;
+            }
+
+            .InsidePages_content-right__wrap .mainDetail-tabs {
+                background-color: #eeeeee;
+                position: relative;
+                height: 100%;
+                margin-top: 5px;
+                margin-bottom: 25px;
+            }
+
+            .InsidePages_content-right__wrap .tabsTitle.active {
+                color: #fff;
+                font-weight: bold;
+                background-color: #333;
+                border-bottom: 4px solid #{$color};
+            }
+
+            .InsidePages_content-right__wrap .mainDetail-tabs li {
+                margin-right: 0;
+            }
+        </style>
+    </if>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner_news.html" />
+            <Include file="./Tpl/HJZF2_Z/inner/products_cate13_detail.html" />
+        </div>
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <Include file="./Tpl/HJZF2_Z/inner/products13_left.html" />
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div id="product_detail">
+                                    <div class="product_detail--top">
+                                        <div class="left">
+                                            <div class="swiper-container detail-gallery-top product_detail_01" id="gallery">
+                                                <div class="swiper-wrapper">
+                                                    <if condition="get_video_img_url($product['pid'])">
+                                                    <!-- 视频 -->
+                                                    <div class="swiper-slide">
+                                                        <if condition="get_video_wai_url($product['pid'])">
+                                                            <video src="{:get_video_wai_url($product['pid'])}" controls="controls" class="img-fluid"></video>
+                                                            <else/>
+                                                            <video src="{:get_video_url($product['pid'])}" controls="controls" class="img-fluid"></video>
+                                                            </if>
+                                                    </div>
+                                                    <!-- 视频 -->
+                                                </if> 
+                                                    <div class="swiper-slide pro_detail_top_slide">
+                                                        <a>
+                                                            <img src="{:getmainimgurl($product['main_img'])}"
+                                                                alt="{:getmainimgurl($product['main_img'])}" <if
+                                                                condition="$product['proalt'] neq ''">title="{$product['proalt']}"
+                                                            <else />title="{$product['pro_name']}"</if> class="jqzoom"/>
+                                                        </a>
+                                                    </div>
+                                                    <volist name="proimg" id="proimgBig">
+                                                        <if
+                                                            condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                                            <div class="swiper-slide">
+                                                                <a>
+                                                                    <img src="{:getfimgurl($proimgBig['field_auxiliary_fid'])}"
+                                                                        class="jqzoom" <if
+                                                                        condition="$proimgBig['field_auxiliary_title'] eq ''">alt="{$proimgBig['pro_name']}"
+                                                                    <else />alt="{$proimgBig['field_auxiliary_title']}"
+                                                        </if>/>
+                                                        </a>
+                                                </div>
+                                                </if>
+
+                                                </volist>
+                                            </div>
+                                        </div>
+                                        <if condition="$inner_data[5] eq ''">
+                                            <div class="detail-gallery-thumbs__wrap">
+                                                <div class="swiper-container detail-gallery-thumbs">
+                                                    <div class="swiper-wrapper">
+                                                        <if condition="get_video_img_url($product['pid'])">
+                                                        <!-- 视频 -->
+                                                        <div class="swiper-slide">
+                                                            <img src="{:get_video_img_url($product['pid'])}" alt="{$product['pro_name']}" class="img-fluid">
+                                                        </div>
+                                                        <!-- 视频 -->
+                                                    </if>
+                                                        <div class="swiper-slide pro_detail_thunms_slide">
+                                                            <img src="{:getmainimgurl($product['main_img'])}"
+                                                                alt="{:getmainimgurl($product['main_img'])}" <if
+                                                                condition="$product['proalt'] neq ''">title="{$product['proalt']}"
+                                                            <else />title="{$product['pro_name']}"
+                                        </if> class="jqzoom">
+                                    </div>
+                                    <volist name="proimg" id="proimgSm">
+                                        <if
+                                            condition="getfimgurl($proimgSm['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                            <div class="swiper-slide"><img
+                                                    src="{:getfimgurl($proimgSm['field_auxiliary_fid'])}" class="jqzoom"
+                                                    <if
+                                                    condition="$proimgSm['field_auxiliary_title'] eq ''">alt="{$proimgSm['pro_name']}"
+                                                <else />alt="{$proimgSm['field_auxiliary_title']}"
+                                        </if>/>
+                                </div>
+                                </if>
+                                </volist>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next swiper-button-next-detail"><i class="fa fa-chevron-right"
+                                aria-hidden="true"></i></div>
+                        <div class="swiper-button-prev swiper-button-prev-detail"><i class="fa fa-chevron-left"
+                                aria-hidden="true"></i></div>
+                </div>
+                </if>
+            </div>
+            <style>
+                #model_wind {
+                    width: 100%;
+                    height: 100%;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 99;
+                    background: rgba(0, 0, 0, .5);
+                    display: none
+                }
+
+                .model_wind_content {
+                    width: 100%;
+                    height: auto;
+                    margin: auto;
+                    transform: translateY(-50%);
+                    -moz-transform: translateY(-50%);
+                    -webkit-transform: translateY(-50%);
+                    position: relative;
+                    top: 50%;
+                }
+
+                .model_wind_box {
+                    width: 100%;
+                    padding: 30px;
+                    box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    background: #fff;
+                    position: relative
+                }
+
+                .model_wind_swiper {
+                    width: 100%;
+                }
+
+                .model_wind_swiper .swiper-slide img {
+                    width: 100%
+                }
+
+                .model_wind_name {
+                    width: 100%;
+                    height: 30px;
+                    line-height: 30px;
+                }
+
+                .swiper-button-next-model,
+                .swiper-button-prev-model {
+                    background-image: none;
+                    text-align: left;
+                    line-height: 100px;
+                    outline: none;
+                    width: 50px;
+                    height: 100px;
+                    transform: translateY(-50%);
+                    -moz-transform: translateY(-50%);
+                    -webkit-transform: translateY(-50%);
+                }
+
+                .swiper-button-next-model {
+                    text-align: right
+                }
+
+                .swiper-pagination_model {
+                    position: relative
+                }
+            </style>
+            <div id="model_wind">
+            <span class='vidoe_close'><i class='fa fa-window-close-o'></i></span>
+            <div class="model_wind_content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
+                                <div class="model_wind_box">
+                                    <div class="swiper-container model_wind_swiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img src="{:getmainimgurl($product['main_img'])}"
+                                                    alt="{$product['pro_name']}" />
+                                                <div class="model_wind_name">
+                                                    <if condition="$product['proalt'] neq ''">{$product['proalt']}
+                                                        <else />{$product['pro_name']}</if>
+                                                </div>
+                                            </div>
+                                            <volist name="proimg" id="proimgSm">
+                                                <div class="swiper-slide">
+                                                    <if condition="$proimgSm['field_auxiliary_title'] eq ''">
+                                                        <img src="{:getfimgurl($proimgSm['field_auxiliary_fid'])}"
+                                                            alt="{$proimgSm['pro_name']}" />
+                                                        <else />
+                                                        <img src="{:getfimgurl($proimgSm['field_auxiliary_fid'])}"
+                                                            alt="{$proimgSm['field_auxiliary_title']}" />
+                                                    </if>
+                                                    <div class="model_wind_name">
+                                                        <if condition="$proimgSm['field_auxiliary_title'] eq ''">
+                                                            {$proimgSm['pro_name']}
+                                                            <else />{$proimgSm['field_auxiliary_title']}</if>
+                                                    </div>
+                                                </div>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-button-next swiper-button-next-model"><i
+                                            class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                                    <div class="swiper-button-prev swiper-button-prev-model"><i
+                                            class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                                    <div class="swiper-pagination swiper-pagination_model"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="product_info">
+                <div class="pro_info_box">
+                    <h3 class="margin-10px-bottom">{$product['pro_name']}</h3>
+                    <div class="pro_info_desc">
+                        <volist name="real_atts" id="real_att">
+                            <div class="" style="padding:2px 0px;">{$real_att}</div>
+                        </volist>{:HtmlEncode(subtxt($product['pro_description'],600))}
+                    </div>
+                    <div class="margin-30px-top pro_info_box_contact">
+                        <if condition="WEBID eq '1718'">
+                            <div class="hj02_detail_mail pb20">
+                                <i class="fa fa-link" aria-hidden="true"></i> 
+                                <php>
+                                    $arr = get_list_val($inner_data[3]);
+                                </php>
+                               <!--[if gt IE 8]><!-- Go to www.addthis.com/dashboard to customize your tools --><div class="addthis_sharing_toolbox" ></div><!-- Go to www.addthis.com/dashboard to customize your tools --><script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52d9da3543f78f25"></script><![endif]-->
+                              
+                            </div>
+                        </if>
+                        <if condition="C(language) eq 'en'">
+                            <div class="hj02_detail_mail" style="padding-bottom: 20px;"><i
+                                    class="fa fa-envelope-o"></i><a href="mailto:{:chaifen($about['email'],0)}"
+                                    onclick="turn_sta(3,3);" onfocus="blur()">{:chaifen($about['email'],0)}</a></div>
+                            <else />
+                            <div class="hj02_detail_mail " style="padding-bottom: 20px;"><i class="fa fa-phone"></i>
+                                <a href="javascript:void(0);">{:chaifen($about['phone'],0)}</a></div>
+                        </if>
+
+                        <div class="margin-15px-top">
+                            <div class="detail_inquiry"><a onclick="javascript:jumpto()"><img
+                                        src="__TMPL__HJ02/img/icon_inquiry.png" alt=""
+                                        style="position: relative;left: -10px;top: 0;" />{:__('Inquiry Now')}</a></div>
+                            <if condition="$product['pro_file'] neq ''and $product['pro_file'] neq 0">
+                                <div class="detail_down"><a href="{:getimgurl($product['pro_file'])}"
+                                        target="_blank"><img src="__TMPL__HJ02/img/pdf.png" alt=""
+                                            style="position: relative;left: -10px;top:0;" />{:__('Download')}</a></div>
+                            </if>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <if condition="$inner_data[5]">
+                        <style>
+                            @media (min-width:768px) {
+                                .product_detail--top {
+                                    display: -moz-flex;
+                                    display: -webkit-flex;
+                                    display: -moz-box;
+                                    display: -ms-flexbox;
+                                    display: -webkit-box;
+                                    display: flex;
+                                }
+                            }
+
+                            .pro_info_box_contact {
+                                position: relative;
+                            }
+
+                            .pro_info_proimgSm .detail-gallery-thumbs__wrap {
+                                margin-bottom: 0;
+                            }
+                        </style>
+                        <div class="pro_info_proimgSm">
+                            <div class="detail-gallery-thumbs__wrap">
+                                <div class="swiper-container detail-gallery-thumbs">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide pro_detail_thunms_slide">
+                                            <img src="{:getmainimgurl($product['main_img'])}"
+                                                alt="{:getmainimgurl($product['main_img'])}" <if
+                                                condition="$product['proalt'] neq ''">title="{$product['proalt']}"
+                                            <else />title="{$product['pro_name']}"
+                    </if> class="jqzoom">
+                </div>
+                <volist name="proimg" id="proimgSm">
+                    <if condition="getfimgurl($proimgSm['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                        <div class="swiper-slide"><img src="{:getfimgurl($proimgSm['field_auxiliary_fid'])}"
+                                class="jqzoom" <if
+                                condition="$proimgSm['field_auxiliary_title'] eq ''">alt="{$proimgSm['pro_name']}"
+                            <else />alt="{$proimgSm['field_auxiliary_title']}"
+                    </if>/>
+            </div>
+            </if>
+            </volist>
+        </div>
+    </div>
+    <div class="swiper-button-next swiper-button-next-detail"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </div>
+    <div class="swiper-button-prev swiper-button-prev-detail"><i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </div>
+    </div>
+    </div>
+    </if>
+    </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+
+    <div class="product_detail_editor_content">
+
+        <!--more editors-->
+        <if condition="$editor_count eq 1">
+            <div class="product_detail_editor_content_title"><span>{:__('Product Detail')}</span></div>
+            <div class="pro_detail detail_editor" id="gx1" style="display:block;">{:str_replace('&nbsp;','
+                ',htmlspecialchars_decode($product['pro_profile']))}</div>
+            <else />
+            <php>
+                $editor_list=$inner_data[2];
+                $editor_ary = explode(',',$editor_list);
+                foreach($editor_ary as $k=>$a){
+                $elist[$k]=$a;
+                }
+            </php>
+            <ul class="mainDetail-tabs">
+                <for start="1" end="$editor_count+1">
+                    <li index="{$i}" class="tabsTitle index_text <if condition=" $i eq 1"> active
+        </if>">
+    <span>{$elist[$i-1]}</span></li>
+        </for>
+        </ul>
+        <for start="1" end="$editor_count+1">
+            <php>
+                if($i==1){
+                $edit_name="pro_profile";
+                }else{
+                $edit_name="pro_profile".$i;
+                }
+            </php>
+            <div index="{$i}" class="pro_detail detail_editor" <if condition="$i neq 1">style="display:none" </if>>
+                <!--<div index="{$i}" class="pro_detail detail_editor">-->
+                {:str_replace('&nbsp;',' ',htmlspecialchars_decode($producteditors[$edit_name]))}
+            </div>
+        </for>
+        </if>
+        <!--more editors-->
+    </div>
+    <section>
+        <if condition="comment_show() eq 1">
+            <include file="HJZF2_Z:comment" />
+        </if>
+        <if condition="get_productkeyword($product['pid']) neq ''">
+            <include file="HJZF2_Z:keywords" />
+        </if>
+        <if condition="$labelprodlist neq ''">
+            <div class="product_detail_editor_content_title"><span>{:__('Related products')}</span></div>
+        </if>
+        <include file="HJZF2_Z:relationinfo" />
+        <if condition="$labelnewlists neq ''">
+            <div class="product_detail_editor_content_title"><span>{:__('Related news')}</span></div>
+        </if>
+        <include file="HJZF2_Z:relationnew" />
+    </section>
+    <div class="product_detail_editor_content detail_inquery">
+        <!--询盘-->
+        <div id="inquiry" class="product_detail_editor_content_title"><span>{:__('Inquiry Now')}</span></div>
+        <div class="proinquiry">
+            <if condition="C('language') eq 'cn'">
+                <Include file="./Tpl/HJZF2_Z/submitinquiry_cn.html" />
+                <else />
+                <Include file="./Tpl/HJZF2_Z/submitinquiry.html" />
+            </if>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <section>
+        <if condition="$otherpro neq ''">
+            <div class="product_detail_editor_content_title"><span>{:__('Other products')}</span></div>
+            <div>
+                <div class="mainpage_probox">
+                    <volist empty="" name="otherpro" id="otherpro" offset="0" length="3" key="k">
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem">
+                            <div class="main_proitem_box">
+                                <div class="main_proitem_img"><a
+                                        href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                                        <if condition="$otherpro['main_img']">
+                                            <img src="{:getmainimgurl($otherpro['main_img'])}" <if
+                                                condition="$otherpro['proalt'] neq ''">alt="{$otherpro['proalt']}"
+                                            <else />alt="{$otherpro['pro_name']}"</if> />
+                                        <else />
+                                        <img src="{:getindeximgurl($inner_data[3])}" alt="" />
+        </if>
+        </a></div>
+        <div class="main_proitem_second">
+            <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                <div class="main_proitem_name margin-10px-bottom">
+                    <h6 title="{$otherpro['pro_name']}">{:subtxt($otherpro['pro_name'],60)}</h6>
+                </div>
+
+            </a>
+        </div>
+        </div>
+        </div>
+        </volist>
+        </div>
+        <div style="clear:both;"></div>
+
+        </div>
+        </if>
+        <if condition="$hotpro neq ''">
+            <div class="product_detail_editor_content_title"><span>{:__('Hot products')}</span></div>
+            <div>
+
+                <div class="mainpage_probox">
+                    <volist empty="" name="hotpro" id="newpro" offset="0" length="3" key="k">
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem">
+                            <div class="main_proitem_box">
+                                <div class="main_proitem_img"><a
+                                        href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                        <if condition="$newpro['main_img']">
+                                            <img src="{:getmainimgurl($newpro['main_img'])}" <if
+                                                condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"
+                                            <else />alt="{$newpro['pro_name']}"</if> />
+                                        <else />
+                                        <img src="{:getindeximgurl($inner_data[3])}" alt="" />
+        </if>
+        </a></div>
+        <div class="main_proitem_second">
+            <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                <div class="main_proitem_name margin-10px-bottom">
+                    <h6 title="{$newpro['pro_name']}">{:subtxt($newpro['pro_name'],60)}</h6>
+                </div>
+
+            </a>
+        </div>
+        </div>
+        </div>
+        </volist>
+        </div>
+
+        </div>
+        </if>
+    </section>
+    </div>
+    </div>
+    </div>
+    </section>
+    </div>
+    </div>
+    </div>
+    </div>
+
+</block>
+<block name="footer_js">
+    <script>
+        require(['jquery'], function ($) {
+            $(".tabsTitle").on('click', function () {
+                $(".tabsTitle").removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).attr("index");
+                $(".pro_detail").hide();
+                $(".pro_detail").eq(index - 1).show();
+            });
+        });
+    </script>
+</block>

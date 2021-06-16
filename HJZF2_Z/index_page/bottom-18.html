@@ -1,0 +1,124 @@
+<!--{$pagename}-->
+<php>
+    if($data488[1]){
+    $color = $data488[1];
+    }
+    if($data488[2]){
+    $txt_col = $data488[2];
+    }else{
+    $txt_col = 'fff';
+    }
+    if($data488[6]){
+        $bb_col = $data488[6];
+        }else{
+        $bb_col = '333';
+    }
+    $gradientcol=explode(",",$data488[3])
+</php>
+<style>
+    <if condition="$data488[0]">.hjzf_Z_bottom_18_top {
+        background: url({:getindeximgurl($data488[0])}) no-repeat center/cover;
+    }
+    </if>.hjzf_Z_bottom_18_mid li span {
+        border: 1px solid #{$color};
+    }
+    .hjzf_Z_bottom_18_mid li span:hover {
+        background: linear-gradient(135deg, #{$gradientcol[0]}, #{$gradientcol[1]});
+    }
+    .hjzf_Z_bottom_18_top {
+        padding-top: 40px;
+    }
+    .hjzf_Z_bottom_18_top,
+    .hjzf_Z_bottom_18_top a,
+    .hjzf_Z_bottom_18_bottom,
+    .hjzf_Z_bottom_18_bottom a {
+        color: #{$txt_col};
+    }
+    .hjzf_Z_bottom_18_top a:hover {
+        color: #{$color};
+    }
+    .hjzf_Z_bottom_18_bottom{
+        background-color: #{$bb_col};
+    }
+</style>
+<section class="hjzf_Z_bottom_18">
+    <div class="hjzf_Z_bottom_18_top">
+        <div class="container">
+            <div class="row">
+                <!-- top -->
+                <div class="col-xs-12 pb40">
+                    <php>
+                        $arr = get_list_val($data488[4]);
+                        $arra = get_list_val($data488[5]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <div class="hjzf_Z_bottom_18_top_title d-flex align-items-center">
+                            <div class="index_title">
+                                <span style="color:#{$a[col]};">{$a[txt1]}</span>
+                                <span>{$a[txt2]}</span>
+                            </div>
+                            <em>{$a[sub]}</em>
+                        </div>
+                        <div class="hjzf_Z_bottom_18_bottom_title ">
+                            {$a[info]}
+                        </div>
+                    </volist>
+                </div>
+                <!-- mid -->
+                <div class="col-xs-12 col-md-6">
+                    <ul class="hjzf_Z_bottom_18_mid">
+                        <volist name="arra" id="a">
+                            <li class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0">
+                                <span class="img-par">
+                                    <img src="{$a[add]}" class="normal" alt="{$a[title]}">
+                                    <img src="{$a[addh]}" class="hover" alt="{$a[title]}">
+                                </span>
+                                <div class="hjzf_Z_bottom_18_mid_r">
+                                    <div class="index_sub_title">{$a[title]}</div>
+                                    <p>
+                                        <if condition="$a[link]">
+                                            <a href="{$a[link]}">
+                                        </if>
+                                        {$a[info]}
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-md-5 col-md-offset-1 bottom_18_submit">
+                    <Include file="./Tpl/HJZF2_Z/submit_bottom_18.html" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hjzf_Z_bottom_18_bottom">
+        <div class="container">
+            <div class="row">
+                <php>
+                    $nowtime=date("Y",time());
+                </php>
+                <div class="hjzf_Z_bottom_18_bottom_wrapper col-xs-12">
+                    CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights reserved')}&nbsp;
+                    <if condition="get_txtBeiAn()">
+                        <a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+                        </a>&nbsp;
+                    </if>
+                    <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                    <a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <if condition="$data453[9] eq ''"><a id="mianze" title="免责声明" target="_blank"
+                                style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a
+                                href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        </if>
+                        <else />
+                        <if condition="$data453[9] eq ''">
+                            <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by Zhonghuan Internet</a>
+                        </if>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

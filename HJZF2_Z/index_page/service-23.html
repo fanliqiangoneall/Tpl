@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+<style>
+    .service_23_title .index_sub_title,
+    .service_23_wrapper_content:hover .index_sm_title,
+    .service_23_title .index_sub_title:hover a,
+    .service_23_wrapper_content:hover .index_sm_title a{
+        color: #{$color};
+    }
+
+    .service_23_wrapper_content_line span:after,
+    .service_23_wrapper_content_line span:before,
+    .service_23_paga .swiper-pagination-bullet-active {
+        background-color: #{$color};
+    }
+</style>
+<section class="service_23 index_pd">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-xs-12">
+                <div class="pb40 service_23_title">
+                    <span class="index_title wow slideInLeft pb20">
+                        {:HtmlEncode($data365[2])}
+                    </span>
+                    <span class="index_sub_title wow slideInRight">
+                        {$data365[3]}
+                    </span>
+                </div>
+                <php>
+                    $arr = get_list_val($data365[4]);
+                </php>
+                <div class="swiper-container service_23_container">
+                    <ul class="swiper-wrapper">
+                        <volist name="arr" id="a">
+                            <li class="service_23_wrapper swiper-slide">
+                                <div class="service_23_wrapper_img">
+                                    <img src="{$a[img]}" alt="{$a[title]}" class="img-full">
+                                </div>
+                                <div class="service_23_wrapper_content">
+                                    <div class="service_23_wrapper_content_line">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span class="index_sm_title"><a href="{$a[link]}">{$a[sub]}</a></span>
+                                    <span class="index_sub_title"><a href="{$a[link]}">{$a[title]}</a></span>
+                                    <div class="service_23_wrapper_content_box">
+                                        <if condition="$a[num1]">
+                                            <span>{$a[num1]}</span>
+                                        </if>
+                                        <if condition="$a[num2]">
+                                            <span>{$a[num2]}</span>
+                                        </if>
+                                        <if condition="$a[num3]">
+                                            <span>{$a[num3]}</span>
+                                        </if>
+                                    </div>
+                                    <div class="service_23_wrapper_content_box_a">
+                                        <if condition="$a[num1]">
+                                            <span>{$a[num1]}</span>
+                                        </if>
+                                        <if condition="$a[num2]">
+                                            <span>{$a[num2]}</span>
+                                        </if>
+                                        <if condition="$a[num3]">
+                                            <span>{$a[num3]}</span>
+                                        </if>
+                                    </div>
+                                    <a class="more" href="{$a[link]}">
+                                        <span class="line_1"></span>
+                                        <span>{$data365[1]}</span>
+                                        <span class="line_2"></span>
+                                    </a>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                    <div class="swiper-pagination service_23_paga"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

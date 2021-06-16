@@ -1,0 +1,235 @@
+<style>
+.label{ margin-bottom:0px;}
+.HJZF2_Z-product_categories-lingtong{padding:0 45px;}
+.inner_daohang{ width:100%; text-align:right;}
+.lingtong_cate_name{background: #999999; display:flex; align-items:center;}
+.search_name{
+	color:333333;
+	font-size:24px;
+	margin-bottom:40px;
+}
+.mobile_cate_navbutton{ display:none;}
+.mobile_cate_navbutton{ margin:15px;}
+.search{ width:100%; border:1px solid #cccccc; height:45px; padding:0 15px; margin-bottom:40px;}
+.search input{ border:0px; background:none; outline:none;width:100%; height:45px;}
+.submit_btn{ background:url(__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/search.png) no-repeat center center !important; flex:0 0 19px; padding:}
+.search form{ display:flex; justify-content:space-between;}
+.lingtong_cate_name h3{ font-size:22px; color:#fff; background:#999999; min-height:60px; display:flex; justify-content:center;align-items: center; padding:0 35px;}
+.lingtong_cate{ background:#e9e9e9;}
+.cates{ padding:30px;background:#e9e9e9;}
+.cates_checkbox{ display:none;}
+.custorm_checkbox_row h3,.erji_cate_li h3{ font-size:20px;}
+.cates li .custorm_checkbox_row a{ display:flex; padding:7px 0px; cursor:pointer; align-items:center;}
+.cates li label{ color:#333; font-size:20px; cursor:pointer;}
+.erji_cate_li a{ display:flex; padding:7px 15px; cursor:pointer;}
+.advice{
+width:20px;
+height:20px;
+margin-right:20px;
+display: inline-block;
+background:url(__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/checkbox.png) no-repeat center center !important;
+}
+input[type="checkbox"]:checked + .advice{
+background:url(__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/checked.png) no-repeat center center !important;
+}	
+.custorm_checkbox{ display:flex; justify-content:center; align-items:center;}	
+.navmap{
+	display:inline-block;
+	width:11px;
+	height:14px;
+	padding:10px;
+	position:relative;
+	top:5px;	
+	background:url(__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/navmap.png) no-repeat center center !important;
+}	
+
+
+.mobile_cate_navbutton {
+    width: 30px;
+    float: right;
+}
+
+.mobile_cate_navbutton a {
+    display: inline-block;
+    width: 30px;
+    height: 32px;
+}
+
+.mobile_cate_navbutton span {
+    width: 100%;
+    height: 2px;
+    display: inline-block;
+    background: #fff;
+    position: relative;
+}
+
+.mobile_cate_navbutton span:before,
+.mobile_cate_navbutton span:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+}
+
+.mobile_cate_navbutton span:before {
+    top: -10px;
+}
+
+.mobile_cate_navbutton span:after {
+    bottom: -10px;
+}
+
+.custorm_checkbox_row_switch_open:before{
+	content:"-";
+	display:inline-block;
+
+}
+.custorm_checkbox_row_switch_close:before{
+	content:"+";
+	display:inline-block;
+} 
+.custorm_checkbox_row_switch{ width:20px;}
+.custorm_checkbox_row + ul{ display:none; }
+.empty_cate_child{ display:block; width:20px;}
+@media(max-width: 750px) {
+	.lingtong_cate_name h3{ padding:10px;}
+	.HJZF2_Z-product_categories-lingtong{padding: 0 15px;}
+	.mobile_cate_navbutton{ display:block;}
+	.cates{ display:none;}
+
+}
+</style>
+<php>
+
+$all_search_cates=get_searcates_by_classid($classid);
+
+</php>
+<div class="HJZF2_Z-product_categories-lingtong-left">
+        	<div class="search_name">Search in {$htmltype}</div>
+            <div class="search">
+            <form action="{:U('/search')}" method="post" onSubmit="return CheckForm(this)" >
+            	<input name="keywords" placeholder="{:__('Search')}" >
+                <input type="hidden" name="cate" value="{$typeid}">
+                <input class="submit_btn" type="submit" value="">
+            </form>
+            </div>
+            
+            
+            <php>
+            foreach($allclass as $all){
+            	$new_allclass[$all['pcid']]=$all;
+            }
+            </php>
+            
+            <volist name="new_allclass" id="classes">
+            <!--不同的产品分类-->
+            <div class="lingtong_cate" pcid="{$classes['pcid']}">
+            	<div class="lingtong_cate_name">
+                	 {$classes['class_name']} 
+                     <div class="mobile_cate_navbutton">
+                        <a href="javascript:void(0);" class="">
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="cates">
+                	<ul>
+                    	<!--1级分类-->
+                    	<volist name="classes['childs']" id="child">
+                    	<li>
+                        	
+                        	<div class="custorm_checkbox_row">
+                            	<a href="{:U('/product_category','','')}/{:getprocatename($child['pcid'])}">
+                                <div class="custorm_checkbox_row_switch" pcid="{$child['pcid']}"><if condition="$child['childs']"><span class="custorm_checkbox_row_switch_close"></span><else/><span class="empty_cate_child" ></span></if></div>
+                                <div class="custorm_checkbox">
+                                    <input value="{$child['pcid']}" <if condition="$classid eq $child['pcid']">checked</if> id="cates_checkbox{$child['pcid']}" class="cates_checkbox" type="checkbox">
+                                    <label for="cates_checkbox{$child['pcid']}" class="advice"></label>
+                                </div>
+                                <label for="cates_checkbox{$child['pcid']}">
+                                    {$child['class_name']}
+                                </label>
+                                </a>
+                            </div>
+                            <!--2级分类-->
+                            <ul>
+                            	<foreach  name="child['childs']" item="erjichild">
+                                    <li class="erji_cate_li">
+                                    	<a href="{:U('/product_category','','')}/{:getprocatename($erjichild['pcid'])}">
+                                        	<div class="custorm_checkbox_row_switch"></div>
+                                            <div class="custorm_checkbox">
+                                                <input value="{$erjichild['pcid']}" <if condition="$classid eq $erjichild['pcid']">checked</if> id="cates_checkbox{$erjichild['pcid']}" class="cates_checkbox" type="checkbox">
+                                                <label for="cates_checkbox{$erjichild['pcid']}" class="advice"></label>
+                                            </div>
+                                            <label for="cates_checkbox{$erjichild['pcid']}">
+                                                {$erjichild['class_name']}
+                                            </label>
+                                        </a>
+                                    </li>
+                            	</foreach>	                                    	
+                            </ul>
+                            <!--2级分类-->
+                        </li>
+                          
+                        </volist>   
+                        <!--1级分类-->                                                     
+                    </ul>
+                </div>
+            </div>
+            <!--分类结束-->
+            </volist>
+        </div>
+        <script>
+        require(['jquery'],function($){
+			$(document).on("click",".mobile_cate_navbutton",function(){
+				$(".cates").fadeToggle("fast");
+			});
+
+
+
+
+			var parent_id=",{$prolist['pcid']},{$prolist['parent_path']},{$prolist['parent_path']}";
+			
+			if(parent_id){
+				var parent_ids=parent_id.split(",");
+				console.log("parent_ids",parent_ids);
+				$('.custorm_checkbox_row_switch').each(function(index, element) {
+					var pcid=$(this).attr("pcid");
+					if(pcid){
+						console.log("pcid",pcid);
+					if($.inArray(pcid,parent_ids)!=-1){
+						var that=$(this).find('span');
+						if($(that).hasClass("custorm_checkbox_row_switch_open")){
+							$(that).removeClass("custorm_checkbox_row_switch_open");
+							$(that).addClass("custorm_checkbox_row_switch_close");
+						}else{
+							$(that).removeClass("custorm_checkbox_row_switch_close");
+							$(that).addClass("custorm_checkbox_row_switch_open");
+						}
+						$(this).parent().parent().parent().find("ul").toggle("fast");
+					}
+					}
+				});
+			}	
+			
+			
+			$(document).on("click",".custorm_checkbox_row_switch",function(){
+				var that=$(this).find('span');
+				if($(that).hasClass("custorm_checkbox_row_switch_open")){
+					$(that).removeClass("custorm_checkbox_row_switch_open");
+					$(that).addClass("custorm_checkbox_row_switch_close");
+				}else{
+					$(that).removeClass("custorm_checkbox_row_switch_close");
+					$(that).addClass("custorm_checkbox_row_switch_open");
+				}
+				$(this).parent().parent().parent().find("ul").toggle("fast");
+				return false;
+			}).on("click",".lingtong_cate .custorm_checkbox_row a,.erji_cate_li a",function(){
+				var url=$(this).attr("href");
+				window.location.href=url;
+				return false;
+			})					
+		})
+        </script>

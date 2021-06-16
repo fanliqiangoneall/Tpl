@@ -1,0 +1,110 @@
+<style>
+    .head-9__navbar__mail:before,.head-9__navbar__phone:before{
+        background: url({:getindeximgurl($data158[0])}) no-repeat center;
+    }
+    
+    .head-9__nav__ul>li.menu_on>a>h2{
+        color:#{$color};font-weight: bold;position: relative;
+    }
+
+</style>
+<php>
+    $switch =$data158[10] or  $switch ="close";
+</php>
+<script>
+    $(function(){
+        var hed_switch = '<?php echo $switch;?>';
+        console.log( hed_switch);
+        if($(".new_hjzf_head-9").length!=0 && hed_switch!="close"){
+            var navtop=$(".new_hjzf_head-9").offset().top;
+            $(document).scroll(function(){
+                //获取滚动条滚动的高度
+                var scroltop=$(document).scrollTop();
+                if (scroltop > navtop){
+                    $(".new_hjzf_head-9").css({
+                        "position":"fixed",
+                        "background-color":"rgba(0,0,0,.7)"
+                    });
+
+                }else {
+                    $(".new_hjzf_head-9").css({
+                        "position":"absolute",
+                        "background-color":"rgba(0,0,0,0)"
+                    });
+                }
+            })
+        }
+    });
+</script>
+<header id="head-9">
+    <div class="container">
+        <div class="head-9__content flex">
+            <div class="head-9__Logo">
+                <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            </div>
+            <div class="head-9__navbar">
+                <ul class="head-9__nav__ul">
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <ul class="head-9__nav__dropdown-menu">
+                                <div class="container flex">
+                                    <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                        <li>
+                                            <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                        </li>
+                                    </volist>
+                                </div>
+                            </ul>
+                            <else/>
+
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="head-9__nav__dropdown-menu  hj02-pro-menu">
+                                    <div class="container flex">
+                                        <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                            <li>
+                                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                            </li>
+                                        </volist>
+                                        <div class="clear"></div>
+                                    </div>
+                                </ul>
+                            </if>
+                        </if>
+                        </li>
+                    </volist>
+                </ul>
+                <if condition="C('language') eq 'en'">
+                    <div class="head-9__navbar__mail">
+                        <a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1);">{:chaifen($about['email'],0)}</a>
+                    </div>
+                    <else/>
+                    <div class="head-9__navbar__phone">
+                        {:chaifen($about['phone'],0)}
+                    </div>
+                </if>
+                <div class="head-9__language">
+                    <if condition="$data158[3]">
+
+                        <div class="hj03-language rt">
+                            <if condition="$data158[6]">
+                                <a href="javascript:void(0)"><span style="line-height: 26px;">{:__('Language')}</span></a>
+                                <else/>
+                                <a href="{$data158[1]}"><img src="{:getindeximgurl($data158[2])}" alt=""/><span>{$data158[3]}</span></a>
+                            </if>
+                            <if condition="$data158[6]">
+                                <ul>
+                                    <li ><a href="{$data158[1]}"><img src="{:getindeximgurl($data158[2])}" alt="" width="24" height="24"/><span>{$data158[3]}</span></a></li>
+                                    <li ><a href="{$data158[4]}"><img src="{:getindeximgurl($data158[5])}" alt="" width="24" height="24"/><span>{$data158[6]}</span></a></li>
+                                    <li ><a href="{$data158[7]}"><img src="{:getindeximgurl($data158[8])}" alt="" width="24" height="24"/><span>{$data158[9]}</span></a></li>
+                                </ul>
+                            </if>
+                        </div>
+
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="down_bg"></div>
+</header>

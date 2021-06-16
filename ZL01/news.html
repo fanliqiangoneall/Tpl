@@ -1,0 +1,44 @@
+<extend name="ZL01:base" />
+<block name="content">
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="in_bodybg">
+    <div class="r_mbx"><img src="__TMPL__ZL01/img/in_home.png" style="vertical-align:top; margin-top:5px;">&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<span><if condition="$Think.get.name">{$Think.get.name}<else/>新闻中心</if></span></div>
+    <div class="page_Main">
+       <Include file="./Tpl/ZL01/newsleft.html" />
+       <div class="in_right">
+          <div class="page_RightTitle"><h2><if condition="$Think.get.name">{$Think.get.name}<else/>新闻中心</if></h2></div>
+          <div class="page_RightMain">
+             <div class="news">
+                <div class="body">
+                   <volist empty="暂无信息" name="allnews" id="allnews">
+                       <div class="in_newstitle">
+                           <div class="in_news_pic"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><if condition="$allnews['new_pro'] eq '' or $allnews['new_pro'] eq 0"><img src="__TMPL__ZL01/img/nopic.jpg" border="0" /><else/><img src="{:getimgurl($allnews['new_pro'])}"  border="0" alt="{$allnews['title']}" /></if></a></div>
+                           <div class="in_news_right">
+                             <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                                  <div class="in_news_name">{:subtxt($allnews['title'],25)}</div>
+                                  <div class="in_news_jj">{:HtmlEncode(subtxt($allnews['news_description'],60))}</div>
+                                  <div class="in_news_more">查看更多>></div>
+                             </a>
+                           </div>
+                           <div style="clear:both"></div>                 
+                      </div>
+                   </volist>
+                </div>
+              </div>
+              <div style="clear:both;"></div>
+              <div class="main_page">{$page}</div>
+          </div>
+       </div>
+       <div style="clear:both;"></div>
+    </div>
+</div>
+</block>

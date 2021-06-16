@@ -1,0 +1,39 @@
+<!--{$pagename}-->
+<style>
+	.hjzf_z_aboutus8_bg{
+		background: url({:getindeximgurl($data121[0])}) no-repeat left center/cover;
+	}
+</style>
+<script>
+    var resov = '<?php echo $data121[6];?>';
+</script>
+<section class="hjzf_z_aboutus8">
+	<div class="container aboutu8_container">
+    </div>
+    <div class="hjzf_z_aboutus8_bg">
+        <div class="col-xs-12 col-lg-6 vc_column_container hjzf_z_aboutus8--left wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay="0.6s">
+            <div class="hjzf_z_aboutus8_leftbox">
+                <h1 class="hjzf_z_aboutus8_title index_title">{$data121[1]}</h1>
+                <div class="hjzf_z_aboutus8_text index_text pb40">{:HtmlEncode(subtxt($company_info['description'],450))}</div>
+                <if condition="$data121[4]">
+                <a href="{$data121[5]}" class="index_btn">{$data121[4]}</a>
+                </if>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-6 vc_column_container hjzf_z_aboutus8--right wow fadeInRight" data-wow-duration="0.6s" data-wow-delay=".3s">
+            <div class="aboutus_right_box">
+            <if condition="$data121[3]">
+            <video src="{$data121[3]}" width="100%" autoplay="autoplay" loop="loop" muted></video>
+            <else/>
+            <if condition="$data121[7]">
+                    <img src="{:getindeximgurl($data121[2])}" alt="{$data121[1]}" class="nav-hidden-mobile img-fluid">
+                    <img src="{:getindeximgurl($data121[7])}" alt="{$data121[1]}" class="nav-hidden-pc img-fluid">
+                    <else/>
+            <img src="{:getindeximgurl($data121[2])}" alt="{$data121[1]}"/>
+            </if>
+            </if>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>

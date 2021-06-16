@@ -1,0 +1,112 @@
+<!--{$pagename}-->
+<style>    
+    .hjzf2_news-31{
+        background: #{$data544[0]};
+    }
+    .hjzf2_news-31-lefttop_swiperpage .swiper-pagination-bullet-active,.hjzf2_news-31-leftdown li .hjzf2_news-31_btitle::after{
+        background-color: #{$data544[5]};
+    }
+    /* .hjzf2_news-31-rightdown_title a::before,.hjzf2_news-31-rightdown_title a::after{
+        border-bottom: 1px solid #{$data544[5]};
+    } */
+    .hjzf2_news-31-lefttop li:hover,.hjzf2_news-31-lefttop li.active{
+        background: #{$data544[5]};
+    }
+    .hjzf2_news-31-lefttop li:hover .hjzf2_news-31_stitle,.hjzf2_news-31-lefttop li.active .hjzf2_news-31_stitle{
+        color: #fff;
+    }
+</style>
+<section class="hjzf2_news-31 index_pd">
+    <div class="container">
+        <div class="row flex">
+            <div class="col-xs-12 col-lg-4 flex hjzf2_news-31_left">           
+                <div class="hjzf2_news-31-left wow fadeInLeft flex">
+                    <ul class="hjzf2_news-31-lefttop clearfix">
+                        <php>
+                            $arr = get_list_val($data544[1]);
+                        </php>
+                        <volist name="arr" id="a" key="k">
+                            <if condition="$k lt 5">
+                                <li><a href="{$a['src']}">
+                                    <div class="hjzf2_news-31_img">
+                                       <img src="{$a['icon']}" class="img_a">
+                                       <img src="{$a['icon2']}" class="img_b hide">
+                                   </div>
+                                   <div class="hjzf2_news-31_stitle">{$a[stitle]}</div> 
+                                   </a>                              
+                               </li>
+                            </if>                            
+                        </volist>
+                    </ul>
+                    <ul class="hjzf2_news-31-leftdown flex hjzf2_news-31_right">
+                        <volist name="arr" id="a">                           
+                            <li>                                 
+                                <div class="hjzf2_news-31_btitle index_title">
+									<a href="{$a[link]}">{$a[btitle]}</a></div>                               
+                                <div class="hjzf2_news-31_content index_text">{$a[content]}</div>                               
+                            </li>
+                        </volist>
+                     
+                    </ul>
+                </div>                               
+            </div>
+            <div class="col-xs-12 col-lg-8">
+                <div class="hjzf2_news-31-right wow fadeInRight">
+                    <div class="hjzf2_news-31-righttop">
+                        <div class="swiper-container hjzf2_news-31-lefttop_swiper">
+                            <div class="swiper-wrapper">
+                                <php>
+                                    $arr2 = get_list_val($data544[2]);
+                                </php>
+                                <volist name="arr2" id="b" key="kb">                          
+                                    <div class="swiper-slide news_31_video sw_news_{$kb}" data-src="{$b['src']}">
+										<if condition="$b['src']"><style>.sw_news_{$kb}{cursor: pointer;}</style></if>
+										<img src="{$b['img']}" alt="">
+									</div>
+                                </volist>                                                            
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination hjzf2_news-31-lefttop_swiperpage"></div>
+                          </div>
+                    </div>
+                    <div class="hjzf2_news-31-rightdown">
+                        <div class="hjzf2_news-31-rightdown_left">
+                            <div class="hjzf2_news-31-rightdown_title">
+                                <span><a href="{:U('/news')}">{$data544[3]}</a></span><a href="{:U('/news')}"></a>
+                            </div>
+                            
+                            <volist name="indexnews" id="indexnews1" offset="0" length="3" key="h">
+                                <div class="news-31__downitem flex">                                   
+                                    <div class="news-31__Info">
+                                        <div class="news-12__InfoTitle "><a href="{:U('/new_detail',array('nid'=>$indexnews1['nid']))}" onFocus="blur()"><h3 class="index_sub_title ellipsis_one">{$indexnews1['title']}</h3></a></div>                                       
+                                    </div>
+                                    <div class="news-12__date">                                        
+                                        <span class="year">{:date('Y-m-d ',$indexnews1['created'])}</span>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="hjzf2_news-31-rightdown_right">
+                            <div class="hjzf2_news-31-rightdown_title">
+                                <span><a href="{:U('/jobs')}">{$data544[4]}</a></span><a href="{:U('/jobs')}"></a>
+                            </div>                            
+                            <volist name="jobs" id="job" offset="0" length="3" key="h">
+                                
+                                <div class="news-31__downitem flex">                                   
+                                    <div class="news-31__Info">
+                                        <div class="news-12__InfoTitle "><a href="{:U('/job',array('jobid'=>$job['jobid']))}" onFocus="blur()"><h3 class="index_sub_title ellipsis_one">{$job['jobname']}</h3></a></div>                                      
+                                    </div>
+                                    <div class="news-12__date">
+                                        <span class="year">{:date('Y-m-d ',$job['updatetime'])}</span>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>            
+        </div>
+    </div>
+</section>

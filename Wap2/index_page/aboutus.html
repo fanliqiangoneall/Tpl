@@ -1,0 +1,46 @@
+<!--{$pagename}-->
+<section>
+<php>
+if($data4[4]){
+	$new_hjzf_aboutus__aboutus__bj=getindeximgurl($data4[4]);
+}else{
+	$new_hjzf_aboutus__aboutus__bj="";
+}
+$new_hjzf_aboutus__titlename=$data4[0] or $new_hjzf_aboutus__titlename="About Us";
+$new_hjzf_aboutus__titlemore=$data4[1] or $new_hjzf_aboutus__titlemore="+ More";
+$new_hjzf_aboutus_color=$data4[2] or $new_hjzf_aboutus_color="#adc537";
+$new_hjzf_aboutus__title_color=$data4[6] or $new_hjzf_aboutus__title_color="#333";
+$new_hjzf_aboutus__More_href=$data4[3] or $new_hjzf_aboutus__More_href="javascript:;";
+</php>
+<style>
+.new_hjzf_aboutus__titlemore{
+	color:{$new_hjzf_aboutus_color}
+}
+.new_hjzf_aboutus__title{
+
+	background:url(
+	{$new_hjzf_aboutus__title__bj}
+	) center/100% no-repeat;
+}
+.new_hjzf_aboutus__title{ 
+	background:url(
+	{$new_hjzf_aboutus__aboutus__bj}
+	) center/100% no-repeat;
+}
+	.new_hjzf_aboutus__titlename{
+color:{$new_hjzf_aboutus__title_color};
+	}
+</style>
+<div class="new_hjzf_aboutus__aboutus">
+	<div class="new_hjzf_aboutus__title">
+	<a href="{$new_hjzf_aboutus__More_href}"><div class="new_hjzf_aboutus__titlemore">{$new_hjzf_aboutus__titlemore}</div></a>
+    <div class="new_hjzf_aboutus__titlename">{$new_hjzf_aboutus__titlename}</div>
+    <div class="clear"></div>
+    </div>
+    
+    <div class="new_hjzf_aboutus__content">
+		{:htmlspecialchars_decode($data4[5])}  
+    </div>
+
+</div>
+</section>

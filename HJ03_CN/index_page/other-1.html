@@ -1,0 +1,130 @@
+<!--{$pagename}-->
+<if condition="$data14[22] neq ''">
+    <style>
+        #hj03_index_other1{
+            background: url({:getindeximgurl($data14[22])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<if condition="$data14[5] neq ''">
+    <style>
+        .other1-item1{
+            background: url({:getindeximgurl($data14[5])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<if condition="$data14[10] neq ''">
+    <style>
+        .other1-item2{
+            background: url({:getindeximgurl($data14[10])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<if condition="$data14[15] neq ''">
+    <style>
+        .other1-item3{
+            background: url({:getindeximgurl($data14[15])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<if condition="$data14[20] neq ''">
+    <style>
+        .other1-item4{
+            background: url({:getindeximgurl($data14[20])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .hj03-other1-prev{
+        background: url({:getindeximgurl($data14[25])}) no-repeat center;right: 140px;
+    }
+    .hj03-other1-next{
+        background: url({:getindeximgurl($data14[26])}) no-repeat center;
+    }
+    .hj03-other1-prev:hover{
+        background: url({:getindeximgurl($data14[27])}) no-repeat center;
+    }
+    .hj03-other1-next:hover{
+        background: url({:getindeximgurl($data14[28])}) no-repeat center;
+    }
+    .other1-item:hover .more-button{
+        color: #fff;background: #{$color};text-indent: 0;transition: all .36s ease;
+    }
+</style>
+
+<section id="hj03_index_other1" class="module">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                <div id="index_product_title_left1"><p>{$data14[0]}</p><span>{$data14[1]}</span></div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next hj03-other1-next"></div>
+            <div class="swiper-button-prev hj03-other1-prev"></div>
+            <div class="clear"></div>
+        </section>
+        <section>
+            <div class="swiper-container hj03-other1">
+                <div class="swiper-wrapper">
+                    <if condition="$data14[2]">
+                    <div class="swiper-slide other1-item other1-item1 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                        <if condition="$data14[6] neq ''"><a href="{$data14[6]}"></if>
+                        <div class="other1-box">
+                            <p class="other1-item-title">{$data14[2]}</p>
+                            <p class="other1-item-title2">{$data14[3]}</p>
+                            <div class="other1-item-desc">{:HtmlEncode(subtxt($data14[4],40))}</div>
+                            <a href="{$data14[6]}" class="more-button">More</a>
+                        </div>
+                        <if condition="$data14[6] neq ''"></a></if>
+                    </div>
+                    </if>
+                    <if condition="$data14[7]">
+                    <div class="swiper-slide other1-item other1-item2 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                        <if condition="$data14[11] neq ''"><a href="{$data14[11]}"></if>
+                        <div class="other1-box">
+                            <p class="other1-item-title">{$data14[7]}</p>
+                            <p class="other1-item-title2">{$data14[8]}</p>
+                            <div class="other1-item-desc">{:HtmlEncode(subtxt($data14[9],40))}</div>
+                            <a href="{$data14[11]}" class="more-button">More</a>
+                        </div>
+                        <if condition="$data14[11] neq ''"></a></if>
+                    </div>
+                     </if>
+                    <if condition="$data14[12]">
+                    <div class="swiper-slide other1-item other1-item3 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                        <if condition="$data14[16] neq ''"><a href="{$data14[16]}"></if>
+                        <div class="other1-box">
+                            <p class="other1-item-title">{$data14[12]}</p>
+                            <p class="other1-item-title2">{$data14[13]}</p>
+                            <div class="other1-item-desc">{:HtmlEncode(subtxt($data14[14],40))}</div>
+                            <a href="{$data14[16]}" class="more-button">More</a>
+                        </div>
+                        <if condition="$data14[16] neq ''"></a></if>
+                    </div>
+                        </if>
+                    <if condition="$data14[17]">
+                    <div class="swiper-slide other1-item other1-item4 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                        <if condition="$data14[21] neq ''"><a href="{$data14[21]}"></if>
+                        <div class="other1-box">
+                            <p class="other1-item-title">{$data14[17]}</p>
+                            <p class="other1-item-title2">{$data14[18]}</p>
+                            <div class="other1-item-desc">{:HtmlEncode(subtxt($data14[19],40))}</div>
+                            <a href="{$data14[21]}" class="more-button">More</a>
+                        </div>
+                        <if condition="$data14[21] neq ''"></a></if>
+                    </div>
+                    </if>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <div class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="300"><if condition="$data14[24] neq ''">
+            <a href="{$data14[24]}">
+        </if>
+        <img src="{:getindeximgurl($data14[23])}" alt="" width="100%"/>
+        <if condition="$data14[24] neq ''"></a></if>
+    </div>
+</section>
+
+

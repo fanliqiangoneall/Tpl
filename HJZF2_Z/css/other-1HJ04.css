@@ -1,0 +1,104 @@
+.hjzf2_z_other-1hj04 {
+    width: 100%;
+    height: auto;
+    margin: auto;  
+    background: #F0F0F0;
+}
+
+.hjzf2_z_other-1hj04 .press-release-showcase {
+   margin-right: -15px;margin-left: -15px;
+}
+.press-release-showcase img{
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+.grid{
+    box-sizing: border-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+.card-container_wrap{margin-right: -15px;margin-left: -15px;width: calc(100% + 30px);}
+.card-container{
+    margin-bottom: 0px;display: -ms-flexbox;
+    display: flex;
+}
+.card-container:first-child{
+    margin-bottom: 30px;
+}
+.press-card{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+}
+.press-card .info{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.press-card .info.green{
+     background-color: #1FA152;
+     color: #ffffff;
+ }
+.press-card .info.blue{
+    background-color: #128AB3;
+    color: #ffffff;
+}
+.label-text{margin-bottom: 15px;}
+
+.press-card-large{
+    display: block;
+    position: relative;
+    height: 100%;
+}
+ .press-card-large img {
+    display: block;
+    width: 100%;
+}
+.press-release-showcase .press-card-large .info{
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+.press-release-showcase .press-card-large:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    background: #F0F0F0;
+    height: 60px;
+    width: 100%;
+}
+@media screen and (max-width: 991px){
+    .card-container{margin-bottom: 30px;}
+    .press-release-showcase .press-card-large:before{
+        height: 30px;
+    }
+}
+@media screen and (max-width: 767px){
+    .card-container{margin-bottom: 15px;}
+    .card-container:first-child{margin-bottom: 15px;}
+    .press-release-showcase .press-card-large:before{
+        height: 30px;
+    }
+}

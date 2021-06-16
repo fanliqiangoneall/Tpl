@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+<php>
+    $col = explode(",",$data446[7]);
+</php>
+<style>
+    <if condition="$data446[0]">.hjzf_advantage_34 {
+        background: url({:getindeximgurl($data446[0])}) no-repeat center/cover;
+    }
+    </if>
+	.hjzf_advantage_34_con a:before {
+        background: linear-gradient(to right, #{$col[0]}, #{$col[1]});
+    }
+    .hjzf_advantage_34_con .index_title:before {
+        content:'{$data446[2]}';
+    }
+</style>
+<section class="hjzf_advantage_34 index_pd">
+    <div class="hjzf_advantage_34_img">
+        <div class="hjzf_advantage_34_img_wrapper wow slideInLeft">
+            <img src="{:getindeximgurl($data446[1])}" alt="{$data446[2]}" class="img-fluid">
+        </div>
+        <div class="hjzf_advantage_34_poa">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-6 hjzf_advantage_34_con wow slideInRight pull-right">
+						
+                        <div class="index_title">
+                            {$data446[3]}
+                        </div>
+                        <div class="index_text">
+                            {$data446[4]}
+                        </div>
+						<if condition="$data446[8]">
+							<div class="index_sub_title pb20">
+								{$data446[8]}
+							</div>
+							</if>
+                        <a href="{$data446[6]}" class="my-mask-l index_btn">{$data446[5]} <i
+                                class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

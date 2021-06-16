@@ -1,0 +1,37 @@
+<!--{$pagename}-->
+<style>
+    .aboutus_17_title .index_top_title {
+        color: #{$color};
+        letter-spacing: 8px;
+    }
+</style>
+<section class="hjzf_aboutus_17 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-5 wow slideInLeft">
+                <div class="aboutus_17_title">
+                    <span class="pb20 index_top_title">
+                        {$data364[2]}
+                    </span>
+                    <span class="index_title pb20">
+                        {:HtmlEncode($data364[3])}
+                    </span>
+                    <span class="index_text pb20">
+                        {:HtmlEncode($data364[4])}
+                    </span>
+                    <a class="more" href="{$data364[6]}">
+                        <span class="line_1"></span>
+                        <span>{$data364[5]}</span>
+                        <span class="line_2"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-7 wow slideInRight">
+                <a class="more" <if condition='$data364[8]'>href="{$data364[8]}"<else/>href="{$data364[6]}"</if>>
+                    <img src="{:getindeximgurl($data364[7])}" title="{$data364[3]}" alt="{$data364[3]}" class="img-fluid">
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>

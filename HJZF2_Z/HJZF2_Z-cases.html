@@ -1,0 +1,205 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style type="text/css">
+        .HJZF_Z__Breadcrumbs span.current,.main_newslist li:hover .main_news_title h5,.main_news_dowm a:hover{
+            color: #{$color};
+        }
+        .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li.yiji_news:hover,.main-content_inner_news>ul>li:first-child,.mian_content_casebox>ul>li.main_caseitem:hover .hj05-news-pic{
+			transition:all .5;
+            background: #{$color};
+
+        }
+        .main-content_inner_news>ul>li.yijion_news a h3,.main-content_inner_news>ul>li.yiji_news:hover a h3,.main-content_inner_news>ul>li:first-child a h3{
+            color: #fff;
+        }
+        .main_page .current{
+            background: #{$color};border: 1px solid #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+		.mian_content_casebox > ul > li .news_info .news_item-title h3{ font-size:16px; line-height:24px;}
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner">
+                <volist name="banner" id="banner_pic" offset="0" length="1">
+                	<if condition="$banner_pic['use_video']">
+                    <a id="case_video_src" data-src="{$banner_pic['ad_link']}" style="cursor: pointer">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""/>
+                    </div>
+                    </a>
+                    <else/>
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""/>
+                    </div>
+                    </if>
+                </volist>
+                <else/>
+                <div class="in_banner" data="内页设计"><img src="{:getindeximgurl($inner_data[1])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current"><if condition="$inner_data[6]">{$inner_data[6]}<else/>{:__('Cases')}</if></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                	<if condition="$inner_data[4]">
+                	<section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left">
+                        <Include file="./Tpl/HJZF2_Z/inner/case_left.html" />
+                    </section>
+                    <elseif condition="$inner_data[2]" />
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-12" style="display:none;">
+                        <Include file="./Tpl/HJZF2_Z/caseleft.html" />
+                    </section>
+                    <else/>
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-12">
+                        <Include file="./Tpl/HJZF2_Z/caseleft.html" />
+                    </section>
+                    </if>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftcases_mobile.html" />
+                    </section>
+                    <if condition="$inner_data[4]">
+                    <section class="col-xs-12 col-lg-9 InsidePages_content-right2">
+                    	<div class="InsidePages_content-right__wrap">
+                        	<if condition="$inner_data[2]">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="mian_content_casebox">
+                                    <ul>
+                                        <volist name="allnewclass" id="lia" key="k">
+                                            <li class="col-xs-6 col-sm-6 col-md-4 main_caseitem">
+                                                <div class="main_caseitem_wrap">
+                                                    <div class="hj05-news-pic" >
+                                                        <a href="{:U('/case_category',array('classid'=>$lia['classid']))}" onFocus="blur()" ><if condition="$lia['fid']"><img src="{:getimgurl($lia['fid'])}" border="0" width="100%"/><else/><img src="{:getindeximgurl($inner_data['3'])}" border="0" width="100%"/></if></a>
+                                                    </div>
+                                                    <div class="news_info">
+                                                        <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_category',array('classid'=>$lia['classid']))}" onFocus="blur()">{:subtxt($lia['class_name'],60)}</a></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </volist>
+                                        <div style="clear:both"></div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <else/>
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="mian_content_casebox">
+                                    <ul>
+                                        <php>
+                                            $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                        </php>
+                                        <volist empty="$no_empty" name="allnews" id="allnews" key="k">
+                                            <li class="col-xs-6 col-sm-6 col-md-4 main_caseitem">
+                                                <div class="main_caseitem_wrap">
+                                                    <div class="hj05-news-pic" >
+                                                        <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($allnews['new_pro'])}" border="0" width="100%"/></a>
+                                                    </div>
+                                                    <div class="news_info">
+                                                        <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">{:subtxt($allnews['title'],60)}</a></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </volist>
+                                        <div style="clear:both"></div>
+                                    </ul>
+                                </div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                            </if>
+                        </div>
+                    </section>
+                    <else/>
+                    <section class="col-xs-12 InsidePages_content-right2">
+                        <div class="InsidePages_content-right__wrap">
+                        	<if condition="$inner_data[2]">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="mian_content_casebox">
+                                    <ul>
+                                        <volist name="allnewclass" id="lia" key="k">
+                                        	<if condition="$inner_data[5]">
+                                            <li class="col-xs-6 col-sm-6 main_caseitem">
+                                            <else/>
+                                            <li class="col-xs-6 col-sm-6 col-md-4 col-lg-3 main_caseitem">
+                                            </if>
+                                                <div class="main_caseitem_wrap wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                                    <div class="hj05-news-pic" >
+                                                        <a href="{:U('/case_category',array('classid'=>$lia['classid']))}" onFocus="blur()" ><if condition="$lia['fid']"><img src="{:getimgurl($lia['fid'])}" border="0" width="100%"/><else/><img src="{:getindeximgurl($inner_data['3'])}" border="0" width="100%"/></if></a>
+                                                    </div>
+                                                    <div class="news_info">
+                                                        <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_category',array('classid'=>$lia['classid']))}" onFocus="blur()">{:subtxt($lia['class_name'],60)}</a></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </volist>
+                                        <div style="clear:both"></div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <else/>
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="mian_content_casebox">
+                                    <ul>
+                                        <php>
+                                            $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                        </php>
+                                        <volist empty="$no_empty" name="allnews" id="allnews" key="k">
+                                            <li class="col-xs-6 col-sm-6 col-md-4 col-lg-3 main_caseitem">
+                                                <div class="main_caseitem_wrap">
+                                                    <div class="hj05-news-pic" >
+                                                        <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($allnews['new_pro'])}" border="0" width="100%"/></a>
+                                                    </div>
+                                                    <div class="news_info">
+                                                        <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">{:subtxt($allnews['title'],60)}</a></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </volist>
+                                        <div style="clear:both"></div>
+                                    </ul>
+                                </div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                            </if>
+                        </div>
+                    </section>
+                    </if>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</block>
+<block name="footer_js">
+    <script>
+        require(['jquery','layer'], function ($,layer) {
+           $('#case_video_src').on('click', function(){
+			var _href = $(this).attr("data-src");  
+			layer.open({
+			  type: 2,
+			  title: ['', 'font-size:18px;'],
+			  area: ['70%', '85%'],
+			  shadeClose: true, //点击遮罩关闭
+			  content: _href,
+			});
+		  });
+        });
+    </script>
+</block>

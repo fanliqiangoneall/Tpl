@@ -1,0 +1,110 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data462[10]">
+    .hjzf_z_news_27 {
+        background:url({:getindeximgurl($data462[10])});
+        background-position:center;
+        background-size: cover;
+    }
+    </if>
+    <if condition="$data462[7]">
+    .hjzf_z_news_27 {
+        background-color: #{$data462[7]};
+    }
+    </if>
+
+
+    .hjzf_z_news_27_ {
+        background-color: transparent;
+    }
+
+    .hjzf_z_news_27_title {
+        color: #{$data462[1]}
+    }
+
+    .hjzf_z_news_27_items__date {
+        color:#{$data462[5]}
+    }
+
+    <if condition="$data462[11]">.hjzf_z_news_27_slide:hover {
+        box-shadow: none;
+        transform: translateY(-5px)
+    }
+
+    .hjzf_z_news_27_slide {
+        box-shadow: none;
+    }
+
+    </else>.hjzf_z_news_27_slide {
+        box-shadow:1px 13px 39px -5px #{$data462[3]}
+    }
+
+    </if>.hjzf_z_news_27_container .hjzf_z_news_27_scrollbar .swiper-pagination-progressbar {
+        background:#{$data462[8]}
+    }
+
+    .hjzf_z_news_27_items_title {
+        color: #{$data462[2]};
+    }
+
+    .hjzf_z_news_27_container .hjzf_z_news_27_scrollbar {
+        background:#{$data462[9]};
+    }
+
+    .hjzf_z_news_27_next:before,
+    .hjzf_z_news_27_prev:before {
+        width: 36px;
+        height: 36px;
+        display: block;
+        background-size: 36px 36px;
+        content: "";
+        outline: none;
+        background-image: url({:getindeximgurl($data462[4])});
+    }
+    .hjzf_z_news_27_next:hover:before,
+    .hjzf_z_news_27_prev:hover:before {
+        content: "";
+        outline: none;
+        background-image: url({:getindeximgurl($data462[5])});
+    }
+</style>
+<php>
+    $classids=explode(',',$data462[6]);
+</php>
+<section class="h-layout__outer h-layout__outer--slider hjzf_z_news_27 index_pd">
+    <div class="container">
+        <div class="hjzf_z_news_27_" data-t-name="NewsCard">
+            <h3 class="hjzf_z_news_27_title index_title">{$data462[0]}</h3>
+            <div class="hjzf_z_news_27_container swiper-container">
+                <div class="hjzf_z_news_27_wrapper swiper-wrapper m-lightbox__container">
+                    <volist id="classid" name="classids">
+                        <php>
+                            $list = get_index_news_category($classid,10);
+                        </php>
+                        <volist name="list" id="vo">
+                            <div class="hjzf_z_news_27_slide js-hjzf_z_news_27_slide swiper-slide">
+                                <a class="hjzf_z_news_27_items" href="{:U('/case_detail',array('nid'=>$vo["nid"]))}"
+                                    rel="noopener noreferrer" data-t-name="NewsCardItems">
+                                    <div class="hjzf_z_news_27_items_img_wrapper">
+                                        <img class="hjzf_z_news_27_items_img lazyload"
+                                            data-src="{:getimgurl($vo['new_pro'])}"
+                                            src="{:getimgurl($vo['new_pro'])}" alt="{$vo['title']}"
+                                            title="{$vo['title']}">
+                                    </div>
+                                    <div class="hjzf_z_news_27_items_content">
+                                        <h3 class="hjzf_z_news_27_items_title index_sub_title">{$vo['title']}</h3>
+                                        <div class="hjzf_z_news_27_items_text index_text">{$vo['news_description']}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </volist>
+                </div>
+                <div class="hjzf_z_news_27_prev swiper-button-prev"></div>
+                <div class="hjzf_z_news_27_next swiper-button-next"></div>
+                <div class="hjzf_z_news_27_scrollbar swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+</section>

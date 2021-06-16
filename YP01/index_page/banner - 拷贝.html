@@ -1,0 +1,37 @@
+<!--{$pagename}-->
+<style>
+</style>
+<SCRIPT src="__TMPL__demo2/js/jquery-1.8.3.min.js" type="text/javascript"></SCRIPT>
+<script type="text/javascript" src="__TMPL__demo2/js/banner.js"></script>
+<link href="__TMPL__demo2/css/banner.css" rel="stylesheet">
+<div class="page_Banner">
+    <div class="">
+
+        <ul class="DB_bgSet">
+            <volist name="banner" id="banners">
+            	<a href="<if condition="$banners['ad_link']">{:($banners['ad_link'])}<else/>javascript:void(0)</if>"><li title="{$banners['pic_title']}" style="background:url({:getimgurl($banners['ad_pic'])}) center no-repeat; height:600px; display:block;"></li></a>
+            </volist>
+        </ul>
+
+
+
+        <div class="DB_menuWrap">
+            <ul class="DB_menuSet">
+            <volist name="banner" id="bannera">
+ 			<li><img src="{:getindeximgurl($data3[2])}"/></li>
+            </volist>
+            </ul>
+            <!--<div class="DB_next"><img src="__TMPL__demo2/img/nextArrow.png" alt="NEXT"/></div>
+            <div class="DB_prev"><img src="__TMPL__demo2/img/prevArrow.png" alt="PREV"/></div> -->
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $('.DB_tab25').DB_tabMotionBanner({
+        key:'b28551',
+        autoRollingTime:5000,
+        bgSpeed:500,
+
+    })
+</script>

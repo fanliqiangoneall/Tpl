@@ -1,0 +1,70 @@
+<extend name="Wap2:base" />
+<block name="content">
+    <php>
+
+        if($inner_data[2]){
+        $contactus__title_bj=getindeximgurl($inner_data[2]);
+        }else{
+        $contactus__title_bj="none";
+        }
+        $othercate__title_color=$inner_data[3] or $othercate__title_color="#333";
+    </php>
+<style>
+.Inquiry{ padding:10px 0;}
+.Inquiry__proname{ font-size:18px; color:#212122; font-weight:bold; padding:10px; text-align:center;}
+.Inquiry__Breadcrumbs{padding: 0 10px 10px;}
+.Inquiry__Breadcrumbs, .Inquiry__Breadcrumbs a{ text-decoration:none; color:#3d3d3d; font-size:13px;}
+.contactus__title{
+color:{$othercate__title_color};font-size:18px; font-weight:200; padding:5px 10px; background:url({$contactus__title_bj}) no-repeat;
+}
+	.Inquiry__view{ padding:0 5px;}
+.Inquiry__shijian{ position:relative; top:2px;}	
+.Inquiry__page a{ text-decoration:none; color:rgba(73,70,70,1.00);}
+.Inquiry__page li { margin:5px 0px; }
+</style>    
+<link rel="stylesheet" href="__TMPL__/Wap2/css/swiper.min.css">
+    <div>
+        <if condition="$inner_data[0] neq ''">
+            <img class="contactus__banner" src="{:getindeximgurl($inner_data[0])}" width="100%">
+        </if>
+    </div>
+    <div class="Inquiry">
+
+
+    <div class="Inquiry__Breadcrumbs">
+        <div class="Inquiry__Breadcrumbs_down">
+            <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span class="current">{:__('Inquiry')}</span>
+        </div>
+    </div>
+        <div class="contactus__title">
+            <div class="inpage__title_main">{:__('Inquiry')}</div>
+        </div>
+<article style="padding: 20px 10px;">
+
+                        <section>
+                            <!--询盘-->
+                            <div>
+                            <div style="clear:both;"></div>
+                            	<Include file="./Tpl/Wap2/submit.html" />
+                            </div>
+                            <div style="clear:both;"></div>
+                        </section>
+                        <include file="Wap2:relationinfo" />
+                        <include file="Wap2:relationnew" />                             
+</article>                            
+                        </div>
+                        <div style="clear:both;height: 30px;"></div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+</block>

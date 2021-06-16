@@ -1,0 +1,105 @@
+<php>
+    if($inner_data[4]){
+    $bd = $inner_data[4];
+    }else{
+    $bd = 'eee';
+    }
+</php>
+<style>
+    .products13_left_yiji {
+        display: block !important;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border: 2px solid #{$bd} !important;
+        border-radius: 5px;
+        margin-bottom: 30px;
+    }
+
+    .products13_left_tt {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #{$color};
+    }
+
+    .products13_left_yiji {
+        display: flex;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+    }
+    .products13_left_yiji li{
+        display: flex;
+        justify-content: space-between;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    .products13_left_yiji li a{
+        flex: 0 0 100%;
+    }
+    .products13_left_yiji i {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .products13_left_yiji>a {
+        width: 100%;
+        position: relative;
+        transition: all .5s;
+    }
+
+    .products13_left_yiji a h3 {
+        font-size: 16px;
+    }
+
+    .products13_left_yiji i {
+        font-size: 14px;
+        color: #999;
+        margin-top: 3px;
+    }
+    .products13_left_yiji li:hover a,.products13_left_yiji li.yijion a,.products13_left_yiji li:hover i,.products13_left_yiji li.yijion i{
+        color:#{$color};
+    }
+
+    .products13_left {
+        <if condition="$inner_data[2]">float: left !important;
+        <else/>float: right !important;
+        </if>
+    }
+    .InsidePages_left_search{
+        box-shadow: 0;
+        border: 1px solid #{$bd};
+        border-radius: 5px;
+        overflow: hidden;
+    }    
+    .InsidePages_left_search li.search_second button{
+        background-color: #{$color};
+    }
+    .InsidePages_left_search li.search_second button:after{
+        color: #fff;
+    }
+    
+</style>
+<div class="col-lg-3 products13_left hidden-xs hidden-sm hidden-md">
+    <div class="products13_left_search">
+        <div class="InsidePages_left_search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if condition="C('Language') eq 'cn'">id="keyword2"<else/>id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+    <div class="products13_left_yiji">
+        <div class="products13_left_tt">
+            {:__('Categories')}
+            </div>
+        <volist empty="" name="navrs" id="nav">
+            <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"
+                <else />class="yiji"</if> pro-class-id="{$nav['nav_belong']}">
+                <i class="fa fa-circle-o"></i>
+                <a
+                    href="{$nav['url']}#nav">{$nav['title']}</a></li>
+        </volist>
+    </div>
+</div>

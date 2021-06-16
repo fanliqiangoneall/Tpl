@@ -1,0 +1,92 @@
+.hjzf_z_products_29_flex{
+    margin-bottom: 30px;
+}
+.hjzf_z_products_29_title li{
+    margin-left: 40px;
+}
+.hjzf_z_products_29_title li a{
+    display: block;
+    position: relative;
+}
+.hjzf_z_products_29_title li a:before{
+    position: absolute;
+    display: block;
+    content:'';
+    width: 10px;
+    height: 1px;
+    background-color: #fff;
+    opacity: 0;
+    transition: all .5s;
+    left: 0;
+    top: 50%;
+    transform: translateX(-150%);
+}
+.hjzf_z_products_29_title li:hover a:before{
+    opacity: 1;
+}
+.hjzf_z_products_29_wrapper_top,.hjzf_z_products_29_wrapper_bottom{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.hjzf_z_products_29_wrapper_top{
+    padding: 30px 0;
+    width: calc(100% - 30px);
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+.hjzf_z_products_29_wrapper_top_con{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hjzf_z_products_29_wrapper_top_con a{
+    margin-top: 40px;
+    color: #333;
+    border: 1px solid #333;
+    transition: all .5s;
+}
+.hjzf_z_products_29_wrapper_top_con span{
+    width: 50%;
+    margin: 20px auto;
+    background-color: #333;
+    height: 1px;
+}
+.hjzf_z_products_29_wrapper_bottom p{
+    background-color: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 3;   
+    transition: all .5s; 
+}
+.hjzf_z_products_29_wrapper{
+    display: none;
+}
+.hjzf_z_products_29_wrapper.on{
+    display: block;
+}
+.hjzf_z_products_29_wrapper_bottom li a{
+    display: block;
+    background-color: #fff;
+}
+@media(max-width: 1200px) {
+    .hjzf_z_products_29_wrapper_bottom li{
+        margin-bottom: 20px;
+    }
+    .hjzf_z_products_29_title li{
+       margin-left: 0;
+       padding: 0 10px;
+    }
+    .hjzf_z_products_29_title li.on,.hjzf_z_products_29_title li.on a{
+        color: #fff;
+    }
+    .hjzf_z_products_29_title li a:before{
+        display: none;
+    }
+    .hjzf_z_products_29_wrapper_top_con{
+        padding-bottom: 20px;
+    }
+}
+

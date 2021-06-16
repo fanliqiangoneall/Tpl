@@ -1,0 +1,236 @@
+<!--{$pagename}-->
+<php>
+    $bottom_nav_str=explode("\\n",$data231[7]);
+    
+    foreach($bottom_nav_str as $k=>$bottom_nav_arr){
+    $bottom_navs=explode(":",$bottom_nav_arr);
+    $bottom_nav[$k]['name']=$bottom_navs[0];
+    $bottom_nav[$k]['href']=$bottom_navs[1];
+}
+
+$bottom_nav_str1=explode("\\n",$data231[8]);
+
+foreach($bottom_nav_str1 as $k=>$bottom_nav_str1){
+$bottom_navs1=explode(":",$bottom_nav_str1);
+$bottom_nav1[$k]['name']=$bottom_navs1[0];
+$bottom_nav1[$k]['href']=$bottom_navs1[1];
+}
+
+$bottom_nav_str2=explode("\\n",$data231[9]);
+
+foreach($bottom_nav_str2 as $k=>$bottom_nav_str2){
+$bottom_navs2=explode(":",$bottom_nav_str2);
+$bottom_nav2[$k]['name']=$bottom_navs2[0];
+$bottom_nav2[$k]['href']=$bottom_navs2[1];
+}
+</php>
+<style>
+<if condition="$data231[0]">
+.bottom_hj07_box {
+    background: url({:getindeximgurl($data231[0])}) no-repeat center/cover;
+}
+</if>
+
+@media(max-width: 768px) {
+    .bottom_hj07_box {
+        background: #{$data231[1]};
+    }
+}
+.bottom_hj07_box .bottom_hj07_wrapper,.bottom_hj07_box .bottom_hj07_wrapper a ,.bottom_hj07_box .bottom_hj07_wrapper h3 a,
+.bottom_hj07_box .bottom_hj07_wrapper a, .bottom_hj07_box .bottom_hj07_wrapper,
+.bottom_hj07_bfoot a,.bottom_hj07_bfoot{
+    color: #{$data231[10]};
+}
+.bottom_hj07_box .bottom_hj07_wrapper a:hover,.bottom_hj07_box .bottom_hj07_wrapper h3 a:hover,
+.bottom_hj07_bfoot a:hover{
+    color: #{$data231[2]};
+}
+</style>
+<div class="bottom_hj07_1_box">
+<if condition="$data231[14] and $is_index eq '1'">
+    <style>
+        .HJZF_Z_other_Bttom_hj07_box a:hover h4,
+        .HJZF_Z_other_Bttom_hj07_box a h4 i {
+            color: #{$color};
+        }
+        .bottom_hj07_1_box{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        @media(min-width: 1200px) {
+            .bottom_hj07_1_box{
+                justify-content: space-between;
+            }
+            .bottom_hj07_1_box div.first-child{
+                margin-top: 40px;
+            }
+        }
+
+    </style>
+<div class="container first-child">
+    <if condition="$data231[15]">
+        <div class="text-center index_title pb40">
+            {$data231[16]}
+        </div>
+    </if>
+    <div class="row HJZF_Z_other_Bttom_hj07_box">
+        <php>
+            $arr = get_list_val($data231[15]);
+            </php>
+            <volist name="arr" id="a">
+                <li>
+                    <a href="{$a[link]}" class="first text-center">
+                        <span class="pic-normal">
+                            <img src="{$a[ico]}" alt="{$a[title]}">
+                        </span>
+                        <span class="pic-hover">
+                            <img src="{$a[icoh]}" alt="{$a[title]}">
+                        </span>
+                        <h4 class="index_sub_title">
+                            <i class="fa fa-angle-right"></i>{$a[title]}
+                        </h4>
+                        <p class="index_text">{$a[info]}</p>
+                    </a>
+                </li>
+            </volist>
+    </div>
+</div>
+<script>
+    require(['jquery'], function ($) {
+        $('.HJZF_Z_other_Bttom_hj07_box li:first-child').addClass('between');
+        $('.HJZF_Z_other_Bttom_hj07_box li:last-child').addClass('between');
+    })
+</script>
+</if>
+<footer>
+    <div class="container-fluid bottom_hj07_box">
+        <div class="container">
+            <ul class="row bottom_hj07_wrapper">
+                <li class="col-md-3 col-xs-12">
+                    <if condition="$bottom_nav">
+                        <h3 class="index_title">
+                            <a href="{$bottom_nav[0]['href']}" class=" wow fadeInUp">{$bottom_nav[0]['name']}</a>
+                        </h3>
+                        <div class="bottom_text_list">
+                            <volist name="bottom_nav" id="nav" offset="1" key="k">
+                                <a href="{$nav['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                    {$nav['name']}
+                                </a>
+                            </volist>
+                        </div>
+                    </if>
+                </li>
+                <li class="col-md-3 col-xs-12">
+                    <if condition="$bottom_nav1">
+                        <h3 class="index_title">
+                            <a href="{$bottom_nav1[0]['href']}" class="wow fadeInUp">{$bottom_nav1[0]['name']}</a>
+                        </h3>
+                        <div class="bottom_text_list">
+                            <volist name="bottom_nav1" id="nava" offset="1">
+                                <a href="{$nava['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                    {$nava['name']}
+                                </a>
+                            </volist>
+                        </div>
+                    </if>
+                </li>
+                <li class="col-md-3 col-xs-12 bottom_three">
+                    <if condition="$bottom_nav2">
+                        <h3 class="pb20">
+                            <a href="{$bottom_nav2[0]['href']}" class="wow fadeInUp">{$bottom_nav2[0]['name']}</a>
+                        </h3>
+                        <div class="bottom_text_list">
+                            <p class="wow fadeInUp" data-wow-delay=".1s">{:__('Phone: ')} {:chaifen($about['phone'],0)}</p>
+                            <p class="wow fadeInUp" data-wow-delay=".2s">{:__('Mobile: ')} {:chaifen($about['mobile'],0)}</p>
+                            <p class="wow fadeInUp" data-wow-delay=".3s">{:__('Email: ')}  <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],0)}</a>&nbsp;&nbsp;<if condition="chaifen($about[email],1)"><a href="mailto:{:chaifen($about[email],1)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],1)}</a></if></p>
+                            <p class="wow fadeInUp" data-wow-delay=".4s">{:__('Fax: ')} {$about['fax']}</p> 
+                            <p class="wow fadeInUp" data-wow-delay=".5s">{:__('Add: ')} {$about['address']}</p> 
+                        </div>
+                    </if>
+                </li>
+                <li class="col-md-3 col-xs-12 hidden-xs hidden-sm">
+                    <div class="row-little bottom_hj07_ewm_box">
+                        <div class="bottom_hj07_ewm col-md-5 col-xs-6 col-md-offset-2">
+                            <img src="{:getindeximgurl($data231[3])}" class="wow fadeInUp" alt="{$data231[5]}">
+                            <p class="wow fadeInUp" data-wow-delay=".1s">{$data231[5]}</p>
+                        </div>
+                        <div class="bottom_hj07_ewm col-md-5 col-xs-6">
+                            <img src="{:getindeximgurl($data231[4])}" class="wow fadeInUp" alt="{$data231[6]}">
+                            <p class="wow fadeInUp" data-wow-delay=".1s">{$data231[6]}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="row ">
+
+            <div class="col-xs-12">
+                    <php>
+                        $nowtime=date("Y",time());
+                        if(!$data231[13]){
+                        $currtime=2020;
+                        }else{
+                        $currtime=$data231[13];
+                        }
+                    </php>
+                <div class="bottom_hj07_bfoot wow fadeIn">
+                    <if condition="$nowtime gt $currtime">CopyRight © {$currtime}-{$nowtime}<else/>CopyRight © {$nowtime}</if> &nbsp;{$about['company_name']} {:__('All rights reserved')} &nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())} </a></if>
+                    <a style="" href="{:U('/sitemap')}"
+                        onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;
+                    <a href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;"> 免责声明</a> &nbsp;
+                        <if condition="$data210[15] eq ''">
+                            中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        </if>
+                        <else/>
+                        <if condition="$data210[15] eq ''">
+                            Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                        </if>
+                    </if>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+    
+</footer>
+
+
+<style>
+    .bottom_hj07_2_box {
+        background-color: #{$data231[11]};
+        color: #{$data231[12]};
+    }
+    .bottom_hj07_2_box a {
+        color: #{$data231[12]};
+    }
+    .bottom_hj07_2_box a:hover {
+        color: #{$data231[2]};
+    }
+    
+</style>
+
+<if condition="$friend_link neq ''">
+        <div class="HJZF2_Z__bottom__friendlink">
+            <div class="container">
+                <div class="row">
+                    <div class="HJZF2_Z__bottom__link col-xs-12"><span style="float:left; margin-right:5px; line-height:30px;">{:__('FriendLink: ')}</span>
+                      <volist name="friend_link" id="friend_link">
+                          <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}" alt="friend link"/></a><else/>
+                              <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                          </if>
+                      </volist>     
+                      <div style="clear:both"></div>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+          </div>
+      </div>
+    </if>
+</div>

@@ -1,0 +1,120 @@
+<div id="index_inquiry">
+
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit_other();">
+
+		<div class="inquiry_box margin-15px-bottom " id="inquiry_box1">
+			<div class="inquiry_box_animate"><input type="text" name="linkname" id="linkname_other"
+					placeholder="{:__('Name: ')} *"><span class="yz_alert" id="linkname_alert_other"></span></div>
+		</div>
+		<div class="inquiry_box margin-15px-bottom " id="inquiry_box2">
+			<div class="inquiry_box_animate"><input type="text" name="email" id="email_other"
+					placeholder="{:__('E-mail: ')} *"><span class="yz_alert" id="email_alert_other"></span></div>
+		</div>
+		<div class="inquiry_box margin-15px-bottom " id="inquiry_box3">
+			<div class="inquiry_box_animate"><input type="text" name="phone" id="phone_other"
+					placeholder="{:__('Mobile: ')}"><span class="yz_alert" id="phone_alert_other"></span></div>
+		</div>
+		<div class="inquiry_box margin-15px-bottom " id="inquiry_box4">
+			<div class="inquiry_box_animate"><textarea name="message" id="message_other"
+					placeholder="{:__('Message: ')} *">{$product["pro_name"]}</textarea><span class="yz_alert"
+					id="message_alert_other"></span></div>
+		</div>
+		<div class="inquiry_box margin-15px-bottom " id="inquiry_box5">
+			<div class="inquiry_box_animate"><input type="text" class="input" id="code_char_other" name="code"
+					placeholder="{:__('Verification code: ')} *" maxlength="3" style="width:25%" />&nbsp;<img alt=""
+					src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};"
+					style="position:relative; top:0;" id="getcode_char_other" height="32" title="Generate a new captcha"
+					align="absmiddle"><span class="yz_alert" id="code_char_alert_other"></span></div>
+		</div>
+		<div class="inquiry_box">
+			<div class="inquiry_box_animate" id="inquiry_box6">
+				<input type="submit" value="{:__('Submit')}" name="SEND MESSAGE" id="index_submit" />
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	jQuery(function () {
+		jQuery("#message_other").focus(function () {
+			jQuery("#message_alert_other").html("");
+		});
+		jQuery("#linkname_other").focus(function () {
+			jQuery("#linkname_alert_other").html("");
+		});
+		jQuery("#phone_other").focus(function () {
+			jQuery("#phone_alert_other").html("");
+		});
+		jQuery("#email_other").focus(function () {
+			jQuery("#email_alert_other").html("");
+		});
+		jQuery("#code_char_other").focus(function () {
+			jQuery("#code_char_alert_other").html("");
+		});
+		jQuery("#getcode_char_other").click(function () {
+			jQuery(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};')
+		});
+
+	})
+	function yz_submit_other() {
+		var count = 0;
+		var message = Trims(jQuery("#message_other").val());
+		var linkname = Trims(jQuery("#linkname_other").val());
+		var phone = Trims(jQuery("#phone_other").val());
+		var email = Trims(jQuery("#email_other").val());
+		if (linkname.length <= 0) {
+			jQuery("#linkname_alert_other").html("O Nome não Pode ESTAR vazio!");
+			count++;
+		} else {
+			jQuery("#linkname_alert_other").html("");
+		}
+
+
+		if (phone.length > 0 && is_phone(jQuery('#phone_other').val())) {
+			jQuery("#phone_alert_other").html("A informação do telefone está errada!");
+			count++;
+		} else {
+			jQuery("#phone_alert_other").html("");
+		}
+
+		if (email.length <= 0) {
+
+			jQuery("#email_alert_other").html("O e-mail não Pode ESTAR vazio!");
+			count++;
+		}
+		else {
+			console.log(is_email(email));
+			if (!is_email(email)) {
+				jQuery("#email_alert_other").html("Erro de formato de e- mail");
+				count++;
+			}
+			else {
+				jQuery("#email_alert_other").html("");
+			}
+		}
+
+		if (message.length <= 0) {
+			jQuery("#message_alert_other").html("O conteúdo Da consulta não Pode ESTAR vazio!");
+			count++;
+		} else {
+			jQuery("#message_alert_other").html("");
+		}
+		var code_char = jQuery("#code_char_other").val();
+		jQuery.ajax({
+			type: "POST", url: "/verification", async: false, data: { code: code_char }, success: function (data) {
+				if (data == 1) {
+					jQuery("#code_char_alert_other").html("");
+				} else {
+					count++;
+					jQuery("#code_char_alert_other").html("Erro de código de verificação");
+				}
+			}
+		});
+		if (count > 0) {
+			return false
+		} else {
+			jQuery("#inbut").html('<h5 style="color:#F00;">Por favor, espere.</h5>');
+			return true
+		}
+	}
+
+</script>

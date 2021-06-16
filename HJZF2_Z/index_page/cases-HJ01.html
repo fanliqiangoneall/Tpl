@@ -1,0 +1,94 @@
+<!--{$pagename}-->
+<style>
+
+.h-layout__outer--gray {
+	background:url({:getindeximgurl($data58[10])});
+    background-color: #{$data58[7]};
+	background-position:center;
+	background-size: cover; 	
+}
+.m-news-card{
+	background-color:transparent;
+	}
+	.m-news-card__title{ 
+	color: #{$data58[1]}
+	}
+	.m-news-card-items__date{ color:#{$data58[5]}}
+    <if condition="$data58[11]">
+        .m-news-card__slide:hover {
+		box-shadow: none;
+		transform: translateY(-5px)
+	    }
+        .m-news-card__slide{
+            box-shadow: none;
+        }
+    </else>
+    .m-news-card__slide{
+		box-shadow:1px 13px 39px -5px #{$data58[3]}
+    }
+    </if>
+.m-news-card__container .m-news-card__scrollbar .swiper-pagination-progressbar{ background:#{$data58[8]}}
+.m-news-card-items__title{
+	color: #{$data58[2]};
+}
+.m-news-card__container .m-news-card__scrollbar{ background:#{$data58[9]};}
+
+
+.m-news-card__next:before, .m-news-card__prev:before {
+	content: "";
+	outline:none;
+	background-image: url({:getindeximgurl($data58[4])});
+	width: 36px;
+	height: 36px;
+	display: block;
+	background-size: 36px 36px;
+}
+.m-news-card__next:hover:before, .m-news-card__prev:hover:before {
+	content: "";
+	outline:none;
+	background-image: url({:getindeximgurl($data58[5])})
+}	
+
+</style>
+
+
+
+<php>
+$classids=explode(',',$data58[6]);
+</php>
+<section class="h-layout__outer h-layout__outer--slider h-layout__outer--gray index_pd">
+            <div class="container">
+                <div class="m-news-card" data-t-name="NewsCard">
+                    <h3 class="m-news-card__title index_title">{$data58[0]}</h3>
+
+                    <div class="m-news-card__container swiper-container">
+                    <div class="m-news-card__wrapper swiper-wrapper m-lightbox__container">
+                        
+<volist id="classid" name="classids">
+<php>
+$caseitems = get_index_cases_category($classid,10);
+</php>
+
+<volist name="caseitems " id="caseitem">
+    <div class="m-news-card__slide js-m-news-card__slide swiper-slide">
+    <a class="m-news-card-items" href="{:U('/case_detail',array('nid'=>$caseitem["nid"]))}" rel="noopener noreferrer" data-t-name="NewsCardItems">
+    <div class="m-news-card-items__image-wrapper">
+    <img class="m-news-card-items__image lazyload" data-src="{:getimgurl($caseitem['new_pro'])}" src="{:getimgurl($caseitem['new_pro'])}" alt="{$caseitem['title']}" title="{$caseitem['title']}">
+    </div>
+    <div class="m-news-card-items__content">
+    <h3 class="m-news-card-items__title index_sub_title">{$caseitem['title']}</h3>
+    <div class="m-news-card-items__text index_text">{$caseitem['news_description']}</div>
+    </div>
+    </a>
+    </div> 
+</volist>     
+</volist>
+
+                            </div>
+                         <div class="m-news-card__prev swiper-button-prev"></div>
+                        <div class="m-news-card__next swiper-button-next"></div>
+                        <div class="m-news-card__scrollbar swiper-scrollbar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>

@@ -1,0 +1,127 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_66_pagination div.swiper-pagination-bullet-active:after {
+        background-color:#{$data399[1]}
+    }
+    .hjzf2_other_66_next,.hjzf2_other_66_prev{
+        display: none;
+        opacity: 0.5;
+    }
+    <if condition="$data399[0]">.hjzf2_other_66 {
+        background: url({:getindeximgurl($data399[0])
+    }
+
+    ) no-repeat center top/cover;
+    }
+
+    </if>
+</style>
+<section class="hjzf2_other_66 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="index_title pb20">
+                    {$data399[2]}
+                </div>
+                <div class="index_sub_title pb40">
+                    {$data399[3]}
+                </div>
+            </div>
+
+            <php>
+                $arra = get_list_val($data399[5]);
+            </php>
+
+            <div class="col-xs-12">
+                <div class="hjzf2_other_66_pa hidden">
+                    <volist name="arra" id="b">
+                        <span>
+                            <if condition="$b[link]">
+                                <a href="{$b[link]}">
+                            </if>
+                            <img src="{$b[ico]}" alt="{$b[title]}">
+                            {$b[title]}
+                            <if condition="$b[link]">
+                                </a>
+                            </if>
+                        </span>
+                    </volist>
+                </div>
+                <div class="swiper-container hjzf2_other_66_container">
+                    <div class="swiper-wrapper">
+                        <volist name="arra" id="b">
+                            <div class="swiper-slide">
+                                <div class="col-xs-12 pb40">
+                                    <ul class="hjzf2_other_66_wrapper">
+                                        <if condition="$b[ico1]">
+                                            <li>
+                                                <a href="{$b[link]}">
+                                                    <if condition="$b[ico1]">
+                                                        <span>
+                                                            <img src="{$b[ico1]}" alt="{$b[text1]}">
+                                                        </span>
+                                                    </if>
+                                                    {$b[text1]}
+                                                </a>
+                                            </li>
+                                        </if>
+                                        <if condition="$b[ico2]">
+                                            <li>
+                                                <a href="{$b[link]}">
+                                                    <if condition="$b[ico2]">
+                                                        <span>
+                                                            <img src="{$b[ico2]}" alt="{$b[text2]}">
+                                                        </span>
+                                                    </if>
+                                                    {$b[text2]}
+                                                </a>
+                                            </li>
+                                        </if>
+                                        <if condition="$b[ico3]">
+                                            <li>
+                                                <a href="{$b[link]}">
+                                                    <if condition="$b[ico3]">
+                                                        <span>
+                                                            <img src="{$b[ico3]}" alt="{$b[text3]}">
+                                                        </span>
+                                                    </if>
+                                                    {$b[text3]}
+                                                </a>
+                                            </li>
+                                        </if>
+                                        <if condition="$b[ico4]">
+                                            <li>
+                                                <a href="{$b[link]}">
+                                                    <if condition="$b[ico4]">
+                                                        <span>
+                                                            <img src="{$b[ico4]}" alt="{$b[text4]}">
+                                                        </span>
+                                                    </if>
+                                                    {$b[text4]}
+                                                </a>
+                                            </li>
+                                        </if>
+                                    </ul>
+                                </div>
+
+                                <if condition="$b[link]">
+                                    <a href="{$b[link]}">
+                                </if>
+                                <img src="{$b[img]}" alt="{$b[title]}" class="img-fluid">
+                                <if condition="$b[link]">
+                                    </a>
+                                </if>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="hjzf2_other_66_pagination"></div>
+                    <div class="hjzf2_other_66_prev swiper-button-prev swiper-button-black"></div>
+                    <div class="hjzf2_other_66_next swiper-button-next swiper-button-black"></div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</section>

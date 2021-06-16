@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<style>
+.cases_hj06_title {
+    background: url({:getindeximgurl($data222[0])}) no-repeat center/cover; 
+}
+.cases_hj06_slide_box span {
+    background-color: #{$data222[3]};
+}
+
+.cases_hj06{
+    background-color: #{$data222[4]};
+}
+.cases_hj06_slide{
+	background-color: #{$color};
+}
+.cases_hj06_container_mobile_pagination .swiper-pagination-bullet-active{
+    background-color: #{$data222[3]};
+}
+.cases_hj06_slide a:before{
+	background-color: #{$color};	
+}
+.cases_hj06_slide:hover a:before{
+	opacity: 1;	
+}
+</style>
+
+<section class="cases_hj06 clearfix">
+    <div class="col-xl-2 cases_hj06_p0 wow fadeInUpBig hidden-xs hidden-sm hidden-md " data-wow-duration="1s">
+        <div class="cases_hj06_title">
+            <span>
+                <h2 class="index_title">{$data222[2]}</h2>
+                <h3 class="index_sub_title">{$data222[1]}</h3>
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-12 hidden-lg wow fadeInUpBig">
+        <div class="cases_hj06_title_mobile">
+            <h3 class="index_title pb20">{$data222[1]}</h3>
+            <h2 class="index_sub_title">{$data222[2]}</h2>
+        </div>
+    </div>
+    <div class="col-xs-12 col-xl-10 cases_hj06_p0 cases_hj06_right_box hidden-xs hidden-sm hidden-md">
+        <div class="swiper-container cases_hj06_container">
+            <ul class="swiper-wrapper">
+                <volist name="indexcases" id="caseitem" offset="0" key="k" length="8">
+                    <li class="swiper-slide cases_hj06_slide wow fadeInUpBig" data-wow-duration="1s">
+                        <a href="{:U('/case_detail',array('nid'=>$caseitem['nid']))}">
+                            <img src="{:getimgurl($caseitem['new_pro'])}" alt="{$caseitem['title']}" class="img-responsive">
+                            <div class="cases_hj06_slide_box">
+                                <span>
+                                    <h3 class="ellipsis_one index_sub_title">{$caseitem['title']}</h3>
+                                    <p class="ellipsis_three">{:subtxt($caseitem['news_description'],120)}</p>
+                                    <i class="more hidden-xs hidden-sm hidden-md">+</i>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+
+    <!-- mobile -->
+    <div class="col-xs-12 col-xl-10 cases_hj06_p0 cases_hj06_right_box hidden-lg">
+        <div class="swiper-container cases_hj06_container_mobile">
+            <ul class="swiper-wrapper">
+                <volist name="indexcases" id="caseitem" offset="0" key="k" length="8">
+                    <li class="swiper-slide cases_hj06_slide wow fadeInUpBig" data-wow-duration="1s">
+                        <a href="{:U('/case_detail',array('nid'=>$caseitem['nid']))}">
+                            <img src="{:getimgurl($caseitem['new_pro'])}" alt="{$caseitem['title']}" class="img-responsive">
+                            <div class="cases_hj06_slide_box">
+                                <span>
+                                    <h3 class="ellipsis_one index_sub_title">{$caseitem['title']}</h3>
+                                    <p class="ellipsis_three index_text">{:subtxt($caseitem['news_description'],120)}</p>
+                                    <i class="more hidden-xs hidden-sm hidden-md">+</i>
+                                </span>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="swiper-pagination cases_hj06_container_mobile_pagination"></div>
+        </div>
+    </div>
+</section>

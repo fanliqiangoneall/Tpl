@@ -1,0 +1,160 @@
+.index_top{
+	width: 100%;height: 40px;background: url(../img/headtop.jpg) center center no-repeat;
+}
+.index_topcon{width: 1190px;height: 40px;margin: auto;}
+.index_top1{font-size: #333;font-size: 14px;line-height: 40px;float: left;}
+.index_top2{margin-left: 25px;float: left;padding-left: 15px;background: url(../img/head_ph.png) left center no-repeat;font-size: #333;font-size: 14px;line-height: 40px;}
+.index_top3{margin-left: 25px;float: left;padding-left: 25px;background: url(../img/head_em.png) left center no-repeat;}
+.index_top3 a{font-size: #333;font-size: 14px;line-height: 40px;}
+
+.page_Top{ width:100%;height:110px;background: #f6f7f9}
+.page_Top2{width: 1190px;margin: auto;height: 110px;}
+
+
+.page_Logo{ width:300px; float:left; height:110px;}
+.page_Logo ul li img{}
+.child_li{ background:#ffffff;}
+.child_li a{ color:#666666 !important; font-size:15px !important;}
+.child_li { border:1px solid #e7e7e7;}
+.index_navigation_page_Menu{width:850px; float: right; position:relative;z-index: 99999;}
+
+.index_navigation_page_Menu ul{
+z-index:100;
+margin: 0;
+padding: 0;
+list-style-type: none;
+height:110px;
+}
+.child_li:hover{ background:#f2f2f2 !important;}
+.index_navigation_page_Menu ul li{
+position: relative;
+display: inline;
+float: left; padding:0 14px;
+}
+.index_navigation_page_Menu ul li:hover{
+	background:#f2f2f2;
+}
+
+.index_navigation_page_Menu ul li h2{font-size:16px; color:#333333;line-height: 110px;
+    font-weight: normal;
+    }
+.index_navigation_page_Menu ul li h2:hover{ text-decoration:none; color:#00c3e3;}
+
+* html .index_navigation_page_Menu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block;
+}
+
+.index_navigation_page_Menu ul li a:link, .index_navigation_page_Menu ul li a:visited{
+color: #ffffff;
+}
+
+.index_navigation_page_Menu ul li a.selected,.index_navigation_page_Menu ul li a:hover{ /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+color: #ffffff;
+}
+
+.index_navigation_page_Menu ul li ul li a.selected,.index_navigation_page_Menu ul li  ul li a:hover{
+color: #fff;
+}
+.index_navigation_page_Menu ul li ul li a:link, .index_navigation_page_Menu ul li ul li a:visited{
+color: #fff;
+}	
+/*1st sub level menu*/
+.index_navigation_page_Menu ul li ul{
+position: absolute;
+left: 0px !important;
+top:-10px;
+display: none; /*collapse all sub menus to begin with*/
+visibility: hidden;
+padding:0;
+margin:0;
+z-index:999;
+background:#fff;
+height:auto;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.index_navigation_page_Menu ul li ul li{
+display: list-item;
+float: none;
+line-height:normal;
+padding: 0;
+line-height:20px;
+padding:10px 5px 10px 17px;
+background:none;
+border-bottom: 1px solid #ccc
+}
+.index_navigation_page_Menu ul li ul li:hover h3{color:#fff;}
+.index_navigation_page_Menu ul li ul li h3{ color:#000; font-weight:normal; text-align:left;font-size:15px; line-height:20px;}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.index_navigation_page_Menu ul li ul li ul{
+top: 0;
+}
+
+/* Sub level menu links style */
+.index_navigation_page_Menu ul li ul li a{
+font:"Arial";
+font-weight:normal;
+font-size:12px;
+padding:0;
+margin: 0;
+line-height:32px;
+border-top-width: 0;
+z-index:999;
+border:none;
+}
+
+/* Holly Hack for IE \*/
+* html .index_navigation_page_Menu{height: 1%;} /*Holly Hack for IE7 and below*/
+
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass{
+position: absolute;
+top: 12px;
+right: 7px;
+}
+
+.rightarrowclass{
+position: absolute;
+top: 6px;
+right: 5px;
+}
+
+/* ######### CSS for shadow added to sub menus  ######### */
+
+.ddshadow{ /*shadow for NON CSS3 capable browsers*/
+position: absolute;
+left: 0;
+top: 0;
+width: 0;
+height: 0;
+background: silver;
+}
+
+.toplevelshadow{ /*shadow opacity for NON CSS3 capable browsers. Doesn't work in IE*/
+opacity: 0.8;
+}
+
+#index_navigation_animate,#index_navigation_animate_1,#index_navigation_animate_2,#index_navigation_animate_3{-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	-webkit-animation-duration: 1s;
+	-webkit-animation-delay: .2s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-duration: 1s;
+	-moz-animation-delay: .2s;
+	-moz-animation-timing-function: ease;
+	-moz-animation-fill-mode: both;
+	-ms-animation-duration: 1s;
+	-ms-animation-delay: .2s;
+	-ms-animation-timing-function: ease;
+	-ms-animation-fill-mode: both;
+	animation-duration: 1s;
+	animation-delay: .2s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;}

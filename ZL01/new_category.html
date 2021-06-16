@@ -1,0 +1,54 @@
+<extend name="ZL01:base" />
+<block name="content">
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="in_bodybg">
+    <div class="r_mbx"><img src="__TMPL__ZL01/img/in_home.png" style="vertical-align:top; margin-top:5px;">&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<span>{$newscate['class_name']}</span></div>
+    <div class="page_Main">
+       <Include file="./Tpl/ZL01/newsleft.html" />
+       <div class="in_right">
+          <div class="page_RightTitle"><h2>{$newscate['class_name']}</h2></div>
+          <div class="page_RightMain">
+             <div class="news">
+                <if condition="$newscate['classid'] eq 681">
+                <div class="body">
+                    <ul>
+                     <volist empty="暂无信息" name="newscatelist" id="newscatelist">
+                      <li><span class="right_time">{:date('Y-m-d',$newscatelist['created'])}</span><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}">{$newscatelist['title']}</a></li>
+                     </volist>
+                    </ul>
+                </div>
+                <else/>
+                <div class="body">
+                   <volist empty="暂无信息" name="newscatelist" id="newscatelist2">
+                       <div class="in_newstitle">
+                           <div class="in_news_pic"><a href="{:U('/new_detail',array('nid'=>$newscatelist2["nid"]))}"><if condition="$newscatelist2['new_pro'] eq '' or $newscatelist2['new_pro'] eq 0"><img src="__TMPL__ZL01/img/nopic.jpg" border="0" /><else/><img src="{:getimgurl($newscatelist2['new_pro'])}"  border="0" alt="{$newscatelist2['title']}" /></if></a></div>
+                           <div class="in_news_right">
+                             <a href="{:U('/new_detail',array('nid'=>$newscatelist2["nid"]))}">
+                                  <div class="in_news_name">{:subtxt($newscatelist2['title'],25)}</div>
+                                  <div class="in_news_jj">{:HtmlEncode(subtxt($newscatelist2['news_description'],60))}</div>
+                                  <div class="in_news_more">查看更多>></div>
+                             </a>
+                           </div>
+                           <div style="clear:both"></div>                 
+                      </div>
+                   </volist>
+                </div>
+                </if>
+              </div>
+              <div style="clear:both;"></div>
+              <div class="main_page">{$page}</div>
+          </div>
+       </div>
+       <div style="clear:both;"></div>
+    </div>
+</div>
+</block>

@@ -1,0 +1,209 @@
+<extend name="HJ02_JP:basein" />
+<block name="content">
+
+	<style>
+		.main_content_slogan_right_more a{
+		background: {$data1[0]};
+		border-color:{$data1[0]};
+		}
+		.main_content_slogan_right_more a:hover{
+			background: transparent;border-color:#fff;
+		}
+		.HJ01_product_detail_title2 span{
+			color: #{$color};
+		}
+		#dituContent{width: 100%!important;border: none!important;}
+
+	</style>
+	<if condition="$data1[18] neq ''">
+		<div id="wrapper" style="padding-bottom: 0;margin-bottom: -7px;">
+			<else/>
+			<div id="wrapper" style="padding-bottom: 0;">
+	</if>
+
+		<div id="inbanner_box">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+			</if>
+		</div>
+
+		<div class="page_nei_contact" id="main-content-wrapper">
+			<section class="page_nei_contact_left left">
+				<div class="page_nei_contact_left_box">
+					<div class="page_nei_contact_title">{$data1[19]}</div>
+					<div class="page_nei_contact_inquiry"><Include file="./Tpl/HJ02_JP/submitinquiry_contact.html" /></div>
+				</div>
+			</section>
+			<section class="page_nei_contact_right right">
+
+				<div class="page_nei_contact_right_box">
+					<div class="page-title-inner" style="position: absolute;right: 0;top: 0;border-bottom: none">
+						<div class="">
+							<div class="Breadcrumbs"><a href="{:U('/')}">ホーム</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;{$intro_class['class_name']}</div>
+						</div>
+					</div>
+					<div class="page_nei_contact_title">{$data1[20]}</div>
+					<div class="page_nei_contact_content">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+				</div>
+			</section>
+			<div class="clear"></div>
+
+			
+			<div class="clear"></div>
+		</div>
+		<if condition="$data1[18] neq ''">
+			<style type="text/css">
+				#mapContainer{
+					width:100%; height:500px;
+				}
+				#tip{
+					height:30px;
+					background-color:#fff;
+					padding-left:10px;
+					padding-right:10px;
+					position:absolute;
+					font-size:12px;
+					right:10px;
+					bottom:20px;
+					border-radius:3px;
+					line-height:30px;
+					border:1px solid #ccc;
+				}
+				div.info-top {
+					position: relative;
+					background: none repeat scroll 0 0 #F9F9F9;
+					border-bottom: 1px solid #CCC;
+					border-radius:5px 5px 0 0;
+				}
+				div.info-top div {
+					display: inline-block;
+					color: #333333;
+					font-size:14px;
+					font-weight:bold;
+					line-height:31px;
+					padding:0 10px;
+				}
+				div.info-top img {
+					position: absolute;
+					top: 10px;
+					right: 10px;
+					transition-duration: 0.25s;
+				}
+				div.info-top img:hover{
+					box-shadow: 0px 0px 5px #000;
+				}
+				div.info-middle {
+					font-size:12px;
+					padding:10px;
+					line-height:21px;
+				}
+				div.info-bottom {
+					height:0px;
+					width:100%;
+					clear:both;
+					text-align:center;
+				}
+				div.info-bottom img{
+					position: relative;
+					z-index:104;
+				}
+			</style>
+
+			<div id="mapContainer"></div>
+
+			<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=acec09c5cb681ce58f6b08dcee4ff705"></script>
+			<script type="text/javascript">
+				//初始化地图对象，加载地图
+				var map = new AMap.Map("mapContainer",{
+					resizeEnable: true,
+					//二维地图显示视口
+					view: new AMap.View2D({
+						//地图中心点
+						center:new AMap.LngLat({$data1[18]}),
+						//地图显示的缩放级别
+						zoom:14
+					})
+				});
+				map.setLang('en');
+				//地图中添加地图操作ToolBar插件
+				map.plugin(["AMap.ToolBar"], function(){
+					var toolBar = new AMap.ToolBar();
+					map.addControl(toolBar);
+				});
+
+				//地图初始化时，在地图上添加一个marker标记,鼠标点击marker可弹出自定义的信息窗体
+				addMarker();
+				//添加marker标记
+				function addMarker(){
+					map.clearMap();
+					var marker = new AMap.Marker({
+						map: map,
+						//位置
+						position: new AMap.LngLat({$data1[18]}),
+						//复杂图标
+						icon: "https://webapi.amap.com/images/0.png"
+					});
+					//鼠标点击marker弹出自定义的信息窗体
+					AMap.event.addListener(marker,'click',function(){
+						infoWindow.open(map,marker.getPosition());
+					});
+				}
+
+				//实例化信息窗体
+				var infoWindow = new AMap.InfoWindow({
+					isCustom:true,  //使用自定义窗体
+					content:createInfoWindow("{$about['company_name']}","住所：{$about['address']}"),
+					offset:new AMap.Pixel(16, -45)//-113, -140
+				});
+
+				//构建自定义信息窗体
+				function createInfoWindow(title,content){
+					var info = document.createElement("div");
+					info.className = "info";
+
+					// 定义顶部标题
+					var top = document.createElement("div");
+					var titleD = document.createElement("div");
+					var closeX = document.createElement("img");
+					top.className = "info-top";
+					titleD.innerHTML = title;
+					closeX.src = "https://webapi.amap.com/images/close2.gif";
+					closeX.onclick = closeInfoWindow;
+
+					top.appendChild(titleD);
+					top.appendChild(closeX);
+					info.appendChild(top);
+
+
+					// 定义中部内容
+					var middle = document.createElement("div");
+					middle.className = "info-middle";
+					middle.style.backgroundColor='white';
+					middle.innerHTML = content;
+					info.appendChild(middle);
+
+					// 定义底部内容
+					var bottom = document.createElement("div");
+					bottom.className = "info-bottom";
+					bottom.style.position = 'relative';
+					bottom.style.top = '0px';
+					bottom.style.margin = '0 auto';
+					var sharp = document.createElement("img");
+					sharp.src = "https://webapi.amap.com/images/sharp.png";
+					bottom.appendChild(sharp);
+					info.appendChild(bottom);
+					return info;
+				}
+
+				//关闭信息窗体
+				function closeInfoWindow(){
+					map.clearInfoWindow();
+				}
+			</script>
+		</if>
+	</div>
+</block>

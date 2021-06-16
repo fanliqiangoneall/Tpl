@@ -1,0 +1,149 @@
+<!--{$pagename}-->
+<php>
+if($data162[0]){
+	$class_arr=explode(',',$data162[0]);
+}
+
+foreach($class_arr as $v){
+	$news_kecheng_class[]=get_news_info($v);
+    $news_kechengs[]=get_index_news_category($v);
+}
+if($data162['5']){
+$bjcolor=$data162['5'];
+}else{
+$bjcolor=f7d29d;
+}
+if($data162['6']){
+$fontcolor=$data162['6'];
+}else{
+$fontcolor=fff;
+}
+
+</php>
+<style>
+.new_hjzf_news-10 .news-tap .on{ color:#{$fontcolor}; background:#{$bjcolor}}
+.new_hjzf_news-10 a{ cursor:pointer;}
+</style>
+<div class="container-fluid new_hjzf_news-10__news">
+    <div class="zq-row">
+    	<div class="col-lg-12 news-title"><img src="{:getindeximgurl($data162[1])}" alt="{$data162[2]}"/></div>
+        <div class="col-lg-12 news-tip index_title">{$data162[2]}</div>
+        <div class="col-lg-12 news-tip">
+        	<div class="container news-tap">
+            	<div class="zq-row">
+                	<volist name="news_kecheng_class" id="kecheng">
+                	<div nid="{$kecheng['classid']}" class="new_hjzf_news-10__item"><div nid="{$kecheng['classid']}"  class="news-tap-btn index_sub_title <if condition="$key eq 0">on</if>">{$kecheng['class_name']}</div></div>
+       				</volist>
+                </div>
+            </div>
+        </div>
+        
+
+        <volist name="news_kechengs" id="news_kecheng" >
+            <div <if condition="$key neq 0">style="display:none"</if> nid="{$news_kecheng_class[$key]['classid']}" class="col-lg-12 news_kechengs">
+                    <div class="zq-row">
+                        <div class="col-lg-3 col-xs-12 new-bj-qiang">
+                        <a href="{:U('/new_detail',array('nid'=>$news_kecheng[0]["nid"]))}">
+                        <div class="new_hjzf_news-10__cate-img" style=" background:url({:getimgurl($news_kecheng[0]['new_pro'])});background-size:cover; background-position:center;"></div>
+
+                        
+                        </a>
+                        <a href="{:U('/new_detail',array('nid'=>$news_kecheng[1]["nid"]))}">
+                        <div class="new_hjzf_news-10__cate-img" style=" background:url({:getimgurl($news_kecheng[1]['new_pro'])} );background-size:cover; background-position:center;"></div>
+                        
+                        </a>
+                        
+                        </div>
+                        <div class="col-lg-6 col-xs-12 new_hjzf_news-10__news_zhongjiande">
+                           
+                           <a href="{:U('/new_category',array('classid'=>$news_kecheng_class[$key]["classid"]))}">                        
+                           <div class="" style=" height:6.42rem; margin:0 -15px; background:url({:getimgurl($news_kecheng_class[$key]['fid'])});background-size:cover; background-position:center;"></div></a>
+                           <a href="{:U('/new_category',array('classid'=>$news_kecheng_class[$key]["classid"]))}">
+                            <div class="new-bj-qiang-zhong  hidden-md">
+                                <div class="cate-info row">
+                                    <div class="col-lg-1 col-xs-1 cateleft"><img style="max-width:100%;" src="{:getindeximgurl($data162[3])}" alt="{$news_kecheng_class[$key]['class_name']}"/></div>
+                                    <div class="col-lg-10 col-xs-10 catemiddle cate-info-container" style="display:table;">
+                                    <div class="" style="display:table-cell;  vertical-align: middle;">
+                                        <div class="cate-info-title">{$news_kecheng_class[$key]['class_name']}</div>
+                                        <div class="cate-info-des">{$news_kecheng_class[$key]['readme']}</div>
+                                    </div>    
+                                    </div>
+                                    <div class="col-lg-1 col-xs-1 cateright"><img style="max-width:100%;" class=" new_hjzf_news-10__centenimg" src="{:getindeximgurl($data162[4])}" alt="{$news_kecheng_class[$key]['class_name']}"/></div>
+                                </div>    
+                            </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-xs-12 new-bj-qiang">
+                        <a href="{:U('/new_detail',array('nid'=>$news_kecheng[2]["nid"]))}">
+                        <div class="new_hjzf_news-10__cate-img" style="background:url({:getimgurl($news_kecheng[2]['new_pro'])});background-size:cover; background-position:center;"></div>
+                        </a>
+                        <a href="{:U('/new_detail',array('nid'=>$news_kecheng[3]["nid"]))}">
+                        <div class="new_hjzf_news-10__cate-img" style="background:url({:getimgurl($news_kecheng[3]['new_pro'])});background-size:cover; background-position:center;"></div>
+                        </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+         
+            </div>
+        </volist>
+      <div class="clearfix"></div>  
+    </div>
+    
+</div>
+<div class="news-10__mobile hidden-md hidden-lg hidden-xl">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="news-10__mobiletab">
+                    <volist name="news_kecheng_class" id="kecheng">
+                        <div nid="{$kecheng['classid']}"  class="news-tap-btn_mobile <if condition="$key eq 0">on</if>">{$kecheng['class_name']}</div>
+                    </volist>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12">
+                <ul class="news-10__mobilelist">
+                    <volist name="news_kechengs" id="news_kecheng" >
+                        <div <if condition="$key neq 0">style="display:none"</if> nid="{$news_kecheng_class[$key]['classid']}" class="mobile_kechengbox">
+                        <div class="">
+                        	<div class=" news_10_mobile_content_jianjie">
+
+                                <a href="{:U('/new_category',array('classid'=>$news_kecheng_class[$key]["classid"]))}">
+                                <div class="" style=" height:3.42rem; background:url({:getimgurl($news_kecheng_class[$key]['fid'])});background-size:cover; background-position:center;"></div></a>
+                                <a href="{:U('/new_category',array('classid'=>$news_kecheng_class[$key]["classid"]))}">
+                                <div class="news_10_mobile_content">
+                                        <div class="news_10_mobile_contenttitle">{$news_kecheng_class[$key]['class_name']}</div>
+                                        <div class="news_10_mobile_contentdesc ellipsis_two">{$news_kecheng_class[$key]['readme']}</div>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="mobile_kechengbox_img">
+                                <a href="{:U('/new_detail',array('nid'=>$news_kecheng[0]["nid"]))}">
+                                <div class="mobile_kecheng_img" style=" background:url({:getimgurl($news_kecheng[0]['new_pro'])});background-size:cover; background-position:center;"></div>
+
+
+                                </a>
+                                <a href="{:U('/new_detail',array('nid'=>$news_kecheng[1]["nid"]))}">
+                                <div class="mobile_kecheng_img" style=" background:url({:getimgurl($news_kecheng[1]['new_pro'])} );background-size:cover; background-position:center;"></div>
+
+                                </a>
+                                <a href="{:U('/new_detail',array('nid'=>$news_kecheng[2]["nid"]))}">
+                                <div class="mobile_kecheng_img" style="background:url({:getimgurl($news_kecheng[2]['new_pro'])});background-size:cover; background-position:center;"></div>
+                                </a>
+                                <a href="{:U('/new_detail',array('nid'=>$news_kecheng[3]["nid"]))}">
+                                <div class="mobile_kecheng_img" style="background:url({:getimgurl($news_kecheng[3]['new_pro'])});background-size:cover; background-position:center;"></div>
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                            
+                            <div class="clearfix"></div>
+                        </div>
+
+            </div>
+        </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_34 {
+        background: url({:getindeximgurl($data284[0])}) no-repeat center/cover;
+    }
+    .my-mask-l.list:before{
+        background-color: #{$data284[1]};
+    }
+    .my-mask-l.list:hover {
+        color: #{$data284[1]};
+    }
+    .more a{
+        border: 1px solid #{$data284[8]};
+        color: #{$data284[8]};
+    }
+    .more a.my-mask-l:before{
+        background-color: #{$data284[8]};
+    }
+    @media(min-width: 1200px) {
+        .more a:hover{
+            color: #fff;
+        }
+    }
+</style>
+<section class="hjzf2_other_34">
+    <div class="container">
+        <div class="row clearfix hjzf2_other_34_wrapper index_pd">
+            <!-- left -->
+            <div class="col-xs-12 col-md-6">
+                <div class="pb40 wow fadeInUp">
+                    <div class="index_title pb20">
+                        {$data284[3]}
+                    </div>
+                    <div class="index_sub_title">
+                        {$data284[4]}
+                    </div>
+                </div>
+                <ul class="row-little clearfix pb40 wow fadeInDown" data-wow-delay=".2s">
+                    <php>
+                        $bottom_nav_str2=explode("\\n",$data284[5]); 
+                        foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2)
+                        { $bottom_navs2=explode(":",$bottom_nav_arr2);
+                        $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+                    </php>
+                    <if condition="$bottom_nav2">
+                        <volist name="bottom_nav2" id="nav">
+                            <li class="col-xs-10 col-md-7">
+                                <a href="{$nav['href']}" class="my-mask-l list index_text">{$nav['name']} <i class="fa fa-angle-right fr"></i></a>
+                            </li>
+                        </volist>
+                    </if>
+                </ul>
+                <div class="more wow fadeInDown" data-wow-delay=".2s">
+                    <a href="{$data284[6]}" class="my-mask-l index_btn index_text">{$data284[7]} <i class="fa fa-download"></i></a>
+                </div>
+
+            </div>
+            <!-- right -->
+            <div class="col-md-6 col-xs-12 wow fadeInRight" data-wow-delay=".5s">
+                <img src="{:getindeximgurl($data284[2])}" class="img-fluid" alt="{$data284[7]}">
+            </div>
+            <!-- right end -->
+        </div>
+    </div>
+</section>

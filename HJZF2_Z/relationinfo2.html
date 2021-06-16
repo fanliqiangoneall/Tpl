@@ -1,0 +1,107 @@
+<if condition="$inner_data[4] neq ''">
+    <style>
+        .probox1608 {
+            display: none;
+        }
+        .main_proitem_p0{
+            padding: 0;
+        }
+        .prodetail1608{
+            padding-bottom: 30px;
+        }
+        .labelprod-pagination span{
+            width: 12px;
+            height: 12px;
+        }
+        .labelprod-pagination span.swiper-pagination-bullet-active{
+            background-color: #{$color};
+        }
+    </style>
+    <div class="swiper-container prodetail1608">
+        <div class="swiper-wrapper">
+
+            <volist empty="" name="labelprodlist" id="labelprodlista" offset="0" key="k">
+                <div class="swiper-slide main_proitem main_proitem_p0   product2_main_proitem">
+                    <div class="main_proitem_box">
+                        <div class="main_proitem_img"><a
+                                href="{:U('/Product','','')}/{:getproname($labelprodlista['pid'])}">
+                                <if condition="$labelprodlista['main_img']">
+                                    <img src="{:getmainimgurl($labelprodlista['main_img'])}" <if
+                                        condition="$labelprodlista['proalt'] neq ''">alt="{$labelprodlista['proalt']}"
+                                    <else />alt="{$labelprodlista['pro_name']}"</if> />
+                                <else />
+                                <img src="{:getindeximgurl($inner_data[3])}" alt="" />
+</if>
+</a></div>
+<div class="main_proitem_second">
+    <a href="{:U('/Product','','')}/{:getproname($labelprodlista['pid'])}">
+        <div class="main_proitem_name margin-10px-bottom">
+            <h6 title="{$labelprodlista['pro_name']}">{:subtxt($labelprodlista['pro_name'],60)}</h6>
+        </div>
+    </a>
+</div>
+</div>
+</div>
+</volist>
+
+</div>
+<div class="swiper-pagination labelprod-pagination"></div>
+
+</div>
+<script>
+    require(['jquery', 'swiper'], function ($, Swiper) {
+        $(function () {
+            var swiper = new Swiper('.prodetail1608', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                breakpoints: {
+                    1365: {
+                        slidesPerView: 2,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    }
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                }
+            })
+        })
+
+    });
+
+
+
+
+
+</script>
+</if>
+<if condition="$labelprodlist neq ''">
+    <div class="mainpage_probox probox1608">
+        <volist empty="" name="labelprodlist" id="labelprodlist" offset="0" key="k">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem  product2_main_proitem">
+                <div class="main_proitem_box">
+                    <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                            <if condition="$labelprodlist['main_img']">
+                                <img src="{:getmainimgurl($labelprodlist['main_img'])}" <if
+                                    condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"
+                                <else />alt="{$labelprodlist['pro_name']}"</if> />
+                            <else />
+                            <img src="{:getindeximgurl($inner_data[3])}" alt="" />
+</if>
+</a></div>
+<div class="main_proitem_second">
+    <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+        <div class="main_proitem_name margin-10px-bottom">
+            <h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],60)}</h6>
+        </div>
+    </a>
+</div>
+</div>
+</div>
+</volist>
+</div>
+<div style="clear:both;"></div>
+</if>

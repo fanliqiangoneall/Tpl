@@ -1,0 +1,85 @@
+<extend name="HJ01:basein" />
+<block name="content">
+    <style type="text/css">
+        .main_caseitem_img a:before{
+        background: rgba(0,0,0,0.5);
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$data14[11] neq ''">
+                <div class="in_banner" style="background:url({:getindeximgurl($data14[11])}) no-repeat center;"></div>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[5])}) center no-repeat"></div>
+             </if>
+            <div class="page-title-inner">
+                <div class="container">
+                    <h1 class="ins-page-title-txt no-margin padding-5px-tb">Cases</h1>
+                    <div class="Breadcrumbs"><a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;Cases</div>
+                </div>
+            </div>
+            <div class="ins-pagetitle-scroll-wrapper container"><a class="ins-pagetitle-scroll-link" href="javascript:goToMain()"><i class="fa fa-angle-down"></i></a></div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                    <Include file="./Tpl/HJ01/caseleft.html" />
+            </section>
+            <section class="main-content-right">
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <div class="mian_content_casebox">
+                                        <div class="ul_li_list3">
+                                            <volist name="allnews" id="allnews" key="k">
+                                                <div class="main_caseitem">
+                                                    <div class="main_caseitem_box">
+                                                        <div class="main_caseitem_img"> <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><if condition="$allnews['new_pro'] eq 0 or $allnews['new_pro'] eq ''"><img src="__TMPL__HJ01/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($allnews['new_pro'])}" alt="{$allnews['title']}" /></if></a></div>
+                                                        <div class="main_caseitem_down">
+                                                            <div class="main_caseitem_down_content">
+                                                                <div class="main_caseitem_title"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><h4>{:subtxt($allnews['title'],30)}</h4></a></div>
+                                                                <div class="main_caseitem_title2">{:subtxt($allnews['news_description'],30)}</div>
+                                                                <div class="main_caseitem_share">
+                                                                    <div class="margin-20px-top ins-social-icons social-icons-small social-icons-colorful icon-colored social-icons-colored social-icons-square social-icons-effect-none icons-align-center ">
+                                                                        <a href="{$data1[2]}" class="social icon-twitter" target="_blank"><i class="fa fa-twitter icon-primary"></i></a>
+                                                                        <a href="{$data1[1]}" class="social icon-facebook" target="_blank"><i class="fa fa-facebook icon-primary"></i></a>
+                                                                        <a href="{$data1[4]}" class="social icon-linkedin" target="_blank"><i class="fa fa-linkedin icon-primary"></i></a>
+                                                                        <a href="skype:{:chaifen($about['msn'],0)}?chat" class="social icon-skype" target="_blank" onclick="turn_sta(4,5);"><i class="fa fa-skype icon-primary"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <if condition="$k % 2 eq 0">
+                                                    <div style="clear:both;height: 30px;"></div>
+                                                </if>
+                                            </volist>
+                                            <div style="clear:both"></div>
+                                        </div>
+                            </div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="main_content_slogan">
+            <div class="container">
+                <div class="main_content_slogan_left ">
+                    <h3 class="margin-10px-bottom">Get Your Quote or Call: {:chaifen($about['phone'],0)}</h3>
+                    <p class="main_content_slogan_text" style="letter-spacing: 1px">{$data14[10]}</p>
+                </div>
+                <div class="main_content_slogan_right ">
+                    <div class="main_content_slogan_right_more text-right">
+                        <a href="{:U('/contactus')}">CONTACT US</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

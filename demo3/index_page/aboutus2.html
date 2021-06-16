@@ -1,0 +1,29 @@
+<!--{$pagename}-->
+<php>
+    if(!$data41[1]){
+        $data41[1] = 10;
+    }
+    if(!$data41[2]){
+    $data41[2] = 10;
+    }
+</php>
+<style>
+.index_about2 {
+    background: url({:getindeximgurl($data41[0])}) center center no-repeat !important;margin: auto;margin-bottom:{$data41[2]}px;margin-top:{$data41[1]}px;
+}
+.index_about2_box a{
+    background: #{$color};
+}
+</style>
+
+
+<link href="__TMPL__demo3/css/aboutus2.css" rel="stylesheet">
+<div class="index_about2 " style="position:relative;" >
+    <div class="container">
+        <div class="index_about2_box wow slideInLeft" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="20">
+            <h3>{$about['company_name']}</h3>
+            <div class="index_abus2_text">{:HtmlEncode(subtxt($company_info['description'],200))}</div>
+            <a href="{:U('/aboutus')}">更多</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="InsidePages_content-left_content">
+    <div class="InsidePages_left_content">
+            <div class="InsidePages_left_search">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <li class="search_first"><input data-language="{:C('LANGUAGE')}" type="text" value="{:__('Product Search')}" name="keywords" id="keyword2" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                    <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                    <div class="clear"></div>
+                </form>
+            </div>
+
+        <div class="InsidePages_left_content-main">
+            <h2>{$navparentname}</h2>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="navrs" id="nav">
+                    <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

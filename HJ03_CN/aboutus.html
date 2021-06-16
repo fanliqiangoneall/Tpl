@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<style>
+    #tip ul li.current{
+        background: #{$color};
+    }
+    .more-button:hover{
+        color: #fff;background: #{$color};text-indent: 0;transition: all .36s ease;
+    }
+</style>
+<if condition="$data4[4]">
+    <style>
+        #aboutus{
+            background: url({:getindeximgurl($data6[14])}) no-repeat center;
+        }
+    </style>
+</if>
+
+
+<!--about us start-->
+<div id="aboutus" class="module">
+    <div class="container">
+        <div class="hj02_abus_left wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">
+            <div id="ab_picbox">
+                <div id="pic" class="page_indexpic">
+                    <ul>
+                        <php>
+                            $imgs=aboutusimg();
+                            if(!$data4[3]){
+                            $data4[3]=3;
+                            }
+                        </php>
+                        <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[3]">
+                            <if condition="$banerimg['imgurl'] neq ''">
+                                <li ><a href="javascript:void(0);" <if condition="$data4[2]">id="adv_video{$k1}"</if>><img src="{$banerimg['imgurl']}" border="0" /></a></li>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+                <div id="tip">
+                    <ul>
+                        <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[3]">
+                            <if condition="$banerimg['imgurl'] neq ''">
+                                <li id="smallimg_{$k1}" onMouseOver="change({$k1})"></li>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="hj02_abus_right">
+            <div class="index_product_title_left wow fadeInUp" style="padding-top: 30px;padding-bottom: 50px;" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="350">
+                <div id="index_product_title_left1"><p>{$data4[0]}</p><span>{$data4[1]}</span></div>
+            </div>
+            <div class="clear"></div>
+            <div class="hj02_abus_right_content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.1s" data-wow-offset="350">
+                {:HtmlEncode(subtxt($company_info['description'],155))}&nbsp;&nbsp;
+            </div>
+            <a href="{:U('/aboutus')}" class="more-button wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">More</a>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+</div>
+<!--about us end-->

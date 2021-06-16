@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+<if condition="$data57[4]">
+    <style>
+        .new_hjzf_products-HJ01 .page_probg{
+            background: url({:getindeximgurl($data57[4])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_products-HJ01 .page_probg{
+        height: auto;
+    }
+    .new_hjzf_products-HJ01 #index_product_title_left1 h3{
+        color: #{$color};
+    }
+    .new_hjzf_products-HJ01 .index_product_more{
+        color: #{$color};
+    }
+    .new_hjzf_products-HJ01 .index_product_more:hover{
+    background: #{$color};color:#fff;
+    }
+    .new_hjzf_products-HJ01 .index_proitem_img a:before{
+        background: #000;
+    }
+    .new_hjzf_products-HJ01 .index_proitem_name h6{
+        color: #000;
+    }
+    .new_hjzf_products-HJ01 .index_proitem_more{
+        color:#{$color};
+    }
+    .new_hjzf_products-HJ01 .index_proitem_more:hover:after{
+    background: #000
+        width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+    }
+    .new_hjzf_products-HJ01 .index_proitem_more:after{
+        background: #{$color};
+    }
+    .new_hjzf_products-HJ01 .new_hjzf_products-HJ01-next,.new_hjzf_products-HJ01 .new_hjzf_products-HJ01-prev{
+        background: #{$color};
+    }
+    .new_hjzf_products-HJ01 .new_hjzf_products-HJ01-next:hover,.new_hjzf_products-HJ01 .new_hjzf_products-HJ01-prev:hover{
+        background: #{$color};
+    }
+</style>
+
+<!--index-product start-->
+<div class="page_probg">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left">
+                <div id="index_product_title_left1"><h3>{$data57[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right1">
+                    <a <if condition="$data57[3]">href="{$data57[3]}" <else/>href="{:U('/Product')}"</if> class="index_product_more">{$data57[1]}</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section class="index_product_content">
+            <div class="swiper-container new_hjzf_products-HJ01-swiper">
+                <div class="swiper-wrapper">
+                    <volist empty="" name="indexpro" id="indexprohjzf_products_HJ01" key="k" offset="0" length="9">
+                        <div class="swiper-slide index_proitem">
+                            <div class="index_proitem_box">
+                                <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}"><img src="{:getmainimgurl($indexprohjzf_products_HJ01['main_img'])}" <if condition="$indexprohjzf_products_HJ01['proalt'] neq ''">alt="{$indexprohjzf_products_HJ01['proalt']}"<else/>alt="{$indexprohjzf_products_HJ01['pro_name']}"</if> /></a></div>
+                                <div class="index_proitem_second">
+                                    <div class="index_proitem_name margin-10px-bottom"><h6>{$indexprohjzf_products_HJ01['pro_name']}</h6></div>
+                                    <if condition="$indexprohjzf_products_HJ01['pro_description']"><div class="index_proitem_desc">{:subtxt($indexprohjzf_products_HJ01['pro_description'],100)}</div></if>
+                                    <div class="index_proitem_more_parent">
+                                        <a href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}" class="index_proitem_more">{:__('Read More')} </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next new_hjzf_products-HJ01-next"></div>
+            <div class="swiper-button-prev new_hjzf_products-HJ01-prev"></div>
+        </section>
+    </div>
+</div>
+
+

@@ -1,0 +1,64 @@
+<!--{$pagename}-->
+<style>
+    .products_24_title .index_sub_title {
+        color: #{$data677[0]};
+    }
+    .products_24_pagination span.swiper-pagination-bullet-active,.swiper-slide-active .products_24_wrapper_content:before{
+    background-color: #{$data677[0]};
+}
+.swiper-slide-active .products_24_wrapper_content:before{
+    width: 100%;
+}
+</style>
+<section class="products_24 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="pb40 products_24_title">
+                <span class="index_title">
+                    {:HtmlEncode($data677[1])}
+                </span>
+                <span class="index_sub_title">
+                    {$data677[2]}
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="products_24_container">
+        <div class="row">
+            <div class="swiper-container products_24_wrapper col-xs-12">
+                <div class="swiper-wrapper">
+                    <php>
+                        $arr = get_list_val($data677[3]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <div class="swiper-slide">
+                            <div class="products_24_wrapper_bg">
+                                <img src="{$a[bg]}" alt="{$a[title]}" class="img-full">
+                                <div class="products_24_wrapper_content ani" swiper-animate-effect="slideInleft" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                                    <span class="index_sub_title pb20">{$a[title]}</span>
+                                    <a class="more mb20" href="{$a[link]}">
+                                        <span class="line_1"></span>
+                                        <span>{$data677[4]}</span>
+                                        <span class="line_2"></span>
+                                    </a>
+                                    
+                                    <div class="products_24_wrapper_content_text">
+                                        <span class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.3s" swiper-animate-delay="0.5s">{$a[num1]}</span>
+                                        <span class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.3s" swiper-animate-delay="0.6s">{$a[num2]}</span>
+                                        <span class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.3s" swiper-animate-delay="0.7s">{$a[num3]}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="products_24_wrapper_img" data-swiper-parallax="-70%">
+                                <img src="{$a[img]}" alt="{$a[title]}" class="img-fluid">
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="swiper-pagination products_24_pagination"></div>
+            </div>
+
+        </div>
+    </div>
+</section>

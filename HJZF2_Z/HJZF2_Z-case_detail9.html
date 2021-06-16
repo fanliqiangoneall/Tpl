@@ -1,0 +1,84 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style type="text/css">
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .main_news_prev_next ul li.news_next:hover img{opacity: 1}
+        .main_news_prev_next ul li.news_prev:hover img{opacity: 1}
+        .inquiry_Title h5{color: #333;}
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+        .main_news_prev_next ul li{
+            transition: all .5s ease;
+        }
+        .main_news_prev_next ul li:hover{
+            background: #{$color};
+        }
+    </style>
+
+    <div class="index_wrapper" id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="index_inner container">
+                <div class="row">
+                    <div class="col-xs-12">
+                    	<div class="HJZF_Z__inner9--text wow bounceIn">
+                            <div class="index_title">{$news['title']}</div>
+                        </div>
+                        <section class="InsidePages_content-right2">
+                            <div class="InsidePages_content-right_content">
+                                <div class="InsidePages_content-right_content-main">
+                                    <div class="news">
+                                        <div id="news_detail">
+                                            <div class="body">
+                                                <div class="news_body zdn_editor" id="payment">{:htmlspecialchars_decode($news['body'])}</div>
+                                                <div class="news_detail2_prev">
+                                                    <ul>
+                                                        <if condition="$newprev[0]['title'] eq ''">
+                                                            <else/>
+                                                            <li class="news_prev">
+                                                                {:__('Prev: ')}
+                                                                <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                    {$newprev[0]['title']}
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <if condition="$newnext[0]['title'] eq ''">
+                                                            <else/>
+                                                            <li class="news_next">
+                                                                {:__('Next: ')}
+                                                                <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                   {$newnext[0]['title']}
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <div class="clear"></div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </section>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,38 @@
+<!--left style-->
+<style>
+    .HJ05-left-class >ul > li:hover >a>h3{
+        color: #{$data47[9]};
+    }
+    .yijion > ul > li:hover > a > h3{
+        color: #{$data47[9]};
+    }
+    .main-content_inner > ul > li.yijion > ul>li.childon:hover a h3{
+        color: #{$data47[9]};
+    }
+    .HJ05-left-class >ul > li.yijion >a>h3{
+        color: #{$data47[9]};
+    }
+    .yijion > ul > li.childon > a > h3{
+        color: #{$data47[9]};
+    }
+</style>
+<!--left style-->
+<div class="main-content_inner">
+    <div class="HJ05-left-search">
+        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+            <li class="search_first"><input type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+            <li class="search_second"><button type="submit" id="search-submit"></button></li>
+            <div class="clear"></div>
+        </form>
+    </div>
+    <div class="HJ05-left-class">
+            <p><if condition="$data1[21]">{$data1[21]}<else/>ABOUT US</if></p>
+            <ul>
+                <volist empty="" name="navrs" id="nav">
+                    <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+                </volist>
+            </ul>
+
+        <div class="clear"></div>
+    </div>
+</div>

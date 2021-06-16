@@ -1,0 +1,53 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_aboutus.html" />
+		</div>
+
+		<section class="hjzf_chengshe InsidePages_content-right2">
+			<div class="InsidePages_content-right__wrap">
+				<div class="InsidePages_content-right_content-main">
+					<div class="InsidePages_content-right_editor" id="payment">
+						{:htmlspecialchars_decode($intro_class['readme'])}
+					</div>
+					<div class="page_nei_space"></div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<script>
+		require(['jquery', 'swiper'], function ($, Swiper) {
+			$(function () {
+				$('.fuwu_a li:first-child').addClass('on');
+				$('.fuwu_a li').hover(function () {
+					$(this).addClass('on').siblings('li').removeClass('on');
+				});
+				$('.service_because li:first-child').addClass('on');
+				$('.service_because li').hover(function () {
+					$(this).addClass('on').removeClass('off').siblings('li').addClass('off').removeClass('on');
+				});
+
+				new Swiper('.all_hzhb', {
+					pagination: {
+						el: '.all_hzhb .swiper-pagination',
+						clickable: true
+
+					},
+					autoplay: true,
+					slidesPerView: 7,
+					slidesPerColumn: 2,
+					slidesPerGroup: 14,
+					breakpoints: {
+						768: {
+							slidesPerView: 3,
+							slidesPerGroup: 6,
+						},
+
+					}
+				})
+			});
+		});
+	</script>
+</block>

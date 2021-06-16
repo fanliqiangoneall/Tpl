@@ -1,0 +1,202 @@
+.hjzf_z_aboutus29_con {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.hjzf_z_aboutus29_con .hjzf_z_aboutus29_left {
+	flex: 0 0 63%;
+	margin: 0;
+	height: 70vh;
+}
+
+.hjzf_z_aboutus29>.hjzf_z_aboutus29_leftpagination {
+	width: 63%;
+}
+
+.hjzf_z_aboutus29_con .hjzf_z_aboutus29_right {
+	width: 40%;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 9;
+	overflow: hidden;
+	padding: 80px;
+	height: 65vh;
+}
+
+.hjzf_z_aboutus29_right .mb-40{
+	transition: all .4s .4s;
+	opacity: 0;
+	transform: translateY(55px);
+}
+.hjzf_z_aboutus29_title {
+	margin-bottom: 40px;
+	position: relative;
+	padding-left: 20px;
+	padding-top: 10px;
+	transition: all .4s .3s;
+	transform: translateY(0);
+	opacity: 1;
+}
+.hjzf_z_aboutus29_right a{
+	opacity: 1;
+	transform: translateY(0);
+	transition: all .4s .5s;
+}
+.swiper-slide-active .hjzf_z_aboutus29_right .mb-40{
+	transform: translateY(0);
+	opacity: 1; 
+}
+.hjzf_z_aboutus29_title:before {
+	position: absolute;
+	display: block;
+	content: '';
+	left: 0;
+	top: 0;
+	width: 1px;
+	height: 100%;
+	background-color: #9d9d9d;
+}
+.hjzf_z_aboutus29_title:after {
+	position: absolute;
+	display: block;
+	content: '';
+	left: 0;
+	top: 0;
+	width: 90px;
+	height: 1px;
+	background-color: #9d9d9d;
+}
+
+.hjzf_z_aboutus29_title .index_text {
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.hjzf_z_aboutus29_title .index_text:after {
+	position: absolute;
+	display: block;
+	content: '';
+	left: -20px;
+	bottom: 0;
+	width: 90px;
+	height: 1px;
+	background-color: #9d9d9d;
+}
+
+.hjzf_z_aboutus29_title .index_text:before {
+	position: absolute;
+	display: block;
+	left: 70px;
+	bottom: 0;
+	content: '';
+	width: 1px;
+	height: 15px;
+	background-color: #9d9d9d;
+}
+
+.hjzf_z_aboutus29_title .index_title:before {
+	position: absolute;
+	display: block;
+	left: 90px;
+	top: 0;
+	content: '';
+	width: 1px;
+	height: 15px;
+	background-color: #9d9d9d;
+}
+
+.hjzf_z_aboutus29_title .index_title {
+	text-shadow: 2px 1px 4px rgb(0 0 0 / 30%);
+}
+
+.hjzf_z_aboutus29_right a {
+	color: #fff;
+	display: inline-block;
+	min-width: 180px;
+}
+
+.hjzf_z_aboutus29_leftpagination span {
+	width: 12px;
+	height: 12px;
+	opacity: .5;
+	background-color: #fff;
+	margin: 0 6px !important;
+}
+
+.hjzf_z_aboutus29_leftpagination span.swiper-pagination-bullet-active {
+	opacity: 1;
+}
+
+@media(max-width: 1600px) {
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_left{
+		height: 70vh;
+	}
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_right {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		height: 60vh;
+	}
+}
+
+@media(max-width: 1365px) {
+
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_right,
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_left {
+		width: 50%;
+		flex: 0 0 50%;
+		position: relative;
+		transform: translate(0, 0);
+		height: auto;
+	}
+
+	.hjzf_z_aboutus29>.hjzf_z_aboutus29_leftpagination {
+		width: 50%;
+	}
+
+	.hjzf_z_aboutus29 {
+		justify-content: space-between;
+	}
+
+	.hjzf_z_aboutus29_title .index_text {
+		padding-bottom: 10px;
+	}
+
+	.hjzf_z_aboutus29_right .mb-40 {
+		margin-bottom: 20px;
+	}
+
+	.hjzf_z_aboutus29_title {
+		margin-bottom: 15px;
+	}
+}
+
+@media(max-width: 1200px) {
+
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_right,
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_left {
+		width: 100%;
+		flex: 0 0 100%;
+	}
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_left{
+		height: 35vh;
+	}
+	
+	.hjzf_z_aboutus29>.hjzf_z_aboutus29_leftpagination {
+		width: 100%;
+	}
+	.hjzf_z_aboutus29_con .hjzf_z_aboutus29_right{
+		padding: 20px 30px;
+		height: auto;
+	}
+	.hjzf_z_aboutus29_leftpagination span{
+		background-color: #000;
+		margin-top: 15px;
+	}
+	.hjzf_z_aboutus29>.hjzf_z_aboutus29_leftpagination{
+		position: static;
+	}
+}

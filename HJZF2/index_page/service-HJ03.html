@@ -1,0 +1,69 @@
+<!--{$pagename}-->
+<if condition="$data74[2] neq ''">
+    <style>
+        .new_hjzf_service-HJ03 #hj03-service{
+            background: url({:getindeximgurl($data74[2])}) no-repeat center fixed;overflow: hidden;
+        }
+    </style>
+</if>
+<if condition="$data74[19] neq ''">
+<style>
+    .new_hjzf_service-HJ03 .hj03-service-more{
+        background: url({:getindeximgurl($data74[19])}) no-repeat center ;overflow: hidden;
+    }
+</style>
+    </if>
+<style>
+    .new_hjzf_service-HJ03 .shj03-service-left{
+        background: url({:getindeximgurl($data74[3])}) no-repeat;overflow: hidden;
+    }
+    .new_hjzf_service-HJ03 .shj03-service-right ul li:hover .hj03-service-item-text{
+        background: #{$data74[18]};
+    }
+</style>
+<div id="hj03-service">
+    <div class="container">
+        <div class="service-content">
+            <div class="shj03-service-left lf wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                <p class="shj03-service-title">{$data74[0]}</p>
+                <p class="shj03-service-subtitle">{$data74[1]}</p>
+                <a href="{$data74[4]}" target="_blank" class="hj03-service-more"><i class="fa fa-long-arrow-right"></i></a>
+            </div>
+            <div class="shj03-service-right rt wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                <ul>
+                    <li>
+                        <div class="hj03-service-item-text">
+                            <div class="box">
+                                <p>{$data74[6]}</p>
+                                <p>{$data74[7]}</p>
+                                <a href="{$data74[8]}">{:__('More')}<i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="hj03-service-item-img"><img src="{:getindeximgurl($data74[9])}" alt=""/></div>
+                    </li>
+                    <li>
+                        <div class="hj03-service-item-img"><img src="{:getindeximgurl($data74[13])}" alt=""/></div>
+                        <div class="hj03-service-item-text">
+                            <div class="box">
+                                <p>{$data74[10]}</p>
+                                <p>{$data74[11]}</p>
+                                <a href="{$data74[12]}">{:__('More')}<i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hj03-service-item-text">
+                            <div class="box">
+                                <p>{$data74[14]}</p>
+                                <p>{$data74[15]}</p>
+                                <a href="{$data74[16]}">{:__('More')}<i class="fa fa-angle-right"></i> </a>
+                            </div>
+                        </div>
+                        <div class="hj03-service-item-img"><img src="{:getindeximgurl($data74[17])}" alt=""/></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

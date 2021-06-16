@@ -1,0 +1,130 @@
+<!--{$pagename}-->
+    <style type="text/css">
+        .InsidePages_list li.yijion>a>h3:before,.InsidePages_list li.yiji:hover >a>h3:before,.InsidePages_list li.yijion>a>h3,.InsidePages_list li.yiji:hover >a>h3,.HJZF_Z__Breadcrumbs span.current,.main_news_dowm span a{
+            border-color: #{$color};color: #{$color};
+        }
+
+		.yiji{ padding:30px 0px; margin-right:30px; font-size:16px;}
+		.yiji.on{
+			border-bottom:2px solid #{$color};
+		}
+		.products_inner1_cases{ display:none;}
+		.products_inner1_cases.on{ display:block;}
+		.products_inner1_tag{cursor:pointer;}
+		.InsidePages_content2_commontitle{ width:99%;}
+    </style>	
+    <div id="HJZF_Z__wrapper">
+    <php>
+        $products_category_info=get_products_category_info($data513[0]);
+        $childrens=get_children($data513[0]);
+    </php>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{$data513[2]}">{$data513[1]}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$products_category_info['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="HJZF_Z__inner--left2">
+                <div class="container">
+                    <div class="row">
+                        <div class="InsidePages_content-left_content col-xs-12 hidden-xs hidden-sm hidden-md">
+                            <div class="InsidePages_navswiper swiper-container">
+                                <ul class="InsidePages_list swiper-wrapper">
+                                    <volist empty="" name="childrens" id="children"  offset="0" key="key">
+                                        <li  class="products_inner1_tag yiji <if condition="$key eq 1">on</if>" classid="{$children['pcid']}" ><a href="javascript:">{$children['class_name']}</a></li>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <div class="InsidePages_content-left_content">
+                            <div class="HJZF_Z__inner--left__content">
+                                <div class="InsidePages_left_content-main">
+                                    <p>{$data513[1]}<span class="mobile--left_showButton"><i></i></span></p>
+                                    <ul class="InsidePages_left_navlist">
+                                        <volist empty="" name="childrens" id="children">
+                                            <li class="yijion_news products_inner1_tag" classid="{$children['pcid']}" ><a style="cursor:pointer;" href="javascript:">{$children['class_name']}</a></li>
+                                        </volist>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <section class="col-xs-12 InsidePages_content2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="mian_content_casebox2">
+                                    <ul>
+                                        <php>
+                                            $no_empty = '<span class="norecords">暂无内容...</span>';
+                                        </php>
+                                        <volist name="childrens" id="children" key="key" empty="$no_empty">
+                                        <php>
+                                        $zq_products=count_product_by_cate($children['pcid']);
+                                        $xiangguan_pros=get_related_bycate($children['pcid'],"%,".$children['pcid'].",%"); 
+                                        </php>
+                                        <div class="products_inner1_cases <if condition="$key eq 1">on</if>" classid="{$children['pcid']}">
+                                        <div class="main_caseitem2_list">
+                                            <volist empty="$no_empty" name="zq_products" id="zq_product" key="k">
+                                            	
+                                                    <li class="main_caseitem2 ">
+                                                    <div class="products_inner1_img">
+                                                        <img src="{:getmainimgurl($zq_product['main_img'])}">
+                                                    </div>
+                                                        <div class="main_caseitem_wrap">
+                                                            <div class="news_info">
+                                                                <div class="main_caseitem2_title"><a href="{:U('/Product','','')}/{:getproname($zq_product['pid'])}?casepro=1" onFocus="blur()">{$zq_product['pro_name']}</a></div>
+                                                            </div>
+                                                            <div class="main_caseitem2_pro_description">{:HtmlEncode(subtxt($zq_product['pro_description'],600))}</div>
+                                                        </div>
+                                                    </li>
+                                                
+                                            </volist>
+                                            </div>
+                                            
+                                            
+              
+                                     
+										<h2 class="InsidePages_content2_commontitle" style="margin-top:50px;"><span>相关产品</span></h2>                                        
+                                        
+                                        <div class="mian_content_casebox2 xiangguanchanping_row">
+                                            <volist name="xiangguan_pros" id="xiangguan_pro">
+                                            <div class="xiangguanchanping">
+                                            <a href="{:U('/Product','','')}/{:getproname($xiangguan_pro['pid'])}">
+                                                <img src="{:getmainimgurl($xiangguan_pro['main_img'])}">
+                                                <div class="main_caseitem2_title_no_a">{$xiangguan_pro['pro_name']}</div>
+                                                <div class="main_caseitem2_pro_description">{:HtmlEncode(subtxt($xiangguan_pro['pro_description'],600))}</div>
+                                            </a>	
+                                            </div>                                
+                                            </volist>
+                                        </div>
+                                                 
+                                        </div>    
+                                        </volist>
+                                        
+                                        <div style="clear:both"></div>
+                                    </ul>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+ 
+
+                </div>
+            </div>
+
+        </div>
+    </div>

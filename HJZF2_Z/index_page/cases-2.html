@@ -1,0 +1,48 @@
+<!--{$pagename}-->
+<style>
+.HJZF2_Z__cases-2 .HJZF2_Z__cases-2__title:after{
+	background: #{$data32[3]};
+}
+.HJZF2_Z__cases-2__button a:hover{
+	background-color: #{$data32[3]};
+}
+</style>
+
+<!--news start-->
+<section class="HJZF2_Z__cases-2 index_pd">
+   <div class="container">
+     <div class="row">
+        <h3 class="HJZF2_Z__cases-2__title wow fadeInUp pb20 col-xs-12" data-wow-duration="0.5s" data-wow-delay="0"><span class="ttwrap index_title">{$data32[0]}</span></h3>
+     </div>
+   </div>
+   <div class="HJZF2_Z__cases-2__content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+     <div class="HJZF2_Z__cases-2__container">
+        <div class="HJZF2_Z__cases-2__grid dt-css-grid">
+            <volist name="indexcases" id="indexcase" offset="0" length="8">
+            <div class="HJZF2_Z__cases-2__item visible wf-cell shown">
+                <div class="HJZF2_Z__cases-2__wrap post-thumbnail-wrap">
+                    <div class="HJZF2_Z__cases-2__thumbnail post-thumbnail">
+                      <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><if condition="$indexcase['new_pro'] eq 0 or $indexcase['new_pro'] eq ''"><img class="lazy" src="__TMPL__HJZF2_Z/img/timg.gif" data-original="{:getindeximgurl($data32[4])}" alt="{$indexcase['title']}" border="0" /><else/><img class="lazy" src="__TMPL__HJZF2_Z/img/timg.gif" alt="{$indexcase['title']}" data-original="{:getpcimgurl($indexcase['new_pro'])}" /></if></a>
+                    </div>
+                </div>
+                <php>
+                    $case_name = get_wap_case_class_name($indexcase['cates_class']);
+                </php>
+                <div class="HJZF2_Z__cases-2__hover post-entry-content">
+                    <div class="HJZF2_Z__cases-2__icom project-links-container"><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><span><i class="fa fa-plus"></i></span></a></div>
+                    <h3 class="HJZF2_Z__cases-2__casetitle entry-title"><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" class="index_sub_title">{:subtxt($indexcase['title'],30)}</a></h3>
+                    <div class="HJZF2_Z__cases-2__categories entry-meta portfolio-categories"><span class="category-link"><a href="{:U('/new_category',array('classid'=>$indexcase["cates_class"]))}" class="index_text">{$case_name}</a></span></div>
+                    <div class="entry-excerpt"></div>
+                </div>
+            </div>
+            </volist>
+        </div>
+     </div>
+   </div>
+   <div class="HJZF2_Z__cases-2__button wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0">
+      <a href="{$data32[2]}"><span><i class="fa fa-briefcase"></i></span>{$data32[1]}</a>
+   </div>
+</section>
+
+<!--news end-->
+

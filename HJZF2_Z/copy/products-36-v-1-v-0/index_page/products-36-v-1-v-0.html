@@ -1,0 +1,82 @@
+
+<!--{$pagename}-->
+<php>
+    if($data669[0]){
+        $color = $data669[0];
+    }
+</php>
+<style>
+     <if condition="$data669[1]">
+        .new_hjzf_product36v_1 {
+            background-image: url({:getindeximgurl($data669[1])});
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </if>
+    <if condition="$data669[8]">
+        .new_hjzf_product36v_1_wrapper li{
+            background-color: #{$data669[8]};
+        }
+        .new_hjzf_product36v_1_wrapper li em{
+            color:#{$color};
+            border-color: #{$color};
+        }
+    </if>
+    
+    .new_hjzf_product36v_1_wrapper li{
+        height: {$data669[6]}px;
+    }
+    @media(max-width: 767px) {
+        .new_hjzf_product36v_1_wrapper li{
+            height: {$data669[7]}px;
+        }
+    }
+    .new_hjzf_product36v_1_wrapper li.on a:after,.new_hjzf_product36v_1_wrapper_pagination .swiper-pagination-bullet-active{
+        background-color: #{$color};
+    }
+</style>
+<script>
+    var isOpenFirst = '<?php echo $data669[9];?>';
+</script>
+<section class="new_hjzf_product36v_1 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center pb40 index_title">{$data669[2]}</div>
+				<div class="swiper-container new_hjzf_product36v_1_container">
+                <ul class="new_hjzf_product36v_1_wrapper swiper-wrapper">
+                    <php>
+                        $arr_str=$data669[5];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                            $list[$k]=get_index_products_categoryname($a);
+                        };
+                        $arra = get_list_val($data669[4]);
+                    </php>
+                <volist empty="" name="list" id="li" key="keya">
+                <style>
+                    .new_hjzf_product36v_1_wrapper_list{$keya}.on:after{
+                        background: url({:getmainimgurl($li['fid'])}) no-repeat center;
+                    }
+                </style>
+                    <li class="new_hjzf_product36v_1_wrapper_list{$keya} new_hjzf_product36v_1_liat text-center swiper-slide">
+                        <a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">
+                            <div class="new_hjzf_product36v_1_box_img mb-40 img-par">
+                                <img src="{$arra[$keya-1]['ico']}" class="hover">
+                                <img src="{$arra[$keya-1]['icoh']}" class="normal">
+                            </div>
+                            <div class="index_sub_title pb20">{$li['class_name']}</div>
+                            <p>{$li['readme']}</p>
+                            <em>{:__('Read More')}+</em>
+                        </a>
+                    </li>
+                </volist>
+                </ul>
+				<div class="new_hjzf_product36v_1_wrapper_pagination text-center mt-20"></div>
+				
+            </div>
+            </div>
+        </div>
+    </div>
+</section>

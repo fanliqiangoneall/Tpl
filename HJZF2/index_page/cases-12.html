@@ -1,0 +1,77 @@
+<if condition="$data163[0]">
+    <style>
+        .HJZF2__case12{
+            background: url({:getindeximgurl($data163[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .case12-gallery-thumbs .swiper-slide:hover .case12-gallery-thumbsName{
+        background: #{$color};
+    }
+</style>
+<section class="HJZF2__case12">
+    <div class="container">
+        <div class="HJZF2__case12__left">
+            <div class="HJZF2__case12__leftTitle">{$data163[2]}</div>
+            <div class="case12-gallery-topWrap">
+            <div class="swiper-container case12-gallery-top">
+                <div class="swiper-wrapper">
+                   <php>
+                       for($i=3;$i<18;$i=$i+4){
+                   </php>
+                    <div class="swiper-slide">
+                        <p class="case12-gallery-top__name">{$data163[$i]}</p>
+                        <div class="case12-gallery-top__desc">{:HtmlEncode(subtxt($data163[$i+1],400))}</div>
+                        <a href="{$data163[$i+2]}">{:__('Read More')}</a>
+                    </div>
+                    <php>
+                        }
+                    </php>
+                </div>
+
+            </div>
+            </div>
+            <div class="swiper-container case12-gallery-thumbs">
+                <div class="swiper-wrapper">
+                    <php>
+                       for($i=3;$i<18;$i=$i+4){
+                    </php>
+                    <div class="swiper-slide">
+                         <div class="case12-gallery-thumbsImg">
+                             <img src="{:getindeximgurl($data163[$i+3])}" alt="{$data163[$i]}"/>
+                         </div>
+                        <div class="case12-gallery-thumbsName"><a href="{$data163[$i+2]}">{$data163[$i]}</a>
+                        <span><i class="fa fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <php>
+                        }
+                    </php>
+                </div>
+                <div class="swiper-button-next case12-gallery-thumbs_next"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-button-prev case12-gallery-thumbs_prev"><i class="fa fa-angle-left"></i></div>
+            </div>
+
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="HJZF2__case12--rightPic">
+        <div class="case12-gallery-thumbsImg">
+
+                <php>
+                    for($i=3;$i<18;$i=$i+4){
+                </php>
+                <div class="slide">
+                    <div class="case12-gallery-thumbsImg">
+                        <img src="{:getindeximgurl($data163[$i+3])}" alt="{$data163[$i]}"/>
+                    </div>
+                </div>
+                <php>
+                    }
+                </php>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .HJZF_Z__Breadcrumbs span.current {
+            color: #{$inner_data[1]};
+        }
+
+        .InsidePages_content-right_content_title:before {
+            background: #{$inner_data[1]};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                        class="fa fa-angle-right"></i>&nbsp;<span class="current">404</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <section class="InsidePages_content-right2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main" style="text-align:center;">
+                                <div class="no_img__404">
+                                    <a href="{:U('/')}">
+                                        <if condition="C('LANGUAGE') eq 'en'">
+                                            <img src="__TMPL__HJZF2_Z/img/404.png" border="0" alt="404" />
+                                            <elseif condition="C('LANGUAGE') eq 'rus'"/>
+                                            <img src="__TMPL__HJZF2_Z/img/404_rus.png" border="0" alt="404" />
+                                            <else/>
+                                            <img src="__TMPL__HJZF2_Z/img/404_cn.png" border="0" alt="404" />
+                                        </if>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

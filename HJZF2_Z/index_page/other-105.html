@@ -1,0 +1,112 @@
+<!--{$pagename}-->
+<style>
+	.HJZF2_Z_other_105_more a {
+		color: #{$color};
+	}
+
+	.HJZF2_Z_other_105_wrapper {
+		text-align: center;
+	}
+	.HJZF2_Z_other_105_wrapper video{
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		object-fit: fill;
+	}
+	.HJZF2_Z_other_105_wrapper .container{
+		position: relative;
+		z-index: 9;
+	}
+</style>
+<section class="HJZF2_Z_other_105">
+	<php>
+		$arr = get_list_val($data537[0]);
+	</php>
+	<volist name="arr" id="a" key="k">
+
+		<div class="HJZF2_Z_other_105_wrapper" style="background-image: url({$a[bg]});">
+			<if condition="$a[sp]">
+				<video src="{$a[sp]}" autoplay loop muted class="nav-hidden-mobile"></video>
+			</if>
+
+			<style>
+				<if condition="$a[cen]">
+
+					{
+					align-items: flex-start;
+				}
+
+
+				.HJZF2_Z_other_105_con {
+					text-align: left;
+				}
+
+				.HJZF2_Z_other_105_more a {
+					margin-left: 0;
+				}
+
+				</if><if condition="$a[col]"><php>$col=explode(',', $a[col]);
+
+				</php>.HJZF2_Z_other_105_morea a {
+					background: linear-gradient(180deg, {
+							$col[0]
+						}
+
+						0%, {
+							$col[1]
+						}
+
+						100%);
+				}
+
+				</if> {}
+			</style>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="HJZF2_Z_other_105_box HJZF2_Z_other_105_box{$k}">
+							<if condition="$a[img]">
+								<div class="HJZF2_Z_other_105_img">
+									<img src="{$a[img]}" alt="">
+								</div>
+							</if>
+							<if condition="$a[title]">
+								<div class="HJZF2_Z_other_105_title index_title pb20 wow fadeInUp"
+									data-wow-duration=".2">
+									{$a[title]}
+								</div>
+							</if>
+							<if condition="$a[sub]">
+								<div class="HJZF2_Z_other_105_sub index_sub_title pb40 wow fadeInUp"
+									data-wow-duration=".2">
+									{$a[sub]}
+								</div>
+							</if>
+							<if condition="$a[con]">
+								<div class="HJZF2_Z_other_105_con index_sub_title wow fadeInUp" data-wow-duration=".2">
+									{$a[con]}
+								</div>
+							</if>
+							<if condition="$a[col]">
+								<div class="HJZF2_Z_other_105_morea">
+									<else />
+									<div class="HJZF2_Z_other_105_more">
+							</if>
+							<if condition="$a[text1]">
+								<a href="{$a[more]}">{$a[text1]} <i class="fa fa-angle-double-right"></i></a>
+							</if>
+							<if condition="$a[text2]">
+								<a href="{$a[morea]}">{$a[text2]} <i class="fa fa-angle-double-right"></i></a>
+							</if>
+						</div>
+					</div>
+					<div class="other_105_down"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</volist>
+</section>

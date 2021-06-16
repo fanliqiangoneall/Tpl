@@ -1,0 +1,97 @@
+<!--{$pagename}-->
+<php>
+    if($data532[4]){
+    $len = $data532[4];
+    }else{
+    $len = 5;
+    }
+    if($data532[0]){
+        $color = $data532[0];
+    }
+</php>
+<style>
+    .hjzf2_Z_case30_bottom li:hover .hjzf2_Z_case30_bottom_text{
+        border-bottom-color: #{$color};
+    }
+    .hjzf2_Z_case30_bottom li:hover .hx_par em{
+        background-color: #{$color};
+    }
+    .hjzf2_Z_case30_bottom li:hover .hx_par em:after{
+        border-left-color: #{$color};
+    }
+</style>
+
+<section class="hjzf2_Z_case30 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="guanwang_title mb-40 wow fadeInDown">
+                    <i><img src="{:getindeximgurl($data532[1])}"></i>
+                    <span></span>
+                    <h2>{$data532[2]}</h2>
+                    <em></em>
+                    <h4>{$data532[3]}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-40">
+        <div class="row">
+            <div class="col-xs-12">
+                <php>
+                    $indexcases = array_reverse($indexcases,true);
+                </php>
+                <div class="swiper-container hjzf2_Z_case30_mid">
+                    <div class="swiper-wrapper">
+                        <volist name="indexcases" id="indexcase" offset="0" length="$len">
+                            <div class="swiper-slide" >
+                                <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">
+                                    <img src="{:getimgurl($indexcase['new_pro'])}" class="img-fluid"
+                                        alt="{$indexcase['title']}">
+                                    <div class="hjzf2_Z_case30_bottom_text hx_par">
+                                        <h3 class="index_sub_title">{$indexcase['title']}</h3>
+                                        <div class="index_text">{$indexcase['news_description']}
+                                        </div>
+                                        <em></em>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="swiper_navigation">
+                        <div class="cases_31_prev swiper-button-prev swiper-button-white"></div>
+                        <div class="cases_31_next swiper-button-next swiper-button-white"></div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="row hjzf2_Z_case30_bottom">
+            <volist name="indexcases" id="indexcasea" offset="$len" length="6">
+                <li class="col-xs-6 col-lg-4 mb-20">
+                    <a href="{:U('/case_detail',array('nid'=>$indexcasea["nid"]))}">
+                        
+                        <div class="hjzf2_Z_case30_bottom_img">
+                            <img src="{:getimgurl($indexcasea['new_pro'])}" class="img-fluid"
+                                        alt="{$indexcasea['title']}">
+                        <span class="hjzf2_Z_case30_bottom_link"><img src="{:getindeximgurl($data532[5])}" ></span>
+                        </div>
+                        <div class="hjzf2_Z_case30_bottom_text hx_par">
+                            <div class="index_sub_title">
+                                {$indexcasea['title']}
+                            </div>
+                            <div class="index_text">
+                                {$indexcasea['news_description']}
+                            </div>
+                            <em>
+                                
+                            </em>
+                        </div>
+                    </a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</section>

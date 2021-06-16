@@ -1,0 +1,82 @@
+<!--{$pagename}-->
+<style>
+    .advantage_HJ07 {
+        background: url({:getindeximgurl($data296[0])
+    }
+
+    ) no-repeat center/100% 100%;
+    background-attachment: fixed;
+
+    }
+
+    .advantage_HJ07_wrapper li .info,
+    .advantage_HJ07_wrapper li .info a {
+        color: #{$data296[2]};
+        border-color: #{$data296[2]};
+    }
+
+    .advantage_HJ07_wrapper li.first span,
+    .advantage_HJ07_wrapper li.first a {
+        <if condition="$data296[1]">color: #{$data296[1]};
+        <else/>color: #{$color} </if>
+    }
+
+    .advantage_HJ07_wrapper li.first p {
+        color: #333;
+    }
+    .advantage_HJ07_wrapper li.first a {
+        <if condition="$data296[1]">color: #{$data296[1]};
+        border-color: #{$data296[1]} <else/>color: #{$color};
+        border-color: #{$color} </if>
+    }
+    .advantage_HJ07_wrapper li:hover a {
+        <if condition="$data296[1]">color: #{$data296[1]};
+        <else/>color: #{$color};
+        </if>
+    }
+    .advantage_HJ07_wrapper li:hover a {
+        background-color: #fff;
+    }
+    .advantage_HJ07_wrapper li.first a:hover {
+        <if condition="$data296[1]">background-color: #{$data296[1]};
+        <else/>background-color: #{$color};
+        </if>color: #fff;
+    }
+
+    @media(max-width: 768px) {
+        .advantage_HJ07 {
+            background-size: cover !important;
+        }
+    }
+</style>
+
+<section class="advantage_HJ07 index_pd" id="advantage_HJ07">
+    <div class="container">
+        <div class="row">
+            <ul class="clearfix advantage_HJ07_wrapper tac wow fadeInRight">
+                <li class="col-xs-12 col-sm-6 col-xl-4 first">
+                    <img src="{:getindeximgurl($data296[5])}" class="m-auto img-responsive" alt="{$data296[3]}">
+                    <div class="info">
+                        <span>{$data296[3]}</span>
+                        <p class="pb40">{$data296[4]}</p>
+                        <if condition="$data296[6]">
+                            <a href="{$data296[7]}" class=" more index_btn">{$data296[6]}</a>
+                    </div>
+                    </if>
+                </li>
+                <php>
+                    $arr = get_list_val($data296[8]);
+                </php>
+                <volist name="arr" id="a">
+                    <li class="col-xs-12 col-sm-6 col-xl-4  wow fadeInRight">
+                        <img src="{$a[img]}" class="m-auto img-responsive" alt="{$a[title]}">
+                        <div class="info tac">
+                            <span class="pb40">{$a[title]}</span>
+                            <a href="{$a[link]}" class="more index_btn">{$a[more]}</a></div>
+                    </li>
+                </volist>
+            </ul>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+<php>
+    if(!$data3[2]){
+    $data3[2]=500;
+    }
+</php>
+<style>
+    .page_Banner{
+        width:100%; margin:0 auto;height:{$data3[2]}px; min-width:1190px; max-width:1920px;
+    }
+    .one_banner{
+    height:{$data3[2]}px;
+    }
+    .main_image{
+        height: {$data3[2]}px;
+    }
+    .main_image ul{
+    height: {$data3[2]}px;
+    }
+    .main_image li span{
+    height: {$data3[2]}px;
+    }
+    .main_image ul li{width: 100%;height: 100%;}
+    #btn_prev{
+        width: 20px!important;height: 40px;position:absolute;top:50%;transform:translateY(-50%);left:14%;background: url({:getindeximgurl($data3[3])}) no-repeat;
+    }
+    #btn_next{
+        width: 20px!important;height: 40px;position:absolute;top:50%;transform:translateY(-50%);right:14%;background: url({:getindeximgurl($data3[4])}) no-repeat;
+    }
+</style>
+<div id="index_banner_animate">
+<div class="page_Banner" style="position:relative;">
+  <if condition="count($banner) neq 1">
+  <div class="main_visual" style="position:relative;">
+      <div class="flicking_con">
+           <div class="flicking_inner">
+              <volist name="banner" id="banner_num" key="key">
+              <a href="{$banner_num['ad_link']}"></a>
+              </volist>
+           </div>
+      </div>
+      <div class="main_image">
+          <ul>					
+            <volist name="banner" id="banner_pic" key="k">
+              <li><a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}"><span class="img_{$k}" style="background:url({:getimgurl($banner_pic['ad_pic'])}) center no-repeat"></span></a></li>
+            </volist>
+          </ul>
+          <a href="javascript:;" id="btn_prev"></a>
+          <a href="javascript:;" id="btn_next"></a>
+      </div>
+  </div>
+  <else/>
+  <volist name="banner" id="banner_pic2" offset="0" length="1">
+     <a href="{$banner_pic2['ad_link']}" title="{$banner_pic2['pic_title']}"><div style="background:url({:getimgurl($banner_pic2['ad_pic'])}) center no-repeat;" class="one_banner"></div></a>
+  </volist>
+  </if>
+</div>
+</div>

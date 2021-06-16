@@ -1,0 +1,100 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+    .HJZF_Z__Breadcrumbs span.current{
+        color: #{$color};
+    }
+    .productbutton{
+        background: #{$color};
+    }
+</style>
+<div id="HJZF_Z__wrapper">
+    <div id="HJZF_Z__innerBanner">
+       
+        <if condition="$newclass['banner'] neq '0'">
+            
+            <div class="in_banner"><img src="{:getimgurl($newclass['banner'])}" /></div>
+            <elseif condition="$banner neq ''"/>
+            
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" /></div>
+            </volist>
+            <else/>
+            <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" /></div>
+        </if>
+    </div>
+
+    <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                     <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                    href="{:U('/faqs')}">{:__('Faq')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newclass['class_name']}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <section class="InsidePages_content-right2">
+                        <div class="InsidePages_content-right_wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="news">
+                                    <div id="news_detail">
+                                        <div class="body">
+                                            <h5 class="HJ01_main_newdetail_title">{$news['title']}</h5>
+                                            <div class="news_view">
+                                                <span class="time"><i><img src="__TMPL__HJZF2_Z/img/shijian.png" /></i>&nbsp;<if condition="C('Language') eq 'cn'">{:date('Y年m月d日 ',$news['created'])}<else/>{:date('M d, Y',$news['created'])}</if></span><span>|</span><span class="red"><i><img src="__TMPL__HJZF2_Z/img/view.png" /></i>{:__('View:')}{$news['click_num']}</span>
+                                                    <div class="clear"></div>
+                                                </div>
+                                                <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                                                <div class="main_news_prev_next">
+                                                    <ul>
+                                                        <if condition="$newprev[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_prev">
+                                                                <a href="{:U('/faq_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                    <p>{$newprev[0]['title']}</p>
+                                                                    <div class="news_prev_img" style="background: url({:getimgurl($newprev[0]['new_pro'])}) no-repeat center;background-size: cover">
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <if condition="$newnext[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_next">
+                                                                <a href="{:U('/faq_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                    <div class="news_prev_img" style="background: url({:getimgurl($newnext[0]['new_pro'])}) no-repeat center;background-size: cover">
+                                                                    </div>
+                                                                    <p>{$newnext[0]['title']}</p>
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <div class="clear"></div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="clear:both"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

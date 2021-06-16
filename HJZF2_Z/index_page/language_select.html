@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<php>
+	if($data314[0]){
+	$bg_img=getindeximgurl($data314[0]);
+	}
+</php>
+<style>
+	.hjzf_languageSelect {
+		background: url({$bg_img}) no-repeat center/cover;
+	}
+
+	.hjzf_languageSelect_btn:hover {
+		background: #{$color};
+	}
+</style>
+<section class="hjzf_languageSelect">
+	<div class="container z-9">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="flex languageSelect_box">
+
+					<div class="hjzf_languageSelect_wrapper pb40">
+						<canvas id="gka" width="369" height="152"></canvas>
+					</div>
+					<div class="hjzf_languageSelect_wrapper_text pb40">
+						<div class="left">
+							<span>专</span>
+							<span>业</span>
+							<span class="dot"></span>
+							<span>规</span>
+						</div>
+						<div class="right">
+							<span>范</span>
+							<span class="dot"></span>
+							<span>领</span>
+							<span>先</span>
+						</div>
+					</div>
+					<div class="text-center hjzf_languageSelect_btnbox wow fadeInUp" data-wow-duration="1.5s"
+						data-wow-delay="5s">
+						<a href="{$data314[3]}" class="hjzf_languageSelect_btn index_sub_title" target="_bank">
+							<if condition="$data314[8]">
+								<i><img src="{:getindeximgurl($data314[8])}" width="25" height="25"></i>
+							</if>
+							{$data314[2]}
+						</a>
+						<a href="{$data314[5]}" class="hjzf_languageSelect_btn index_sub_title" target="_bank">
+							<if condition="$data314[9]">
+								<i><img src="{:getindeximgurl($data314[9])}" width="25" height="25"></i>
+							</if>
+							{$data314[4]}
+						</a>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

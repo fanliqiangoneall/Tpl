@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_Z__news_29 {
+        background-color: #{$data529[0]};
+    }
+</style>
+<php>
+    if($data529[2]){
+    $len = $data529[2];
+    }else{
+    $len = 10;
+    }
+	$news_list=explode(',',$data529[4]);
+	foreach($news_list as $k=>$a){
+		$list[$k]=get_index_news_category($a,2);
+	};
+</php>
+<section class="HJZF2_Z__news_29">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="HJZF2_Z__news_29_wrapper">
+                    <span>{$data529[3]}：</span>
+                    <div class="HJZF2_Z__news_29_wrapper_box">
+                        <i class="fa fa-volume-down" aria-hidden="true"></i>
+                        <div class="bd">
+                            <ul>
+								<if condition="$data529[4]">
+									<volist name="list" id="list_new">
+										<volist name="list_new" id="list_newa">
+											<li>
+												<a href="{:U('/new_detail',array('nid'=>$list_newa["nid"]))}">{$list_newa['title']}</a>
+											</li>
+										</volist>
+									</volist>
+									<else/>
+									<volist name="indexnews" id="new" offset="0" length="$len" key="k">
+										<li>
+											<if condition="$data529[5]">
+												<a href="{:U('/new_detail',array('nid'=>$new["nid"]))}">{$new['title']}</a>
+												<else/>
+												{$new['title']}
+											</if>
+										</li>
+                                	</volist>
+								</if>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

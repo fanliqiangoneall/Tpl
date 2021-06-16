@@ -1,0 +1,130 @@
+<!--hengxin_searchproleft star-->
+<php>
+$all_search_cates=get_all_searcates();
+</php>
+
+
+	<php>
+		$fid=$key;
+	</php>
+	<ul attrs_f="{$fid}" class="attr_group" id="{$fid}">
+		<volist name="all_search_cates" id="all_search_cate" >
+			<div class="one_search_cate allattrcate" catepcid="{$all_search_cate['pcid']}">
+				<li find_f="{$fid}" class="yiji"><a href="javascript:">
+						<h3 style="font-weight:bold">{$all_search_cate['class_name']} {:__(":")}</h3>
+						<!-- <if condition="$all_search_cate['pcid'] eq 35"><span fid="{$all_search_cate['pcid']}"
+                            class="class_button_search search_class_button"></span></if> -->
+					</a>
+				</li>
+				<ul>
+
+					<foreach name="all_search_cate['attrs']" item="attr">
+						<li 1 class="third" dataallc cfid="{$all_search_cate['pcid']}"><a class="attr" fid="{$fid}"
+								id="attr_{$attr['pid']}" count="{$attr['count']}" pid="{$attr['pid']}">
+								<div class="search_checkbox"></div>
+								<h3>{$attr['pro_name']}</h3>
+							</a>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+		</volist>
+	</ul>
+
+<button class="search_reset">Reset</button>
+<style>
+	.search_reset {
+		background-color: #{$color};
+	}
+</style>
+<script>
+	require(['jquery'], function ($) {
+
+
+		var jump_time;
+		//用来设置选中状态的
+		init_set();
+
+
+		$(".attr").on("click", function () {
+			var pid = $(this).attr("pid");
+
+			//孙瑞舒提 客户不要能同列多选
+			var hasClass = $(".attr[pid='" + pid + "']").hasClass("on");
+			$(this).parent().parent().find(".attr").removeClass("on");
+			if (hasClass) {
+				$(".attr[pid='" + pid + "']").removeClass("on");
+			} else {
+				$(".attr[pid='" + pid + "']").addClass("on");
+			}
+			creat_url();
+			return false;
+		})
+
+
+
+		function creat_url() {
+			var search_classid;
+
+			//var cur_url=window.location.href.replace(<literal>/\\?search=.*/g</literal>,"");
+			console.log("cur_url", cur_url);
+			var parms = [];
+			$(".on").each(function (index, element) {
+				var val = $(this).attr('pid');
+				if ($.inArray(val, parms) == -1) {
+					if(val){
+						parms.push(val);
+					}
+				}
+				search_classid = $(this).attr("fid");
+			});
+			//console.log("parms",parms);
+			var cur_url = "{:U('/product','','')}";
+			console.log("parms", parms);
+			if (parms) {
+				var parms_str = parms.join(',');
+			}
+			console.log("parms_str", parms_str);
+			if (parms_str) {
+				var jump_url = cur_url + "?search=" + parms_str;
+			} else {
+				var jump_url = cur_url;
+			}
+			console.log("jump_url", jump_url);
+
+			window.location.href = jump_url;
+			
+
+		};
+
+
+
+		function init_set() {
+			var search_word_str = "{$Think.get.search}";
+			var search_words = search_word_str.split(",");
+			$.each(search_words, function (index, v) {
+				//var zv=vv.split("-");
+				//f=zv[0];
+				//v=zv[1];
+				if (v) {
+					$(".attr[pid='" + v + "']").addClass("on");
+					var sreach_rs_btn_html = '<span class="sreach_rs_btn" pid="' + v + '"><span>' + $(".attr[pid='" + v + "'] h3").html() + '</span><span class="sreach_rs_btn_colse"><svg viewBox="0 0 16 16"><path d="M10.645 8.004l4.949-4.953a1.4 1.4 0 000-1.98l-.66-.66a1.4 1.4 0 00-1.98 0l-4.95 4.952L3.05.41a1.4 1.4 0 00-1.98 0l-.66.66a1.4 1.4 0 000 1.98l4.952 4.954-4.953 4.95a1.4 1.4 0 000 1.98l.66.66a1.4 1.4 0 001.98 0l4.954-4.95 4.95 4.95a1.4 1.4 0 001.98 0l.66-.66a1.4 1.4 0 000-1.98zm0 0"></path></svg></span></span>';
+					// $(".search_rs").append(sreach_rs_btn_html);
+				}
+			});
+		};
+
+		$('.attr_group').each(function () {
+			$(this).hide();
+			var atis = $(this).attr('id');
+			var id = $('.ougang_search_list li.yijion').attr('pro-class-id');
+			var childId = $('.ougang_search_list li .childon').attr('pro-class-id');
+			if (id == atis || childId == atis) {
+				$(this).show();
+			};
+		});
+
+
+	});
+</script>
+<!--hengxin_searchproleft end-->

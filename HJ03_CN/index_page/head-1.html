@@ -1,0 +1,101 @@
+<!--{$pagename}-->
+<style>
+    .hj03-header-1{display: none}
+    .navContent li.menu_on a h2,.navContent li.menu_on a i{
+        color: #{$color};
+    }
+    .navContent li:hover a h2{
+        color: #{$color};
+    }
+    .navList:hover i{
+        color: #{$color};
+    }
+    .navList:hover{
+        border-bottom: 1px solid #{$color};
+    }
+    .serviceRight>li:hover>a>h3{
+        color: #{$color};
+    }
+    .serviceRight>li.serviceActive>a>h3{
+        color: #{$color};
+    }
+    .main_page{text-align:center;width:100%; float:left; padding-top:15px; padding-bottom:15px;}
+    .main_page a,.main_page .current{ margin:0 5px;}
+    .main_page a{ background:#f5f5f5; padding:3px 8px; color:#717071 !important; border:1px solid #{$color};}
+    .main_page .current{ padding:3px 8px; background:#{$color}; color:#fff;border:1px solid #{$color};}
+    .proImgContainer img {
+    height: {$data9[7]}px;
+    }
+    .hj03-header-language{position: absolute;top: 10px;right: 0;line-height: 24px;}
+</style>
+<if condition="has_mould('head-1') eq true">
+    <style>
+        .hj03-header-1{display: block}
+        .hj03-banner1-box,#inbanner_box{margin-top: 0;}
+    </style>
+</if>
+<header class="hj03-header-1">
+    <div class="container" style="position: relative;">
+        <div class="page_Logo lf  flex">
+            <a href="{:U('/')}">{$logo}</a>
+        </div>
+        <div class="rt headerSearchContainer">
+            <i class="fa fa-search fa-lg searchIcon" aria-hidden="true"></i>
+            <div class="headerSearchContent">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <ul class="headerSearchUl">
+                        <li class="headerSearchList">
+                            <input type="text" value="产品搜索" name="keywords" class="headerInput" id="keywords" onfocus="OnFocusFun(this,&#39;产品搜索&#39;)" onblur="OnBlurFun(this,&#39;产品搜索&#39;)">
+                            <button type="submit" id="search-submit" style="padding-top:1px;outline: none"><i class="fa fa-search"></i></button>
+                        </li>
+                        <!--<li>-->
+                        <!--<button type="submit" id="search-submit" style="padding-top:1px;outline: none">搜索</button>-->
+                        <!--</li>-->
+                        <div class="clear"></div>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <nav class="navContainer hj-navbar rt">
+            <ul class="navContent hj-nav lf">
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li id="menu{$key}" class="navList">
+                        <a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">
+                        {$vo['title']}
+                        <if condition="$vo[child] neq '' or strstr($vo['url'],'/product.html') eq '/product.html'">
+                            <i class="fa fa-angle-down navDownIcon" aria-hidden="true"></i>
+                        </if>
+                        </a>
+                        <if condition="$vo[child] neq ''">
+                            <ul class="navDown">
+                                <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                    <li class="navDownList">
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$v['title']}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <else/>
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="navDown">
+                                    <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                        <li class="navDownList">
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                            </if>
+                        </if>
+                    </li>
+                </volist>
+                <div class="clear"></div>
+            </ul>
+        </nav>
+        <if condition="$data47[23]">
+            <div class="hj03-header-language">
+                语言：<a href="{$data47[23]}"><span>{$data47[22]}</span> <img src="{:getindeximgurl($data47[24])}" alt="" style="position: relative;top: -2px"/></a>
+            </div>
+        </if>
+        <div class="clear"></div>
+    </div>
+</header>

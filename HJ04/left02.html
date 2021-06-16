@@ -1,0 +1,32 @@
+<style>
+    .classTopContent>li.topParent>a>h3{
+        color: #{$color};
+    }
+    .classTopContent>li:hover>a>h3{
+        color: #{$color};
+    }
+    .allClassListContainer li:hover a h3{
+        color: #{$color};
+    }
+    .allClassListContainer li.child a h3{
+        color: #{$color};
+    }
+</style>
+<div class="classTopContainer container">
+    <ul class="classTopContent">
+        <volist name="allclass" id="allclass_top">
+            <li <if condition="$classid eq $allclass_top['pcid'] or $prolist['parent_id'] eq $allclass_top['pcid'] or $product['class_id'] eq $allclass_top['pcid'] or $procate['parent_id'] eq $allclass_top['pcid']">class="topParent"<else/>class="topParent2"</if>>
+                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_top['pcid'])}">{$allclass_top['class_name']}</a>
+                <img class="classIcon" src="{:getindeximgurl($data47[38])}" alt="icon"/>
+                <ul class="allClassListContainer">
+                    <volist name="allclass_top['childs']" id="allclasslist">
+                        <li <if condition="$classid eq $allclasslist['pcid'] or $prolist['parent_id'] eq $allclasslist['pcid'] or $product['class_id'] eq $allclasslist['pcid'] or $procate['parent_id'] eq $allclasslist['pcid']">class="child"<else/>class="child2"</if>>
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclasslist['pcid'])}">{$allclasslist['class_name']}</a>
+                        </li>
+                    </volist>
+                </ul>
+            </li>
+        </volist>
+        <div class="clear"></div>
+    </ul>
+</div>

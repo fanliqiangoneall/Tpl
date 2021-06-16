@@ -1,0 +1,80 @@
+<!--{$pagename}-->
+<php>
+    if($data531[0]){
+        $color = $data531[0];
+    }
+    if($data531[4]){
+        $len = $data531[4];
+    }else{
+        $len = 8;
+    }
+</php>
+<style>
+     <if condition="$data531[6]">
+    .hjzf_product_37_bg {
+        background-image: url({:getindeximgurl($data531[6])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+    .guanwang_title em,.hjzf_product_37_bg a:hover{
+        background-color: #{$color};
+    }
+</style>
+<section class="new_hjzf_product_37 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="guanwang_title wow fadeInDown">
+                    <i><img src="{:getindeximgurl($data531[1])}"></i> 
+                    <span></span>
+                    <h2>{$data531[2]}</h2>
+                    <em></em>
+                    <h4>{$data531[3]}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <php>
+        $arr = get_list_val($data531[5]);
+    </php>
+    <div class="hjzf_product_37_bg ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="swiper-container hjzf_product_37_wrapper">
+                        <div class="swiper-wrapper">
+                            <volist name="arr" id="a" offset="0" length="$len" key="k">
+                            <div class="swiper-slide text-center hjzf_product_37_slide">
+                                <a href="{$a[link]}">
+                                    <div>
+                                        <div class="products_37_ico">
+                                            <img src="{$a[ico]}" alt="" class="normal">
+                                            <img src="{$a[icoh]}" alt="" class="hover">
+                                        </div>
+                                        <div class="index_sub_title">
+                                            {$a[title]}
+                                        </div>
+                                        <div class="hjzf_product_37_wrapper_ico">
+                                            <img src="{$a[icox]}" alt="">
+                                        </div>
+                                        <div class="new_hjzf_product_37_wrapper_content">
+                                            {$a[info]}
+                                        </div>
+                                    </div>
+                                    <div class="new_hjzf_product_37_wrapper_img">
+                                        <img src="{$a[img]}" alt="{$a[title]}" class="img-fluid">
+                                    </div>
+                                </a>
+                            </div>
+                            </volist>
+                        </div>
+                    </div>
+                    <div class="hjzf_product_37_pagination"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,135 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+		.HJZF_Z_new_category6__banner{ position:relative;}
+		.HJZF_Z_new_category6__con{
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 6vw;
+			color: #fff;
+			text-align: center;
+		}
+		.HJZF_Z_new_category6__con a{
+			color: #fff;
+			transition: all .5s;
+		}
+		.new_category6_inner__maincontent{
+			margin-top:60px;
+		}  
+        .HJZF_Z__Breadcrumbs span.current,.main_newslist2 li:hover .main_news_title a h5,.InsidePages_left_content-main{
+            border-color: #{$color};
+			color: #{$color};
+        }
+		.new_category6_inner__maincontent .main_news_title,.new_category6_inner__maincontent .main_news_desc{
+			margin-bottom:15px;
+		}
+		.main_news_date{
+			margin-bottom:10px;
+		}
+		.main_news_date span{
+			margin-right:20px;
+			color:#666666;
+		}
+		.main_news_date span img{
+			vertical-align:top;
+		}
+		.new_category6_inner__maincontent .main_newslist2 li{
+			 border-bottom:none;	
+		}
+		.new_category6_inner__maincontent .new_category6_inner_more{
+			padding-bottom:15px;
+			border-bottom:1px solid #e6e6e6;
+		}
+		.new_category6_inner__maincontent .new_category6_inner_more span{
+			color: #{$color};
+		}
+    </style>
+    <div id="HJZF_Z__wrapper" class="news_inner6__wrapper">
+        <div id="HJZF_Z__innerBanner" class="HJZF_Z_new_category6__banner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+            <!-- bread start -->
+            <div class="HJZF_Z_new_category6__con" navcrumbs>
+                <div class="index_title">{:__('News')}</div>
+                <div class="index_text">
+                    <a href="{:U('/')}">{:__('Home')}</a>&nbsp;|&nbsp;<a href="{:U('/news')}">{:__('News')}</a>&nbsp;|&nbsp;<span class="current">{$newscate['class_name']}</span>
+                </div>
+            </div>
+            <!-- bread end -->
+        </div>
+		
+        <div class="HJZF_Z__innerContent new_category6_inner__maincontent">
+            <div class="container">
+                <div class="row">
+                	<section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left HJZF_Z__inner7--left">
+                    <!-- side start -->
+                    <Include file="./Tpl/HJZF2_Z/inner/news_left6.html" />
+                    <Include file="./Tpl/HJZF2_Z/inner/product_left7__same.html" />
+                    <!-- side end -->
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftnews_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                        	<Include file="./Tpl/HJZF2_Z/inner/new_category6_hot_list.html" />
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="main_newslist2 ul_li_list">
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="newscatelist" id="allnews">
+                                        <li id="new_list{$key}">
+                                            <div class="new_list_row wow fadeInUp">
+                                                <div class="col-xs-12 col-lg-3 main_newsimg">
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"<else/>src="{:getindeximgurl($inner_data[13])}"</if> border="0" /></a>
+                                                </div>
+                                                <div class="col-xs-12 col-lg-9 main_news_right">
+                                                    <div class="col-xs-12  main_news_right_content lf">
+                                                        <div class="main_news_title"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><h5 class="ellipsis_one">{$allnews['title']}</h5></a></div>
+                                                        <div class="main_news_date">
+                                                            <span class="index_text">
+                                                                <if condition="$inner_data[11]">
+                                                                    <img src="{:getindeximgurl($inner_data[11])}">
+                                                                </if>
+                                                                {:zq_date($allnews['created'])}
+                                                            </span>
+                                                            <span class="index_text">
+                                                                <if condition="$inner_data[12]">
+                                                                    <img src="{:getindeximgurl($inner_data[12])}">
+                                                                </if>
+                                                                {$indexnewb['click_num']}
+                                                            </span>
+                                                        </div>
+                                                        <div class="main_news_desc ellipsis_one">{$allnews['news_description']}</div>
+                                                        <div class="clear"></div>
+                                                    	<div class="new_category6_inner_more"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><span>{:__('Read More')}</a></span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

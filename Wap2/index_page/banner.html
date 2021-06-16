@@ -1,0 +1,27 @@
+<!--{$pagename}-->
+<link rel="stylesheet" href="__TMPL__/Wap2/css/swiper.min.css">
+<style>
+<php>
+
+$bullet=$data3[6] or $bullet="#fff";
+</php>
+
+.new_hjzf_banner__swiper-container{ overflow:hidden;}
+.new_hjzf_banner__swiper-pagination .swiper-pagination-bullet{
+background:{$bullet};
+}
+.new_hjzf_banner__swiper-pagination .swiper-pagination-bullet-active{
+	background:#{$color};
+}
+</style>
+<section>
+<div class="new_hjzf_banner__swiper-container">
+<div class="swiper-wrapper">
+  <if condition="$data3[0]"><div class="swiper-slide"><a href="{$data3[1]}"><img src="{:getindeximgurl($data3[0])}"></a></div></if>
+  <if condition="$data3[2]"><div class="swiper-slide"><a href="{$data3[3]}"><img src="{:getindeximgurl($data3[2])}"></a></div></if>
+  <if condition="$data3[4]"><div class="swiper-slide"><a href="{$data3[5]}"><img src="{:getindeximgurl($data3[4])}"></a></div></if>
+</div>
+<!-- Add Pagination -->
+<div class="new_hjzf_banner__swiper-pagination"></div>
+</div>
+</section>

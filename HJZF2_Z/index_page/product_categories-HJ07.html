@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<style>
+    .products_categories_hj07_title .index_sub_title span {
+    color: #{$data237[2]};
+  }
+  .products_categories_hj07_slide.swiper-slide-active,.products_categories_hj07_slide.swiper-slide-active:hover{
+    border-bottom-color: #{$data237[2]};
+}
+.products_categories_HJ07_box_text:before,.products_categories_hj07_pagination .swiper-pagination-bullet-active{
+	background-color: #{$data237[2]};
+}
+</style>
+<section class="products_categories_hj07 index_pd">
+    <div class="container">
+        <div class="row">
+            <!-- title start -->
+            <div class="products_categories_hj07_title text-center pb40">
+                <h2 class="pb20 index_title wow fadeInUp">{$data237[3]}</h2>
+                <p class="index_sub_title wow fadeInUp" data-wow-delay=".2s">
+                    <span>{$data237[4]}</span> {$data237[5]}</p>
+            </div>
+            <!-- title end -->
+            <!-- scroll start -->
+            <php>
+                $arr_str=$data237[6];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $k=>$a){
+                $list[$k]=get_index_products_categoryname($a);
+              }
+            </php>
+            <div class="swiper-container products_categories_hj07_swiper_thumbs thumbs">
+                <ul class="swiper-wrapper">
+                    <volist empty="" name="list" id="li" key="k">
+                        <li class="swiper-slide products_categories_hj07_slide">
+                            <img src="{:getmainimgurl($li['fid'])}" alt="{$li['class_name']}" class="img-responsive">
+                        </li>
+					</volist>
+                </ul>
+				<div class="swiper-pagination products_categories_hj07_pagination"></div>
+            </div>
+            <!-- scroll end -->
+        </div>
+    </div>
+	<!-- img big start -->
+	<div class="products_categories_HJ07_swiper gallery swiper-container">
+		<div class="swiper-wrapper">
+			<volist empty="" name="list" id="lia" key="k">
+				<div class="products_categories_HJ07_slide swiper-slide">
+					<div class="products_categories_HJ07_box_content">
+						<div class="container">
+							<div class="row">
+								<div class="products_categories_HJ07_box_text ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s">
+									<h3 class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.5s">{$lia['class_name']}</h3>
+									<p class="ellipsis_four ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay=".7s">{$lia['readme']}</p>
+								</div>
+							</div>
+						</div>
+                    </div>
+					<img src="{:getmainimgurl($lia['banner'])}" alt="{$lia['class_name']}" class="img-responsive ani" swiper-animate-effect="slideInUp" swiper-animate-duration="1s" swiper-animate-delay="0.2s">
+				</div>
+			</volist>
+		</div>
+	</div>
+    <!-- img big end -->
+</section>

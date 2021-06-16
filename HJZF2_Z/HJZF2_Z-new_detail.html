@@ -1,0 +1,186 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+     .product_detail_editor_content_title {
+         border-left: 10px solid #{$color};
+        }
+    .HJZF_Z__Breadcrumbs span.current{
+        color: #{$color};
+    }
+    .productbutton{
+        background: #{$color};
+    }
+	.bdsharebuttonbox,.addthis_sharing_toolbox{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.bdsharebuttonbox a {
+		margin: 0 5px;
+		width: 25px;
+		height: 20px;
+		padding: 0;
+		line-height: normal;
+		background-position: 0 0 !important;
+		background-image:none;
+	}
+	.bdsharebuttonbox .bds_weixin:before{
+		content:'\\f1d7';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.bdsharebuttonbox .bds_sqq:before{
+		content:'\\f1d6';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.bdsharebuttonbox .bds_tsina:before{
+		content:'\\f18a';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.bdsharebuttonbox .bds_tqq:before{
+		content:'\\f1d5';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.bdsharebuttonbox .bds_weixin:hover:before,.bdsharebuttonbox .bds_sqq:hover:before,.bdsharebuttonbox .bds_tsina:hover:before,.bdsharebuttonbox .bds_tqq:hover:before{
+		color:#{$color};
+	}
+	.at-share-tbx-element .at-icon-wrapper{
+		border-radius:50% !important;
+		width:20px !important;
+		height:20px !important;
+		line-height:20px !important;
+	}
+	.at-share-tbx-element .at-icon-wrapper svg{
+		width:20px !important;
+		height:20px !important;
+	}
+	.news_view{
+		border-bottom: 0;
+	}
+</style>
+<div id="HJZF_Z__wrapper">
+    <div id="HJZF_Z__innerBanner">
+        <Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_aboutus.html" />
+    </div>
+    <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                     <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>
+                     <if condition="$webid eq '1784'"> <else/>
+                        &nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/news')}">{:__('News')}</a></if>
+                    &nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newclass['class_name']}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <section class="InsidePages_content-right2">
+                        <div class="InsidePages_content-right_wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="news">
+                                    <div id="news_detail">
+                                        <div class="body">
+                                            <h5 class="HJ01_main_newdetail_title">{$news['title']}</h5>
+                                            <div class="news_view">
+                                                <span class="time"><i><img src="__TMPL__HJZF2_Z/img/shijian.png" /></i>&nbsp;<if condition="C('Language') eq 'cn'">{:date('Y年m月d日 ',$news['created'])}<else/>{:date('M d, Y',$news['created'])}</if></span><span>|</span><span class="red"><i><img src="__TMPL__HJZF2_Z/img/view.png" /></i>{:__('View:')}{$news['click_num']}</span><if condition="$inner_data[3]"><span>|</span><if condition="C('Language') eq 'cn'">
+                                        <span class="index_text">分享到：</span><div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1596683573692"><a class="bds_weixin" data-cmd="weixin" title="分享到微信" ondragstart="return false"></a><a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友" ondragstart="return false"></a><a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" ondragstart="return false"></a><a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" ondragstart="return false"></a></div>
+                                        <script>
+										window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+										</script>
+                                        <else/>
+                                        <span class="index_text" style="margin-right:10px;">Share to: </span><!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>
+<script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+                                        </if></if>
+                                                    <div class="clear"></div>
+                                                </div>
+                                                <div class="news_body">{:str_replace("&nbsp;"," ",htmlspecialchars_decode($news['body']))}</div>
+                                                <div class="main_news_prev_next">
+                                                    <ul>
+                                                        <if condition="$newprev[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_prev">
+                                                                <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                    <p>{$newprev[0]['title']}</p>
+                                                                    <div class="news_prev_img" style="background: url({:getimgurl($newprev[0]['new_pro'])}) no-repeat center;background-size: cover">
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <if condition="$newnext[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_next">
+                                                                <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                    <div class="news_prev_img" style="background: url({:getimgurl($newnext[0]['new_pro'])}) no-repeat center;background-size: cover">
+                                                                    </div>
+                                                                    <p>{$newnext[0]['title']}</p>
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <div class="clear"></div>
+                                                    </ul>
+                                                </div>
+
+                                                <if condition="$webid eq '426'">
+                                                    
+                                                    <div class="product_detail_editor_content_title">{:__('Related products')}</div>
+                                                    <if condition="$labelprodlist neq ''">
+                                                        <div class="mainpage_probox" >
+                                                            <volist empty="" name="labelprodlist" id="labelprodlist" offset="0" length="4" key="k">
+                                                                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 main_proitem">
+                                                                    <div class="main_proitem_box">
+                                                                        <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                                                                            <if condition="$labelprodlist['main_img']">
+                                                                                <img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> />
+                                                                                <else/>
+                                                                                <img src="{:getindeximgurl($inner_data[3])}" alt=""/>
+                                                                            </if>
+                                                                            </a></div>
+                                                                        <div class="main_proitem_second">
+                                                                            <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                                                                                <div class="main_proitem_name margin-10px-bottom"><h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],60)}</h6></div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </volist>
+                                                        </div>
+                                                        <div style="clear:both;"></div>
+                                                    </if>
+                                                    <div style="clear:both;"></div>
+                                                </if>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="newscomment_show() eq 1">
+                                        <include file="HJZF2_Z:newscomment" />
+                                    </if>
+                                    <div style="clear:both"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

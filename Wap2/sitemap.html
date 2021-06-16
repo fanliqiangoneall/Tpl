@@ -1,0 +1,54 @@
+<extend name="Wap2:base" />
+<block name="content">
+    <style>
+	.sitemap{ padding:10px;}
+	.sitemap li h2,.sitemap li h3{ font-size:16px; font-weight:200px; color:rgba(50,49,49,1.00)}
+	.sitemap li a{ text-decoration:none;}
+    .sitemap__Breadcrumbs, .sitemap__Breadcrumbs a{ text-decoration:none; color:#3d3d3d; font-size:14px;}
+    .wap2_sitemapList{width: 100%;}
+        .wap2_sitemapList li{margin-bottom: 10px;}
+        .wap2_sitemapList li a h2{font-size: 16px;line-height: 24px;color: #333;font-weight: normal;}
+    .wap2_sitemapList li ul{padding-left: 30px;}
+    .wap2_sitemapList li ul li a h3{font-size: 14px;line-height: 24px;color: #333;font-weight: normal;}
+    </style>
+    <div class="sitemap">
+
+
+        <div class="sitemap__Breadcrumbs">
+            <div class="sitemap__Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>></i>&nbsp;<span class="current">{:__('Sitemap')}</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px;" >
+
+            <section>
+                <ul class="wap2_sitemapList">
+                    <volist name="web_navigation" id="vo_map" offset="0" length='8' key="key">
+                        <li><a href="{$vo_map['url']}" <if condition="strstr($vo_map['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,5)"</if>>{$vo_map['title']}</a>
+                            <if condition="strstr($vo_map['url'],'/product.html') eq '/product.html'">
+                                <ul>
+                                    <volist empty="" name="allclass" id="allclass_map">
+                                        <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_map['pcid'])}">{$allclass_map['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                            </if>
+                            <if condition="$vo_map['child'] neq ''">
+                                <ul>
+                                    <volist name="vo_map['child']" id="navchild">
+                                        <li><a href="{$navchild['url']}"><h3>{$navchild['title']}</h3></a></li>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                            </if>
+                        </li>
+                    </volist>
+                    <div class="clear"></div>
+                </ul>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

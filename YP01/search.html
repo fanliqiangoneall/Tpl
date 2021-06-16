@@ -1,0 +1,38 @@
+<extend name="YP01:base" />
+<block name="content">
+<Include file="./Tpl/YP01/index_page/head.html" />
+<div id="">
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</div>
+
+
+<div class="r_mbx"><img src="__TMPL__YP01/img/in_home.jpg" border="0" style="vertical-align:middle;margin-top: -5px;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/product')}">product</a>&nbsp;>&nbsp;Search Result</div>
+
+<div class="page_LeftClass2">
+
+<div class="page_Main">
+
+    <div class="page_RightMain">
+  <volist empty="" name="searchpro" id="searchpro">
+            <div class="asd2">
+                <div class="img" ><a href="{:U('/Product','','')}/{:getproname($searchpro['pid'])}"><img src="{:getpcimgurl($searchpro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$searchpro['pro_name']}"</if> /></a>
+                </div>
+ 
+                <div class="in_proname2">
+                   <a href="{:U('/Product','','')}/{:getproname($searchpro['pid'])}" style="font-size: 14px;text-transform: uppercase;">{$searchpro['pro_name']}</a>
+                </div>
+              </div>
+            <if condition="($key+1)%4 eq 0">
+              <div style="clear:both; width: 100%; height:26px;"></div>
+          <else/>
+              <div style="width:3px; height:10px; background:none; float:left;"></div>
+          </if>  
+        </volist> 
+       <div class="clear"></div>
+       <div class="main_page">{$page}</div>
+    </div>
+    <div style="clear:both;width: 100%;height: 40px;"></div>
+  </div>  
+</div>
+<Include file="./Tpl/YP01/index_page/bottom.html" />
+</block>

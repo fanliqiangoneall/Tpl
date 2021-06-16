@@ -1,0 +1,66 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo3/css/productcategories.css" rel="stylesheet">
+<if condition="$data17[15]">
+    <style>
+        .index_fl_title2{
+            font-size: 20px;font-weight: bold;color: #{$color}
+        }
+    </style>
+</if>
+  <div class="index_fl">
+    <div id="index_productslist_animate">
+     <div class="index_fl_title">
+        {$data[0]}
+     </div>
+        <if condition="$data[1]">
+            <div class="index_fl_title2">{$data[1]}</div>
+        </if>
+
+    </div>
+    <div id="index_productslist_animate_1">
+     <div class="index_flcon">
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:getindexlink($data[4])}"><img src="{:getindeximgurl($data[2])}"></a></div>
+           <div class="index_flcon2"><a href="{:getindexlink($data[4])}">{$data[3]}</a></div>
+            <if condition="$data[11]">
+                <div class="index_flcon3"><a href="{:getindexlink($data[4])}">{:subtxt($data[11],43)}</a></div>
+            </if>
+
+        </li>
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:getindexlink($data[6])}"><img src="{:getindeximgurl($data[5])}"></a></div>
+           <div class="index_flcon2"><a href="{:getindexlink($data[6])}">{$data[14]}</a></div>
+            <if condition="$data[14]">
+                <div class="index_flcon3"><a href="{:getindexlink($data[6])}">{:subtxt($data[12],43)}</a></div>
+            </if>
+        </li>
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:getindexlink($data[10])}"><img src="{:getindeximgurl($data[8])}"></a></div>
+           <div class="index_flcon2"><a href="{:getindexlink($data[10])}">{$data[9]}</a></div>
+            <if condition="$data[13]">
+                <div class="index_flcon3"><a href="{:getindexlink($data[10])}">{:subtxt($data['13'],43)}</a></div>
+            </if>
+        </li>
+         <div class="clear"></div>
+     </div>
+    </div> 
+  </div>
+<style>
+.erji:hover a h3{
+	color: #{$color};
+	font-weight: normal;
+}
+</style>
+<script>
+jQuery('#index_productslist_animate').removeClass().addClass('fadeInRight');
+$(window).scroll( function() {
+  scrollTop=$(document).scrollTop();
+  //alert(scrollTop);
+  
+  if(scrollTop>100){  
+  $('#index_productslist_animate_1').show();
+  $('#index_productslist_animate_1').removeClass().addClass('fadeInLeft');
+  }
+
+});
+</script>

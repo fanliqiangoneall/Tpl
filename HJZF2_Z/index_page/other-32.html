@@ -1,0 +1,28 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_other_32{
+        background-color: #{$data275[0]};
+    }
+</style>
+<section class="hjzf_other_32 index_pd index_wrapper">
+    <div class="index_inner hjzf_other_32_wrapper">
+        <php>
+            for($i=1;$i<=12;$i=$i+4){
+        </php>
+        <if condition="$data275[$i]">
+        <a href="$data275[$i+1]">
+            <img src="{:getindeximgurl($data275[$i])}" alt="{$data275[$i+2]}">
+            <span>
+                <div class="index_title transition-ease">
+                    {$data275[$i+2]}
+                </div>
+                <div class="index_text transition-ease">
+                    {$data275[$i+3]}
+                </div>
+            </span>
+        </a>
+        </if>
+        <php>}</php>
+        
+    </div>
+</section>

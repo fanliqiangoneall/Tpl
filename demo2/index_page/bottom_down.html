@@ -1,0 +1,194 @@
+
+<!--{$pagename}-->
+<if condition="has_mould('bottom-5') eq false">
+	<style>
+		.HJ01_bottom,.bottom_copyright{display: none;}
+	</style>
+	<else/>
+	<link href="__TMPL__demo2/css/bottom5.css" rel="stylesheet">
+</if>
+
+<if condition="$data49[21]">
+	<style>
+		.bottom_copyright{
+			background: url({:getindeximgurl($data49[21])}) center  repeat;
+		}
+		.bottom_copyright > div{
+		color: {$data49[22]};
+		}
+		.bottom_copyright > div a{
+		color: {$data49[22]};
+		}
+	</style>
+	<else/>
+	<style>
+		.bottom_copyright{
+			background: #{$color};
+		}
+	</style>
+</if>
+<if condition="$data49[17]">
+	<style>
+		.HJ01_bottom{
+			background: url({:getindeximgurl($data49[17])}) center  no-repeat;
+		}
+	</style>
+</if>
+<style>
+	.HJ01_bottom_down_item_content ul >li a h3:hover{
+	color: {$data1[0]};
+	}
+	.HJ01_bottom_down_item_content ul >li a h2:hover{
+	color: {$data1[0]};
+	}
+
+	.HJ01_bottom_down_item_content ul >li:hover:before{
+	color:{$data1[0]};
+	}
+	.HJ01_bottom_down_item h5{
+		color: #{$color};
+	}
+</style>
+
+<!--foot start-->
+<div class="HJ01_bottom">
+	<div class="container upper-footer" style="min-height: 300px;margin-bottom: 10px;">
+
+		<if condition="$data49[13] neq ''">
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data49[13]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<p>   {:HtmlEncode(subtxt($company_info['description'],300))}</p>
+				</div>
+			</div>
+		</if>
+		<if condition="$data49[27] neq ''">
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data49[14]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<ul>
+						<php>
+
+							for($bo=28;$bo<39;$bo=$bo+2){
+						</php>
+						<if condition="$data49[$bo] neq ''">
+							<li><a href="{$data49[$bo+1]}">{$data49[$bo]}</a></li>
+						</if>
+						<php>
+							}
+						</php>
+					</ul>
+				</div>
+			</div>
+			<else/>
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data49[14]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<ul>
+						<volist empty="No data" name="allclass" id="allclass2" offset="0" length="6">
+							<li><a href="{:U('/product_category','','')}/{:getprocatename($allclass2['pcid'])}">{$allclass2['class_name']}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</if>
+
+		<if condition="$data49[15] neq ''">
+			<div class="HJ01_bottom_down_item" style="width: 19%">
+				<h5 class="margin-25px-bottom">{$data49[15]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<ul>
+						<volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+							<li id="menu{$key}"><div class="footnav_bg"></div><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</if>
+		<if condition="$data49[16] neq ''and $data49[44] eq ''">
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data49[16]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+
+					<div class="ewm" <if condition="$data49[42] neq ''">style="display:none"</if>>
+					<if condition="$data49[19] neq ''"><img src="{:getindeximgurl($data49[19])}" alt=""/></if>
+				</div>
+
+				<div>
+				<p class="margin-20px-bottom">Add: {$about['address']}</p>
+				<p class="margin-20px-bottom"> <if condition="chaifen($about['email'],0) neq ''">Email: <a href="mailto:{:chaifen($about['email'],0)}?chat" onclick="turn_sta(4,4);" onfocus="blur()">{:chaifen($about['email'],0)}</a><br/></if>
+
+					<if condition="chaifen($about['email'],1) neq ''">Email: <a href="mailto:{:chaifen($about['email'],1)}?chat" onclick="turn_sta(4,4);" onfocus="blur()">{:chaifen($about['email'],1)}</a><br/></if>
+
+					<if condition="chaifen($about['phone'],0) neq ''">Phone: {:chaifen($about['phone'],0)}<br/></if>
+
+					<if condition="chaifen($about['phone'],1) neq ''">Phone: {:chaifen($about['phone'],1)}</if>
+				</p>
+				<div class="addthis_sharing_toolbox" style="margin-top: 10px;"></div>
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+			</div>
+				<elseif condition="$data49[16] neq ''and $data49[44] neq ''"/>
+				<div class="HJ01_bottom_down_item" style="width: 30%">
+					<h5 class="margin-25px-bottom">{$data49[16]}</h5>
+					<div class="HJ01_bottom_down_item_content">
+
+						<div class="ewm" <if condition="$data49[42] neq ''">style="display:none"</if>>
+						<if condition="$data49[19] neq ''"><img src="{:getindeximgurl($data49[19])}" alt=""/></if>
+					</div>
+
+					<div>
+						<p class="margin-20px-bottom">Add: {$about['address']}</p>
+						<p class="margin-20px-bottom">
+							<if condition="chaifen($about['mobile'],0) neq ''">Mob/Whatsapp/Wechat: {:chaifen($about['mobile'],0)}<br/></if>
+							<if condition="chaifen($about['msn'],0) neq ''">Skype: <a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,4);" onfocus="blur()">{:chaifen($about['msn'],0)}</a><br/></if>
+
+							<if condition="chaifen($about['email'],0) neq ''">Email: <a href="mailto:{:chaifen($about['email'],0)}?chat" onclick="turn_sta(4,4);" onfocus="blur()">{:chaifen($about['email'],0)}</a><br/></if>
+						</p>
+					</div>
+					<div style="padding-top: 10px;" class="dowm_share">
+						<div class="addthis_sharing_toolbox"></div>
+						<div class="admin_share">
+							<ul>
+								<li><a href="{$data1[35]}"><img src="__TMPL__demo2/img/facebook.svg" alt="" width="24" height="24"/></a></li>
+								<li><a href="{$data1[36]}"><img src="__TMPL__demo2/img/twitter.svg" alt="" width="24" height="24"/></a></li>
+								<li><a href="{$data1[37]}"><img src="__TMPL__demo2/img/linkedin.svg" alt="" width="24" height="24"/></a></li>
+								<li><a href="{$data1[38]}"><img src="__TMPL__demo2/img/instagram.svg" alt="" width="24" height="24"/></a></li>
+								<li><a href="{$data1[39]}"><img src="__TMPL__demo2/img/Youtube.svg" alt="" width="24" height="24"/></a></li>
+							</ul>
+						</div>
+					</div>
+			</if>
+	</div>
+
+</div>
+
+<div class="clear margin-20px-bottom"></div>
+<php>
+	if(!$data49[40]){
+		$data49[40] = 462;
+	}
+</php>
+<if condition="has_mould('bottom-5') eq true and $data49[40] neq ''">
+	<style>
+		#wrapper{
+		margin-bottom: {$data49[40]}px;}
+	</style>
+</if>
+
+</div>
+
+
+
+<div class="bottom_copyright">
+	<div class="container">
+		<php>
+			$nowtime=date("Y",time());
+			$currtime=$data49[18];
+		</php>
+		<if condition="$nowtime gt $currtime">CopyRight&nbsp;&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} All Rights Reserved.&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()">&nbsp;Sitemap&nbsp;</a>&nbsp;&nbsp;<a href="{:U('/alltag','','')}">All tags</a>
+		&nbsp;&nbsp;<if condition="$data49[43] eq ''">Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a></if>{:htmlspecialchars_decode(get_google())}
+	</div>
+</div>
+
+</div>
+<!--foot end-->

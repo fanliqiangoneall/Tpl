@@ -1,0 +1,70 @@
+<if condition="$data155[0]">
+    <style>
+        #cases-11{
+            background: url({:getindeximgurl($data155[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .case-11__swiper .swiper-button-prev, .case-11__swiper .swiper-button-next,.case-11__swiper .swiper-pagination-current{
+        color: #{$data155[1]};
+    }
+    .cases-11__right .case-11__swiper .swiper-slide .case-11__itemWrap,.case-11__swiper-next2{
+        background: #{$data155[1]}!important;
+    }
+    .cases-11__left .cases-11__leftMore .border,.cases-11__left .cases-11__leftMore{
+        border-color: #{$data155[1]};color: #{$data155[1]};
+    }
+    .cases-11__left .cases-11__leftMore:hover .border:nth-of-type(4){
+        border-left:1px solid #{$data155[1]};
+    }
+    .cases-11__left .cases-11__leftMore:hover .border:nth-of-type(3){
+        border-bottom:1px solid #{$data155[1]};
+    }
+    .cases-11__left .cases-11__leftMore:hover .border:nth-of-type(2){
+        border-right:1px solid #{$data155[1]};
+    }
+    .cases-11__left .cases-11__leftMore:hover .border:nth-of-type(1){
+        border-top:1px solid #{$data155[1]};
+    }
+</style>
+<section id="cases-11">
+    <div class="container">
+        <h3 class="cases-11__title">{$data155[2]}</h3>
+        <div class="cases-11__content">
+            <div class="cases-11__left">
+                <h4 class="cases-11__leftName">{$data155[3]}</h4>
+                <div class="cases-11__leftText">{:HtmlEncode($data155[4])}</div>
+                <a href="{:U('/cases')}" class="cases-11__leftMore">{:__('Read More')}
+                    <i class="fa fa-long-arrow-right"></i>
+                    <border class="border"></border><border class="border"></border><border class="border"></border><border class="border"></border>
+                </a>
+            </div>
+            <div class="cases-11__right">
+                <div class="swiper-container case-11__swiper">
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="indexcases" id="indexcase" key="k" offset="0" length="9">
+                            <div class="swiper-slide">
+                                <div class="case-11__itemImg">
+                                    <img src="{:getpcimgurl($indexcase['new_pro'])}" class="middle_img{$k}">
+                                </div>
+                                <div class="case-11__itemWrap">
+                                    <div class="case-11__itemName"><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">{:subtxt($indexcase['title'],30)}</a></div>
+                                    <div class="case-11__itemDesc ellipsis_two">{:subtxt($indexcase['news_description'],100)}</div>
+                                    <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" class="cases-11__leftMore white">{:__('Read More')}
+                                        <i class="fa fa-long-arrow-right "></i>
+                                        <border class="border"></border><border class="border"></border><border class="border"></border><border class="border"></border>
+                                    </a>
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="swiper-pagination case-11__pagination"></div>
+                    <div class="swiper-button-next case-11__swiper-next"><i class="fa fa-long-arrow-right"></i></div>
+                    <div class="swiper-button-prev case-11__swiper-prev"><i class="fa fa-long-arrow-left"></i></div>
+                </div>
+                <div class="case-11__swiper-next2"><i class="fa fa-long-arrow-right"></i></div>
+            </div>
+        </div>
+    </div>
+</section>

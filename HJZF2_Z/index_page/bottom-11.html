@@ -1,0 +1,140 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_bottom_11 {
+        background-color: #{$data343[0]};
+        color: #{$data343[1]};
+    }
+
+    .hjzf_bottom_11 a {
+        color: #{$data343[1]};
+        transition:all .4s;
+    }
+    .hjzf_bottom_11 a:hover{
+        color: #{$data343[2]};
+    }
+
+    .hjzf_bottom_11_top li span:before {
+        background-color: #{$data343[10]};
+    }
+    <if condition="$data343[9]">
+    .hjzf_bottom_11_top li:nth-child(2):after,
+    .hjzf_bottom_11_top li:nth-child(2):before{
+        background: url({:getindeximgurl($data343[9])}) no-repeat center;
+    }
+    </if>
+   
+</style>
+
+<section class="hjzf_bottom_11">
+    <div class="container">
+        <ul class="row-little hjzf_bottom_11_top hidden-xs hidden-sm">
+            <li>
+                <php>
+                    $arra = get_list_val($data343[3]);
+                </php>
+                <volist name="arra" id="a" offset="0" length="1">
+                    <span>
+                        <a href="{$a[link]}">{$a[title]}</a>
+                    </span>
+                </volist>
+                <p>
+                    <volist name="arra" id="a" offset="1" length="20">
+                        <a href="{$a[link]}">{$a[title]}</a>
+                    </volist>
+                </p>
+
+            </li>
+            <li>
+                <php>
+                    $arrb = get_list_val($data343[4]);
+                </php>
+                <volist name="arrb" id="a" offset="0" length="1">
+                    <span>
+                        <a href="{$a[link]}">{$a[title]}</a>
+                    </span>
+                </volist>
+                <volist name="arrb" id="a" offset="1" length="20">
+                    <p>
+                        <a href="{$a[link]}">{$a[title]}</a>
+                    </p>
+                </volist>
+            </li>
+            <li>
+                <span>
+                    <a href="{$data343[6]}">{$data343[5]}</a>
+                </span>
+                <if condition="chaifen($about['email'],0)">
+                <p>
+                    <em>{:__('Email: ')}</em> <i><a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(3,2)">{:chaifen($about['email'],0)}</a></i>
+                </p>
+                </if>
+                <if condition="chaifen($about['phone'],0)">
+                <p>
+                    <em>{:__('Phone: ')}</em> <i>{:chaifen($about['phone'],0)}</i>
+                </p>
+                </if>
+                <if condition="chaifen($about['mobile'],0)">
+                <p>
+                    <em>{:__('Mobile: ')}</em> <i>{:chaifen($about['mobile'],0)}</i>
+                </p>
+                </if>
+                <if condition="chaifen($about['fax'],0)">
+                <p>
+                    <em>{:__('Fax: ')}</em> <i>{:chaifen($about['fax'],0)}</i>
+                </p>
+                </if>
+                <if condition="$about['address']">
+                <p>
+                    <em>{:__('Add: ')}</em> <i>{$about['address']}</i>
+                </p>
+            </if>
+
+            </li>
+        </ul>
+    </div>
+
+    <!-- bottom -->
+    <php>
+        $nowtime=date("Y",time());
+    </php>
+    <div class="hjzf_bottom_11_b">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-xs-12">
+                   
+                    <div class="fl mx-85">
+                        <if condition="$data343[8]">
+                        <img src="{:getindeximgurl($data343[8])}" alt="{$about['company_name']}">
+                        </if>
+                        CopyRight © {$nowtime} - {$about['company_name']} {:__('All rights reserved')}&nbsp;&nbsp;
+                        <if condition="get_txtBeiAn()">
+                            <a href="http://beian.miit.gov.cn/"
+                                target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>
+                        </if>
+                        <a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;
+                        <a href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;&nbsp;
+                        <if condition="C('language') eq 'cn'">
+                            <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                            <if condition="$data210[15] eq ''">
+                                中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                            </if>
+                            <else />
+                            <if condition="$data210[15] eq ''">
+                                Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                            </if>
+                        </if>
+                    </div>
+                    <php>
+                        $arr = get_list_val($data343[7]);
+                    </php>
+                    <div class="fr hidden-xs hidden-sm hidden-md hjzf_bottom_11__share">
+                        <volist name="arr" id="a">
+                            <a href="{$a[link]}" target="_blank"><img src="{$a[img]}"></a>
+                        </volist>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

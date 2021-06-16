@@ -1,0 +1,95 @@
+<!--{$pagename}-->
+<if condition="$data173[4]">
+    <style>
+        .HJZF2__bottom-9{
+            background: url({:getindeximgurl($data173[4])}) left center no-repeat !important;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__bottom-9__share li{
+        border-color:#{$color}
+    }
+    .HJZF2__bottom-9__share li:hover{
+        background: #{$color};color: #fff;
+    }
+</style>
+<div class="HJZF2__bottom-9">
+    <div class="container">
+            <ul class="HJZF2__bottom-9__contactlist flex">
+                <if condition="$about['address']">
+                    <li><img src="{:getindeximgurl($data173[0])}" alt=""/>{$about['address']}</li>
+                </if>
+
+                <if condition="$about['msn']">
+                    <li><img src="{:getindeximgurl($data173[1])}" alt=""/><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,2)" target="_blank" style="color: #fff">{:chaifen($about['msn'],0)}</a></li>
+                </if>
+                <if condition="$about['email']">
+                    <li><img src="{:getindeximgurl($data173[2])}" alt=""/><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                </if>
+            </ul>
+        <div class="clear HJZF2__bottom-9_xian"></div>
+        <div class="HJZF2__bottom-9__copyright">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data173[3]){
+                $currtime=2019;
+                }else{
+                $currtime=$data173[3];
+                }
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp;{$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span><br/>
+            <if condition="C('language') eq 'cn'">
+                <a id="mianze" title="常州网络公司中环互联网" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                <a href="https://www.one-all.com" title="常州网络公司" target="_blank">中环互联网设计制作</a>
+                <else/>
+                Designed by <a href="https://www.one-all.com" title="Zhinghuan Internet" target="_blank">Zhonghuan Internet</a>
+            </if>
+            <ul class="HJZF2__bottom-9__share">
+                <if condition="$data173[5]">
+                    <li><a href="{$data173[5]}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                </if>
+                <if condition="$data173[6]">
+                    <li><a href="{$data173[6]}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                </if>
+                <if condition="$data173[7]">
+                    <li><a href="{$data173[7]}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                </if>
+                <if condition="$data173[8]">
+                    <li><a href="{$data173[8]}" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                </if>
+                <if condition="$data173[9]">
+                    <li><a href="{$data173[9]}" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                </if>
+                <if condition="$data173[10]">
+                    <li><a href="{$data173[10]}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                </if>
+                <if condition="$data173[11]">
+                    <li><a href="{$data173[11]}" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                </if>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<if condition="$friend_link neq ''">
+    <div class="friendlink" style="margin-top: 0px;">
+        <div class="container">
+            <div class="link">
+            <if condition="C('language') eq 'cn'">
+            <span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">友情链接：</span>
+            <else/>
+            <span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">FriendLink: &nbsp;&nbsp;</span>
+            </if>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; text-align:center; line-height: 30px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                    </if>
+                </volist>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</if>

@@ -1,0 +1,69 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo1/css/aboutus.css" rel="stylesheet">
+<div class="index_about_indexAboutbg">
+<div class="index_about_indexAbout">
+    <div id="index_about_animate" style="display:none;">
+    <div class="index_about_aboutpic">
+       <div class=imgbox id="mainImg" style="FILTER: progid:DXImageTransform.Microsoft.Fade ( duration=0.5,overlap=1.0 )">
+            <for start="3" end="6" step="1">        
+            <div <if condition="$i eq 3">class="dis"<else/>class="undis"</if>><img src="{:getindeximgurl($data[$i])}" style="display:block;" border="0" /></div>
+            </for>      
+       </div>  
+    </div>
+    </div>
+    <div id="index_about_animate_1" style="display:none;">
+    <div class="index_about_right">
+        <div class="index_about_head"><img src="{:getindeximgurl($data[0])}" style="vertical-align:middle; border:none;" />{$data[1]}</div>
+        <p>{$data[2]}<a href="{:U('/aboutus')}" onFocus="blur()" style="color:#{$color};">查看更多></a></p>
+        <div class="clear"></div>
+        <div class=thumbWrap id=thumbBtn>            
+            <for start="3" end="6" step="1">        
+                <div <if condition="$i eq 3">class="on"<else/>class="off"</if> onmouseover=clearAuto();Mea({$i-3});><img src="{:getindeximgurl($data[$i])}" style="display:block;" border="0" /></div>
+            </for>              
+        </div>
+    </div>
+    </div>
+    <div class="clear"></div>
+</div>
+</div>
+<script>
+var n=0;
+var nums=3;
+var showNum = document.getElementById("thumbBtn");
+var autoStart;
+function Mea(value){
+	n=value;
+	if(navigator.appName=="Microsoft Internet Explorer"){with(mainImg){filters[0].Apply();}}
+	for(var i=0;i<nums;i++){
+		if(showNum.getElementsByTagName("div")[i])
+		{
+			//console.log(showNum.getElementsByTagName("div")[i]);
+			showNum.getElementsByTagName("div")[i].className=value==i?'on':'off';
+			if(document.getElementById("mainImg").getElementsByTagName("div")[i]){
+			document.getElementById("mainImg").getElementsByTagName("div")[i].className=value==i?'dis':'undis';
+			}
+		}
+	}
+	if(navigator.appName=="Microsoft Internet Explorer"){with(mainImg){filters[0].play();}}
+}
+function clearAuto(){clearInterval(autoStart)}
+function setAuto(){ autoStart=setInterval("auto(n)", 3000)}
+function auto(){ n++; if(n>(nums-1))n=0; Mea(n);} 
+setAuto(); 
+window.setTimeout(setAuto,3000)
+
+  
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>3400){	
+	$('#index_about_animate').show();
+	$('#index_about_animate').removeClass().addClass('fadeInLeft');
+	$('#index_about_animate_1').show();
+	$('#index_about_animate_1').removeClass().addClass('fadeInRight');
+	}
+
+
+});
+</script>

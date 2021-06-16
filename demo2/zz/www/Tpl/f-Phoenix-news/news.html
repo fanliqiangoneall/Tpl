@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="__TMPL__f-Phoenix-news/news.css"/>
+<div style="height: 558px;">
+<div class="index_jy_news">
+    <div class="container">
+        <div class="index_news_title">
+          News center
+        </div>
+        <div style="margin-top: 35px;">
+            <ul class=" index_jy_newlist">
+
+                <volist name="news[1769]" id="indexnews" offset="0" length="3">
+
+                    <li>
+
+                            <div class="news_pic"><if condition="$indexnews['new_pro'] neq ''"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()"><img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}"></a><else/><img src="__TMPL__demo2/img/newspic.jpg" border="0" /></if></div>
+                            <div class="newslist">
+                                <div class="news_title"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],50)}</a></div>
+                                <div class="news_time">{:date('Y-M-d',$indexnews['created'])}</div>
+                            </div>
+                    </li>
+                    <if condition="($key+1)%3 eq 0">
+                        <div style="clear:both; overflow:hidden; height:36px;"></div>
+                        <else/>
+                        <div style="width:30px; height:10px; background:none; float:left;"></div>
+                    </if>
+                </volist>
+            </ul>
+
+            <div class="clear"></div>
+        </div>
+        <li class="news_more"><a href="{:U('/news')}">Read more</a></li>
+
+    </div>
+</div>
+</div>
+
+
+<script>
+    $(window).scroll( function() {
+        scrollTop=$(document).scrollTop();
+        if(scrollTop>2000){
+            $('.indexnewstitle').show().addClass('fadeInUp');
+            $('.index_jy_newlist').show().addClass('fadeInUp');
+
+
+        }
+    });
+</script>

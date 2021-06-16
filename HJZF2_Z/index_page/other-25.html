@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<php>
+    if($data223[0]){ $other_25_bg = $data223[0];}
+    if($data223[1]){ $other_25_font = $data223[1];}
+    if($data223[2]){
+        $search_btn_img=getindeximgurl($data223[2]);
+    }
+</php>
+<style>
+    .hjzf_other-25{
+        background: #{$other_25_bg};
+    }
+    .other-25__keywords span,.other-25__keywords span a{
+        color: #{$other_25_font};
+    }
+    <if condition="$data223[3]">
+    .other-25__searchbox ul{
+        background: #fff;
+        border-radius: 17px;
+        overflow: hidden;
+    }
+    </if>
+</style>
+<section class="hjzf_other-25">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-8">
+                <div class="other-25__keywords">
+                    <span style="font-weight: bold">
+                        <if condition="$data223[4]">
+                            {$data223[4]} :
+                            <else />
+                        {:__('Popular keyword search: ')}
+                        </if>
+                        </span>
+                    <span>
+                        <volist name="friend_linktop" id="friend_linktop" offset="0" length="6">
+                            <if condition="$webid eq '1727'">
+                                <a>
+                                    <else/>
+                                    <a target="_new" href="{$friend_linktop['link_url']}" title="{$friend_linktop['link_title']}">
+                                </if>
+                                {$friend_linktop['link_title']}
+                                </a>
+                        </volist>
+                    </span>
+                </div>
+            </div>
+            <div class="hidden-xs hidden-sm hidden-md col-lg-4">
+                <div class="other-25__search">
+                    <div class="other-25__searchbox">
+                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">    
+                            <ul>
+                                <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                                <li class="search_second"><button type="submit" id="search-submit"><img src="{$search_btn_img}"/></button></li>
+                                <div class="clear"></div>
+                            </ul>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

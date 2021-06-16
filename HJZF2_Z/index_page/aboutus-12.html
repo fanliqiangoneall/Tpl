@@ -1,0 +1,49 @@
+<!--{$pagename}-->
+<php>
+    $ab12_number=explode("\\r\\n",$data135[0]);
+    $ab12_unit=explode("\\r\\n",$data135[1]);
+    $ab12_name=explode("\\r\\n",$data135[2]);
+    $ab12_name2=explode("\\r\\n",$data135[3]);
+
+    if($data135[4]){
+        $imgs=[];
+        $matches=getimages(htmlspecialchars_decode($data135[4]));
+        if(isset($matches[1])){
+            $imgs=$matches[1];
+        }
+    }
+
+    foreach($ab12_number as $k=>$number){
+        $ab12[$k]['number']=$number;
+    }
+    foreach($ab12_unit as $k=>$unit){
+        $ab12[$k]['unit']=$unit;
+    }
+    foreach($ab12_name as $k=>$name){
+        $ab12[$k]['name']=$name;
+    }
+    foreach($ab12_name2 as $k=>$name2){
+        $ab12[$k]['desc']=$name2;
+    }
+    foreach($imgs as $k=>$img){
+        $ab12[$k]['img']=$img;
+    }
+</php>
+<style>
+    .aboutus-12__color{
+        color: #fff;
+    }
+</style>
+<section class="hjzf2__aboutus-12">
+    <volist empty="" name="ab12" id="li" key="k" offset="0" length="6">
+        <if condition="$li">
+            <div class="aboutus-12__item text-center " style="background:url({$li['img']})">
+                <div class="wow fadeInDown" data-wow-duration="0.5s" data-wow-delay="0.{$k}s">
+                    <p class="number aboutus-12__color index_sub_title"><span data-unit="{$li['unit']}" data-to="{$li['number']}" data-speed="1500" class="count_shuzi timer">{$li['number']}</span></p>
+                    <p class="name aboutus-12__color index_sub_title">{$li['name']}</p>
+                    <p class="desc aboutus-12__color index_text">{$li['desc']}</p>
+                </div>
+            </div>
+        </if>
+    </volist>
+</section>

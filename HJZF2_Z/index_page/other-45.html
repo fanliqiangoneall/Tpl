@@ -1,0 +1,114 @@
+<!--{$pagename}-->
+<php>
+    if($data320[0]) {
+    $hight_color = $data320[0];
+    }else{
+    $hight_color = $color;
+    }
+</php>
+<style>
+    .hjzf2_other_45_bottom .info span:before,.hjzf2_other_45_title .index_title:after {
+        background-color: #{$hight_color};
+    }
+
+    .hjzf2_other_45_mid_title {
+        color: #{$hight_color};
+    }
+    @media(min-width: 1441px) {
+            <if condition="$data320[8]">
+        .hjzf2_other_45_bottom_img:after {
+            background: url({:getindeximgurl($data320[8])}) no-repeat;
+        }
+    </if>
+    }
+</style>
+<section class="index_pd hjzf2_other_45">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix hjzf2_other_45_title pb20">
+                <div class="col-xs-12 col-lg-6 index_title text-right pb40 wow fadeInLeft">
+                    <p>{$data320[1]}</p>
+                    <if condition="$data320[8]">
+                        <img src="{:getindeximgurl($data320[8])}" alt="{$data320[1]}">
+                    </if>
+                </div>
+                <div class="col-xs-12 text-left col-lg-6 pb40 index_text hidden-sm hidden-xs hidden-md wow fadeInRight">
+                    {:HtmlEncode($data320[2])}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- middle -->
+            <!-- <if condition="$data320[4]">
+                <div class="index_sub_title text-center pb40 wow fadeInUp hjzf2_other_45_mid_title">
+                    {:HtmlEncode($data320[4])}
+                </div>
+            </if> -->
+            <div class="col-xs-12 col-xl-8 col-xl-offset-2  ">
+
+                <div class="swiper-container hjzf2_other_45_swiper_top">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arr = get_list_val($data320[9]);
+                        </php>
+                        <volist name="arr" id="a" key="k">
+                            <div class="swiper-slide">
+                                <div class="index_sub_title pb20 text-center wow fadeInUp">
+                                    {$a[con]}
+                                </div>
+                                <div class="index_sub_title text-center pb20 wow fadeInUp hjzf2_other_45_mid_title">
+                                    {$a[name]}
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <if condition="$data320[4]">
+            <div class="hjzf2_other_45_mid">
+                <div class="swiper-container hjzf2_other_45_swiper">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arra = get_list_val($data320[5]);
+                        </php>
+                        <volist name="arra" id="a" key="k">
+                            <div class="swiper-slide"><img src="{$a[img]}"></div>
+                        </volist>
+                    </div>
+                </div>
+                <div class="swiper-button-next hjzf2_other_45_swiper_next">
+                    <i class="fa fa-long-arrow-right"></i>
+                </div>
+                <div class="swiper-button-prev hjzf2_other_45_swiper_prev">
+                    <i class="fa fa-long-arrow-left"></i>
+                </div>
+            </div>
+        </if>
+
+        <!-- bottom -->
+        <div class="hjzf2_other_45_bottom_img">
+            <ul class="hjzf2_other_45_bottom clearfix">
+                <php>
+                    $arr = get_list_val($data320[7]);
+                </php>
+                <volist name="arr" id="a" key="k">
+                    <li class="col-xs-6 col-lg-3 wow fadeInLeft" data-wow-delay=".{$k*2-2}s">
+                        <div class="info">
+                            <a href="{$a[link]}"><img src="{$a[img]}" class="img-full" alt="{$a[title]}"></a>
+                            <a href="{$a[link]}" class="hidden-xs hidden-sm hidden-md mid">
+                                <p>
+                                    <span class="index_sub_title">{$a[title]}</span>
+                                    <i><img src="{$a[ico]}" alt="{$a[title]}"></i>
+                                </p>
+                                <em class="index_text">{$data320[6]}</em>
+                            </a>
+                            <a href="{$a[link]}" class="hidden-xl hidden-lg index_sub_title d-block">{$a[title]}</a>
+                        </div>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+
+    </div>
+</section>

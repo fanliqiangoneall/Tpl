@@ -1,0 +1,98 @@
+<!--{$pagename}-->
+<style>
+    .HJ03_bottom-2{display: none}
+</style>
+<if condition="has_mould('bottom-2') eq true">
+    <style>
+        .HJ03_bottom-2{display: block}
+    </style>
+</if>
+<if condition="$data31[4] neq ''">
+    <style>
+        .HJ03_bottom-2{
+            background: url({:getindeximgurl($data31[4])}) left center no-repeat !important;
+        }
+    </style>
+</if>
+<if condition="$data31[6]">
+    <style>
+        .HJ03_bottom-2-item:first-child ul li a h2,.HJ03_bottom-2-item ul li,HJ03_bottom-2-item ul li a,.hj02-copy, .hj02-copy a{
+            color: #{$data31[6]};
+        }
+    </style>
+</if>
+<style>
+    .bottom_xian2{width: 100%;border-bottom: 1px solid rgba(255,255,255,.05);height: 2px;padding-bottom: 10px;padding-top: 30px;}
+</style>
+
+<div class="HJ03_bottom-2">
+    <div class="container">
+        <div class="HJ03_bottom-2-item lf">
+            <h3>{$data31[0]}</h3>
+            <ul>
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="HJ03_bottom-2-item lf">
+            <h3>{$data31[1]}</h3>
+            <ul>
+                <if condition="$about['contact']">
+                    <li>联系人：{:chaifen($about['contact'],0)}</li>
+                </if>
+                <if condition="$about['phone']">
+                    <li>座机：{:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="$about['mobile']">
+                    <li>手机：{:chaifen($about['mobile'],0)}&nbsp;&nbsp;{:chaifen($about['mobile'],1)}</li>
+                </if>
+                <if condition="$about['fax']">
+                    <li>传真：{:chaifen($about['fax'],0)}</li>
+                </if>
+                <if condition="$about['email']">
+                    <li>邮箱：<a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                </if>
+                <if condition="$about['address']">
+                    <li>地址：{$about['address']}</li>
+                </if>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="HJ03_bottom-2-item lf" style="margin-right: 0;">
+            <h3>{$data31[2]}</h3>
+            <img src="{:getindeximgurl($data31[3])}" alt=""/>
+        </div>
+        <if condition="$friend_link neq ''">
+            <div class="friendlink">
+
+                <div class="link"><span style="float:left; margin-right:5px;color: #999;">友情链接：</span>
+                    <volist name="friend_link" id="friend_link_down">
+                        <if condition="$friend_link_down['linkurl'] neq ''" ><a target="_new" href="{$friend_link_down['link_url']}"><img style="width:30px; height:25px; float:left;" src="{:getimgurl($friend_link_down['linkurl'])}"/></a><else/>
+                            <div style="float:left; text-align:center;line-height: 24px;margin-right: 10px;"><a target="_new" href="{$friend_link_down['link_url']}">{$friend_link_down['link_title']}</a></div>
+                        </if>
+                    </volist>
+                    <!--<div style="clear:both"></div>-->
+                </div>
+                <div style="clear:both"></div>
+
+            </div>
+        </if>
+       <div class="clear bottom_xian2"></div>
+
+        <div class="hj02-copy">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data31[5]){
+                $currtime=2019;
+                }else{
+                $currtime=$data31[5];
+                }
+
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp;{$about['company_name']}版权所有&nbsp;&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;
+            <a style="" href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>&nbsp;&nbsp;<span style="font-size:14px;"><a  href="{:U('/alltag','','')}">所有标签</a></span>&nbsp;&nbsp;<a href="https://www.one-all.com" title="常州网络公司" target="_blank" rel="nofollow">常州网络公司</a>中环互联网网站建设&nbsp;&nbsp;<a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;" rel="nofollow">免责声明</a>
+        </div>
+    </div>
+</div>

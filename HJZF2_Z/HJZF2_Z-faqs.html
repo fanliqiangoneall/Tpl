@@ -1,0 +1,205 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,
+        .main_newslist li:hover .main_news_title h5,
+        .main_news_dowm a:hover {
+            color: #{$color};
+        }
+
+        .main-content_inner_news>ul>li.yijion_news,
+        .main-content_inner_news>ul>li:hover,
+        .main-content_inner_news>ul>li:first-child {
+            background: #{$color};
+
+        }
+
+        .main-content_inner_news>ul>li.yijion_news a h3,
+        .main-content_inner_news>ul>li:hover a h3,
+        .main-content_inner_news>ul>li:first-child a h3 {
+            color: #fff;
+        }
+
+        .main_page .current {
+            background: #{$color};
+            border: 1px solid #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+
+        .faq_wrapper {
+            margin-bottom: 10px;
+        }
+
+        .faq_wrapItem>a>h3 {
+            font-size: 20px;
+            line-height: 32px;
+            font-weight: normal;
+            color: #333;
+            padding-bottom: 10px;
+        }
+
+        .faq_class_content>p {
+            text-align: center;
+            margin: auto;
+        }
+
+        .faq_class_content>p a {
+            color: #000;
+            font-size: 14px;
+            line-height: 24px;
+        }
+        .faq_class_more{
+            cursor: pointer;
+        }
+        .faq_class_more i{
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .faq_class_content .faq_class_more a,
+        .faq_class_content .faq_dropdown {
+            display: block;
+            background: #f5f5f5;
+            padding: 10px 15px;
+            position: relative;
+            color: #000;
+            line-height: 28px;
+            list-style: none;
+        }
+
+        .faq_class_content .faq_dropdown {
+            display: none;
+            overflow: hidden;
+        }
+
+        .faq_class_content .faq_class_more a:hover,
+        .faq_class_content .faq_class_more .on {
+            background-color: #{$color};
+        }
+        .faq_class_content .faq_dropdown a {
+            color: #{$color};
+        }
+
+        .faq_class_content .faq_class_more a:hover,
+        .faq_class_content .faq_class_more .on {
+            color: #fff;
+        }
+
+        
+
+        @media (min-width:1366px) {
+            .HJZF_Z__innerContent {
+                min-height: 600px
+            }
+        }
+
+        .faq_class_more a {
+            display: block;
+            position: relative;
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Faq')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+
+                    <section class="InsidePages_content-right2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+
+                                <volist empty="no" name="allnewclass" id="new" offset="0">
+                                    <div class="faq_wrapItem col-xs-12">
+                                        <a href="{:U('/faq_category',array('classid'=>$new['classid']))}">
+                                            {$new['class_name']}
+                                        </a>
+                                        <php>
+                                        	if($webid==1721){
+                                            	$all = get_faq_byid($new['classid'],100);
+                                            }else{
+                                            	$all = get_faq_byid($new['classid']);
+                                            }
+                                        </php>
+                                        <div class="faq_class_content">
+                                            <volist name="all" id="vo">
+                                                <div class="faq_wrapper">
+                                                    <div class="faq_class_more">
+                                                        <a class="top_more"><i class="fa fa-plus fr"></i>{$vo['title']}</a>
+                                                    </div>
+                                                    <div class="faq_dropdown">
+                                                    	<if condition="$webid neq 1721">
+                                                        <p>
+                                                            {$vo['news_description']}
+                                                        </p>
+                                                        <else/>
+                                                         <p>
+                                                            {:htmlspecialchars_decode($vo['body'])}
+                                                        </p>                                                       
+                                                        </if>
+                                                        <!-- <a href="{:U('/faq_detail',array('nid'=>$vo['nid']))}">{:__('Read
+                                                            More')}</a> -->
+                                                    </div>
+                                                </div>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                </volist>
+
+
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<a href="mailto:fhsdkfash"></a>
+<block name="footer_js">
+    <script>
+        $(function () {
+            $('.faq_class_more').click(function (e) {
+                var self = $(this);
+                var dropdown = self.next('.faq_dropdown');
+                var par = self.parent();
+                self.find('.top_more').toggleClass('on').find('i').toggleClass('fa-plus').toggleClass('fa-minus');
+                dropdown.slideToggle(300);
+                // 其他收起来
+                par.siblings().find('.top_more').removeClass('on').find('i').addClass('fa-plus').removeClass('fa-minus');
+                par.siblings().find('.faq_dropdown').slideUp(300);
+               
+            })
+        })
+    </script>
+
+</block>

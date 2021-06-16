@@ -1,0 +1,49 @@
+<!--{$pagename}-->
+<php>
+    $color1=explode("\\n",$data266[17]);
+    
+</php> 
+<style>
+    .hjzf_aboutus-14 {
+        background: #{$data266[0]};
+    }
+    .main-link-con li .main-link_img span{
+        background: #ffffff;
+        background: -moz-linear-gradient(45deg,#{$color1[0]} 0%, #{$color1[1]} 100%);
+        background: -webkit-linear-gradient(45deg, #{$color1[0]} 0%,#{$color1[1]} 100%);
+        background: linear-gradient(45deg, #{$color1[0]} 0%,#{$color2[1]} 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$color2[0]}', endColorstr='{$color2[1]}',GradientType=1 );
+    }
+</style>
+<section class="hjzf_aboutus-14 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="main-link-con">
+                    <php>
+                        for($ab=1;$ab<16;$ab=$ab+4){
+                    </php>
+                    <li class="main-link">
+                        <a href="{$data266[$ab+3]}" class="flex">
+                            <div class="main-link_img">
+                                <div class="img"style="background: url('{:getindeximgurl($data266[$ab])}') no-repeat center/cover;"></div>
+                            
+                                <span class="main-link_img_bg"></span>
+                            </div>
+                            <div class="main-link-info">
+                                <div class="main-link-info-box">
+                                    <div class="table-layout">
+                                        <strong class="index_sub_title">{$data266[$ab+1]}</strong>
+                                        <p class="index_text ellipsis_three">{$data266[$ab+2]}</p>
+                                        <span class="main-link-more-btn"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <php>}</php> 
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

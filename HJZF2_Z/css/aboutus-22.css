@@ -1,0 +1,75 @@
+.hjzf_aboutus_22 {
+    padding-bottom: 80px;
+}
+
+.hjzf_aboutus_22_wrapper {
+    display: flex;
+}
+
+.hjzf_aboutus_22_left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    font-size: 40px;
+    letter-spacing: 5px;
+    padding: 20px 10px;
+    flex: 0 0 13%;
+}
+
+.hjzf_aboutus_22_left:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 20px;
+    height: 20px;
+    left: -21px;
+    bottom: -20px;
+}
+
+.hjzf_aboutus_22_right {
+    background-color: #f2f2f4;
+    display: flex;
+    padding-left: 40px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hjzf_aboutus_22_right div {
+    margin: 10px 0;
+    color: #777;
+}
+
+.hjzf_aboutus_22_right a {
+    align-self: flex-end;
+}
+
+@media(min-width: 1200px) {
+    .hjzf_aboutus_22_wrapper {
+        transform: translateY(-50%);
+    }
+}
+
+@media(max-width: 1200px) {
+    .hjzf_aboutus_22 {
+        padding-bottom: 40px;
+    }
+    .hjzf_aboutus_22_left{
+        flex: 0 0 20%;
+        font-size: 24px;
+    }
+    .hjzf_aboutus_22_right{
+        padding: 10px 20px;
+    }
+    .hjzf_aboutus_22_left:after{
+        display: none;
+    }
+}
+
+@media(max-width: 768px) {
+    .hjzf_aboutus_22_left{
+        flex: 0 0 30%;
+    }
+}

@@ -1,0 +1,91 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_62_wrapper,.hjzf2_other_62_wrapper_bottom {
+        border-color: #{$data390[1]};
+    }
+    .hjzf2_other_62_wrapper_img{
+        background-color: #{$data390[1]};
+    }
+    .hjzf2_other_62_wrapper:hover .hjzf2_other_62_wrapper_img{
+        background-color: #{$data390[0]};
+    }
+    .hjzf2_other_62_wrapper a:hover{
+        color: #{$data390[0]};
+    }
+    .hjzf2_other_62_wrapper:hover{
+        border-color: #{$data390[0]};
+    }
+    .hjzf2_other_62_wrapper:hover .hjzf2_other_62_wrapper_bottom{
+        border-top-color: #{$data390[0]};
+    }
+</style>
+<section class="hjzf2_other_62 index_pd">
+    <div class="container">
+        <div class="row">
+            <php>
+                $arr = get_list_val($data390[2]);
+            </php>
+            <volist name="arr" id="a">
+                <div class="col-xs-12 col-lg-4">
+                    <div class="hjzf2_other_62_wrapper text-center hjzf2_other_62_wrapper{$key}">
+                        <div class="hjzf2_other_62_wrapper_bg">
+                            <img src="{$a[bg]}" alt="{$a[title]}">
+                        </div>
+                        <div class="hjzf2_other_62_wrapper_img">
+
+                                <img src="{$a[ico1]}" class="normal" alt="{$a[title]}">
+                                <img src="{$a[ico2]}" class="hover " alt="{$a[title]}">
+                 
+                        </div>
+                        <div class="index_sub_title pb20">
+                            {$a[title]}
+                        </div>
+                        
+                        <div class="index_text hjzf2_other_62_wrapper_content hjzf2_other_62_wrapper_content_first">
+                            <div>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                {$a[con]}
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </div>
+                            <div>
+                                {$a[cona]}
+                            </div>
+                            <div>
+                                {$a[conb]}
+                            </div>
+                            <div>
+                                {$a[conc]}
+                            </div>
+                            <div>
+                                {$a[cond]}
+                            </div>
+
+                        </div>
+                        <if condition="$a[link]">
+                            <a href="{$a[link]}">
+                        </if>
+                        <div class="hjzf2_other_62_wrapper_bottom">
+                            <div class="hjzf2_other_62_wrapper_ico">
+                                <div class="margin5">
+                                    <img src="{$a[ico_black]}" class="normal margin5" alt="{$a[title]}">
+                                    <img src="{$a[hov]}" class="hover margin5" alt="{$a[title]}">
+                                </div>    
+                            </div>
+                            <span>{$a[des]}</span>
+
+                        </div>
+                        <if condition="$a[link]">
+                            </a>
+                        </if>
+                    </div>
+                </div>
+            </volist>
+
+        </div>
+    </div>
+
+</section>

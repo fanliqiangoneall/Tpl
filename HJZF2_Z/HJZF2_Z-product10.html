@@ -1,0 +1,71 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background: #{$color};
+            border: 1px solid #{$color};
+        }
+    </style>
+    <div class="HJZF_Z__wrapper inner_4__innerwrapper" id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt="" />
+                    </div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <section class="inner-10__productWrap flex">
+                        <php>
+                            $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                        </php>
+                        <volist empty="$no_empty" name="allclass" id="allclass_left">
+                            <div class="col-xs-6 col-md-4 col-lg-3 inner-10__productItem">
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}"
+                                    class="inne-10_productscale">
+                                    <div class="inner-10__product_pic"> <img
+                                            src="{:getmainimgurl($allclass_left['fid'])}" alt=""
+                                            class="img-responsive" /></div>
+                                    <div class="inner-10__product_name text-center inner-10__product_color">
+                                        {$allclass_left['class_name']}
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</block>
+<block name="footer_js">
+
+</block>

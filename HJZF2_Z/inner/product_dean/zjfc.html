@@ -1,0 +1,33 @@
+<div class="othercate14_left_title">
+    <b>德安专家风采</b>
+    <small>•</small>
+    <span>专技人才精干高效</span>
+</div>
+<div class="othercate14_left_con">
+    {:htmlspecialchars_decode($inner_data[2])}
+</div>
+<volist empty="" name="allclass" id="allclass_nei">
+    <!-- 专家风采 -->
+    <if condition="$allclass_nei['pcid'] eq 41523">
+        <ul class="doctors_ul">
+            <volist empty="" name="allclass_nei['childs']" id="allclass_nei_two">
+                <li>
+                    <div>
+                        <span>{$allclass_nei_two['class_name']}</span>
+                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_nei_two['pcid'])}"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                    <p>
+                        <php>
+                            $pro_cate_hj17 = get_product_byclass_index_nei($allclass_nei_two['pcid']);
+                        </php>
+                        <volist empty="no" name="pro_cate_hj17" id="proList" offset="0">
+                            <a href="{:U('/Product','','')}/{:getproname($proList['pid'])}">
+                                <small>{$proList['pro_name']}</small>
+                            </a>
+                        </volist>
+                    </p>
+                </li>
+            </volist>
+        </ul>
+    </if>
+</volist>

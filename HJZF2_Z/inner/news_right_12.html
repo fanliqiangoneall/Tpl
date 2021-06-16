@@ -1,0 +1,142 @@
+<style>
+    h2.news_12_right_tt {
+        font-size: 24px;
+        line-height: 2;
+    }
+
+    .news_12_bottom .newLinkBox:last-child {
+        margin-bottom: 0;
+    }
+
+    .news_12_bottom .newLinkBox {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        padding-right: 12%;
+        overflow: hidden;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #eee;
+        transition: all .5s;
+    }
+
+    .news_12_bottom .newLinkBox:hover .newData,
+    .news_12_bottom .newLinkBox:hover .newYearMon {
+        color: #fff;
+    }
+
+    .news_12_bottom .leftImg {
+        width: 80px;
+        text-align: center;
+        font-family: arial;
+        color: #{$color};
+        transition: all .5s ease;
+    }
+
+    .news_12_bottom .newData {
+        font-size: 44px;
+        line-height: 46px;
+        padding-top: 15px;
+    }
+    .news_12_bottom .news_12_right_tt {
+        margin-bottom: 15px;
+    }
+    .news_12_bottom .centerContentBox {
+        width: calc((120% - 80px)/1);
+        padding-left: 3%;
+    }
+
+    .news_12_bottom .centerContentBox .newTitle {
+        font-size: 16px;
+        color: #9c9c9c;
+        margin-bottom: 10px;
+        transition: all .5s;
+    }
+
+    .news_12_bottom a:hover .centerContentBox .newTitle {
+        color: #{$color};
+    }
+
+    .news_12_bottom .newLinkBox:hover {
+        padding-bottom: 25px;
+    }
+
+    .news_12_top li h3 {
+        font-size: 16px;
+        line-height: 50px;
+        padding-left: 25px;
+        transition: all .5s;
+    }
+
+    .news_12_top li:hover h3,
+    .news_12_top li.yijion_news h3 {
+        color: #{$color};
+    }
+
+    .news_12_top li {
+        position: relative;
+    }
+
+    .news_12_top li:before {
+        content: '';
+        width: 10px;
+        height: 2px;
+        display: block;
+        background: #E3E3E3;
+        position: absolute;
+        top: 24px;
+        left: 0;
+        transition: all .5s;
+    }
+
+    .news_12_top li:hover:before,
+    .news_12_top li.yijion_news:before {
+        background-color: #{$color};
+    }
+
+    @media(max-width: 1299px) {
+        .news_12_wrapper.flex-nowrap {
+            flex-wrap: wrap;
+        }
+
+        .news_12_wrapper .news_12_img {
+            width: 120%;
+        }
+
+    }
+</style>
+<div class="col-lg-4 col-xs-12 pull-right news_12_wrapper hidden-xs hidden-sm hidden-md">
+    <h2 class="news_12_right_tt">
+        <if condition="$webid eq '1721'">
+            装修课堂
+            <else/>
+        {:__('News Categories')}
+    </if></h2>
+    <ul class="news_12_top">
+        <!-- 分类 -->
+        <volist empty="" name="allnewclass" id="new12">
+            <li <if condition="$newscate['classid'] eq $new12['classid']">class="yijion_news"
+                <else />class="yiji_news"</if>><a style="cursor:pointer;"
+                    href="{:U('/new_category',array('classid'=>$new12["classid"]))}">{$new12['class_name']}</a></li>
+        </volist>
+    </ul>
+    <div class="news_12_bottom">
+        <h2 class="news_12_right_tt"><if condition="$webid eq '1721'">
+            热门信息
+            <else/>
+            {:__('Hot news')}
+    </if></h2>
+        <!-- 热门新闻 -->
+        <volist name="hotnews" id="allnewsb">
+            <a href="{:U('/new_detail',array('nid'=>$allnewsb["nid"]))}" class="newLinkBox">
+                <div class="leftImg">
+                    <img src="{:getimgurl($allnewsb['new_pro'])}" alt="{$allnewsb['title']}" class="img-fluid">
+                </div>
+                <div class="centerContentBox">
+                    <h2 class="newTitle ellipsis_two">{$allnewsb['title']}</h2>
+                    <span>{:date('Y-m-d',$allnewsb['created'])}</span>
+                </div>
+            </a>
+        </volist>
+    </div>
+</div>

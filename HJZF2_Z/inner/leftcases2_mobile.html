@@ -1,0 +1,58 @@
+<style>
+	.leftcases2_navlist li a:hover {
+		color: #fff;
+	}
+
+	.leftcases2_navlist li a:hover:after {
+		width: 100%;
+		background:#{$color};
+	}
+</style>
+<div class="HJZF_Z__inner_case4_mobile">
+	<div class="InsidePages_left_content-main">
+		<p class="leftcases2_title index_title">{:__('Cases')}
+			<span class="mobile--left_showButton"><i></i></span>
+		</p>
+		<ul class="leftcases2_navlist InsidePages_left_navlist">
+			<volist empty="" name="allnewclass" id="new">
+				<if condition="$webid eq '440' or $webid eq '516'">
+					<if condition="$new['classid'] eq '85' or $new['classid'] eq '86' or $new['classid'] eq '89' or $new['classid'] eq '90'">
+						<li data-id="{$new['classid']}" <if condition="$newscate['classid'] eq $new['classid']">class="yijion_news"<else/>class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a>  
+							<if condition="$new['classid'] eq '86' or $new['classid'] eq '90'">
+								<span class="class_button"></span>
+							</if>
+						</li>
+					<else/>
+						<li <if condition="$newscate['classid'] eq $new['classid']">class="yijion_news case_erjia child"<else/>class="yiji_news case_erjia child"</if>>
+							<a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a>
+						</li>
+					</if>
+					
+				<else/>
+					<li><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a>
+					</li>
+				</if>
+			</volist>
+		</ul>
+	</div>
+	<div class="clear"></div>
+</div>
+<script>
+	$(document).ready(function () {
+		$(".HJZF_Z__inner__mobileLeftMenu .class_button").on("click", function () {
+			$(this).next('ul').slideToggle();
+			if ($(this).next('ul').css("display") == "none") {
+				$(this).parent().addClass("yijion");
+			} else {
+				$(this).parent().removeClass("yijion").addClass("yiji");
+			}
+		});
+		$('.InsidePages_left_navlist .case_erjia').wrapAll('<ul class="erji"></ul>');
+
+		$(".HJZF_Z__inner__mobileLeftMenu .mobile--left_showButton").on("click", function () {
+			$(".HJZF_Z__inner__mobileLeftMenu .InsidePages_left_navlist").slideToggle();
+		});
+
+	})
+	$(".yijion_news[data-id='86'] a").attr("href",'javascript:;')
+</script>

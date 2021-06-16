@@ -1,0 +1,34 @@
+<extend name="demo3:base" />
+<block name="content">
+<Include file="./Tpl/demo3/in_head.html" />
+<div id="animate6">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+<Include file="./www/Tpl/f-chinajxjs-navigation/navigation.html" />
+<div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$pro_name} 评论列表</div>
+
+<div class="page_Main" style="width:100%;">
+    <div class="page_RightTitle">评论列表</div>
+    <div class="page_RightMain">
+       <volist name="list" id="list" key="k">
+          <div style="width:100%;padding:5px 0;">
+              <div style="float:left;width:5%;">{$k}</div>
+              <div style="float:left;width:72%;">{$list["content"]}</div>
+              <div style="float:right;width:20%; text-align:right;">{:date("Y-m-d H:i:s",$list["adddate"])}</div>
+              <div style="clear:both"></div>
+          </div>
+        </volist>
+        <div class="main_page">{$page}</div>
+    </div>
+    <div style="clear:both"></div>
+</div>
+<Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" /><Include file="./Tpl/demo3/index_page/bottom-5.html" />
+</block>

@@ -1,0 +1,74 @@
+<!--{$pagename}-->
+<style>
+.HJZF2_Z_service_bannerbg{
+	background: url({:getindeximgurl($data5[21])}) no-repeat center /cover;
+}
+.HJZF2_Z_service__banner_btn a:hover span{
+	color:#{$data5[26]};
+}
+</style>
+<section class="HJZF2_Z_service flex">
+  <div class="container">
+     <div class="row">
+        <div class="HJZF2_Z_service__container">
+            <div class="HJZF2_Z_service__inner">
+                <div class="HJZF2_Z_service_titleBox">
+                    <h1 class="wow fadeInUp index_title pb20">{$data5[0]}</h1>
+                    <div class="HJZF2_Z_service_desc index_sub_title pb40"><span>{$data5[1]}</span></div>
+                </div>
+                <div class="HJZF2_Z_service_list">
+                    <php>
+                        for($adv=2,$d=0.2,$t=27;$adv<=19,$d<=1.9,$t<=32;$adv=$adv+3,$d=$d+0.3,$t=$t+1){
+                    </php>
+                          <if condition="$data5[$adv+1]">
+                            <div class="col-sm-12 col-lg-4 col-xl-4">
+                        <div class="HJZF2_Z_service_item wow fadeInLeft pb40" id="HJZF2_Z_service_item" data-wow-duration="1s" data-wow-delay="{$d}s">
+                            <if condition="$data5[$t]">
+                                <a href="{$data5[$t]}">
+                            </if>
+
+                            <div class="HJZF2_Z_service_item--left">
+                                <img src="{:getindeximgurl($data5[$adv])}" alt="{$data5[$adv+1]}"/>
+                            </div>
+                            <div class="HJZF2_Z_service_item--right">
+                                <div class="HJZF2_Z_service_item_header">
+                                    <h3 class="index_text">{$data5[$adv+1]}</h3>
+                                </div>
+                                <div class="HJZF2_Z_service_item_desc">
+                                    {:HtmlEncode($data5[$adv+2])}
+                                </div>
+                            </div>
+                            <if condition="$data5[$t]">
+                            </a>
+                            </if>
+                        </div>
+                      </div>
+                      </if>
+                    <php>
+                        }
+                    </php>
+                </div>
+                <div class="clear"></div>
+                <div class="HJZF2_Z_service_itempic wow fadeInUp" data-wow-duration="1s" data-wow-delay="2s"><img src="{:getindeximgurl($data5[20])}" alt="{$data5[0]}"/></div>
+            </div>
+        </div>
+     </div>
+  </div>
+  <div class="HJZF2_Z_service_bannerbg wow fadeInUp" data-wow-duration="1s" data-wow-delay="2.2s">
+     <div class="container">
+         <div class="row">
+             <div class="HJZF2_Z_service__banner_box">
+                 <div class="HJZF2_Z_service__banner_left col-xs-12 col-lg-8">
+                     <div class="HJZF2_Z_service__banner_inner">
+                        <h2 class="index_title">{$data5[22]}</h2>
+                        <span class="index_text">{$data5[23]}</span>
+                     </div>
+                 </div>
+                 <div class="HJZF2_Z_service__banner_right col-xs-12 col-lg-4">
+                     <div class="HJZF2_Z_service__banner_btn"><a href="{$data5[25]}"><span class="index_sub_title">{$data5[24]}</span></a></div>
+                 </div>
+             </div>
+         </div>
+     </div>
+  </div>
+</section>

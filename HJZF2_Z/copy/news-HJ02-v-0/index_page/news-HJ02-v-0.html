@@ -1,0 +1,135 @@
+<!--{$pagename}-->
+
+<style>
+    <if condition="$data704[0]">
+        .hjzf_news-HJ02-v-0.html{
+            background: url({:getindeximgurl($data704[0])}) no-repeat center;background-size: cover;
+        }
+    </if>
+    .new_hjzf_news-HJ02-v-0.html__itemRight__name span{
+        background: #{$color};
+    }
+    .new_hjzf_news-HJ02-v-0.html--title  a:hover{
+        color: #{$data704[1]};
+    }
+    .new_hjzf_news-HJ02-v-0.html__itemLeft:hover a{
+        color: #{$data704[1]};
+    }
+    .new_hjzf_news-HJ02-v-0.html__itemRight:hover .new_hjzf_news-HJ02-v-0.html__itemRight__name a{
+        color: #{$data704[1]};
+    }
+    .new_hjzf_news-HJ02-v-0.html--title:before{
+        background-color: #{$data704[1]};
+    }
+</style>
+<section class="hjzf_news-HJ02-v-0.html index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6 new_hjzf_news-HJ02-v-0.html__left wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0" >
+                <h3 class="new_hjzf_news-HJ02-v-0.html--title index_title">{$data704[2]}<if condition="$data704[3]"><a href="{$data704[3]}" <if condition="$webid eq '1770'"> target="_blank" </if>>{:__('Read More')} <if condition="$webid eq '1770'"><i class="fa fa-long-arrow-right" aria-hidden="true"></i><else/>+</if></a> <else/>
+                    <a href="{:U('/news')}" <if condition="$webid eq '1770'"> target="_blank" </if>>{:__('Read More')} <if condition="$webid eq '1770'"><i class="fa fa-long-arrow-right" aria-hidden="true"></i><else/>+</if></a></if></h3>
+                <php>
+                    $arr_str=$data704[6];
+                    $arr=explode(',',$arr_str);
+                    foreach($arr as $k=>$a){
+                    $list[$k]['data']=get_index_news_category($a,8);
+                    }
+                    if($data704[17]){
+                        $lena = $data704[17];
+                    }else{
+                        $lena = '5';
+                    }
+                </php>
+                <div class="new_hjzf_news-HJ02-v-0.html--leftContent">
+                    <volist name="list" id="li" >
+                        <ul alt="{$li['name']}" class="new_hjzf_news-HJ02-v-0.html--leftWrap">
+                            <volist name="li['data']" id="indexnews" offset="0" length="1" key="k">
+                                <li class="new_hjzf_news-HJ02-v-0.html__itemLeft new_hjzf_news-HJ02-v-0.html__itemLeft__first">
+                                    <div class="new_hjzf_news-HJ02-v-0.html__itemLeft__img">
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" <if condition="$webid eq '1770'"> target="_blank" </if>><img src="{:getimgurl($indexnews['new_pro'])}" border="0"  alt="{$indexnews['title']}" /></a>
+                                    </div>
+                                    <div class="new_hjzf_news-HJ02-v-0.html__itemLeft__imgRight">
+                                        <div class="new_hjzf_news-HJ02-v-0.html__itemLeft__name index_text"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" <if condition="$webid eq '1770'"> target="_blank" </if> onFocus="blur()">{:subtxt($indexnews['title'],40)}</a></div>
+                                        <div class="new_hjzf_news-HJ02-v-0.html__itemLeft__desc index_text">{:subtxt($indexnews['news_description'],100)}</div>
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" <if condition="$webid eq '1770'"> target="_blank" </if> onFocus="blur()" class="new_hjzf_news-HJ02-v-0.html__itemLeft__more index_text">{:__('Read More')} <if condition="$webid eq '1770'"><i class="fa fa-long-arrow-right" aria-hidden="true"></i><else/>+</if></a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            </volist>
+                            <volist name="li['data']" id="indexnews" offset="1" length="$lena" key="k">
+                                <li class="new_hjzf_news-HJ02-v-0.html__itemLeft">
+                                    <div class="index_text"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" <if condition="$webid eq '1770'"> target="_blank" </if> onFocus="blur()">{:subtxt($indexnews['title'],60)}</a> <span>{:date('Y-m-d ',$indexnews['created'])}</span></div>
+                                </li>
+                            </volist>
+                        </ul>
+
+                    </volist>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-lg-6 new_hjzf_news-HJ02-v-0.html__right  wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0">
+                <h3 class="new_hjzf_news-HJ02-v-0.html--title index_title">{$data704[4]}
+                    <if condition="$data704[5]"><a href="{$data704[5]}" <if condition="$webid eq '1770'"> target="_blank" </if>>{:__('Read More')} <if condition="$webid eq '1770'"><i class="fa fa-long-arrow-right" aria-hidden="true"></i><else/>+</if></a> <else/>
+                        <a href="{:U('/news')}" <if condition="$webid eq '1770'"> target="_blank" </if>>{:__('Read More')} <if condition="$webid eq '1770'"><i class="fa fa-long-arrow-right" aria-hidden="true"></i><else/>+</if></a></if>
+                </h3>
+                <if condition="$data704[7]">
+                    <div class="new_hjzf_news-HJ02-v-0.html--RightContent">
+                        <php>
+                            $arr_str=$data704[7];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                            $list[$k]['data']=get_index_news_category($a,8);
+                            }
+                        </php>
+                        <volist name="list" id="li" >
+                            <ul alt="{$li['name']}" class="new_hjzf_news-HJ02-v-0.html--rightWrap">
+                                <volist name="li['data']" id="indexnews" offset="0" length="3" key="k">
+                                    <li class="new_hjzf_news-HJ02-v-0.html__itemRight">
+                                        <div class="new_hjzf_news-HJ02-v-0.html__itemRight__name">
+                                            <span>{:__('Q')}</span>
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" <if condition="$webid eq '1770'"> target="_blank" </if> onFocus="blur()" class="index_text">{:subtxt($indexnews['title'],60)}</a></div>
+                                        <div class="new_hjzf_news-HJ02-v-0.html__itemRight__desc">
+                                            <span>{:__('A')}</span>
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" <if condition="$webid eq '1770'"> target="_blank" </if> onFocus="blur()" class="index_text">{$indexnews['news_description']}</a></div>
+                                    </li>
+                                </volist>
+                            </ul>
+
+                        </volist>
+                    </div>
+                    <else/>
+                    <div class="new_hjzf_news-HJ02-v-0.html--RightContent">
+
+                        <ul class="new_hjzf_news-HJ02-v-0.html--rightWrap">
+                            <php>
+                                for($i=8;$i<16;$i=$i+3){
+                            </php>
+
+                            <li class="new_hjzf_news-HJ02-v-0.html__itemRight">
+                                <div class="new_hjzf_news-HJ02-v-0.html__itemRight__name">
+                                    <span>{:__('Q')}</span>
+                                    <a href="{$data704[$i+2]}" onFocus="blur()" <if condition="$webid eq '1770'"> target="_blank" </if>>{$data704[$i]}</a></div>
+                                <div class="new_hjzf_news-HJ02-v-0.html__itemRight__desc">
+                                    <span>{:__('A')}</span>
+                                    <a href="{$data704[$i+2]}" onFocus="blur()" <if condition="$webid eq '1770'"> target="_blank" </if>>{$data704[$i+1]}</a></div>
+                            </li>
+                            <php>
+                                }
+                            </php>
+                        </ul>
+                    </div>
+                </if>
+
+            </div>
+            <div class="clear"></div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+    
+    

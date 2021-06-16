@@ -1,0 +1,70 @@
+<!--{$pagename}-->
+<php>
+	if($data91[10] == ''){
+		$data91[10] = 30;
+	}
+	if($data91[11] == ''){
+	$data91[11] = 30;
+	}
+	if($data91[12] == ''){
+	$data91[1211] = 30;
+	}
+	if($data91[13] == ''){
+	$data91[13] = 30;
+	}
+</php>
+<style>
+.new_hjzf_partner-HJ02 #customers{
+	padding-top: {$data91[10]}px;padding-bottom:{$data91[11]}px;margin-top:{$data91[12]}px;margin-bottom:{$data91[13]}px;
+}
+.new_hjzf_partner-HJ02 .partner .responsive-image{margin-bottom:0px;}
+.new_hjzf_partner-HJ02 .hj02-customer-prev {
+	height: 40px; width:40px;display: block;outline:none;background:url({:getindeximgurl($data91[6])}) no-repeat;  z-index:11;
+}
+.new_hjzf_partner-HJ02 .hj02-customer-next {
+	width: 40px; height:40px;display: block;outline:none;background:url({:getindeximgurl($data91[7])}) no-repeat;  z-index:11;
+}
+.new_hjzf_partner-HJ02 .hj02-customer-prev:hover {
+	background:url({:getindeximgurl($data91[8])}) no-repeat;
+}
+.new_hjzf_partner-HJ02 .hj02-customer-next:hover {
+	background:url({:getindeximgurl($data91[9])}) no-repeat;
+}
+</style>
+<if condition="$data91[0]">
+	<style>
+		.new_hjzf_partner-HJ02 #customers{
+			background: url({:getindeximgurl($data91[0])}) no-repeat center;
+		}
+	</style>
+</if>
+<!--customers start -->
+<section id="customers">
+	<div class="container">
+		<div class="hj02-customer-wai">
+			<div class="hj02-customer">
+				<div class="swiper-wrapper">
+					<php>
+						for($c=1;$c<5;$c=$c+1){
+					</php>
+					<if condition="$data91[$c] neq ''">
+						<div class="swiper-slide">
+							<a <if condition="$data91[14]">href="{$data91[14]}" <else/>href="javascript:void(0)"</if>>
+							<img src="{:getindeximgurl($data91[$c])}" alt=""/>
+							</a>
+						</div>
+					</if>
+					<php>
+						}
+					</php>
+				</div>
+
+			</div>
+			<!-- Add Arrows -->
+			<div class=" hj02-customer-next swiper-button-next"></div>
+			<div class="hj02-customer-prev swiper-button-prev"></div>
+		</div>
+
+	</div>
+</section>
+<!--customers end -->

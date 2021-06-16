@@ -1,0 +1,81 @@
+<!--{$pagename}-->
+<style>
+	.new_hjzf_advantage-2HJ01 .hj01-advantage2{
+		background: url({:getindeximgurl($data65[15])}) no-repeat center;background-size: cover;
+	}
+	.new_hjzf_advantage-2HJ01 .section-heading-title:after{
+	border-bottom-color: #{$data1[0]};
+	}
+	.new_hjzf_advantage-2HJ01 .insignia-testimonial-meta_name{
+		color: #{$color};
+	}
+	.new_hjzf_advantage-2HJ01 .insignia-testimonial-meta_job{
+	color: #{$data1[0]};
+	}
+	.new_hjzf_advantage-2HJ01 .advantages2_list{width: 100%;margin: auto;overflow: hidden}
+
+
+
+	.new_hjzf_advantage-2HJ01 .advantages2_list .swiper-button-prev{
+		left: 552px !important; top: 95%;background: url({:getindeximgurl($data65[16])}) no-repeat center;
+	}
+	.new_hjzf_advantage-2HJ01 .advantages2_list .swiper-button-prev:hover{
+		background: url({:getindeximgurl($data65[18])}) no-repeat center;
+	}
+	.new_hjzf_advantage-2HJ01 .advantages2_list .swiper-button-next{
+		right: 34px !important;  top: 95%;background: url({:getindeximgurl($data65[17])}) no-repeat center;
+
+	}
+	.new_hjzf_advantage-2HJ01 .advantages2_list .swiper-button-next:hover{
+		background: url({:getindeximgurl($data65[19])}) no-repeat center;
+
+	}
+	.new_hjzf_advantage-2HJ01 .advantages2_list .swiper-pagination{text-align: right;display: inline-block;width: auto;position: absolute;right: 65px;bottom:20px;}
+	.new_hjzf_advantage-2HJ01 .advantages2_list .swiper-pagination .swiper-pagination-current{
+	color:#{$data1[0]};
+	}
+
+</style>
+
+
+<div class="hj01-advantage2">
+	<div class="hj01-adv2_content">
+		<div class="hj01-adv2_right">
+			<div class="hj01-evaluate_right_content" id="hj01-evaluate_right_content">
+				<div class="hj01-adv2_right_title">
+					<h3 class="section-heading-title">{$data65[0]}</h3>
+				</div>
+				<div class="advantages2_list">
+				<div class="swiper-wrapper">
+					<php>
+
+						for($ad=1;$ad<14;$ad=$ad+2){
+					</php>
+					<if condition="$data65[$ad] neq ''">
+						<div id="ad2item{$ad}" class="swiper-slide">
+							<div class="insignia-testimonial-text">
+								{$data65[$ad]}
+							</div>
+							<div class="adv2-image ">
+								<img src="{:getindeximgurl($data65[$ad+1])}" alt=""/>
+							</div>
+						</div>
+					</if>
+
+					<php>
+						}
+					</php>
+				</div>
+				<if condition="$data65[3] neq ''">
+					<div class="swiper-pagination"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+				</if>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+</div>
+

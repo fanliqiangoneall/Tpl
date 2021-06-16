@@ -1,0 +1,74 @@
+<!--{$pagename}-->
+<php>
+	if($data705[0]){
+	$color = $data705[0];
+	}
+</php>
+<style>
+	  <if condition="$data705[1]">
+    .hjzf_advantage_62 {
+        background-image: url({:getindeximgurl($data705[1])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    </if>
+	.right_con_more a{
+		border-radius: 40px;
+		transition: all .4s;
+		color: #{$color};
+		border: 1px solid #{$color};
+	}
+	.right_con_more a:hover{
+		color: #fff;
+		background-color: #{$color};
+	}
+</style>
+<section class="hjzf_advantage_62 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="index_title text-center pb40">
+					{$data705[2]}
+				</div>
+				<ul class="hjzf_advantage_62_list">
+					<php>
+						$arr = get_list_val($data705[3]);
+					</php>
+					<volist name="arr" id="a">
+						<li>
+							<div class="left">
+								<a href="{$a[link]}">
+									<span>
+										<img src="{$a[img]}">
+										<div class="ico62">
+											<img src="{$a[ico]}">
+											<div class="index_title text-center">{$a[title]}</div>
+										</div>
+									</span>
+								</a>
+							</div>
+							<div class="right">
+								<span>
+									<img src="{$a[ico1]}">
+								</span>
+								<div>
+									<div class="right_con">
+										<p>{$a[text1]}</p>
+										<p>{$a[text2]}</p>
+										<p>{$a[text3]}</p>
+									</div>
+									<div class="right_con_more">
+										<a href="{$a[link]}" class="index_btn">{:__('Read More')}</a>
+									</div>
+								</div>
+
+							</div>
+						</li>
+					</volist>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</section>

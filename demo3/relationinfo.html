@@ -1,0 +1,51 @@
+<script>
+jQuery(document).ready(function(){	
+  jQuery(".in_asd .in_rsp").hide();	
+  jQuery(".in_asd").hover(function(){
+	  jQuery(this).find(".in_rsp").stop().fadeTo(500,0.7)
+	  jQuery(this).find(".in_text").stop().animate({left:'0'}, {duration: 500})
+  },
+  function(){
+	  jQuery(this).find(".in_rsp").stop().fadeTo(500,0)
+	  jQuery(this).find(".in_text").stop().animate({left:'375'}, {duration: "fast"})
+	  jQuery(this).find(".in_text").animate({left:'-375'}, {duration: 0})
+  });
+  });
+</script>
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+<div class="page_RightTitle">相关产品</div>
+<div class="page_RightMain" style="padding-bottom:0px;">
+<volist empty="" id="labelprodlist" name="labelprodlist" key="k">
+  <script>
+  function show(n)
+  {
+  document.getElementById(n).style.display="block";
+  }
+  function hide(n)
+  {
+  document.getElementById(n).style.display="none";
+  //jquery("#"+n).css('display',"none");
+  }
+  </script>
+  <div class="in_asd" onmouseover="hide('tb{$k}')" onmouseout="show('tb{$k}')">
+      <div class="in_img"><img src="{:getpcimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> />
+         <div id="tb{$k}" style="position:absolute; right:0; top:204px; z-index:11;"><img src="__TMPL__demo3/img/pro_dot.jpg" border="0" style="width:38px !important; height:38px !important;" /></div>
+      </div>
+      <div class="in_proname"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">{$labelprodlist['pro_name']}</a></div>
+      <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+      <div class="in_rsp"></div>
+      <div class="in_text"><img src="__TMPL__demo3/img/pro_dot.png" border="0" /></div>
+      </a>
+  </div>
+  <if condition="$k%3 eq 0">
+      <div style="clear:both; overflow:hidden; height:0px;"></div>
+  <else/>
+      <div style="width:32px; height:10px; background:none; float:left;"></div>
+  </if>
+</volist>
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</if>

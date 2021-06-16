@@ -1,0 +1,163 @@
+<style>
+	.side_fenlei {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 9999;
+	}
+
+	.p-menu-tit {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: #313131;
+		color: #fff;
+		border-radius: 0 10px 10px 0;
+		z-index: -1;
+		width: 45px;
+		padding: 10px 0;
+		padding-right: 5px;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.side_fenlei>ul {
+		background-color: #fff;
+		transform: translateX(-100%);
+		transition: all .5s;
+		padding: 20px 0;
+		border-radius: 0 10px 10px 0;
+		box-shadow: 0 5px 15px 0 rgb(0 0 0 / 8%);
+		min-height: 500px;
+		min-width: 250px;
+	}
+
+	.side_fenlei>ul>li span {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-right: 15px;
+	}
+	.side_fenlei>ul>li span a{
+		flex: auto;
+	}
+
+	.side_fenlei>ul>li {
+		position: relative;
+	}
+
+	.side_fenlei>ul>li:before {
+		position: absolute;
+		display: block;
+		content: '';
+		width: 5px;
+		height: 5px;
+		background-color: #333;
+		border-radius: 50%;
+		left: 10px;
+		top: 25px;
+		transform: translateY(-50%);
+	}
+
+	.side_fenlei>ul span i {
+		padding: 5px 10px;
+		font-size: 22px;
+		cursor: pointer;
+	}
+
+	.yijion span {
+		background-color: #{$color};
+	}
+
+	.side_fenlei>ul span h3 {
+		padding-right: 15px;
+		padding-left: 30px;
+		color: #333;
+		font-size: 18px;
+		line-height: 2.5;
+	}
+
+	.side_fenlei>ul ul li {
+		border-bottom: 1px solid #eee;
+	}
+
+	.side_fenlei>ul ul li h3 {
+		padding-left: 40px;
+		padding-right: 15px;
+		font-size: 16px;
+		line-height: 2.5;
+		color: #333;
+	}
+
+	.side_fenlei>ul.on {
+		transform: translateX(0);
+	}
+
+	.side_fenlei>ul ul {
+		display: none;
+	}
+
+	@media(max-width: 1200px) {
+		.side_fenlei {
+			display: none;
+		}
+	}
+</style>
+<!-- 侧边栏目 -->
+<div class="side_fenlei">
+	<div class="p-menu-tit">
+		<span>产</span>
+		<span>品</span>
+		<span>目</span>
+		<span>录</span>
+	</div>
+	<ul>
+		<volist empty="" name="allclass" id="allclass_left">
+			<li <if
+				condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">
+				class="yijion"
+				<else />class="yiji"</if>>
+				<span><a
+						href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+					<i class="fa fa-angle-right"></i></span>
+				<ul class="erji">
+					<volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+						<li <if
+							condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">
+							class="childon"
+							<else />class="child"
+							</if> >
+							<a
+								href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a>
+						</li>
+					</volist>
+				</ul>
+
+			</li>
+		</volist>
+
+	</ul>
+</div>
+
+<script>
+	require(['jquery'], function ($) {
+		$('.yijion').find('.erji').show();
+		$('.p-menu-tit').hover(function () {
+			$(this).next('ul').addClass('on');
+			$('.side_fenlei > ul').on('mouseleave', function () {
+				$(this).removeClass('on');
+			});
+		});
+		$('.side_fenlei ul i').click(function () {
+			var self = $(this);
+			self.parent('span').next('ul').slideToggle();
+			self.parents('li').siblings('li').find('ul.erji').slideUp();
+		});
+	});
+</script>

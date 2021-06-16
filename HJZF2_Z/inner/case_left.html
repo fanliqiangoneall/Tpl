@@ -1,0 +1,29 @@
+<div class="InsidePages_content-left_content inner_hidden">
+    <div class="HJZF_Z__inner--left__content">
+        <div class="InsidePages_left_search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if
+                        condition="C('Language') eq 'cn'">id="keyword2"
+                    <else />id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)"
+                    onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="InsidePages_left_content-main">
+            <p>
+				<if condition="$webid eq '1810'">
+					{$inner_data[3]}
+					<else/>
+					{:__('Case Category')}
+				</if>
+			</p>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="allnewclass" id="nav">
+                    <li <if condition="$newscate['classid'] eq $nav['classid']">class="yijion_news"<else/>class="yiji_news"</if> case-class="{$nav['classid']}"><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$nav["classid"]))}">{$nav['class_name']}</a></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

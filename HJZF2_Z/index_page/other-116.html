@@ -1,0 +1,30 @@
+<!--{$pagename}-->
+<style>
+	.hjzf_other_116 {
+		background-color: #{$data708[1]};
+	}
+</style>
+<section class="hjzf_other_116 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="hjzf_other_116_list wow fadeInUp">
+					<ul>
+						<php>
+							$arr = get_list_val($data708[2]);
+						</php>
+						<volist name="arr" id="a">
+							<li>
+								<img src="{$a[ico]}" alt="">
+								<span>{$a[name]}</span>
+								<div class="index_sub_title">{$a[title]}</div>
+								<img src="{$a[icox]}" alt="{$a[title]}">
+								<div class="index_text">{$a[text]}</div>
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

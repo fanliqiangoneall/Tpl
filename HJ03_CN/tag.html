@@ -1,0 +1,102 @@
+<extend name="HJ03_CN:basein" />
+<block name="content">
+	<if condition="$data47[2] eq ''">
+		<style>
+			.main-content-right {
+				width: 880px;
+				float: right;
+			}
+			.page-title-inner{margin-top: 20px;}
+			.main-content-right .main-cases-detail-title{text-align: left}
+			.main_proitem{width: 280px;min-height: 250px;margin-bottom: 28px;}
+			.main_proitem_img{width: 240px;height: 164px;}
+			.main_proitem_box{height: 250px;}
+			.jiange{width: 20px;}
+			.main_proitem_second{padding: 12px 10px 12px;}
+			.main_proitem_name h6{
+				overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 16px;
+			}
+			.main_proitem_desc{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+			#product_detail .left{
+				width: 520px;
+			}
+			/*#product_detail .big_pic{width: 520px;height: 356px;}*/
+			.mod18 .prev{left: 12px;}
+			.mod18 .next{right: 12px;}
+			#product_detail .product_info{width: 360px;height: 454px;}
+			.detail_inquiry a{width: 155px;}
+			.detail_down a{width: 155px;}
+		</style>
+	</if>
+	<div id="wrapper">
+		<div id="inbanner_box">
+			<div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+		</div>
+		<div class="page-title-inner"  style="margin-bottom: 40px;">
+			<div class="container">
+				<div class="Breadcrumbs">您的位置：<a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">关键词</span>
+					<div class="back_tolast"><a href="javascript:history.go(-1)" onfocus="blur()"><img src="__TMPL__HJ03_CN/img/back_to2.png" alt="" style="margin-right: 10px;"/><img src="__TMPL__HJ03_CN/img/back_to.png" alt="" style="margin-right: 10px;"/>返回上一页</a></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page_nei_main" id="main-content-wrapper">
+			<!--内页上下布局$data47[2]-->
+			<if condition="$data47[2] eq ''">
+				<section class="main-content-left">
+					<Include file="./Tpl/HJ03_CN/left.html" />
+				</section>
+			</if>
+			<section <if condition="$data47[2] neq ''">class="main-content-dowm"<else/>class="main-content-right"</if>>
+			<div class="page_RightMain">
+				<div class="page_Main">
+
+					<div class="mainpage_probox">
+						<if condition="$labelprodlist neq ''">
+							<div class="reation">
+								<h5 class="main-cases-detail-title">关联产品</h5>
+								<div style="margin-top:15px;">
+									<div class="mainpage_probox margin-30px-top">
+										<volist empty="" name="labelprodlist" id="labelprodlist" key="k">
+											<div class="main_proitem">
+												<div class="main_proitem_box">
+													<div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a></div>
+													<div class="main_proitem_second">
+														<div class="main_proitem_name margin-10px-bottom"><h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],20)}</h6></div>
+														<div class="main_proitem_desc">{:subtxt($labelprodlist['pro_description'],20)}</div>
+													</div>
+												</div>
+											</div>
+											<if condition="($k)%3 neq 0">
+												<div class="jiange"></div>
+											</if>
+										</volist>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</if>
+						<div style="height: 30px;width: 100%"></div>
+						<include file="HJ03_CN:relationnew" />
+					</div>
+					<div class="clear"></div>
+
+				</div>
+			</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+

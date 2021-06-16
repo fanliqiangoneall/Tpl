@@ -1,0 +1,127 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,
+        ul.InsidePages_left_navlist>li>a>h3:hover,
+        ul.InsidePages_left_navlist>li.yijion>a>h3 {
+            color: #{$color};
+        }
+        .main_page .current{
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before {
+            background: #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+        .main_newslist3 li:hover a.more{
+            background-color: #{$color};
+        }
+        .new_detail15_editor img{max-width: 100%;}
+        @media(min-width: 1200px) {
+            #lightbox-container-image {
+                min-height: 400px;
+            }
+        }
+
+        @media(max-width: 1199px) {
+            #lightbox-container-image {
+                min-height: 80px;
+            }
+
+            #lightbox-container-image-box,
+            #lightbox-container-image-data-box {
+                width: 80% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;  <a href="{:U('/news')}">{:__('News')}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container" id="payment">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left" <if condition="$inner_data[3]">style="display:none"</if>>
+                        <Include file="./Tpl/HJZF2_Z/inner/news_left15.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftnews_mobile.html" />
+                    </section>
+                    <section <if condition="$inner_data[3]">class="col-xs-12 InsidePages_content-right2"<else/>class="col-xs-12 col-lg-9 HJZF_Z__inner--right"</if>>
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="cases">
+                                    <div id="cases_detail">
+                                        <div class="body">
+                                            <div class="cases_body">
+                                                <h5 class="HJ01_main_newdetail_title">{$news['title']}</h5>
+                                                <div class="news_view">
+                                                    <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{:date('Y/m/d
+                                                        ',$news['created'])}</span><span>|</span><span class="red"><i class="fa fa-eye"
+                                                            aria-hidden="true"></i>&nbsp;{:__('View:')}{$news['click_num']}</span>
+                                                    <div class="clear"></div>
+                                                </div>
+                                                <div class="new_detail15_editor">
+                                                    {:htmlspecialchars_decode($news['body'])}
+                                                </div>
+                                                </div>
+                                            <div class="cases_detail2_prev">
+                                                <ul>
+                                                    <if condition="$newprev[0]['title'] eq ''">
+
+                                                        <else/>
+                                                        <li class="news_prev">
+                                                            {:__('Prev: ')}
+                                                            <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                {$newprev[0]['title']}
+                                                            </a>
+                                                        </li>
+                                                    </if>
+                                                    <if condition="$newnext[0]['title'] eq ''">
+
+                                                        <else/>
+                                                        <li class="news_next">
+                                                            {:__('Next: ')}
+                                                            <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                {$newnext[0]['title']}
+                                                            </a>
+                                                        </li>
+                                                    </if>
+                                                    <div class="clear"></div>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

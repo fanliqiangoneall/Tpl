@@ -1,0 +1,86 @@
+<div class="InsidePages_content-left_content">
+    <script>
+        $(document).ready(function(){
+            $(".HJZF_Z__inner__mobileLeftMenu .class_button").on("click",function(){
+                $(this).next('ul').slideToggle();
+                if( $(this).next('ul').css("display")=="none"){
+                    $(this).parent().addClass("yijion");
+                }else{
+                    $(this).parent().removeClass("yijion").addClass("yiji");
+                }
+            });
+            $(".HJZF_Z__inner__mobileLeftMenu .mobile--left_showButton").on("click",function(){
+                $(".HJZF_Z__inner__mobileLeftMenu .InsidePages_left_navlist").slideToggle();
+            });
+            var txt = $.trim($('.InsidePages_left_navlist').text());
+            console.log(txt);
+            if(txt == ''){
+                $('.InsidePages_left_content-main').hide();
+            }
+
+        })
+    </script>
+    <div class="HJZF_Z__inner--left__content">
+
+            <div class="InsidePages_left_search">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if condition="C('Language') eq 'cn'">id="keyword2"<else/>id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                    <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                    <div class="clear"></div>
+                </form>
+            </div>
+
+        <div class="InsidePages_left_content-main">
+            <p>{$navparentname}<span class="mobile--left_showButton"><i></i></span></p>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="navrs" id="nav">
+                    <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+
+					<if condition="$nav['introclassid'] eq '9959' or $nav['introclassid'] eq '9994'">
+						<ul class="zpsf_sj">
+							<!-- 李梅 邹平双飞 自定义三级 -->
+							<php>
+								$arra = get_list_val($inner_data[3]);
+							</php>
+							<foreach  empty="" name="arra" item="alink">
+								<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+							</foreach>
+							<!-- 李梅 邹平双飞 自定义三级 -->
+						</ul>
+					</if>
+					<if condition="$nav['introclassid'] eq '9995'">
+						<ul class="zpsf_sj">
+							<php>
+								$arrb = get_list_val($inner_data[4]);
+							</php>
+							<foreach  empty="" name="arrb" item="alink">
+								<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+							</foreach>
+						</ul>
+					</if>
+					<if condition="$nav['introclassid'] eq '10013'">
+						<ul class="zpsf_sj">
+							<php>
+								$arrb = get_list_val($inner_data[5]);
+							</php>
+							<foreach  empty="" name="arrb" item="alink">
+								<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+							</foreach>
+						</ul>
+					</if>
+					<if condition="$nav['introclassid'] eq '10014'">
+						<ul class="zpsf_sj">
+							<php>
+								$arrb = get_list_val($inner_data[6]);
+							</php>
+							<foreach  empty="" name="arrb" item="alink">
+								<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+							</foreach>
+						</ul>
+					</if>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

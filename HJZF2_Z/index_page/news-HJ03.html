@@ -1,0 +1,98 @@
+<!--{$pagename}-->
+<if condition="$data76[0] neq ''">
+    <style>
+        .new_hjzf_news-HJ03 #hj03_news{
+            background: url({:getindeximgurl($data76[0])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+
+    .new_hjzf_news-HJ03 .news_item:hover .news_item_date .more-button{
+       color: #fff;text-indent: 0;transition: all .36s ease;
+    }
+    .new_hjzf_news-HJ03 .news_item:hover .news_item-title a{
+        color: #{$data76[1]}
+    }
+    .new_hjzf_news-HJ03 .news_item:hover .news_item_date .more-button,.new_hjzf_news-HJ03 .class_name1:hover,.new_hjzf_news-HJ03 .hj02_proclasslist_new li.hj02_proclasslist_on{
+        background: #{$data76[1]};
+    }
+
+    .new_hjzf_news-HJ03 .class_name1:hover a,.new_hjzf_news-HJ03 .hj02_proclasslist_new li.hj02_proclasslist_on a{
+        color: #fff;
+    }
+
+</style>
+<!--news start-->
+<section id="hj03_news" class="module index_pd">
+    <div class="container">
+        <div class="row">
+            <section class="index_product_title margin-30px-bottom">
+                <div class="col-xs-12 col-md-4 col-lg-4 index_product_title_left wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+                    <div id="index_product_title_left1"><p class="index_title">{$data76[2]}</p></div>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-8 col-lg-8 index_product_title_right wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+                    <ul class="hj02_proclasslist_new">
+                        <li class="hj02_proclasslist_on index_text"><a href="{:U('/news')}">{:__('More')}</a></li>
+                        <php>
+                            $arr_str=$data76[3];
+                            $arr=explode(',',$arr_str);
+
+                            foreach($arr as $k=>$a){
+                            $list[$k]['name']=get_wap_news_class_name($a);
+                            $list[$k]['data']=get_index_news_category($a,4);
+                            }
+                        </php>
+                        <volist name="list" id="li" >
+                            <if condition="$li['name']">
+                                <li class="class_name1 index_text"><a href="{:U('/new_category/classid','','')}/{$arr[$key]}">{$li['name']}</a></li>
+                            </if>
+                        </volist>
+
+
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </section>
+            <php>
+                if($data76[4]){
+                    $lena = $data76[4];
+                }else{
+                    $lena = 3;
+                }
+                </php>
+            <section class="col-xs-12 hj03-news-box">
+                <volist name="indexnews" id="indexnew" offset="0" length="$lena" key="k">
+                    <div class="news_item news_item{$k} wow fadeInUp"  data-wow-delay="0">
+                        <div class="col-xs-12 col-md-3 hjnews_pic">
+                            <a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()" >
+                            <if condition="$indexnew['new_pro'] neq ''">
+                                <img src="{:getimgurl($indexnew['new_pro'])}" border="0" alt="{$indexnew['title']}"/>
+                                <else/>
+                                <img src="{:getindeximgurl($data47[10])}" alt="{$indexnew['title']}" />
+                            </if>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-md-7 hjnews_content">
+                            <p class="news_item-title index_sub_title"><a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()">{:subtxt($indexnew['title'],40)}</a></p>
+                            <p class="news_item-desc-wai index_text ellipsis_three">{$indexnew['news_description']}</p>
+                            <php>
+                                $newsclass_name = get_wap_news_class_name($indexnew['news_class']);
+                            </php>
+                            <!-- <span>{$newsclass_name}</span> -->
+                        </div>
+                        <p class="hidden-xs hidden-sm col-md-2 news_item_date">
+                            <span class="index_title"><if condition="C('language') eq 'cn'">{:date('m月d ',$indexnew['created'])}<else/>{:date('m M ',$indexnew['created'])}</if></span>
+                            <a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()" class="more-button">{:__('More')}</a>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+
+            </section>
+        </div>
+    </div>
+</section>
+
+<!--news end-->
+

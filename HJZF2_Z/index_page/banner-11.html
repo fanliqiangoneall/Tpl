@@ -1,0 +1,48 @@
+<!--{$pagename}-->
+<section class="hjzf_banner_11">
+    <volist name="banner" id="banner_pic" key="k" offset="0" length="1">
+        <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}"  class="img-fluid"/>
+    </volist>
+
+    <div class="swiper-container banner_11_wrapper">
+        <div class="swiper-wrapper">
+            <php>
+                $arr = get_list_val($data360[0]);
+            </php>
+            <volist name="arr" id="a">
+                <div class="swiper-slide">
+                    <div class="banner_11_box">
+                        <div class="left">
+                            <span class="index_title pb20 ani" swiper-animate-effect="fadeInRight"
+                                swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">{$a[title]}</span>
+                            <span class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s"
+                                swiper-animate-delay="0.25s">{$a[info]}</span>
+                        </div>
+                        <div class="mid ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s"
+                            swiper-animate-delay="0.4s">
+                            <img src="{$a[img]}" class="img-fluid" alt="{$a[title]}">
+                        </div>
+                        <div class="right index_title">
+                            <span class="ani" swiper-animate-effect="flipInX" swiper-animate-duration="0.5s"
+                                swiper-animate-delay="0.7s">{$a[worda]}</span>
+                            <span class="ani" swiper-animate-effect="flipInX" swiper-animate-duration="0.5s"
+                                swiper-animate-delay="0.85s">{$a[wordb]}</span>
+                            <span class="ani" swiper-animate-effect="flipInX" swiper-animate-duration="0.5s"
+                                swiper-animate-delay="1s">{$a[wordc]}</span>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+        </div>
+        <div class="banner_11_wrapper_pagination swiper-pagination"></div>
+        <div class="banner_11_wrapper_pagination_next">
+            <span>NEXT</span>
+        </div>
+        <div class="banner_11_wrapper_pagination_prev">
+            <span>PREV</span>
+        </div>
+    </div>
+</section>
+<volist name="arr" id="b">
+    <p class="banner_text">{$b[text]}</p>
+</volist>

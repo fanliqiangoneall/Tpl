@@ -1,0 +1,23 @@
+<!--{$pagename}-->
+<style>
+    .aboutUsContentContainer{
+        background-image: url({:getindeximgurl($data4[4])});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
+</style>
+<div class="aboutUsContentContainer">
+    <div class="aboutUsContainer container">
+        <div class="aboutUsLeft lf">
+            <p class="aboutUsTitle">{$data4[1]}</p>
+            <p class="aboutUsTips">{$data4[2]}</p>
+            <p class="aboutUsContent">{$data4[3]}</p>
+            <a href="{:U('/aboutus')}" class="aboutUsMore">More</a>
+        </div>
+        <div class="aboutUsRight rt">
+            <img src="{:getindeximgurl($data4[0])}" alt=""/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

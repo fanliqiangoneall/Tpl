@@ -1,0 +1,94 @@
+
+<!--{$pagename}-->
+<style>
+    .HJZF2__news_HJ05 {
+        background-color: #{$data226[0]};
+    }
+
+    .HJZF2__news_HJ05_right a.more {
+        color: #{$data226[1]};
+        border-color: #{$data226[1]};
+    }
+
+    .HJZF2__news_HJ05_right a.more:hover:before {
+        background-color: #{$data226[1]};
+        width: 100%;
+    }
+
+    .HJZF2__news_HJ05_gallery_text em:before {
+        background: url({:getindeximgurl($data226[7])
+    }
+
+    ) no-repeat center/100%;
+    }
+
+    .HJZF2__news_HJ05_right_thumbs_slide.swiper-slide-thumb-active {
+        border: 5px solid #{$data226[1]};
+    }
+
+    .HJZF2__news_HJ05_gallery_swiper_pagination .swiper-pagination-bullet-active,
+    .HJZF2__news_HJ05_right_gallery_after:after,
+    .HJZF2__news_HJ05_right_text h2:before {
+        background-color: #{$data226[1]};
+    }
+    .HJZF2__news_HJ06_bottom li:hover .title a{
+        color: #{$data226[1]};
+    }
+</style>
+
+<section class="HJZF2__news_HJ05 index_pd">
+    <div class="container">
+        <div class="row">
+            <!-- news right start -->
+            <div class="col-xs-12 col-md-6 HJZF2__news_HJ05_right fr">
+                <div class="HJZF2__news_HJ05_right_text">
+                    <h2 class="fz40 index_title">{$data226[2]}</h2>
+                    <p class="index_text">{$data226[3]}</p>
+                    <a href="{$data226[4]}" class="more">{$data226[5]}</a>
+                </div>
+
+                <div class="HJZF2__news_HJ05_right_gallery_after">
+                    <!--thumbs start -->
+                    <div class="swiper-container HJZF2__news_HJ05_right_gallery-thumbs hidden-xs hidden-sm hidden-md">
+                        <div class="swiper-wrapper">
+                            <volist name="indexnews" id="indexnew" offset="0" length="$data226[6]" key="k">
+                                <div class="swiper-slide HJZF2__news_HJ05_right_thumbs_slide">
+                                    <span>
+                                        <img src="{:getimgurl($indexnew['new_pro'])}" alt="{$indexnew['title']}" />
+                                    </span>
+                                </div>
+                            </volist>
+                        </div>
+                        <!--thumbs end -->
+                    </div>
+                </div>
+                <!-- news right end -->
+
+            </div>
+
+            <!-- news left swiper slide -->
+            <div class="col-xs-12 col-md-6 fl">
+                <div class="swiper-container HJZF2__news_HJ05_gallery-top">
+                    <div class="swiper-wrapper">
+                        <volist name="indexnews" id="indexnew2" offset="0" length="$data226[6]" key="k">
+                            <div class="swiper-slide HJZF2__news_HJ05_gallery_slide">
+                                <div class="HJZF2__news_HJ05_gallery_slide_newimg">
+                                    <img src="{:getimgurl($indexnew2['new_pro'])}" alt="{$indexnew2['title']}" width="100%">
+                                </div>
+                                <a href="{:U('/new_detail',array('nid'=>$indexnew2["nid"]))}">
+                                    <div class="HJZF2__news_HJ05_gallery_text">
+                                        <h3 class="fz24 ellipsis_two index_sub_title">{$indexnew2['title']}</h3>
+                                        <p class="fz16 ellipsis_two">{$indexnew2['news_description']}</p>
+                                        <em>{:date('d/m/Y',$indexnew2['created'])}</em>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="HJZF2__news_HJ05_gallery_swiper_pagination hidden-lg hidden-xl"></div>
+                </div>
+            </div>
+            <!-- news left swiper slide -->
+        </div>
+    </div>
+</section>

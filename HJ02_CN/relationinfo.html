@@ -1,0 +1,32 @@
+<if condition="$labelprodlist neq ''">
+    <section class="main_product_title">
+        <h5 class="main-cases-detail-title">关联产品</h5>
+    </section>
+    <div class="page_Main" >
+        <volist empty="" name="labelprodlist" id="labelprodlist" offset="0" length="3" key="k">
+            <div class="main_proitem">
+                <div class="main_proitem_box">
+                    <div class="main_proitem_img">
+                        <if condition="$labelprodlist['main_img'] neq ''">
+                            <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a>
+                            <else/>
+                            <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getindeximgurl($data47[0])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a>
+                        </if>
+                    </div>
+                    <div class="main_proitem_second">
+                        <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                            <div class="main_proitem_name margin-10px-bottom"><h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],10)}</h6></div>
+                            <div class="main_proitem_desc">{:subtxt($labelprodlist['pro_description'],28)}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <if condition="($k)%3 gt 0">
+                <div style="width:28px; height:10px; background:none; float:left;"></div>
+            <else/>
+                <div class="clear"></div>
+            </if>
+        </volist>
+    </div>
+    <div style="clear:both;"></div>
+</if>

@@ -1,0 +1,70 @@
+<extend name="demo2:base" />
+<block name="content">
+<script type="text/javascript" src="__TMPL__demo2/js/proDetail.js"></script>
+<script type="text/javascript" src="__TMPL__demo2/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__demo2/css/jquery.lightbox-0.5.css"/>
+<script>
+jQuery(document).ready(function () {
+	jQuery('#menu3').removeClass().addClass("menuon");	
+});
+</script>
+<div id="animate6">
+<div class="in_banner_bg">
+	<div class="in_banner"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="page_Main">
+  <Include file="./Tpl/demo2/left.html" />
+  <div class="page_right">
+    <div class="page_RightTitle"><span>当前位置：<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<a href="{:U('/product')}">产品服务</a><volist empty="" name="path" id="path">&nbsp;>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($path['pcid'])}">{$path['class_name']}</a></volist>&nbsp;>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a></span>{$product['pro_name']}</div>
+    <div class="page_RightMain1">
+    <div id="product_detail">
+       <div style="width:332px; float:left; margin-right:50px;">
+          <div class="pro_title">产品介绍</div>
+          <div id="pro_profile">{:htmlspecialchars_decode($product['pro_profile'])}</div>
+       </div>
+       <div class="left">
+          <div class="big_pic" id="gallery"><a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if>></a> <a href="#" title="{$product['pro_name']}"></a></div>
+       </div>
+       <div class="clear" style="clear:both; height:0;"></div>
+       <div class="bt" style="margin-top:22px;"><a href="javascript:history.go(-1)" onfocus="blur()" style="display:block; font-size:13px; text-align:center; line-height:25px; color:#fff;">返回</a></div>
+    </div>
+    <div class="pro_title" id="inquiry" style="margin-top:30px;">立即咨询</div>
+    <div class="proinquiry"> <Include file="./Tpl/demo2/submitinquiry.html" /> </block></div>
+    <div style="clear:both;"></div>
+    <if condition="$otherpro neq ''">
+    <div class="pro_title">其他产品</div>
+    <div class="page_RightMain1" style="border:none;">
+      <volist empty="" name="otherpro" id="otherpro" offset="0" length="4">
+          <div class="page_pro">
+              <div class="page_proimg"><a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}"><img src="{:getpcimgurl($otherpro['main_img'])}" <if condition="$otherpro['proalt'] neq ''">alt="{$otherpro['proalt']}"<else/>alt="{$otherpro['pro_name']}"</if> /></a></div>
+              <div class="page_proname"><a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">{$otherpro['pro_name']}</a></div>
+          </div> 
+          <if condition="($key+1)%4 neq 0">
+              <div style="width:14px; float:left; height:10px; background:none;"></div>
+          <else/>
+              <div style="clear:both; overflow:hidden; height:0px;"></div>
+          </if>
+       </volist>
+    </div>
+    <div style="clear:both;"></div>
+    </if>
+    <div style="clear:both"></div>
+    <div style="width:100%">
+          <!--产品关键词-->
+          <if condition="get_productkeyword($product['pid']) neq ''"> <include file="ZERO:keywords" /> </if>
+          <!--关联信息-->
+          <include file="ZERO:relationinfo" />
+          <include file="ZERO:relationnew" />
+          <include file="ZERO:relationcase" />
+          <!--评论-->
+          <if condition="comment_show() eq 1"> <include file="ZERO:comment" /> </if>
+     </div>
+     </div>
+  </div>
+  <div style="clear:both; "></div>
+</div>
+</div>
+</block>

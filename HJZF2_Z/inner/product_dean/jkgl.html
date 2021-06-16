@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="__TMPL__/HJZF2_Z/inner/product_dean/jkgl.css">
+<div class="othercate14_left_title">
+    <b>健康管理</b>
+</div>
+<div class="text-center othercate14_left_con_jkgl">
+    如需检查预约，请致电：<b>{:chaifen($about['phone'],0)}</b>
+</div>
+<!-- 健康管理 -->
+<volist empty="" name="allclass" id="allclass_nei">
+    <if condition="$allclass_nei['pcid'] eq 41606">
+        <div class="choice_tc">
+            <p>快速选择您的套餐价格：</p>
+            <ul class="clearfix">
+                <volist empty="" name="allclass_nei['childs']" id="allclass_nei_twoa">
+                    <li> <a href="{:U('/product_category','','')}/{:getprocatename($allclass_nei_twoa['pcid'])}"><span>{$allclass_nei_twoa['class_name']}</span></a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        <ul class="package_ul">
+            <volist empty="" name="allclass_nei['childs']" id="allclass_nei_twob">
+                <php>
+                    $pro_cate_hj18 = get_product_byclass_index_nei($allclass_nei_twob['pcid']);
+                </php>
+                <volist empty="no" name="pro_cate_hj18" id="proList" offset="0">
+                    <li>
+                        <p class="hidden-xs">
+                            <b>{:date('d',$allnews['created'])}</b>
+                            <small>{:date('Y-m',$allnews['created'])}</small>
+                        </p>
+                        <div>
+                            <strong>{$proList['pro_name']}</strong>
+                            <em><i class="fa fa-angle-right"></i></em>
+                            <span>
+                                <a href="{:U('/Product','','')}/{:getproname($proList['pid'])}">查看详情+</a>
+                                <a href="/othercate/othername/ljyy.html">体检预约+</a>
+                            </span>
+                        </div>
+                    </li>
+                </volist>
+            </volist>
+        </ul>
+    </if>
+</volist>

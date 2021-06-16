@@ -1,0 +1,18 @@
+ <!-- bread start -->
+    <div class="HJZF_Z__Breadcrumbs hidden-xl hidden-lg" style="margin-bottom: 30px;" navcrumbs>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;
+                    <i class="fa fa-angle-right"></i>&nbsp;
+                    <a href="{:U('/product')}">{:__('Products')}</a>
+                    &nbsp;
+                    <i class="fa fa-angle-right"></i>&nbsp;
+                    <a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a>&nbsp;
+                    <i class="fa fa-angle-right"></i>&nbsp;
+                    <span class="current">{$product['pro_name']}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- bread start -->

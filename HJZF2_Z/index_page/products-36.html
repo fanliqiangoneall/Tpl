@@ -1,0 +1,78 @@
+
+<!--{$pagename}-->
+<php>
+    if($data528[0]){
+        $color = $data528[0];
+    }
+</php>
+<style>
+     <if condition="$data528[1]">
+        .new_hjzf_product36 {
+            background-image: url({:getindeximgurl($data528[1])});
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </if>
+    <if condition="$data528[8]">
+        .new_hjzf_product36_wrapper li{
+            background-color: #{$data528[8]};
+        }
+        .new_hjzf_product36_wrapper li em{
+            color:#{$color};
+            border-color: #{$color};
+        }
+    </if>
+    
+    .new_hjzf_product36_wrapper li{
+        height: {$data528[6]}px;
+    }
+    @media(max-width: 767px) {
+        .new_hjzf_product36_wrapper li{
+            height: {$data528[7]}px;
+        }
+    }
+    .new_hjzf_product36_wrapper li.on a:after{
+        background-color: #{$color};
+    }
+</style>
+<script>
+    var isOpenFirst = '<?php echo $data528[9];?>';
+</script>
+<section class="new_hjzf_product36 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center pb40 index_title">{$data528[2]}</div>
+                <ul class="new_hjzf_product36_wrapper">
+                    <php>
+                        $arr_str=$data528[5];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                            $list[$k]=get_index_products_categoryname($a);
+                        };
+                        $arra = get_list_val($data528[4]);
+                    </php>
+                <volist empty="" name="list" id="li" key="keya">
+                <style>
+                    .new_hjzf_product36_wrapper_list{$keya}.on:after{
+                        background: url({:getmainimgurl($li['fid'])}) no-repeat center;
+                    }
+                </style>
+                    <li class="new_hjzf_product36_wrapper_list{$keya} new_hjzf_product36_liat text-center">
+                        <a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">
+                            <div class="new_hjzf_product36_box_img mb-40 img-par">
+                                <img src="{$arra[$keya-1]['ico']}" class="hover">
+                                <img src="{$arra[$keya-1]['icoh']}" class="normal">
+                            </div>
+                            <div class="index_sub_title pb20">{$li['class_name']}</div>
+                            <p>{$li['readme']}</p>
+                            <em>{:__('Read More')}+</em>
+                        </a>
+                    </li>
+                </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

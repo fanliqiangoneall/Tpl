@@ -1,0 +1,49 @@
+<!--{$pagename}-->
+<php>
+    $col = explode(",",$data448[1]);
+</php>
+<style>
+    <if condition="$data448[2]">.hjzf_advantage_36 {
+        background: url({:getindeximgurl($data448[2])
+    }
+
+    ) no-repeat center/cover;
+    }
+
+    </if>.inquiry_box input#index_submit {
+        background: linear-gradient(to right, #{$col[0]}, #{$col[1]});
+    }
+
+    .hjzf_advantage_36_con .index_title:before {
+        content:'{$data448[2]}';
+    }
+
+    @media(max-width:768px) {
+        .hjzf_advantage_36 {
+            background-position: center right;
+        }
+    }
+</style>
+<section class="hjzf_advantage_36 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6 pb20 hjzf_advantage_36_con fx-center">
+                <img src="{:getindeximgurl($data448[3])}" alt="{$data448[0]}" class="img-fluid">
+            </div>
+            <div class="col-xs-12 col-lg-6 hjzf_advantage_36_xp">
+                <div class="index_title pb40">
+                    {$data448[0]}
+                    <if condition="$data448[4]"><p>{$data448[4]}</p></if>
+                </div>
+                <div class="hjzf2_adv_36">
+                    <if condition="C('language') eq 'cn'">
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index.html" />
+                        <else />
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index_en.html" />
+                    </if>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

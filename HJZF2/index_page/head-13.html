@@ -1,0 +1,148 @@
+<php>
+    $data178[1] ? $lan = HtmlEncode($data178[1]) : $lan='';
+    $data178[2] ? $img1 = getindeximgurl($data178[2]) : $img1='';
+    $data178[3] ? $img2 = getindeximgurl($data178[3]) : $img2='';
+    $data178[4] ? $img3 = getindeximgurl($data178[4]) : $img3='';
+    $data178[5] ? $img4 = getindeximgurl($data178[5]) : $img4='';
+    $data178[6] ? $img5 = getindeximgurl($data178[6]) : $img5='';
+    $data178[7] ? $img6 = getindeximgurl($data178[7]) : $img6='';
+
+</php>
+<script>
+    $(document).ready(function(){
+        var lan_str = "<?php echo $lan;?>";
+        var arry_img =["<?php echo $img1;?>","<?php echo $img2;?>","<?php echo $img3;?>","<?php echo $img4;?>","<?php echo $img5;?>","<?php echo $img6;?>"];
+        var data_name = "<?php echo $data178[8];?>";
+        if(data_name!= ''){
+            $(function(){
+                $("[data-name='"+data_name+"'] ul li").each(function(index){
+                    $(this).find("h3").before("<img src='"+arry_img[(index)]+"'/>");
+                })
+            })
+        }else{
+            $(function(){
+                $("#menu2 ul li").each(function(index){
+                    $(this).find("h3").before("<img src='"+arry_img[(index)]+"'/>");
+                })
+            })
+        }
+    })
+</script>
+<style>
+    .head-13__menu .head-13__navbar>li>ul{
+        background: #{$color};
+    }
+    .head-13__menu .head-13__navbar>li:hover{
+        background: #{$color}
+    }
+</style>
+<header class="head-13">
+    <div class="container">
+        <div class="head-13__content">
+            <div class="head-13__logo"><a href="{:U('/')}">{$logo}</a></div>
+            <div class="head-13__nav">
+                <nav class="head-13__menu hj_navbar">
+                    <ul class="head-13__navbar">
+                        <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                            <li id="menu{$key}" data-name="{$vo['id']}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()"><i></i>{$vo['title']}</a>
+                            <if condition="$vo[child] neq '' ">
+                                <ul class="hj_navbar_nav_dropdown-menu">
+
+                                    <volist name="vo['child']" id="v" offset="0">
+                                        <li>
+                                            <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                        </li>
+                                        <if condition="($key+1)%4 neq 0">
+                                            <div style="width:20px; height:2px; float:left;"></div>
+                                            <else/>
+                                            <div style="clear:both"></div>
+                                        </if>
+                                    </volist>
+                                </ul>
+
+                                <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'"/>
+                                <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+                                    <volist empty="no" name="allcaseclass" id="allclass_head"  offset="0" length="16" >
+                                        <li>
+                                            <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">
+                                                <if condition="$allclass_head['fid']"><img src="{:getimgurl($allclass_head['fid'])}" alt="{$allclass_head['class_name']}"/></if>{$allclass_head['class_name']}</a>
+                                        </li>
+                                        <if condition="($key+1)%4 neq 0">
+                                            <div style="width:20px; height:2px; float:left;"></div>
+                                            <else/>
+                                            <div style="clear:both"></div>
+                                        </if>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                                <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'"/>
+                                <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+
+                                    <volist empty="no" name="allnewclass" id="allclass_head"  offset="0" length="8" >
+                                        <li>
+                                            <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}">
+
+                                                <if condition="$allclass_head['fid']"><img src="{:getimgurl($allclass_head['fid'])}" alt="{$allclass_head['class_name']}" /></if>{$allclass_head['class_name']}</a>
+                                        </li>
+                                        <if condition="($key+1)%4 neq 0">
+                                            <div style="width:20px; height:2px; float:left;"></div>
+                                            <else/>
+                                            <div style="clear:both"></div>
+                                        </if>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                                <else/>
+                                <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                    <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+                                        <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="16" >
+                                            <li>
+                                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">
+                                                    <if condition="$allclass_head['fid']"><img src="{:getimgurl($allclass_head['fid'])}" alt="{$allclass_head['class_name']}"/></if>{$allclass_head['class_name']}</a>
+                                            </li>
+                                            <if condition="($key+1)%4 neq 0">
+                                                <div style="width:20px; height:2px; float:left;"></div>
+                                                <else/>
+                                                <div style="clear:both"></div>
+                                            </if>
+                                        </volist>
+                                        <div class="clear"></div>
+                                    </ul>
+                                </if>
+                            </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </nav>
+            </div>
+            <div class="head-13__cahjian">
+                <if condition="$data178[1]">
+                    <div class="head-13__language">
+                        <ul>
+                            <li><p>{:__('Language')}</p>
+                                <ul id="lang_ul">
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </if>
+                <div class="head-13__search">
+                    <span><i class="fa fa-search"></i></span>
+                    <div class="head-13__searchWrap">
+                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                            <li class="search_first"><input type="text" value="{:__('Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Search')}&#39;)"></li>
+                            <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                            <div class="clear"></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="head-13__mail">
+                    <span><i class="fa fa-envelope"></i></span>
+                    <div class="head-13__mailWrap"><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1);">{:chaifen($about['email'],0)}</a></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</header>

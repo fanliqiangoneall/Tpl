@@ -1,0 +1,110 @@
+<extend name="HJ01CN:basein" />
+<block name="content">
+    <style>
+        .main_news_title{
+        border-left: 3px {$data1[0]}  solid;
+        }
+        .back{
+            background: #{$color}
+        }
+        .back:hover{
+            background:{$data1[0]};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[5])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner">
+                <div class="container">
+                    <h1 class="ins-page-title-txt no-margin padding-5px-tb">新闻中心</h1>
+                    <div class="Breadcrumbs"><a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                            href="{:U('/news')}">新闻中心</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;{$newclass['class_name']}</div>
+                </div>
+            </div>
+            <div class="ins-pagetitle-scroll-wrapper container"><a class="ins-pagetitle-scroll-link" href="javascript:goToMain()"><i class="fa fa-angle-down"></i></a></div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ01CN/newleft.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                        <div class="news">
+                            <div id="news_detail">
+                                <div class="body">
+                                    <h5 class="HJ01_main_newdetail_title margin-15px-bottom">{$news['title']}</h5>
+                                    <div class="news_view">
+                                        <span class="right red">浏览次数：{$news['click_num']}</span><span class="right time"><i class="fa fa-clock-o"></i>&nbsp;{:date('Y m d ',$news['created'])}&nbsp;&nbsp;</span>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                                    <div class="back margin-20px-bottom">
+                                        <a href="javascript:history.go(-1)" onfocus="blur()">返回</a>
+                                    </div>
+                                    <div class="main_news_prev_next">
+                                        <ul>
+                                            <li class="news_prev">
+                                                <if condition="$newprev[0]['title'] eq ''">
+
+                                                    <else/>
+                                                    <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                        <p>上一篇</p>
+                                                        {$newprev[0]['title']}
+                                                        <span class="side-icon side-prev-icon"><i class="fa fa-angle-left"></i></span></a>
+                                                </if>
+                                            </li>
+                                            <li class="news_next">
+                                                <if condition="$newnext[0]['title'] eq ''">
+                                                    <else/>
+                                                    <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                        <p>下一篇</p>{$newnext[0]['title']}
+                                                        <span class="side-icon side-next-icon"><i class="fa fa-angle-right"></i></span></a>
+                                                </if>
+                                            </li>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <if condition="newscomment_show() eq 1">
+                            <include file="HJ01CN:newscomment" />
+                        </if>
+                        <include file="HJ01CN:relationinfo" />
+                        <include file="HJ01CN:relationnew" />
+                        <div style="clear:both; height:20px;"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div style="clear:both"></div>
+
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="main_content_slogan">
+            <div class="container">
+                <div class="main_content_slogan_left ">
+                    <if condition="$data14[18]">
+                        <h3 class="margin-10px-bottom">{$data14[18]}：{:chaifen($about['phone'],0)}</h3>
+                        <else/>
+                        <h3 class="margin-10px-bottom">获取报价或致电：{:chaifen($about['phone'],0)}</h3>
+                    </if>
+                    <p class="main_content_slogan_text" style="letter-spacing: 1px">{$data14[10]}</p>
+                </div>
+                <div class="main_content_slogan_right ">
+                    <div class="main_content_slogan_right_more text-right">
+                        <a href="{:U('/contactus')}">联系我们</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

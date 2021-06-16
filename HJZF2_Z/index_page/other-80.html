@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+
+<style>
+    .HJZF2_Z_other_80_wrapper li span{
+        color: #{$color};
+    }
+    .HJZF2_Z_other_80_wrapper li em{
+        background-color: #{$color};
+    }
+    .HJZF2_Z_other_80 {
+        background-color: #{$data437[2]};
+    }
+</style>
+<section class="HJZF2_Z_other_80 index_pd">
+    <div class="container">
+        <div class="row">
+
+            <div class="text-center pb40">
+                <div class="index_title pb20">{$data437[0]}</div>
+                <div class="index_sub_title">{$data437[1]}</div>
+            </div>
+
+            <ul class="HJZF2_Z_other_80_wrapper">
+                <php>
+                    $arr = get_list_val($data437[3]);
+                </php>
+                <volist name="arr" id="a">
+                    <li class="col-xs-6 col-lg-3">
+                        <a href="{$a[link]}">
+                            <img src="{$a[img]}" alt="{$a[tit]}" class="img-fluid">
+                            <span>{$a[dz]}</span>
+                            <dl class="index_text">
+                                <dd>{$a[title1]}</dd>
+                                <dd>{$a[title2]}</dd>
+                                <dd>{$a[title3]}</dd>
+                            </dl>
+                            <em>{$a[tit]}</em>
+                        </a>
+                    </li>
+                </volist>
+
+            </ul>
+        </div>
+    </div>
+</section>

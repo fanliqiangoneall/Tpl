@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/css/sidebar-3.css">
+<div class="side_fourth">
+  <ul class="side_fourth_wrappera">
+      <php>
+          $arr = get_list_val($data309[0]);
+          $a_ewm = get_list_val($data309[4]);
+      </php>
+      <volist name="arr" id="a">
+          <php>
+              $link = explode("：",$a[link]);
+              $link['name']= $link[1];
+          </php>
+          <li>
+              <if condition="strstr($a[link],'QQ') neq false">
+                  <a href="https://wpa.qq.com/msgrd?v=3&uin={$link['name']}&site=qq&menu=yes" target="_blank" onclick="turn_sta(5,4)">
+                      <elseif condition="strstr($a[link],'Tel') neq false" />
+                      <a href="tel:{$link['name']}" target="_blank" onclick="turn_sta(6,4)">
+                          <elseif condition="strstr($a[link],'Skype') neq false" />
+                          <a href="skype:{$link['name']}?chat" target="_blank" onclick="turn_sta(6,4)">
+                              <elseif condition="strstr($a[link],'Email') neq false" />
+                              <a href="mailto:{$link['name']}" target="_blank" onclick="turn_sta(3,4)">
+                                  <elseif condition="$a[link] neq true" />
+                                  <a>
+                                      <else />
+                                      <a href="{$a[link]}" target="_blank" >
+              </if>
+              <span class="side_fourth_img">
+                  <img src="{$a[ico]}" class="my_icon">
+                  <if condition="$a[hover]">
+                      <img src="{$a[hover]}" class="my_icon_on">
+                      </if>
+              </span>
+              <span class="side_fourth_text">
+                  {$a[text]}
+              </span>
+              <if condition="$a[ewm] neq false">
+                  <span class="side_fourth_hover_img">
+                      <img src="{$a[ewm]}" alt="{$a[text]}">
+                      <p class="text-center">{$a[content]}</p>
+                  </span>
+              </if>
+              <if condition="$a[content] and $a[ewm] eq '' ">
+                  <span class="side_fourth_hover_text">
+                      {$a[content]}
+                  </span>
+               </if>
+              </a>
+
+          </li>
+      </volist>
+      <li>
+      	  <a href="{$data309[5]}" target="_blank">
+          <span class="side_fourth_img">
+              <img src="{:getindeximgurl($data309[2])}" class="my_icon">
+              <if condition="$data309[3]">
+                  <img src="{:getindeximgurl($data309[3])}" class="my_icon_on">
+              </if>
+          </span>
+          <span class="side_fourth_text">
+              {$data309[1]}
+          </span>
+          </a>
+          <volist name="a_ewm" id="b">
+          </volist>
+          <if condition="$a_ewm">
+              <span class="side_ewm_hover_img">
+              <volist name="a_ewm" id="b">
+              	<a href="{$b[link]}" target="_blank">
+              	<div class="ewm_bg">
+                  <img src="{$b[img]}" alt="{$b[title]}">
+                  <p class="text-center">{$b[title]}</p>
+                </div>
+                </a>
+              </volist>
+              </span>
+          </if>
+      </li>
+  </ul>
+</div>

@@ -1,0 +1,130 @@
+<style>
+    .InsidePage--3__contentNavWrap--product_1{width: 100%;}
+    .InsidePage--3__contentNavWrap--product_1__search{width: 100%;border: 1px solid #e3e3e3;height: 50px;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+    .InsidePage--3__contentNavWrap--product_1__search li{list-style-type: none;float: left;height: 48px;}
+    .InsidePage--3__contentNavWrap--product_1__search li.search_first{width: 80%;}
+    .InsidePage--3__contentNavWrap--product_1__search li.search_first input{width: 100%;border: none;height: 100%;padding-left: 10px;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+    .InsidePage--3__contentNavWrap--product_1__search li.search_second{width: 20%;}
+    .InsidePage--3__contentNavWrap--product_1__search li.search_second button{width: 100%;height: 48px;line-height: 48px;text-align: center;border: none;background: transparent;outline: none;}
+    .InsidePage--3__contentNavWrap--product_1__title{width: 100%;height: 46px;font-size: 16px;color: #333;text-transform: uppercase;font-weight: bold;line-height: 43px;position: relative;padding-top: 22px;}
+    .InsidePage--3__contentNavWrap--product_1__title:before{
+        content: '';display: table;width: 30px;height: 2px;position: absolute;left: 0;bottom: 0;background: #{$color};
+    }
+    .InsidePage--3__contentNavWrap--listProduct_1{padding: 22px 0;}
+    .InsidePage--3__contentNavWrap--listProduct_1>li{width: 100%;position: relative}
+    .InsidePage--3__contentNavWrap--listProduct_1>li span{font-size: 16px;color: #fff;line-height: 20px;position: absolute;right:8px;top:12px;z-index:6;}
+    .InsidePage--3__contentNavWrap--listProduct_1>li>a>h3{font-size: 14px;color: #8c8c8c;padding: 10px 20px 10px 15px;font-weight: normal;line-height: 22px;word-break: break-word;border-bottom: 1px solid #e3e3e3;position: relative;}
+    .InsidePage--3__contentNavWrap--listProduct_1>li>a>h3:before{content: '';display: block;width:0;height:0;border-top:3px solid transparent;border-bottom:3px solid transparent;border-left:6px solid #8d8d8d;position: absolute;left: 0;top: 18px;}
+    .InsidePage--3__contentNavWrap--listProduct_1>li>ul{display: block;}
+    .InsidePage--3__contentNavWrap--listProduct_1>li>ul>li{width: 100%}
+    .InsidePage--3__contentNavWrap--listProduct_1>li>ul>li>a>h3{font-size: 14px;color: #8c8c8c;padding: 10px 20px 10px 15px;font-weight: normal;line-height: 22px;border-bottom:1px dashed #e3e3e3}
+    .InsidePage--3__contentNavWrap--listProduct_1>li>a>h3:hover {
+        background: #{$color};padding-left:30px;color: #fff;
+    }
+    .InsidePage--3__contentNavWrap--listProduct_1>li>a>h3:hover:before{left:15px;border-left:6px solid #fff;}
+    .InsidePage--3__contentNavWrap--listProduct_1>li>ul>li>a>h3:hover,.InsidePage--3__contentNavWrap--listProduct_1>li>ul>li.childon>a>h3{
+        color: #{$color}
+    }
+    .InsidePage--3__contentNavProList{width: 100%}
+    .InsidePage--3__contentNavProList li{padding: 28px 0;border-bottom: 1px solid #dcdcdc;}
+    .InsidePage--3__contentNavProList li .InsidePage--3__contentNavProItem--pic{width: 105px;float: left;border: 1px solid #dcdcdc;}
+    .InsidePage--3__contentNavProList li .InsidePage--3__contentNavProItem--pic img{width: 100%;height: auto;}
+    .InsidePage--3__contentNavProList li .InsidePage--3__contentNavProItem--text{float: left;padding-left: 17px;position: relative;width: 150px;}
+    .InsidePage--3__contentNavProList li .InsidePage--3__contentNavProItem--text h2{font-size: 13px;padding-top:12px;padding-left: 21px;color: #333;line-height: 16px;height: 36px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;}
+    .InsidePage--3__contentNavProList li .InsidePage--3__contentNavProItem--text h2 a{font-size: 13px;color: #333;line-height: 16px;height: 36px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;word-break: break-all;}
+    .InsidePage--3__contentNavProList li .InsidePage--3__contentNavProItem--text p a{line-height: 15px;font-size: 14px;color: #666;}
+    .InsidePage--3__contentNavProList li .InsidePage--3__contentNavProItem--text svg{
+        position: absolute;top: 12px;left: 17px;fill: #{$color}
+    }
+    .InsidePage--3__contentNavProList li:hover .InsidePage--3__contentNavProItem--text h2 a{
+        color: #{$color};
+    }
+    .InsidePage--3__contentNavWrap--listProduct_1>li.yijion>a>h3 {
+        background: #{$color};padding-left:30px;color: #fff;
+    }
+    .InsidePage--3__contentNavWrap--listProduct_1>li.yijion>a>h3:before{left:15px;border-left:6px solid #fff;}
+</style>
+<script>
+    $(document).ready(function(){
+        $(".InsidePage--3__contentNavWrap--listProduct_1>li span").click(function(){
+            $(this).next("ul").toggle();
+        })
+    })
+</script>
+<div class="InsidePage--3__contentNavWrap--product_1">
+    <if condition="C('language') eq 'cn'">
+        <div class="InsidePage--3__contentNavWrap--product_1__search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="产品搜索" name="keywords" id="keyword2" onfocus="OnFocusFun(this,&#39;产品搜索&#39;)" onblur="OnBlurFun(this,&#39;产品搜索&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <else/>
+        <div class="InsidePage--3__contentNavWrap--product_1__search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </if>
+        <div class="InsidePage--3__contentNavWrap--product_1__title">{:__('Product category')}</div>
+        <ul class="InsidePage--3__contentNavWrap--listProduct_1">
+            <volist empty="" name="allclass" id="allclass_left">
+
+                <li pro-class-id="{$allclass_left['pcid']}" <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yijion"<else/>class="yiji"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+
+                <if condition='$allclass_left["childs"] neq ""'>
+                    <span><i class="fa fa-plus"></i></span>
+                    <ul>
+                        <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                            <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="childon"<else/>class="child"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}#pro_head">{$allclass_leftchild['class_name']}</a>
+
+                            <if condition='$allclass_left["childs"] neq ""'>
+
+                                <ul>
+                                    <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftchild1">
+                                        <li <if condition="$classid eq $allclass_leftchild1['pcid'] or $prolist['parent_id'] eq $allclass_leftchild1['pcid'] or $product['class_id'] eq $allclass_leftchild1['pcid'] or $procate['parent_id'] eq $allclass_leftchild1['pcid']">class="sanjion"<else/>class="sanji"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild1['pcid'])}#pro_head">{$allclass_leftchild1['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <if condition="count($allclass_leftchild['childs']) gt 7">
+                                        <if condition="$inner_data[7] neq '' ">
+                                            <li class="child">
+                                                <a href="{:getindexlink($inner_data[6])}">
+                                                    <h3>
+                                                        {$inner_data[7]}
+                                                    </h3>
+                                                </a>
+                                            </li>
+                                        </if>
+                                    </if>
+
+                                </ul>
+                            </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </if>
+                </li>
+            </volist>
+        </ul>
+    <div class="InsidePage--3__contentNavWrap--product_1__title">{:__('Recommend')}</div>
+    <ul class="InsidePage--3__contentNavProList">
+        <volist empty="" name="hotpro" id="hotproleft" key="k" offset="0" length="3">
+            <li class="InsidePage--3__contentNavProItem">
+                <div class="InsidePage--3__contentNavProItem--pic">
+                    <a href="{:U('/Product','','')}/{:getproname($hotproleft['pid'])}">
+                        <img src="{:getmainimgurl($hotproleft['main_img'])}" <if condition="$hotproleft['proalt'] neq ''">alt="{$hotproleft['proalt']}"<else/>alt="{$hotproleft['pro_name']}"</if> />
+                    </a>
+                </div>
+                <div class="InsidePage--3__contentNavProItem--text">
+                    <svg t="1573795696088" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1094" width="16" height="16" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs><path d="M67.584 0v1024l435.2-189.2352L956.416 1024V0z" p-id="1095"></path></svg>
+                    <h2><a href="{:U('/Product','','')}/{:getproname($hotproleft['pid'])}">{$hotproleft['pro_name']}</a></h2>
+                    <p><a href="{:U('/Product','','')}/{:getproname($hotproleft['pid'])}">{:__('Read More')}</a></p>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </volist>
+    </ul>
+    </div>

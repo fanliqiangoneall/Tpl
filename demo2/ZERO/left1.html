@@ -1,0 +1,14 @@
+<div class="Page_classbg">
+   <div class="left_tophead2"></div>
+   <div class="page_LeftClass">
+       <volist empty="" name="allnewclass" id="news_left">
+          <div <if condition="$newscate['classid'] eq $news_left['classid'] or $newclass['classid'] eq $news_left['classid']">class="parent1"<else/>class="parent"</if>><a href="{:U('/new_category',array('classid'=>$news_left["classid"]))}">{$news_left['class_name']}</a></div>
+       </volist>
+   </div>
+   <div class="left4">
+      <div class="left_contact_in">
+      <strong>联 系 人：</strong>{$about['contact']}<br /><strong>移动电话：</strong>{:chaifen($about['mobile'],0)}<br /><strong>联系地址：</strong>{$about['address']}
+      </div>
+   </div>
+</div>
+

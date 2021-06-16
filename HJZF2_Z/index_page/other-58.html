@@ -1,0 +1,55 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-01 15:09:44
+ * @LastEditTime: 2020-08-14 10:07:27
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \Admin2\\wenjian\www\Pc\Tpl\HJZF2_Z\index_page\other-58.html
+-->
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_58 .left{
+        background: url({:getindeximgurl($data350[0])}) no-repeat center /cover;
+    }
+    .hjzf2_other_58 .right{
+        background: url({:getindeximgurl($data350[2])}) no-repeat center /cover;
+    }
+    .hjzf2_other_58 .right a{
+        background-color: #{$data350[12]};
+        color: #{$data350[13]};
+        transition: all .5s;
+    }
+    .hjzf2_other_58 .right a:hover{
+        background-color: #{$data350[14]};
+    }
+    .hjzf2_other_58 .info .index_sub_title{
+        color: #{$data350[9]};
+    }
+    .hjzf2_other_58 .info .index_title{
+        color: #{$data350[10]};
+    }
+    .hjzf2_other_58 .info .des{
+        color: #{$data350[11]};
+    }
+</style>
+<section class="hjzf2_other_58">
+    <div class="left">
+        <div class="hjzf2_other_58_l_img">
+            <img src="{:getindeximgurl($data350[1])}" class="img-fluid" alt="{:HtmlEncode($data350[4])}">
+        </div>
+    </div>
+    <div class="right fx-center">
+        <div class="info">
+        <div class="index_sub_title wow fadeInUp pb20" data-wow-delay=".3s">
+            {:HtmlEncode($data350[3])}
+        </div>
+        <div class="index_title wow fadeInUp pb20" data-wow-delay=".4s">
+            {:HtmlEncode($data350[4])}
+        </div>
+        <div class="index_text wow fadeInUp pb40 des" data-wow-delay=".5s">
+            {:HtmlEncode($data350[5])}
+        </div>
+        <a href="{$data350[8]}" class="index_btn index_text wow fadeInUp"  data-wow-delay=".6s">{$data348[6]} <img src="{:getindeximgurl($data350[8])}" alt="{$data348[6]}"></a>
+    </div>
+    </div>
+</section>

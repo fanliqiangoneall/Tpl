@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<if condition="has_mould('bottom-3') eq false">
+<style>
+#bottom3{ display:none;}
+</style>
+<else/>
+<link href="__TMPL__demo3/css/bottom3.css" rel="stylesheet">
+</if>
+<div id="bottom3" >
+
+<style>
+
+#bottom3{ 
+background:url({:getindeximgurl($data38[0])});
+background-repeat:no-repeat;background-position: center;
+}
+.index_bottom_bottom3{ color:#fff;}
+</style>
+<php>
+$first_navs= explode("\\r\\n",$data38[1]);
+$first_urls= explode("\\r\\n",$data38[2]);
+foreach($first_navs as $k=>$v){
+	$nav_1s[$k]['name']=$v;
+    $nav_1s[$k]['url']=$first_urls[$k];
+}
+$first_nav2s= explode("\\r\\n",$data38[3]);
+$first_url2s= explode("\\r\\n",$data38[4]);
+foreach($first_nav2s as $k=>$v){
+	$nav_2s[$k]['name']=$v;
+    $nav_2s[$k]['url']=$first_url2s[$k];
+}
+</php>
+<div class="bottom_f">
+<div class="b_nav">
+	<volist name="nav_1s" id="nav_1">
+	<div class="b_nav_c">
+    <a href="{$nav_1['url']}">{$nav_1['name']}</a>
+    </div>
+    </volist>
+</div>
+<div class="b_nav">
+	<volist name="nav_2s" id="nav_2">
+	<div class="b_nav_c nav_2">
+    <a href="{$nav_2['url']}">{$nav_2['name']}</a>
+    </div>
+    </volist>
+</div>
+
+<div class="b_nav link_b">
+<if condition="$about['company_name']"><div class="b_nav_c">公司名称：{$about['company_name']}</div></if>
+<if condition="$about['zip']"><div class="b_nav_c">邮编：{$about['zip']}</div></if>
+<if condition="chaifen($about['phone'],0)"><div class="b_nav_c">电话：{:chaifen($about['phone'],0)}</div></if>
+<if condition="chaifen($about['mobile'],0)"><div class="b_nav_c">手机号：{:chaifen($about['mobile'],0)}</div></if>
+<if condition="chaifen($about['email'],0)"><div class="b_nav_c">邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></div></if>
+    <if condition="$about['company_name']"><div class="b_nav_c">地址：{$about['address']}</div></if>
+</div>
+<div class="clear"></div>
+
+<div class="index_bottom_bottom3">
+            <php>
+            $nowtime=date("Y",time());
+                if(!$data38[5]){
+                $currtime=2019;
+                }else{
+                $currtime=$data38[5];
+                }
+            </php><div class="" style="margin-top:20px;">
+            <div style="width:50%; float:left;color:#fff;font-size:14px;">
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} 版权所有.&nbsp;
+            </div>
+            
+            <div style="width:50%; float:right;color:#fff;font-size:14px; text-align:right;">
+            <a  style="color:#fff" target="new" href="https://www.one-all.com/mianze.html" title="中环免责声明">免责声明
+			</a>&nbsp;&nbsp;
+            <a href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>&nbsp;&nbsp;
+            <span style="font-size:16px;  color:#ffff;"><a href="{:U('/alltag','','')}">所有标签</a></span>&nbsp;&nbsp;<a href="https://www.one-all.com" title="中环互联网" target="_blank">常州网络公司</a>中环互联网设计制作&nbsp;&nbsp;<a href="https://beian.miit.gov.cn" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;&nbsp;</div></div>
+            <div class="clear"></div>
+  {:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}</div>
+         </div>
+           <div class="clear" style="width:100%; height:10px;"></div>
+         </div>
+         <div class="clear"></div>
+
+</div>
+

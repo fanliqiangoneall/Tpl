@@ -1,0 +1,118 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_news_25 {
+        background-color: #{$data424[0]};
+    }
+    .hjzf2_news_list li span,
+    .hjzf2_news_right_top li .hjzf2_news_right_top_con a{
+        transition: all .5s;
+    }
+    .hjzf2_news_title a:before,
+    .hjzf2_news_right_top li span,
+    .hjzf2_news_list li:hover span {
+        background-color: #{$color};
+    }
+    .hjzf2_news_img_title span {
+        color: #{$color};
+        border-color: #{$color};
+    }
+    .hjzf2_news_right_bottom li:hover a span,
+    .hjzf2_news_img_title:hover,
+    .hjzf2_news_list li:hover .hjzf2_news_list_title a ,
+    .hjzf2_news_right_top li .hjzf2_news_right_top_con a:hover{
+        color: #{$color};
+    }
+</style>
+<section class="hjzf2_news_25 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title text-center pb40">
+                {$data424[1]}
+            </div>
+            <php>
+                $list = get_index_news_category($data424[2],100);
+                $listcate = get_news_info($data424[2]);
+                $lista = get_index_news_category($data424[3],100);
+                $listcatea = get_news_info($data424[3]);
+            </php>
+
+            <div class="col-lg-6 news_left">
+                <div class="hjzf2_news_title">
+                    <a href="{:U('/new_category',array('classid'=>$listcate['classid']))}"><span>{$listcate['class_name']}</span>
+                        <i></i> <em>{:__('MORE+')}</em></a>
+                </div>
+                <div class="hjzf2_news_img">
+                    <!-- 热门新闻 -->
+                    <volist empty="" name="list" id="li" offset="0" length="1">
+                        <if condition="$li['is_hot'] eq '1'">
+                            <a href="{:U('/new_detail',array('nid'=>$li["nid"]))}">
+                                <img src="{:getimgurl($li['new_pro'])}" alt="{$li['title']}" class="img-fluid">
+                                <div class="hjzf2_news_img_title">
+                                    <if condition="$data424[4]">
+                                    <span>{$data424[4]}</span>
+                                    </if>
+                                    {$li['title']}
+                                </div>
+                                <p class="ellipsis_two">{$li['news_description']}</p>
+                            </a>
+                        </if>
+                    </volist>
+                    <!-- 首页新闻 -->
+                    <ul class="hjzf2_news_list">
+                        <volist empty="" name="list" id="lia" offset="0" length="4">
+                            <if condition="$lia['is_index'] eq '1'">
+                                <li>
+                                    <span>
+                                        <em>{:date('d',$lia['created'])}</em>
+                                        <i>{:date('Y/m',$lia['created'])}</i>
+                                    </span>
+                                    <div class="hjzf2_news_list_title">
+                                        <a href="{:U('/new_detail',array('nid'=>$lia["nid"]))}">{$lia['title']}</a>
+                                    </div>
+                                </li>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6 news_right">
+                <div class="hjzf2_news_title">
+                    <a href="{:U('/new_category',array('classid'=>$listcatea['classid']))}">
+						<span>{$listcatea['class_name']}</span>
+                        <i></i><em>{:__('MORE+')}</em>
+					</a>
+                </div>
+                <!-- 热门新闻 -->
+                <ul class="hjzf2_news_right_top">
+                    <volist empty="" name="lista" id="lic" offset="0" length="2">
+                        <if condition="$lic['is_hot'] eq '1'">
+                            <li>
+                                <span>Q</span>
+                                <div class="hjzf2_news_right_top_con">
+                                    <a href="{:U('/new_detail',array('nid'=>$lic["nid"]))}">
+                                        {$lic['title']}
+                                    </a>
+                                    <p>{$lic['news_description']}</p>
+                                </div>
+                            </li>
+                        </if>
+                    </volist>
+                </ul>
+                <!-- 置顶新闻 -->
+                <ul class="hjzf2_news_right_bottom">
+                    <volist empty="" name="lista" id="lid" offset="2" length="4">
+                        <if condition="$lid['is_new'] eq '1'">
+                            <li>
+                                <a href="{:U('/new_detail',array('nid'=>$lid["nid"]))}">
+                                    <span>{$lid['title']}</span> <em>{:date('Y/m/d',$lid['created'])}</em>
+                                </a>
+                            </li>
+                        </if>
+                    </volist>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

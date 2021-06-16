@@ -1,0 +1,114 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,.main_proitem_name:hover h6{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .main_product_title_right,.hjzf_innertop_nav_pageation span.swiper-pagination-bullet-active{
+            background: #{$color};
+        }
+        .InsidePages_left_navlist li.yiji:hover >a>h3,.InsidePages_left_navlist li.yiji:hover >.class_button:before,ul.InsidePages_left_navlist>li>ul > li:hover >a >h3,ul.InsidePages_left_navlist>li> ul > li>ul>li a h3:hover{
+            color: #{$color};
+        }
+        .main_page .current{
+            background: #{$color};border: 1px solid #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+        .InsidePages_product_title2{
+            background: #{$color};
+        }
+    </style>
+    <div class="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+
+                    <section class="hjzf_innertop_nav">
+                        <Include file="./Tpl/HJZF2_Z/left2_top.html" />
+                    </section>
+
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--right">
+                        <Include file="./Tpl/HJZF2_Z/left2_left.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+
+                            <div class="InsidePages_content-right__wrap">
+                                <div class="InsidePages_content-right_content-main">
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allclass" id="allclass_left" offset="0">
+                                        <div class="InsidePages_product_title2"> {$allclass_left['class_name']} <a
+                                                href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{:__('Read More')}</a></div>
+                                        <div class="InsidePages_content-right_proWrap">
+                                            <php>
+                                                $proList = get_allproducts_category($allclass_left['pcid'],18);
+                                            </php>
+                                            <volist empty="" name="proList" id="hotpro" key="k" offset="0" length="6">
+                                                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem product2_main_proitem">
+                                                    <div class="main_proitem_box">
+                                                        <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                            <if condition="$hotpro['main_img']">
+                                                                <img src="{:getmainimgurl($hotpro['main_img'])}" <if condition="$hotpro['proalt'] neq ''">alt="{$hotpro['proalt']}"<else/>alt="{$hotpro['pro_name']}"</if> />
+                                                                <else/>
+                                                                <img src="{:getindeximgurl($inner_data[4])}" alt=""/>
+                                                            </if>
+                                                        </a></div>
+                                                        <div class="main_proitem_second">
+                                                            <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                                <div class="main_proitem_name"><h6 title="{$hotpro['pro_name']}">{:subtxt($hotpro['pro_name'],60)}</h6></div>
+
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </volist>
+                                            <div style="clear:both;"></div>
+                                        </div>
+
+                                    </volist>
+                                </div>
+
+                            </div>
+
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,34 @@
+<extend name="WAP:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu4').removeClass().addClass("menuon1");
+});
+</script>
+<div style="display: n"><img src="__TMPL__WAP/img/banner1.jpg" border="0" width="100%" /></div>
+<div data-role="content" style="padding-top:15px;">
+    <div class="main_top"><a href="{:U('/')}">Home</a>&nbsp;>&nbsp;News</div>
+  <div style="width:100%; clear:both; height:0;"></div>
+     <div class="news">    
+           <volist empty="" name="allnewclass" id="allnewclass" offset="0" length='5'>
+              <div class="lmtitle"><span><a href="{:U('/new_category',array('classid'=>$allnewclass["classid"]))}" style="color:#000">More>></a></span>{$allnewclass['class_name']}</div>
+              <div style="width:100%; height:5px;"></div>
+              <div style="width:100%;" {$z=0}>
+               <volist name="allnews" id="allnews_new">
+                   <if condition="$allnews_new['news_class'] eq $allnewclass['classid'] " >
+                  <a data-ajax='false' href="{:U('/new_detail',array('nid'=>$allnews_new["nid"]))}" key="{$z++}" <if condition="$z gt 5">style="display:none;" </if>>
+                     <div style="width:100%; background:#fff; border-bottom:#eaeaea solid 1px;">
+                       <div style="width:94%; margin:auto; line-height:22px;padding-top:10px;color:#515151; font-size:16px;">{$allnews_new['title']}</div>
+                       <div style="color:#8e8d8d; font-size:11px; width:94%; margin:auto;">{:date("M d, Y",$allnews_new['created'])}</div>
+                       <div style="width:94%; margin:auto; margin-bottom:15px; line-height:22px; color:#515151; font-size:14px;">{:subtxt($allnews_new['news_description'],100)}</div>
+                     </div>
+                       
+              </a>
+                </if>
+             </volist>       
+              </div>
+              <div style="clear:both; height:15px"></div>
+           </volist>     
+     </div>
+</div>
+</block>

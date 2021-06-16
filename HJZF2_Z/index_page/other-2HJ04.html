@@ -1,0 +1,99 @@
+<!--{$pagename}-->
+<if condition="$data105[0]">
+    <style>
+        .HJZF2_Z_other_hj04{
+            background: url({:getindeximgurl($data105[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+.HJZF2_Z_other_hj04_line span{
+	border-color:#{$data105[18]};
+}
+.HJZF2_Z_other_hj04_icon i,.HJZF2_Z_other_hj04_contact .aio-ibd-block .aio-icon-header h3{
+	color: #{$data105[18]};
+}
+.HJZF2_Z_other_hj04_icon:after{
+	border-color: #{$data105[18]};
+}
+.HJZF2_Z_other_hj04_contact .aio-icon-left{
+	color: #{$data105[18]};
+	border-color:#{$data105[18]};
+}
+.HJZF2_Z_other_hj04_inquiry .inquiry_box #inquiry_box6{
+	background: #{$data105[18]};
+}
+</style>
+<section class="HJZF2_Z_other_hj04 index_pd">
+    <div class="container">
+        <div class="row">
+           <div class="HJZF2_Z_other_hj04_body">
+           		<div class="col-sm-12 col-lg-6 col-xl-6">
+                	<div class="HJZF2_Z_other_hj04_left">
+                        <div class="HJZF2_Z_other_hj04_title"><span class="index_title">{$data105[1]}</span></div>
+                        <div class="HJZF2_Z_other_hj04_line"><div class="HJZF2_Z_other_hj04_icon"><i class="fa fa-envira"></i></div></div>
+                        <div class="clear"></div>
+                        <div class="HJZF2_Z_other_hj04_list">
+                        	<ul>
+                            <php>
+                                for($adv=2,$d=0.3;$adv<=16,$d<=1.5;$adv=$adv+3,$d=$d+0.3){
+                            </php>
+                                <li class="HJZF2_Z_other_hj04_item flex wow fadeInLeft" data-wow-duration="1s" data-wow-delay="{$d}s">
+                                    <div class="HJZF2_Z_other_hj04_itemleft">
+                                        <img src="{:getindeximgurl($data105[$adv])}" alt="{$data105[$adv+1]}"/>
+                                    </div>
+                                    <div class="HJZF2_Z_other_hj04_itemright">
+                                        <div class="HJZF2_Z_other_hj04_itemheader">
+                                            <h3 class="index_sub_title">{$data105[$adv+1]}</h3>
+                                        </div>
+                                        <div class="HJZF2_Z_other_hj04_itemdesc index_text">
+                                            {:HtmlEncode($data105[$adv+2])}
+                                        </div>
+                                    </div>
+                                    <div class="HJZF2_Z_other_hj04_icon_list"></div>
+                                </li>
+                            <php>
+                                }
+                            </php>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                <div class="HJZF2_Z_other_hj04_right">
+                    <div class="HJZF2_Z_other_hj04_title"><span class="index_title">{$data105[17]}</span></div>
+                    <div class="HJZF2_Z_other_hj04_line"><div class="HJZF2_Z_other_hj04_icon"><i class="fa fa-envira"></i></div></div>
+                    <div class="HJZF2_Z_other_hj04_contact wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.8s">
+                    	<ul>
+                        	<li>
+                            	<div class="aio-icon-left"><i class="fa fa-envelope"></i></div>
+                                <div class="aio-ibd-block">
+                                	<div class="aio-icon-header"><h3>{:__('Email')}</h3></div>
+                                    <div class="aio-icon-description"><span><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,5)" class="index_sub_title">{:chaifen($about['email'],0)}</a></span></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li>
+                            	<div class="aio-icon-left"><i class="fa fa-mobile"></i></div>
+                                <div class="aio-ibd-block">
+                                	<div class="aio-icon-header"><h3>{:__('Phone')}</h3></div>
+                                    <div class="aio-icon-description"><span class="index_sub_title">{:chaifen($about['phone'],0)}</span></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="HJZF2_Z_other_hj04_inquiry wow fadeInRight" data-wow-duration="1s" data-wow-delay="2.1s">
+                        <if condition="C('language') eq 'cn'">
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index_en.html" />
+                        </if>
+                    </div>
+                </div>
+                </div>
+                <div class="clear"></div>
+           </div>
+        </div>
+    </div>
+</section>

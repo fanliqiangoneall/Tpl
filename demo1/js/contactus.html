@@ -1,0 +1,55 @@
+<extend name="demo1:base" />
+<block name="content"> <Include
+	file="./Tpl/demo1/index_page/head.html" />
+
+
+<div class="page-content">
+	<div class="single-slider owl-carousel owl-no-dots bg-white">
+    <volist name="banners" id="banner">
+<if condition="$banner['url'] neq ''">
+    <div {$banner['url']}>
+        <img src="{$banner['url']}" />
+    </div>
+</if>
+</volist>
+	</div>
+	<div class="call-to-action">
+		<a href="tel:{:chaifen($about['mobile'],0)}" onclick="turn_sta(6,5);"><i class="fa fa-phone"></i><em>Call</em></a>
+		<a href="whatsapp://send?phone=+86-{:chaifen($about['whatsapp'],0)}"><i class="fa fa-comment"></i><em>WhatsApp</em></a>
+		<a href="#INQUIRY"><i class="fa fa-pencil-alt"></i><em>INQUIRY</em></a>
+	</div>
+    
+    
+    
+
+
+    
+   <div class="content">
+	<div class="decoration"></div>
+	<div class="contact-information last-column">
+		<div class="container no-bottom baiducss">
+			{:echo_html($otherpage['readme'])}
+		</div>
+	</div>
+
+
+
+</div>
+<div id="INQUIRY">
+<Include file="./Tpl/demo1/submit.html" /> 
+ </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Include file="./Tpl/demo1/index_page/bottom.html" /> </block>

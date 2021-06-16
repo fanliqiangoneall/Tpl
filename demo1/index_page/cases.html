@@ -1,0 +1,155 @@
+<!--{$pagename}-->
+<style type="text/css">
+    .pro_case{
+		width: 100%;background: url({:getindeximgurl($data[4])}) center center no-repeat;height: 537px;
+	}
+    .pro_case2{
+		width: 100%;background: url({:getindeximgurl($data[8])}) center center no-repeat;height: 537px;
+	}
+    #tab1 li{float: left;width: 840px;overflow: hidden;margin-left: 300px}
+    #tab2 li{float: left;width: 840px;overflow: hidden;margin-left: 300px}
+     #tab3 li{float: left;width: 840px;overflow: hidden;margin-left: 300px}
+    #tab1 li img{
+       cursor: pointer;
+       transition: all 0.6s;
+    }
+    #tab1 li:hover img{
+       transform: scale(1.2);  
+    }
+    #tab2 li img{
+       cursor: pointer;
+       transition: all 0.6s;
+       width: 95%;
+    }
+    #tab2 li:hover img{
+       transform: scale(1.2);  
+    }
+    .pro_caselist{width: 150px;position: absolute;right: -20px;bottom:45px;}
+    .pro_caselist li{float: left;width: 20px;height: 20px;background: url(__TMPL__demo1/img/btn_off.gif) no-repeat;}
+    .pro_caselist li:active{background: url(__TMPL__demo1/img/btn_on.gif) no-repeat;}
+    #tab {clear: both;margin-top: 30px;}
+    .pro_caselist li:hover{cursor: -webkit-grab;}
+    .main{ border: none !important;}
+    .index_case_title{line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url(__TMPL__demo1/img/fl_bg2.png) bottom center no-repeat;text-align: center;}
+    #index_case_animate_1,#index_case_animate_2{
+-webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+backface-visibility: hidden;
+
+-webkit-animation-duration: 1s;
+-webkit-animation-delay: .2s;
+-webkit-animation-timing-function: ease;
+-webkit-animation-fill-mode: both;
+-moz-animation-duration: 1s;
+-moz-animation-delay: .2s;
+-moz-animation-timing-function: ease;
+-moz-animation-fill-mode: both;
+-ms-animation-duration: 1s;
+-ms-animation-delay: .2s;
+-ms-animation-timing-function: ease;
+-ms-animation-fill-mode: both;
+animation-duration: 1s;
+animation-delay: .2s;
+animation-timing-function: ease;
+animation-fill-mode: both;
+}
+
+.cases_more{width: 153px !important;height: 38px;border:1px solid #333;border-radius: 15px;text-align: center;margin: auto;margin-top: 15px;}
+.cases_more a{font-size: 18px;line-height: 38px}
+.cases_more:hover{
+	border:1px solid #{$color};
+	}
+.cases_more:hover a{
+	color: #{$color}
+}
+</style>
+
+<div id="index_case_animate_1">
+<div class="pro_case" id="pro_case"> 
+ <div style="width: 1190px;margin: auto;height: 536px;position: relative;">
+    <div style="clear: both;width: 100%;height: 100px;"></div>
+    <div class="index_case_title">
+      {$data[0]}
+    </div>
+
+  <div id="tab">
+   <div id="tab1">
+      <li style="font-size: 24px;color: #333333;height: 40px;line-height: 40px;margin-bottom: 10px;">
+         {$data[1]}
+      </li>
+      <li style="font-size: 18px;color: #333;line-height: 38px;">
+         <span style="font-size: 24px;color: #333333">{$data[2]}</span>{$data[3]}
+      </li>
+      <li class="cases_more"><a href="{:U('/cases')}">More</a></li>
+   </div>
+   <div id="tab2" style="display: none;">
+      <li style="font-size: 24px;color: #333333;height: 40px;line-height: 40px;margin-bottom: 10px;">
+         {$data[5]}
+      </li>
+      <li style="font-size: 18px;color: #333;line-height: 38px;">
+         <span style="font-size: 24px;color: #333333">{$data[6]}</span>{$data[7]}
+      </li>
+      <li class="cases_more"><a href="{:U('/cases')}">More</a></li>
+   </div>
+   <div id="tab3" style="display: none;">
+      <li style="font-size: 24px;color: #333333;height: 40px;line-height: 40px;margin-bottom: 10px;">
+         {$data[9]}
+      </li>
+      <li style="font-size: 18px;color: #333;line-height: 38px;">
+         <span style="font-size: 24px;color: #333333">{$data[10]}</span>{$data[11]}
+      </li>
+      <li class="cases_more"><a href="{:U('/cases')}">More</a></li>
+   </div>
+  </div>
+  <div id="tabNav">
+  <ul class="pro_caselist">
+   <li onclick="tab('tab1')" class="button1"></li>
+   <li onclick="tab('tab2')" class="button2"></li>
+   <li onclick="tab('tab3')" class="button3"></li>
+  </ul>
+</div>
+ </div>
+    
+</div>
+</div>
+ <script>
+ function tab(pid){
+  var tabs=["tab1","tab2","tab3"];
+  for(var i=0;i<3;i++){
+   if(tabs[i]==pid){
+    document.getElementById(tabs[i]).style.display="block";
+  }else{
+    document.getElementById(tabs[i]).style.display="none";
+  }
+  }
+ }
+ </script>
+ <script type="text/javascript">
+$('.button1').on('click', function() {
+document.getElementById('pro_case').style.background = 'url("{:getindeximgurl($data[4])}")'; // 变掉
+});
+$('.button2').on('click', function() {
+document.getElementById('pro_case').style.background = 'url("{:getindeximgurl($data[8])}")'; // 变回来
+});
+$('.button3').on('click', function() {
+document.getElementById('pro_case').style.background = 'url("{:getindeximgurl($data[12])}")'; // 变回来
+});
+ </script>
+
+<script>
+$(window).scroll( function() {
+  scrollTop=$(document).scrollTop();
+  //alert(scrollTop);
+  
+  if(scrollTop>1150){  
+  $('#index_case_animate_1').show();
+  $('#index_case_animate_1').removeClass().addClass('fadeInDown');
+  $('#index_products_animate_2').show();
+  $('#index_products_animate_2').removeClass().addClass('fadeInDown');
+  $('#index_products_animate').show();
+  $('#index_products_animate').removeClass().addClass('fadeInLeft');
+  }
+
+});
+</script>

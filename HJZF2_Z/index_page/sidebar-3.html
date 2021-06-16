@@ -1,0 +1,13 @@
+<!--{$pagename}-->
+
+<volist name="toolsbar_data['pc']" id="data">
+<a 
+<if condition="$data['info']['type']">
+onclick="turn_sta(1,{$data['info']['type']})"
+</if> 
+href="{$data['href']}">
+<if condition="$data['info']['fid']">
+<img src="{:getmainimgurl($data['info']['fid'])}" alt="{$data['info']['name']}"/></if>
+{$data['info']['name']}
+</a>
+</volist>

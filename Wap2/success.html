@@ -1,0 +1,27 @@
+<extend name="WAP2:base" />
+<block name="content">
+<div class="titlebg">
+	<div class="title">
+    	<a href="{:U('/')}">Home</a>&nbsp;>>&nbsp;Inquiry
+        <div style="clear:both;"></div>
+    </div>
+</div>
+
+<div style="background:#fff;">
+    <div style="width:96%; margin:0 auto; color:#000; padding-bottom:20px; font-size:14px; padding-top:10px;">
+      <table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" style="margin:0 auto; background:#ccc; margin-top:20px;">
+       <tr>
+        <th bgcolor="#cccccc" style="text-align:center">MESSAGE</th>
+       </tr>
+       <tr style="background:#fff">
+        <td style="text-align:center; padding:15px 0"> 
+         Thanks for your information, we will answer you as soon as possible!
+      </td>
+       </tr>
+      </table>
+{:htmlspecialchars_decode(get_inquiry_code())}
+    </div>
+    <div style="clear:both;"></div>
+    <div style="width:100%; height:48px;"></div>
+</div>
+</block>

@@ -1,0 +1,735 @@
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/inner/css/zuanshi.css">
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/inner/css/nouislider.fox.css">
+<div class="text-center index_title">
+	{$inner_data[2]}
+</div>
+
+<div class="zuanshi_loading" id="zs_loading">
+	<img src="__TMPL__HJZF2_Z/inner/img/Loading.svg" alt="">
+</div>
+
+<ul class="fx-center cate_zuanshi">
+	<php>
+		$list = get_children($inner_data[5]);
+	</php>
+	<volist empty="" name="list" id="listas">
+		<li data-classid="{$listas['pcid']}" class=" 
+		<if condition=" $classid eq $listas['pcid'] or $prolist['parent_id'] eq $listas['pcid'] or $product['class_id'] eq
+			$listas['pcid'] or $procate['parent_id'] eq $listas['pcid']">on
+			</if> "><a
+				href="{:U('/product_category','','')}/{:getprocatename($listas['pcid'])}">{$listas['class_name']}</a>
+		</li>
+	</volist>
+</ul>
+<div class="cate_zuanshi_info text-center fx-center">
+	<if condition="$inner_data[4]">
+		<img src="{:getindeximgurl($inner_data[4])} " alt="" width="20" class="mr-5">
+	</if>{$inner_data[3]}
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- shape -->
+			<div class="zuanshi_search_top_cs">
+				<!-- shape start -->
+				<volist name="all_search_cates[$classid]" id="all_search_catesa">
+					<if condition="$all_search_catesa['class_name'] eq 'shape'">
+						<div class="zuanshi_search_top_type">
+							<span>{$all_search_catesa['class_name']}</span>
+							<div class="zuanshi_search_top_list">
+								<ul class="shape-img">
+									<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+										<li data-shape="{$attrs['pid']}" data-key="{$k}">
+											<span><i>{$attrs['pro_name']}</i></span>
+										</li>
+									</foreach>
+								</ul>
+							</div>
+						</div>
+					</if>
+				</volist>
+				<!-- price -->
+				<volist name="all_search_cates[$classid]" id="all_search_catesa">
+					<if condition="$all_search_catesa['class_name'] eq 'price'">
+						<div class="zuanshi_search_top_type">
+							<span>
+								{$all_search_catesa['class_name']}
+							</span>
+							<div class="zuanshi_search_top_list">
+								<div class="noUiSlider noUiSliderPrice" id="noUiSliderPrice">
+								</div>
+								<div class="cans" id="pricenum" data-price="">
+									<div>$ <input id="pricenuma" class="changeData" type="text"></div>
+									<div>$ <input id="pricenumb" class="changeData" type="text"></div>
+								</div>
+								<div id="priceNum">
+									<ul>
+										<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+											<li data-id="{$attrs['pid']}" data-name="{$attrs['pro_name']}">
+												{$attrs['pro_name']}
+											</li>
+										</foreach>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</if>
+				</volist>
+				<!-- carat -->
+				<volist name="all_search_cates[$classid]" id="all_search_catesa">
+					<if condition="$all_search_catesa['class_name'] eq 'carat'">
+						<div class="zuanshi_search_top_type">
+							<span>
+								{$all_search_catesa['class_name']}
+							</span>
+							<div class="zuanshi_search_top_list">
+								<div class="noUiSlider noUiSliderCARAT" id="noUiSliderCARAT">
+								</div>
+								<div class="cans" id="carat">
+									<input id="CARATa" class="changeData">
+									<input id="CARATb" class="changeData">
+								</div>
+								<div id="carat-id">
+									<ul>
+										<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+											<li data-id="{$attrs['pid']}" data-name="{$attrs['pro_name']}">
+												{$attrs['pro_name']}
+											</li>
+										</foreach>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</if>
+				</volist>
+				<!-- cut -->
+				<volist name="all_search_cates[$classid]" id="all_search_catesa">
+					<if condition="$all_search_catesa['class_name'] eq 'cut'">
+						<div class="zuanshi_search_top_type">
+							<span>
+								{$all_search_catesa['class_name']}
+							</span>
+							<div class="zuanshi_search_top_list">
+								<div class="noUiSlider noUiSliderCut" id="noUiSliderCut">
+								</div>
+								<ol class="nouislide_ax" id="nouislide_ax">
+									<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+										<li></li>
+									</foreach>
+									<li></li>
+								</ol>
+								<div class="cut_con" id="data-cut">
+									<ul>
+										<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+											<li data-id="{$attrs['pid']}">{$attrs['pro_name']}</li>
+										</foreach>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</if>
+				</volist>
+				<!-- color -->
+				<volist name="all_search_cates[$classid]" id="all_search_catesa">
+					<if condition="$all_search_catesa['class_name'] eq 'color'">
+						<div class="zuanshi_search_top_type">
+							<span>
+								{$all_search_catesa['class_name']}
+							</span>
+							<div class="zuanshi_search_top_list">
+								<div class="noUiSlider noUiSliderColor" id="noUiSliderColor">
+								</div>
+								<ol class="nouislide_ax" id="nouislide_axColor">
+									<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+										<li></li>
+									</foreach>
+									<li></li>
+								</ol>
+								<div class="cut_con" id="data-color">
+									<ul>
+										<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+											<li data-id="{$attrs['pid']}">{$attrs['pro_name']}</li>
+										</foreach>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</if>
+				</volist>
+				<!-- CLARITY -->
+				<volist name="all_search_cates[$classid]" id="all_search_catesa">
+					<if condition="$all_search_catesa['class_name'] eq 'clarity'">
+						<div class="zuanshi_search_top_type">
+							<span>
+								{$all_search_catesa['class_name']}
+							</span>
+							<div class="zuanshi_search_top_list">
+								<div class="noUiSlider noUiSliderCla" id="noUiSliderCla">
+								</div>
+								<ol class="nouislide_ax" id="nouislide_axCla">
+									<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+										<li></li>
+									</foreach>
+									<li></li>
+								</ol>
+								<div class="cut_con" id="data-clarity">
+									<ul>
+										<foreach name="all_search_catesa['attr']" item="attrs" key="k">
+											<li data-id="{$attrs['pid']}">{$attrs['pro_name']}</li>
+										</foreach>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</if>
+				</volist>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- 数据 -->
+<div class="shuju">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<php>
+					$cou = count(get_allproducts_category_on_index($classid,10000));
+				</php>
+				<div class="zuanshi_result"><span>{$cou}</span>results</div>
+				<div class="zuanshi">
+					<!-- 展示所有产品 -->
+					<volist name="pro" id="search_list">
+						<li>
+							<a href="{:U('/Product','','')}/{:getproname($search_list['pid'])}">
+								<div class="zuanshi_cate_con_img">
+									<img src="{:getmainimgurl($search_list['main_img'])}">
+								</div>
+								<div class="zuanshi_cate_con_title">{$search_list['pro_name']}</div>
+							</a>
+						</li>
+					</volist>
+					<!-- 展示所有产品 -->
+				</div>
+				<div class="page">
+					{$page}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var timsers = null;
+	clearTimeout(timsers);
+	timsers = setTimeout(function () {
+		$('.zuanshi_loading').fadeOut(300);
+		document.getElementById('zs_loading').style.display = 'none';
+	}, 20000);
+	
+	require(['jquery', 'noUiSlider'], function ($, noUiSlider) {
+		window.onload = function () {
+			$('.zuanshi_loading').fadeOut(300);
+		}
+		// $('.zuanshi_result span').text(23);
+		$(function () {
+			// 链接有#的操作
+			function changeHref(url) {
+				console.log(url);
+				var hrefArr = url.split('#');
+				$('.shape-img li').each(function () {
+					var shape = $(this).attr('data-shape');
+					if(shape == hrefArr[1]){
+						$(this).trigger('click');
+					};
+				});
+			};
+			var changeHrefh = window.location.href;
+			changeHref(changeHrefh);
+			$('.lmzuanshi_drop li').click(function () {
+				var h = $(this).find('a').attr('href');
+				changeHref(h);
+			})
+
+
+			// 获取区间内的参数，传最小值和最大值，并传入step间隔
+			function getNum(min, max, step, fix, carat, dom) {
+				if (!fix) {
+					fix = 0;
+				};
+				var num = Math.ceil(Math.abs((max - min) / step));
+				var value = '';
+				for (var i = 0; i <= num; i++) {
+					var sofixed = (min + step * i).toFixed(fix);
+					if (carat) {
+						// 	s = $('#carat-id li').attr('data-name', sofixed).attr('data-id');
+						var len = dom.length;
+						var last = dom.eq(len - 1).attr('data-id');
+						dom.each(function (i) {
+							var n = $(this).attr('data-name');
+							if (n == sofixed) {
+								sofixed = $(this).attr('data-id');
+							} else if (sofixed == 10) {
+								sofixed = last;
+							};
+						});
+					};
+					value = value + sofixed + ',';
+				}
+				return value;
+			};
+			// carat 获取num
+			function getNumA(min, max, step, fix, carat, dom) {
+				if (!fix) {
+					fix = 0;
+				};
+				var value = '';
+				var newObj = {};
+				dom.each(function () {
+					var key = $(this).attr('data-name');
+					var value = $(this).attr('data-id');
+					newObj[key] = value;
+				})	
+				for(var key in newObj) {
+					if(key>=min && key <=max) {
+						value = value +  "," + newObj[key];
+					}
+				}		
+				value = value.slice(1);
+				return value;
+			}
+			// 获取range里面的obj
+			function getObj(min, max, step) {
+				var min = +min;
+				var max = +max;
+				var num = Math.ceil(Math.abs((max - min) / step));
+				var obj = {};
+				for (var i = 0; i <= num; i++) {
+					if (i == 0) {
+						obj.min = [min]
+					} else if (i == num) {
+						obj.max = [max, max];
+					} else {
+						var val = min + i * step;
+						obj[1 / num * i * 100 + '%'] = [val, val];
+					}
+				}
+				return obj;
+			}
+			// 获取的数据排序
+			function getSort(dom, type, name) {
+				var arr = [];
+				dom.each(function () {
+					var self = $(this);
+					if(name){
+						arr.push(parseInt(self.attr('data-name')));
+					}else{
+						arr.push(parseInt(self.attr('data-id')));
+					}
+				})
+				var len = arr.length;
+				arr.sort(function (a, b) {
+					return a - b;
+				});
+				if (type == 'min') {
+					return arr[0];
+				} else if (type == 'max') {
+					return arr[len - 1];
+				} else {
+					console.warn('getSort函数的参数传错啦');
+				}
+			};
+			// price
+			var stepsSlider = document.getElementById('noUiSliderPrice');
+			var input0 = document.getElementById('pricenuma');
+			var input1 = document.getElementById('pricenumb');
+			var inputs = [input0, input1];
+			var first_price = getSort($('#priceNum li'), 'min', true);
+			var last_price = getSort($('#priceNum li'), 'max', true);
+			noUiSlider.create(stepsSlider, {
+				start: [first_price, last_price],
+				connect: true,
+				step: 50,
+				range: {
+					'min': [first_price],
+					'max': last_price
+				}
+			});
+			stepsSlider.noUiSlider.on('update', function (values, handle) {
+				inputs[handle].value = values[handle];
+				var val1 = Math.ceil(values[0]);
+				var val2 = Math.ceil(values[1]);
+				var priceNum = getNumA(val1, val2, 50, 0, true, $('#priceNum li'));
+				$("#pricenum").attr('data-price', priceNum);
+			});
+			stepsSlider.noUiSlider.on('end', function (values, handle) {
+				rend();
+			});
+
+			// CARAT
+			var CARAT = document.getElementById('noUiSliderCARAT');
+			var inputa = document.getElementById('CARATa');
+			var inputb = document.getElementById('CARATb');
+			var inputsa = [inputa, inputb];
+			var first_carat = getSort($('#carat-id li'), 'min', true);
+			var last_carat = getSort($('#carat-id li'), 'max', true);
+			noUiSlider.create(CARAT, {
+				start: [first_carat, last_carat],
+				connect: true,
+				step: 0.01,
+				range: {
+					'min': [first_carat],
+					'max': last_carat
+				}
+			});
+			CARAT.noUiSlider.on('update', function (values, handle) {
+				var vala = +values[0];
+				var valb = +values[1];
+				inputa.value = vala;
+				inputb.value = valb;
+				// getNumA(step, fix, carat, dom)
+				var caratNum = getNumA(vala, valb, 0.01, 2, true, $('#carat-id li'));
+				$('#carat').attr('data-carat', caratNum);
+			});
+			CARAT.noUiSlider.on('end', function () {
+				rend();
+			});
+
+			// cut
+			var Cut = document.getElementById('noUiSliderCut');
+			// var first = +$('#data-cut li').eq(0).attr('data-id') - 1;
+			var first = getSort($('#data-cut li'), 'min')-1;
+			var last = getSort($('#data-cut li'), 'max');
+			var cutRange = getObj(first, last, 1);
+			noUiSlider.create(Cut, {
+				start: [first, last],
+				connect: true,
+				step: 1,
+				range: cutRange,
+			});
+			var nouislide_ax = $('#nouislide_ax');
+			$('#noUiSliderCut .noUi-base').append(nouislide_ax);
+			Cut.noUiSlider.on('update', function (values, handle) {
+				var valc = +values[0];
+				var vald = +values[1];
+				var cutNum = getNum(valc, vald, 1);
+				$('#data-cut').attr('data-cut', cutNum);
+			});
+			Cut.noUiSlider.on('end', function () {
+				rend();
+			});
+
+			// color
+			var colorDom = document.getElementById('noUiSliderColor');
+			var colfirst = getSort($('#data-color li'), 'min') - 1;
+			var colLast = getSort($('#data-color li'), 'max');
+			var colorRange = getObj(colfirst, colLast, 1);
+			noUiSlider.create(colorDom, {
+				start: [colfirst, colLast],
+				connect: true,
+				animationDuration: 1600,
+				step: 1,
+				range: colorRange,
+			});
+			var nouislide_axcolor = $('#nouislide_axColor');
+			$('#noUiSliderColor .noUi-base').append(nouislide_axcolor);
+			colorDom.noUiSlider.on('update', function (values, handle) {
+				var vale = +values[0];
+				var valf = +values[1];
+				var colorNum = getNum(vale, valf, 1);
+				$('#data-color').attr('data-color', colorNum);
+			});
+			colorDom.noUiSlider.on('end', function () {
+				rend();
+			});
+			// CLARITY
+			var cla = document.getElementById('noUiSliderCla');
+			var clafirst = getSort($('#data-clarity li'), 'min') - 1;
+			var claLast = getSort($('#data-clarity li'), 'max');
+			var claRange = getObj(clafirst, claLast, 1);
+			noUiSlider.create(cla, {
+				start: [clafirst, claLast],
+				animationDuration: 1600,
+				connect: true,
+				step: 1,
+				range: claRange,
+			});
+			var nouislide_axCla = $('#nouislide_axCla');
+			$('#noUiSliderCla .noUi-base').append(nouislide_axCla);
+			cla.noUiSlider.on('update', function (values, handle) {
+				var vale = +values[0];
+				var valf = +values[1];
+				var colorNum = getNum(vale, valf, 1);
+				$('#data-clarity').attr('data-clarity', colorNum);
+			});
+			cla.noUiSlider.on('end', function () {
+				rend();
+			});
+
+
+			$('.tab li').eq(0).addClass('on');
+			$('.zuanshi_con .zuanshi_con_right').eq(0).addClass('on');
+			$(document)
+				.on('click', '.shape-img li', function () {
+					// shape 点击切换
+					var self = $(this);
+					self.toggleClass('on');
+					rend();
+					return false;
+				})
+				.on('click', '.taba li i', function () {
+					// 方框点击 对比效果
+					$(this).toggleClass('fa-square-o').toggleClass('fa-check-square-o');
+					var flag = $(this).hasClass('fa-check-square-o');
+					var ul = $(this).parents('ul');
+					var ci = $('.tabc').find('ul').attr('data-id');
+					if (flag) {
+						ulclone = ul.clone();
+						$('.tabc').append(ulclone);
+						var t = +$('#total').text() + 1;
+						$('#total').text(t);
+					} else {
+						var t = +$('#total').text() - 1;
+						if (t <= 0) {
+							t = 0;
+						}
+						$('#total').text(t);
+						$('.tabc').find('ul').each(function () {
+							var id = $(this).attr('data-id');
+							if (id == ci) {
+								$(this).remove();
+							}
+						})
+					};
+				})
+				.on('click', '.tabc li i', function () {
+					var id = $(this).parents('ul').attr('data-id');
+					$('.taba ul').each(function () {
+						var uid = $(this).attr('data-id');
+						if (id == uid) {
+							$(this).find('i').toggleClass('fa-square-o').toggleClass('fa-check-square-o');
+						}
+					});
+					$(this).parents('ul').remove();
+					var t = parseInt($('#total').text());
+					t--;
+					$('#total').text(t);
+				})
+				.on('mouseenter', '.zuanshi_con_right ul', function () {
+					// 右边鼠标经过，左边切换图片和文字
+					var self = $(this);
+					var img = self.attr('data-img');
+					var url = self.attr('data-url');
+					var carat = self.attr('data-carat');
+					var shape = self.attr('data-shape');
+					var cut = self.attr('data-cut');
+					var color = self.attr('data-color');
+					var clarity = self.attr('data-clarity');
+					var price = self.attr('data-price');
+					rendLeft(url, carat, shape, cut, color, clarity, price, img);
+				})
+				.on('click', '.tab li', function () {
+					// tab 切换
+					var index = $(this).index();
+					$(this).addClass('on').siblings('li').removeClass('on');
+					$('.zuanshi_con_right').eq(index).addClass('on').siblings('div').removeClass('on');
+				})
+				.on('mousedown', '.noUi-handle', function () {
+					$(document).on('mouseup', function () {
+						rend();
+						return false;
+					});
+				})
+				.on('keydown', '.changeData', function (e) {
+					if (e.keyCode === 13) {
+						rend();
+					}
+				})
+				.on('blur', '.changeData', function () {
+					rend();
+					return false;
+				})
+				.on('click', '.page_click', function () {
+					var text = parseInt($(this).text());
+					if(text >= 1){
+						rend(undefined, text);
+					}
+					
+				});
+		});
+
+		function getParams(dom, name, active) {
+			var type = '';
+			$(dom).each(function (i) {
+				var self = $(this);
+				if (active) {
+					var flag = self.hasClass('on');
+					if (flag) {
+						type = self.attr('data-' + name) + ',' + type;
+					}
+				} else {
+					type = self.attr('data-' + name);
+				}
+			});
+			if (type) {
+				type = type.replace(/\,$/g, '');
+			}
+			return type;
+		};
+		// 获取参数
+		function rend(shapes, page) {
+			var classid, shape, price, carat, cut, color, clarity;
+			classid = +getParams('.cate_zuanshi li', 'classid', true) || 100;
+			if (shapes) {
+				shape = shapes;
+			} else {
+				shape = getParams('.shape-img li', 'shape', true) || '290';
+			}
+			price = getParams('#pricenum', 'price', false) || '310,320';
+			carat = getParams('#carat', 'carat', false) || "0.27,0.36";
+			cut = getParams('#data-cut', 'cut', false) || "320";
+			color = getParams('#data-color', 'color', false) || "325,326";
+			clarity = getParams('#data-clarity', 'clarity', false) || "332";
+			var attrs = "";
+			attrs = shape + ',' + price + ',' + carat + ',' + cut + ',' + color + ',' + clarity;
+			console.log(carat);
+			doAjax(classid, attrs, page);
+		}
+		function rendLeft(url, carat, shape, cut, color, clarity, price, img) {
+			var a = $("<a href=" + url + ">view diamond</a>");
+			$('.zuanshi_con_left').find('.view').html(a).end().find('.zuanshi_title_text').text(carat + ' ' + shape + ' Diamond').end().find('.zuanshi_title_c').text(cut + ' Cut · ' + color + ' Color · ' + clarity + ' Clarity').end().find('.zuanshi_title_price').text('$' + price).end().find('.zuanshi_img img').attr('src', img);
+		};
+		function doAjax(classid, attrs, page) {
+			if(!page){
+				page = 1;
+			}
+			console.log('页码',page)
+			$.ajax({
+				type: 'post',
+				url: "{:U('/index.php/SearchApi/get_all_search_product','','')}",
+				async: false,
+				data: {
+					"classid": classid,
+					"attrs": attrs,
+					"limit" : 20,
+					"page" :  page
+				},
+				dataType: "json",
+				beforeSend: function () {
+					console.log("loading");
+					$('.zuanshi_loading').fadeIn(300);
+				},
+				complete : function () {
+					var timer;
+					clearTimeout(timer);
+					timer = setTimeout(function (){
+						$('.zuanshi_loading').fadeOut(300);
+					}, 500);
+					
+				},
+				success: function (data) {
+					console.log(data);
+					if (!data || data.data == null) {
+						$('.shuju .zuanshi').html('No Screening Results');
+						return;
+					};
+					if (data.status == 1) {
+						var res = data.data;
+						console.log('请求了', data);
+						$('.zuanshi').html('');
+						// page
+						$('.page').html('');
+						var total = data.info.total;
+						$('.zuanshi_result span').text(total);
+						var $page = page;
+						if(total > 20) {
+							console.log(total);
+							var yu = Math.ceil(total / 20);
+							console.log('yu', yu);
+							if(yu > 1) {
+								for(var i = 1; i <= yu; i ++){
+									if(i == $page){
+										$('.page').append($('<span class="current">'+ i +'</span>'));
+									}else{
+										$('.page').append($('<a class="page_click">'+ i +'</a>'));
+									}
+								}
+							}
+						}
+						// page
+						res.forEach(function (ele, i) {
+							console.log('加载完成....');
+							var el = $('<li><a href="' + ele.pro_url + '"> <div class="zuanshi_cate_con_img"><img src="' + ele.pro_img + '"></div><div class="zuanshi_cate_con_title">' + ele.pro_name + '</div></a></li>')
+							$('.zuanshi').append(el);
+						})
+						$('.taba').html('');
+						res.forEach(function (ele, i) {
+							var name = ele.attr_names;
+							var carat, shape, cut, color, clarity, price;
+							name.forEach(function (el) {
+								var el_name = el.class_name;
+								switch (el_name) {
+									case 'carat':
+										carat = el.pro_name;
+										break;
+									case 'shape':
+										shape = el.pro_name;
+										break;
+									case 'cut':
+										cut = el.pro_name;
+										break;
+									case 'color':
+										color = el.pro_name;
+										break;
+									case 'clarity':
+										clarity = el.pro_name;
+										break;
+									case 'price':
+										price = el.pro_name;
+										break;
+								}
+
+							});
+							// 渲染tab title
+							if (i === 0) {
+								$('.tab_title div').html('');
+								name.forEach(function (e, indexa) {
+									if (indexa < 6) {
+										var tab_li = $('<li>' + name[indexa].class_name + '<i class="fa fa-angle-down"></i></li>')
+										$('.tab_title div').append(tab_li);
+									}
+								});
+								var tab_lia = $('<li>Compare<i class="fa fa-angle-down"></i></li>')
+								$('.tab_title div').append(tab_lia);
+								// 左边图片默认第一个图片展示
+								rendLeft(ele.pro_url, carat, shape, cut, color, clarity, price, ele.pro_img);
+							};
+							// 渲染右边数据
+							var tab_con = $('<ul data-id="' + ele.pid + '"data-img="' + ele.pro_img + '"data-url="' + ele.pro_url + '"data-carat="' + carat + '"data-shape="' + shape + '"data-cut="' + cut + '"data-color="' + color + '"data-clarity="' + clarity + '"data-price="' + price + '"></ul>')
+							name.forEach(function (e, index) {
+								// 添加链接
+								var a = $("<a href='" + ele.pro_url + "'></a>");
+								if (index < 6) {
+									if (e.class_name === 'price') {
+										e.pro_name = '$' + e.pro_name;
+									};
+									a.html(e.pro_name);
+									var li = $('<li></li>').append(a);
+									tab_con.append(li);
+								};
+							});
+							tab_con.append($('<li><i class="fa fa-square-o"></i></li>'));
+							$('.taba').append(tab_con);
+						});
+						var len = res.length;
+						$('#result').text(len);
+					}
+				}
+			});
+		}
+
+	})
+</script>

@@ -1,0 +1,116 @@
+<style type="text/css">
+  .page_Menu{ width:740px; float:left;}
+
+.page_Menu ul{
+z-index:100;
+margin: 0;
+padding: 0;
+list-style-type: none;
+height:55px;
+}
+.page_Menu ul li{
+position: relative;
+text-align:left;
+float: left;
+}
+.page_Menu ul li h2{ font-size:14px; color:#000; line-height:55px; text-transform: uppercase;font-weight: normal;padding: 0 18px;}
+.page_Menu ul li:hover h2{color: #bd1c22 !important;}
+.page_Menu ul li:hover a{text-decoration: none;}
+
+* html .page_Menu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block;
+}
+
+.page_Menu ul li a:link, .page_Menu ul li a:visited{
+color: #397bcf;
+}
+
+.page_Menu ul li a.selected,.page_Menu ul li a:hover{ /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+color: #397bcf;
+}
+
+.page_Menu ul li ul li a.selected,.page_Menu ul li  ul li a:hover{
+color: #fff;
+}
+.page_Menu ul li ul li a:link, .page_Menu ul li ul li a:visited{
+color: #fff;
+} 
+/*1st sub level menu*/
+.page_Menu ul li ul{
+position: absolute;
+left: -28px !important;
+display: none; /*collapse all sub menus to begin with*/
+visibility: hidden;
+padding:0;
+margin:0;
+z-index:999;
+background:#fff;
+height:auto;
+top: 55px !important;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.page_Menu ul li ul li{
+display: list-item;
+float: none;
+line-height:normal;
+padding: 0;
+line-height:20px;
+border-bottom: 1px solid #e2e2e2;
+background-color: #eee;
+text-align: center;
+height: 40px;
+}
+.page_Menu ul li ul li a h3:hover{color:#fa913e;}
+.page_Menu ul li ul li h3{ color:#575c62; font-weight:normal; text-align:left;font-size:14px; padding:8px 15px; line-height:28px;}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.page_Menu ul li ul li ul{
+top: 0;
+}
+
+/* Sub level menu links style */
+.page_Menu ul li ul li a{
+font:"Arial";
+font-weight:normal;
+font-size:12px;
+padding:0;
+margin: 0;
+line-height:32px;
+border-top-width: 0;
+z-index:999;
+border:none;
+}
+</style>
+
+<div style="width: 100%;border-bottom: 1px solid #e6e6e6">
+<div class="page_LeftClass">
+  <div class="list_title">
+    产品分类
+  </div>
+  <div class="left_con">
+
+     <div class="page_Menu" id="smoothmenu1">
+        <ul>
+          <volist empty="no" name="allclass" id="allclass_left">
+                  <li <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yijion"<else/>class="yiji"</if>  style="background:url({:getimgurl($allclass_left['fid'])}) center no-repeat;"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                    <if condition='$allclass_left["childs"] neq ""'>
+                      <ul>
+                        <volist empty="no" name="allclass_left['childs']" id="childs">
+                        <li class="erji"><a href="{:U('/Product_category','','')}/{:getprocatename($childs['pcid'])}">{$childs['class_name']}</a></li> 
+                       
+                        </volist>
+                        </ul>
+                        </if>
+             </li>
+           </volist>
+         </ul>
+  </div>
+   
+  </div>
+<div class="clear"></div>
+
+ 
+</div>
+
+</div>

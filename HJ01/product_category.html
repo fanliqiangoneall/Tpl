@@ -1,0 +1,106 @@
+<extend name="HJ01:basein" />
+<block name="content">
+    <style>
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_product_more{
+        color: {$data1[0]};
+        }
+        .main_product_more:hover{
+        background: {$data1[0]};color:#fff;
+        }
+        .main_proitem_img a:before{
+        background: #000;
+        }
+        .main_proitem_name h6{
+            color: #{$color}
+        }
+        .main_proitem_more{
+        color:{$data1[0]};
+        }
+        .main_proitem_more:hover:after{
+        background: {$data1[0]};
+        width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+        }
+
+
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[5])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner">
+                <div class="container">
+                    <h1 class="ins-page-title-txt no-margin padding-5px-tb">{$prolist['class_name']}</h1>
+                    <div class="Breadcrumbs"><a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                            href="{:U('/product')}">Products</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span></div>
+                </div>
+            </div>
+            <div class="ins-pagetitle-scroll-wrapper container"><a class="ins-pagetitle-scroll-link" href="javascript:goToMain()"><i class="fa fa-angle-down"></i></a></div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ01/left.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                        <if condition="$prolist['cate_profile'] neq ''"><div>{:htmlspecialchars_decode($prolist['cate_profile'])}</div></if>
+                        <if condition="$pro neq ''">
+                            <div class="mainpage_probox" data-myli="1">
+                                <else/>
+                                <div class="mainpage_probox" data-myli="0">
+                        </if>
+                                <volist empty="" name="pro" id="pro" key="k">
+                                    <div class="main_proitem">
+                                        <div class="main_proitem_box">
+                                            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+                                            <div class="main_proitem_second">
+                                                <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],50)}</h6></div>
+                                                <div class="main_proitem_desc">{:subtxt($pro['pro_description'],70)}</div>
+                                                <div class="margin-15px-top">
+                                                    <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}" class="main_proitem_more">read more </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="$k%2 eq 0">
+                                        <div class="clear" style="height: 30px;"></div>
+                                    </if>
+                                </volist>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="main_content_slogan">
+            <div class="container">
+                <div class="main_content_slogan_left ">
+                    <h3 class="margin-10px-bottom">Get Your Quote or Call: {:chaifen($about['phone'],0)}</h3>
+                    <p class="main_content_slogan_text" style="letter-spacing: 1px">{$data14[10]}</p>
+                </div>
+                <div class="main_content_slogan_right ">
+                    <div class="main_content_slogan_right_more text-right">
+                        <a href="{:U('/contactus')}">CONTACT US</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    <script>
+        $(document).ready(function(){
+            $(".childon").parent().css("display","block");
+            $(".threeon").parent().parent().parent().parent().addClass("yijion");
+        })
+    </script>
+    </div>
+</block>

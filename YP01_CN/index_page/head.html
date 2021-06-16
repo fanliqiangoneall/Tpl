@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+<div class="index_navigation_menubg">
+ 
+   <div class="page_Logo">
+     <div id="animate2">
+      <ul>
+         <li><a href="{:U('/')}">{$logo}</a></li>
+      </ul>
+     </div>
+     
+  <div class="keysearch">
+        	<input placeholder="搜索" id="keyword" class="keywords" value="" name="keywords"/>
+             <div class="search" onClick="searchfrom()"></div>
+               <div class="clear"></div>
+  </div>     
+     
+  </div>
+  <div class="clear"></div>
+
+<script>
+function searchfrom(){
+	var keywords=$("#keyword").val();
+	if(keywords){
+		window.location.href="{:U('/search','','')}"+"?keywords="+encodeURI(keywords);
+	}else{
+		alert("请输入搜索关键词！");
+	}
+}
+
+
+    $('#keyword').bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+            //回车执行查询
+            searchfrom();
+        }
+    })
+
+</script> 
+<style>
+.keywords{ width:100px; padding:0 10px; float:left; background:none; outline:none; border:0px; border-bottom:1px solid #fff; margin-right:10px; color:#fff; font-size:17px;}
+.search{ background:url(__TMPL__WH01_CN/img/search_pic.png); width:22px; height:22px;float:left;}
+.keysearch{ padding:10px; margin:10px 0px;}
+</style> 
+     
+  <div class="clear"></div>
+  
+    <div class="index_navigation_page_Menu">
+        <ul>
+          <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+            <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+          </volist>
+        </ul>
+        <div class="clear"></div>
+        
+        <if condition="$data1[6]"><div class="" style="width:180px; text-align:center"><a href="{$data1[6]}" style="cursor:pointer;font-size:17px; color:#fff; line-height:51px;font-weight:normal;"><div style="width:25px; position:relative; top:2px; display:inline-block; height:16px; background:url({:getindeximgurl($data1[7])})"></div>&nbsp;&nbsp;{$data1[5]}</a></div></if>
+    </div>
+</div>
+

@@ -1,0 +1,102 @@
+<!--{$pagename}-->
+<!--news start-->
+<div id="news">
+    <div class="news_cont" style="margin-bottom: 20px;">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>{$data33[0]}</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+        </div>
+
+        <php>
+            if(!$data33[1]){
+            $data33[1]=4;
+            }
+
+            for($i=1;$i<$data33[1];$i+=4){
+            $volist_count[]=$i;
+            }
+        </php>
+            <div class="clear" style="height: 40px;"></div>
+        <div class="swiper-container swiper-news2">
+            <div class="swiper-wrapper">
+                <volist name="volist_count" id="i_count">
+                    <php>$zq_offsets=($i_count-1);</php>
+                    <div class="swiper-slide swiper-slide">
+                                    <volist name="indexnews" id="indexnews2" offset="$zq_offsets" length="4" key="h">
+                                        <div id="news_item">
+                                            <div class="hynews_pic">
+                                                <if condition="$indexnews2['new_pro'] neq ''"><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews2['new_pro'])}" border="0" /></a><else/><img src="__TMPL__ZERO/img/yz/new_pic.png" border="0" /></if>
+                                            </div>
+                                            <div class="hynews_list">
+                                                <ul>
+                                                    <li style="margin-bottom: 14px;">
+                                                        <p><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()" style="font-size:16px; color:#333333;">{:subtxt($indexnews2['title'],18)}</a></p>
+                                                        <span style="color: #7e7e7e;font-size: 14px;margin-top: 5px;display: block">{:date('Y-m-d ',$indexnews2['created'])}</span></li>
+                                                    <li style="color: #999999;font-size: 14px; ">{:subtxt($indexnews2['news_description'],30)}</li>
+                                                    <li style="margin-top: 28px;margin-left: 253px;" id="four"><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onfocus="blue()" style="color:#333333;font-size:16px;">查看更多 >></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <if condition="$h%2 neq 0">
+                                            <div style="width:30px; height:50px; float:left;list-style: none"></div>
+                                            <else/>
+                                            <div class="clear" style="height: 28px;"></div>
+                                        </if>
+                                    </volist>
+
+                                <div class="clear"></div>
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-pagination news_pagination"></div>
+        </div>
+
+
+    </div>
+</div>
+<if condition="$data33[1] gt 4">
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            var mynewsSwiper = new Swiper('.swiper-news2',{
+                loop: true,
+                autoplay: 3000,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable :true,
+                },
+            });
+        });
+
+    </script>
+    <style>
+        .swiper-news2{padding-bottom: 30px;}
+        .swiper-news2 .swiper-pagination-bullet-active{
+                background: #{$color}!important;
+        }
+        .pagination {
+            position: absolute;
+            z-index: 20;
+            bottom: 10px;
+            width: 1190px;
+            text-align: center;
+            left: -347px;
+        }
+        .swiper-pagination-switch {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 10px;
+            border: 1px solid #fff;
+            cursor: pointer;
+            background:url({:getindeximgurl($data9[9])});
+        background-repeat:no-repeat;
+        background-size:contain;
+        }
+        .swiper-active-switch {
+            background:url({:getindeximgurl($data9[10])});
+        background-repeat:no-repeat;
+        background-size:contain;
+        }
+    </style>
+</if>
+<!--news end-->
+

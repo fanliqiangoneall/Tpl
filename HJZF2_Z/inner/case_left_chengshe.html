@@ -1,0 +1,88 @@
+<style>
+	.chengshe_cate{
+		padding: 75px;
+		margin-top: 7vw;
+		margin-bottom: 3vw;
+		display: flex;
+	}
+	.chengshe_left{
+		flex: 0 0 250px;
+		width: 250px;
+		align-self: flex-start;
+	}
+	.chengshe_left li p.indexTitle{
+		font-size: 22px;
+		color: #a6a6a6;
+		text-transform: capitalize;
+	}
+	.chengshe_left li{
+		margin-bottom: 10px;
+	}
+	.chengshe_left li a{
+		display: flex;
+		white-space: nowrap;
+		align-items: center;
+	}
+	.chengshe_left li a span h3{
+		font-size: 14px;
+		transition: all .4s;
+		opacity: 0;
+	}
+	.chengshe_left li:hover a span h3{
+		margin-left: 15px;
+		opacity: 1;
+	}
+	.chengshe_left li.on .indexTitle,.chengshe_left li.on a span h3{
+		color: #333;
+	}
+	@media(min-width: 1200px) {
+		.chengshe_left{
+			position: sticky;
+			top: calc(100% - 250px);
+		}
+	}
+	@media(max-width: 1199px) {
+		.chengshe_cate{
+			padding: 15px;
+			flex-wrap: wrap;
+		}
+		.chengshe_left{
+			flex: 0 0 100%;
+			width: 100%;
+		}
+		.chengshe_left ul{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			width: 100%;
+		}
+		.chengshe_left li a span h3{
+			opacity: 1;
+		}
+		.chengshe_left ul li{
+			flex: 0 0 49%;
+			width: 49%;
+		}
+	}
+	@media(max-width: 767px) {
+		
+		.chengshe_right{
+			margin-left: 0;
+		}
+	}
+	
+
+</style>
+
+<div class="chengshe_left">
+	<ul>
+		<volist empty="" name="allnewclass" id="nav">
+			<li <if condition="$newscate['classid'] eq $nav['classid'] or $newclass['classid'] eq $nav['classid']">class="on"</if>>
+				<a href="{:U('/case_category',array('classid'=>$nav["classid"]))}">
+					<p class="indexTitle">{$nav['readme']}</p>
+					<span class="cn">{$nav['class_name']}</span>
+				</a>
+			</li>
+		</volist>
+	</ul>
+</div>

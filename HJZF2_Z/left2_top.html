@@ -1,0 +1,22 @@
+<div class="swiper-container hjzf_innertop_navlist">
+    <ul class="swiper-wrapper">
+        <if condition="count($allclass) lt 4">
+            <style>
+                .hjzf_innertop_navlist ul {justify-content: center;}
+            </style>
+        </if>
+        <volist empty="" name="allclass" id="allclass_left" offset="0">
+
+            <li pro-class-id="{$allclass_left['pcid']}" <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="topnav_item_on swiper-slide"<else/>class="topnav_item swiper-slide"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+
+                    <img src="{:getmainimgurl($allclass_left['fid'])}" alt=""/>
+
+                {$allclass_left['class_name']}</a></li>
+        </volist>
+
+    </ul>
+</div>
+<div class="swiper-pagination hjzf_innertop_nav_pageation"></div>
+
+
+

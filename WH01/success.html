@@ -1,0 +1,56 @@
+<extend name="WH01:basein" />
+<block name="content">
+
+<div id="">
+    <Include file="./Tpl/WH01/in_banner.html" />
+</div>
+<div class="r_mbx"><Include file="./Tpl/WH01/bread.html" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;Inquiry</div>
+
+<div class="page_nei_main">
+<Include file="./Tpl/WH01/left.html" />
+<div class="page_RightMain">
+    <div class="page_class_head_1">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01/img/protitle_bg.png" alt="protitle_bg.png"><span>Feedback</span><img src="__TMPL__WH01/img/protitle_bg2.png">
+        </div>
+    </div>
+
+    <div class="page_Main">
+      <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;margin-bottom: 60px;">
+       <tr>
+        <th align="center" bgcolor="#cccccc">MESSAGE</th>
+       </tr>
+       <tr>
+        <td align="center"> 
+         <br />
+         <present name="message" style=" text-align:center;">
+         {$message}<br />
+         </present>
+         <present name="error" style=" text-align:center;">
+         {$error}<br />
+         </present>
+      <p class="detail"></p>
+      <p class="jump" style=" text-align:center;">
+      <a id="href" href="<?php echo($jumpUrl); ?>">Click to return to the previous page</a> Wait time: <b id="wait">5</b>
+      </p><br /></td>
+       </tr>
+      </table>
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+	var time = --wait.innerHTML;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>   
+{:htmlspecialchars_decode(get_inquiry_code())}
+    </div>
+    <div style="clear:both"></div>
+  </div>  
+</div>
+
+</block>

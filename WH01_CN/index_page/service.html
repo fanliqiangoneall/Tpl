@@ -1,0 +1,77 @@
+<!--{$pagename}-->
+
+<!--quility start-->
+<style>
+	#quility{
+		width: 100%;background: url({:getindeximgurl($data5[13])}) no-repeat;overflow: hidden;min-height: 502px;margin-bottom:40px;
+	}
+	.qpic1{
+		background: url({:getindeximgurl($data5[1])}) no-repeat;
+	}
+	.qpic2{
+		background: url({:getindeximgurl($data5[4])}) no-repeat;
+	}
+	.qpic3{
+		background: url({:getindeximgurl($data5[7])}) no-repeat;
+	}
+	.qpic4{
+		background: url({:getindeximgurl($data5[10])}) no-repeat;
+	}
+	#qbox2{
+		float: right;width: 82px;height: 335px;background: url({:getindeximgurl($data5[14])}) no-repeat;
+	}
+</style>
+<div id="quility">
+	<div class="qu_cont">
+		<div class="indpro_title" style="margin-top: 45px;">
+			<img src="__TMPL__WH01_CN/img/quilicon1.png" alt="protitle_bg.png"><span style="color: #ffffff;">{$data5[0]}</span><img src="__TMPL__WH01_CN/img/quilicon2.png">
+		</div>
+		<div id="qbox1">
+			<div style="margin-top: 78px;" class="qitem">
+				<if condition="$data5[16] neq ''"><a href="{$data5[16]}" target="_blank"></if>
+				<div class="qpic2"></div>
+				<div class="qtext">
+					<div class="qtitle" style="margin-top: 13px;">{$data5[2]}</div>
+					<div class="qt" style="margin-top: 9px">{$data5[3]}</div>
+				</div>
+				<if condition="$data5[16] neq ''"></a></if>
+				<div class="clear"></div>
+			</div>
+			<div  style="margin-top: 78px;" class="qitem">
+				<if condition="$data5[18] neq ''"><a href="{$data5[18]}" target="_blank"></if>
+				<div class="qpic4"></div>
+				<div class="qtext">
+					<div class="qtitle" style="margin-top: 0px;">{$data5[5]}</div>
+					<div class="qt" style="margin-top: 8px;">{$data5[6]}</div>
+				</div>
+				<if condition="$data5[18] neq ''"></a></if>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="qbox2"></div>
+		<div id="qbox3">
+			<div class="qitem">
+				<if condition="$data5[15] neq ''"><a href="{$data5[15]}" target="_blank"></if>
+				<div class="qpic1"></div>
+				<div class="qtext2">
+					<div class="qtitle" style="margin-top: 17px;">{$data5[8]}</div>
+					<div class="qt" style="margin-top: 6px">{$data5[9]}</div>
+				</div>
+				<if condition="$data5[15] neq ''"></a></if>
+				<div class="clear"></div>
+			</div>
+			<div  style="margin-top: 68px;"class="qitem">
+				<if condition="$data5[17] neq ''"><a href="{$data5[17]}" target="_blank"></if>
+				<div class="qpic3"></div>
+				<div class="qtext2">
+					<div class="qtitle" style="margin-top: 15px;">{$data5[11]}</div>
+					<div class="qt" style="margin-top: 10px;">{$data5[12]}</div>
+				</div>
+				<if condition="$data5[17] neq ''"></a></if>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<!--quility end-->

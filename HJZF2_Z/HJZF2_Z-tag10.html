@@ -1,0 +1,196 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[2]){
+			$mbbg = $inner_data[2];
+		}else{
+			$mbbg = $color;
+		}
+	</php>
+	<style>
+		.main-title-section-wrapper {
+            width: 100%;
+            margin: auto;
+            padding: 172px 0 54px;
+            clear: both;
+			position: relative;
+			margin-bottom: 100px;
+        }
+        .main-title-section-wrapper:before {
+            position: absolute;
+            content: "";
+            display: block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+			background: #{$mbbg};
+            opacity: .6;
+        }
+        .breadcrumb {
+            clear: both;
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, .6);
+            position: relative;
+        }
+        .breadcrumb a {
+            color: #333;
+        }
+        .breadcrumb .current {
+            color: rgba(0, 0, 0, .5);
+        }
+        .main-title-section {
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+		}
+		@media(max-width:576px){
+			.main-title-section-wrapper{
+				margin-bottom: 50px;padding: 80px 0 40px;
+			}                           
+		}
+	</style>
+	<div class="HJZF_Z__wrapper">
+		
+<!-- 顶部面包屑导航+banner图开始 -->
+<div id="HJZF_Z__innerBanner">
+	<if condition="$banner[0]['use_wap']">
+		<volist name="banner" id="bannera" offset="0" length="1">
+			<section class="main-title-section-wrapper default hidden-lg hidden-xl" navcrumbs
+				style="background: url({:getimgurl($bannera['logo_wap_bg'])}) no-repeat center;">
+		</volist>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="breadcrumb">
+						<a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+							class="current">{:__('Associated information')}</span>
+					</div>
+					<div class="main-title-section">
+						<h1>{:__('Associated information')}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+		<volist name="banner" id="bannera" offset="0" length="1">
+			<section class="main-title-section-wrapper default hidden-xs hidden-sm hidden-md" navcrumbs
+				style="background: url({:getimgurl($bannera['ad_pic'])}) no-repeat center;">
+		</volist>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="breadcrumb">
+						<a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+							class="current">{:__('Associated information')}</span>
+					</div>
+					<div class="main-title-section">
+						<h1>{:__('Associated information')}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+		<else />
+		<if condition="$banner neq ''">
+			<volist name="banner" id="bannerc" offset="0" length="1">
+				<section class="main-title-section-wrapper default" navcrumbs
+					style="background: url({:getimgurl($bannerc['ad_pic'])}) no-repeat center;">
+			</volist>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="breadcrumb">
+							<a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i
+								class="fa fa-angle-right"></i>&nbsp;<span
+								class="current">{:__('Associated information')}}</span>
+						</div>
+						<div class="main-title-section">
+							<h1>{:__('Associated information')}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			</section>
+			<else />
+		   
+				<section class="main-title-section-wrapper default" navcrumbs
+					style="background: url({:getindeximgurl($inner_data[0])}) no-repeat center;">
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="breadcrumb">
+							<a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i
+								class="fa fa-angle-right"></i>&nbsp;<span
+								class="current">{:__('Associated information')}</span>
+						</div>
+						<div class="main-title-section">
+							<h1>{:__('Associated information')}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			</section>
+		</if>
+	</if>
+</div>
+<!-- 顶部面包屑导航+banner图结束 -->
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="container">
+				<div class="row">
+					<section class="hidden-xs hidden-sm col-md-3 HJZF_Z__inner--left">
+						<Include file="./Tpl/HJZF2_Z/left.html" />
+					</section>
+					<section class="hidden-md hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+						<Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+					</section>
+					<section class="col-xs-12 col-md-9 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                        	{:htmlspecialchars_decode($tag_info['body'])}
+                        </div>
+						<div class="InsidePages_content-right__wrap">
+							<div class="InsidePages_content-right_content-main" >
+								<h5 class="InsidePages_content-right_content_title">{:__('Related products')}</h5>
+								<div class="proinquiry"><include file="HJZF2_Z:relationinfo" /></div>
+								<div style="clear:both;"></div>
+
+								<h5 class="InsidePages_content-right_content_title">{:__('Related news')}</h5>
+
+								<div class="proinquiry"><include file="HJZF2_Z:relationnew" /></div>
+								<div style="clear:both;"></div>
+
+								<div style="height: 30px;width: 100%"></div>
+
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+					</section>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

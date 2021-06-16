@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+<if condition="has_mould('other-2HJ01') eq false">
+	<style>
+		.new_hjzf_other-2HJ01 .HJ01CN_other2{display:none}
+	</style>
+</if>
+<if condition="$data61[0]">
+	<style>
+		.new_hjzf_other-2HJ01 .HJ01CN_other2{
+			background: url({:getindeximgurl($data61[0])}) center  no-repeat;
+		}
+	</style>
+</if>
+<style>
+	.new_hjzf_other-2HJ01 .hj01cn_other_item_text h3{
+		color: #{$color};
+	}
+	.new_hjzf_other-2HJ01 .hj01cn_other_item_text p:before{
+		content: '';display: table;width: 5px;height: 5px;background: #{$data61[23]};position: absolute;;left: 3px;top: 9px;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);transform: rotate(45deg);
+	}
+	.new_hjzf_other-2HJ01 .hj01cn_other_item_text a{
+	color: #{$data61[23]};
+	}
+	.new_hjzf_other-2HJ01 .hj01cn_other_item_text a:hover:before{
+		content: '';display: table;width: 100%;;height: 2px;position: absolute;;left: 0;bottom: -6px;background: #{$data61[23]};
+	}
+</style>
+<div class="HJ01CN_other2">
+	<div class="container">
+		<div class="HJ01CN_other2-title">{$data61[1]}</div>
+		<ul class="HJ01CN_other2_list">
+			<php>
+				for($i=2;$i<21;$i=$i+5){
+			</php>
+			<if condition="$data61[$i] neq ''">
+				<li id="other_item{$i}" class="hj01cn_other_item wow fadeInDown" data-wow-duration="1s" data-wow-offset="200">
+					<div class="hj01cn_other_item_pic"><a href="{$data61[22]}" target="_blank"><img src="{:getindeximgurl($data61[$i])}" alt=""/></a></div>
+					<div class="hj01cn_other_item_text">
+						<h3>{$data61[$i+1]}</h3>
+						<h5 >{$data61[$i+2]}</h5>
+						<img src="{:getindeximgurl($data61[$i+3])}" alt=""/>
+						<p>{$data61[$i+4]}</p>
+						<a href="{$data61[22]}" target="_blank">Read More</a>
+					</div>
+					<div class="clear"></div>
+				</li>
+			</if>
+
+			<php>
+				}
+			</php>
+		</ul>
+	</div>
+</div>
+
+
+
+
+

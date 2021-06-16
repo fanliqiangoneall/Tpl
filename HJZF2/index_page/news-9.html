@@ -1,0 +1,76 @@
+
+<if condition="$data161[0]">
+    <style>
+        .HJZF2__news-9{
+            background: url({:getindeximgurl($data161[0])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+
+<section class="HJZF2__news-9">
+    <div class="container">
+        <div class="HJZF2__news-9left wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__news-9__title">{$data161[2]}</h3>
+            <div class="swiper-container HJZF2__news-9left__swiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        $arr_str=$data161[13];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]['data']=get_index_news_category($a,4);
+                        }
+                    </php>
+                    <volist name="list" id="li" >
+                        <volist name="li['data']" id="indexnew" offset="0" length="8" key="h">
+                            <div class="swiper-slide">
+                                <div class="HJZF2__news-9__item flex">
+                                    <div class="HJZF2__news-9__img">
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnew['new_pro'])}" border="0" /></a>
+                                    </div>
+                                    <div class="HJZF2__news-9__wrap">
+                                        <div class="HJZF2__news-8__name"><a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()">{:subtxt($indexnew['title'],100)}</a></div>
+                                        <div class="HJZF2__news-8__desc">{:subtxt($indexnew['news_description'],200)}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </volist>
+                    </volist>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination HJZF2__news-9left__pagination"></div>
+            </div>
+
+        </div>
+        <div class="HJZF2__news-9right wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__news-9__title">{$data161[3]}</h3>
+            <div class="HJZF2__news-9rightDesc">{:HtmlEncode(subtxt($data161[4],400))}</div>
+            <div style="position: relative">
+                <div class="swiper-container HJZF2__news-9right__swiper">
+                    <div class="swiper-wrapper">
+                        <php>
+                            for($i=5;$i<14;$i=$i+1){
+                        </php>
+                        <if condition="$data161[$i]">
+                            <div class="swiper-slide"><img src="{:getindeximgurl($data161[$i])}" alt=""/></div>
+                        </if>
+                        <php>
+                            }
+                        </php>
+                    </div>
+
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next HJZF2__news-9right-next">&gt;</div>
+                <div class="swiper-button-prev HJZF2__news-9right-prev">&lt;</div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+
+
+
+    

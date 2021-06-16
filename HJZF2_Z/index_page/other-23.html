@@ -1,0 +1,116 @@
+<!--{$pagename}-->
+<php>
+	$arr = get_list_val($data258[10]);
+</php>
+<style>
+	<if condition="$data258[1]">.hjzf2_other_23_section .flex .more:before {
+		background-color: #{$data258[1]};
+	}
+
+	.hjzf2_other_23_section .flex .more:hover {
+		border-color: #{$data258[1]};
+	}
+
+	<else/>.hjzf2_other_23_section .flex .more:before {
+		background-color: #{$color};
+	}
+
+	.hjzf2_other_23_section .flex .more:hover {
+		border-color: #{$color};
+		color: #fff;
+	}
+
+	</if><if condition="$data258[0]">.hjzf2_other_23,
+	.hjzf2_other_23 .flex a.more,
+	.hjzf2_other_23_section_wrapper .flex,
+	.hjzf2_other_23_section_wrapper .flex .more {
+		color: #{$data258[0]};
+		border-color: #{$data258[0]};
+	}
+
+	</if>.hjzf2_other_23_section {
+		background: url({:getindeximgurl($data258[2])
+	}
+
+	) no-repeat center/cover fixed;
+	}
+
+	.hjzf2_other_23_section.hjzf2_other_23_section_second {
+		background: url({:getindeximgurl($data258[6])
+	}
+
+	) no-repeat center/cover fixed;
+	}
+
+	.hjzf2_other_23_section.hjzf2_other_23_section_last {
+		background: url({$arr[0][src]}) no-repeat center/cover fixed;
+	}
+	{}
+</style>
+<section class="hjzf2_other_23">
+	<!-- 上面 -->
+	<if condition="$data258[2]">
+		<div class="hjzf2_other_23_section">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-md-6 hjzf2_other_23_section_wrapper">
+						<div class="flex column">
+							<div class="index_title wow fadeInDown">
+								{$data258[3]}
+							</div>
+							<div class="main_content wow fadeInUp index_text" data-wow-delay=".3s">
+								{$data258[4]}
+							</div>
+							<a href="{$data258[5]}" class="more my-mask wow fadeInUp" data-wow-delay=".6s">{:__('Read More')}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</if>
+	<!-- 下面 -->
+	<if condition="$data258[6]">
+		<div class="hjzf2_other_23_section hjzf2_other_23_section_second">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-md-6 hjzf2_other_23_section_wrapper col-md-offset-6">
+						<div class="flex column fl">
+							<div class="index_title wow fadeInDown">
+								{$data258[7]}
+							</div>
+							<div class="main_content wow fadeInUp index_text" data-wow-delay=".3s">
+								{$data258[11]}
+							</div>
+							<div class="main_content wow fadeInUp index_text" data-wow-delay=".3s">
+								{$data258[8]}
+							</div>
+							<a href="{$data258[9]}" class="more my-mask wow fadeInUp" data-wow-delay=".6s">{:__('Read More')}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</if>
+	<!-- 新增 -->
+	
+	<if condition="$data258[10]">
+		<div class="hjzf2_other_23_section hjzf2_other_23_section_last">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-md-6 hjzf2_other_23_section_wrapper">
+						<div class="flex column">
+							<div class="index_title wow fadeInDown">
+								{$arr[0][title]}
+							</div>
+							<div class="main_content wow fadeInUp index_text" data-wow-delay=".3s">
+								{$arr[0][info]}
+							</div>
+							<a href="{$arr[0][link]}" class="more my-mask wow fadeInUp" data-wow-delay=".6s">{:__('Read More')}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</if>
+
+</section>

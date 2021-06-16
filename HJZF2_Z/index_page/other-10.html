@@ -1,0 +1,28 @@
+<!--{$pagename}-->
+<if condition="$data152[0]">
+    <style>
+        .hjzf2_z_other-10{
+            background: url({:getindeximgurl($data152[0])}) no-repeat center/cover fixed;
+        }
+    </style>
+</if>
+<style>
+    .hjzf2_z_other-10_a{
+        background: #{$data152[1]};
+    }
+</style>
+<section class="hjzf2_z_other-10">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf2_z_other-10_content">
+				<if condition="$data152[5]">
+				<div class="text-center pb20">
+					<img src="{:getindeximgurl($data152[5])}" alt="" class="img-fluid">
+				</div>
+				</if>
+                <p class="hjzf2_z_other-10_text index_title pb40"> {:HtmlEncode($data152[2])}</p>
+                <a href="{$data152[4]}" class="hjzf2_z_other-10_a index_text"><span>{$data152[3]}</span></a>
+            </div>
+        </div>
+    </div>
+</section>

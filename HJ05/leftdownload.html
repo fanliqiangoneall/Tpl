@@ -1,0 +1,37 @@
+<style>
+    .left_title{
+        width:144px;height: 94px;padding-top: 35px;float: left;font-size: 32px;font-weight: bold;color: #{$color};text-align: left;line-height: 35px;
+    }
+    li.yiji:hover:before{
+        content: '';display: table;width: 6px;height: 6px;background: #{$color};border: 1px solid #{$color};position: absolute;left: 0;top: 6px;
+    }
+    li.yiji h3:hover{
+        color: #{$color};
+    }
+    li.yijion:before{
+        content: '';display: table;width: 6px;height: 6px;background: #{$color};border: 1px solid #{$color};position: absolute;left: 0;top: 6px;
+    }
+    li.yijion>a>h3{
+        font-size: 18px;font-weight: normal;color: #{$color};font-family: Arial;display: inline-block;
+    }
+    .child h3:hover{
+        color:  #{$color};
+    }
+    .childon h3:hover{
+        color:  #{$color};
+    }
+</style>
+<div class="main_left">
+    <div class="left_title">
+        Download Center
+    </div>
+
+
+        <ul class="left_con">
+            <volist name="alldownloadclass" id="alldownloadclass" offset="0">
+                <li class="yiji"><a class="fst_a" href="{:U('/download_category',array('classid'=>$alldownloadclass["classid"]))}">{$alldownloadclass['class_name']}</a></li>
+            </volist>
+        </ul>
+
+    <div class="clear" ></div>
+</div>

@@ -1,0 +1,96 @@
+<!--{$pagename}-->
+<style>
+.cases-hj05_listtitle li.active h3,
+.cases-hj05_listtitle li:hover h3,
+.cases_hj05_com_pos_con span:after,
+.cases_hj05_com_pos_con a.more {
+    background-color: #{$data208[2]};
+    /* 主色背景 */
+}
+.cases-hj05_listtitle li.active {
+    border-color: #{$data208[2]};
+}
+.cases-hj05_con li:hover .cases-hj05_com_pos:before,
+.cases-hj05_con .first .cases-hj05_com_pos:before {
+    background-color: #{$data208[3]};
+    /* 蒙版背景 */
+}
+</style>
+<php>
+    if($data208[4]){
+        $len = $data208[4];
+    }else{
+        $len = 6;
+    };
+    </php>
+<section class="cases-hj05 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 wow fadeInUp" data-wow-duration="1s">
+                <div class="cases-hj05_title text-center pb40">
+                    <h2 class="index_title">{$data208[0]}</h2>
+                    <span class="index_text">{$data208[1]}</span>
+                </div>
+            </div>
+            <!-- pc start -->
+            <div class="col-xs-12 wow fadeInUp hidden-xs hidden-sm hidden-md" data-wow-duration="1s" data-wow-delay="0.3s">
+                <ul class="row cases-hj05_listtitle cases-hj05_listtitle_pc text-center ">
+                    <volist name="allcaseclass" id="li" offset="0" length="$len">
+                        <li>
+                            <a class="ellipsis_one index_text">{$li['class_name']}</a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <!-- pc end -->
+            <!-- mobile  start-->
+            <div class="col-xs-10 col-xs-offset-1 wow fadeInUp hidden-lg hidden-xl" data-wow-duration="1s" data-wow-delay="0.3s">
+                <ul class="row cases-hj05_listtitle cases-hj05_listtitle_mobile text-center">
+                    <volist name="allcaseclass" id="li" offset="0" length="$len">
+                        <li class="active">
+                            <a class="ellipsis_one index_text" >{$li['class_name']}</a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <!-- mobile end-->
+        </div>
+        <div class="row wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+            <volist name="allcaseclass" id="lia" offset="0" length="$len">
+                <ul class="cases-hj05_con clearfix">
+                    <li class="first col-xs-12 col-md-6">
+                        <div class="cases-hj05_con_mask">
+                            <div class="cases-hj05_com_pos">
+                                <div class="cases_hj05_com_pos_con">
+                                    <a href="{:U('/case_category',array('classid'=>$lia['classid']))}" class="cases-hj05_com_pos_title ellipsis_one index_sub_title">{$lia['class_name']}</a>
+                                    <span></span>
+                                    <p class="ellipsis_three">{$lia['readme']}</p>
+                                    <a href="{:U('/case_category',array('classid'=>$lia['classid']))}" class="more text-center">{:__('Read More')}</a>
+                                </div>
+                            </div>
+                            <img src="{:getimgurl($lia['banner'])}" class="img-responsive" alt="{$lia['class_name']}">
+                        </div>
+                    </li>
+                    <php>
+                        $classid = $lia['classid']; $caseitem = get_index_cases_category($classid,6);
+                    </php>
+                    <volist name="caseitem" id="caseitem" offset="0" length="6">
+                        <li class="col-xs-6 col-md-3">
+                            <div class="cases-hj05_con_mask">
+                                <div class="cases-hj05_com_pos">
+                                    <div class="cases_hj05_com_pos_con">
+                                        <a href="{:U('/case_detail',array('nid'=>$caseitem['nid']))}" class="ellipsis_one index_text">{$caseitem['title']}</a>
+                                        <span></span>
+                                        <p class="ellipsis_three index_text">{:subtxt($caseitem['news_description'],120)}</p>
+                                        <a href="{:U('/case_detail',array('nid'=>$caseitem['nid']))}" class="more text-center">{:__('Read More')}</a>
+                                    </div>
+                                </div>
+                                <img src="{:getimgurl($caseitem['new_pro'])}" alt="{$caseitem['title']}" class="img-responsive">
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+            </volist>
+        </div>
+    </div>
+</section>

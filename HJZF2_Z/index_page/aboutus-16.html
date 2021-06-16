@@ -1,0 +1,87 @@
+<!--{$pagename}-->
+<style>
+    .aboutus_16_top dl:last-child .my-mask-l:before {
+        background: #fff;
+    }
+
+    .aboutus_16_top dl:last-child,
+    .aboutus_16_top dl:first-child a:hover:before {
+        background-color: #{$data283[0]};
+    }
+
+    .aboutus_16_top dl:first-child a:hover,
+    .aboutus_16_top dl:first-child a:hover i {
+        color: #{$data283[0]};
+    }
+</style>
+<section class="hjzf_aboutus_16">
+    <!-- left start-->
+    <div class="aboutus_16_left hjzf_aboutus_16_item">
+        <div class="swiper-container hjzf_aboutus_16_swiper">
+            <div class="swiper-wrapper">
+                <php>
+                    for($i=1;$i
+                    <6;$i=$i+1){ </php>
+                        <if condition="$data283[$i]">
+                            <div class="swiper-slide">
+                                <img src="{:getindeximgurl($data283[$i])}" alt="{$data283[6]}" class="img-responsive">
+                            </div>
+                        </if>
+                        <php>}</php>
+            </div>
+
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white abouts_16_next"></div>
+            <div class="swiper-button-prev swiper-button-white abouts_16_prev"></div>
+        </div>
+        <div class="abouts_16_con">
+            <span class="index_title">{$data283[6]}</span>
+            <p class="index_sub_title">{$data283[7]}</p>
+        </div>
+    </div>
+    <!-- left end-->
+
+    <!-- right start-->
+    <div class="aboutus_16_right hjzf_aboutus_16_item index_text">
+        <div class="aboutus_16_top aboutus_16_right_item">
+            <dl class="wow fadeInLeft">
+                <dt class="index_title pb20">{$data283[8]}</dt>
+                <php>
+                    $bottom_nav_str2=explode("\\r\\n",$data283[10]); foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2) { $bottom_navs2=explode(":",$bottom_nav_arr2);
+                    $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+                </php>
+                <volist name="bottom_nav2" id="nav">
+                    <dd>
+                        <a href="{$nav['href']}" class="my-mask-l">{$nav['name']}
+                            <i class="fa fa-angle-right fr"></i>
+                        </a>
+                    </dd>
+                </volist>
+            </dl>
+            <php>
+                $bottom_nav_strba=explode("\\r\\n",$data283[11]); foreach($bottom_nav_strba as $k=>$bottom_nav_arrba) { $bottom_navsba=explode(":",$bottom_nav_arrba);
+                $bottom_navba[$k]['name']=$bottom_navsba[0]; $bottom_navba[$k]['href']=$bottom_navsba[1]; }
+            </php>
+            <if condition="$data283[9]">
+                <dl class="wow fadeInLeft" data-wow-delay=".3s">
+                    <dt class="index_title pb20">{$data283[9]}</dt>
+                    <volist name="bottom_navba" id="nava">
+                        <dd>
+                            <a href="{$nava['href']}" class="my-mask-l">{$nava['name']}
+                                <i class="fa fa-angle-right fr"></i>
+                            </a>
+                        </dd>
+                    </volist>
+                </dl>
+            </if>
+        </div>
+        <div class="aboutus_16_bottom aboutus_16_right_item flex-center wow fadeInUp">
+            <img src="{:getindeximgurl($data283[14])}" alt="{$data283[12]}">
+            <div class="aboutus_16_right_text">
+                <span class="index_title wow fadeInUp" data-wow-delay=".4s">{$data283[12]}</span>
+                <p class="index_sub_title wow fadeInUp" data-wow-delay=".4s">{$data283[13]}</p>
+            </div>
+        </div>
+    </div>
+    <!-- right end -->
+</section>

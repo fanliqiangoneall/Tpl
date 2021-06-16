@@ -1,0 +1,55 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data542[1]">
+        .hjzf2_z_bottom_23{
+            background-color: #{$data542[1]};
+        }
+    </if>
+</style>
+<section class="hjzf2_z_bottom_23">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="hjzf2_z_bottom_23_wrapper">
+					<php>
+						$nowtime=date("Y",time());
+					</php>
+                    <div class="hjzf2_z_bottom_23_wrapper_left">
+                        CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}
+                    </div>
+                    <div class="hjzf2_z_bottom_23_wrapper_right nav-hidden-mobile">
+                        <ul>
+                            <php>
+                                $arr = get_list_val($data542[2]);
+                            </php>
+                            <volist name="arr" id="a">
+                                <li>
+                                    <if condition="$arr[link]">
+                                    <a href="{$a[link]}">
+                                    </if>
+                                        <div class="hjzf2_z_bottom_23_wrapper_right_img">
+                                            <img src="{$a[ico]}" >
+                                            <div class="hjzf2_z_bottom_23_wrapper_right_content">
+                                                <if condition="$a[txt]">
+                                                    <div class="hjzf2_z_bottom_23_wrapper_right_content_text">
+                                                    {$a[txt]}
+                                                </div>
+                                                </if>
+                                                <if condition="$a[img]">
+                                                <div class="hjzf2_z_bottom_23_wrapper_right_content_img">
+                                                    <img src="{$a[img]}" alt="">
+                                                </div>
+                                                </if>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

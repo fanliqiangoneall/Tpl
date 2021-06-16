@@ -1,0 +1,204 @@
+<!--{$pagename}-->
+<style>
+    #head-1{display: none}
+</style>
+<if condition="has_mould('head-1') eq true">
+    <style>
+        #head-1{display: block}
+        #head{display: none}
+    </style>
+    <php>
+        if(!$data45[1]){
+        $data45[1]=267;
+        }
+    </php>
+    <style>
+        /*head*/
+        .logo_em{padding-left: 0px!important;margin-right: 30px;}
+        .logo_em a{
+            font-size: 16px!important;color: #{$color};font-family: Arial;font-weight:normal!important;display: inline-block!important;
+        }
+        .logo_wenzi{
+        width: {$data45[1]}px;
+        }
+        .banner_top {
+            width: 100%;
+            margin: 0 auto;
+            height: 101px;
+            z-index: 56;
+            background:#{$color};
+
+        }
+        .index_nav3 ul li:hover a h2{
+            color:#{$color};
+        }
+        .index_nav3 ul li:hover:after{
+            content: '';display: table;width: 100%;height: 2px;background: #{$color};position: absolute;bottom: 0px;
+        }
+        .menu_on{
+            background-color: transparent!important;
+        }
+        .menu_on:after{
+            content: '';display: table;width: 100%;height: 2px;background: #{$color};position: absolute;bottom: 0px;
+        }
+        .index_nav3 ul li.menu_on h2{
+            color: #{$color};
+        }
+        .top_language{float: right;color: #fff;line-height: 40px;font-weight: normal;margin-right: 10px;}
+        .top_language a{color: #fff;line-height: 40px;font-weight: normal;}
+        /*head*/
+
+        <if condition="$data45[3]">
+        .top {
+            width: 100%;
+            background:url({:getindeximgurl($data45[3])});
+        background-repeat:no-repeat;
+        background-position:center;
+        height: 40px;
+        }
+        </if>
+
+
+          .head_contact{position: absolute;right: 0;top: 0;}
+        .head_contact ul li{float: right;margin-left: 12px;}
+        .head_contact ul li a{font-size: 13px;line-height: 25px;position: relative}
+        .head_contact>ul>li>a:before{content: '|';font-size: 13px;line-height: 25px;left: -8px;position: absolute;top: -6px;}
+        .head_contact>ul>li:last-child>a:before{display: none}
+        .search_box{float: right;width: 200px;margin-top: 35px;margin-left: 35px;}
+    </style>
+
+
+
+</if>
+
+
+<if condition="$data45[4]">
+    <style>
+        .logo_em a{
+        color: {$data45[4]};
+        }
+        .logo_em p{
+        color: {$data45[4]};
+        }
+        .head_contact ul li a{
+        color: {$data45[4]};
+        }
+        .head_contact>ul>li>a:before{content: '|';font-size: 13px;line-height: 25px;left: -8px;position: absolute;top: -6px;
+        color: {$data45[4]};
+        }
+    </style>
+</if>
+
+<if condition="$data1[12]">
+<style>
+.menu_li ul {
+    width: auto;
+    float: left;
+    position: absolute;
+    z-index: 30;
+    top: 44px;
+}
+.menu_li ul li a h3{
+	color:#333333;
+	font-size:14px;
+	padding:0 60px 0 5px;
+	border-bottom:1px solid #eae7e7;
+	font-weight:200;
+}
+.menu_li ul li{
+	background:rgba(250,249,227,0.76);
+	padding:0 15px;
+	height:44px; line-height:44px;
+}
+.menu_li ul li:last-child a h3{border-bottom: none}
+.menu_li ul li:hover a h3{
+    color: #fff;
+}
+</style>
+<script>
+$(document).ready(function(e) {
+$(".menu_li").mousemove(function(){
+	console.log(1);
+	$(this).find('ul').show();
+}).mouseout(function(){
+	$(this).find('ul').hide();
+})  
+
+$(".menu_li ul").mousemove(function(){
+	console.log(1);
+	$(this).find('ul').show();
+}).mouseout(function(){
+	$(this).find('ul').hide();
+})   
+  
+});
+</script>
+</if>
+<div id="head-1">
+
+
+<!--head_middle-->
+<div class="banner_top">
+    <div class="banner_top2" style="position: relative">
+        <div class="head_contact">
+            <ul>
+                <li><a href="javascript:void(0);">LANGUAGE</a>
+                    <ul>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                    </ul>
+                </li>
+                <li><a href="{$data45[6]}">{$data45[5]}</a></li>
+                <li><a href="{$data45[8]}">{$data45[7]}</a></li>
+                <li><a href="{:U('/')}">HOME</a></li>
+            </ul>
+        </div>
+        <div class="page_Logo">
+            <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            <if condition="$data45[0]">
+                <div style="height: 58px;width: 2px;background: url(__TMPL__WH01/img/logo_line.jpg) no-repeat center;float: left;margin:0 13px;margin-top: 26px;display:inline-block;"></div>
+                <div class="logo_wenzi">
+                    <p style="font-size: 19px;margin-top: 20px;color: #333333;font-family:Arial;font-weight: normal;position: relative">{$data45['0']}</p>
+                </div>
+            </if>
+        </div>
+        <div class="search_box" >
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL" style="width: 200px;height:30px;float: right;background: rgba(0,0,0,0.2);margin-top: 7px;overflow: hidden; ">
+                <li style="float: left;width: 160px;height: 24px;margin-top: 3px;"><input style="height: 23px;width:150px;border-width:0px;padding-left: 10px;color:#e2e3e2;border-right:1px solid #e2e3e2;outline: none;background: transparent;" type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                <li style="float: left;height: 26px;margin-top: 4px;margin-left: 10px;"><input type="image" src="__TMPL__WH01/img/search_pic2.png" style="background: transparent;-webkit-transform: scale(0.8);-moz-transform: scale(0.8);transform: scale(0.8)"></li>
+            </form>
+        </div>
+        <div class="logo_em" <if condition="$data45[2]">style="background: url({:getindeximgurl($data45[2])}) no-repeat left;"</if>>
+            <p><img src="__TMPL__WH01/img/head1_icon1.png" alt="" style="position: relative;top: 3px;left: -4px;"/>E-mail: <a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1)"> {:chaifen($about['email'],0)}</a></p>
+            <p><img src="__TMPL__WH01/img/head1_icon2.png" alt="" style="position: relative;top: 2px;left: -4px;"/>Mobile: {:chaifen($about['mobile'],0)}</p>
+        </div>
+    </div>
+</div>
+<!--head_middle-->
+
+<!--head_dowm-->
+<div class="banner_title">
+    <div class="banner_title2">
+        <div class="index_nav">
+            <div class="index_nav3">
+                <ul id="index_navigation_animate_2">
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}" class="menu_li"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a>
+                            <if condition="$vo['child'] neq ''">
+                                <ul style="display: none">
+                                    <volist name="vo['child']" id="navchild">
+                                        <li><a href="{$navchild['url']}" <if condition=" $navchild['nav_way'] eq 1">target="_new"</if>>
+                                            <h3>{$navchild['title']}</h3></a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--head_dowm-->

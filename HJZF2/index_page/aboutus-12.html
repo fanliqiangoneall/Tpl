@@ -1,0 +1,75 @@
+<style>
+    .aboutus-12--right__content ul li:hover a{
+        border: 1px solid #{$data135[0]};background: #{$data135[0]};
+    }
+</style>
+<if condition="$data135[1]">
+    <style>
+        .new_hjzf_aboutus-12{
+            background: url({:getindeximgurl($data135[1])}) no-repeat center;
+        }
+    </style>
+</if>
+<if condition="$data"></if>
+<php>
+$video_url = HtmlEncode($data135[24]);
+</php>
+<script>
+  var video_str = "<?php echo $video_url;?>";
+</script>
+<section id="aboutus-12">
+    <div class="aboutus-12__container">
+        <div class="aboutus-12--top">
+            <div class="aboutus-12--left wow fadeInLeftBig" data-wow-duration="1s" data-wow-offset="200">
+                <div class="swiper-container aboutus-12__swiper">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $imgs=aboutusimg();
+                        </php>
+                        <volist name="imgs" id="banerimg" key="k1" offset="0">
+                            <if condition="$banerimg['imgurl'] neq ''">
+                                <li  class="swiper-slide"><a href="javascript:void(0);" data-video="{$data135[23]}" id="adv_video{$k1}"><img src="{$banerimg['imgurl']}" border="0" width="603" height="309"/></a></li>
+                            </if>
+                        </volist>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination new_hjzf_aboutus_pagination"></div>
+                </div>
+            </div>
+            <div class="aboutus-12--right wow fadeInRightBig" data-wow-duration="1s" data-wow-offset="200">
+                <div class="aboutus-12--right__content">
+                    <h3 class="aboutus-12--right__title">{$data135[2]}</h3>
+                    <section class="aboutus-12--right__text">
+                        {:HtmlEncode(subtxt($company_info['description'],400))}
+                    </section>
+                    <ul>
+                        <php>
+                            for($i=3;$i<10;$i=$i+2){
+                        </php>
+                        <if condition="$data135[$i]">
+                            <li><a href="{$data135[$i+1]}">{$data135[$i]}</a></li>
+                        </if>
+                        <php>
+                            }
+                        </php>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="aboutus-12--down">
+            <ul class="aboutus-12__shuzi_box flex">
+                <php>for($i=11;$i<22;$i=$i+3){</php>
+
+                <if condition="$data135[$i] neq ''">
+                    <li class="aboutus-12__shuzi__item" id="count{$i}">
+                        <span class="count_shuzi timer" data-to="{$data135[$i]}" data-speed="1500" data-danwei="{$data135[$i+1]}">{$data135[$i]}</span>
+                        <p class="count_shuzi_desc">{$data135[$i+2]}</p>
+                    </li>
+                </if>
+                <php>}</php>
+            </ul>
+        </div>
+    </div>
+</section>
+

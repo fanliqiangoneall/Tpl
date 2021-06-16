@@ -1,0 +1,76 @@
+<!--{$pagename}-->
+<php>
+    if($data334[2]){
+        $high_color = $data334[2];
+    }else{
+        $high_color = $color;
+    };
+    if($data334[3]){
+        $text_color = $data334[3];
+    }else{
+        $text_color = $color;
+    };
+</php>
+<style>
+    <if condition="$data334[1]">
+    .hjzf2_other_49,.hjzf2_other_49 a{
+        color: #{$data334[1]};
+    }
+    </if>
+    <if condition="$data334[0]">
+        .hjzf2_other_49{
+            background: url({:getindeximgurl($data334[0])}) no-repeat center bottom/ 100% auto #{$data334[13]};
+        }
+    </if>
+   
+    .hjzf2_other_49_wrapper li a{
+        background-color: #{$high_color};
+        border: 1px solid #{$high_color};
+    }
+    .hjzf2_other_49_wrapper li a:hover{
+        color: #{$high_color};
+        background-color: #fff;
+    }
+    .hjzf2_other_49_wrapper .index_sub_title{
+        color: #{$text_color};
+    }
+    @media(max-width: 1200px) {
+        
+        <if condition="$data334[0]">
+            .hjzf2_other_49{
+                background: url({:getindeximgurl($data334[0])}) no-repeat center bottom/ 100% auto  #18223f;
+            }
+        </if>
+        .hjzf2_other_49_wrapper .index_sub_title{
+            color: #fff;
+        }
+    }
+</style>
+<section class="hjzf2_other_49 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center index_title pb40 wow fadeInUp">
+                    {$data334[4]}
+                </div>
+                <ul class="hjzf2_other_49_wrapper text-center index_text">
+                    <li class="wow fadeInLeft">
+                        <div class="index_sub_title pb40">
+                            {$data334[5]}
+                        </div>
+                        <p class="index_text pb40">{:HtmlEncode($data334[6])}</p>
+                        <a href="{$data334[8]}" class="index_btn index_text">{$data334[7]} <i class="fa fa-angle-right"></i></a>
+                    </li>
+                    <li class="wow fadeInRight">
+                        <div class="index_sub_title pb40">
+                            {$data334[9]}
+                        </div>
+                        <p class="index_text pb40">{:HtmlEncode($data334[10])}</p>
+                        <a href="{$data334[12]}" class="index_btn index_text ">{$data334[11]} <i class="fa fa-angle-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flearfix"></div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,70 @@
+<!--{$pagename}-->
+
+<style>
+.partner .responsive-image{margin-bottom:0px;}
+.LeftBotton2 {
+	height: 30px; width:22px; margin-right:25px;float:right;display: block; background:url({:getindeximgurl($data11[7])}) no-repeat;  z-index:11;
+}
+.RightBotton2 {
+	WIDTH: 22px; HEIGHT:30px;margin-right:5px;float:right;display: block;  background:url({:getindeximgurl($data11[9])}) no-repeat;  z-index:11;
+}
+.LeftBotton2:hover {
+	background:url({:getindeximgurl($data11[8])}) no-repeat;
+}
+.RightBotton2:hover {
+	background:url({:getindeximgurl($data11[10])}) no-repeat;
+}
+
+
+<if condition="$data11[11]">
+#customers{width: 100%;max-width: 1920px;min-width: 1190px;
+    background:url({:getindeximgurl($data11[11])});
+	background-repeat:no-repeat;
+	background-position:center;
+}
+</if>
+</style>
+<!--customers start -->
+<div id="customers">
+	<div class="customer_cont">
+		<div class="cus-title"><img src="__TMPL__WH01_DE/img/protitle_bg.png" alt="protitle_bg.png" style="margin-right: 18px;"><span>{$data11[0]}</span><img src="__TMPL__WH01_DE/img/protitle_bg2.png" style="margin-left: 18px;"></div>
+
+	</div>
+	<div id="cus_btn">
+		<div style="width: 95px;background: url(__TMPL__WH01_DE/img/btn_bg.jpg) no-repeat 8px 5px ;float: right;z-index: 999">
+			<A class="RightBotton2" onMouseUp="ISL_StopDown_2()" onMouseDown="ISL_GoDown_2()" onMouseOut="ISL_StopDown_2()" href="javascript:void(0);" target="_self" onFocus="blur();"></A>
+			<A onMouseUp="ISL_StopUp_2()" class="LeftBotton2" onMouseDown="ISL_GoUp_2()" onMouseOut="ISL_StopUp_2()" href="javascript:void(0);" target="_self" onFocus="blur();"></A>
+		</div>
+	</div>
+	<div class="Cooperation_cont">
+
+		<div class="blk_12" >
+			<div class="pcont" id="ISL_Cont_2">
+				<div class="ScrCont">
+					<div id="List1_2">
+						<if condition="$data11[1]"><img src="{:getindeximgurl($data11[1])}"></if>
+						<if condition="$data11[2]"><img src="{:getindeximgurl($data11[2])}"></if>
+						<if condition="$data11[3]"><img src="{:getindeximgurl($data11[3])}"></if>
+						<if condition="$data11[4]"><img src="{:getindeximgurl($data11[4])}"></if>
+						<if condition="$data11[5]"><img src="{:getindeximgurl($data11[5])}"></if>
+						<if condition="$data11[6]"><img src="{:getindeximgurl($data11[6])}"></if>
+						<if condition="$data11[14]"><img src="{:getindeximgurl($data11[14])}"></if>
+						<if condition="$data11[15]"><img src="{:getindeximgurl($data11[15])}"></if>
+						<if condition="$data11[16]"><img src="{:getindeximgurl($data11[16])}"></if>
+						<if condition="$data11[17]"><img src="{:getindeximgurl($data11[17])}"></if>
+						<if condition="$data11[18]"><img src="{:getindeximgurl($data11[18])}"></if>
+						<if condition="$data11[19]"><img src="{:getindeximgurl($data11[19])}"></if>
+						<if condition="$data11[20]"><img src="{:getindeximgurl($data11[20])}"></if>
+						<if condition="$data11[21]"><img src="{:getindeximgurl($data11[21])}"></if>
+						<if condition="$data11[22]"><img src="{:getindeximgurl($data11[22])}"></if>
+						<if condition="$data11[23]"><img src="{:getindeximgurl($data11[23])}"></if>
+					</div>
+					<div id="List2_2">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<!--customers end -->

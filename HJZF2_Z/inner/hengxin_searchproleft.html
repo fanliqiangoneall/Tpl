@@ -1,0 +1,172 @@
+<!--hengxin_searchproleft star-->
+<foreach name="all_search_cates" item="one_search_cate">
+	<php>
+		$fid=$key;
+	</php>
+	<ul attrs_f="{$fid}" class="attr_group" id="{$fid}">
+		<volist name="one_search_cate" id="all_search_cate">
+			<div class="one_search_cate">
+				<li find_f="{$fid}" class="yiji"><a href="javascript:">
+						<h3 style="font-weight:bold">{$all_search_cate['class_name']} {:__(":")}</h3>
+						<!-- <if condition="$all_search_cate['pcid'] eq 35"><span fid="{$all_search_cate['pcid']}"
+                            class="class_button_search search_class_button"></span></if> -->
+					</a>
+				</li>
+				<ul>
+					<foreach name="all_search_cate['son']" item="cate_son">
+						<li class="child"><a href="javascript:">
+								<h3 style="font-weight:bold">{$cate_son['class_name']}</h3>
+								<!-- <span fid="{$cate_son['pcid']}" class="class_button_search search_class_button"></span> -->
+							</a>
+						</li>
+						<foreach name="cate_son['attr']" item="attr">
+							<li class="third" cfid="{$cate_son['pcid']}"><a fid="{$fid}" id="attr_{$attr['pid']}"
+									class="attr" count="{$attr['count']}" pid="{$attr['pid']}">
+									<div class="search_checkbox"></div>
+									<h3>{$attr['pro_name']}
+									</h3>
+								</a>
+							</li>
+						</foreach>
+					</foreach>
+					<foreach name="all_search_cate['attr']" item="attr">
+						<li 1 class="third" dataallc cfid="{$all_search_cate['pcid']}"><a class="attr" fid="{$fid}"
+								id="attr_{$attr['pid']}" count="{$attr['count']}" pid="{$attr['pid']}">
+								<div class="search_checkbox"></div>
+								<h3>{$attr['pro_name']}</h3>
+							</a>
+						</li>
+					</foreach>
+				</ul>
+			</div>
+		</volist>
+	</ul>
+</foreach>
+<button class="search_reset">Reset</button>
+<style>
+	.search_reset {
+		background-color: #{$color};
+	}
+</style>
+<script>
+	require(['jquery'], function ($) {
+		$('.search_reset').click(function () {
+			var href = window.location.href;
+			if (href.indexOf('?') != -1) {
+				var link = href.split('?')[0];
+			}
+			if (link) {
+				window.location.href = link;
+			}else{
+				window.location.reload();
+			}
+		});
+		$(document).on("click", ".search_class_button", function () {
+			var fid = $(this).attr("fid");
+			$(".third[cfid='" + fid + "']").slideToggle(300);
+		})
+
+		// $(".attr_group").each(function(index, element) {
+		//     var pro_class_id=$(this).attr("attrs_f");
+		//     console.log("pro_class_id",pro_class_id);
+		//     $("li[pro-class-id='"+pro_class_id+"']").after($(this).find("li"));
+		//     $(this).html("");
+		// });
+		var jump_time;
+		init_set();
+
+		var top = "{$Think.get.top}";
+		if (top) {
+			window.scroll(0, top);
+		}
+		$(".attr").on("click", function () {
+			var pid = $(this).attr("pid");
+			var fid = $(this).attr("fid");
+			//孙瑞舒提 客户不要能同列多选
+			var hasClass = $(".attr[pid='" + pid + "']").hasClass("on");
+			$(this).parent().parent().find(".attr").removeClass("on");
+
+
+			
+			if (hasClass) {
+				$(".attr[pid='" + pid + "']").removeClass("on");
+			} else {
+				$(".attr[pid='" + pid + "']").addClass("on");
+				$(".attr[fid!='" + fid + "']").removeClass("on");
+			}
+			creat_url();
+			
+			return false;
+		})
+
+
+
+		function creat_url() {
+			var search_classid;
+
+			//var cur_url=window.location.href.replace(<literal>/\\?search=.*/g</literal>,"");
+			console.log("cur_url", cur_url);
+			var parms = [];
+			$(".on").each(function (index, element) {
+				var val = $(this).attr('pid');
+				if ($.inArray(val, parms) == -1) {
+					if(val){
+					parms.push(val);
+					}
+				}
+				search_classid = $(this).attr("fid");
+			});
+			//console.log("parms",parms);
+			var cur_url = $("li[pro-class-id='" + search_classid + "'] a").attr("href");
+			console.log("parms", parms);
+			if (parms) {
+				var parms_str = parms.join(',');
+			}
+			console.log("parms_str", parms_str);
+			if (parms_str) {
+				var jump_url = cur_url + "?search=" + parms_str;
+			} else {
+				var jump_url = cur_url;
+			}
+			console.log("jump_url", jump_url);
+			var top = $(document).scrollTop();
+			if (!search_classid) {
+				jump_url = "{:U('/product')}";
+				window.location.href = jump_url;
+			} else {
+				window.location.href = jump_url + "&search_classid=" + search_classid;
+			}
+
+		};
+
+
+
+		function init_set() {
+			var search_word_str = "{$Think.get.search}";
+			var search_words = search_word_str.split(",");
+			$.each(search_words, function (index, v) {
+				//var zv=vv.split("-");
+				//f=zv[0];
+				//v=zv[1];
+				if (v) {
+					$(".attr[pid='" + v + "']").addClass("on");
+					var sreach_rs_btn_html = '<span class="sreach_rs_btn" pid="' + v + '"><span>' + $(".attr[pid='" + v + "'] h3").html() + '</span><span class="sreach_rs_btn_colse"><svg viewBox="0 0 16 16"><path d="M10.645 8.004l4.949-4.953a1.4 1.4 0 000-1.98l-.66-.66a1.4 1.4 0 00-1.98 0l-4.95 4.952L3.05.41a1.4 1.4 0 00-1.98 0l-.66.66a1.4 1.4 0 000 1.98l4.952 4.954-4.953 4.95a1.4 1.4 0 000 1.98l.66.66a1.4 1.4 0 001.98 0l4.954-4.95 4.95 4.95a1.4 1.4 0 001.98 0l.66-.66a1.4 1.4 0 000-1.98zm0 0"></path></svg></span></span>';
+					// $(".search_rs").append(sreach_rs_btn_html);
+				}
+			});
+		};
+
+		$('.attr_group').each(function () {
+			$(this).hide();
+			var atis = $(this).attr('id');
+			var id = $('.ougang_search_list li.yijion').attr('pro-class-id');
+			var childId = $('.ougang_search_list li .childon').attr('pro-class-id');
+			if (id == atis || childId == atis) {
+				$(this).show();
+			};
+		});
+
+
+	});
+</script>
+<!--hengxin_searchproleft end-->

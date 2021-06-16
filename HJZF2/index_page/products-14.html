@@ -1,0 +1,77 @@
+<style>
+#products_14{
+    margin-top: {$data124[5]}px;
+    margin-bottom: {$data124[6]}px;
+}
+.new_hjzf_products-14 .left_click:hover,.new_hjzf_products-14 .right_click:hover{
+    background: #{$color};color: #fff;border-color: #{$color};
+}
+.new_hjzf_products-14 .left_click:hover:before,.new_hjzf_products-14 .right_click:hover:before{
+    color: #fff;
+}
+</style>
+<if condition="$data124[4]">
+    <style>
+        #products_14{
+            background: url({:getindeximgurl($data124[4])}) no-repeat center;
+        }
+    </style>
+</if>
+<section id="products_14">
+    <div class="products_14">
+        <div class="products_14_head">
+            <div class="products_14_title">
+                <div class="products_14_mainTitle">{$data124[0]}</div>
+                <div class="products_14_subTitle">{$data124[1]}</div>
+            </div>
+            <div class="products_14_class_titleWrap">
+                <ul class="products_14_class_title">
+                    <php>
+                        $arr_str=$data124[2];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_index_products_categoryname($a);
+                        }
+                        foreach($arr as $c=>$b){
+                        $class[$c]['data']=get_index_products_category($b,$all_pro);
+                        }
+                    </php>
+                    <volist empty="" name="list" id="li" key="k" offset="0" length="7">
+                        <if condition="$li">
+                            <li class="index_proclass_on{$k}" data-text="{$li['class_name']}"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a>
+                                <div></div>
+                            </li>
+                        </if>
+                    </volist>
+                </ul>
+            </div>
+            <div class="switch">
+                <div class="left_click fa fa-angle-left fa-2x">
+                    </div>
+                    &nbsp;
+                <div class="right_click fa fa-angle-right fa-2x">
+                    </div>
+                </div>
+        </div>
+        <div class="products-14__content__right wow bounceInRight" data-wow-duration="1s" data-wow-offset="200" style="position: relative">
+                <div class="products-14__content--right--wai">
+                    <volist empty="" name="class" id="li" key="k">
+                        <div class="products-14__content__itemBox">
+                            <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="6">
+                                <div class="products-14__item">
+                                        
+                                    <div class="products-14__proImg"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" width="437px" height="320px"/></a></div>
+                                    <div class="products-14__proName"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                    <div class="pro_description">{$indexpro['pro_description']}</div>
+                                </div>
+                            </volist>
+                        </div>
+                    </volist>
+                    <volist empty="" name="list" id="li" key="k" offset="0" length="6">
+                        <img src="{:getmainimgurl($li['fid'])}"style="position: absolute; top:0px; width:586px; height:320px;" class="middle_img{$k}">
+                    </volist>
+                </div>
+            </div>
+
+    </div>
+</section>

@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<style>
+    .hj01_index_inquiry{
+        background: url({:getindeximgurl($data14[5])}) no-repeat center;background-size: cover;
+    }
+    .index_inquiry_left_title{
+        background: #{$color};
+    }
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+        color: #6d8190;
+    }
+    input:-moz-placeholder, textarea:-moz-placeholder {
+         color: #6d8190;
+    }
+    input::-moz-placeholder, textarea::-moz-placeholder {
+        color: #6d8190;
+    }
+    input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+        color: #6d8190;
+    }
+    input,textarea{
+        outline-color: {$data1[0]};
+    }
+    .inquiry_box input#index_submit{
+        background: {$data1[0]};
+    }
+    .hj01_index_inquiry_right_title h6{
+        color: {$data1[0]};
+    }
+    .hj01_index_inquiry_right_title h6{
+        color: #{$color};
+    }
+</style>
+<if condition="$data14[0]">
+    <div class="hj01_index_inquiry">
+    <div class="container">
+        <section class="hj01_index_inquiry_left">
+            <div class="index_inquiry_left_title">
+                    <h6 class="font-weight-600 margin-0px-bottom">{$data14[6]}</h6>
+                    <h4>{$data14[0]}</h4>
+            </div>
+            <div class="index_inquiry_left_main">
+                <Include file="./Tpl/HJ01CN/submitinquiry_index.html" />
+            </div>
+        </section>
+        <section class="hj01_index_inquiry_right">
+            <figure class="hj01_index_inquiry_right_pic margin-35px-bottom">
+                <div class="animate"><img src="{:getindeximgurl($data14[1])}" alt=""/></div>
+            </figure>
+            <div class="hj01_index_inquiry_right_title margin-30px-bottom">
+                <h6>{$data14[2]}</h6>
+                <h4 class="margin-10px-top">{$data14[3]}</h4>
+            </div>
+            <div class="hj01_index_inquiry_right_text">
+                <div class="animate">
+                    <p class="margin-20px-bottom">{:subtxt($data14[4],305)}</p>
+                    <p>{:subtxt($data14[7],305)}</p>
+                </div>
+            </div>
+
+        </section>
+        <div class="clear"></div>
+    </div>
+</div>
+</if>

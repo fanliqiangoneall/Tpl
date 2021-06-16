@@ -1,0 +1,124 @@
+<!--{$pagename}-->
+<style>
+  .products_hj07_title .index_sub_title span {
+    color: #{$data235[2]};
+  }
+
+  .products_hj07_title_slide:hover .products_hj07_title_slide_box:after,
+  .products_hj07_pagination .swiper-pagination-bullet-active {
+    background-color: #{$data235[2]};
+  }
+<if condition="$data235[0]">
+  .products_hj07 {
+    background: url({:getindeximgurl($data235[0])
+  }
+
+  ) no-repeat center/cover;
+  }
+  </if>
+</style>
+<script>
+  var $no_swiper = '<?php echo $data235[8];?>';
+</script>
+<section class="products_hj07 index_pd">
+  <div class="container">
+    <div class="row products_hj07_box">
+      <!-- title start -->
+      <div class="products_hj07_title text-center pb40">
+        <h2 class="pb20 index_title wow fadeInUp">{$data235[3]}</h2>
+        <if condition="$data235[4]">
+          <p class="index_sub_title wow fadeInUp" data-wow-delay=".2s">
+            <span>{$data235[4]}</span> {$data235[5]}</p>
+        </if>
+      </div>
+      <!-- title end -->
+	  <if condition="$data235[8]">
+      <div class="products_hj07_body">
+      	  <php>
+              $arr_str=$data235[7];
+              $arr=explode(',',$arr_str);
+              foreach($arr as $k=>$a){
+              $list[$k]=get_index_products_categoryname($a);
+              }
+              if($data235[9]){
+              $arr_count=$data235[9];
+              }else{
+              $arr_count=12;
+              }
+            </php>
+            <volist empty="" name="list" id="li" key="keya">
+              <php>
+                $lista = get_index_products_category($li[pcid],$arr_count);
+              </php>
+              <volist empty="" name="lista" id="lia" key="keya">
+                <div class="products_hj07_title_slide col-xs-6 col-md-4 wow fadeInUp">
+                  <a class="products_hj07_title_slide_box" href="{:U('/Product','','')}/{:getproname($lia['pid'])}">
+                    <div class="products_hj07_title_slide_img">
+                      <img src="{:getmainimgurl($lia['main_img'])}" alt="{$lia['pro_name']}" class="img-responsive">
+                    </div>
+                    <div class="products_hj07_title_slide_text">
+                      <p class="index_sub_title">{$lia['pro_name']}</p>
+                      <span>{$data235[6]}</span>
+                    </div>
+                  </a>
+                </div>
+              </volist>
+            </volist>
+      </div>
+      <else/>
+      <!-- scroll start -->
+      <div class="swiper-container products_hj07_title_swiper wow fadeInUp" data-wow-delay=".4s">
+        <div class="swiper-wrapper">
+          <if condition="$data235[7]">
+            <php>
+              $arr_str=$data235[7];
+              $arr=explode(',',$arr_str);
+              foreach($arr as $k=>$a){
+              $list[$k]=get_index_products_categoryname($a);
+              }
+            </php>
+            <volist empty="" name="list" id="li" key="keya">
+              <php>
+                $lista = get_index_products_category($li[pcid],12);
+              </php>
+              <volist empty="" name="lista" id="lia" key="keya">
+                <div class="swiper-slide products_hj07_title_slide">
+                  <a class="products_hj07_title_slide_box"
+                    href="{:U('/Product','','')}/{:getproname($lia['pid'])}">
+                    <div class="products_hj07_title_slide_img">
+                      <img src="{:getmainimgurl($lia['main_img'])}" alt="{$lia['pro_name']}" class="img-responsive">
+                    </div>
+                    <div class="products_hj07_title_slide_text">
+                      <p class="index_sub_title">{$lia['pro_name']}</p>
+                      <span>{$data235[6]}</span>
+                    </div>
+                  </a>
+                </div>
+              </volist>
+            </volist>
+
+            <else />
+            <volist empty="" name="indexhotpro" id="indexpro5" key="k" offset="0" length="18">
+              <div class="swiper-slide products_hj07_title_slide">
+                <a class="products_hj07_title_slide_box" href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+                  <div class="products_hj07_title_slide_img">
+                    <img src="{:getmainimgurl($indexpro5['main_img'])}" alt="{$indexpro5['pro_name']}" class="img-responsive">
+                  </div>
+                  <div class="products_hj07_title_slide_text">
+                    <p class="index_sub_title">{$indexpro5['pro_name']}</p>
+                    <span>{$data235[6]}</span>
+                  </div>
+                </a>
+              </div>
+            </volist>
+          </if>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination products_hj07_pagination"></div>
+      </div>
+      <!-- scroll end -->
+      </if>
+    </div>
+  </div>
+</section>

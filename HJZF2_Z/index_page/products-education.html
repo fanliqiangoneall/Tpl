@@ -1,0 +1,52 @@
+<!--{$pagename}-->
+<php>
+	if($data601[0]){
+		$color = $data601[0];
+	}
+</php>
+<style>
+ <if condition="$data601[1]">
+    .pro_edu_bg {
+        background-image: url({:getindeximgurl($data601[1])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+.pro_edu_more{
+	background: #{$color};
+}
+</style>
+<section class="pro_edu_bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-right pro_edu_bread index_text">
+				<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;
+				<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$data601[2]}</span>
+			</div>
+			<div class="col-xs-12">
+				<div class="products_education index_title text-center pb40">{$data601[3]}</div>
+				<php>
+					$arr = get_list_val($data601[4]);
+				</php>
+				<div class="products_education">
+					<ul>
+						<volist name="arr" id="a">
+							<li>
+								<a href="{$a[link]}">
+									<div class="pro_edu_title">{$a[title]}</div>
+									<div class="pro_edu_img"><img src="{$a[img]}" alt="{$a[title]}"></div>
+									<div class="pro_edu_more">
+										<span>{$a[title]}</span>
+										<b>{:__('Read More')}</b>
+									</div>
+								</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

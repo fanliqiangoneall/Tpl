@@ -1,0 +1,235 @@
+<!--{$pagename}-->
+<if condition="$data60[0]">
+    <style>
+        .HJZF2_Z_other_hj01 {
+            background: url({:getindeximgurl($data60[0])
+        }
+
+        ) no-repeat center / cover;
+        }
+    </style>
+</if>
+<style>
+    .other_hj01_inquirybox input#index_submit {
+        background: #{$data60[1]};
+    }
+
+    .contact-way ul li:hover span {
+        border: 1px solid #{$data60[1]};
+    }
+
+    .contact-way ul li:hover i {
+        color: #{$data60[1]};
+    }
+
+    .contact-way ul li span:before {
+        border: 3px solid #{$data60[1]};
+    }
+</style>
+
+<section class="HJZF2_Z_other_hj01 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="HJZF2_Z_other_hj01_titlebox">
+                    <if condition="$data60[2]">
+                        <div class="HJZF2_Z_other_hj01_title index_title pb20">{$data60[2]}</div>
+                    </if>
+                    <if condition="$data60[3]">
+                        <div class="HJZF2_Z_other_hj01_title2 index_text">{$data60[3]}</div>
+                    </if>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="contact-way">
+                <ul>
+                    <li class="col-xs-6 col-lg-3 HJZF2_Z_other_hj01item mail">
+                        <a href="mailto:{:chaifen($about['email'],0)}"><span class="mail"><i class="fa fa-envelope-o"></i></span></a>
+
+                        <p><a href="mailto:{:chaifen($about['email'],0)}" class="index_text">{:chaifen($about['email'],0)}</a></p>
+                    </li>
+                    <if condition="C('Language') eq 'cn'">
+                        <li class="col-xs-6 col-lg-3 HJZF2_Z_other_hj01item skype">
+                            <a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" target="_blank"><span
+                                    class="skype"><i class="fa fa-qq"></i></span></a>
+
+                            <p><a href="skype:{:chaifen($about['msn'],0)}?chat"
+                                    class="index_text">{:chaifen($about['msn'],0)}</a></p>
+                        </li>
+                        <elseif condition="$webid eq '1698'"/>
+
+                        <li class="col-xs-6 col-lg-3 HJZF2_Z_other_hj01item skype">
+                            <a href="{$data60[4]}"><span class="facebook"><i
+                                        class="fa fa-facebook"></i></span></a>
+
+                            <p><a href="{$data60[4]}"
+                                    class="index_text">{:chaifen($about['msn'],0)}</a></p>
+                        </li>
+                        <else/>
+                        <li class="col-xs-6 col-lg-3 HJZF2_Z_other_hj01item skype">
+                            <a href="skype:{:chaifen($about['msn'],0)}?chat"><span class="skype"><i
+                                        class="fa fa-skype"></i></span></a>
+
+                            <p><a href="skype:{:chaifen($about['msn'],0)}?chat"
+                                    class="index_text">{:chaifen($about['msn'],0)}</a></p>
+                        </li>
+                    </if>
+
+                    <li class="col-xs-6 col-lg-3 HJZF2_Z_other_hj01item tel">
+                        <a href="tel:{:chaifen($about['phone'],0)}"><span class="tel"><i
+                                    class="fa fa-phone"></i></span></a>
+                        <p><a href="tel:{:chaifen($about['phone'],0)}" class="index_text">{:chaifen($about['phone'],0)}</a></p>
+                    </li>
+                    <li class="col-xs-6 col-lg-3 HJZF2_Z_other_hj01item phone">
+                        <a href="tel:{:chaifen($about['mobile'],0)}"><span class="phone"><i
+                                    class="fa fa-mobile"></i></span></a>
+
+                        <p><a href="tel:{:chaifen($about['mobile'],0)}"
+                                class="index_text">{:chaifen($about['mobile'],0)}</a></p>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="contact-inquiry">
+                <div class="col-xs-12">
+                    <div class="text index_sub_title">
+                        <span>{:__('Keep Updated')}</span>
+
+                        <p class="index_text">{:__('To learn the latest products')}</p>
+                    </div>
+                    <div class="form-box">
+                        <form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+                            <div class="other_hj01_inquirybox inquiry_width">
+                                <input type="text" name="linkname" id="linkname" placeholder="{:__('Name')} *"><span
+                                    class="hj01_yz_alert" id="linkname_alert"></span></div>
+                            <div class="other_hj01_inquirybox inquiry_width"><input type="text" name="email" id="email"
+                                    placeholder="{:__('E-mail')} *"><span class="hj01_yz_alert" id="email_alert"></span>
+                            </div>
+                            <div class="other_hj01_inquirybox hidden-xs">
+                                <div class="inquiry_box_animate"><input type="hidden" name="phone" id="phone"
+                                        placeholder="{:__('Mobile: ')}"><span class="hj01_yz_alert"
+                                        id="phone_alert"></span></div>
+                            </div>
+                            <div class="other_hj01_inquirybox hidden-xs">
+                                <div class="inquiry_box_animate"><textarea name="message"
+                                        value="{$about['company_name']} " id="message"
+                                        placeholder="{:__('Message: ')} *"
+                                        style="display: none">{$product["pro_name"]}</textarea><span
+                                        class="hj01_yz_alert" id="message_alert" style="display: none"></span></div>
+                            </div>
+                            <div class="other_hj01_inquirybox"><input type="text" class="input" id="code_char"
+                                    name="code" placeholder="{:__('code')} *" maxlength="3" />&nbsp;<img alt=""
+                                    src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};"
+                                    style="position:relative; top:0;" id="getcode_char" height="32"
+                                    title="Generate a new captcha" align="absmiddle">&nbsp;<span class="hj01_yz_alert"
+                                    id="code_char_alert"></span></div>
+                            <div class="other_hj01_inquirybox">
+                                <div class="inquiry_box_animate" id="inquiry_box6">
+                                    <input type="submit" value="{:__('Submit')}" name="SEND MESSAGE"
+                                        id="index_submit" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<php>
+    $lanother = C('LANGUAGE');
+</php>
+
+<script>
+    var language = '<?php echo $lanother;?>';
+    $(function () {
+        $("#linkname").focus(function () {
+
+            $("#linkname_alert").html("")
+        });
+        $("#email").focus(function () {
+
+            $("#email_alert").html("")
+        });
+        $("#code_char").focus(function () {
+            $("#code_char_alert").html("");
+
+        });
+        $("#getcode_char").click(function () {
+            $(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};')
+        });
+        $("#getcode_char1").click(function () {
+            $("#getcode_char").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};')
+        })
+    })
+    function yz_submit() {
+        var count = 0;
+        var message = Trims($("#message").val());
+        var linkname = Trims($("#linkname").val());
+        var phone = Trims($("#phone").val());
+        var email = Trims($("#email").val());
+        if (linkname.length <= 0) {
+            if (language == 'cn' || language == 'zh') {
+                $("#linkname_alert").html("姓名不能为空！");
+            } else {
+                $("#linkname_alert").html("The name cannot be empty!");
+            }
+            count++;
+        } else {
+            $("#linkname_alert").html("");
+        }
+
+
+        if (email.length <= 0 && !is_email(email)) {
+            if (language == 'cn' || language == 'zh') {
+                $("#email_alert").html("*邮箱格式错误");
+            } else {
+                $("#email_alert").html("*The email can not be empty!");
+            }
+
+            count++;
+        }
+        else {
+            $("#email_alert").html("");
+        }
+
+        /*f (message.length <= 0) {
+         $("#message_alert").html("咨询内容不能为空！");
+         count++;
+         } else {
+         $("#message_alert").html("");
+         }*/
+        var code_char = $("#code_char").val();
+        $.ajax({
+            type: "POST", url: "/verification", async: false, data: { code: code_char }, success: function (data) {
+                if (data == 1) {
+                    $("#code_char_alert").html("");
+                } else {
+                    count++;
+                    if (language == 'cn' || language == 'zh') {
+                        $("#code_char_alert").html("验证码错误");
+                    } else {
+                        $("#code_char_alert").html("code error");
+
+                    }
+
+                }
+            }
+        });
+        if (count > 0) {
+            return false
+        } else {
+            if (language == 'cn' || language == 'zh') {
+                $("#inbut").html('<h5 style="color:#F00;">请稍等</h5>');
+            } else {
+                $("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+            }
+            return true
+        }
+    }
+
+</script>

@@ -1,0 +1,342 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+        if($inner_data[2]){
+            $mbbg = $inner_data[2];
+            }else{
+            $mbbg = $color;
+        }
+    </php>
+    <style>
+        .main_page .current{
+            border-color: #{$color};
+            background-color: #{$color};
+        }
+        .main-title-section-wrapper{
+            width: 100%;
+            margin: auto;
+            padding: 172px 0 54px;
+            clear: both;
+            position: relative;
+        }
+        .main-title-section-wrapper:before {
+            position: absolute;
+            content: "";
+            display: block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #{$mbbg};
+            opacity: .6;
+        }
+        .breadcrumb {
+            clear: both;
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, .6);
+            position: relative;
+        }
+        .breadcrumb a {
+            color: #333;
+        }
+        .breadcrumb .current {
+            color: rgba(0, 0, 0, .5);
+        }
+        .main-title-section {
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .inner_news13_newslist {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .inner_news13_newslist li {
+            margin-bottom: 35px;
+        }
+
+        .inner_news13_newslist li article {
+            border: 1px solid #89cddf;
+        }
+
+        .inner_news13_newslist li .inner_news13_newsimg img {
+            max-width: 100%;
+        }
+
+        .inner_news13_details {
+            padding: 20px;
+        }
+
+        .entry-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #b5ad8f;
+            line-height: 28px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .entry-meta>div.num i{margin-right: 5px;}
+        .entry_title {
+            margin-bottom: 10px;
+        }
+
+        .entry_title a h5 {
+            font-size: 20px;
+            line-height: 33px;
+            font-weight: bold;
+            color: #{$color};
+        }
+
+        .entry_body p {
+            line-height: 28px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .entry-meta_data p {
+            display: inline-block;
+        }
+
+        .entry_more a {
+            font-size: 15px;
+            text-transform: inherit;
+            padding: 13px 20px 14px;
+            line-height: normal;
+            display: inline-block;
+            margin: 0 0 35px;
+            cursor: pointer;
+            outline: none;
+            z-index: 1;
+            background: #{$color};
+            color: #fff;
+            position: relative;
+            letter-spacing: .5px;
+            overflow: hidden;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .entry_more a:after {
+            content: '';
+            position: absolute;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+            width: 54px;
+            height: 100%;
+            z-index: 1;
+            right: 0;
+            top: 0;
+            margin: 0;
+            z-index: -1;
+            background: rgba(0, 0, 0, .1);
+        }
+
+        .entry_more a:hover:after {
+            width: 100%;
+        }
+
+        .entry_more a span {
+            margin-left: 35px;
+        }
+
+        .entry_tags {
+            margin: 10px 0 20px;
+        }
+
+        .entry_tags a,
+        .entry_tags i {
+            color: #b5ad8f;
+        }
+
+        .entry_tags i {
+            transform: rotate(90deg);
+            margin-right: 10px;
+        }
+        
+        @media(max-width:576px){
+                .main-title-section-wrapper{
+                    margin-bottom: 30px;padding: 80px 0 40px;
+                }               
+            }
+    </style>
+    <div class="HJZF_Z__wrapper">
+        <!-- 顶部面包屑导航+banner图开始 -->
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner[0]['use_wap']">
+                <volist name="banner" id="bannera" offset="0" length="1">
+                    <section class="main-title-section-wrapper default hidden-lg hidden-xl" navcrumbs
+                        style="background: url({:getimgurl($bannera['logo_wap_bg'])}) no-repeat center;">
+                </volist>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="breadcrumb">
+                                <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+                                    class="current">{:__('News')}</span>
+                            </div>
+                            <div class="main-title-section">
+                                <h1>{:__('News')}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <volist name="banner" id="bannera" offset="0" length="1">
+                    <section class="main-title-section-wrapper default hidden-xs hidden-sm hidden-md" navcrumbs
+                        style="background: url({:getimgurl($bannera['ad_pic'])}) no-repeat center;">
+                </volist>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="breadcrumb">
+                                <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+                                    class="current">{:__('News')}</span>
+                            </div>
+                            <div class="main-title-section">
+                                <h1>{:__('News')}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <else />
+                <if condition="$banner neq ''">
+                    <volist name="banner" id="bannerc" offset="0" length="1">
+                        <section class="main-title-section-wrapper default" navcrumbs
+                            style="background: url({:getimgurl($bannerc['ad_pic'])}) no-repeat center;">
+                    </volist>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="breadcrumb">
+                                    <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i
+                                        class="fa fa-angle-right"></i>&nbsp;<span
+                                        class="current">{:__('News')}</span>
+                                </div>
+                                <div class="main-title-section">
+                                    <h1>{:__('News')}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+                    <else />
+                   
+                        <section class="main-title-section-wrapper default" navcrumbs
+                            style="background: url({:getindeximgurl($inner_data[0])}) no-repeat center;">
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="breadcrumb">
+                                    <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i
+                                        class="fa fa-angle-right"></i>&nbsp;<span
+                                        class="current">{:__('News')}</span>
+                                </div>
+                                <div class="main-title-section">
+                                    <h1>{:__('News')}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+                </if>
+            </if>
+        </div>
+        <!-- 顶部面包屑导航+banner图结束 -->
+
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-12">
+                        <Include file="./Tpl/HJZF2_Z/newleft13.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftnews_mobile.html" />
+                        <style>
+                        .InsidePages_left_content-main{
+                                    border-color: #{$color};
+                                }
+                        </style>
+                    </section>
+                    <section class="">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="inner_news13_newslist flex">
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allnews" id="allnews">
+                                        <li id="new_list{$key}" class="col-xs-12 col-md-6 col-lg-4">
+
+                                            <article>
+                                                <div class=" inner_news13_newsimg">
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews['nid']))}"
+                                                        onFocus="blur()"><img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"<else />src="{:getindeximgurl($inner_data[2])}"</if> border="0"  /></a>
+                                                </div>
+                                                <div class="inner_news13_details">
+                                                    <div class="entry-meta">
+                                                        <div class="date">
+                                                            <if condition="C('Language') eq 'cn'">
+                                                                {:date('m月d ',$allnews['created'])}
+                                                                <else />
+                                                                Posted on {:date('d M ',$allnews['created'])}
+                                                            </if>
+                                                        </div>
+                                                        <div class="num">
+                                                            <i class="fa fa-eye"></i>{:__('click times: ')}{$allnews['click_num']}
+                                                        </div>
+                                                    </div>
+                                                    <div class="entry_title text-center">
+                                                        <a href="{:U('/new_detail',array('nid'=>$allnews['nid']))}">
+                                                            <h5>{$allnews['title']}</h5>
+                                                        </a>
+                                                    </div>
+                                                    <div class="entry_body text-center ellipsis_two">
+                                                        <p>{:subtxt($allnews['news_description'],200)}</p>
+                                                    </div>
+                                                    <div class="entry-meta_data text-center">
+                                                        <php>
+                                                            $class = get_news_info($allnews['news_class']);
+                                                        </php>
+                                                        <div class="entry_tags">
+                                                            <p class="tags"><i class="fa fa-tag"></i><a
+                                                                    href="{:U('/new_category',array('classid'=>$allnews['news_class']))}">{$class['class_name']}</a>
+                                                            </p>
+                                                        </div>
+                                                        <div class="entry_more">
+                                                            <a href="{:U('/new_detail',array('nid'=>$allnews['nid']))}">{:__('Read More')} <span
+                                                                    class="fa fa-long-arrow-right"></span></a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </article>
+
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

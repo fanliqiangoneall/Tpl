@@ -1,0 +1,41 @@
+<extend name="WH01_CN:basein" />
+<block name="content">
+
+	<div>
+		<Include file="./Tpl/WH01_CN/in_banner.html" />
+	</div>
+	<div class="r_mbx"><Include file="./Tpl/WH01_CN/bread.html" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;所有标签</div>
+
+	<div class="page_nei_main">
+		<Include file="./Tpl/WH01_CN/left.html" />
+		<div class="page_RightMain">
+			<div class="page_class_head_1">
+				<div class="indpro_title">
+					<img src="__TMPL__WH01_CN/img/protitle_bg.png"><span>所有标签</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+				</div>
+			</div>
+
+			<div class="page_Main">
+				<volist name="labels" id="label">
+				<a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+			</volist></div>
+			<div style="clear:both;height: 50px;"></div>
+		</div>
+	</div>
+
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

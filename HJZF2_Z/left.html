@@ -1,0 +1,242 @@
+<!--left-->
+<style>
+    .InsidePages_left_content-main {
+        border-color: #{$color};
+    }
+    .InsidePages_left_navlist>li {
+        position: relative;
+    }
+    .InsidePages_left_navlist>li i {
+        position: absolute;
+        right: 12px;
+        top: 15px;
+        z-index: 9;
+    }
+    .InsidePages_left_navlist>li.yijion i {
+        color: #fff;
+        transform: rotate(90deg);
+    }
+    .InsidePages_left_content-main {
+        margin-bottom: 20px;
+    }
+    .inner_contact {
+        box-shadow: 0.5px 0.866px 5px 0px rgba(179, 179, 179, 0.3);
+        padding: 20px 10px 10px 10px;
+        border-top: 2px solid #{$color};
+    }
+    .inner_contact_con {
+        padding-left: 10px;
+        padding-right: 20px;
+        padding-bottom: 15px;
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        border-bottom: 0;
+        line-height: 24px;
+    }
+    .inner_contact pre{
+        display: block;
+        background-color: transparent;
+        border: 0;
+        font-size: 14px;
+        color: #666;
+        line-height: 2;
+        word-break:normal;
+		word-wrap:normal;
+		white-space: normal;
+		font-family: Arial,HELVETICA;
+    }
+    .inner_contact span{
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .sanji li{
+        position: relative;
+    }
+    .dianjinb{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: block;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+    }
+    .dianjinb i{
+        position: static !important;
+        font-size: 16px;
+        color: #ccc !important;
+        transform: rotate(0) !important;
+    }
+    .InsidePages_left_navlist dl{
+        padding-left: 10px;
+        margin-top: 10px;
+        display: none;
+    }
+    .InsidePages_left_navlist dl dd{
+        line-height: 2;
+    }
+    .InsidePages_left_navlist .erji li dl{
+        margin-right: 20px;
+    }
+    ul.InsidePages_left_navlist > li > ul > li > ul{
+        display: none;
+    }
+   
+</style>
+<div class="InsidePages_content-left_content" id="pc_leftMenu">
+    
+    <div class="HJZF_Z__inner--left__content">
+        <div class="InsidePages_left_search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('keywords')}" name="keywords" <if
+                        condition="C('Language') eq 'cn'">id="keyword2"
+                    <else />id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keywords')}&#39;)"
+                    onblur="OnBlurFun(this,&#39;{:__('keywords')}&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="InsidePages_left_content-main">
+            <if condition="$webid eq '295'">
+                <p>
+                    解决方案
+                </p>
+                <elseif condition="$webid eq '1800'"/>
+				<p>
+					新创智能
+				</p>
+				<else/>
+            <p>{:__('Categories')}</p>
+            </if>
+            
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="allclass" id="allclass_left">
+
+                    <li pro-class-id="{$allclass_left['pcid']}" <if
+                        condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">
+                        class="yijion"
+                        <else />class="yiji"</if>><a
+                            href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                        <span <if condition="count($allclass_left['childs']) gt 0">class="class_button"
+                            <else />class="class_button_none"</if>></span>
+                      
+                     
+
+                        <if condition='$allclass_left["childs"] neq ""'>
+                            <ul class="erji">
+                                <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+
+                                    <li pro-class-id="{$allclass_leftchild['pcid']}" <if
+                                        condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">
+                                        class="childon"
+                                        <else />class="child"
+                        </if> ><a
+                            href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a><span
+                            <if condition="count($allclass_leftchild['childs']) gt 0">class="class_button"
+                            <else />class="class_button_none"</if>></span>
+
+                       
+                            
+                            
+                            
+                        <if condition='$allclass_leftchild["childs"] neq ""'>
+                            <ul class="sanji">
+                                <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftthird">
+                                    <li <if
+                                        condition="$classid eq $allclass_leftthird['pcid'] or $prolist['parent_id'] eq $allclass_leftthird['pcid'] or $product['class_id'] eq $allclass_leftthird['pcid'] or $procate['parent_id'] eq $allclass_leftthird['pcid']">
+                                        class="thirdon"
+                                        <else />class="third"
+                        </if> ><a
+                            href="{:U('/product_category','','')}/{:getprocatename($allclass_leftthird['pcid'])}">{$allclass_leftthird['class_name']}</a>
+
+                           
+                            
+                            
+                    </li>
+                </volist>
+            </ul>
+            </if>
+
+            </li>
+            </volist>
+            </ul>
+            </if>
+            </li>
+            </volist>
+            </ul>
+            <Include file="./Tpl/HJZF2_Z/searchproleft.html" />
+        </div>
+		
+		<if condition="$webid eq '745' or $webid eq '746'">
+			<!-- 巨腾中英文页面 {:dump($inner_data[11])} -->
+			<if condition="$inner_data[11]">
+				<!-- 巨腾产品详情页 -->
+				<div class="pro_pdf">
+					<php>
+						$arrjt = get_list_val($inner_data[11]);
+					</php>
+					<a href="{$arrjt[0][wenjian]}">
+						<img src="{:getindeximgurl($inner_data[10])}" alt="" class="img-fluid">
+					</a>
+				</div>
+			</if>
+			<if condition="$inner_data[8]">
+				<!-- 巨腾产品页 -->
+				<div class="pro_pdf">
+					<php>
+						$arrjbc = get_list_val($inner_data[8]);
+					</php>
+					<a href="{$arrjbc[0][wenjian]}">
+						<img src="{:getindeximgurl($inner_data[7])}" alt="" class="img-fluid">
+					</a>
+				</div>
+			</if>
+
+			<if condition="$inner_data[6]">
+				<!-- 巨腾产品分类页 -->
+				<div class="pro_pdf">
+					<php>
+						$arrjb = get_list_val($inner_data[6]);
+					</php>
+					<a href="{$arrjb[0][wenjian]}">
+						<img src="{:getindeximgurl($inner_data[5])}" alt="" class="img-fluid">
+					</a>
+				</div>
+			</if>
+		</if>
+
+        <if condition="$system_set['inpage_custom']">
+        <div class="inner_contact">
+            <span>{:__('Contact us ')}</span>
+            <div class="inner_contact_con">
+                <pre>{:get_zifu(htmlspecialchars_decode($system_set['inpage_custom']))}
+            </pre>
+            </div>
+        </div>
+        </if>
+
+    </div>
+    <div class="clear"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#pc_leftMenu .class_button").on("click", function () {
+                $(this).next('ul').slideToggle(300);
+                $(this).parents('.yiji').siblings('li').find('.erji').slideUp();
+            });
+            $(".yijion ul.erji").addClass("active");
+            $(".yiji ul.erji").addClass("active");
+            $(".childon ul.sanji").addClass("active");
+            $(".child ul.sanji").addClass("active");
+            $('.thirdon').parent('.sanji').show();
+            $('.childon').find('.sanji.active').show();
+        });
+        $('.childon').parents('.yiji').addClass('yijion').removeClass('yiji');
+        $('.dianjinb').click(function () {
+            $(this).next('dl').slideToggle();
+        })
+    </script>
+</div>

@@ -1,0 +1,186 @@
+<script>
+$(function(){
+$("#content").focus(function(){
+$("#content_alert").html("");
+});
+
+$("#code_char2").focus(function(){
+$("#code_char2_alert").html("");
+});
+
+
+$("#getcode_char2").click(function(){
+		$(this).attr("src",'__APP__/code_char2.php?' + Math.random());
+	});
+
+$("#getcode_char12").click(function(){
+		$("#getcode_char2").attr("src",'__APP__/code_char2.php?' + Math.random());
+	});
+
+})
+
+
+function yz_comment(){
+var count=0;
+var content =Trims($("#content").val());
+if(content .length<=0){
+$("#content_alert").html("*Comment cannot be empty");
+count++;
+}
+else{
+$("#content_alert").html("");
+}
+
+
+if($("#dragEle").attr("validate")){
+	   
+	jQuery("#code_char_alert").html("");
+  }else{
+	
+   count++;
+   jQuery("#code_char_alert").html("*Please drag the slider to verify");
+  }
+
+if(count>0){
+return false;
+}
+else{
+$("#commentsubmit").attr("disabled","true");
+return true;
+}
+
+}
+function Trims(str)
+{
+return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+} 
+</script>
+
+<div class="inquiry" style="margin-bottom:10px; border-top:1px dashed #ccc;">
+ <div class="commentTitle"><h5><span><a href="{:U('/newscommentlist',array('nid'=>$news['nid']))}" target="_blank">View More(Total{:newscommentlistcount($news['nid'])})</a></span>Comment Lists</h5></div>
+ <div class="commentlist">
+ <if condition="newscommentlistcount($news['nid']) eq 0">
+  <font style="color:#999999;">No Comment</font>
+ <else />
+   <volist empty="No Content" name="commentlist" id="commentlist" key="k">
+     <ul>
+       <li>{$k}. {$commentlist["content"]} [Date: {:date("Y-m-d",$commentlist["adddate"])}]</li>
+     </ul>
+   </volist>
+  </if>
+   <div class="clear" style="height:20px;"></div>
+ </div>
+</div>
+
+
+<div class="inquiry">
+<div class="inquiry_Title"><h5 style="font-size:18px;">I want to comment</h5></div>
+<form action="__APP__/newssavecontent" method="post" onsubmit="return yz_comment();">
+  <div class="inquiryinfo">
+    <div class="inquiryleft">Content *</div>
+	<div class="inquiryright"><textarea name="content" id="content" style="width:90%; height:100px;"></textarea><div style="clear:both;"></div><span class="yz_alert" id="content_alert" style="color:#f00"></span>
+	<div class="clear"></div>
+ </div>
+ <div class="clear"></div>
+</div>
+
+<!--滑块拖动-->
+
+<div class="inquiryinfo">
+	<div class="inquiryright">
+    
+    <div class="box">
+ 　　　　<a href="javascrpt:;"><div class="btndrag" id="dragEle" style="color:#fff !important;line-height:30px;"></div></a>
+ 　　　　<div class="tips">>>Drag the slider to verify<<</div>
+ 　　</div>
+ <style>
+.box {
+    position: relative;
+    width: 230px;
+    height: 30px;
+	
+    border-radius: 20px;
+    background: #676b6a;
+    line-height: 30px;
+    overflow: hidden;
+    color: #fff !important;
+    font-size: 12px;
+}
+.btndrag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background: #{$color};
+    border-radius: 20px;
+    text-align: center;
+}
+.tips {
+	line-height: 30px;
+    text-align: center;
+	 position: absolute;
+    top: 0;
+    left: 35px;
+	color: #fff !important;
+}
+
+</style>
+ <script type="text/javascript">
+ function DragValidate (dargEle,msgEle){
+        var dragging = false;//滑块拖动标识
+        var iX;
+        dargEle.mousedown(function(e) {
+            msgEle.text("");
+            dragging = true;
+            iX = e.clientX; //获取初始坐标
+        });
+        $(document).mousemove(function(e) {
+            if (dragging) {
+                var e = e || window.event;
+                var oX = e.clientX - iX;
+                if(oX < 30){
+                    return false;
+                };
+                if(oX >= 240){//容器宽度+10
+                    oX = 230;
+                    return false;
+                };
+                dargEle.width(oX + "px");
+                //console.log(oX);
+                return false;
+            };
+        });
+   		$(document).mouseup(function(e) {
+			jQuery("#code_char2_alert").html("");
+            var width = dargEle.width();
+            if(width < 230){
+                //console.log(width);
+                dargEle.width("30px");
+                msgEle.text(">>Drag the slider to verify<<");
+            }else{
+				
+                dargEle.attr("validate","true").text("Verification is successful！").unbind("mousedown");
+				dargEle.width("230px");
+            };
+            dragging = false;
+        });
+    };
+	 DragValidate($("#dragEle"),$(".tips"));
+
+</script>
+ 
+ 
+   <span class="yz_alert" id="code_char2_alert"></span></div>
+	<div class="clear"></div>
+</div>
+<!--滑块拖动 end-->
+
+<div class="inquiryinfo">
+<input type="hidden" name="nid" value="{$news['nid']}" />
+<input class="bt" style="font-size:14px;" id="commentsubmit" type="submit" value="Submit"  name="submit"/>
+</div>
+</form>
+
+<div class="clear"></div>
+</div>

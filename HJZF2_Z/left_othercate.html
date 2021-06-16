@@ -1,0 +1,157 @@
+<style>
+.InsidePages_left_content-main{
+    margin-bottom: 20px;
+}
+.inner_contact {
+	box-shadow: 0.5px 0.866px 5px 0px rgba(179, 179, 179, 0.3);
+	padding: 20px 10px 10px 10px;
+	border-top: 2px solid #{$color};
+}
+.inner_contact_con {
+	padding-left: 10px;
+	padding-right: 20px;
+	padding-bottom: 15px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	border-bottom: 0;
+	line-height: 24px;
+}
+.inner_contact pre{
+	display: block;
+	background-color: transparent;
+	border: 0;
+	font-size: 14px;
+	color: #666;
+	line-height: 2;
+	word-break:normal;
+	word-wrap:normal;
+	white-space: normal;
+	font-family: Arial,HELVETICA;
+}
+.inner_contact span{
+	font-size: 18px;
+	line-height: 24px;
+	margin-bottom: 15px;
+	display: block;
+}
+.zpsf_sj{
+	padding-left: 35px;
+	margin: 10px 0;
+}
+.zpsf_sj li h3{
+	font-size: 14px;
+	color: #333;
+	line-height: 2;
+}
+</style>
+<div class="InsidePages_content-left_content inner_hidden">
+    <div class="HJZF_Z__inner--left__content">
+        <div class="InsidePages_left_search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if
+                        condition="C('Language') eq 'cn'">id="keyword2"
+                    <else />id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)"
+                    onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+		<php>
+			$mycout = count($navrs);
+		</php>
+		<neq name="mycout" value="0">
+        <div class="InsidePages_left_content-main">
+            <p>{$navparentname}</p>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="navrs" id="nav">
+                    <li {$nav['introclassid']} data-cid="{$intro_class['classid']} {$nav['introclassid']}" <if condition="$nav['introclassid'] eq $intro_class['classid']" >  class="yijion"
+                        <elseif condition="($intro_class['classid'] eq '9846' and $nav['introclassid'] eq '0')" />
+						class="yijion"
+                        <else />
+						class="yiji"</if> pro-class-id="{$nav['nav_belong']}">
+						<a href="{$nav['url']}">{$nav['title']}</a></li>
+							<if condition="$nav['introclassid'] eq '9959' or $nav['introclassid'] eq '10185' or $nav['introclassid'] eq '9994'">
+								<ul class="zpsf_sj">
+									<!-- 邹平双飞 自定义三级 -->
+									<php>
+										$arra = get_list_val($inner_data[3]);
+									</php>
+									<foreach  empty="" name="arra" item="alink">
+										<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+									</foreach>
+									<!-- 邹平双飞 自定义三级 -->
+								</ul>
+							</if>
+							<if condition="$nav['introclassid'] eq '9995' or $nav['introclassid'] eq '10186'">
+								<ul class="zpsf_sj">
+									<php>
+										$arrb = get_list_val($inner_data[4]);
+									</php>
+									<foreach  empty="" name="arrb" item="alink">
+										<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+									</foreach>
+								</ul>
+							</if>
+							<if condition="$nav['introclassid'] eq '10013' or $nav['introclassid'] eq '10190'">
+								<ul class="zpsf_sj">
+									<php>
+										$arrb = get_list_val($inner_data[5]);
+									</php>
+									<foreach  empty="" name="arrb" item="alink">
+										<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+									</foreach>
+								</ul>
+							</if>
+							<if condition="$nav['introclassid'] eq '10014' or $nav['introclassid'] eq '10191'">
+								<ul class="zpsf_sj">
+									<php>
+										$arrb = get_list_val($inner_data[6]);
+									</php>
+									<foreach  empty="" name="arrb" item="alink">
+										<li><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+									</foreach>
+								</ul>
+							</if>
+							
+                </volist>
+            </ul>
+        </div>
+        </neq>
+		
+		<if condition="($webid eq '1800' and $inner_data[4] neq '') or ($webid eq '1830' and $inner_data[4] neq '') ">
+			<!-- 新创 自定义二级 -->
+			<div class="InsidePages_left_content-main"  222222>
+				<p>{$inner_data[4]}</p>
+				<ul class="InsidePages_left_navlist">
+					<php>
+						$arr = get_list_val($inner_data[3]);
+					</php>
+					<volist empty="" name="arr" id="alink" key="k">
+						<li 
+						<if condition="$k eq '2'">
+							class="yijion"
+							<else/>
+							class="yiji"
+						</if>
+						><a href="{$alink['link']}"><h3>{$alink['title']}</h3></a></li>
+					</volist>
+				</ul>
+			</div>
+			<!-- 新创 自定义二级 -->
+		</if>
+
+		
+		<!-- 侧边添加联系方式 -->
+        <if condition="$system_set['inpage_custom']">
+        <div class="inner_contact">
+            <span>{:__('Contact us ')}</span>
+            <div class="inner_contact_con">
+                <pre>{:get_zifu(htmlspecialchars_decode($system_set['inpage_custom']))}
+            </pre>
+            </div>
+        </div>
+        </if>
+    </div>
+    <div class="clear"></div>
+</div>

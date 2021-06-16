@@ -1,0 +1,57 @@
+<!--{$pagename}-->
+<style>
+	.HJZF2_advantage-11__pagination .swiper-pagination-bullet-active .HJZF2_advantage-11_wrap--right__title{
+		background:#{$data136[2]};
+		color:#fff;
+	}
+</style>
+<if condition="$data136[0]">
+    <style>
+        .HJZF2_advantage-11{
+            background: url({:getindeximgurl($data136[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF2_advantage-11 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_advantage-11__content">
+                <php>
+                    $arr_img = get_list_val($data136[3]);
+                </php>      
+                <div class="col-xs-12 col-lg-5 wow slideInLeft">
+                    <div class="swiper-container HJZF2_advantage-11Down_swiper">
+                        <div class="HJZF2_advantage-11_wrap swiper-wrapper">
+                            <volist name="arr_img" id="a">
+                                <div class="swiper-slide">
+                                    <div class="HJZF2_advantage-11_wrap--left"><img src="{$a[img]}" alt="{$a[title]}" class="img-fluid"></div>
+                                </div>
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-7 wow slideInRight">
+                    <div class="HJZF2_advantage-11_wrap--right">
+                        <div class="HJZF2_advantage-11__title index_title pb40">{$data136[1]}</div>
+                        <div class="swiper-container HJZF2_advantage-11_swiper">
+                            <div class="HJZF2_advantage-11__wrap swiper-wrapper">
+                                 <volist name="arr_img" id="b">
+                                    <div class="HJZF2_advantage-11__item swiper-slide">
+                                    	<p class="HJZF2_advantage-11_wrap--right__title index_sub_title" style="display:none;">{$b[title]}</p>
+                                        <div class="HJZF2_advantage-11_wrap--right__xh lf"><span class="index_title">0{$key+1}</span></div>
+                        				<div class="HJZF2_advantage-11_wrap--right__desc rt index_text ellipsis_two">{:HtmlEncode($b[des])}</div>
+                                    </div>
+                                 </volist>
+                            </div>
+                        </div>
+                        <div class="HJZF2_advantage-11__pagination swiper-pagination"></div>
+                        <div class="swiper-button-next HJZF2_Z__advantage-11--next"><i class="fa fa-angle-right"></i></div>
+                        <div class="swiper-button-prev HJZF2_Z__advantage-11--prev"><i class="fa fa-angle-left"></i></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </div>
+    </div>
+</section>

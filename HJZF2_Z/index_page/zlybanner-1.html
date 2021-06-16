@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<style>
+  
+    @media (max-width: 768px) {
+        .new_hjzf_zlybanner_1 .zlybanner_1-box .zlybanner_1 .swiper-pagination {
+            bottom: 0;
+        }
+    }
+</style>
+
+<section class="hj-banner zlybanner_1-box nav-hidden-mobile">
+    <div id="zlybanner_1">
+        <div class="swiper-container zlybanner_1">
+            <div class="swiper-wrapper">
+                <php>
+                    $arr = get_list_val($data342[0]);
+                </php>
+                <volist name="arr" id="a">
+                    <div class="swiper-slide">
+                        <img src="{$a[img]}" class="img-full">
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-pagination hj-banner-pagination"></div>
+            <div class="swiper-button-next hj-banner-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hj-banner-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+    </div>
+</section>
+
+<section class="hj-banner zlybanner_1_m-box nav-hidden-pc">
+    <div id="zlybanner_1_m">
+        <div class="swiper-container zlybanner_1_m">
+            <div class="swiper-wrapper">
+                <php>
+                    $arra = get_list_val($data342[1]);
+                </php>
+                <volist name="arra" id="a">
+                    <div class="swiper-slide">
+                        <img src="{$a[img]}" class="img-full">
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-pagination hj-bannerm-pagination"></div>
+            <div class="swiper-button-next hj-bannerm-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hj-bannerm-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+    </div>
+    
+</section>

@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<php>
+    if($data111[3]==""){
+        $data111[3] = 160;
+    }
+    if($data111[4]==""){
+    $data111[4] = 50;
+    }
+</php>
+<style>
+    
+    .new_hjzf_products-8 .HJ05-product-box2{
+        padding-top: {$data111[3]}px; padding-bottom:{$data111[4]}px;
+    }
+    .new_hjzf_products-8 .HJ05-advan-title .ttwrap {
+        background: #{$color};
+    }
+    .new_hjzf_products-8 .HJ05-advan-title .ttwrap:before {background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$color} 52%,#{$color} 100%);}
+    .new_hjzf_products-8 .HJ05-advan-title .ttwrap:after {background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$color} 52%,#{$color} 100%);}
+    .hj05-product2 .indexhotpro-slide .in_proname_a a:hover,.index_product_categroy li:hover a h3{
+        color: #{$data111[5]};
+    }
+    .HJ05-advan-title .ttwrap:before{
+        background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$data111[5]} 52%,#{$data111[5]} 100%);
+    }
+    .HJ05-advan-title .ttwrap:after{
+        background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$data111[5]} 52%,#{$data111[5]} 100%);
+    }
+    .new_hjzf_products-8 .hj05-index-more a{
+        background: #{$data111[5]};
+    }
+    .new_hjzf_products-8 .index-more2 a:hover{
+        background: #{$color};
+    }
+    .new_hjzf_products-8 .HJ05-product-box{}
+    .new_hjzf_products-8 .hj05-product{padding-bottom: 50px;}
+    .new_hjzf_products-8 .HJ05-product-box{
+        padding-top:80px;background: url({:getindeximgurl($data111[6])}) no-repeat center fixed;
+    }	
+	.new_hjzf_products-8 .index_product_categroy li a h3{ color:#{$data111[7]}}
+</style>
+<div  class="HJ05-product-box">
+    
+    <div class="hj-product HJ05-product-box2">
+        <div class="container">
+            <h3 class="HJ05-advan-title  wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data111[0]}</span></h3>
+            <div class="index_product_categroy wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <ul>
+                    <li><a href=""><h3 style="font-weight: bold">{:__('All Products')}</h3></a></li>
+                    <volist empty="" name="allclass" id="allclass_index" key="k" offset="0" length="6">
+                        <li class="index_proClass_name">
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}">{:subtxt($allclass_index['class_name'],40)}</a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div>
+                <div class="container">
+                    <div class="HJ05-product-list">
+                        <div class="hj05-product2">
+                            <div>
+                                <volist empty="" name="indexpro" id="indexpro" key="k" offset="0" length="8">
+                                    <div class="indexhotpro-slide wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                                        <div class="img"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></div>
+                                        <div class="in_proname_a box-sizing ellipsis_two"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                        <div class="hj05-index-more"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{:__('Read More')}</a></div>
+                                    </div>
+                                    <if condition="$k%4 neq 0">
+                                        <div style="width:30px; height:50px; float:left;list-style: none"></div>
+                                    </if>
+                                </volist>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="index-more2"><a href="{:U('/Product')}">{:__('Read More')}</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

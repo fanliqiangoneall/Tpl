@@ -1,0 +1,50 @@
+<extend name="WH01:basein" />
+<block name="content">
+<div>
+    <Include file="./Tpl/WH01/in_banner.html" />
+</div>
+<div class="r_mbx"><Include file="./Tpl/WH01/bread.html" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;Sitemap</div>
+
+
+<div class="page_nei_main">
+<Include file="./Tpl/WH01/left.html" />
+    <div class="page_RightMain">
+        <div class="page_class_head_1">
+            <div class="indpro_title">
+                <img src="__TMPL__WH01/img/protitle_bg.png" alt="protitle_bg.png"><span>Sitemap</span><img src="__TMPL__WH01/img/protitle_bg2.png">
+            </div>
+        </div>
+    <div class="page_Main" id="sitemap" style="margin-top:30px;">
+        <ul>
+          <volist name="web_navigation" id="vo_map" offset="0" length='6' key="key">
+           <li><a href="{$vo_map['url']}" <if condition="strstr($vo_map['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,5)"</if>>{$vo_map['title']}</a>
+             <if condition="strstr($vo_map['url'],'/product.html') eq '/product.html'">
+               <ul style="margin-bottom:10px;">
+                  <volist empty="" name="allclass" id="allclass_map">
+                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_map['pcid'])}">{$allclass_map['class_name']}</a>
+                        <if condition="$allclass_map['childs'] neq ''">
+                            <ul>
+                            <volist empty="" name="allclass_map['childs']" id="allclass_mapchild">
+                            <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_mapchild['pcid'])}">{$allclass_mapchild['class_name']}</a></li>
+                            </volist>
+                          </ul>
+                         </if>
+                    </li>
+                  </volist>
+               </ul>
+             </if>
+             <if condition="$vo_map['child'] neq ''">
+               <ul style="margin-bottom:10px;">
+                  <volist name="vo_map['child']" id="navchild">
+                    <li><a href="{$navchild['url']}"><h3>{$navchild['title']}</h3></a></li>
+                  </volist>
+               </ul>
+             </if>
+           </li>
+           </volist>
+        </ul>
+     </div>
+     <div style="clear:both;height: 30px;"></div>
+   </div>  
+</div>
+</block>

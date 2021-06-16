@@ -1,0 +1,67 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-20 15:06:43
+ * @LastEditTime: 2021-02-25 16:11:48
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \undefined\\wenjian\www\Pc\Tpl\HJZF2_Z\index_page\other-107.html
+-->
+<!--{$pagename}-->
+<style>
+	<if condition="$data545[1]">.HJZF2_Z_other_107 {
+		background-image: url({:getindeximgurl($data545[1])
+	}
+
+	);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	}
+
+	</if> {}
+	.HJZF2_Z_other_107_wrapper span:after,.HJZF2_Z_other_107_wrapper span:before{
+		background-color: #{$color};
+	}
+</style>
+<php>
+	$arr = get_list_val($data545[4]);
+</php>
+<section class="HJZF2_Z_other_107 index_pd">
+	<div class="text-center pb40">
+		<div class="ruiyi_title">
+			<div class="index_title">
+				{$data545[2]}
+			</div>
+			<div class="index_text">
+				{$data545[3]}
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="HJZF2_Z_other_107_wrapper">
+					<volist name="arr" id="a">
+						<li>
+							<if condition="$a[link]">
+								<a href="$a[link]">
+							</if>
+							<div class="img-box"><img src="{$a[img]}" alt="{$a[title]}"></div>
+							
+							<div class="img-par">
+								<img src="{:getindeximgurl($data545[5])}" class="nomral">
+								<img src="{:getindeximgurl($data545[6])}" class="hover">
+							</div>
+							<div class="yuan"><span></span></div>
+							<div class="index_sub_title">{$a[title]}</div>
+							<if condition="$a[link]">
+								</a>
+							</if>
+						</li>
+					</volist>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</section>

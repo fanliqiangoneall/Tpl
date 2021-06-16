@@ -1,0 +1,66 @@
+<style>
+    .products-12__content--left__more a:hover:before{
+        background-color: #{$data115[5]};
+    }
+    .products-12__content--left__more:hover {
+        border: 1px solid #{$data115[5]};
+    }
+    .products-12__content--left__class li:hover a,.products-12__content--left__class li.proClass_on a{
+        color: #{$data115[5]};
+    }
+    .products-12__content--left{
+        border: 1px solid #{$data115[5]};
+    }
+</style>
+<if condition="$data115[4]">
+    <style>
+        #products-12{
+            background: url({:getindeximgurl($data115[4])}) no-repeat center;
+        }
+    </style>
+</if>
+<section id="products-12">
+    <div class="container">
+        <div class="products-12__title">{$data115[0]}</div>
+        <div class="products-12__title--subtitle">{$data115[1]}</div>
+        <div class="products-12__content">
+            <div class="products-12__content--left wow bounceInLeft" data-wow-duration="1s" data-wow-offset="200">
+                <div class="products-12__content--left__title">
+                    <img src="{:getindeximgurl($data115[2])}" alt="title"/>
+                </div>
+                <ul class="products-12__content--left__class">
+                    <php>
+                        $arr_str=$data115[3];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_index_products_categoryname($a);
+                        }
+                        foreach($arr as $c=>$b){
+                        $class[$c]['data']=get_index_products_category($b,$all_pro);
+                        }
+                    </php>
+                    <volist empty="" name="list" id="li" key="k" offset="0" length="7">
+                        <if condition="$li">
+                            <li data-text="{$li['class_name']}"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a></li>
+                        </if>
+                    </volist>
+                </ul>
+                <div class="products-12__content--left__more"><a href="{:U('/product')}">{:__('More products')}</a></div>
+            </div>
+            <div class="products-12__content--right wow bounceInRight" data-wow-duration="1s" data-wow-offset="200">
+                <div class="products-12__content--right--wai">
+                    <volist empty="" name="class" id="li" key="k">
+                        <div class="products-12__content__itemBox">
+                            <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="5">
+                                <div class="products-12__item">
+                                    <div class="products-12__proImg"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" width="437px" height="320px"/></a></div>
+                                    <div class="products-12__proName"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                </div>
+                            </volist>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

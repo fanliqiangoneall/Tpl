@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<style>
+	.hjzf2_news_32_box_date{
+		background: url({:getindeximgurl($data549[4])}) no-repeat center;
+	}
+	.hjzf2_news_32_wrapper_btn_pagination span.swiper-pagination-bullet-active{
+		background-color: #{$color};
+	}
+</style>
+<section class="hjzf2_news_32 index_pd">
+	<div class="text-center pb40">
+		<div class="ruiyi_title">
+			<div class="index_title">
+				{$data549[2]}
+			</div>
+			<div class="index_text">
+				{$data549[3]}
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="hjzf2_news_32_wrapper_btn">
+					<div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+					<div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+					<div class="hjzf2_news_32_wrapper swiper-container">
+						<div class="swiper-wrapper">
+							<volist name="indexnews" id="new" offset="0" length="12" key="h">
+								<div class="swiper-slide">
+									<a href="{:U('/new_detail',array('nid'=>$new['nid']))}" class="hjzf2_news_32_box">
+										<img src="{:getimgurl($new['new_pro'])}" class="img-fluid"
+											alt="{$new['title']}">
+										<span class="hjzf2_news_32_box_date">
+											<b>{:date('d',$new['created'])}</b>
+											<p>{:date('M',$new['created'])}</p>
+										</span>
+										<div class="hjzf2_news_32_box_title">
+											{$new['title']}
+										</div>
+										<div class="hjzf2_news_32_box_con">
+											<div class="index_sub_title pb20">
+												{$new['title']}
+											</div>
+											<div class="index_text">
+												{:subtxt($new['news_description'],200)}
+											</div>
+										</div>
+									</a>
+								</div>
+							</volist>
+						</div>
+						<div class="swiper-pagination hjzf2_news_32_wrapper_btn_pagination"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

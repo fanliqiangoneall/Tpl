@@ -1,0 +1,29 @@
+<!--{$pagename}-->
+<php>
+    if(!$data48[1]){
+        $data48[1] = 10;
+    }
+    if(!$data48[2]){
+    $data48[2] = 10;
+    }
+</php>
+<style>
+.index_about2 {
+    background: url({:getindeximgurl($data48[0])}) center center no-repeat !important;margin: auto;margin-bottom:{$data48[2]}px;margin-top:{$data48[1]}px;
+}
+.index_about2_box a{
+    background: #{$color};
+}
+</style>
+
+
+<link href="__TMPL__demo2/css/aboutus3.css" rel="stylesheet">
+<div class="index_about2 " style="position:relative;" >
+    <div class="container">
+        <div class="index_about2_box wow slideInLeft" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="20">
+            <h3>{$data48[3]}</h3>
+            <div class="index_abus2_text">{:HtmlEncode(subtxt($company_info['description'],500))}</div>
+            <a href="{:U('/aboutus')}">Read More</a>
+        </div>
+    </div>
+</div>

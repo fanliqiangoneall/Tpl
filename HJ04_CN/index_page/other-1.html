@@ -1,0 +1,42 @@
+<!--{$pagename}-->
+<style>
+    .videoContainer{
+        background: url({:getindeximgurl($data14[0])}) no-repeat center;
+    }
+    .videoOpen02{
+        background: #{$color};
+    }
+</style>
+<div class="videoContent">
+    <div class="videoContainer"></div>
+    <div class="videoOpenContainer">
+     <if condition="$data14[2]">
+        <div style="width: 100%;width: 100%;position: relative;">
+       
+            <div class="videoOpen"></div>
+            <div class="videoOpen02"></div>
+            <div class="videoOpen03"></div>
+            
+        </div>
+        <else/>
+        <style>
+		.videoContainer:hover{
+		filter: grayscale(0) !important;
+		}
+        </style>
+    </if>    
+    </div>
+</div>
+
+<script>
+    $(".videoOpenContainer").click(function() {
+        var index = layer.open({
+            type: 1,
+            title: ['{$data14[1]}', 'font-size:18px;'],
+            area: ['320px', '195px'],
+            maxmin: true,
+            content: '<video width="100%" height="100%" autoplay="autoplay"><source src="{$data14[2]}" type="video/mp4"></video>',
+        });
+        layer.full(index);
+    })
+</script>

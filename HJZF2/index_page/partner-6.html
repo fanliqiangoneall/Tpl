@@ -1,0 +1,42 @@
+<if condition="$data149[0]">
+    <style>
+        .HJZF2__partner--6{
+            background: url({:getindeximgurl($data149[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__partner--6__pageination .swiper-pagination-bullet-active{
+        background: #{$data149[1]};
+    }
+</style>
+
+<section class="HJZF2__partner--6">
+    <div class="container">
+        <h3 class="HJZF2__partner--6__title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">{$data149[2]}</h3>
+        <if condition="$data149[6]"><h3 class="HJZF2__partner--6__subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">{$data149[6]}</h3></if>
+        <div class="HJZF2__partner--5__content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+            <div class="swiper-container HJZF2__partner--6__swiper">
+                <div class="swiper-wrapper">
+                    <if condition="$data149[3]">
+                        <div class="swiper-slide">
+                            <img src="{:getindeximgurl($data149[3])}" alt="partner"/>
+                        </div>
+                    </if>
+                    <if condition="$data149[4]">
+                        <div class="swiper-slide">
+                            <img src="{:getindeximgurl($data149[4])}" alt="partner"/>
+                        </div>
+                    </if>
+                    <if condition="$data149[5]">
+                        <div class="swiper-slide">
+                            <img src="{:getindeximgurl($data149[5])}" alt="partner"/>
+                        </div>
+                    </if>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination HJZF2__partner--6__pageination"></div>
+            </div>
+        </div>
+    </div>
+</section>

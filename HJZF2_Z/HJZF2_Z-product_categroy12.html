@@ -1,0 +1,147 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current {
+            color: #{$color};
+        }
+
+        .InsidePages_content-right_content_title:before,
+        .main_page .current,
+        .productbutton {
+            background: #{$color};
+        }
+
+        .main_product_title_right {
+            background: #{$color};
+        }
+
+        .InsidePages_left_navlist li.yiji:hover>a>h3,
+        .InsidePages_left_navlist li.yiji:hover>.class_button:before,
+        .InsidePages_left_navlist li.yijion>a>h3,
+        ul.InsidePages_left_navlist>li>ul>li:hover>a>h3,
+        ul.InsidePages_left_navlist>li>ul>li.childon>a>h3,
+        ul.InsidePages_left_navlist>li>ul>li>ul>li a h3:hover,
+        ul.InsidePages_left_navlist>li>ul>li>ul>li.thirdon a h3 {
+            color: #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+
+        .main_page .current {
+            border-color: #{$color};
+        }
+    </style>
+    <if condition="$inner_data[2]">
+        <style>
+            ul.InsidePages_left_navlist2 li h3:hover,
+            ul.InsidePages_left_navlist2>li.yiji>ul>li>a>h3:hover {
+                color: #{$color};
+            }
+
+            .yijion>a>h3,
+            .childon>a>h3,
+            .thirdon>a>h3,
+            .four_class_on>a>h3,
+            .fiv_class_on>a>h3 {
+                color: #{$color} !important;
+            }
+        </style>
+    </if>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$prolist['banner']">
+                <div class="in_banner"><img src="{:getimgurl($prolist['banner'])}" alt="" /></div>
+                <elseif condition="$banner neq '' " />
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left">
+                        <Include file="./Tpl/HJZF2_Z/left4.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <h5 class="InsidePages_content-right_content_title">{$prolist['class_name']}</h5>
+                                <div class="InsidePages_content-right_proWrap">
+                                    <div class="col-xs-12 InsidePages_content-right_proClassDesc" id="payment">
+                                        {:htmlspecialchars_decode($prolist['cate_profile'])}</div>
+                                        <php>
+                        $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                                </php>
+                                    <volist empty="$no_empty" name="pro" id="pro" key="k">
+                                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem">
+                                            <div class="main_proitem_box">
+                                                <div class="main_proitem_img"><a
+                                                        href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                        <if condition="$pro['main_img']">
+                                                            <img src="{:getmainimgurl($pro['main_img'])}" <if
+                                                                condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"
+                                                            <else />alt="{$pro['pro_name']}"</if> />
+                                                        <else />
+                                                        <img src="{:getindeximgurl($inner_data[3])}" alt="" />
+                                                        </if>
+                                                    </a></div>
+                                                <div class="main_proitem_second">
+                                                    <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                        <div class="main_proitem_name margin-10px-bottom">
+                                                            <h6 title="{$pro['pro_name']}">
+                                                                {:subtxt($pro['pro_name'],60)}</h6>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="main_page">{$page}</div>
+                                <div class="clear"></div>
+                                <if condition="$prolist['pcid'] eq 35503 or $prolist['pcid'] eq 35502">
+                                    <div class="product_detail_editor_content">
+                                        <!--询盘-->
+                                        <div id="inquiry" class="product_detail_editor_content_title">{:__('Inquiry
+                                            Now')}</div>
+                                        <div class="proinquiry">
+                                            <Include file="./Tpl/HJZF2_Z/submitinquiry.html" />
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                </if>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

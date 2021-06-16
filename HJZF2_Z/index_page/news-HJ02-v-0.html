@@ -1,0 +1,114 @@
+<!--{$pagename}-->
+
+<style>
+    <if condition="$data704[0]">
+        .hjzf_news-HJ02-v-0.html{
+            background: url({:getindeximgurl($data704[0])}) no-repeat center;background-size: cover;
+        }
+    </if>
+    .new_hjzf_news-HJ02-v-0__itemRight__name span{
+        background: #{$color};
+    }
+    .new_hjzf_news-HJ02-v-0--title  a:hover{
+        color: #{$data704[1]};
+    }
+    .new_hjzf_news-HJ02-v-0__itemLeft:hover a{
+        color: #{$data704[1]};
+    }
+    .new_hjzf_news-HJ02-v-0__itemRight:hover .new_hjzf_news-HJ02-v-0__itemRight__name a{
+        color: #{$data704[1]};
+    }
+    .new_hjzf_news-HJ02-v-0--title:before{
+        background-color: #{$data704[1]};
+    }
+</style>
+<section class="hjzf_news-HJ02-v-0.html index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6 new_hjzf_news-HJ02-v-0__left wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0" >
+                <h3 class="new_hjzf_news-HJ02-v-0--title index_title">{$data704[2]}<if condition="$data704[3]"><a href="{$data704[3]}" >{:__('Read More')}+</a> <else/>
+                    <a href="{:U('/cases')}" >{:__('Read More')} +</a></if></h3>
+                <php>
+
+                    if($data704[6]){
+                        $lena = $data704[6];
+                    }else{
+                        $lena = '5';
+                    }
+                </php>
+                <div class="new_hjzf_news-HJ02-v-0--leftContent">
+                    
+                        <ul class="new_hjzf_news-HJ02-v-0--leftWrap">
+                            <volist name="indexcases" id="indexnew" offset="0" length="1" key="k">
+                                <li class="new_hjzf_news-HJ02-v-0__itemLeft new_hjzf_news-HJ02-v-0__itemLeft__first">
+                                    <div class="new_hjzf_news-HJ02-v-0__itemLeft__img">
+                                        <a href="{:U('/case_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()"  ><img src="{:getimgurl($indexnew['new_pro'])}" border="0"  alt="{$indexnew['title']}" /></a>
+                                    </div>
+                                    <div class="new_hjzf_news-HJ02-v-0__itemLeft__imgRight">
+                                        <div class="new_hjzf_news-HJ02-v-0__itemLeft__name index_text"><a href="{:U('/case_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()">{:subtxt($indexnew['title'],40)}</a></div>
+                                        <div class="new_hjzf_news-HJ02-v-0__itemLeft__desc index_text">{:subtxt($indexnew['news_description'],100)}</div>
+                                        <a href="{:U('/case_detail',array('nid'=>$indexnew["nid"]))}"  onFocus="blur()" class="new_hjzf_news-HJ02-v-0__itemLeft__more index_text">{:__('Read More')} +</a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            </volist>
+                            <volist name="indexcases" id="indexnew" offset="1" length="$lena" key="k">
+                                <li class="new_hjzf_news-HJ02-v-0__itemLeft">
+                                    <div class="index_text"><a href="{:U('/case_detail',array('nid'=>$indexnew["nid"]))}"  onFocus="blur()">{:subtxt($indexnew['title'],60)}</a> <span>{:date('Y-m-d ',$indexnew['created'])}</span></div>
+                                </li>
+                            </volist>
+                        </ul>
+
+            
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-lg-6 new_hjzf_news-HJ02-v-0__right  wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0">
+                <h3 class="new_hjzf_news-HJ02-v-0--title index_title">{$data704[4]}
+                    <if condition="$data704[5]"><a href="{$data704[5]}" >{:__('Read More')} +</a> <else/>
+                        <a href="{:U('/news')}" >{:__('Read More')} +</a></if>
+                </h3>
+                
+                    <div class="new_hjzf_news-HJ02-v-0--RightContent">
+
+                    
+                        <ul  class="new_hjzf_news-HJ02-v-0--leftWrap">
+                            <volist name="indexnews" id="indexnew" offset="0" length="1" key="k">
+                                <li class="new_hjzf_news-HJ02-v-0__itemLeft new_hjzf_news-HJ02-v-0__itemLeft__first">
+                                    <div class="new_hjzf_news-HJ02-v-0__itemLeft__img">
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()"  ><img src="{:getimgurl($indexnew['new_pro'])}" border="0"  alt="{$indexnew['title']}" /></a>
+                                    </div>
+                                    <div class="new_hjzf_news-HJ02-v-0__itemLeft__imgRight">
+                                        <div class="new_hjzf_news-HJ02-v-0__itemLeft__name index_text"><a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()">{:subtxt($indexnew['title'],40)}</a></div>
+                                        <div class="new_hjzf_news-HJ02-v-0__itemLeft__desc index_text">{:subtxt($indexnew['news_description'],100)}</div>
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}"  onFocus="blur()" class="new_hjzf_news-HJ02-v-0__itemLeft__more index_text">{:__('Read More')} +</a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            </volist>
+                            <volist name="indexnews" id="indexnew" offset="1" length="$lena" key="k">
+                                <li class="new_hjzf_news-HJ02-v-0__itemLeft">
+                                    <div class="index_text"><a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}"  onFocus="blur()">{:subtxt($indexnew['title'],60)}</a> <span>{:date('Y-m-d ',$indexnew['created'])}</span></div>
+                                </li>
+                            </volist>
+                        </ul>
+
+                                   
+                    </div>
+                 
+                    
+           
+
+            </div>
+            <div class="clear"></div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+    
+    

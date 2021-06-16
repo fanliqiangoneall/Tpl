@@ -1,0 +1,17 @@
+<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <a href="{:U('/cases')}">
+                    <if condition="$webid eq '1782'">
+                        {$inner_data[2]}
+                        <else/>
+                        {:__('Cases')}
+                    </if>
+                </a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+<!--{$pagename}-->
+<if condition="$data156[0]">
+    <style>
+        .HJZF2_Z__news-8 {
+            background: url({:getindeximgurl($data156[0])
+        }
+
+        ) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2_Z__news-8__list .entry-time a>span:after,
+    .HJZF2_Z__news-8__list2 .HJZF2_Z__news-8__content .HJZF2_Z__news-8__date .category-link:after {
+        background:#{$color};
+    }
+    .HJZF2_Z__news-8__list2 .HJZF2_Z__news-8__content .HJZF2_Z__news-8__date span a,
+    .HJZF2_Z__news-8__list2 .HJZF2_Z__news-8__content .HJZF2_Z__news-8__name:hover a {
+        color:#{$color};
+    }
+    .HJZF2_Z__news-8__list .HJZF2_Z__news-8__more {
+        border-color: #{$data156[3]};
+        color: #{$data156[3]};
+
+    }
+    .HJZF2_Z__news-8__list .HJZF2_Z__news-8__more:hover {
+        background: #{$data156[3]};
+    }
+    #HJZF2_Z__news-8__tablist .HJZF2_Z__news-8__name a span:hover {
+        color: #{$data156[3]};
+    }
+    .HJZF2_Z__news-8__img a {
+        cursor: pointer;
+    }
+    .HJZF2_Z__news_8_data{
+        margin-bottom: 20px;
+        color: #999;
+    }
+</style>
+<script>
+    var hjzf_news_8_video = '<?php echo $data156[4];?>';
+</script>
+<section class="HJZF2_Z__news-8 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__news-8__container">
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                    <div class="HJZF2_Z__news-8__left wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <div class="HJZF2_Z__news-8__img">
+                            <if condition="$data156[4]">
+                                <a class="video">
+                            </if>
+                            <img border="0" class="lazy" src="__TMPL__HJZF2_Z/img/timg.gif"
+                                data-original="{:getindeximgurl($data156[1])}">
+                            <if condition="$data156[4]">
+                                </a>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                    <div class="HJZF2_Z__news-8__right wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
+                        <div class="HJZF2_Z__news-8__mainTitle index_title">{$data156[2]}</div>
+                        <div class="HJZF2_Z__news-8__newstitle newstitle">
+                            <ul>
+                                <volist name="indexnews" id="indexnew2" offset="0" length="5" key="k2">
+                                    <li id="HJZF2_Z__news-8__tablist" <if condition="$k2 eq 1">class="active"
+                                        <else />class="inactive"</if>>
+                                        <div class="HJZF2_Z__news-8__name"><a
+                                                class="index_text"><span>{$indexnew2['title']}</span><i
+                                                    class="fa fa-angle-down inactive_icon"></i></a></div>
+                                        <ul class="HJZF2_Z__news-8__list">
+                                            <div class="col-sm-4 col-lg-3 col-xl-3">
+                                                <div class="HJZF2_Z__news-8__img">
+                                                    <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}"
+                                                        onFocus="blur()">
+                                                        <if condition="$indexnew2['new_pro']"><img
+                                                                src="{:getimgurl($indexnew2['new_pro'])}" border="0"
+                                                                alt="{$indexnew2['title']}" />
+                                                            <else /><img src="{:getindeximgurl($data147[2])}" border="0"
+                                                                alt="{$indexnew2['title']}" /></if>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8 col-lg-9 col-xl-9">
+                                                <div class="HJZF2_Z__news-8__content">
+                                                    <div class="HJZF2_Z__news-8__desc index_text">
+                                                        {:subtxt($indexnew2['news_description'],150)}
+                                                    </div>
+                                                    <if condition="$data156[6]">
+                                                        <div class="HJZF2_Z__news_8_data">
+                                                            <if condition="$data156[5]">
+                                                                <img src="{:getindeximgurl($data156[5])}">
+                                                                {:date('M',$indexnew2['created'])} {:date('d',$indexnew2['created'])},{:date('Y',$indexnew2['created'])}
+                                                            </if>
+                                                        </div>
+                                                    </if>
+                                                    <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}"
+                                                        onFocus="blur()" class="HJZF2_Z__news-8__more">{:__('Read More')}</a>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</section>

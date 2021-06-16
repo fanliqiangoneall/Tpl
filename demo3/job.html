@@ -1,0 +1,42 @@
+<extend name="demo3:base" />
+<block name="content">
+    <Include file="./Tpl/demo3/index_page/head.html" />
+    <script>
+        $(document).ready(function () {
+            $('#payment a').has('img').not(".pdf").lightBox();
+        });
+    </script>
+
+    <script type="text/javascript" src="__TMPL__demo3/js/jquery.lightbox-0.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__TMPL__demo3/css/jquery.lightbox-0.5.css"/>
+
+    <div id="">
+        <if condition="$banner neq ''">
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+            </volist>
+            <else/>
+            <div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+        </if>
+    </div>
+
+    <div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<if condition="$Think.get.name neq ''">{$Think.get.name}<else/>人才招聘</if></div>
+
+
+
+    <div style="width: 1190px;margin:0 auto">
+        <Include file="./Tpl/demo3/left.html" />
+        <div class="page_Main">
+
+            <div class="page_RightMain">
+                <div class="">{:htmlspecialchars_decode($job['content'])}</div>
+
+                <div class="page_main"><include file="./Tpl/demo3/submitjob.html" /></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" /><Include file="./Tpl/demo3/index_page/bottom-5.html" />
+</block>

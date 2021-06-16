@@ -1,0 +1,24 @@
+<!--{$pagename}-->
+
+<section class="hjzf2_news_36 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title text-center pb40">
+                {$data698[0]}
+            </div>
+
+
+            
+                    <volist name="indexnews" id="new" offset="0" length="6">
+                        <li class="flex-item news36row">
+                            <a href="{:U('/new_detail',array('nid'=>$new['nid']))}">
+                                <span>{$new['title']}</span>
+                            	<span class="new36_more"><img src="__TMPL__HJZF2_Z/images/lansejiantou.png"></span>
+                            </a>
+                        </li>
+                    </volist>
+            
+
+        </div>
+    </div>
+</section>

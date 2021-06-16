@@ -1,0 +1,239 @@
+<!--{$pagename}-->
+<php>
+	if($data697[0]){
+	$color = $data697[0];
+	}
+	if($data697[1]){
+	$mobile_bg = $data697[1];
+	}else{
+	$mobile_bg = '333';
+	}
+	if($data697[2]){
+	$mobile_navbtn = $data697[2];
+	}else{
+	$mobile_navbtn = 'fff';
+	}
+	if($data697[3]){
+	$img_url = $data697[3];
+	}else{
+	$img_url = '';
+	}
+	$searchurl = 'mobile_search1';
+
+	if($data697[4]) {
+	$top_bg = $data697[4];
+	}else{
+	$top_bg = '333333';
+	};
+
+	if($data697[5]) {
+	$top_col = $data697[5];
+	}else{
+	$top_col = 'ffffff';
+	};
+
+	if($data697[9]) {
+	$signin = $data697[9];
+	}else{
+	$signin = 'Sign in';
+	};
+
+	$arr = get_list_val($data697[6]);
+	$arra = get_list_val($data697[10]);
+	$erjinavs=get_list_val($data697[13]);
+    foreach($erjinavs as $erjinav){
+    	if($erjinav['imgshow']){
+    	$erjinav['info']=get_products_category_info($erjinav['pcid']);
+        $erjinav['child']=get_other_products_category_info(array('parent_id'=>$erjinav['pcid']));
+    	$new_nav[$erjinav['nav_index']][$erjinav['sort']]=$erjinav;
+        }else{
+        $erjinav['child']=get_other_products_category_info(array('parent_id'=>$erjinav['pcid']));
+        $new_nav[$erjinav['nav_index']][$erjinav['sort']]=$erjinav;
+        }
+    }
+</php>
+<style>
+	.head_hj28_top {
+		background-color: #{$top_bg};
+		color: #{$top_col};
+	}
+
+	.search_suggestion_row .search_item {
+		background-color: #{$color};
+	}
+
+	.header_hj28 .head_hj28_top a {
+		transition: all .5s;
+		color: #{$top_col};
+	}
+
+	.head_hj28_top a:hover {
+		color: #{$color};
+	}
+
+	.head_hj28_top a.signin {
+		color: #{$top_col} !important;
+		background-color: #{$color};
+	}
+	..search_suggestion_top{ cursor:pointer;}
+.search_suggestion_top:hover .search_info{
+	color:#{$color};
+	
+}	
+.search_item{ background:#{$color}; color:#fff;    padding: 5px 10px;}
+</style>
+<!--mobile nav content-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/index_page/_mobile.css">
+<script src="__TMPL__HJZF2_Z/index_page/_mobile.js"></script>
+<Include file="./Tpl/HJZF2_Z/index_page/_mobile.html" />
+
+
+<!-- pc nav -->
+<header class="nav-hidden-mobile header_hj28">
+	<div class="head_hj28_top">
+		<div class="head_hj28_top_left">
+			<a href="mailto:{:chaifen($about[email],0)}">
+				<i class="fa fa-envelope-o"></i>
+				{:chaifen($about[email],0)}
+			</a>
+		</div>
+		<div class="head_hj28_top_right">
+			<!-- search -->
+			<div class="head_hj28_top_search">
+				<form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+					class="head_hj06_search">
+					<input type="text" name="keywords" id="keyword" placeholder="{:__('Product Search')}">
+					<button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/search_hj28.svg"
+							width="20" /></button>
+				</form>
+			</div>
+			<!-- nav -->
+			<if condition="$data697[6]">
+				<div class="head_hj28_top_nav">
+					<ul>
+						<volist name="arr" id="a">
+							<li><a href="{$a[link]}">{$a[title]}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</if>
+			<!-- other -->
+			<div class="head_hj28_top_other">
+				<if condition="$data697[7] neq ''">
+                	<if condition="session('vip')">
+                    <a href="javascript:;" class="signin">
+                    Hello,{:session('vip')}
+                    </a>
+                    <else/>
+					<a href="/login.html" class="signin">
+						<img src="{:getindeximgurl($data697[8])}">
+						{$signin}
+					</a>                    
+
+                    </if>
+				</if>
+				<if condition="$data697[10]">
+					<volist name="arra" id="a" length="1" offset="0">
+						<a href="{$a[link]}">
+							<img src="{$a[ico]}">
+							{$a[text]}
+						</a>
+					</volist>
+				</if>
+			</div>
+		</div>
+	</div>
+
+	<div class="head_hj28_bottom">
+		<div class="logo">
+			<a href="{:U('/')}">{$logo}</a>
+		</div>
+		<nav class="nav menu">
+			<ul class="nav_wrapper">
+	
+<volist name="web_navigation" id="vo" key="key">
+    <li id="menu{$vo['id']}">
+    	<a href="{$vo['url']}">{$vo['title']}</a>
+    <!-- 二级 start -->
+    	<if condition="$new_nav[$key]">
+        <ul class="nav_wrapper_yiji">
+        <volist empty="" name="new_nav[$key]" id="nav" >
+        <if condition="$nav['info']">
+            <li id="menu{$nav['nav_index']}">
+                <if condition="$nav['imgshow']">
+                <img src="{$nav['imgshow']}"
+                alt="" class="img-fluid">
+                </if>
+            	<a 
+                <if condition="$nav['info']['landpage_url']">
+                    href="{$nav['info']['landpage_url']}"
+                <else/>                
+                	href="{:U('/product_category','','')}/{:getprocatename($nav['info']['pcid'])}{$nav['ext']}"
+                </if>
+                >{$nav['info']['class_name']}</a>
+                <if condition='$nav["info"]["child"] neq ""'>
+                    <php>
+                    $prochilds=$nav['child'];
+                    ksort($prochilds);
+                    </php>
+                <volist empty="" name="prochilds" id="allclass_topchild" key="nav_sort">
+                    <span>
+                        <a 
+                        <if condition="$allclass_topchild['landpage_url']">
+                        	href="{$allclass_topchild['landpage_url']}"
+                        <else/>
+                        	href="{:U('/product_category','','')}/{:getprocatename($allclass_topchild['pcid'])}{$nav['ext']}"
+                        </if>
+                        >
+                        {$allclass_topchild['class_name']}
+                        </a>
+                    </span>
+                </volist>
+                </if>
+            </li> 
+            <else/>
+            <php>
+            $prochilds=$nav['child'];
+            </php>
+            
+             <div class="yijidiv">
+             <php>
+             $lastdiv=count($prochilds);
+
+             </php>
+            <volist empty="" name="prochilds" id="allclass_topchild" key="nav_sort">
+            
+              
+                    <a 
+                    <if condition="$allclass_topchild['landpage_url']">
+                        href="{$allclass_topchild['landpage_url']}"
+                    <else/>                    
+                    	href="{:U('/product_category','','')}/{:getprocatename($allclass_topchild['pcid'])}{$newerjinav['info']['ext']}"
+                    </if>
+                    >
+                    
+                    {$allclass_topchild['class_name']}
+                    </a>
+                    <if condition="($nav_sort%7 eq 0) and ($nav_sort neq $lastdiv)">
+                    </div>
+                    <div class="yijidiv">
+                    </if>
+                   
+            
+            </volist>  
+             </div>
+                   
+            </if>
+            
+        </volist>
+        </ul>
+        </if>
+    </li>
+</volist>
+		
+				
+			</ul>
+		</nav>
+	</div>
+
+</header>

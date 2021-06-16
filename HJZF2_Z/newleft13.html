@@ -1,0 +1,81 @@
+<style>
+    /*新闻侧边栏样式*/
+.inner_13_nav {
+    padding: 20px 0;
+    margin-bottom: 30px;
+   border-bottom: 1px solid #EEEEEE;
+}
+<if condition="$inner_data[1]">
+    .inner_13_nav > ul > li {
+    float: right;
+    position: relative;
+    padding: 10px 20px;
+    width: auto;
+    margin-left:10px;
+    background: #{$inner_data[1]};    
+}
+.inner_13_nav > ul > li a:before{
+    content: '';
+    position: absolute;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 0;
+    height: 100%;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    margin: 0;    
+    background: rgba(0, 0, 0, .1);
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+.inner_13_nav > ul > li:hover a:before{    
+    width: 100%;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+.inner_13_nav > ul > li a h3 {
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 0;
+    font-weight: normal;
+    line-height: 20px;
+    position: relative;
+}
+<else/>
+.inner_13_nav > ul > li {
+    float: right;
+    padding: 10px 20px;
+    width: auto;
+    margin-left:10px;
+    background: #{$inner_data[1]};    
+}
+
+.inner_13_nav > ul > li a h3 {
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+</if>
+
+
+/*新闻列表样式*/
+</style>
+<div class="InsidePages_content-left_content">
+  <div class="inner_13_nav nav">
+      <ul>
+          <li class="col-xs-6 col-md-2"><a href="{:U('/news')}"><h3>{:__('All news')}</h3></a></li>
+          <volist empty="no" name="allnewclass" id="new"  offset="0">
+              <li <if condition="$newscate['classid'] eq $new['classid']">class="col-xs-6 col-md-2 yijion_news"<else/>class="col-xs-6 col-md-2 yiji_news"</if>>
+                <a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new['classid']))}">{$new['class_name']}</a>
+            </li>
+          </volist>
+          <div class="clear"></div>
+      </ul>
+  </div>
+<div class="clear"></div>
+</div>

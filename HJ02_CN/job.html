@@ -1,0 +1,54 @@
+<extend name="HJ02_CN:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs">当前位置: <a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;人才招聘&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$job['jobname']}</span></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ02_CN/left.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain ">
+                    <div class="page_Main">
+                        <div class="">{:htmlspecialchars_decode($job['content'])}</div>
+
+                        <div class="page_main"><include file="./Tpl/HJ02_CN/submitjob.html" /></div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+ <style type="text/css">
+
+.demo {width: 100%;position:relative;clear: both;margin: 0 auto;border: 1px solid #cccccc; }
+.demo a.control {position:absolute;display: block;bottom: 0px;width:39px;height: 75px;cursor: pointer;z-index: 2;}
+.demo a.prev {left:-80px;background:url(__TMPL__YP01_CN/img/honorl.jpg) no-repeat;top:260px;}
+
+.demo a.next {right:-80px; background:url(__TMPL__YP01_CN/img/honorr.jpg) no-repeat;top:260px;}
+
+
+/*----------------------------为保证最佳效果，建议设置如下样式------------------------*/
+.slider {display: none}
+.desc{display: none;}
+.bg{display: none;}
+.slider li{width: 994px;height: 632px;border: 1px solid #cccccc;}
+.slider3 ul li img{width: 288px !important;height: 161px !important;}
+</style> 
+</block>
+
+

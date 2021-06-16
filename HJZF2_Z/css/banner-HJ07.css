@@ -1,0 +1,38 @@
+.hj07_banner_top video{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.hj07_banner_pagination .swiper-pagination-bullet{
+    width: 12px;
+    height: 12px;
+}
+.hj07_banner_thumbs_wrapper{
+    position: absolute;
+    right: 2vw;
+    bottom: 2vw;
+    z-index: 9;
+    box-shadow: 0 0 1px 1px rgba(0,0,0,.1);
+}
+.hj07_banner_thumbs_swiper .swiper-slide{
+    border: 4px  solid #bababb;
+    position: relative;
+    cursor: pointer;
+    width: 120px;
+}
+.hj07_banner_thumbs_swiper .swiper-slide:after{
+    position: absolute;
+    content:'';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    z-index: 2;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: all .5s ease;
+}
+.hj07_banner_thumbs_swiper .swiper-slide-thumb-active:after{
+    opacity: 1;
+}

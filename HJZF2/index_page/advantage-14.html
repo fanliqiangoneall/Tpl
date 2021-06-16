@@ -1,0 +1,45 @@
+<style>
+    .HJZF2_advantage13__content__tab li:hover,.HJZF2_advantage13__content__tab li.active{
+        background: #{$data142[1]};
+    }
+
+</style>
+<if condition="$data144[0]">
+    <style>
+        .HJZF2_advantage14{
+            background: url({:getindeximgurl($data144[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF2_advantage14">
+    <div class="container">
+        <div class="HJZF2_advantage14__title">{$data144[2]}</div>
+        <if condition="$data144[3]">
+            <p class="HJZF2_advantage14__subtitle">{$data144[3]}</p>
+        </if>
+        <div class="HJZF2_advantage14__content">
+            <div class="HJZF2_advantage14__options">
+                <php>
+                    for($i=4;$i<21;$i=$i+3){
+                </php>
+                <if condition="$data144[$i]">
+                    <div class="HJZF2_advantage14__option" style="background: url({:getindeximgurl($data144[$i+2])}) no-repeat center/cover;">
+                        <div class="HJZF2_advantage14__optionsWrap">
+                            <div class="HJZF2_advantage14__options__ce">
+                                <h3 class="HJZF2_advantage14__options__ceName">{$data144[$i]}</h3>
+                                <p class="HJZF2_advantage14__options__ceNum"></p>
+                            </div>
+                            <div class="HJZF2_advantage14__options--big">
+                                <p><span class="shuzi"></span><span class="HJZF2_advantage14__options--big__name">{$data144[$i]}</span></p>
+                                <div class="HJZF2_advantage14__options--big__desc">{$data144[$i+1]}</div>
+                            </div>
+                        </div>
+                    </div>
+                </if>
+                <php>
+                    }
+                </php>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+<!--{$pagename}-->
+<php>
+    if($data483[1]){
+    $color = $data483[1];
+    }
+</php>
+<style>
+    <if condition="$data483[0]">.hjzf2_z_aboutus_24 {
+        background: url({:getindeximgurl($data483[0])
+    }
+
+    ) no-repeat center/cover;
+    }
+    </if>
+</style>
+<section class="hjzf2_z_aboutus_24 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title col-xs-12 pb40">
+                {:HtmlEncode($data483[2])}
+            </div>
+            <div class="clearfix">
+                <div class="col-xs-12 col-md-3">
+                    <div class="index_sub_title nav-hidden-mobile">
+                        {:HtmlEncode($data483[3])}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 aboutus_24_text">
+                    <div class="index_text">
+                        {:HtmlEncode($data483[4])}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 tar hjzf2_z_aboutus_24_con_img">
+                    <img src="{:getindeximgurl($data483[5])}" class="img-fluid">
+                    <p class="font-i nav-hidden-mobile">{:HtmlEncode($data483[6])}</p>
+                </div>
+            </div>
+            <ul class="col-xs-12 hjzf2_z_aboutus_24_wrapper nav-hidden-mobile">
+                <php>
+                    $arr = get_list_val($data483[7]);
+                </php>
+                <volist name="arr" id="a">
+                    <li>
+                        <if condition="$a[link]">
+                        <a href="{$a[link]}">
+                            <else/>
+                            <a>
+                            </if>
+                            <img src="{$a[ico]}" alt="{$a[title]}">
+                            <p>{$a[title]}</p>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,76 @@
+<if condition="$data166[0]">
+    <style>
+        .HJZF2__service-2{
+            background: url({:getindeximgurl($data166[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__service-2Next,.HJZF2__service-2Prev{
+        background: #{$data166[1]};
+    }
+    .HJZF2__service-2__itemWrap li:hover .HJZF2__service-2__itemName{
+        color: #{$data166[1]};}
+    .HJZF2__service-2__itemWrap li:hover span{
+        background: #{$data166[1]};}
+    .HJZF2__service-2__itemWrap li.active .HJZF2__service-2__itemName{
+        color: #{$data166[1]};}
+    .HJZF2__service-2__itemWrap li.active span{
+        background: #{$data166[1]};}
+</style>
+<section class="HJZF2__service-2">
+    <div class="container">
+        <h3 class="HJZF2__service-2__title">{$data166[2]}</h3>
+        <ul class="HJZF2__service-2__itemWrap">
+            <php>
+                for($i=3;$i<38;$i=$i+6){
+            </php>
+            <if condition="$data166[$i]">
+                <li class="HJZF2__service-2__item">
+                    <div class="HJZF2__service-2__itemName">{$data166[$i]}</div>
+                    <span></span>
+                </li>
+            </if>
+
+            <php>
+                }
+            </php>
+        </ul>
+        <div class="HJZF2__service-2__down">
+            <ul class="HJZF2__service-2__boxWrap">
+                <php>
+                    for($i=3;$i<38;$i=$i+6){
+                </php>
+                <if condition="$data166[$i]">
+                    <li class="HJZF2__service-2__box">
+                        <div class="swiper-container HJZF2__service-2__swiper HJZF2__service-2__swiper{$i}">
+                            <div class="swiper-wrapper">
+                                <if condition="$data166[$i+3]">
+                                    <div class="swiper-slide"><img src="{:getindeximgurl($data166[$i+3])}" alt=""/></div>
+                                </if>
+                                <if condition="$data166[$i+4]">
+                                    <div class="swiper-slide"><img src="{:getindeximgurl($data166[$i+4])}" alt=""/></div>
+                                </if>
+                                <if condition="$data166[$i+5]">
+                                    <div class="swiper-slide"><img src="{:getindeximgurl($data166[$i+5])}" alt=""/></div>
+                                </if>
+                            </div>
+                            <!-- Add Arrows -->
+
+                        </div>
+                        <div class="HJZF2__service-2__boxLeft">
+                            <p class="HJZF2__service-2__boxLeftName">{$data166[$i]}</p>
+                            <div class="HJZF2__service-2__boxLeftDesc"> {:HtmlEncode(subtxt($data166[$i+2],400))}</div>
+                            <div class="swiper-button-next HJZF2__service-2Next"><i class="fa fa-angle-right"></i></div>
+                            <div class="swiper-button-prev HJZF2__service-2Prev"><i class="fa fa-angle-left"></i></div>
+                        </div>
+                    </li>
+                </if>
+
+                <php>
+                    }
+                </php>
+            </ul>
+        </div>
+    </div>
+</section>

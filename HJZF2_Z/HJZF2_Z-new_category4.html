@@ -1,0 +1,111 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .InsidePages_list li.yijion>a>h3,
+        .InsidePages_list li.yiji:hover>a>h3,
+        .HJZF_Z__Breadcrumbs span.current,
+        .InsidePages_left_content-main {
+            border-color: #{$color};
+            color: #{$color};
+        }
+        .HJZF_Z__inner_product_categroy5{
+            margin-bottom: 0;
+        }
+        .main_news_dowm span a:before {
+            background: #{$color};
+        }
+        .news_4{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .news_4 li{
+            margin-bottom: 30px;
+            
+        }
+        .news_4_wrapper{
+            border:1px solid #{$color};
+            height: 100%;
+            transition: all .4s;
+        }
+        .news_4_info{
+            padding: 40px;
+			color:#666666;
+        }
+        .news_4_info span{
+            position: relative;
+			padding:0 22px;
+			display:inline-block;
+			font-weight: bold;
+			background:#{$color};
+			color: #{$inner_data[2]};
+        }
+        .news_4_info h5{
+            font-weight:bold;
+            margin: 10px 0;
+			color:#{$inner_data[2]};
+        }
+        .main_page .current{
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+        .news_4 li:hover .news_4_wrapper{
+            margin-top: -10px;
+            box-shadow: 0 0 8px 2px rgba(0,0,0,.2);
+        }
+		@media (max-width:991px) {
+		.news_4_info{
+            padding: 30px;
+		}
+		}
+		@media (max-width:767px) {
+		.news_4_info{
+            padding: 20px;
+		}
+		}
+    </style>
+    <div class="inner9__wrapper" id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/new_bread_category3.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/news_left_cat10.html" />
+
+        <div class="HJZF_Z__innerContent">
+            
+            <div class="index_inner container">
+                <div class="row">
+                    <section class="col-xs-12 InsidePages_content2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="news_4 ul_li_list">
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="newscatelist" id="newscatelist">
+                                        <li id="new_list{$key}" class="col-xs-12 col-lg-4">
+                                                <div class="news_4_wrapper">
+                                                	<a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}">
+                                                    <div class="news_4_info">
+                                                        <span class="index_text">{:zq_date($newscatelist['created'])}</span>
+                                                        <h5 class="index_sub_title ellipsis_one">{$newscatelist['title']}</h5>
+                                                        <div class="hidden-xs index_text ellipsis_three">                                                    {:subtxt($newscatelist['news_description'],200)}</div>
+                                                    </div>
+                                                    </a>
+                                                </div>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

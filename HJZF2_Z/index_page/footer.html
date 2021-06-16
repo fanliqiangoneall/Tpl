@@ -1,0 +1,55 @@
+<if condition="C('Language') eq 'cn'">
+    {:htmlspecialchars_decode(get_web_analysis())}
+</if>
+<if condition="C('Language') eq 'cn'">
+    <Include file="./Tpl/HJZF2_Z/sidebar.html" />
+    <Include file="./Tpl/HJZF2_Z/sidebar_bottom.html" />
+    <elseif condition="$data50[3]"/>
+    <Include file="./Tpl/HJZF2_Z/sidebar2.html" />
+    <Include file="./Tpl/HJZF2_Z/sidebar_bottom_en.html" />
+    <else/>
+    <Include file="./Tpl/HJZF2_Z/sidebar_en.html" />
+    <Include file="./Tpl/HJZF2_Z/sidebar_bottom_en.html" />
+</if>
+<if condition="$data50[4]">
+<Include file="./Tpl/HJZF2_Z/sidebar3.html" />
+<Include file="./Tpl/HJZF2_Z/sidebar_bottom_en.html" />
+</if>
+<if condition="$data186[10]">
+	<div class="foregin_msn">
+		<ul>
+			<if condition="$data186[0]"><li style="background: rgb(59, 89, 152)"><a href="{$data186[0]}" target="_bank"><i class="fa fa-facebook"></i></a></li></if>
+			<if condition="$data186[1]"><li style="background: rgb(0, 119, 181)"><a href="{$data186[1]}" target="_bank"><i class="fa fa-twitter"></i></a></li></if>
+			<if condition="$data186[2]"><li style="background: rgb(203, 32, 39)"><a href="{$data186[2]}" target="_bank"><i class="fa fa-linkedin"></i></a></li></if>
+			<if condition="$data186[3]"><li style="background: rgb(29, 161, 242)"><a href="{$data186[3]}" target="_bank"><i class="fa fa-youtube"></i></a></li></if>
+            <if condition="$data186[4]"><li style="background: rgb(255, 101, 80)"><a href="{$data186[4]}" target="_bank"><i class="fa fa-instagram"></i></a></li></if>
+            <if condition="$data186[11]">
+                <php>
+                    $s_arr = get_list_val($data186[11]);
+                </php>
+                <volist name="s_arr" id="a">
+                    <li>
+                        <a href="{$a[s_src]}">
+                                <img src="{$a[s_img]}">                            
+                        </a>
+                    </li>
+                </volist>
+            </if>
+            
+		</ul>
+	</div>
+</if>
+<!-- 侧边栏 -->
+<Include file="./Tpl/HJZF2_Z/side.html" />
+
+<script type="text/javascript" src="__TMPL__HJZF2_Z/js/public.js"></script>
+<script type="text/javascript" src="__TMPL__HJZF2_Z/js/hj01_prodetail.js"></script>
+<if condition='C("Language") != "cn" and C("Language") != "zh"'>    
+    <script  defer async="true" type="text/javascript" src="//download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+</if>
+<script type="text/javascript" src="__TMPL__HJZF2_Z/js/wow.min2.js"></script>
+<if condition="$webid != '1654'">
+<script>var wow = new WOW();wow.init();</script>
+</if>
+</body>
+</html>

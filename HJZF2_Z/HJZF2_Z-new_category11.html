@@ -1,0 +1,119 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .InsidePages_list li.yijion>a>h3,
+        .InsidePages_list li.yiji:hover>a>h3,
+        .HJZF_Z__Breadcrumbs span.current,
+        .InsidePages_left_content-main {
+            border-color: #{$color};
+            color: #{$color};
+        }
+        .HJZF_Z__inner_product_categroy5{
+            margin-bottom: 0;
+        }
+        .main_news_dowm span a:before {
+            background: #{$color};
+        }
+        .news_10 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .news_10 li {
+            margin-bottom: 30px;
+            transition: all .5s;
+        }
+        .news_10_wrapper {
+            height: 100%;
+            transition: all .4s;
+        }
+        .news_10_info {
+            padding: 10px;
+        }
+        .news_10_info span {
+            color: #999;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .news_10_info span:before {
+            position: absolute;
+            width: 50px;
+            height: 1px;
+            bottom: 0;
+            content: '';
+            background-color: #{$color};
+        }
+        .news_10_info h5 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .main_page .current {
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+        .news_11_more a{
+            padding: 5px 15px;
+            background-color: #{$color};
+            color: #fff;
+        }
+        @media(min-width: 1200px) {
+            .news_10_wrapper .news_11_img {
+                max-width: 300px;
+            }
+            .news_10_info {
+                margin-left: 20px;
+                max-width: calc(100% - 320px);
+            }
+        }
+    </style>
+    <div class="inner9__wrapper" id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/banner_news.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/news_bread_cate_11.html" />
+        <div class="HJZF_Z__innerContent">
+            <div class="index_inner container">
+                <div class="row">
+                    <Include file="./Tpl/HJZF2_Z/inner/news_right_11.html" />
+                    <section class="col-xs-12 col-md-9 pull-left">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="news_10 ul_li_list">
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="newscatelist" id="allnews">
+                                        <li id="new_list{$key}">
+                                            <div class="news_10_wrapper d-flex  flex-nowrap">
+                                                <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"
+                                                    onFocus="blur()" class="news_11_img"><img class="img-fluid" <if
+                                                        condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"
+                                                    <else />src="{:getindeximgurl($inner_data[2])}"</if> border="0"
+                                                    /></a>
+                                                <div class="news_10_info">
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                                                        <h5>{$allnews['title']}</h5>
+                                                    </a>
+                                                    <div class="hidden-xs main_news_desc">{:subtxt($allnews['news_description'],200)}</div>
+                                                        <div class="news_11_more"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" class="hx_btn">{:__('Read More')}</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

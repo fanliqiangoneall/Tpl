@@ -1,0 +1,67 @@
+<!--{$pagename}-->
+<php>
+    if($data413[3]){
+    $num = $data413[3];
+    }else{
+    $num = 6;
+    }
+    if($data413[4]){
+    $color = $data413[4];
+    }
+</php>
+<style>
+    <if condition="$data413[0]">.cases_20 {
+        background: url({:getindeximgurl($data413[0])
+    }
+
+    ) no-repeat center / cover;
+    }
+
+    </if>.cases_20_info span,
+    .cases_20_pagination span.swiper-pagination-bullet-active {
+        background-color: #{$color};
+    }
+</style>
+
+<section class="cases_20 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="pb40 clearfix fx-center">
+                <div class="col-xs-6 index_title">
+                    {$data413[1]}
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a href="{$data413[2]}">
+                        {:__('Read More')}
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="swiper-container cases_20_container">
+                    <div class="swiper-wrapper pb40">
+                        <volist name="indexcases" id="indexcase" offset="0" length="$num">
+                            <div class="swiper-slide cases_20_wrapper">
+                                <a href="{:U('/case_detail',array('nid'=>$indexcase[" nid"]))}">
+                                    <div class="cases_20_img">
+                                        <img src="{:getimgurl($indexcase['new_pro'])}" class="img-fluid" alt="{$indexcase['title']}" />
+                                    </div>
+                                    <div class="cases_20_info">
+                                        <div class="index_sub_title">
+                                            {$indexcase['title']}
+                                        </div>
+                                        <span></span>
+                                        <p>{$indexcase['news_description']}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="cases_20_pagination text-center"></div>
+                    <div class="swiper-button-white swiper-button-prev cases_20_prev"></div>
+                    <div class="swiper-button-white swiper-button-next cases_20_next"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

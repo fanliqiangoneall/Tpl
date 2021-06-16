@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<php>
+    if($data526[0]){
+    $color = $data526[0];
+    }
+</php>
+<style>
+    <if condition="$data526[1]">.hjzf2_Z_case30 {
+        background-color: #{$data526[1]};
+    }
+
+    </if><if condition="$data526[2]">.hjzf_advantage_61 {
+        background-image: url({:getindeximgurl($data526[2])
+    }
+
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    }
+
+    </if> 
+    .hjzf2_Z_case30_pagination span.swiper-pagination-bullet-active{
+        background-color: #{$color} !important;
+    }
+    .hjzf2_Z_case30_more a{
+        color: #fff;
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf2_Z_case30 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <if condition="$data526[3]">
+                    <div class="index_title pb40 text-center">
+                        {$data526[3]}
+                    </div>
+                </if>
+            </div>
+        </div>
+    </div>
+    <div class="hjzf2_Z_case30_container swiper-container">
+        <div class="swiper-wrapper">
+            <volist name="indexcases" id="indexcase" offset="0" length="12">
+                <div class="swiper-slide">
+                    <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" class="hjzf2_Z_case30_info">
+                        <img src="{:getimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" class="img-fluid">
+                        <!-- <div class="HJZF2_Z__case30__content">
+                            <h3 class="HJZF2_Z__cases30__casetitle index_title">{$indexcase['title']}</h3>
+                            <div class="HJZF2_Z__cases30__desc index_text">{$indexcase['news_description']}</div>
+                        </div> -->
+                    </a>
+                </div>
+            </volist>
+        </div>
+        <div class="hjzf2_Z_case30_pagination text-center"></div>
+    </div>
+    <if condition="$data526[4]">
+        <div class="text-center hjzf2_Z_case30_more mt-40">
+            <a href="{$data526[4]}" class="index_btn">{:__('Read More')}</a>
+        </div>
+    </if>
+
+</section>

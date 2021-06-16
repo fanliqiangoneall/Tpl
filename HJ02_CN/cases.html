@@ -1,0 +1,73 @@
+<extend name="HJ02_CN:basein" />
+<block name="content">
+    <style type="text/css">
+        .main_caseitem_img a:before{
+        background: {$data1[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_caseitem_tan{
+            background: #{$color};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$data1[1] neq ''">
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[1])}) no-repeat center;"></div>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner">
+            <div class="container">
+                <div class="Breadcrumbs"><a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">案例</span></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left2">
+                <Include file="./Tpl/HJ02_CN/caseleft.html" />
+            </section>
+            <section class="main-content-right2">
+                <div class="page_RightMain ">
+                    <div class="page_Main">
+                        <div class="mian_content_casebox">
+                            <div class="ul_li_list3">
+                                <volist name="allnews" id="allnews" key="k">
+                                    <div class="main_caseitem">
+                                        <div class="main_caseitem_box">
+                                            <div class="main_caseitem_img"> <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><if condition="$allnews['new_pro'] eq 0 or $allnews['new_pro'] eq ''"><img src="__TMPL__HJ02_CN/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($allnews['new_pro'])}" alt="{$allnews['title']}" /></if></a></div>
+                                            <div class="main_caseitem_down">
+                                                <div class="main_caseitem_down_content">
+                                                    <div class="main_caseitem_title"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><h4>{:subtxt($allnews['title'],30)}</h4></a></div>
+                                                    <div class="main_caseitem_title2">{:subtxt($allnews['news_description'],30)}</div>
+                                                </div>
+                                            </div>
+                                            <div class="main_caseitem_tan">
+                                                <div class="main_caseitem_tan_title"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><h4>{:subtxt($allnews['title'],50)}</h4></a></div>
+                                                <div class="main_caseitem_tan_title2">{:subtxt($allnews['news_description'],80)}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="$k % 3 eq 0">
+                                        <div style="clear:both;height: 30px;"></div>
+                                        <else/>
+                                        <div style="float:left;height: 30px;width: 10px;"></div>
+                                    </if>
+                                </volist>
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".main_left_news .main-content_inner_news>ul li:first-child").addClass("yijion_news")
+        })
+    </script>
+</block>

@@ -1,0 +1,56 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before,#inbut input{
+            background: #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_aboutus.html" />
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Inquiry')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section <if condition="count($navrs) gt 0">class="InsidePages_content-right" <else/> class="InsidePages_content-right2" </if>>
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <h5 id="inquiry" class="InsidePages_content-right_content_title">{:__('Inquiry Now')}</h5>
+                                <if condition="LANGUAGE eq 'en'">
+                                    <div class="page_Main"><Include file="./Tpl/HJZF2_Z/submitinquiry.html" /></div>
+                                    <else/>
+                                    <div class="page_Main"><Include file="./Tpl/HJZF2_Z/submitinquiry_cn.html" /></div>
+                                </if>
+
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                        </section>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</block>

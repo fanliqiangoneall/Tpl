@@ -1,0 +1,94 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_82 {
+        background: url({:getindeximgurl($data449[0])
+    }
+
+    ) no-repeat center/cover;
+    }
+
+    .my-mask-l.list:before,
+    .hjzf2_other_82_wrapper .more a,
+    .hjzf2_other_82_wrapper li.on .my-mask-l.list:before {
+        background-color: #{$data449[1]};
+    }
+
+    .my-mask-l.list:hover,
+    .hjzf2_other_82_wrapper li.on .my-mask-l.list {
+        color: #{$data449[1]};
+    }
+
+    .more a {
+        border: 1px solid #{$data449[8]};
+        color: #{$data449[8]};
+    }
+
+    .more a.my-mask-l:before {
+        background-color: #{$data449[8]};
+    }
+
+    @media(min-width: 1200px) {
+        .more a:hover {
+            color: #fff;
+        }
+
+        .hjzf2_other_82_wrapper .col-md-5 {
+            margin-top: 5vw;
+        }
+    }
+</style>
+<section class="hjzf2_other_82">
+    <div class="container">
+        <div class="row clearfix hjzf2_other_82_wrapper index_pd">
+            <!-- left -->
+            <div class="col-xs-12 col-xl-5">
+                <div class="pb20 wow fadeInUp">
+                    <div class="index_title pb20">
+                        {$data449[3]}
+                    </div>
+                    <div class="index_sub_title">
+                        {$data449[4]}
+                    </div>
+                </div>
+                <ul class="row-little hjzf2_other_82_wrapper_con clearfix pb40 wow fadeInDown" data-wow-delay=".2s">
+                    <php>
+                        $bottom_nav_str2=explode("\\n",$data449[5]);
+                        foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2)
+                        { $bottom_navs2=explode("：",$bottom_nav_arr2);
+                        $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+                    </php>
+                    <if condition="$bottom_nav2">
+                        <volist name="bottom_nav2" id="nav">
+                            <li class="col-xs-10 col-xl-7">
+                                <a href="{$nav['href']}" class="my-mask-l list index_text">{$nav['name']} <i
+                                        class="fa fa-angle-right fr"></i></a>
+                            </li>
+                        </volist>
+                    </if>
+                    <div class="more wow fadeInDown col-xs-10 col-xl-7" data-wow-delay=".2s">
+                        <a href="{$data449[6]}" class="my-mask-l index_btn index_text">{$data449[7]} </a>
+                    </div>
+                </ul>
+            </div>
+            <!-- right -->
+            <div class="col-xl-7 col-xs-12 wow fadeInRight hjzf_other_82_img" data-wow-delay=".5s">
+                <php>
+                    $arr = get_list_val($data449[2]);
+                </php>
+                <volist name="arr" id="aa">
+                    <div class="hjzf_other_82_img_ico">
+                        <if condition="$aa[link]">
+                        <a href="{$aa[link]}">
+                            </if>
+                            <img src="{$aa[ico]}" class="img-fluid">
+                        <if condition="$aa[link]">
+                        </a>
+                    </if>
+                </div>
+                </volist>
+
+            </div>
+            <!-- right end -->
+        </div>
+    </div>
+</section>

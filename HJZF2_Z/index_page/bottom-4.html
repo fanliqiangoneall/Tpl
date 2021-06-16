@@ -1,0 +1,143 @@
+<!--{$pagename}-->
+<php>
+if($data43[3]){
+	$shejiao1=getindeximgurl($data43[3]);
+}
+if($data43[4]){
+	$shejiao2=getindeximgurl($data43[4]);
+}
+if($data43[5]){
+	$shejiao3=getindeximgurl($data43[5]);
+}
+$bottom_nav_str=explode("\\r\\n",$data43[9]);
+
+foreach($bottom_nav_str as $k=>$bottom_nav_arr){
+		$bottom_navs=explode(":",$bottom_nav_arr);
+		$bottom_nav[$k]['name']=$bottom_navs[0];
+        $bottom_nav[$k]['href']=$bottom_navs[1];
+}
+
+$bottom_nav_str1=explode("\\r\\n",$data43[10]);
+
+foreach($bottom_nav_str1 as $k=>$bottom_nav_arr1){
+		$bottom_navs1=explode(":",$bottom_nav_arr1);
+		$bottom_nav1[$k]['name']=$bottom_navs1[0];
+        $bottom_nav1[$k]['href']=$bottom_navs1[1];
+}
+if($data43[12]){
+$bottom_news=get_index_news_category($data43[12],6);
+}
+
+</php>
+<style>
+.new_hjzf_bottom-4{
+	font-size:0.14rem;
+	color:#{$data43[2]};
+	background:#{$data43[1]};
+}
+.new_hjzf_bottom-4 .bottom-copyright{ 
+color:#{$data43[13]};
+}
+.new_hjzf_bottom-4 .bottomfoot_nav-underline{ margin-bottom:0.1rem; width:0.53rem; background:#{$data43[14]}; height:2px;  }
+.new_hjzf_bottom-4 .bottomfoot_nav_name{ color:#{$data43[2]}; }
+.new_hjzf_bottom-4 .bottom_nav_li{ padding:0.05rem 0px; color:#{$data43[2]};}
+</style>
+<footer>
+<div class="container-fluid bottomfoot">
+    <div class="container " >
+        <div class="zq-row">
+        	<div class="col-lg-4 col-sm-12 col-md-6 col-xs-12">{$logo}
+            
+            <div class="bottom-txt">{$data43[0]}</div>
+            <div class="bottom-icon">
+                <if condition="$shejiao1">
+                    <div class="bottom-icon-item"><img src="{$shejiao1}" alt="{$data43[6]}"/><br /><span>{$data43[6]}</span></div>
+                </if>
+                <if condition="$shejiao2">
+                    <div class="bottom-icon-item"><img src="{$shejiao2}" alt="{$data43[7]}"/><br /><span>{$data43[7]}</span></div>
+                </if>
+                <if condition="$shejiao3">
+                    <div class="bottom-icon-item"><img src="{$shejiao3}" alt="{$data43[8]}"/><br /><span>{$data43[8]}</span></div>
+                </if>                                
+            </div>
+            
+            
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-6 col-xs-12">
+            <div style="width:50%; float:left;">
+                <if condition="$bottom_nav">
+                    <div class="bottomfoot_nav"  >
+                        <a href="{$bottom_nav[0]['href']}">
+                        <div class="bottomfoot_nav_name">{$bottom_nav[0]['name']}</div>
+                        <div class="bottomfoot_nav-underline"></div>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <ul>
+                    <volist name="bottom_nav" id="nav" offset="1">
+                    <a href="{$nav['href']}"><li class="bottom_nav_li">{$nav['name']}</li></a>
+                    </volist>
+                  
+                    </ul>
+                </if>
+            </div>
+            <div style="width:50%; float:left;">
+                <if condition="$bottom_nav1">
+                    <div class="bottomfoot_nav" style="width:50%; float:left;">
+                        <a href="{$bottom_nav1[0]['href']}">
+                        <div class="bottomfoot_nav_name">{$bottom_nav1[0]['name']}</div>
+                        <div class="bottomfoot_nav-underline"></div>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <ul class="b-nav2">
+                    <volist name="bottom_nav1" id="nav1" offset="1" >
+                    <a href="{$nav1['href']}"><li class="bottom_nav_li">{$nav1['name']}</li></a>
+                    </volist>
+                  
+                    </ul>
+                 
+                </if>
+            </div>            
+            </div>
+
+            <div class="col-lg-4  col-sm-12 col-md-12 col-xs-12">
+				<div class="bottomfoot_nav" style="margin-left:-15px;">
+                    <div class="bottomfoot_nav_name">最新课程</div>
+                    <div class="bottomfoot_nav-underline"></div>
+                </div>
+                
+                <div class="zq-row bottom_news">
+                	<volist name="bottom_news" id="bottom_new">
+                	<div class="col-lg-4 col-sm-6 col-md-4 col-xs-6 b_new_img"><a href="{:U('/new_detail',array('nid'=>$bottom_new["nid"]))}"><img src="{:getimgurl($bottom_new['new_pro'])}"></a></div>
+                    </volist>
+                </div>            	
+            </div>
+        </div>
+        
+    </div>  
+                     <php>
+                        $nowtime=date("Y",time());
+                        if(!$data31[3]){
+                        $currtime=2020;
+                        }else{
+                        $currtime=$data31[3];
+                        }
+                    </php>    
+    <div class="container">
+    <div class="bottom-copyright">CopyRight © {$currtime}-{$nowtime} - {$about['company_name']}&nbsp;{:__('All rights reserved')}&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>&nbsp;&nbsp;<div class="pull-right"><a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>                      <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                        中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        <else/>
+                        Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                    </if></div></div>
+ 
+ 
+ 
+
+
+    
+    </div>
+    
+      
+</div>

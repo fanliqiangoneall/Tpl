@@ -1,0 +1,317 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_bottom_12_pro_bg {
+        background-color: #{$data354[9]};
+    }
+
+    .hjzf_bottom_12_pro_bg .hjzf_bottom_12_pro_wrapper li span a {
+        color: #{$data354[10]};
+    }
+
+    .hjzf_bottom_12_pro_wrapper li i {
+        color: #{$data354[11]};
+    }
+
+    .hjzf_bottom_12_pro_wrapper li em {
+        color: #{$data354[12]};
+    }
+
+    .hjzf_bottom_12_pro_bg .hjzf_bottom_12_pro_wrapper li a:hover,
+    .hjzf_bottom_12_pro_bg .hjzf_bottom_12_pro_wrapper li a:hover i,
+    .hjzf_bottom_12_pro_bg .hjzf_bottom_12_pro_wrapper li a:hover em {
+        color: #{$data354[13]};
+    }
+
+    /* bottom */
+    .hjzf_bottom_12_bottom_bg {
+        background-color: #{$data354[14]};
+        color: #{$data354[15]};
+    }
+
+    .hjzf_bottom_12_bottom_bg a {
+        color: #{$data354[15]};
+        transition: all .5s;
+    }
+
+    .hjzf_bottom_12_bottom_bg a:hover {
+        color: #{$data354[16]};
+    }
+
+    .hjzf_bottom_12_bottom_wrapper ul li.news {
+        background: linear-gradient(to bottom, #{$data354[17]} 0%, transparent 50%, transparent 100%);
+    }
+</style>
+<section class="hjzf_bottom_12">
+    <!-- 产品 -->
+    <if condition="$data354[0]">
+    <div class="hjzf_bottom_12_pro_bg nav-hidden-mobile">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="hjzf_bottom_12_pro_wrapper">
+                        <ul>
+                            <php>
+                                $arr = get_list_val($data354[1]);
+                            </php>
+                            <if condition="$data354[1]">
+                                <li>
+                                    <volist name="arr" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $arr2 = get_list_val($data354[2]);
+                            </php>
+                            <if condition="$data354[2]">
+                                <li>
+                                    <volist name="arr2" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $arr3 = get_list_val($data354[3]);
+                            </php>
+                            <if condition="$data354[3]">
+                                <li>
+                                    <volist name="arr3" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $arr4 = get_list_val($data354[4]);
+                            </php>
+                            <if condition="$data354[4]">
+                                <li>
+                                    <volist name="arr4" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $arr5 = get_list_val($data354[5]);
+                            </php>
+                            <if condition="$data354[5]">
+                                <li>
+                                    <volist name="arr5" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $arr6 = get_list_val($data354[6]);
+                            </php>
+                            <if condition="$data354[6]">
+                                <li>
+                                    <volist name="arr6" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $arr7 = get_list_val($data354[7]);
+                            </php>
+                            <if condition="$data354[7]">
+                                <li>
+                                    <volist name="arr7" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $arr8 = get_list_val($data354[8]);
+                            </php>
+                            <if condition="$data354[8]">
+                                <li>
+                                    <volist name="arr8" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[cat]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                <if condition="$a[ico]">
+                                                    <img src="{$a[ico]}" alt="{$a[cat]}">
+                                                </if>
+                                                <p><i>{$a[cat]}</i><em>{$a[sub]}</em></p>
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</if>
+    <!-- 底部 -->
+    <php>
+        $nowtime=date("Y",time());
+    </php>
+    <div class="hjzf_bottom_12_bottom_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="hjzf_bottom_12_bottom_wrapper">
+                        <ul>
+                            <php>
+                                $arr_stra=$data354[19]; $arra=explode(',',$arr_stra); foreach($arra as $ka=>$as){
+                                $lista[$ka]=get_news_byid($as); }
+                            </php>
+                            <li class="news">
+                                <span class="index_title pb20">{$data354[18]}</span>
+                                <volist name="lista" id="indexnewb">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnewb[0]["
+                                        nid"]))}">{$indexnewb[0]['title']}</a>
+                                </volist>
+                            </li>
+                            <php>
+                                $othera = get_list_val($data354[20]);
+                            </php>
+                            <if condition="$data354[20]">
+                                <li class="other">
+                                    <volist name="othera" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[title]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                {$a[title]}
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                            <php>
+                                $otherb = get_list_val($data354[21]);
+                            </php>
+                            <if condition="$data354[20]">
+                                <li class="other">
+                                    <volist name="otherb" id="a">
+                                        <if condition="$a[flag]">
+                                            <span><a href="{$a[link]}">{$a[title]}</a></span>
+                                            <else />
+                                            <a href="{$a[link]}">
+                                                {$a[title]}
+                                            </a>
+                                        </if>
+                                    </volist>
+                                </li>
+                            </if>
+                        </ul>
+                    </div>
+                    <div class="hjzf_bottom_12_bottom_copy">
+                        <img src="{:getindeximgurl($data354[22])}" alt="foot logo"><br>
+                        CopyRight © {$nowtime} - {$about['company_name']} {:__('All rights reserved')} <br>
+                        <if condition="get_txtBeiAn()">
+                            <a href="http://beian.miit.gov.cn/"
+                                target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>
+                        </if>
+                        <a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>
+                        <a href="{:U('/alltag','','')}">{:__('All tags')}</a>
+                        <if condition="C('language') eq 'cn'">
+                            <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>
+                            <if condition="$data210[15] eq ''">
+                                中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                            </if>
+                            <else />
+                            <if condition="$data210[15] eq ''">
+                                Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                            </if>
+                        </if>
+                    </div>
+                    <div class="hjzf_bottom_12_bottom_share">
+                        <div class="left fl">
+                            <php>
+                                $otherc = get_list_val($data354[23]);
+                            </php>
+                            <if condition="$data354[22]">
+                                <volist name="otherc" id="a">
+                                    <a href="{$a[link]}"><img src="{$a[ico]}"></a>
+                                </volist>
+                            </if>
+                        </div>
+                        <div class="right fr">
+                            <php>
+                                $otherd = get_list_val($data354[24]);
+                            </php>
+                            <if condition="$data354[23]">
+                                <volist name="otherd" id="a">
+                                    <a href="{$a[link]}">{$a[text]}</a>
+                                </volist>
+                            </if>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

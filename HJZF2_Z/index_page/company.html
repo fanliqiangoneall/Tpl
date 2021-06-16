@@ -1,0 +1,46 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_company .hj02_index_videoBox{
+        background: url({:getindeximgurl($data2[0])}) no-repeat center/cover;
+    }
+    .new_hjzf_company .hj02_index_videoBox_right{
+        background: url({:getindeximgurl($data2[3])}) no-repeat center/cover;
+    }
+    .new_hjzf_company .hj02_video_more:hover{
+        background: #fff;color: #{$color}
+    }
+    .company_pagination .swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+    .new_hjzf_company .hj02_video_more:hover:before{
+        content: '';display: table;width: 24px;height: 2px;background: #{$color};position: absolute;right: 10px;top: 15px;}
+
+</style>
+<section class="hj02_index_videoBox index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 company_box">
+                <div class="hj02_index_videoBox_right right" id="hj02_index_videoBox_right">
+                <a href="javascript:void(0);"  <if condition="$data2[7] neq ''">id="hj02_video"</if>data-video="{$data2[7]}" ><img src="{:getindeximgurl($data2[2])}" alt="{$data2[7]}"/></a>
+                <p class="margin-50px-top margin-40px-bottom hj02_index_videoBox_right_title index_sub_title">{$data2[1]}</p>
+                <a href="{$data2[8]}" class="hj02_video_more">{:__('Read More')}</a>
+            </div>
+            <div class="hj02_index_videoBox_left left" id="hj02_index_videoBox_left">
+                <div class="swiper-container" id="company_leftswiper">
+                    <div class="swiper-wrapper">
+                        <php>for($v=4;$v<7;$v=$v+1){</php>
+                        <if condition="$data2[$v]">
+                            <div class="swiper-slide company_slide">
+                                <div style="background:url('{:getindeximgurl($data2[$v])}') no-repeat center/cover"></div>
+                            </div> 
+                        </if>
+                        <php>}</php>                             
+                    </div>   
+                    <div class="swiper-pagination company_pagination"></div>
+                </div>               
+            </div>
+           
+        </div>  
+        </div>              
+    </div>
+</section>

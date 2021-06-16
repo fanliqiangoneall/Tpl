@@ -1,0 +1,122 @@
+<style>
+	.HJZF_Z_product_left7_mwrap{
+		margin-top:40px;
+		background:#{$inner_data[6]};
+		padding:40px;
+	}
+	.HJZF_Z_product_left7_mwrap .product7_xbt,.HJZF_Z_product_left7_mwrap .product7_bt{
+		color:#FFFFFF;
+		display:block;
+	}
+	.product7_left_menu{
+		margin-top:30px;
+	}
+	.product7_left_menu li{
+		background:#f3f9ff;
+		display:flex;
+		height:60px;
+		align-items: center;
+		position:relative;
+		margin-top:10px;
+	}
+	.product7_left_menu li a{
+		padding:0 40px 0 60px;
+	}
+	.product7_left_menu li img{
+		left:10px;
+		position:absolute;
+		width:100%;
+		max-width:40px;
+	}
+	.product7_left_menu li i{
+		position:absolute;
+		top:50%;
+		margin-top:-7px;
+		right:25px;
+		z-index:91;
+		color:#C2CBE1;
+	}
+	.product7_left_menu li:hover{
+		background-color:#{$inner_data[1]};
+	}
+	.product7_left_menu li:hover i{
+		color:#{$color};
+	}
+	.HJZF_Z_product_left7_mwrap2{
+		background-color:#{$inner_data[6]};
+		margin-top:40px;
+		padding:40px;
+	}
+	.HJZF_Z_product_left7_mwrap2 .product7_xbt,.HJZF_Z_product_left7_mwrap2 .product7_bt,.HJZF_Z_product_left7_mwrap2 .HJZF_Z_product_left7__des{
+		color:#FFFFFF;
+		display:block;
+	}
+	.HJZF_Z_product_left7_mwrap2 .HJZF_Z_product_left7__des{
+		margin:20px 0;
+	}
+	.HJZF_Z_product_left7__btn a{
+		display:flex;
+		height:60px;
+		position:relative;
+		align-items:center;
+		background-color:#{$color};
+	}
+	.HJZF_Z_product_left7__btn a i{
+		top:50%;
+		margin-top:-7px;
+		color:#FFFFFF;
+		margin:0 25px;
+	}
+	.HJZF_Z_product_left7__btn a span{
+		color:#FFFFFF;
+	}
+	.HJZF_Z_product_left7__btn a:hover i{
+		margin:0 15px 0 25px;
+		transition:all .6s ease;
+	}
+	@media(max-width:1400px){
+	.HJZF_Z_product_left7_mwrap,.HJZF_Z_product_left7_mwrap2{
+		padding:20px;
+	}
+	}
+	@media(max-width:1200px){
+	.product7_left_menu li img{
+		display:none;
+	}
+	.product7_left_menu li a{
+		padding:0 40px 0 20px;
+	}
+	}
+	</style>
+	</style>
+	<php>
+		$arr = get_list_val($inner_data[5]);
+		$arr2 = get_list_val($inner_data[7]);
+	</php>
+	<div class="HJZF_Z_product_left7_mwrap wow fadeInUp">
+		<div class="product_categroy7_title">
+			<span class="index_text product7_xbt">{$inner_data[3]}</span>
+			<span class="index_title product7_bt">{$inner_data[4]}</span>
+		</div>
+		<div class="product7_left_menu">
+			<volist name="arr" id="a">
+				<li>
+					<img src="{$a[ico]}"><a href="{$a[link]}"><span class="index_text">{$a[title]}</span></a><i class="fa fa-long-arrow-right"></i>
+				</li>
+			</volist>
+		</div>
+	</div>
+	<div class="HJZF_Z_product_left7_mwrap2 wow fadeInUp">
+		<volist name="arr2" id="b">
+			<div class="product_categroy7_title">
+				<span class="index_text product7_xbt">{$b[title1]}</span>
+				<span class="index_title product7_bt">{$b[title2]}</span>
+			</div>
+			<div class="HJZF_Z_product_left7__des index_text">{$b[des]}</div>
+			<div class="HJZF_Z_product_left7__btn">
+				<a href="{$b[link]}">
+					<i class="fa fa-long-arrow-right"></i><span class="index_text">{$b[name]}</span>
+				</a>
+			</div>
+		</volist>
+	</div>

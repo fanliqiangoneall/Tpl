@@ -1,0 +1,100 @@
+<!--{$pagename}-->
+<style>
+    .page_Aboutbg{
+        background: url({:getindeximgurl($data2[29])}) center no-repeat;border-top:1px solid #{$color};
+    }
+    #c1_slide_prev{
+        background:url({:getindeximgurl($data2[1])}) no-repeat;
+    }
+    #c1_slide_prev:hover{
+        background:url({:getindeximgurl($data2[2])}) no-repeat;
+    }
+    #c1_slide_next{
+        background:url({:getindeximgurl($data2[3])}) no-repeat;
+    }
+    #c1_slide_next:hover{
+        background:url({:getindeximgurl($data2[4])}) no-repeat;
+    }
+</style>
+<script type="text/javascript" src="__TMPL__WH01_DE/js/tools.min.js"></script>
+<div class="page_Aboutbg">
+    <div id="index_about_animate">
+        <div class="AboutTitle"><span>{$data[0]}</span> <if condition="$data[30]"><img src="{:getindeximgurl($data2[30])}" width="51" height="34"/></if></div>
+        <div class="About_Btn">
+            <a href="javascript:;" class="leftbtn" id="c1_slide_prev"></a>
+            <a href="javascript:;" class="rightbtn" id="c1_slide_next"></a>
+        </div>
+    </div>
+    <div id="index_about_animate_1">
+        <div class="About_List" id="c1_slide">
+            <div class="section_company">
+                <php>
+
+                    for($i=5;$i<28;$i=$i+4){
+                </php>
+                <if condition="$data[$i] neq ''">
+                    <ul class="c1_lc2" id="cl{$i}">
+                        <li><img src="{:getindeximgurl($data2[$i+3])}" width="295" height="540" alt="{$data2[$i]}"/>
+                            <div class="abouttitle">{$data2[$i]}</div>
+                            <div class="rsp" style="display:none"></div>
+                                    <div class="text">
+                                        <h2>{$data2[$i]}</h2>
+                                        <pre class="text_jj">{$data2[$i+1]}</pre>
+                                        <p style="margin-top:25px;"><span><a href="{$data2[$i+2]}">Weiterlesen</a></span></p>
+
+                                    </div>
+                        </li>
+                    </ul>
+                </if>
+                <php>
+                }
+                </php>
+            </div>
+        </div>
+    </div>
+</div>
+
+<if condition="$data2[31]">
+    <style>
+        .company_class{padding: 25px 30px 60px 30px;}
+        .company_class div{font-size: 13px;color: #fff;font-weight: bold;text-align: left;line-height: 28px;}
+        .company_class div a h3{color: #fff;color: #fff;font-size: 14px;line-height: 25px;font-weight: normal;}
+    </style>
+    <div class="company_class">
+        <volist name="allclass" id="allclass1">
+            <div><a href="{:U('/product_category','','')}/{:getprocatename($allclass1['pcid'])}" title="{$allclass1['class_name']}">{$allclass1['class_name']}</a></div>
+        </volist>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#cl9 li").find(".text_jj").remove();
+            $("#cl9 li .text h2").after($(".company_class"));
+        })
+    </script>
+</if>
+<script>
+    $(document).ready(function(){
+        $(".c1_lc2 li .rsp").hide();
+        $w = $('.c1_lc2 li img').width();
+        $h = $('.c1_lc2 li img').height();
+        $w2 = $w + 20;
+        $h2 = $h + 18;
+
+        $(".c1_lc2 li").hover(function(){
+                    $(this).find("img").stop().animate({height:$h2,width:$w2,left:"-10px",top:"-9px"},500);
+                    $(this).find(".abouttitle").hide();
+                    $(this).find(".rsp").stop().fadeTo(500,1)
+                    $(this).find(".text").stop().animate({bottom:'0'}, {duration: 500})
+                },
+                function(){
+                    $(this).find("img").stop().animate({height:$h,width:$w,left:"0px",top:"0px"},500);
+                    $(this).find(".abouttitle").show();
+                    $(this).find(".rsp").stop().fadeTo(300,0)
+                    $(this).find(".text").stop().animate({bottom:'-540'}, {duration: "slow"})
+                    $(this).find(".text").animate({bottom:'-540'}, {duration: 0})
+                });
+    });
+    $("#c1_slide").scrollable({circular:true,prev:"#c1_slide_prev",next:"#c1_slide_next"});
+
+</script>

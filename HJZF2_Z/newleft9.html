@@ -1,0 +1,16 @@
+<style>
+.InsidePages_list.inner9__leftlist li.yijion,.InsidePages_list.inner9__leftlist li:hover{ 
+	background:#{$color};
+}
+.InsidePages_list.inner9__leftlist li.yijion>a>h3,.InsidePages_list.inner9__leftlist li:hover>a>h3{
+	color:#fff;
+}
+</style>
+<div class="InsidePages-left_content col-xs-12 hidden-xs hidden-sm hidden-md">
+    <ul class="InsidePages_list inner9__leftlist">  
+        <volist empty="no" name="allnewclass" id="new" offset="0">
+            <li <if condition="$newscate['classid'] eq $new['classid']">class="yijion"<else/>class=" yiji"</if>><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+        </volist>
+    </ul>
+    <div class="clear"></div>
+</div>

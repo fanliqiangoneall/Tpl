@@ -1,0 +1,40 @@
+<section class="InsidePage--3__contentBox InsidePage--3__contentBox--product left">
+    <div class="InsidePage--3__contentBoxWrap">
+        <div class="InsidePage--3__contentBoxWrap--main">
+            <div class="InsidePage--3__Protitle">{$prolist['class_name']}
+                <div id="switch_btn">
+                    <div class="switch_btn_icon " id="in_list"><a href="javascript:void(0);"><i class="fa fa-list"></i></a></div>
+                    <div class="switch_btn_icon select" id="in_grid"><a href="javascript:void(0);"><i class="fa fa-th"></i></a></div>
+                </div>
+            </div>
+            <ul class="InsidePage--3__prolist grid">
+            	<if condition="$prolist['cate_profile']">
+                    <div class="mainpage_procalss_desc">{:htmlspecialchars_decode($prolist['cate_profile'])}</div>
+                </if>
+                <volist empty="" name="pro" id="allpro" key="k" offset="0">
+                    <li class="InsidePage--3__prolistItem wow fadeInUp">
+                        <div class="InsidePage--3__prolist--pic">
+                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                <if condition="$allpro['main_img']">
+                                    <img src="{:getmainimgurl($allpro['main_img'])}" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"<else/>alt="{$allpro['pro_name']}"</if> />
+                                    <else/>
+                                    <img src="{:getindeximgurl($inner_data[4])}" alt=""/>
+                                </if>
+                            </a>
+                        </div>
+                        <div class="InsidePage--3__prolist--content">
+                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                <div class="InsidePage--3__prolist--contentTitle" title="{$allpro['pro_name']}">{$allpro['pro_name']}</div>
+                            </a>
+                            <div class="InsidePage--3__prolist--contentDesac">{:htmlspecialchars_decode($allpro['pro_description'])}</div>
+                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}#inquiry" class="InsidePage--3__prolist--contentButton"><i class="togetherClass fa fa-envelope-o"></i>{:__('Inquiry Now')}</a>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </volist>
+                <div style="clear:both;"></div>
+            </ul>
+            <div class="main_page">{$page}</div>
+        </div>
+    </div>
+</section>

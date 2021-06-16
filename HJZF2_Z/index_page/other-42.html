@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+<style>
+    .other_42_wrapper a:hover,
+    .other_42_wrapper a i {
+        color: #{$data294[0]};
+    }
+
+    .hjzf2_other_42 .index_title {
+        border-bottom: 1px solid #{$data294[0]};
+    }
+</style>
+<section class="hjzf2_other_42 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="pb40">
+                <div class="index_title pb20">
+                    {$data294[1]}
+                </div>
+                <div class="index_sub_title">
+                    {:HtmlEncode($data294[2])}
+                </div>
+            </div>
+            <php>
+                $bottom_nav_str2=explode("\\r\\n",$data294[3]); foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2) { $bottom_navs2=explode(":",$bottom_nav_arr2);
+                $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+            </php>
+            <php>
+                if($data294[5]){ $imgs=[];$imgs_mobile=[]; $matches=getimages(htmlspecialchars_decode($data294[5])); if(isset($matches[1])){
+                $imgs=$matches[1]; $imgs_mobile=$matches[1]; } } $img_index=0; $img_index_mobile = 0; if($data294[4]) { $info
+                = explode("\\r\\n",$data294[4]); }
+            </php>
+            
+            <ul class="clearfix row-little other_42_wrapper">
+                <volist name="bottom_nav2" id="nav" key="key">
+                    <php>
+                        $tuji=$imgs[$img_index]; $img_index++;
+                    </php>
+                    <if condition="$nav['name']">
+                        <li class="col-xs-16 col-md-4">
+                            <div class="clearfix">
+                                <a href="{$nav['href']}">
+                                    <img src="{$tuji}" alt="{$nav['name']}" class="img-responsive">
+                                </a>
+                                <div class="other_38_info">
+                                    <span class="index_sub_title">
+                                        <a href="{$nav['href']}">{$nav['name']}
+                                        </a>
+                                    </span>
+                                    <p class="index_text">{$info[$key-1]}</p>
+                                </div>
+
+                            </div>
+                        </li>
+                    </if>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</section>

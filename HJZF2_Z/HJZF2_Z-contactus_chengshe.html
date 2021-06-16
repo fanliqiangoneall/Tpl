@@ -1,0 +1,170 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[0]){
+		$color = $inner_data[0];
+		}
+	</php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current {
+			color: #{$color};
+		}
+
+		.InsidePages_content-right_content_title:before {
+			background: #{$color};
+		}
+
+		.productbutton {
+			background-color: #{$color};
+		}
+
+		.InsidePages_content-right__wrap {
+			margin-top: 40px;
+			margin-bottom: 40px;
+		}
+
+		.chengshexunpan {
+			background-color: #fafafa;
+			padding: 110px 0;
+		}
+
+		.chengshe_xp_title .index_title {
+			margin-bottom: 50px;
+		}
+
+		.chengshe_xp {
+			margin-top: 100px;
+		}
+
+		.chengshe_xp input {
+			background: transparent !important;
+			border: 1px solid #e0e0e0 !important;
+			height: 50px;
+			line-height: 50px;
+			border-radius: 2px !important;
+		}
+
+		.chengshe_xp .inquiryinfo textarea {
+			background: transparent !important;
+			border: 1px solid #e0e0e0 !important;
+			border-radius: 2px !important;
+		}
+
+		.chengshe_xp .inquiryright img {
+			height: 50px !important;
+		}
+
+		.chengshe_xp .inquiryleft {
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+
+		.chengshe_xp #inbut {
+			text-align: center;
+		}
+
+		.chengshe_xp #inbut input {
+			height: 50px !important;
+			border-color: #{$color} !important;
+			color: #{$color};
+		}
+
+		@media(max-width: 1200px) {
+			.chengshexunpan {
+				padding: 40px 0;
+			}
+			.chengshe_xp_title .index_title {
+				margin-bottom: 20px;
+			}
+			.chengshe_xp {
+				margin-top: 30px;
+			}
+		}
+	</style>
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_aboutus.html" />
+		</div>
+		<!-- 
+			<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+								class="fa fa-angle-right"></i>&nbsp;<span
+								class="current">{$intro_class['class_name']}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		 -->
+
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<section <if condition="count($navrs) gt 0">class="InsidePages_content-right"
+							<else /> class="InsidePages_content-right2" </if>>
+							<div class="InsidePages_content-right__wrap">
+								<div class="InsidePages_content-right_content-main">
+									<div class="HJZF_contact_editor">
+										<div class="nav-hidden-mobile col-lg-12">
+											{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+										</div>
+										<div class="col-xs-12 nav-hidden-pc">
+											<if condition="$intro_class['wapreadme']">
+												{:htmlspecialchars_decode($intro_class['wapreadme'])}
+												<else />{:htmlspecialchars_decode($intro_class['readme'])}
+											</if>
+											{:htmlspecialchars_decode(get_contactus_code())}
+										</div>
+										<div class="clear"></div>
+									</div>
+
+									<div style="clear:both"></div>
+								</div>
+							</div>
+
+
+
+						</section>
+						<div class="clear"></div>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="chengshexunpan">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+
+							<div class="chengshe_xp_title text-center">
+								<div class="index_title">
+									{$inner_data[2]}
+								</div>
+								<div class="index_sub_title">
+									{:HtmlEncode($inner_data[3])}
+								</div>
+							</div>
+
+							<if condition="C('language') eq 'cn'">
+								<div class="chengshe_xp">
+									<Include file="./Tpl/HJZF2_Z/submitinquiry_cn.html" />
+								</div>
+								<elseif condition="C('language') eq 'rus'" />
+								<div class="chengshe_xp">
+									<Include file="./Tpl/HJZF2_Z/submitinquiry_rus.html" />
+								</div>
+								<else />
+								<div class="chengshe_xp">
+									<Include file="./Tpl/HJZF2_Z/submitinquiry.html" />
+								</div>
+							</if>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

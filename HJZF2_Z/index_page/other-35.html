@@ -1,0 +1,62 @@
+<!--{$pagename}-->
+<style>
+   .hjzf2_other_35{
+       background: url({:getindeximgurl($data287[0])}) no-repeat center/100% 100%;
+   }
+   .other_35_swiper .swiper-pagination-bullet-active{
+       background-color: #{$data287[0]};
+   }
+   .other_35_btn{
+       color: #{$data287[0]};
+   }
+</style>
+<section class="hjzf2_other_35 index_pd">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="swiper-container other_35_swiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        $bottom_nav_str2=explode("\\r\\n",$data287[2]); foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2) { $bottom_navs2=explode(":",$bottom_nav_arr2);
+                        $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+                    </php>
+
+                    <php>
+                        if($data287[3]){
+                            $imgs=[];$imgs_mobile=[];
+                            $matches=getimages(htmlspecialchars_decode($data287[3]));
+                            if(isset($matches[1])){
+                                $imgs=$matches[1];
+                                $imgs_mobile=$matches[1];
+                            }
+                        }
+                        $img_index=0;
+                        $img_index_mobile = 0;
+                    </php>
+                    <if condition="$bottom_nav2">
+                        <volist name="bottom_nav2" id="nav">
+                            <php>
+                            $tuji=$imgs[$img_index];
+                            $img_index++;
+                            </php>
+                            <div class="swiper-slide">
+                                <a href="{$nav['href']}">
+                                    <img src="{$tuji}" class="img-responsive" alt="{$nav['name']}">
+                                    <p class="index_text">{$nav['name']}</p>
+                                </a>
+                            </div>
+                        </volist>
+                    </if>
+                    
+                </div>
+                <!-- Add Pagination -->
+                <div class="other_35_btn">
+                    <div class="swiper-pagination other_35_pagination"></div>
+                    <div class="swiper-button-next other_35_next"><i class="fa fa-angle-right"></i></div>
+                    <div class="swiper-button-prev other_35_prev"><i class="fa fa-angle-left"></i></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</section>

@@ -1,0 +1,48 @@
+<style>
+    .wap2_cases__title span{
+        color: #{$color};
+    }
+    .wap2_cases_pageaction .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+</style>
+<ssection class="wap2_cases">
+    <div class="container">
+        <div class="wap2_cases__title">
+            {$data10[0]} <span>{$data10[1]}</span>
+        </div>
+        <div class="wap2_cases__desc">
+            {$data10[2]}
+        </div>
+        <div class="wap2_caseWrap">
+            <div class="swiper-container wap2_caseWrap__swiper">
+                <div class="swiper-wrapper">
+                    <volist name="indexcases" id="case">
+                        <div class="swiper-slide">
+                            <div class="swiper-slide_wrap">
+                                <a  href="{:U('/case_detail',array('nid'=>$case["nid"]))}" class="article-header casecover" >
+                                    <img
+                                            src="{:getimgurl($case['new_pro'])}"
+                                            data-src="{:getimgurl($case['new_pro'])}"
+                                            class="preload-image responsive-image" alt="img"> <span
+                                        class="article-category bg-highlight bg-border-light uppercase">{$case['classname']}</span>
+                                </a>
+                                <div class="article-content">
+                                    <h1 class="article-title font-16 bold bottom-10">{$case['title']}
+                                    </h1>
+                                    <p class="bottom-15 font-14" style="text-justify:inter-ideograph;" >{$case['news_description']}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="wap2_cases_pageaction">
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination wap2_caseWrap_page"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ssection>
+

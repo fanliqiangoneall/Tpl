@@ -1,0 +1,100 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_Z__aboutus--right__swiper__linkMail a{
+        color: #{$data4[35]};
+    }
+    .HJZF2_Z__aboutus__title--main:before,.HJZF2_Z__aboutus--left__button a,.HJZF2_Z__aboutus--next, .HJZF2_Z__aboutus--prev{
+        background: #{$data4[35]};
+    }
+</style>
+<if condition="$data4[36]">
+    <style>
+        .HJZF2_Z__aboutus{
+            background: url({:getindeximgurl($data4[36])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<section class="HJZF2_Z__aboutus index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__aboutus__title--main index_title">{$data4[34]}</div>
+        </div>
+    </div>
+    <div class="HJZF2_Z__aboutus_content">
+        <div class="container">
+            <div class="row">
+                <div class="HJZF2_Z__aboutus_wrap">
+                    <div class="col-sm-12  col-lg-12 col-xl-4 wow fadeInLeft" data-wow-duration="1s" >
+                        <div class="HJZF2_Z__aboutus__columm--inner">
+                            <div class="HJZF2_Z__aboutus_wrapper">
+                                <div class="HJZF2_Z__aboutus--left__img">
+                                    <img src="{:getindeximgurl($data4[0])}" alt="{$data4[34]}"/>
+                                </div>
+                                <h2 class="HJZF2_Z__aboutus--left__title index_sub_title">{$data4[1]}</h2>
+                                <div class="HJZF2_Z__aboutus--left__desc index_text">{:HtmlEncode($data4[2])}</div>
+                                <div class="HJZF2_Z__aboutus--left__button">
+                                    <if condition="$data4[3]"><a href="{:U('/aboutus')}">{$data4[3]}</a><else/><a href="{:U('/aboutus')}">{:__('Read More')}</a></if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 col-xl-4 wow fadeInLeft" data-wow-duration="1s" >
+                        <div class="HJZF2_Z__aboutus__columm--inner">
+                            <php>
+                                for($i=4;$i<15;$i=$i+3){
+                            </php>
+                            <div class="HJZF2_Z__aboutus--center__item">
+                                <div class="HJZF2_Z__aboutus--center__item__icon">
+                                    <img src="{:getindeximgurl($data4[$i])}" alt="{$data4[$i+1]}"/>
+                                </div>
+                                <div class="HJZF2_Z__aboutus--center__item__block">
+                                    <div class="HJZF2_Z__aboutus--center__item__header index_sub_title">{$data4[$i+1]}</div>
+                                    <div class="HJZF2_Z__aboutus--center__item__description index_text">{$data4[$i+2]}</div>
+                                </div>
+                            </div>
+                            <php>
+                                }
+                            </php>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 col-xl-4 wow fadeInRight" data-wow-duration="1s" >
+                        <div class="HJZF2_Z__aboutus__columm--inner">
+                            <div class="swiper-container HJZF2_Z__aboutus--right__swiper">
+                                <div class="swiper-wrapper">
+                                    <php>
+                                        for($i=16;$i<33;$i=$i+6){
+                                    </php>
+                                    <if condition="$data4[$i+1]">
+                                        <div class="swiper-slide">
+                                            <div class="HJZF2_Z__aboutus--right__swiper__img">
+                                                <img src="{:getindeximgurl($data4[$i])}" alt="{$data4[$i+1]}" width="150" height="150"/>
+                                            </div>
+                                            <div class="HJZF2_Z__aboutus--right__swiper__title">
+                                                <div class="HJZF2_Z__aboutus--right__swiper__title--mainTitle index_sub_title">{$data4[$i+1]}</div>
+                                                <div class="HJZF2_Z__aboutus--right__swiper__title--subtitle index_text">{$data4[$i+2]}</div>
+                                            </div>
+                                            <div class="HJZF2_Z__aboutus--right__swiper__desc index_text pb40">
+                                                {:HtmlEncode($data4[$i+3])}
+                                            </div>
+                                            <div class="HJZF2_Z__aboutus--right__swiper__link">
+                                                <div class="HJZF2_Z__aboutus--right__swiper__linkPhone index_text">{$data4[$i+4]}</div>
+                                                <div class="HJZF2_Z__aboutus--right__swiper__linkMail index_text"><a href="mailto:{$data4[$i+5]}" onclick="turn_sta(3,4);">{$data4[$i+5]}</a></div>
+                                            </div>
+                                        </div>
+                                    </if>
+
+                                    <php>
+                                        }
+                                    </php>
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next HJZF2_Z__aboutus--next"><i class="fa fa-angle-right"></i></div>
+                                <div class="swiper-button-prev HJZF2_Z__aboutus--prev"><i class="fa fa-angle-left"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

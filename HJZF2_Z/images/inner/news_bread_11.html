@@ -1,0 +1,51 @@
+<style>
+    .news_11 li h3{
+        font-size: 14px;
+        color: #333;
+    }
+    .news_11{
+        display: flex;
+    }
+    .news_11 li{
+        background-color: #eee;
+        padding: 10px;
+        margin-left: 5px;
+        transition: all .5s;
+    }
+    .news_11 li:hover{
+        background-color: #{$color};
+    }
+    .news_11 li h3{
+        transition: all .5s;
+    }
+    .news_11 li:hover h3{
+        color: #fff;
+    }
+    .news_bread_11{
+        border-bottom: 1px  solid #eee;
+    }
+    .HJZF_Z__inner__mobileLeftMenu{
+        width: 100%;
+        margin-top: 15px;
+    }
+</style>
+<div class="container pb20">
+    <div class="row ">
+        <div class="col-xs-12 news_bread_11 pb20 d-flex justify-content-between">
+            <div class="news_11_left">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;|&nbsp;<span class="current">{:__('News')}
+            </div>
+                <ul class="news_11 nav-hidden-mobile">
+                    <volist empty="no" name="allnewclass" id="new" offset="0">
+                        <li <if condition="$newscate['classid'] eq $new['classid']">class="yiji on"
+                            <else />class="yiji"</if>>
+                            <a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a>
+                        </li>
+                    </volist>
+                </ul>
+                <section class="nav-hidden-pc HJZF_Z__inner__mobileLeftMenu">
+                    <Include file="./Tpl/HJZF2_Z/leftnews_mobile.html" />
+                </section>
+        </div>
+    </div>
+</div>

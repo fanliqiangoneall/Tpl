@@ -1,0 +1,65 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,ul.InsidePages_left_navlist>li > a > h3:hover,ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+             <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" alt=""/></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$intro_class['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container" id="payment">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left pull-right">
+                        <Include file="./Tpl/HJZF2_Z/inner/left_aboutus10.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_othercatemobile.html" />
+                    </section>
+                    <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <if condition="count($navrs) gt 0">
+                                    <h5 class="InsidePages_content-right_content_title InsidePages_content-right_content_title--othercate text-center">{$intro_class['class_name']}</h5>
+                                </if>
+                                <div class="hidden-xs hidden-sm hidden-md col-lg-12 InsidePages_content-right_editor" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                                <div class="col-xs-12 hidden-lg hidden-xl InsidePages_content-right_editor" id="payment1"><if condition="$intro_class['wapreadme']">{:htmlspecialchars_decode($intro_class['wapreadme'])} <else/>{:htmlspecialchars_decode($intro_class['readme'])}</if></div>
+                                <div class="page_nei_space"></div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,53 @@
+<extend name="YP01_CN:base" />
+<block name="content">
+<Include file="./Tpl/YP01_CN/index_page/head.html" />
+
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="r_mbx"><img src="__TMPL__YP01_CN/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$job['jobname']}</div>
+
+
+
+<div class="" style=" width:1190px; margin:0 auto; text-align:left;">
+   <div class="in_right">
+       <div class="page_RightTitle">Job</div>
+       <div class="page_RightMain">
+       	 <div class="">{:htmlspecialchars_decode($job['content'])}</div>
+       
+          <div class="page_main"><include file="./Tpl/YP01_CN/submitjob.html" /></div>
+       </div>
+   </div>
+   <div style="clear:both"></div>
+</div>
+<div class="index_line"></div>
+
+
+
+ <style type="text/css">
+
+.demo {width: 100%;position:relative;clear: both;margin: 0 auto;border: 1px solid #cccccc; }
+.demo a.control {position:absolute;display: block;bottom: 0px;width:39px;height: 75px;cursor: pointer;z-index: 2;}
+.demo a.prev {left:-80px;background:url(__TMPL__YP01_CN/img/honorl.jpg) no-repeat;top:260px;}
+
+.demo a.next {right:-80px; background:url(__TMPL__YP01_CN/img/honorr.jpg) no-repeat;top:260px;}
+
+
+/*----------------------------为保证最佳效果，建议设置如下样式------------------------*/
+.slider {display: none}
+.desc{display: none;}
+.bg{display: none;}
+.slider li{width: 994px;height: 632px;border: 1px solid #cccccc;}
+.slider3 ul li img{width: 288px !important;height: 161px !important;}
+</style> 
+<Include file="./Tpl/YP01_CN/index_page/bottom.html" />
+</block>
+
+

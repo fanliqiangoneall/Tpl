@@ -1,0 +1,271 @@
+<script src="__TMPL__public/js/upload.js"></script>
+<style>
+.inquiryleft{padding:5px 0px 5px;}
+.productbutton{
+width:110px !important; margin:auto; border:none !important; text-align:center;
+color: #ffffff !important;
+background:#{$color};
+cursor: pointer;
+height: 30px !important;
+font-size:13px;
+}
+.inquiryinfo input{ height:28px; line-height:18px; padding:5px; width:400px; border:1px solid #ccc; }
+.yz_alert{color:red;}
+.inquiryinfo{ float:left; width:50%;}
+</style>
+<script>
+jQuery(function(){
+jQuery("#message").focus(function(){
+jQuery("#message_alert").html("");
+});
+jQuery("#linkname").focus(function(){
+jQuery("#linkname_alert").html("");
+});
+jQuery("#phone").focus(function(){
+jQuery("#phone_alert").html("");
+});
+jQuery("#email").focus(function(){
+jQuery("#email_alert").html("");
+});
+jQuery("#code_char").focus(function(){
+jQuery("#code_char_alert").html("");
+});
+
+
+jQuery("#getcode_char").click(function(){
+    jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()}');
+  });
+
+jQuery("#getcode_char1").click(function(){
+    jQuery("#getcode_char").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()}');
+  });
+
+})
+
+
+function yz_submit(){
+var count=0;
+var message=Trims(jQuery("#message").val());
+var linkname=Trims(jQuery("#linkname").val());
+var phone=Trims(jQuery("#phone").val());
+var email=Trims(jQuery("#email").val());
+
+
+var code_char = jQuery("#code_char").val();
+jQuery.ajax({
+   type: "POST",
+   url: "/verification",
+   async:false,
+   data: {code:code_char},
+   success: function(data){
+   
+  if(data==1){
+  jQuery("#code_char_alert").html("");
+  }else{
+   count++;
+   jQuery("#code_char_alert").html("验证码输入有误!");
+  }
+  }            
+});
+
+if(linkname.length<=0){
+jQuery("#linkname_alert").html("*姓名不能为空");
+count++;
+}
+else{
+jQuery("#linkname_alert").html("");
+}
+
+
+
+if(phone.length<=0){
+jQuery("#phone_alert").html("*电话不能为空");
+count++;
+}
+else{
+
+}
+
+
+
+
+
+
+if(count>0){
+return false;
+}
+else{
+jQuery("#inbut").html('<h5 style="color:#F00;">请稍等</h5>');	
+
+return true;
+}
+
+}
+
+
+function Trims(str)
+{
+return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+} 
+
+function is_email(str)
+{
+return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(str));
+}
+
+</script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(":button").click(function () {
+                if ($("#file1").val().length > 0) {
+                    ajaxFileUpload();
+                }
+                else {
+                    alert("请选择文件");
+                }
+            })
+        })
+        function ajaxFileUpload() {
+            $.ajaxFileUpload
+            (
+                {
+                    url: "__APP__/uploadfileCommon", //用于文件上传的服务器端请求地址
+                    secureuri: false, //一般设置为false
+                    fileElementId: 'file1', //文件上传空间的id属性  <input type="file" id="file" name="file" />
+                    dataType: 'JSON', //返回值类型 一般设置为json
+                    success: function (data)  //服务器成功响应处理函数
+                    {
+						console.log(data);
+						data=eval('('+data+')');
+						if(data.msg){
+							$('#fileurl').val(data.savename);
+							$('#tishi').html('已上传');
+							alert(data.msg);
+						}else{
+							alert(data.error);
+						}
+                    },
+                    error: function (data, status, e)//服务器响应失败处理函数
+                    {
+                        alert(e);
+                    }
+                }
+            )
+            return false;
+        }
+    </script>
+
+                
+				<form action="__APP__/savejob" method="post" onsubmit="return yz_submit();" enctype="multipart/form-data">
+
+				
+<input  name="jobid" type="hidden" value="{$job['jobid']}">
+<input  name="jobname" type="hidden" value="{$job['jobname']}">
+
+				<div class="inquiryinfo">
+					<div class="inquiryleft">请留下您的姓名 *</div>
+					<div class="inquiryright"><input  name="name" id="linkname"><span class="yz_alert" id="linkname_alert"></span></div>
+					<div class="clear"></div>
+				</div>
+				
+				<div class="inquiryinfo">
+					<div class="inquiryleft">请留下您的电话 *</div>
+					<div class="inquiryright"><input  name="phone" id="phone"><span class="yz_alert" id="phone_alert"></span></div>
+					<div class="clear"></div>
+				</div>
+				
+				
+				<div class="inquiryinfo">
+					<div class="inquiryleft">您的常用联系信箱</div>
+					<div class="inquiryright"><input  name="email" id="email"><span class="yz_alert" id="email_alert"></span></div>
+					<div class="clear"></div>
+				</div>
+                
+				<div class="inquiryinfo">
+					<div class="inquiryleft">您的学历</div>
+					<div class="inquiryright"><input  name="edu" id="Edu"><span class="yz_alert" id="Edu_alert"></span></div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="inquiryinfo">
+					<div class="inquiryleft">性别</div>
+					<div class="inquiryright"><select name="sex" id="sex" ><option value="1">男</option><option value="2">女</option></select><span class="yz_alert" id="Edu_alert"></span></div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="inquiryinfo">
+					<div class="inquiryleft">个人简介</div>
+					<div class="inquiryright"><textarea style="width:400px; height:100px;" rows="5" cols="80" name="body" id="message"></textarea><span class="yz_alert" id="message_alert"></span>
+					<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="inquiryinfo">
+					<div class="inquiryleft">上传简历 （仅支持上传doc,docx,pdf,大小请勿超过1M）</div>
+					<div class="inquiryright"> <input style="border:0px;" name="fileurl" id="fileurl" type="hidden" />   <p><input style="border:0px;" type="file" id="file1" name="fileToUpload" /></p>
+    <input type="button" value="上传" />
+    <p id="tishi"></p></span>
+					<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				
+				<!--滑块拖动-->
+
+<div class="inquiryinfo">
+	<div class="inquiryright">
+    
+<div>
+    <div class="inquiryleft">验证码 <span style="color:#f00">*</span></div>
+  <div class="inquiryright"><input type="text" class="input" id="code_char" name="code" maxlength="3" style="width:40% !important;" />&nbsp;<img src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()}" id="getcode_char" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1">点击刷新</a><span class="yz_alert" id="code_char_alert"></span></div>
+  <div class="clear"></div>
+</div>
+ <style>
+.box {
+    position: relative;
+    width: 230px;
+    height: 30px;
+	
+    border-radius: 20px;
+    background: #6a6a6a;
+    line-height: 30px;
+    overflow: hidden;
+    color: #fff !important;
+    font-size: 12px;
+}
+.btndrag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background: #{$color};
+    border-radius: 20px;
+    text-align: center;
+}
+.tips {
+	line-height: 30px;
+    text-align: center;
+	 position: absolute;
+    top: 0;
+    left: 35px;
+	color: #fff !important;
+}
+
+</style>
+
+ 
+ 
+   <span class="yz_alert" id="code_char_alert"></span></div>
+	<div class="clear"></div>
+</div>
+<!--滑块拖动 end-->
+				<div class="" style="height:20px; width:100%; clear:both;"></div>
+				<div class="inquiryinfo" style="width:100%; text-align:center">
+				<div id="inbut"><input class="productbutton" type="submit" value="提&nbsp;&nbsp;交"  name="submit"/></div>
+				</div>
+                 <div class="" style="height:20px; width:100%; clear:both;"></div>
+				</form>
+               

@@ -1,0 +1,179 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .main_newslist16 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .main_newslist16:before,.main_newslist16:after{
+            display: none;
+        }
+        .main_newslist16 li:hover h5{
+            color: #{$color};
+        }
+        .main_newslist16 h5 {
+            font-size: 18px;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        .main_newslist16 .p15{
+            padding: 0 15px;
+        }
+        
+        .main_newslist16 p {
+            margin-bottom: 20px;
+        }
+
+        .main_newslist16 li a {
+            background-color: #fff;
+            display: block;
+            border: 1px solid #eee;
+            height: 100%;
+        }
+        .main_newslist16 li{
+            margin-bottom: 30px;
+        }
+
+        .main_newslist16 .info {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        @media(min-width: 1200px) {
+            .main_newslist3 .newslist_left {
+                min-height: 120px;
+            }
+        }
+
+        .HJZF_Z__Breadcrumbs span.current,
+        ul.InsidePages_left_navlist>li>a>h3:hover,
+        ul.InsidePages_left_navlist>li.yijion>a>h3 {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+
+        .InsidePages_content-right_content_title:before {
+            background: #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+
+        .main_newslist3 li:hover a.more {
+            background-color: #{$color};
+            height: 35px;
+        }
+
+        @media(min-width: 1200px) {
+            #lightbox-container-image {
+                min-height: 400px;
+            }
+        }
+
+        @media(max-width: 1199px) {
+            #lightbox-container-image {
+                min-height: 80px;
+            }
+
+            #lightbox-container-image-box,
+            #lightbox-container-image-data-box {
+                width: 80% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner[0]['use_wap']">
+                <div class="nav-hidden-pc">
+                    <volist name="banner" id="bannera" offset="0" length="1">
+                        <div class="in_banner"><img src="{:getimgurl($bannera['logo_wap_bg'])}" class="img-fluid" />
+                        </div>
+                    </volist>
+                </div>
+                <div class="nav-hidden-mobile">
+                    <if condition="$banner neq ''">
+                        <volist name="banner" id="bannerb" offset="0" length="1">
+                            <div class="in_banner"><img src="{:getimgurl($bannerb['ad_pic'])}" class="img-fluid" />
+                            </div>
+                        </volist>
+                    </if>
+                </div>
+            <else/>
+            <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/news')}">{:__('News')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+                            class="current">{$newscate['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-12 HJZF_Z__inner--left">
+                        <Include file="./Tpl/HJZF2_Z/inner/news_left16.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftnews_mobile.html" />
+                    </section>
+                    <section class="HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="main_newslist16 ul_li_list clearfix">
+                                    <!-- loop start -->
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="newscatelist" id="allnews">
+                                        <li class="col-xs-12 col-lg-4 col-md-6">
+                                            <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"
+                                                onFocus="blur()">
+                                                <img <if
+                                                    condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"
+                                                <else />src="{:getindeximgurl($inner_data[2])}"</if> border="0"
+                                                class="img-responsive" />
+                                                <div class="p15">
+                                                    <h5 class="fz16">{$allnews['title']}</h5>
+                                                    <p class="hidden-xs">{:subtxt($allnews['news_description'],200)}</p>
+                                                    <div class="info">
+                                                        <span>{:date('Y-m-d ',$allnews['created'])}</span>
+                                                        <span>{:__('Read More')}</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                        </li>
+                                    </volist>
+                                    <!-- loop end -->
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

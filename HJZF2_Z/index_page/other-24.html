@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data257[2]">
+    .hjzf2_other_24 .flex .more:before{
+        background-color: #{$data257[2]};
+    }
+    .hjzf2_other_24 .flex .more:hover{
+        border-color: #{$data257[2]};
+    }
+    <else/>
+    .hjzf2_other_24 .flex .more:before{
+        background-color: #{$color};
+    }
+    .hjzf2_other_24 .flex .more:hover{
+        border-color: #{$color};
+    }
+    </if>
+    .hjzf2_other_24{
+        background: url({:getindeximgurl($data257[0])}) no-repeat center/cover fixed;
+    }
+    <if condition="$data257[1]">
+    .hjzf2_other_24,.hjzf2_other_24 .flex  a.more{
+        color: #{$data257[1]};
+    }
+    </if>
+    .hjzf2_other_24, .hjzf2_other_24 .flex{
+        color: #{$data257[1]};
+    }
+    .hjzf2_other_24 .flex .more{
+        border-color: #{$data257[1]};
+        font-family: serif;
+    }
+</style>
+<section class="hjzf2_other_24">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="flex column">
+                    <if condition="$data257[6]">
+                        <img src="{:getindeximgurl($data257[6])}" class="mb-20">
+                    </if>
+					
+                    <div class="index_title" <if condition="$data257[7]">style="background: url({:getindeximgurl($data257[7])}) no-repeat center;"</if>>
+                        {$data257[3]}
+                    </div>
+                    <div class="main_content index_text">
+                        {$data257[4]}
+                    </div>
+                    <if condition="$webid eq '1759'">
+                    <a href="{$data257[5]}" class="more my-mask">关于EFNOTE</a>
+                    <elseif condition="$webid eq '255'"/>
+                    <a href="{$data257[5]}" class="more my-mask">Talk to us</a>
+					<else/>
+                    <a href="{$data257[5]}" class="more my-mask">{:__('Read More')}</a>
+					</if>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

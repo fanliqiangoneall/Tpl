@@ -1,0 +1,43 @@
+<extend name="WH01:basein" />
+<block name="content">
+
+<div>
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+    <Include file="./Tpl/WH01/in_banner.html" />
+</if>
+</div>
+
+
+
+<div class="r_mbx"><Include file="./Tpl/WH01/bread.html" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;{$newscate['class_name']}</div>
+
+
+<div class="page_nei_main">
+<Include file="./Tpl/WH01/newleft.html" />
+<div class="page_RightMain">
+    <div class="page_class_head_1">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01/img/protitle_bg.png" alt="protitle_bg.png"><span>{$newscate['class_name']}</span><img src="__TMPL__WH01/img/protitle_bg2.png">
+        </div>
+    </div>
+ <div class="page_RightM">
+     <div class="news">
+         <div class="body">
+             <ul>
+                 <volist name="newscatelist" id="newscatelist">
+                     <li><span class="right_time">{:date('Y-m-d',$newscatelist['created'])}</span><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}">{$newscatelist['title']}</a></li>
+                 </volist>
+             </ul>
+         </div>
+     </div>
+ </div>
+  <div class="clearfix"></div>
+<div class="main_page">{$page}</div>
+</div>
+</div>
+
+</block>

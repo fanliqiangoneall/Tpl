@@ -1,0 +1,187 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<style>
+		.HJZF_Z__Breadcrumbs span.current{
+			color: #{$color};
+		}
+		.InsidePages_content-right_content_title:before,.productbutton {
+			background: #{$color};
+		}
+		.HJZF_Z__inner9--contactbg{
+			background-color: rgb(52, 52, 55);
+			padding:40px 11%;
+		}
+		.HJZF_Z__inner9--map,#mapContainer{ 
+			width:100%;
+			height: 30vw;
+			overflow:hidden;
+		}
+		.HJZF_Z__inner9--contactz>b{
+			display: block;
+			border-left:15px solid transparent;
+			border-right:15px solid transparent;
+			border-top:15px solid #343437;
+			position: absolute;
+			top:auto;
+			left: 50%;
+			-webkit-transform: translatex(-50%);
+			-moz-transform: translatex(-50%);
+			-ms-transform: translatex(-50%);
+			-o-transform: translatex(-50%);
+			transform: translatex(-50%);
+			z-index:1000;
+		}
+		.InsidePages2_contact-right.HJZF_contact_editor{
+			overflow:hidden;		
+		}
+		.inner-4__cateprofile__part4 .inner-4__inquirycontent .yz_alert{
+			top: auto;
+			bottom: 0;
+		}
+		@media(max-width:768px){
+			.HJZF_Z__inner9--map,#mapContainer{
+			height:300px;	
+			}
+		}
+	</style>
+	<div class="index_wrapper inner9__wrapper" id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner"><img	src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+				</volist>
+				<else/>
+				<div class="in_banner"><img src="{:getindeximgurl($inner_data[2])}" alt=""/></div>
+			</if>
+		</div>
+		<if condition="$inner_data[0]">
+        <div class="index_inner container">
+            <div class="row">
+                <div class="col-xs-12 wow fadeInLeft">
+                	<div class="HJZF_Z__inner9--text2">
+                        <div class="index_title">{$inner_data[0]}</div>
+                        <div class="index_text">{$inner_data[1]}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </if>
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="index_inner container">
+				<div class="row">
+                      <section class="col-xs-12 HJZF_Z__inner9--contactz">
+						<div class="InsidePages_content-right__wrap HJZF_Z__inner9--contactbg">
+							<div class="InsidePages_content-right_content-main">
+								<div class="InsidePages2_contact-left HJZF_contact_editor">
+									<div class="hidden-xs hidden-sm hidden-md col-lg-12">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+									<div class="col-xs-12 hidden-lg hidden-xl">{:htmlspecialchars_decode($intro_class['wapreadme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+									<div class="clear"></div>
+								</div>
+								<div class="InsidePages2_contact-right HJZF_contact_editor" id="inquiry">
+									<Include file="./Tpl/HJZF2_Z/submitinquiry_inner4.html" />
+								</div>
+								<div style="clear:both"></div>
+							</div>
+						</div>
+                        <if condition="$inner_data[3]"><b></b></if>
+                        <div class="clear"></div>
+                        <if condition="$inner_data[3]">
+                        <div class="HJZF_Z__inner9--map">
+                        	<div id="mapContainer"></div>
+                            <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=acec09c5cb681ce58f6b08dcee4ff705"></script>
+                            <script type="text/javascript">
+                                var ji = "<?php echo $inner_data[4]; ?>";
+                                var wei = "<?php echo $inner_data[5]; ?>";
+                                //初始化地图对象，加载地图
+                                var map = new AMap.Map("mapContainer",{
+                                    resizeEnable: true,
+                                    //二维地图显示视口
+                                    view: new AMap.View2D({
+                                        //地图中心点
+                                        center:new AMap.LngLat(ji,wei),
+                                        //地图显示的缩放级别
+                                        zoom:13
+                                    })
+                                });
+                                //地图中添加地图操作ToolBar插件
+                                map.plugin(["AMap.ToolBar"], function(){
+                                    var toolBar = new AMap.ToolBar();
+                                    map.addControl(toolBar);
+                                });
+								map.setLang('<?php echo $lan_submit;?>');
+                                //地图初始化时，在地图上添加一个marker标记,鼠标点击marker可弹出自定义的信息窗体
+                                addMarker();
+                                //添加marker标记
+                                function addMarker(){
+                                    map.clearMap();
+                                    var marker = new AMap.Marker({
+                                        map: map,
+                                        //位置
+                                        position: new AMap.LngLat(ji,wei),
+                                        //复杂图标
+                                        icon: "https://webapi.amap.com/images/0.png"
+                                    });
+                                    //鼠标点击marker弹出自定义的信息窗体
+                                    AMap.event.addListener(marker,'click',function(){
+                                        infoWindow.open(map,marker.getPosition());
+                                    });
+                                };
+                    
+                                //实例化信息窗体
+                                var infoWindow = new AMap.InfoWindow({
+                                    isCustom:true,  //使用自定义窗体
+                                    /* content:createInfoWindow("{$about['company_name']}","地址：{$about['address']}"),*/
+                                    offset:new AMap.Pixel(16, -45)//-113, -140
+                                });
+                    
+                                //构建自定义信息窗体
+                                function createInfoWindow(title,content){
+                                    var info = document.createElement("div");
+                                    info.className = "info";
+                    
+                                    // 定义顶部标题
+                                    var top = document.createElement("div");
+                                    var titleD = document.createElement("div");
+                                    var closeX = document.createElement("img");
+                                    top.className = "info-top";
+                                    titleD.innerHTML = title;
+                                    closeX.src = "https://webapi.amap.com/images/close2.gif";
+                                    closeX.onclick = closeInfoWindow;
+                    
+                                    top.appendChild(titleD);
+                                    top.appendChild(closeX);
+                                    info.appendChild(top);
+                    
+                    
+                                    // 定义中部内容
+                                    var middle = document.createElement("div");
+                                    middle.className = "info-middle";
+                                    middle.style.backgroundColor='white';
+                                    middle.innerHTML = content;
+                                    info.appendChild(middle);
+                    
+                                    // 定义底部内容
+                                    var bottom = document.createElement("div");
+                                    bottom.className = "info-bottom";
+                                    bottom.style.position = 'relative';
+                                    bottom.style.top = '0px';
+                                    bottom.style.margin = '0 auto';
+                                    var sharp = document.createElement("img");
+                                    sharp.src = "https://webapi.amap.com/images/sharp.png";
+                                    bottom.appendChild(sharp);
+                                    info.appendChild(bottom);
+                                    return info;
+                                };
+                                //关闭信息窗体
+                                function closeInfoWindow(){
+                                    map.clearInfoWindow();
+                                };
+                            </script>
+                        </div>
+                        </if>
+					   </section>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

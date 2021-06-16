@@ -1,0 +1,46 @@
+<extend name="demo3:base" />
+<block name="content">
+
+
+        <div class="in_banner" style="background:url(__TMPL__demo3/img/inbanner4.jpg) center no-repeat"></div>
+
+
+    <div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;案例</div>
+
+    <div style="width: 1190px;margin:0 auto">
+        <Include file="./Tpl/demo3/left.html" />
+        <div class="page_Main">
+            <div class="page_RightTitle"><span></span></div>
+            <div class="clear"></div>
+            <div class="page_RightMain">
+                <div class="news">
+                    <div class="body">
+
+                        <div class="show_product_list" style="margin-top: 23px;">
+                            <ul>
+                               <volist name="allnews" id="allnews" key="k">
+                  <div class="in_case">
+                      <div class="incase_pic"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><if condition="$allnews['new_pro'] neq ''"><img src="{:getimgurl($allnews['new_pro'])}" border="0" alt="{$allnews['title']}" /><else/><img src="__TMPL__demo3/img/case_pic.jpg" border="0" /></if></a></div>
+                      <div class="incase_name">
+                         <li style="float: left;color: #999;font-size: 16px;line-height: 28px;margin-bottom: 10px">{:date('Y-m-d',$allnews['created'])}</li>
+                         <li style="margin-bottom: 10px;"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" style="font-size: 22px;color: #333333;line-height: 30px;">{$allnews['title']}</a></li>
+                         <li style="color: #999;font-size: 16px;line-height: 28px;">{:subtxt($allnews['news_description'],100)}</li>
+                      </div>  
+                  </div>
+                  <if condition="$k % 3 neq 0">
+                     <div style="width:32px; float:left; height:30px;"></div>
+                  <else/>
+                     <div style="clear:both"></div>
+                  </if>
+             </volist>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="main_page">{$page}</div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</block>

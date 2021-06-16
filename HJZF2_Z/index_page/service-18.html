@@ -1,0 +1,46 @@
+<!--{$pagename}-->
+<php>
+    if($data328[1]){ $service_18_bg = $data328[1];}    
+    if($data328[0]){
+        $service_18_bgimg=getindeximgurl($data328[0]);
+    }
+    $arr2 = get_list_val($data328[3]);
+    
+</php> 
+<style>
+    .service-18{
+        background: url({$service_18_bgimg}) no-repeat center;
+    }
+    .service-18{
+        background: #{$service_18_bg};
+    }
+
+</style>
+<section class="service-18 index_pd">    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="service-18_maintitle index_title pb20">{$data328[2]}</div>
+                <div class="service-18_itemlist">
+                    <ul>
+                        <volist name="arr2" id="item">    
+                                       
+                            <li class="text-center service-18_item">
+								<if condition="$item['src']">
+                                <a href="{$item['src']}">
+									<else/>
+									<a>
+									</if>
+                                    <img src="{$item['icon']}" alt="{$item['title']}" width="100px" class="one">
+                                    <!-- <img src="{$item['icon2']}" alt="" width="100px" class="two"> -->
+                                    <if condition="$item['title']"><div class="index_sub_title">{$item['title']}</div></if>
+                                    <p class="ellipsis_three">{$item['desc']}</p>
+                                </a>
+                            </li>
+                        </volist>
+                    </ul>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

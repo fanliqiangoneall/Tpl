@@ -1,0 +1,53 @@
+<!--{$pagename}-->
+<php>
+    if($data519[4]){
+    $color = $data519[4];
+    }
+</php>
+<style>
+   <if condition="$data519[0]">.hjzf_advantage_60 {
+        background-image: url({:getindeximgurl($data519[0])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    </if> 
+    .hjzf_advantage_60{
+        background-color: #333;
+    }
+</style>
+<section class="hjzf_advantage_60 index_pd">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title text-center pb40">{$data519[2]}</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="swiper-container hjzf_advantage_60_container">
+                <div class="swiper-wrapper">
+                    <php>
+                        $arr = get_list_val($data519[3]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <div class="swiper-slide">
+                            <div class="hjzf_advantage_60_img">
+                                <img src="{$a[img]}" alt="{$a[qm]}" class="img-responsive">
+                            </div>
+                            <div class="hjzf_advantage_60_img_text">
+                                <span>
+                                    {$a[info]}
+                                </span>
+                                <em class="fsn">{$a[qm]}</em>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="swiper-button-nag">
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

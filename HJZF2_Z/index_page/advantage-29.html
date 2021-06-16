@@ -1,0 +1,73 @@
+<!--{$pagename}-->
+<style>
+<if condition="$data409[8]">
+    .hjzf_advantage_29 {
+        background-image: url({:getindeximgurl($data409[8])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+.hjzf_advantage_29_btn a{ 
+	background:#{$data409[0]};
+}
+</style>
+<script>
+	var advantage_29_video = '<?php echo $data409[9];?>';
+</script>
+<section class="hjzf_advantage_29 index_pd">
+    <div class="container">
+        <div class="row hjzf_advantage_29_wrapper">
+            <div class="col-xs-12 col-md-6 wow fadeInLeft hjzf_advantage_29_wrapper_l">
+                <if condition="$data409[1]">
+                    <img src="{:getindeximgurl($data409[1])}" class="img-fluid" alt="{$data409[2]}">
+                </if>
+            </div>
+            <div class="col-xs-12 col-md-6 hjzf_advantage_29_wrapper_r wow fadeInRight">
+				<if condition="$data409[2]">
+					<div class="index_title pb20">
+						{$data409[2]}
+					</div>
+				</if>
+				<if condition="$data409[3]">
+					<div class="index_text pb40">
+						{:HtmlEncode($data409[3])}
+					</div>
+				</if>
+                <if condition="$data409[4]">
+                <div class="index_sub_title pb20">
+                    {$data409[4]}
+                </div>
+                </if>
+                <if condition="$data409[5]">
+                <ul class="hjzf_advantage_29_list pb20">
+                    <php>
+                        $arr = get_list_val($data409[5]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li class="index_text">
+                            <a href="{$a[link]}">
+                                <if condition="$webid eq '1784' or $webid eq '1309' or $webid eq '1164'">
+                                <i class="fa fa-caret-right"></i>
+                                <else/>
+                                <i class="fa fa-long-arrow-right"></i>
+                                </if>
+                                <span>
+									<if condition="$a[num]">
+										<em>{$a[num]}</em>
+									</if>
+									{$a[text]}
+								</span>
+								<if condition="$a[des]">
+									<p>{$a[des]}</p>
+								</if>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+                </if>
+                <if condition="$data409[6]"><div class="hjzf_advantage_29_btn"><a href="{$data409[7]}" onFocus="blur()">{$data409[6]}</a></div></if>
+            </div>
+        </div>
+    </div>
+</section>

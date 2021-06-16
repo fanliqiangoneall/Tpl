@@ -1,0 +1,305 @@
+<if condition="$data151[0]">
+    <style>
+        .HJZF2_evaluate--3{
+            background: url({:getindeximgurl($data151[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF2_evaluate--3">
+    <div class="container">
+        <div class="HJZF2_evaluate--3Right rt">
+            <div class="HJZF2_evaluate--3Right__title">{$data151[2]}</div>
+            <if condition="C('Language') eq 'en'">
+            <div id="index_inquiry">
+                <form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+
+                    <div class="inquiry_box inquiry_boxHalf lf" id="inquiry_box1">
+                        <input type="text" name="linkname" id="linkname" placeholder="Your Name *"><span class="yz_alert" id="linkname_alert"></span>
+                    </div>
+                    <div class="inquiry_box inquiry_boxHalf rt" id="inquiry_box3">
+                        <input type="text" name="phone" id="phone" placeholder="Your Phone"><span class="yz_alert" id="phone_alert"></span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="inquiry_box " id="inquiry_box2">
+                        <input type="text" name="email" id="email" placeholder="Your Email *"><span class="yz_alert" id="email_alert"></span>
+                    </div>
+                    <div class="inquiry_box inquiry_boxTextarea" id="inquiry_box4">
+                        <textarea name="message" id="message" placeholder="Your Message *">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+                    </div>
+                    <div class="inquiry_box  inquiry_boxCode lf" id="inquiry_box5">
+                        <input type="text" class="input" id="code_char" name="code" maxlength="3"/>&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" id="getcode_char" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;<!--<a href="javascript:void(0);" id="getcode_char1">Click refresh</a>--><span class="yz_alert" id="code_char_alert"></span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="inquiry_box">
+                        <div class="inquiry_box_animate" id="inquiry_box6">
+                            <input type="submit" value="Submit"  name="Submit" id="index_submit"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                <elseif condition="C('Language') eq 'cn'"/>
+                <div id="index_inquiry">
+                    <form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+
+                        <div class="inquiry_box inquiry_boxHalf lf" id="inquiry_box1">
+                            <input type="text" name="linkname" id="linkname" placeholder="姓名 *"><span class="yz_alert" id="linkname_alert"></span>
+                        </div>
+                        <div class="inquiry_box inquiry_boxHalf rt" id="inquiry_box3">
+                            <input type="text" name="phone" id="phone" placeholder="电话 *"><span class="yz_alert" id="phone_alert"></span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="inquiry_box " id="inquiry_box2">
+                            <input type="text" name="email" id="email" placeholder="邮箱"><span class="yz_alert" id="email_alert"></span>
+                        </div>
+                        <div class="inquiry_box inquiry_boxTextarea" id="inquiry_box4">
+                            <textarea name="message" id="message" placeholder="内容 *">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+                        </div>
+                        <div class="inquiry_box  inquiry_boxCode lf" id="inquiry_box5">
+                            <input type="text" class="input" id="code_char" name="code" maxlength="3"/>&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" id="getcode_char" height="32" title="点击刷新" align="absmiddle">&nbsp;<!--<a href="javascript:void(0);" id="getcode_char1">Click refresh</a>--><span class="yz_alert" id="code_char_alert"></span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="inquiry_box">
+                            <div class="inquiry_box_animate" id="inquiry_box6">
+                                <input type="submit" value="提交"  name="提交" id="index_submit"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </if>
+        </div>
+    </div>
+</section>
+<if condition="C('language') eq 'en'">
+    <script>
+        $(function () {
+            $("#message").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#message_alert").html("")
+            });
+            $("#linkname").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#linkname_alert").html("")
+            });
+            $("#phone").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#phone_alert").html("")
+            });
+            $("#email").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#email_alert").html("")
+            });
+            $("#code_char").focus(function () {
+                $("#code_char_alert").html("");
+                $(this).css('border-color', '#d5e1e4')
+            });
+            $("#getcode_char").click(function () {
+                console.log("//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()}")
+                $(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+            });
+            $("#getcode_char1").click(function () {
+                $("#getcode_char").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};')
+            })
+        })
+        function yz_submit(){
+            var count=0;
+            var message=Trims($("#message").val());
+            var linkname=Trims($("#linkname").val());
+            var phone=Trims($("#phone").val());
+            var email=Trims($("#email").val());
+
+
+            if(linkname.length<=0){
+                $("#linkname_alert").html("The name cannot be empty!");
+                count++;
+            }
+            else{
+                $("#linkname_alert").html("");
+            }
+
+
+            var str=/[\\u4E00-\\u9FA5a-zA-Z]/;
+            if(phone.length>0 && str.test($('#phone').val()))
+            {
+                $("#phone_alert").html("Telephone information is wrong!");
+                count++;
+            }else{
+                $("#phone_alert").html("");
+            }
+
+
+
+            if(email.length<=0){
+                $("#email_alert").html("The email can not be empty!");
+                count++;
+            }
+            else{
+                console.log(is_email(email));
+                if(!is_email(email)){
+                    $("#email_alert").html("Email format error");
+                    count++;
+                }
+                else {
+                    $("#email_alert").html("");
+                }
+            }
+
+
+            if(message.length<=0){
+                $("#message_alert").html("Consulting content cannot be empty!");
+                count++;
+            }
+            else{
+                $("#message_alert").html("");
+            }
+
+            var code_char = $("#code_char").val();
+            $.ajax({
+                type: "POST",
+                url: "/verification",
+                async:false,
+                data: {code:code_char},
+                success: function(data){
+
+                    if(data==1){
+                        $("#code_char_alert").html("");
+                    }else{
+                        count++;
+                        $("#code_char_alert").html("Verification code error");
+                    }
+                }
+            });
+
+
+            if(count>0){
+                return false;
+            }
+            else{
+                $("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+
+                return true;
+            }
+
+        }
+        function Trims(str) {
+            return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
+        }
+        function is_email(str) {
+            return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(str))
+        }
+    </script>
+    <elseif condition="C('language') eq 'cn'"/>
+    <script>
+        $(function () {
+            $("#message").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#message_alert").html("")
+            });
+            $("#linkname").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#linkname_alert").html("")
+            });
+            $("#phone").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#phone_alert").html("")
+            });
+            $("#email").focus(function () {
+                $(this).css('border-color', '#d5e1e4');
+                $("#email_alert").html("")
+            });
+            $("#code_char").focus(function () {
+                $("#code_char_alert").html("");
+                $(this).css('border-color', '#d5e1e4')
+            });
+            $("#getcode_char").click(function () {
+                console.log("//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()}")
+                $(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+            });
+            $("#getcode_char1").click(function () {
+                $("#getcode_char").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};')
+            })
+        })
+        function yz_submit(){
+            var count=0;
+            var message=Trims($("#message").val());
+            var linkname=Trims($("#linkname").val());
+            var phone=Trims($("#phone").val());
+            var email=Trims($("#email").val());
+
+
+            if(linkname.length<=0){
+                $("#linkname_alert").html("姓名不能为空！");
+                count++;
+            }
+            else{
+                $("#linkname_alert").html("");
+            }
+
+
+            var str=/[\\u4E00-\\u9FA5a-zA-Z]/;
+            if(phone.length<=0){
+
+                jQuery("#phone_alert").html("*电话不能为空！");
+                count++;
+            }else if(str.test(jQuery('#phone').val()))
+            {
+
+                jQuery("#phone_alert").html("*电话号码有误！");
+                count++;
+            }else{
+                jQuery("#phone_alert").html("");
+            }
+
+
+            if(email.length>0 &&!is_email(email)){
+                jQuery("#email_alert").html("*邮箱格式有误！");
+                count++;
+            }
+            else {
+                jQuery("#email_alert").html("");
+            }
+
+
+            if(message.length<=0){
+                jQuery("#message_alert").html("咨询内容不能为空！");
+                count++;
+            }
+            else{
+                jQuery("#message_alert").html("");
+            }
+
+            var code_char = $("#code_char").val();
+            $.ajax({
+                type: "POST",
+                url: "/verification",
+                async:false,
+                data: {code:code_char},
+                success: function(data){
+
+                    if(data==1){
+                        $("#code_char_alert").html("");
+                    }else{
+                        count++;
+                        $("#code_char_alert").html("验证码错误");
+                    }
+                }
+            });
+
+
+            if(count>0){
+                return false;
+            }
+            else{
+                $("#inbut").html('<h5 style="color:#F00;">请稍候</h5>');
+
+                return true;
+            }
+
+        }
+        function Trims(str) {
+            return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
+        }
+        function is_email(str) {
+            return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(str))
+        }
+    </script>
+</if>

@@ -1,0 +1,165 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Feedback')}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <section  class="InsidePages_content-right2">
+
+                        <div class="InsidePages_content-right_content">
+                            <div class="InsidePages_content-right_content-main" style="text-align:center;">
+                                <if condition="C('language') eq 'en'">
+                                    <table border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;max-width: 80% !important;">
+                                        <tr>
+                                            <th align="center" bgcolor="#cccccc" style="text-align:center;">Message</th>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <br />
+                                                <present name="message" style=" text-align:center;">
+                                                    {$message}<br />
+                                                </present>
+                                                <present name="error" style=" text-align:center;">
+                                                    {$error}<br />
+                                                </present>
+                                                <p class="detail"></p>
+                                                <p class="jump" style=" text-align:center;">
+                                                    <a id="href" href="<?php echo($jumpUrl); ?>">Click to return to the previous page</a> Please waite <b id="wait">5</b> seconds
+                                                </p><br /></td>
+                                        </tr>
+                                    </table>
+                                <elseif condition="C('language') eq 'rus'"/>
+                                <table border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;max-width: 80% !important;">
+                                    <tr>
+                                        <th align="center" bgcolor="#cccccc" style="text-align:center;">сообщение</th>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <br />
+                                            <present name="message" style=" text-align:center;">
+                                                {$message}<br />
+                                            </present>
+                                            <present name="error" style=" text-align:center;">
+                                                {$error}<br />
+                                            </present>
+                                            <p class="detail"></p>
+                                            <p class="jump" style=" text-align:center;">
+                                                <a id="href" href="<?php echo($jumpUrl); ?>">Нажмите, чтобы вернуться на предыдущую страницу</a>Минуточку.<b id="wait">5</b> секунда
+                                            </p><br /></td>
+                                    </tr>
+                                </table>
+                                <elseif condition="C('language') eq 'pt'"/>
+                                <table border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;max-width: 80% !important;">
+                                    <tr>
+                                        <th align="center" bgcolor="#cccccc" style="text-align:center;">Mensagem</th>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <br />
+                                            <present name="message" style=" text-align:center;">
+                                                {$message}<br />
+                                            </present>
+                                            <present name="error" style=" text-align:center;">
+                                                {$error}<br />
+                                            </present>
+                                            <p class="detail"></p>
+                                            <p class="jump" style=" text-align:center;">
+                                                <a id="href" href="<?php echo($jumpUrl); ?>">Clique para voltar à página anterior</a>tempo de espera: <b id="wait">5</b> segundo
+                                            </p><br /></td>
+                                    </tr>
+                                </table>
+                                <elseif condition="C('language') eq 'spa' or C('language') eq 'esp'"/>
+                                <table border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;max-width: 80% !important;">
+                                    <tr>
+                                        <th align="center" bgcolor="#cccccc" style="text-align:center;">Notificación</th>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">
+                                            <br />
+                                            <present name="message" style=" text-align:center;">
+                                                {$message}<br />
+                                            </present>
+                                            <present name="error" style=" text-align:center;">
+                                                {$error}<br />
+                                            </present>
+                                            <p class="detail"></p>
+                                            <p class="jump" style=" text-align:center;">
+                                                <a id="href" href="<?php echo($jumpUrl); ?>">Haga clic para volver a la página anterior.</a>tiempo de espera: <b id="wait">5</b> segundos
+                                            </p><br /></td>
+                                    </tr>
+                                </table>
+                                    <else/>
+                                    <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;margin-bottom: 60px;">
+                                        <tr>
+                                            <th align="center" bgcolor="#cccccc" style="text-align:center;">消息提示</th>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <br />
+                                                <present name="message" style=" text-align:center;">
+                                                    {$message}<br />
+                                                </present>
+                                                <present name="error" style=" text-align:center;">
+                                                    {$error}<br />
+                                                </present>
+                                                <p class="detail"></p>
+                                                <p class="jump" style=" text-align:center;">
+                                                    <a id="href" href="<?php echo($jumpUrl); ?>">点击返回前一页</a> 等待时间: <b id="wait">5</b>秒
+                                                </p><br /></td>
+                                        </tr>
+                                    </table>
+                                </if>
+                                <script type="text/javascript">
+                                    (function(){
+                                        var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+                                        var interval = setInterval(function(){
+                                            var time = --wait.innerHTML;
+                                            if(time <= 0) {
+                                                location.href = href;
+                                                clearInterval(interval);
+                                            };
+                                        }, 1000);
+                                    })();
+                                </script>
+                                {:htmlspecialchars_decode(get_inquiry_code())}
+                            </div>
+                        </div>
+
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

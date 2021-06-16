@@ -1,0 +1,56 @@
+.HJZF_Z_other_HJ11_cont{
+    height: 250px;
+    width: 100%;
+}
+.HJZF_Z_other_HJ11_cont li{
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 100%;
+    padding: 40px 30px;
+    transition: all .5s ease;
+}
+.HJZF_Z_other_HJ11_cont li.active{
+    width: 40%;
+}
+.HJZF_Z_other_HJ11_cont li img{
+    width: 100%;
+}
+.HJZF_Z_other_HJ11_cont span{
+    font-size: 24px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+    .HJZF_Z_other_HJ11_cont li{
+        width: 25%;
+    }
+}
+
+@media (max-width: 768px){
+    .HJZF_Z_other_HJ11_cont li{
+        width: 48%;
+        background: transparent !important;
+        padding: 0;
+        height: auto;
+        margin-bottom: 15px;
+    }
+    .HJZF_Z_other_HJ11_cont li:nth-of-type(2n){
+        float: right;
+    }
+    .HJZF_Z_other_HJ11{
+        padding-left: 15px ;
+        padding-right: 15px ;
+    }
+    .HJZF_Z_other_HJ11_cont span{
+        margin-top: 10px;
+        font-size: 16px;
+        text-align: center;
+        color: #333;
+    }
+    .HJZF_Z_other_HJ11_cont p{
+        display: none;
+    }
+    
+}

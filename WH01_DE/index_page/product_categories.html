@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<link href="__TMPL__WH01_DE/css/productcategories.css" rel="stylesheet">
+<style>
+    .index_pagepro:hover .index_proname h3{
+        text-decoration:none; color:#{$color};
+    }
+    .index_promore{
+        border:3px solid #{$color};
+    }
+    .index_promore a{
+        color:#{$color};
+    }
+</style>
+<div class="index_productcategories_proclass">
+    <div id="index_productcategories_animate_1">
+        <div class="index_productcategories_sm">{$data17[1]}</div>
+        <div class="index_productcategories_title"><h2>{$data17[0]}</h2></div>
+    </div>
+    <div id="index_productcategories_animate_2" >
+        <div class="page_product">
+            <volist empty="" name="allclass" id="allcalssindex" offset="0" length="6">
+                <div class="index_pagepro">
+                    <div class="index_proimg"><a href="{:U('/product_category','','')}/{:getprocatename($allcalssindex['pcid'])}"><img src="{:getimgurl($allcalssindex['fid'])}" alt="{$allcalssindex['class_name']}" /></a></div>
+                    <div class="index_proname"><a href="{:U('/product_category','','')}/{:getprocatename($allcalssindex['pcid'])}">{$allcalssindex['class_name']}</a></div>
+                    <div class="index_promore"><a href="{:U('/product_category','','')}/{:getprocatename($allcalssindex['pcid'])}">LISTE DETAIL</a></div>
+                </div>
+                <if condition="($key+1)%3 eq 0">
+                    <div style="clear:both; overflow:hidden; height:0px;"></div>
+                    <else/>
+                    <div style="width:40px; height:10px; background:none; float:left;"></div>
+                </if>
+            </volist>
+            <div style="clear:both; overflow:hidden; height:0px;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>

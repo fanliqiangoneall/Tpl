@@ -1,0 +1,127 @@
+<!--{$pagename}-->
+
+<style>
+#index_advantage {
+    width: 100%;
+    height: 603px;
+    max-width: 1920px;
+    min-width: 1190px !important;
+    background: url({:getindeximgurl($data6[11])}) center center no-repeat !important;
+}
+.index_ad_title{
+	line-height: 50px;padding-top:60px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat !important;text-align: center;
+	}
+</style>
+<link href="__TMPL__demo2/css/advantage.css" rel="stylesheet">
+<if condition="$data6[16]">
+    <style>
+        .index_ad_left{
+        width: {$data6[16]}px;
+        height:{$data6[17]}px;
+        background:url({:getindeximgurl($data6[18])}) no-repeat;
+        margin-top: 48px
+        }
+        .index_ad_title{
+            padding-top:34px;
+        }
+    </style>
+</if>
+<div id="index_advantage">
+  <div style="width: 1190px;margin: auto;height: 603px;position: relative;">
+   <div id="index_advantage_animate">
+    <div class="index_ad_left">
+        <if condition="$data[0]">
+       <div class="index_ad_title">
+           {$data[0]}
+       </div>
+        </if>
+       <div class="ad_left1" style="margin-right:50px;">
+           <a <if condition="$data[13]">href="{$data[13]}"<else/>href="javascript:void(0);"</if>>
+               <div class="ad_left_title" style="background: url({:getindeximgurl($data[1])}) center left no-repeat;">{$data[2]}</div>
+               <div class="ad_left_con">{$data[3]} </div>
+           </a>
+       </div>
+        <div class="ad_left2" style="margin-right:50px;">
+            <a <if condition="$data[14]">href="{$data[14]}"<else/>href="javascript:void(0);"</if>>
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[4])}) center left no-repeat;">{$data[5]}</div>
+          <div class="ad_left_con">{$data[6]}</div>
+            </a>
+       </div>
+        <div class="ad_left3" style="margin-right:50px;">
+            <a <if condition="$data[15]">href="{$data[15]}"<else/>href="javascript:void(0);"</if>>
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[7])}) center left no-repeat;">{$data[8]}</div>
+          <div class="ad_left_con">{$data[9]}</div>
+            </a>
+       </div>
+    </div>
+   </div>
+   <div id="index_advantage_animate_1">
+    <div class="index_advantage_adv_cont">
+          <div class="index_advantage_adv_ad_1">
+             <img src="{:getindeximgurl($data[10])}">
+          </div>
+
+
+        <div style="clear: both;"></div>
+
+    </div>
+   </div>
+  </div>
+</div>
+<if condition="$data6[12]">
+    <style>
+        .index_bottom_footer_top{
+            width: 100%;max-width: 1920px;min-width: 1190px;height: 550px;margin: auto;background: url({:getindeximgurl($data6[12])}) center center no-repeat !important;
+        }
+    </style>
+    <div class="index_bottom_footer_top"></div>
+    <else/>
+    <style>
+        .index_bottom_footer_top{
+            display: none;
+        }
+    </style>
+    <div class="index_bottom_footer_top"></div>
+</if>
+<script>
+
+
+
+
+$(function(){
+var top=$("#index_advantage").offset().top;
+if(top<800){
+		$('#index_advantage_animate').show();
+		$('#index_advantage_animate').removeClass().addClass('fadeInDown');
+		$("#index_advantage_animate_1").show();
+		$("#index_advantage_animate_1").addClass("fadeInUpBig");
+		$(".ad_left1").show();
+		$(".ad_left1").addClass("fadeInRightBig");
+		$(".ad_left2").show();
+		$(".ad_left2").addClass("fadeInRightBig1");
+		$(".ad_left3").show();
+		$(".ad_left3").addClass("fadeInRightBig2");
+}
+})
+    $(window).scroll( function() {
+        //scrollTop=$(document).scrollTop();
+		scrollTop=$(document).scrollTop();
+		var top=$("#index_advantage").offset().top;
+        if(top-scrollTop<400){
+		$('#index_advantage_animate').show();
+		$('#index_advantage_animate').removeClass().addClass('fadeInDown');
+		$("#index_advantage_animate_1").show();
+		$("#index_advantage_animate_1").addClass("fadeInUpBig");
+		$(".ad_left1").show();
+		$(".ad_left1").addClass("fadeInRightBig");
+		$(".ad_left2").show();
+		$(".ad_left2").addClass("fadeInRightBig1");
+		$(".ad_left3").show();
+		$(".ad_left3").addClass("fadeInRightBig2");
+        }
+    });
+
+
+
+
+</script>

@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<section class="hjzf2_z__other-9">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf2_z__other-9__titlewrap">
+                <h3 class="hjzf2_z__other-9__maintitle index_title">{$data122[0]}</h3>
+                <div class="hjzf2_z__other-9__futitle index_sub_title">{$data122[1]}</div>
+            </div>
+        </div>
+    </div>
+    <div class="hjzf2_z__other-9__imgwrap">
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[2])}"/></div>
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[3])}"/></div>
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[4])}"/></div>
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[5])}"/></div>
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[6])}"/></div>
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[7])}"/></div>
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[8])}"/></div>
+        <div class="hjzf2_z__other-9__imgitem"><img class="lazy" data-original="{:getindeximgurl($data122[9])}"/></div>
+    </div>
+    <div class="hjzf2_z__other-9__contactwrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="hjzf2_z__other-9__contactitembox">
+                        <div class="hjzf2_z__other-9__contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+                            <div><span class="fa fa-mobile"></span></div>
+                            <div class="hjzf2_z__other-9__contact_text index_sub_title">{:chaifen($about['mobile'],0)}</div>
+                            <div class="hjzf2_z__other-9__contact_text2">{:__('Give us a Call')}</div>
+                        </div>
+                        <div class="hjzf2_z__other-9__contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+                            <div><span class="fa fa-envelope-o"></span></div>
+                            <div class="hjzf2_z__other-9__contact_text index_sub_title"><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);" >{:chaifen($about['email'],0)}</a></div>
+                            <div class="hjzf2_z__other-9__contact_text2 index_text">{:__('Send us a Message')}</div>
+                        </div>
+                        <div class="hjzf2_z__other-9__contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+                            <div><span class="fa fa-map-marker"></span></div>
+                            <div class="hjzf2_z__other-9__contact_text index_sub_title">{$about['address']}</div>
+                            <div class="hjzf2_z__other-9__contact_text2 index_text">{:__('Get all the information')}</div>
+                        </div>
+                        <if condition="C('Language') eq 'cn'">
+                            <div class="hjzf2_z__other-9__contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+                                <div><span class="fa fa-qq"></span></div>
+                                <div class="hjzf2_z__other-9__contact_text index_sub_title"><a onclick="turn_sta(5,5)"  href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes">{:chaifen($about['msn'],0)}</a></div>
+                                <div class="hjzf2_z__other-9__contact_text2 index_text">{:__('Give us a Call')}</div>
+                            </div>
+                            <else/>
+                            <div class="hjzf2_z__other-9__contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+                                <div><span class="fa fa-skype"></span></div>
+                                <div class="hjzf2_z__other-9__contact_text index_sub_title"><a onclick="turn_sta(4,5)"  href="skype:{:chaifen($about['msn'],0)}?chat">{:chaifen($about['msn'],0)}</a></div>
+                                <div class="hjzf2_z__other-9__contact_text2 index_text">{:__('Give us a Call')}</div>
+                            </div>
+                        </if>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

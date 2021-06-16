@@ -1,0 +1,196 @@
+<!--{$pagename}-->
+<style>
+    
+    <if condition="$data221[1]">
+        .HJZF2_Z_service_HJ01{
+            background-color: #{$data221[1]};
+        }
+    </if>
+    <if condition="$data221[0]">
+    .HJZF2_Z_service_HJ01 {
+        background: url({:getindeximgurl($data221[0])}) no-repeat center;
+    }
+    </if> 
+    .HJZF2_Z_service_HJ01_text a.more {
+        color: #{$data221[2]};
+        border-color: #{$data221[2]};
+    }
+    .HJZF2_Z_service_HJ01_text a.more:hover:before {
+        background-color: #{$color};
+        width: 100%;
+    }
+    .HJZF2_Z_service_HJ01_text h2:before {
+        background-color: #{$data221[2]};
+    }
+    .HJZF2_Z_service_HJ01_scroll_pagination .swiper-pagination-bullet-active {
+        background-color: #{$data221[2]};
+    }
+    @media (max-width:768px) {
+        background-color: #{$data221[2]};
+    }
+</style>
+<section class="HJZF2_Z_service_HJ01 index_pd">
+    <div class="container">
+        <div class="row">
+
+
+            <!-- left start -->
+            <div class="col-xs-12 col-md-5 HJZF2_Z_service_HJ01_text">
+                <h2 class="index_title">{$data221[3]}</h2>
+                <p class="index_sub_title">{$data221[4]}</p>
+                <a href="{$data221[6]}" class="more index_text">{$data221[5]}</a>
+            </div>
+            <!-- left end -->
+
+            <!-- right start -->
+            <div class="col-xs-12 col-md-4 fr">
+                <div class="swiper-container HJZF2_Z_service_HJ01_scroll">
+                    <div class="swiper-wrapper">
+                        <!-- scroll loop start -->
+                        <if condition="$data221[7]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[7]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <img src="{:getindeximgurl($data221[15])}" alt="{$data221[23]}" class="img-responsive img-fluid">
+                                    </div>
+                                    <a href="{$data221[31]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[23]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <if condition="$data221[8]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[8]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <img src="{:getindeximgurl($data221[16])}" alt="{$data221[24]}" class="img-responsive img-fluid">
+                                    </div>
+                                    <a href="{$data221[32]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[24]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <if condition="$data221[9]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[9]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <img src="{:getindeximgurl($data221[17])}" alt="{$data221[25]}" class="img-responsive">
+                                    </div>
+                                    <a href="{$data221[33]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[25]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <if condition="$data221[10]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[10]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                            <img src="{:getindeximgurl($data221[18])}" alt="{$data221[26]}" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <a href="{$data221[34]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[26]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <if condition="$data221[11]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[11]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <img src="{:getindeximgurl($data221[19])}" alt="{$data221[27]}" class="img-responsive">
+                                    </div>
+                                    <a href="{$data221[35]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[27]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <if condition="$data221[12]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[12]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <img src="{:getindeximgurl($data221[20])}" alt="{$data221[28]}" class="img-responsive">
+                                    </div>
+                                    <a href="{$data221[36]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[28]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <if condition="$data221[13]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[13]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <img src="{:getindeximgurl($data221[21])}" alt="{$data221[29]}" class="img-responsive">
+                                    </div>
+                                    <a href="{$data221[37]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[29]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <if condition="$data221[14]">
+                            <div class="swiper-slide HJZF2_Z_service_HJ01_scroll_box">
+                                <h2 class="text-center index_sub_title">{$data221[14]}</h2>
+                                <div class="HJZF2_Z_service_HJ01_scroll_img">
+                                    <div class="HJZF2_Z_service_HJ01_scroll_img_ia">
+                                        <img src="{:getindeximgurl($data221[22])}" class="img-responsive" alt="{$data221[30]}">
+                                    </div>
+                                    <a href="{$data221[38]}">
+                                        <span class="text-center">
+                                            <div class="HJZF2_Z_service_HJ01_scroll_text index_text">
+                                                {$data221[30]}
+                                            </div>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </if>
+                        <!-- scroll loop end -->
+                    </div>
+                    <div class="swiper-pagination HJZF2_Z_service_HJ01_scroll_pagination"></div>
+                </div>
+            </div>
+            <!-- right end -->
+        </div>
+    </div>
+</section>

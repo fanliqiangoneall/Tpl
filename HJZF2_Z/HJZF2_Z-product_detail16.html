@@ -1,0 +1,176 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .pro_detail16_bg {
+            background-color: #{$inner_data[2]};
+        }
+        .pro_detail16__list{
+            background-color: #d2d2d2;
+        }
+        .pro_detail16__list li{
+            cursor: pointer;
+            transition: all .5s;
+        }
+        .pro_detail16__list li:hover{
+            background-color: #{$inner_data[1]};
+			color: #fff;
+        }
+        .pro_detail16__list li.on{
+            background-color: #{$inner_data[1]};
+            color: #fff;
+        }
+        .pro_detail16_con{
+            display: none;
+			padding:0 15px;
+        }
+        .pro_detail16_con.on,.pro_detail16_con:nth-child(1){
+            display: block;
+        }
+        .pro_detail16__list ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .pro_detail16__list ul li{
+            flex: 0 0 25%;
+            width: 25%;
+            line-height: 50px;
+            text-align: center;
+			border-right: 1px solid #fff;
+        }
+        .pro_detail16_con{
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .pro_detail16_con img{
+            max-width: 100%;
+            height: auto !important;
+        }
+        @media(max-width: 1200px) {
+            .pro_detail16_con_list li{
+                flex: 0 0 50%;
+                width: 50%;
+            }
+        }
+        .pro_detail16_banner{
+            position: relative;
+        }
+        .pro_detail16_banner .pro_detail16_banner_cs{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+        .pro_detail16_banner_cs span{
+            width: 20%;
+            background-color: #666;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 220px;
+            margin-left: 10px;
+            font-size: 22px;
+        }
+        .pro_detail16_banner_name{
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+        }
+        @media(max-width: 1365px) {
+            .pro_detail16_banner_cs span{
+                width: 50%;
+                margin-left: 0;
+            }
+            .pro_detail16_banner_cs{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        @media(max-width: 768px) {
+            .pro_detail16_banner_cs span{
+                width: 40%;
+                height: 150px;
+            }
+            .pro_detail16_banner{
+                padding-top: 0;
+            }
+			.pro_detail16_con{
+				padding:0 10px;
+			}
+        }
+        .pro_detail16_banner_name img{
+            max-width: 100%;
+            width: 500px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="pro_detail16_banner">
+            <div class="pro_detail16_banner_cs">
+                <div class="pro_detail16_banner_name index_title">
+                    <php>
+                        $arr = get_list_val($inner_data[4]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <if condition="$a['proid'] eq $product['pid']">
+                                <img src="{$a[img]}">
+                            </if>
+                       </volist>
+                   </div>
+            </div>
+            <img src="{:getmainimgurl($product['main_img'])}" class="img-fluid" alt="{$product['pro_name']}">
+        </div>
+    </div>
+    <div class="text-right fz14 pb20">{:HtmlEncode($product['pro_description'])}</div>
+    <div class="pro_detail16_bg">
+        <div class="pro_detail16__list">
+            <if condition="$inner_data[3]">
+                <ul>
+                    <php>
+                        $arr = get_list_val($inner_data[3]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li class="index_text">{$a[name]}</li>
+                    </volist>
+                </ul>
+                <else />
+                <ul>
+                    <li class="index_text">{:__('Product Detail')}</li>
+                </ul>
+            </if>
+        </div>
+        <!-- 多编辑器 -->
+        <div class="pro_detail16_con_list">
+            <php>
+                for($i=1;$i<=$editor_count; $i++){
+                    if($i == 1) {
+                        $ename = "pro_profile";
+                    }else{
+                        $ename = "pro_profile".$i;
+                    }
+                </php>
+            <div class="pro_detail16_con">
+                {:str_replace('&nbsp;',' ',htmlspecialchars_decode($producteditors[$ename]))}
+            </div>
+            <php>}</php>
+        </div>
+    </div>
+
+</block>
+<block name="footer_js">
+    <script>
+        require(['jquery'], function ($) {
+            $('.pro_detail16__list li:first-child').addClass('on');
+            var pro_detail16_con = $('.pro_detail16_con');
+            $('.pro_detail16__list li').click(function () {
+                var self = $(this);
+                var index = self.index();
+                self.addClass('on').siblings('li').removeClass('on');
+                pro_detail16_con.eq(index).show().siblings('div').hide();
+            });
+        });
+    </script>
+</block>

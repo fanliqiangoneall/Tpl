@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+<php>
+    if($data461[1]){
+    $color = $data461[1];
+    }
+</php>
+<style>
+    <if condition="$data461[0]">.HJZF2_Z_other_84 {
+        background: url({:getindeximgurl($data461[0])
+    }
+
+    ) no-repeat center/cover;
+    }
+
+    </if>.HJZF2_Z_other_84_list_more:hover {
+        color:#{$color};
+        border-color: #{$color};
+    }
+
+    .HJZF2_Z_other_84_list_more:hover em:before {
+        background-color: #{$color};
+    }
+
+    .HJZF2_Z_other_84_list_more:hover em:after {
+        border-left-color: #{$color};
+    }
+</style>
+<section class="HJZF2_Z_other_84 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div class="col-xs-12 col-lg-6 wow fadeInLeft">
+                    <div class="index_title pb40 HJZF2_Z_other_84_text">{$data461[3]}</div>
+                    <div class="HJZF2_Z_other_84_list">
+                        <ul>
+                            <php>
+                                $arr = get_list_val($data461[4]);
+                            </php>
+                            <volist name="arr" id="a">
+                                <li>
+                                    <img src="{$a[ico]}" alt="{$a[title]}">
+                                    <div class="HJZF2_Z_other_84_list_info">
+                                        <h5>{$a[title]}</h5>
+                                        <p>{$a[info]}</p>
+                                    </div>
+                                </li>
+                            </volist>
+                        </ul>
+                        <if condition="$data461[5]">
+                            <a href="{$data461[6]}"
+                                class="HJZF2_Z_other_84_list_more"><span>{$data461[5]}</span><em></em></a>
+                        </if>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6  wow fadeInRight">
+                    <img src="{:getindeximgurl($data461[2])}" alt="{$data461[3]}" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

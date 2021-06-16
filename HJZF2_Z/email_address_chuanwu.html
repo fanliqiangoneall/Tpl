@@ -1,0 +1,134 @@
+<style>
+    .bottom_hj10_submit .bottom_form_box form {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        width: 30vw;
+        margin: 2vw auto;
+        line-height: 55px;
+    }
+
+    .bottom_hj10_submit .form_item_email {
+        display: block;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 80%;
+        flex: 0 0 80%;
+        border: 0;
+        color: #333;
+        padding-left: 20px;
+        border-top-left-radius: 55px;
+        border-bottom-left-radius: 55px;
+        position: relative;
+    }
+
+    .bottom_hj10_submit .form_item_email input {
+        border-top-left-radius: 55px;
+        border-bottom-left-radius: 55px;
+        width: 100%;
+        padding-left: 10px;
+        font-size: 18px;
+        height: 55px;
+        line-height: 55px;
+    }
+
+    .bottom_hj10_submit .form_item_btn {
+        display: block;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 28%;
+        flex: 0 0 28%;
+        margin-left: -6.5%;
+        border: 0;
+        color: #333;
+        border-radius: 50px;
+        background-color: #c7e4ff;
+        -webkit-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+        position: relative;
+        z-index: 9;
+    }
+
+    .bottom_hj10_submit .form_item_btn input {
+        padding: 0 10px;
+        border: none;
+        width: 100%;
+        font-size: 18px;
+        background-color: transparent !important;
+    }
+
+    .bottom_hj10_submit .yz_alert {
+        position: absolute;
+        bottom: -18px;
+        left: 10px;
+        line-height: 1;
+    }
+
+    @media(max-width: 767px) {
+        .bottom_hj10_submit .bottom_form_box form {
+            height: 35px;
+            line-height: 35px;
+        }
+        .bottom_hj10_submit .form_item_email{
+            width: 65%;
+            -ms-flex-preferred-size: 65%;
+            flex-basis: 65%;
+        }
+        .bottom_hj10_submit .form_item_btn{
+            width: 42%;
+            -ms-flex-preferred-size: 42%;
+            flex-basis: 42%;
+            font-size: 16px;
+            margin-left: -7%;
+        }
+    }
+    @media(max-width: 1200px) {
+        .bottom_hj10_submit .bottom_form_box form{
+            width: 50vw;
+        }
+    }
+    @media(max-width: 767px) {
+        .bottom_hj10_submit .bottom_form_box form{
+            width: 80vw;
+        }
+        .bottom_hj10_submit .form_item_email input{
+            height: 35px;
+            line-height: 35px;
+        }
+    }
+</style>
+{:session("tncode_check","ok")}
+<php>
+    $lan_submit = C('Language');
+</php>
+<script src="__TMPL__HJZF2_Z/js/email_address_chuanwu.js"></script>
+<div class="bottom_form_box">
+    <form action="__APP__/saveinquiry" method="post" onsubmit="return yzsubmitb_bottom_hj10()" class="bottom_form">
+        <div class="form_item hidden">
+            <input type="text" name="linkname" id="linknamea_bottom_HJ10" placeholder="Email submit"
+                value="{:__('linknamea')}">
+            <span class="yz_alert" id="linknamea_bottom_HJ10_alert"></span>
+        </div>
+        <div class="form_item hidden">
+            <input type="text" name="phone" id="phone_bottom_HJ10" placeholder="Email submit"
+                value="{:__('Mobile')}">
+            <span class="yz_alert" id="phone_bottom_HJ10_alert"></span>
+        </div>
+        <div class="form_item hidden">
+            <textarea name="message" id="messagea_bottom_HJ10"
+                placeholder="{:__('Message: ')}">You have a new email subscription</textarea>
+            <span class="yz_alert" id="messagea_alert"></span>
+        </div>
+        <div class="form_item form_item_email">
+            <input type="text" name="email" id="emaila_bottom_HJ10" placeholder="{:__('Email address')}">
+            <span class="yz_alert" id="emaila_bottom_HJ10_alert"></span>
+        </div>
+        <div class="form_item form_item_btn">
+            <input type="hidden" name="prodid" value="{$product['pid']}" />
+            <div id="form_submit"><input type="submit" value="{$tij}" name="submit" class="bottom_hj06submit"
+                    id="bottom_bottom_HJ10_submit" /></div>
+        </div>
+    </form>
+</div>

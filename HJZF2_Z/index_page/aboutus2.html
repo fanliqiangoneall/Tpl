@@ -1,0 +1,79 @@
+<!--{$pagename}-->
+<style>
+    .aboutus--2--right__content ul li:hover a{
+        border: 1px solid #{$data41[0]};background: #{$data41[0]};
+    }
+    .aboutus--2__swiper .swiper-pagination-bullet-active{
+        background: #{$data41[0]};
+    }
+</style>
+<if condition="$data41[1]">
+    <style>
+        #aboutus--2{
+            background: url({:getindeximgurl($data41[1])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<section id="aboutus--2" class="index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="aboutus--2--top">
+                <div class="col-xs-12 col-lg-6 aboutus--2--left wow fadeInLeft" data-wow-duration="1s">
+                    <div class="swiper-container aboutus--2__swiper">
+                        <div class="swiper-wrapper">
+                            <php>
+                                $imgs=aboutusimg();
+                                $src_list = explode(',',$data41[23]);
+                                
+                            </php>
+                            <volist name="imgs" id="banerimg" key="k1" offset="0" length="3">
+                                <if condition="$banerimg['imgurl'] neq ''">
+                                    <li  class="swiper-slide"><div data-num="{$k1-1}"><if condition="$src_list[$k1-1]"><a href="{$src_list[$k1-1]}" target="_bank"><img src="{$banerimg['imgurl']}" border="0" alt="{$data41[2]}" width="100%"/></a><else/><img src="{$banerimg['imgurl']}" border="0" alt="{$data41[2]}" width="100%"/></if></div></li>
+                                </if>
+                            </volist>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination new_hjzf_aboutus_pagination"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 aboutus--2--right wow fadeInRight" data-wow-duration="1s">
+                    <div class="aboutus--2--right__content">
+                        <h3 class="aboutus--2--right__title index_title">{$data41[2]}</h3>
+                        <section class="aboutus--2--right__text index_text">
+                            <if condition="$webid eq '1784'">
+                            {:HtmlEncode($company_info['description'])}
+                                <else/>
+                            {:HtmlEncode(subtxt($company_info['description'],400))}
+                            </if>
+                        </section>
+                        <ul>
+                            <php>
+                                for($i=3;$i<10;$i=$i+2){
+                            </php>
+                            <if condition="$data41[$i]">
+                                <li><a href="{$data41[$i+1]}" class="index_text">{$data41[$i]}</a></li>
+                            </if>
+                            <php>
+                                }
+                            </php>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="aboutus--2--down">
+                <ul class="aboutus--2__shuzi_box">
+                    <php>for($i=11;$i<22;$i=$i+3){</php>
+
+                    <if condition="$data41[$i] neq ''">
+                        <li class="col-xs-6 col-lg-3 aboutus--2__shuzi__item" id="count{$i}">
+                            <span class="count_shuzi timer index_title" data-to="{$data41[$i]}" data-speed="1500" data-danwei="{$data41[$i+1]}">{$data41[$i]}</span>
+                            <p class="count_shuzi_desc index_text">{$data41[$i+2]}</p>
+                        </li>
+                    </if>
+                    <php>}</php>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

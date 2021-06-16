@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+<style>
+	.hjzf2_other_69 {
+		background-color: #{$data695[0]};
+		color: #{$data695[2]};
+	}
+
+	.hjzf2_other_69 .hjzf2_other_69_slide_text {
+		color: #{$data695[2]};
+	}
+
+	.hjzf2_other_69_wrapper li {
+		background-color: #{$data695[3]};
+	}
+
+	.hjzf2_other_69_pagination span.swiper-pagination-bullet-active,.hjzf2_other_69_slide_con:before {
+		background: #{$color};
+	}
+</style>
+<section class="hjzf2_other_69 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="index_title pb40 text-center">
+				{$data695[1]}
+			</div>
+			<php>
+				$arra = get_list_val($data695[4]);
+			</php>
+			<div class="swiper-container hjzf2_other_69_container wow fadeInUp" data-wow-delay=".4s">
+				<div class="swiper-wrapper">
+					<volist name="arra" id="a">
+						<div class="swiper-slide hjzf2_other_69_slide">
+							<if condition="$a[link]">
+								<a class="hjzf2_other_69_slide_box" href="{$a[link]}">
+							</if>
+							<div class="hjzf2_other_69_slide_img">
+								<img src="{$a[img]}" alt="{$a[title]}" class="img-responsive">
+							</div>
+							<div class="hjzf2_other_69_slide_text">
+								<p class="index_sub_title text-center">{$a[title]}</p>
+							</div>
+							<if condition="$a[info]">
+								<div class="hjzf2_other_69_slide_con">
+									<div class="hjzf2_other_69_slide_title index_sub_title">{$a[title]}</div>
+									<p class="hjzf2_other_69_slide_info">{$a[info]}</p>
+								</div>
+							</if>
+							<if condition="$a[link]">
+								</a>
+							</if>
+						</div>
+					</volist>
+
+				</div>
+				<div class="swiper-pagination hjzf2_other_69_pagination"></div>
+
+			</div>
+
+		</div>
+	</div>
+</section>

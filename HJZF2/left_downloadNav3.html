@@ -1,0 +1,11 @@
+<div class="InsidePage--3__contentNavbg">
+    <div class="InsidePage--3__contentNavWrap">
+        <ul class="InsidePage--3__contentNavWrap--list">
+            <volist empty="" name="alldownloadclass" id="alldownloadclass">
+                <li <if condition="$alldownloadclass['classid'] eq $downcate['classid'] or $alldownloadclass['classid'] eq $download['file_type']">class="module2_yijion"<else/>class="module2_yiji"</if>><a href="{:U('/download_category',array('classid'=>$alldownloadclass["classid"]))}">{$alldownloadclass['class_name']}</a>
+                </li>
+            </volist>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>

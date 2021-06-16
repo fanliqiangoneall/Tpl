@@ -1,0 +1,73 @@
+<!--{$pagename}-->
+<if condition="$data104[0]">
+    <style>
+        .press-card .info.green{
+            background: url({:getindeximgurl($data104[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .press-card .info.green{
+        background-color: #{$data104[1]};
+    }
+</style>
+<if condition="$data104[6]">
+    <style>
+        .press-card .info.blue{
+            background: url({:getindeximgurl($data104[6])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .press-card .info.blue{
+        background-color: #{$data104[7]};
+    }
+</style>
+<section class="hjzf2_z_other-1hj04 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="press-release-showcase grid">
+                        <div class="col-xs-12 col-lg-4 grid">
+                            <div class="card-container_wrap">
+                                <div class="card-container col-xs-12 col-md-6 col-lg-12">
+                                    <a href="{$data104[5]}" class="press-card text-card">
+                                        <img src="__TMPL__HJZF2_Z/img/other-1hj04.gif" alt=""/>
+                                        <div class="info green">
+                                            <p class="label-text">{$data104[2]}</p>
+                                            <h3 class="title index_sub_title pb20">{$data104[3]}</h3>
+                                            <p class="info_desc index_text">{:HtmlEncode($data104[4])}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card-container col-xs-12 col-md-6 col-lg-12">
+                                    <a href="{$data104[5]}" class="press-card text-card">
+                                        <img src="__TMPL__HJZF2_Z/img/other-1hj04.gif" alt=""/>
+                                        <div class="info blue">
+                                            <p class="label-text">{$data104[2]}</p>
+                                            <h3 class="title index_sub_title pb20">{$data104[3]}</h3>
+                                            <p class="info_desc index_text">{:HtmlEncode($data104[4])}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-lg-8">
+                            <a href="{$data104[17]}" class="press-card-large">
+                                <div class="img-container">
+                                    <img src="{:getindeximgurl($data104[12])}" alt="{$data104[15]}"/>
+                                    <div class="info grid orange">
+                                        <div class="col-xs-12 col-md-6 col-lg-5">
+                                            <p class="label-text">{$data104[14]}</p>
+                                            <h4 class="title index_sub_title pb20">{$data104[15]}</h4>
+                                        </div>
+                                        <p class="b4 hidden-xs col-md-6 col-lg-7 index_text">{:HtmlEncode($data104[16])}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

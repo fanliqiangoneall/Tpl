@@ -1,0 +1,262 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo2/css/products.css" rel="stylesheet">
+<if condition="$data[1]">
+    <style>
+        .index_proleft{
+            width: 265px;height: 440px;padding: 20px;
+            background: url({:getindeximgurl($data[1])}) no-repeat center;
+        }
+        .index_proleft_title{
+            width: 100%;height: 90px;margin-top:20px;line-height: 90px;color: {$data[6]};font-size:24px;font-weight:normnal;padding-left:30px;
+            background: url({:getindeximgurl($data39[7])}) no-repeat left;
+        }
+        .index_proleft_list{margin-top: 30px;margin-bottom: 20px;}
+        .index_proleft_list li{margin-bottom: 10px;width: 100%;}
+        .index_proleft_list li a h3{
+            font-weight:bold;padding:10px 0;line-height:20px;font-size: 14px;color: {$data[6]};padding-left:10px;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;
+        }
+        .index_proleft_list li a h3:hover{
+            background: {$data[6]};color:#{$color};
+        }
+        .index_proleft>a{
+        font-size:14px;line-height:20px;padding-left:10px;font-weight:bold;color: {$data[6]};
+        }
+        .index_proleft>a:hover{text-decoration: underline;}
+    </style>
+</if>
+<div class="index_products">
+<div class="index_product2">
+ <div id="index_products_animate" style="display:none;">
+  <div class="index_products_title">
+   {$data39[0]}
+  </div>
+ </div>
+
+    <div class="index_products_zwbg" id="pic">
+     <div id="" style="display:block;">
+      <div class="index_proleft">
+            <h3 class="index_proleft_title">{$data39[5]}</h3>
+          <ul class="index_proleft_list">
+              <php>
+                  for($cate=8;$cate<17;$cate=$cate+2){
+
+              </php>
+              <if condition="$data[$cate] neq ''">
+                  <li><a href="{$data[$cate]}"><h3>{$data[$cate+1]}</h3></a></li>
+              </if>
+
+              <php>
+                  }
+              </php>
+          </ul>
+          <a href="{:U('/Product')}">Read More ></a>
+      </div>
+     </div> 
+         <!--多个产品滚动-->
+         <php>
+             if(!$data39[2]){
+             $data39[2]=6;
+             }
+
+             for($i=1;$i<$data39[2];$i+=6){
+             $volist_count[]=$i;
+             }
+         </php>
+         <div style="width: 843px;float: right; height:538px; overflow:hidden; position:relative;">
+             <div id="wrapper_three">
+                 <ul>
+
+                     <volist name="volist_count" id="i_count">
+                         <php>$zq_offsets=($i_count-1); </php>
+
+                         <li>
+                             <volist empty="" name="indexpro" id="pro" offset="$zq_offsets" length='6'>
+                                     <div class="asd2" >
+                                         <div class="img2" ><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a>
+                                         </div>
+
+                                         <div class="in_proname2">
+                                             <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a>
+                                         </div>
+
+                                     </div>
+
+
+                                 <if condition="($key+1)%3 eq 0">
+                                     <div style="clear:both; width: 100%; height:34px;"></div>
+                                     <else/>
+                                     <div style="width:32px; height:10px; background:none; float:left;"></div>
+                                 </if>
+                             </volist>
+                         </li>
+                     </volist>
+                 </ul>
+             </div>
+             <div class="product_three_icon">
+                 <input type="button" name="left" id="pro_left_icon" /> <input type="button" id="pro_right_icon" name="right"/>
+             </div>
+         </div>
+  </div>
+ </div> 
+</div>
+<if condition="$data39[2] gt 6">
+    <style>
+        #wrapper_three {
+            overflow: hidden;
+            width: 843px;
+            height: 480px;
+            position: relative;
+            margin: auto;
+        }
+        #wrapper_three ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3372px;
+        }
+
+        #wrapper_three li {
+            float: left;
+            width: 843px;
+            list-style: none;
+            padding-right: 0;
+        }
+        .product_three_icon{width: 100%;text-align: center;}
+        #pro_left_icon,#pro_right_icon{
+            margin-top: 20px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            border: none;
+        }
+        #pro_left_icon:hover,#pro_right_icon:hover{cursor: pointer}
+        #pro_left_icon{
+            background: url({:getindeximgurl($data39[3])}) no-repeat center;
+        }
+        #pro_right_icon{
+            background: url({:getindeximgurl($data39[4])}) no-repeat center;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            var timer = null;
+
+            var speed = -2;
+            var od = document.getElementById("wrapper_three");
+            var au = od.getElementsByTagName('ul')[0];
+            var ali = au.getElementsByTagName('li');
+            au.innerHTML = au.innerHTML + au.innerHTML;
+
+            au.style.width = 843 * ali.length + 'px';
+            timer = setInterval(move, 30)
+            function move() {
+                if (au.offsetLeft < -au.offsetWidth / 2) {
+                    au.style.left = '0';
+                }
+                if (au.offsetLeft > 0) {
+                    au.style.left = -au.offsetWidth / 2 + 'px';
+                }
+                au.style.left = au.offsetLeft + speed + 'px';
+            }
+
+            od.onmouseover = function () {
+                speed = -2;
+                clearInterval(timer);
+            }
+            od.onmouseout = function () {
+                speed = -2;
+                timer = setInterval(move, 30)
+            }
+            document.getElementById("pro_left_icon").onclick = function () {
+                speed = -4;
+            }
+            document.getElementById("pro_right_icon").onclick = function () {
+                speed = 4;
+            }
+        })
+    </script>
+
+</if>
+<script>
+
+    function changeprod(type,pid){
+        //console.log(type)
+        if(type==1){
+            $("#cpordlist2_"+pid).show();
+            $("#cpordlist1_"+pid).hide();
+        }
+        else{
+            $("#cpordlist1_"+pid).show();
+            $("#cpordlist2_"+pid).hide();
+        }
+    }
+    $(function(){
+        var top=$("#pic").offset().top;
+        if(top<800){
+            $('#index_products_animate_1').show();
+            $('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+            $('#index_products_animate_2').show();
+            $('#index_products_animate_2').removeClass().addClass('fadeInDown');
+            $('#index_products_animate').show();
+            $('#index_products_animate').removeClass().addClass('fadeInLeft');
+        }
+    })
+    $(window).scroll( function() {
+        var scrollTop=$(document).scrollTop();
+        //alert(scrollTop);
+
+        var top=$("#pic").offset().top;
+        if(top-scrollTop<580){
+            $('#index_products_animate_1').show();
+            $('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+            $('#index_products_animate_2').show();
+            $('#index_products_animate_2').removeClass().addClass('fadeInDown');
+            $('#index_products_animate').show();
+            $('#index_products_animate').removeClass().addClass('fadeInLeft');
+        }
+    });
+</script>
+<script>
+$(function(){
+var top=$("#pic").offset().top;
+if(top<800){
+
+		$('#index_products_animate_1').show();
+		$('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+		$('#index_products_animate_2').show();
+		$('#index_products_animate_2').removeClass().addClass('fadeInDown');
+		$('#index_products_animate').show();
+		$('#index_products_animate').removeClass().addClass('fadeInLeft');
+}
+})
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	top=$("#pic").offset().top;
+	if(top-scrollTop<580){	
+		$('#index_products_animate_1').show();
+		$('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+		$('#index_products_animate_2').show();
+		$('#index_products_animate_2').removeClass().addClass('fadeInDown');
+		$('#index_products_animate').show();
+		$('#index_products_animate').removeClass().addClass('fadeInLeft');
+	}
+
+});
+</script>
+<script type="text/javascript">
+    $(function(){
+     $(".subNav").mouseenter(function(){
+      $(this).toggleClass("currentDd").siblings(".subNav").removeClass("currentDd")
+      $(this).toggleClass("currentDt").siblings(".subNav").removeClass("currentDt")
+      
+      // 修改数字控制速度， slideUp(500)控制卷起速度
+      $(this).next(".navContent").slideToggle(500).siblings(".navContent").slideUp(500);
+     })  
+    })
+   </script>
+   
+
+   

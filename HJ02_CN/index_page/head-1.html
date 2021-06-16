@@ -1,0 +1,143 @@
+<!--{$pagename}-->
+
+<style>
+.head_mail i{
+    color: #{$color};
+}
+    .head_language span,.head_language i{
+        color: #{$color};
+    }
+.head_language ul li:hover a{
+    color:#{$color}
+    }
+    .HJ02_head_menu{
+        background: #{$color}
+    }
+    .hj02-menu{
+        background: #fff;
+    }
+    .menu_on{
+        background: #{$data1[11]};
+    }
+.HJ02_head_menu>div>ul>li:hover{
+    background: #{$data1[11]};
+}
+    .hj02-menu li:hover{
+        background: #ebebeb;
+    }
+.hj02-menu li:hover h3{
+    color: #333;
+}
+</style>
+<header id="header">
+<!--head_middle-->
+<div class="head_menu">
+    <div class="container">
+        <div class="page_Logo">
+            <a href="{:U('/')}" style="float: left;">{$logo}</a>
+        </div>
+        <div class="head_language right">
+            <span>EN <i class="fa fa-angle-down"></i><img src="{:getindeximgurl($data1[22])}" alt="" width="24" height="24"/></span>
+            <ul>
+                <if condition="$data1['22']"><li><a href="{$data1[24]}" target="_blank"><span>{$data1[23]}</span><img src="{:getindeximgurl($data1[22])}" alt="" width="24" height="24"/></a></li></if>
+                <if condition="$data1['25']"><li><a href="{$data1[27]}" target="_blank"><span>{$data1[26]}</span><img src="{:getindeximgurl($data1[25])}" alt="" width="24" height="24"/></a></li></if>
+                <if condition="$data1['28']"><li><a href="{$data1[30]}" target="_blank"><span>{$data1[29]}</span><img src="{:getindeximgurl($data1[28])}" alt="" width="24" height="24"/></a></li></if>
+            </ul>
+        </div>
+        <div class="head_mail right"><i class="fa fa-envelope-o" style="margin: 0 4px 0 4px; font-size: 18px;"></i><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1)"> {:chaifen($about['email'],0)}</a></div>
+        <div class="head_seach right">
+            <i class="head_search_icon"><img src="__TMPL__HJ02/img/head_search.png" alt="" width="30px" height="30px"/></i>
+            <i class="head_search_close"><img src="__TMPL__HJ02/img/head_search_close.png" alt="" width="30px" height="30px"/></i>
+        </div>
+            <div class="ins-header-search right" id="ins-header-search">
+                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                        <li style="float: left;width: 215px;height: 32px;"><input style="height: 32px;width:205px;border-width:0px;padding-left: 10px;color:#888888;outline: none;" type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                        <li style="float: left;width:30px;height: 32px;"><button type="submit" id="search-submit" style="padding-top:1px;outline: none"><img
+                                src="__TMPL__HJ02/img/head_search.png" alt=""  width="30px" height="30px"/></button></li>
+                        <div class="clear"></div>
+                    </form>
+            </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+    <section style="height: 50px;width: 100%;margin: auto;">
+        <nav class="HJ02_head_menu">
+            <div class="container">
+                <ul>
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav_more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <ul class="hj02-menu">
+
+                                <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                    <li>
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+
+                                    </li>
+                                </volist>
+
+                            </ul>
+                            <else/>
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="hj02-menu hj02-pro-menu">
+                                    <volist empty="no" name="allclass" id="allclass_head">
+                                        <li>
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <div class="clear"></div>
+
+                                </ul>
+                            </if>
+
+                        </if>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+
+<!--head_middle-->
+    <script>
+        if($(".HJ02_head_menu>div>ul>li").length==7){
+            $(".HJ02_head_menu>div>ul>li").css('width','14.28%');
+        }else if($(".HJ02_head_menu>div>ul>li").length==6){
+            $(".HJ02_head_menu>div>ul>li").css('width','16.66%');
+        }else if($(".HJ02_head_menu>div>ul>li").length==5){
+            $(".HJ02_head_menu>div>ul>li").css('width','20%');
+        }else{
+            $(".HJ02_head_menu>div>ul>li").css('width','12.5%');
+        }
+
+    </script>
+    <if condition="$data1[31]">
+        <script>
+            //获取nav距离顶部的距离
+            var navtop=$(".HJ02_head_menu").offset().top;
+            $(document).scroll(function(){
+                //获取滚动条滚动的高度
+                var scroltop=$(document).scrollTop();
+                if (scroltop > navtop){
+                    $(".HJ02_head_menu").css({
+                        "position":"fixed",
+                        "left":"0px",
+                        "top":"0px",
+                        "width":"100%",
+                        "z-index":"99"
+                    })
+
+                }else {
+                    $(".HJ02_head_menu").css({
+                        "position":"relative",
+                        "left":"0",
+                        "top":"0",
+                        "width":"100%"
+                    })
+                }
+            })
+        </script>
+    </if>
+</header>

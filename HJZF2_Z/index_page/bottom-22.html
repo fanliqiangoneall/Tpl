@@ -1,0 +1,187 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_z_bottom_22_top {
+        background-color: #{$data539[0]};
+    }
+    .hjzf2_z_bottom_22_top a {
+        color: #{$data539[1]};
+    }
+    .hjzf2_z_bottom_22_bottom {
+        background-color: #{$data539[3]};
+        color: #{$data539[4]};
+    }
+    .hjzf2_z_bottom_22_bottom a {
+        color: #{$data539[4]};
+    }
+    .fnav li h3 {
+        color: #{$color};
+    }
+</style>
+<section class="hjzf2_z_bottom_22">
+
+    <div class="hjzf2_z_bottom_22_top index_pd nav-hidden-mobile">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="d-flex justify-between hjzf2_z_bottom_22_wrapper">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="{:getindeximgurl($data539[5])}" alt="logo">
+                            </a>
+                        </div>
+                        <div class="fnav d-flex">
+                            <if condition="$data539[6]">
+                                <ul>
+                                    <php>
+                                        $arr = get_list_val($data539[6]);
+                                    </php>
+                                    <volist name="arr" id="a" key="k">
+                                        <li>
+                                            <a href="{$a[link]}">
+                                                <if condition="$k eq '1'">
+                                                    <h3>{$a[title]}</h3>
+                                                    <else />
+                                                    <span>{$a[title]}</span>
+                                                </if>
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </if>
+                            <if condition="$data539[7]">
+                                <ul>
+                                    <php>
+                                        $arra = get_list_val($data539[7]);
+                                    </php>
+                                    <volist name="arra" id="a" key="k">
+
+                                        <li><a href="{$a[link]}">
+                                                <if condition="$k eq '1'">
+                                                    <h3>{$a[title]}</h3>
+                                                    <else />
+                                                    <span>{$a[title]}</span>
+                                                </if>
+
+                                            </a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                            <if condition="$data539[8]">
+                                <ul>
+                                    <php>
+                                        $arrb = get_list_val($data539[8]);
+                                    </php>
+                                    <volist name="arrb" id="a" key="k">
+                                        <li><a href="{$a[link]}">
+                                                <if condition="$k eq '1'">
+                                                    <h3>{$a[title]}</h3>
+                                                    <else />
+                                                    <span>{$a[title]}</span>
+                                                </if>
+                                            </a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                            <if condition="$data539[9]">
+                                <ul>
+                                    <php>
+                                        $arrc = get_list_val($data539[9]);
+                                    </php>
+                                    <volist name="arrc" id="a" key="k">
+                                        <li><a href="{$a[link]}">
+                                                <if condition="$k eq '1'">
+                                                    <h3>{$a[title]}</h3>
+                                                    <else />
+                                                    <span>{$a[title]}</span>
+                                                </if>
+
+                                            </a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                            <if condition="$data539[10]">
+                                <ul>
+                                    <php>
+                                        $arrd = get_list_val($data539[10]);
+                                    </php>
+                                    <volist name="arrd" id="a" key="k">
+                                        <li><a href="{$a[link]}">
+                                                <if condition="$k eq '1'">
+                                                    <h3>{$a[title]}</h3>
+                                                    <else />
+                                                    <span>{$a[title]}</span>
+                                                </if>
+                                            </a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                            <if condition="$data539[11]">
+                                <ul>
+                                    <php>
+                                        $arre = get_list_val($data539[11]);
+                                    </php>
+                                    <volist name="arre" id="a" key="k">
+                                        <li><a href="{$a[link]}">
+                                                <if condition="$k eq '1'">
+                                                    <h3>{$a[title]}</h3>
+                                                    <else />
+                                                    <span>{$a[title]}</span>
+                                                </if>
+                                            </a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hjzf2_z_bottom_22_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="d-flex justify-between align-center">
+                        <php>
+                            $nowtime=date("Y",time());
+                        </php>
+                        <div class="left mb-10">
+                            CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights
+                            reserved')}&nbsp;
+                            <if condition="get_txtBeiAn()">
+                                <a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+                                </a>&nbsp;
+                            </if>
+                            <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                            <a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+                            <if condition="C('language') eq 'cn'">
+                                <if condition="$data520[12] neq '1'"><a id="mianze" title="免责声明" target="_blank"
+                                        style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a
+                                        href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                                </if>
+                                <else />
+                                <if condition="$data520[12] neq '1'">
+                                    <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+                                        Zhonghuan Internet</a>
+                                </if>
+                            </if>
+                        </div>
+                        <php>
+                            $arr = get_list_val($data539[12]);
+                        </php>
+                        <div class="right">
+                            <ul class="d-flex">
+                                <volist name="arr" id="a">
+                                    <li class="ml-10">
+                                        <a href="{$a[link]}"><img src="{$a[ico]}"></a>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

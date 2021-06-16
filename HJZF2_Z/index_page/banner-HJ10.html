@@ -1,0 +1,149 @@
+<!--{$pagename}-->
+<php>
+    if($data335[0]){
+    $high_color = $data335[0];
+    }else{
+    $high_color = $color;
+    }
+    $mb_color=explode(",",$data335[8]);
+    $mba = $mb_color[0];
+    $mbb = $mb_color[1];
+</php>
+
+<style>
+    .hj10_banner_bottom_wrapper:before {
+        background-color: #{$data335[7]};
+    }
+
+    .hj1_banner_pogation .index_text {
+        color: #{$high_color};
+    }
+
+    .hj10_banner_top {
+        position: relative;
+    }
+
+    .hj10_banner_top_pagination span.active {
+        background-color: #{$high_color};
+    }
+
+    <if condition="$data335[11]">.hj10_banner_top:after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        content: '';
+        background: url({:getindeximgurl($data335[11])
+    }
+
+    ) repeat-x;
+    }
+
+    </if>@media(max-width: 768px) {
+        .hj10_banner_bottom {
+            background-color: #{$data335[10]};
+        }
+    }
+</style>
+
+<section class="hjzf_banner_hj10">
+    <div class="swiper-container hj10_banner_top">
+        <div class="swiper-wrapper">
+            <php>
+                $arra = get_list_val($data335[9]);
+            </php>
+            <volist name="banner" id="banner_pic" key="k" offset="0" length="10">
+                <if condition="$banner_pic['use_video']">
+                    <div class="swiper-slide">
+                        <div class="hjzf_banner_videoBox">
+                            
+                            <video src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}"  class="hjzf_banner_video nav-hidden-mobile" muted loop></video>
+                            <video src="{$banner_pic['ad_link']}" controls 
+                            controls="controls"
+
+                            x5-playsinline=""
+
+                            playsinline="true"
+
+                            webkit-playsinline="true"
+
+                            x-webkit-airplay="true"
+
+                            x5-video-player-type="h5"
+
+                            x5-video-player-fullscreen=""
+
+                            x5-video-orientation="portraint"
+
+                            poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video mobile_video c-h5 nav-hidden-pc" muted></video>
+                            <img src="{:getimgurl($banner_pic['ad_pic'])}" class="d-none img-fluid">
+
+                        </div>
+                    </div>
+                        <else />
+                        <div class="swiper-slide">
+                            <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$arra[$k-1]['title']}" class="img-full"
+                                data-swiper-parallax="0.15" data-swiper-parallax-opacity="0.5" />
+                            <div class="hj10_banner_wrapper text-center">
+                                <span class="ani index_title" swiper-animate-effect="fadeInUp"
+                                    swiper-animate-duration="0.8s" swiper-animate-delay="0.1s">
+                                    {$arra[$k-1]['title']}
+                                </span>
+                                <p class="ani index_title" swiper-animate-effect="fadeInUp"
+                                    swiper-animate-duration="0.8s" swiper-animate-delay="0.3s">
+                                    {$arra[$k-1]['sub']}
+                                </p>
+                            </div>
+                        </div>
+                </if>
+
+
+            </volist>
+        </div>
+        <div class="hj10_banner_top_pagination"></div>
+    </div>
+
+    <!-- bottom -->
+    <div class="hj10_banner_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- box start-->
+                    <div class="hj10_banner_bottom_wrapper">
+                        <div class="swiper-container hj10_banner_thumbs">
+                            <div class="swiper-wrapper">
+                                <php>
+                                    $arr = get_list_val($data335[4]);
+                                </php>
+                                <volist name="arr" id="a">
+                                    <div class="swiper-slide hj10_banner_thumbs_wrapper">
+                                        <i>
+                                            <img src="{$a[ico]}" alt="{$a[tit]}" class="img-full">
+                                        </i>
+                                        <div class="info">
+                                            <span class="index_sub_title">{$a[tit]}</span>
+                                            <p class="index_text">{$a[info]}</p>
+                                        </div>
+                                    </div>
+                                </volist>
+                            </div>
+                            <div class="hj10_banner_bottom_pagination nav-hidden-pc"></div>
+                        </div>
+                        <div class="hj1_banner_pogation">
+                            <span class="index_sub_title">
+                                {$data335[1]}
+                            </span>
+                            <a href="{$data335[3]}" class="fr index_text">
+                                {$data335[2]} <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- box end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

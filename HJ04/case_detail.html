@@ -1,0 +1,64 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .caseList:hover .caseTitle{
+            color: #{$color};
+        }
+        .detailNextPrev>li.detailNPList:hover{
+            background: #{$color};
+        }
+    </style>
+    <div class="caseDetailContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                您的位置：&nbsp;<a href="{:U('/')}">首页</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <a href="{:U('/cases')}">
+                    <span>
+                    <if condition="$data47[0] eq ''">
+                        案例中心
+                        <else/>
+                        {$data47[0]}
+                    </if>
+                </span>
+                </a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;<span class="pageTitleActive">{$newscate['class_name']}</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="detailTitleContainer">
+                <p class="detailTitle">{$news['title']}</p>
+                <p class="detailTime">{:date('Y-m-d',$news['created'])}</p>
+                <p class="detailClassify">{$news['news_description']}</p>
+            </div>
+            <div class="page_Main" id="payment">
+                {:htmlspecialchars_decode($news['body'])}
+            </div>
+            <ul class="detailNextPrev">
+                <if condition="$newprev[0]['title'] neq ''">
+                    <li class="detailNPList detail_prev lf">
+                        <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                            <i class="fa fa-chevron-left"></i>
+                            <span class="detailPrevText ellipsis_one">{$newprev[0]['title']}</span>
+                        </a>
+                    </li>
+                    <else/>
+                    <li class="lf"></li>
+                </if>
+                <if condition="$newnext[0]['title'] neq ''">
+                    <li class="detailNPList detail_next rt">
+                        <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                            <span class="detailNextText ellipsis_one">{$newnext[0]['title']}</span>
+                            <i class="fa fa-angle-right fa-2x"></i>
+                        </a>
+                    </li>
+                    <else/>
+                    <li class="rt"></li>
+                </if>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+</block>

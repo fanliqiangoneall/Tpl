@@ -1,0 +1,75 @@
+.HJZF2__product_categroy{width: 100%;min-width: 1200px;max-width: 1920px;margin: auto;height: auto;padding:56px 0;}
+.HJZF2__product_categroy__title{ text-align:center; position:relative;}
+.HJZF2__product_categroy__title:before{ position:absolute; top:23px; content:''; width:480px; left:0; height:1px; background:#333333; z-index:0;}
+.HJZF2__product_categroy__title:after{ position:absolute; top:23px; content:''; width:480px; right:0; height:1px; background:#333333; z-index:0;}
+.HJZF2__product_categroy__title h3{ font-size:36px; color:#333333; line-height:45px; font-weight:normal;}
+.HJZF2__product_categroy__title span{ font-size:14px; color:#333333; line-height:35px;}
+
+.HJZF2__product_categroy__itemWrap{width: 100%;margin: auto; margin-top:52px; position:relative;}
+.HJZF2__product_categroy__itemWrap li{ width:580px; height:300px; float:left; position: relative; margin-bottom:30px; list-style:none;}
+.HJZF2__product_categroy__itemWrap li:nth-child(2n+1){ margin-right:30px;}
+.HJZF2__product_categroy__itempic{ position:absolute; top:0; left:0; width:580px; height:300px; border-radius:40px 0 40px 0; overflow:hidden;}
+.HJZF2__product_categroy__itempic img{width:580px; height:300px;}
+.HJZF2__product_categroy__itemmask{width:580px; height:300px; display:flex; text-align:center; justify-content:center; align-items:center;}
+.HJZF2__product_categroy__item:hover .HJZF2__product_categroy__itempic:after{ content:''; width:100%; height:100%; position:absolute; top:0; left:0; background:rgba(0,0,0,0.5);}
+.HJZF2__product_categroy__itemmask:before {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    bottom: 50px;
+    left: 50px;
+    border: 1px solid #fff;
+    content: '';
+}
+
+.HJZF2__product_categroy__itemName{font-size: 24px;font-weight: normal;color: #ffffff;line-height:45px; position:relative;}
+.HJZF2__product_categroy__itemjs{ width:400px; margin:auto; text-align:center; font-size:14px; color:#ffffff; line-height:25px; position:relative;}
+
+.HJZF2__product_categroy__item:nth-child(2) .HJZF2__product_categroy__itempic,.HJZF2__product_categroy__item:nth-child(3) .HJZF2__product_categroy__itempic{border-radius:0 40px 0 40px;}
+
+.HJZF2__product_categroy__itemmask:before,.HJZF2__product_categroy__itemjs{
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+.HJZF2__product_categroy__itemmask a{ display:block; position:relative;}
+.HJZF2__product_categroy__item:hover .HJZF2__product_categroy__itemmask:before,.HJZF2__product_categroy__item:hover .HJZF2__product_categroy__itemjs{
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+.HJZF2__product_categroy__itemName{
+	-webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+.HJZF2__product_categroy__item:hover .HJZF2__product_categroy__itemName{
+	transform:translateY(-15px);
+	-webkit-transform:translateY(-15px);
+}
+
+.HJZF2__product_categroy__more{ position:absolute; top:50%; left:50%; width:40px; height:40px; transform:translate(-28px,-43px); -webkit-transform:translate(-20px,-35px); z-index:9;}
+.HJZF2__product_categroy__more a{ width:40px; height:40px; display:block;
+	background:#ea2329;
+	transform: rotate(45deg);
+	ms-transform: rotate(45deg);
+	moz-transform: rotate(45deg);
+	webkit-transform: rotate(45deg);
+	o-transform: rotate(45deg); 
+}
+.HJZF2__product_categroy__more a span{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(9px);
+	-webkit-transform:translateY(9px);
+}
+.HJZF2__product_categroy__more a span i{ color:#FFFFFF; font-size:22px; transform: rotate(-45deg); -webkit-transform:rotate(-45deg); -webkit-transition: -webkit-transform 0.35s; transition: transform 0.35s;}
+.HJZF2__product_categroy__more:hover span{
+	transform: translateY(7px);
+	-webkit-transform:translateY(7px);
+}
+.HJZF2__product_categroy__more:hover span i{ font-size:25px;}

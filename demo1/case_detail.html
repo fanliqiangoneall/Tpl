@@ -1,0 +1,52 @@
+<extend name="demo1:base" />
+<block name="content">
+
+
+
+
+<div class="container" style="padding-top: 35px;">
+<div class="row">
+<div class="col-md-12" style="position:static;">
+<div class="daohangtop">
+	<a href="{:U('index','','')}" target="_self">网站首页</a>
+		&gt;&gt;&nbsp;案例>&gt;&gt;&nbsp;<a  href="#">{$news['title']}</a>
+		</div>
+<div class="row" style="padding-top:25px;">
+<div class="col-md-12">
+<div id="FrontNews_detail01-1476351183952" class="FrontNews_detail01-d1_c1"><div id="newsdetailshow">
+	<h2>{$news['title']}</h2>
+  <div class="message">
+   <span class="date" style="text-align:center; float:none;"><em>日期：</em>{:date('m/d/Y',$news['created'])}
+</span>
+	</div>           
+  <div class="summary">
+   </div>
+  <div class="describe htmledit edit" id="infoContent">
+	{:htmlspecialchars_decode($news['body'])}
+</div>  
+
+
+
+      </div>
+  </div>
+</div>
+            	
+ 
+
+</div>
+
+
+</div>
+                
+                              
+
+                 
+            </div>
+            </div>
+       
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="green-black" style="text-align:center; padding:20px 20px;">{$page}</div>
+
+</block>

@@ -1,0 +1,230 @@
+<php>
+    if($data489[1]){
+    $mobile_bg = $data489[1];
+    }else{
+    $mobile_bg = 'fff';
+    }
+    if($data489[2]){
+    $mobile_navbtn = $data489[2];
+    }else{
+    $mobile_navbtn = '333';
+    }
+    if($data489[3]){
+    $img_url = $data489[3];
+    }else{
+    $img_url = '';
+    }
+    $searchurl = 'mobile_search';
+    $language = HtmlEncode($data489[4]);
+    $mobile_lang = $data489[4];
+	if($data489[10]){
+		$logo_img = $data489[10];
+	}
+</php>
+<style>
+    .nav_drop li:hover h3{
+        color: #{$color};
+    }
+    .head_hj22_nav .menu ul li:hover h2{
+    border-bottom: 1px solid #{$color};
+    }
+    header.on{
+        background-color: #{$data489[6]};
+    }
+	<if condition="$data489[7]">
+	.nav_drop_pro{
+		min-width: 300%;
+		left: -50%;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		padding: 20px 15px;
+	}
+	.nav_drop_pro li a{
+		font-size: 16px;
+		color: #333;
+		display: block;
+		transition: all .5s;
+	}
+	.nav_drop_pro li{
+		width: 48%;
+		flex: 0 0 48%;
+		white-space: nowrap;
+		position: relative;
+		text-align: left !important;
+	}
+	.nav_drop_pro li span{
+		transition: all .5s;
+	}
+	.nav_drop_pro li:nth-child(2n-1):after{
+		display: block;
+		position: absolute;
+		content:'';
+		height: 100%;
+		width: 1px;
+		right: -5px;
+		top: 0;
+		background-color: #ccc;
+	}
+    .nav_drop_pro li a:hover{
+        color:#{$color};
+    }
+	
+	</if>
+	.nav_drop li:hover span{
+		color: #{$color};
+	}
+</style>
+ <script>   
+    var lan_str = "<?php echo $language;?>";
+</script>
+
+<!--mobile nav content-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/index_page/_mobile.css">
+<script src="__TMPL__HJZF2_Z/index_page/_mobile.js"></script>
+<Include file="./Tpl/HJZF2_Z/index_page/_mobile.html" />
+
+<div class="hader_hj22_nav_con_empty nav-hidden-mobile"></div>
+<header class="nav-hidden-mobile header_hj22_nav_fixed">
+    <!-- search -->
+<div class="header_search_form">
+    <div class="container">
+        <div class="row">
+            <if condition="C('language') eq 'cn'">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+                    class="head_hj06_search">
+                    <li class="search_first"><input type="text" value="{:__('Product Search')}" name="keywords"
+                            id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)"
+                            onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)">
+                    </li>
+                    <li class="search_second">
+                        <button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/mobile_search.svg" width="30" /></button>
+                    </li>
+                    <li class="closeda">
+                        <span></span>
+                    </li>
+                    <div class="clear"></div>
+                </form>
+                <else />
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+                    class="head_hj06_search">
+                    <li class="search_first"><input type="text" value="keyword" name="keywords" id="keyword"
+                            onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)">
+                    </li>
+                    <li class="search_second">
+                        <button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/mobile_search.svg" width="30" /></button>
+                    </li>
+                    <li class="closeda">
+                        <span></span>
+                    </li>
+                    <div class="clear"></div>
+                </form>
+            </if>
+        </div>
+    </div>
+</div>
+<!-- search -->
+    <div class="container hader_hj22_nav_con">
+        <div class="row head_hj22_nav">
+            <div class="logo">
+                <a href="{:U('/')}">{$logo}</a>
+            </div>
+            <nav class="nav menu">
+                <ul>
+                    <volist name="web_navigation" id="vo" offset="0" key="key">
+                        <li id="menu{$vo['id']}" class="nav_li" data-url="{$vo['url']}">
+                            <a href="{$vo['url']}" <if
+                                condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">
+                                onclick="turn_sta(2,1)"
+                                <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                                class="nav_pro"
+                                </if> ><span>{$vo['title']}</span></a>
+                            <!-- 二级 start -->
+                            <if condition="$vo[child] neq '' ">
+                                <ul class="nav_drop">
+                                    <volist name="vo['child']" id="v" offset="0" key="key">
+                                        <li>
+                                            <a href="{$v['url']}" <if
+                                                condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">
+                            </if>> <span>{$v['title']}</span></a>
+                        </li>
+                    </volist>
+                </ul>
+                <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+                <ul class="nav_drop">
+                    <volist empty="" name="allcaseclass" id="allclass_head">
+                        <li>
+                            <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}"><span>{$allclass_head['class_name']}</span></a>
+                        </li>
+                    </volist>
+                </ul>
+                <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                <if condition="$data489[7]">
+                    <php>
+                        $indexProCate = get_index_products_category($data489[7], 20);
+                    </php>
+                    <ul class="nav_drop nav_drop_pro">
+                            <volist empty="" name="indexProCate" id="allproa" key="k" offset="0">
+                            <li>
+                                <a href="{:U('/Product','','')}/{:getproname($allproa['pid'])}"><span>{$allproa['pro_name']}</span></a>
+                            </li>
+                        </volist>
+                    </ul>
+                <else />
+                    <ul class="nav_drop">
+                        <volist empty="" name="allclass" id="allclass_head">
+                            <li>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">
+                                    <span>{$allclass_head['class_name']}</span></a>
+                            </li>
+                        </volist>
+                    </ul>
+                </if>
+                <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+                <ul class="nav_drop">
+                    <volist empty="" name="allnewclass" id="allclass_head">
+                        <li>
+                            <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}"><span>{$allclass_head['class_name']}</span></a>
+                        </li>
+                    </volist>
+                </ul>
+                </if>
+                </li>
+                </volist>
+                <if condition="$data489[4]">
+                    <div class="hj22_language hj22_roght_mb5">
+                        <span> <if condition="$data489[9]"><img src="{:getindeximgurl($data489[9])}" /> </if>
+							<!-- 李梅 新创要改 语言版本 =》 语言 -->
+							<if condition="$webid eq '1800'">
+								语言
+								<else/>
+							 {:__('Language')}
+							 </if>
+							  <i class="fa fa-angle-down"></i></span>
+                        <ul id="lang_ul" class="language_ul"></ul>
+                    </div>
+                </if>
+                <div class="hejj_email">
+                    <a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(3,1)">
+                    <if condition="$data489[5]">
+                            <img src="{:getindeximgurl($data489[5])}" />
+                            <else/>
+                    <img src="__TMPL__HJZF2_Z/img/email_white.png" width="30" />
+                    </if>
+                    <span>{:chaifen($about['email'],0)}</span>
+                    </a>
+                </div>
+                <div class="hj22_search hj22_roght_mb5">
+                    <span>
+                        <if condition="$data489[8]">
+                            <img src="{:getindeximgurl($data489[8])}" />
+                            <else />
+                            <img src="__TMPL__HJZF2_Z/img/mobile_search1.svg" width="30" />
+                        </if>
+                    </span>
+                </div>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

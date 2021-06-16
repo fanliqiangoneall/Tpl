@@ -1,0 +1,9 @@
+<div class="InsidePages_content-left_content col-xs-12 hidden-xs hidden-sm hidden-md">
+    <div class="InsidePages_navswiper swiper-container">
+        <ul class="InsidePages_list swiper-wrapper">
+            <volist empty="" name="allnewclass" id="new"  offset="0">
+                <li <if condition="$newscate['classid'] eq $new['classid']">class="yijion swiper-slide"<else/>class="yiji swiper-slide"</if>><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>

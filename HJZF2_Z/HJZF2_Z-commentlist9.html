@@ -1,0 +1,55 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+    </style>
+    <div class="index_wrapper inner9__wrapper" id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="index_inner container">
+            <div class="row">
+                <div class="HJZF_Z__inner9--text wow bounceIn">
+                    <div class="index_title">{:__('Comment lists')}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="index_inner container">
+                <div class="row">
+                    <section class="InsidePages_content-right2 col-xs-12">
+                        <div class="InsidePages_content-right_content">
+                                <div class="InsidePages_content-right_content-main">
+                                    <volist name="list" id="list" key="k">
+                                        <div style="width:100%;padding:10px 0;border-bottom: 1px solid #e2e2e2">
+                                            <div style="float:left;width:2%;">{$k}, </div>
+                                            <div style="float:left;width:88%;">{$list["content"]}</div>
+                                            <div style="float:right;width:10%; text-align:right;">{:date("Y-m-d H:i:s",$list["adddate"])}</div>
+                                            <div style="clear:both"></div>
+                                        </div>
+                                    </volist>
+                                    <div class="main_page">{$page}</div>
+                                </div>
+                                <div style="clear:both"></div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+         </div>
+    </div>
+
+</block>

@@ -1,0 +1,115 @@
+<extend name="HJ03:basein" />
+<block name="content">
+    <style>
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem_name h6{
+            color: #{$data1[6]};
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$color};
+        }
+        .main_proitem:after{
+            content: '';display: table;width: 0;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+        .main_proitem:hover:after{
+            content: '';display: table;width: 100%;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+        .main_product_more span{
+            color: #{$data1[6]};}
+        .main_product_more span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[16])}) no-repeat center;
+        }
+        .main_product_more:hover span{
+            color:#{$color};
+        }
+        .main_product_more:hover span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[17])}) no-repeat center;
+        }
+    </style>
+    <if condition="$data47[2] neq ''">
+        <style>
+            .Breadcrumbs{width: 50%;float: right;}
+        </style>
+    </if>
+    <if condition="$data47[2] eq ''">
+        <style>
+            .main-content-right {
+                width: 880px;
+                float: right;
+            }
+            .page-title-inner{margin-top: 20px;}
+            .main-content-right .main-cases-detail-title{text-align: left}
+            .main_proitem{width: 280px;min-height: 250px;margin-bottom: 28px;}
+            .main_proitem_img{width: 240px;height: 164px;}
+            .main_proitem_box{height: 250px;}
+            .jiange{width: 20px;}
+            .main_proitem_second{padding: 12px 10px 12px;}
+            .main_proitem_name h6{
+                overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 16px;
+            }
+            .main_proitem_desc{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+        </style>
+    </if>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner">
+            <div class="container">
+                <div class="Breadcrumbs">Your location: <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}"><if condition="$data47[3] neq ''">{$data47[3]} <else/>Product center</if></a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$type}</span></div>
+                <if condition="$data47[2] neq ''">
+                    <section class="main-content-top">
+                        <Include file="./Tpl/HJ03/left_2.html" />
+                    </section>
+                </if>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <if condition="$data47[2] eq ''">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ03/left.html" />
+            </section>
+                </if>
+            <section <if condition="$data47[2] neq ''">class="main-content-dowm"<else/>class="main-content-right"</if>>
+                <div class="page_RightMain ">
+                    <div class="page_Main">
+                        <if condition="$data47[2] eq ''">
+                            <h5 class="main-cases-detail-title">{$type}</h5>
+                        </if>
+                        <div class="mainpage_probox margin-30px-top">
+                            <volist empty="" name="pro" id="pro" key="k">
+                                <div class="main_proitem">
+                                    <div class="main_proitem_box">
+                                        <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+                                        <div class="main_proitem_second">
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                            <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],40)}</h6></div>
+                                            <div class="main_proitem_desc">{:subtxt($pro['pro_description'],50)}</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <if condition="($k)%3 neq 0">
+                                    <div class="jiange"></div>
+
+                                </if>
+                            </volist>
+                            <div class="clear"></div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,134 @@
+<!--{$pagename}-->
+<if condition="$data6[16]">
+    <style>
+        .HJZF_Z__advantage{
+            background: url({:getindeximgurl($data6[16])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .HJZF_Z__advantage__item:hover .HJZF_Z__advantage__title a{
+        color: #{$data6[17]};
+    }
+    <if condition="$data6[20]">
+        .HJZF_Z__advantage__wrap .HJZF_Z__advantage__item:hover{
+            background-image: url({:getindeximgurl($data6[20])});
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        @media(max-width: 1200px) {
+            .HJZF_Z__advantage__wrap .HJZF_Z__advantage__item:hover{
+                background-image:  none;
+            }
+        }
+    </if>
+    {}
+</style>
+<section class="HJZF_Z__advantage">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF_Z__advantage__wrap">
+                <if condition="$data6[21]">
+                    <div class="text-center col-xs-12">
+                        <div class="index_title pb20">
+                            {$data6[21]}
+                        </div>
+                        <div class="index_sub_title pb40">
+                            {$data6[22]}
+                        </div>
+                    </div>
+                </if>
+                <php>
+                    for($i=0,$j=0;$i<15,$j<4;$i=$i+4,$j=$j+1){
+                </php>
+                <div class="col-xs-12 col-lg-3 HJZF_Z__advantage__item wow fadeInUp" >
+                    <div>
+                        <div class="HJZF_Z__advantage__icon">
+                            <img src="{:getindeximgurl($data6[$i])}" alt="{$data6[$i+1]}">
+                            <if condition="$data6[19]">
+                                <style>
+                                    .HJZF_Z__advantage__icon{
+                                        position: relative;
+                                    }
+                                    .hjz_hover{
+                                        position: absolute;
+                                        left: 0;
+                                        top: 0;
+                                        z-index: 99;
+                                        opacity: 0;
+                                        transition: all .5s;
+                                    }
+                                    .HJZF_Z__advantage__item:hover .hjz_hover{
+                                        opacity: 1;
+                                    }
+                                    @media(max-width: 1200px) {
+                                        .HJZF_Z__advantage__item .hjz_hover{
+                                            opacity: 0 !important; 
+                                        }
+                                    }
+                                </style>
+                                <php>
+                                    $arra = get_list_val($data6[19]);
+                                </php>
+                                <img src="{$arra[$j][icoh]}" class="hjz_hover">
+                            </if>
+                        </div>
+                        <div class="HJZF_Z__advantage__title index_sub_title"><a href="{$data6[$i+3]}">{$data6[$i+1]}</a></div>
+                        <if condition="$data6[$i+2]"><div class="HJZF_Z__advantage__desc index_text"><a href="{$data6[$i+3]}">{:HtmlEncode($data6[$i+2])}</a></div></if>                        
+                    </div>
+                </div>
+                <php>
+                    }
+                </php>
+                <if condition="$data6[18]">
+                    <php>
+                        $arr = get_list_val($data6[18]);
+                        $arrc = get_list_val($data6[19]);
+                    </php>
+                    <style>
+                        .HJZF_Z__advantage__wrap{
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    </style>
+                    <volist name="arr" id="a">
+                        <div class="col-xs-12 col-lg-3 HJZF_Z__advantage__item wow fadeInUp" >
+                            <div>
+                                <div class="HJZF_Z__advantage__icon">
+                                    <img src="{$a[ico]}" alt="{$a[title]}">
+                                    <if condition="$data6[19]">
+                                        <style>
+                                            .HJZF_Z__advantage__icon{
+                                                position: relative;
+                                            }
+                                            .hjz_hover{
+                                                position: absolute;
+                                                left: 0;
+                                                top: 0;
+                                                z-index: 99;
+                                                opacity: 0;
+                                                transition: all .5s;
+                                            }
+                                            .HJZF_Z__advantage__item:hover .hjz_hover{
+                                                opacity: 1;
+                                            }
+                                        </style>
+                                        <php>
+                                            $arra = get_list_val($data6[19]);
+                                        </php>
+                                        <img src="{$arra[4][icoh]}" class="hjz_hover">
+                                    </if>
+                                </div>
+                                <div class="HJZF_Z__advantage__title index_sub_title"><a href="{$a[link]}">{$a[title]}</a></div>
+                                <if condition="$a[info]"><div class="HJZF_Z__advantage__desc index_text"><a href="{$a[link]}">{$a[info]}</a></div>
+                            </if>                        
+                            </div>
+                        </div>
+                    </volist>
+                </if>
+            </div>
+        </div>
+    </div>
+</section>

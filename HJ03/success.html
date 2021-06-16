@@ -1,0 +1,58 @@
+<extend name="HJ03:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+        </div>
+        <div class="page-title-inner"  style="margin-bottom: 30px;">
+            <div class="container">
+
+                <div class="Breadcrumbs">Your location: <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">Message</span>
+                    <div class="back_tolast"><a href="javascript:history.go(-1)" onfocus="blur()"><img src="__TMPL__HJ03/img/back_to2.png" alt="" style="margin-right: 10px;"/><img src="__TMPL__HJ03/img/back_to.png" alt="" style="margin-right: 10px;"/>Back to list</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-right2">
+                    <div class="page_RightMain">
+                        <div class="page_Main">
+                            <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;margin-bottom: 60px;">
+                                <tr>
+                                    <th align="center" bgcolor="#cccccc">Message</th>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <br />
+                                        <present name="message" style=" text-align:center;">
+                                            {$message}<br />
+                                        </present>
+                                        <present name="error" style=" text-align:center;">
+                                            {$error}<br />
+                                        </present>
+                                        <p class="detail"></p>
+                                        <p class="jump" style=" text-align:center;">
+                                            <a id="href" href="<?php echo($jumpUrl); ?>">Click to return to the previous page</a> Wait time: <b id="wait">5</b>
+                                        </p><br /></td>
+                                </tr>
+                            </table>
+                            <script type="text/javascript">
+                                (function(){
+                                    var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+                                    var interval = setInterval(function(){
+                                        var time = --wait.innerHTML;
+                                        if(time <= 0) {
+                                            location.href = href;
+                                            clearInterval(interval);
+                                        };
+                                    }, 1000);
+                                })();
+                            </script>
+                            {:htmlspecialchars_decode(get_inquiry_code())}
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,59 @@
+<style>
+    .HJZF2_Z_other_86 {
+        background-color: #{$data470[0]};
+    }
+</style>
+
+<section class="HJZF2_Z_other_86">
+    <div class="p-15">
+        <div class="index_title text-center pb40">
+            {$data470[3]}
+        </div>
+        <div class="index_sub_title pb20">
+            {$data470[4]}
+        </div>
+    </div>
+    <ul class="HJZF2_Z_other_86_list">
+        <php>
+            $arr = get_list_val($data470[5]);
+        </php>
+        <volist name="arr" id="a">
+            <li>
+                <if condition="$a[link]">
+                    <a href="{$a[link]}">
+                        <if condition="$a[btn]">
+                            <span>
+                                {:__('Read More')}
+                            </span>
+                        </if>
+                </if>
+                <img src="{$a[img]}" alt="{$a[title]}">
+
+                <if condition="$a[link]">
+                    </a>
+                </if>
+            </li>
+        </volist>
+    </ul>
+    <div class="p-15">
+        <div class="index_sub_title pb20">
+            {$data470[6]}
+        </div>
+    </div>
+    <ul class="HJZF2_Z_other_86_list">
+        <php>
+            $arr = get_list_val($data470[7]);
+        </php>
+        <volist name="arr" id="a">
+            <li>
+                <if condition="$a[link]">
+                    <a href="{$a[link]}">
+                </if>
+                <img src="{$a[img]}" alt="{$a[title]}">
+                <if condition="$a[link]">
+                    </a>
+                </if>
+            </li>
+        </volist>
+    </ul>
+</section>

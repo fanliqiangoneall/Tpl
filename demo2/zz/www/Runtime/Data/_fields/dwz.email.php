@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'email_url', 2 => 'flag', 3 => 'uid', 4 => 'customerid', 5 => 'webid', 6 => 'language', '_autoinc' => true, '_pk' => 'id', '_type' => array ( 'id' => 'int(4)', 'email_url' => 'varchar(255)', 'flag' => 'varchar(255)', 'uid' => 'int(4)', 'customerid' => 'int(11)', 'webid' => 'int(11)', 'language' => 'varchar(255)', ), );?>

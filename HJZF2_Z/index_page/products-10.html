@@ -1,0 +1,46 @@
+<!--{$pagename}-->
+<if condition="$data113[0]">
+	<style>
+        .HJZF2_Z__products-10{
+            background: url({:getindeximgurl($data113[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+.HJZF2_Z__products-10__button a:hover,.HJZF2_Z__products-10 .HJZF2_Z__products-10__bt:after{
+	background-color: #{$data113[2]};
+}
+</style>
+
+<section class="HJZF2_Z__products-10 index_pd">
+   <div class="container">
+     <div class="row">
+        <h3 class="HJZF2_Z__products-10__bt wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0"><span class="ttwrap index_title">{$data113[1]}</span></h3>
+     </div>
+   </div>
+   <div class="HJZF2_Z__products-10__content pb20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0">
+     <div class="HJZF2_Z__products-10__container">
+        <div class="HJZF2_Z__products-10__grid dt-css-grid">
+            <volist empty="" name="indexpro" id="indexnewpro" key="k" offset="0" length="8">
+            <div class="HJZF2_Z__products-10__item visible wf-cell shown">
+            	<a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">
+                <div class="HJZF2_Z__products-10__wrap post-thumbnail-wrap">
+                    <div class="HJZF2_Z__products-10__thumbnail post-thumbnail">
+                      <img src="{:getmainimgurl($indexnewpro['main_img'])}" <if condition="$indexnewpro['proalt'] neq ''">alt="{$indexnewpro['proalt']}"<else/>alt="{$indexnewpro['pro_name']}"</if> />
+                    </div>
+                </div>
+                <div class="HJZF2_Z__products-10__hover post-entry-content">
+                    <div class="HJZF2_Z__products-10__icom project-links-container"><span><i class="fa fa-plus"></i></span></div>
+                    <h3 class="HJZF2_Z__products-10__title entry-title ellipsis_one index_sub_title">{$indexnewpro['pro_name']}</h3>
+                    <div class="HJZF2_Z__products-10__desc entry-meta ellipsis_two index_text">{$indexnewpro['pro_description']}</div>
+                </div>
+                </a>
+            </div>
+            </volist>
+        </div>
+     </div>
+   </div>
+   <div class="HJZF2_Z__products-10__button wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0">
+      <a href="{:U('/product')}"><span><i class="fa fa-briefcase"></i></span>{$data113[3]}</a>
+   </div>
+</section>

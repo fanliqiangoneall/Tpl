@@ -1,0 +1,64 @@
+<!--{$pagename}-->
+<if condition="$data171[1]">
+    <style>
+        .new_hjzf_cases-15 .HJ05-case-box{
+            background: url({:getindeximgurl($data171[1])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_cases-15 .news_item-title:hover a,.new_hjzf_cases-15 .news_item_more:hover{
+        color: #{$data171[0]};
+    }
+    .new_hjzf_cases-15 .HJ05-case .swiper-button-next:hover,.new_hjzf_cases-15 .HJ05-case .swiper-button-prev:hover{
+        background: #{$data171[0]};
+    }
+    .new_hjzf_cases-15 .case_item-title{position: relative;margin-bottom: 20px;}
+    .new_hjzf_cases-15 .case_item-title a:after{
+        display: table;margin: auto;content: '';overflow: hidden;height: 3px;border-bottom: #{$data171[0]} solid 3px;margin-top: 14px;width: 35px;
+    }
+    .new_hjzf_cases-15 .HJ05-advan-title .ttwrap{
+        background: #{$data171[0]};
+    }
+    .new_hjzf_cases-15 .HJ05-advan-title .ttwrap:before{
+        background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$data171[0]} 52%,#{$data171[0]} 100%);
+    }
+    .new_hjzf_cases-15 .HJ05-advan-title .ttwrap:after{
+        background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$data171[0]} 52%,#{$data171[0]} 100%);
+     }
+</style>
+
+<!--news start-->
+<section class="hj-news HJ05-case-box">
+    <div class="container">
+        <h3 class="HJ05-advan-title wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data[2]}</span></h3>
+        <p class="HJ05-advan-title_2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{$data[3]}</p>
+        <div class="HJ05-news-content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">
+            <div class="HJ05-case">
+                <div>
+                    <volist name="allcaseclass" id="indexcase1" offset="0" length="6" key="h">
+                        <div class="swiper-slide news_item">
+                            <div class="hj05-news-pic" style="margin: 20px;">
+                                <a href="{:U('/case_category',array('classid'=>$indexcase1["classid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexcase1['fid'])}" border="0" /></a>
+                            </div>
+
+                            <div class="news_info">
+                                <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_category',array('classid'=>$indexcase1['classid']))}" onFocus="blur()">{:subtxt($indexcase1['class_name'],60)}</a></div>
+                                <if condition="$indexcase1['readme']">
+                                    <div class="news_item-desc" style="text-align: center">{:subtxt($indexcase1['readme'],100)}</div>
+                                </if>
+                                <a href="{:U('/case_category',array('classid'=>$indexcase1['classid']))}" class="news_item_more">Read More <i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </volist>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!--news end-->
+

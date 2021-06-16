@@ -1,0 +1,302 @@
+.hjzf_languageSelect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.languageSelect_box {
+    justify-content: flex-start;
+    padding-top: 12%;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.hjzf_languageSelect_logo {
+    padding-bottom: 65px;
+    width: 100%;
+}
+
+.hx {
+    width: 0;
+    background-color: #256981;
+    height: 1px;
+    margin-bottom: 65px;
+    align-self: flex-start;
+}
+.hjzf_languageSelect_logo_a .box{
+    position: relative;
+    width: 260px;
+    height: 100px;
+}
+.hjzf_languageSelect_logo_a .bd,
+.hjzf_languageSelect_logo_a .dz,
+.hjzf_languageSelect_logo_a .ct{
+    position: absolute;
+    transition: all .5s ease-in-out;
+    opacity: 0;
+}
+.hjzf_languageSelect_logo_a .bd{
+    animation: bd .5s ease-in-out .5s forwards;
+}
+.hjzf_languageSelect_logo_a .dz{
+    animation: dz .5s ease-in-out 1.5s forwards;
+}
+.hjzf_languageSelect_logo_a .ct{
+    animation: ct .5s ease-in-out 1s forwards;
+}
+.hjzf_languageSelect_logo_a .txt ul{
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: center;
+    justify-content: space-evenly;
+}
+.hjzf_languageSelect_logo_a .txt ul li{
+    opacity: 0;
+}
+.hjzf_languageSelect_logo_a .txt ul li:nth-child(2n){
+    margin-right: 10px;
+}
+.hjzf_languageSelect_logo_a .txt ul li:last-child{
+    margin-right: 0;
+}
+.hjzf_languageSelect_logo_a .txt ul li:nth-child(1){
+    animation: txt .5s ease-in-out 2s forwards;
+}
+.hjzf_languageSelect_logo_a .txt ul li:nth-child(2){
+    animation: txt .5s ease-in-out 2.3s forwards;
+}
+.hjzf_languageSelect_logo_a .txt ul li:nth-child(3){
+    animation: txt .5s ease-in-out 2.8s forwards;
+}
+.hjzf_languageSelect_logo_a .txt ul li:nth-child(4){
+    animation: txt .5s ease-in-out 3.3s forwards;
+}
+.hjzf_languageSelect_logo_a .txt ul li:nth-child(5){
+    animation: txt .5s ease-in-out 3.8s forwards;
+}
+.hjzf_languageSelect_logo_a .txt ul li:nth-child(6){
+    animation: txt .5s ease-in-out 4.3s forwards;
+}
+
+@keyframes txt{
+    from{
+        transform: translate(-10%, 0);
+        opacity: 0;
+    }
+    to{
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes bd{
+    from{
+        transform: translate(0, -100%);
+        opacity: 0;
+    }
+    to{
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes dz{
+    from{
+        transform: translate(200%, 0);
+        opacity: 0;
+    }
+    to{
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes ct{
+    from{
+        transform: translate(-200%, -50%);
+        opacity: 0;
+    }
+    to{
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+
+.hjzf_languageSelect_logo_a .dz{
+    right: 65px;
+    top: 15px;
+}
+.hjzf_languageSelect_logo_a .ct{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hjzf_languageSelect_logo span {
+    color: #fff;
+    font-size: 30px;
+    line-height: 42px;
+}
+
+.hjzf_languageSelect_btnbox {
+    width: 100%;
+}
+
+.hjzf_languageSelect_btn {
+    padding: 15px 50px;
+    border: 1px solid #256981;
+    background-color: #256981;
+    border-radius: 30px;
+    display: inline-block;
+    color: #fff;
+}
+
+.hjzf_languageSelect_btn:first-child {
+    margin-right: 60px;
+}
+
+.z-9 {
+    z-index: 9;
+}
+
+.video {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+.video video{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.hjzf_languageSelect_btn img {
+    margin-right: 10px;
+}
+
+@media(max-width:576px) {
+    .hjzf_languageSelect_logo {
+        padding-bottom: 30;
+        margin-bottom: 30px;
+    }
+
+    .hjzf_languageSelect_btn:first-child {
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+
+}
+
+.hjzf_languageSelect_wrapper_text{
+    display: flex;
+    font-size: 40px;
+    color: #fff;
+    letter-spacing: 5px;
+    font-family: '黑体';
+}
+.hjzf_languageSelect_wrapper_text div{
+    display: flex;
+    position: relative;
+}
+.hjzf_languageSelect_wrapper_text .left:before{
+    position: absolute;
+    right: 160%;
+    top: 50%;
+    width: 65%;
+    height: 1px;
+    background-color: #fff;
+    content:'';
+}
+.hjzf_languageSelect_wrapper_text .right:before{
+    position: absolute;
+    left: 160%;
+    top: 50%;
+    width: 65%;
+    height: 1px;
+    background-color: #fff;
+    content:'';
+}
+.hjzf_languageSelect_wrapper_text span.dot{
+    margin: 0 25px;
+    position: relative;
+}
+.hjzf_languageSelect_wrapper_text span.dot:before{
+    display: block;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 50%;
+    content:'';
+    transform: translate(-50%, -50%);
+}
+.hjzf_languageSelect_wrapper_text span{
+    opacity: 0;
+    animation: fadIn .5s ease forwards;
+}
+.hjzf_languageSelect_wrapper_text .right span:nth-child(1),
+.hjzf_languageSelect_wrapper_text .left span:nth-child(4){
+    animation-delay: 3.5s;
+}
+.hjzf_languageSelect_wrapper_text .right span:nth-child(2),
+.hjzf_languageSelect_wrapper_text .left span:nth-child(3){
+    animation-delay: 3.8s;
+}
+.hjzf_languageSelect_wrapper_text .right span:nth-child(3),
+.hjzf_languageSelect_wrapper_text .left span:nth-child(2){
+    animation-delay: 4.1s;
+}
+.hjzf_languageSelect_wrapper_text .right span:nth-child(4),
+.hjzf_languageSelect_wrapper_text .left span:nth-child(1){
+    animation-delay: 4.4s;
+}
+.hjzf_languageSelect_wrapper_text .right:before,.hjzf_languageSelect_wrapper_text .left:before{
+    opacity: 0;
+    transform: rotate(180deg);
+    animation: w100 1s ease 4.7s forwards;
+}
+
+@keyframes fadIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes w100{
+    from{
+        width: 0;
+        opacity: 0;
+    }
+    to{
+        width: 65%;
+        opacity: 1;
+    }
+}
+.hjzf_languageSelect_wrapper{
+    animation: slUp 3s ease-in-out 0s;
+}
+@keyframes slUp{
+    0%{
+        transform: translateY(100%);
+    }
+    55%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+
+
+

@@ -1,0 +1,27 @@
+<extend name="YP01_CN:base" />
+<block name="content">
+<Include file="./Tpl/YP01_CN/index_page/head.html" />
+<div id="animate_banner">
+<div class="in_banner" style="background:url({:getindeximgurl($data3[5])}) center no-repeat"></div>
+</div>
+
+<div class="in_bodybg">
+    <div class="r_mbx"><img src="__TMPL__YP01_CN/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;相关信息</div>
+    <div class="page_Main">
+       <div class="in_right">
+            <div class="page_RightTitle">相关信息</div>
+    
+            <volist name="labels" id="label">
+            <a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+            </volist>
+    
+            <include file="YP01_CN:relationinfo" />	
+            <include file="YP01_CN:relationnew" />	
+            <include file="YP01_CN:relationcase" />
+    
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+<Include file="./Tpl/YP01_CN/index_page/bottom.html" />
+</block>

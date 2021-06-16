@@ -1,0 +1,69 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .main_product_title_right{
+            background: #{$color};
+        }
+        .InsidePages_left_navlist li.yiji:hover >a>h3,.InsidePages_left_navlist li.yiji:hover >.class_button:before,.InsidePages_left_navlist li.yijion >a>h3,ul.InsidePages_left_navlist>li>ul > li:hover >a >h3,ul.InsidePages_left_navlist>li>ul > li.childon >a >h3,ul.InsidePages_left_navlist>li> ul > li>ul>li a h3:hover{
+            color: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+    </style>
+    <div class="HJZF_Z__wrapper index_wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" ><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__innerContent">
+            <div class="index_inner container">
+                <div class="row">
+                    <div class="InsidePages_content-right__wrap">
+                        <div class="InsidePages_content-right_content-main">
+                            <div class="HJZF_Z__innerContent_categroy9_text">{$type}</div>
+                            <div class="InsidePages_content-right_proWrap">
+                                <volist empty="" name="pro" id="allpro" key="k">
+                                    <li class="col-xs-6 col-md-4 wow fadeInUp">
+                                        <div class="HJZF_Z__innerContent_categroy9--item">
+                                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                <div class="HJZF_Z__innerContent_categroy9_box_img">
+                                                        <img src="{:getmainimgurl($allpro['main_img'])}" class="img-responsive" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"<else/>alt="{$allpro['pro_name']}"</if> />
+                                                </div>
+                                                <div class="HJZF_Z__innerContent_categroy9_box_text">
+                                                    <p class="ellipsis_one index_sub_title">{$allpro['pro_name']}</p>
+                                                    <span class="ellipsis_two index_text">{:HtmlEncode(subtxt($allpro['pro_description'],100))}</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</block>

@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+
+<style>
+.my-mask.cases_33_more:before{
+	background-color: #{$color};
+}
+</style>
+
+<section class="cases_33 index_pd">
+	<div class="text-center pb40 case_33_title">
+		<div class="index_title pb20 wow">
+			{$data674[0]}
+		</div>
+		<div class="index_sub_title wow">
+			{:HtmlEncode($data674[1])}
+		</div>
+		<div class="index_sub_title wow">
+			{:HtmlEncode($data674[2])}
+		</div>
+	</div>
+	<php>
+		if($data674[3]){
+		$len = $data674[3];
+		}else{
+		$len = 8;
+		};
+	</php>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="cases_33_wrapper">
+					<ul>
+						<volist name="indexcases" id="indexcase" offset="0" length="$len">
+							<php>
+								$caseName = get_wap_case_class_name($indexcase['cates_class']);
+							</php>
+							<li>
+								<a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">
+									<div class="cases_33_con">
+										<img src="{:getimgurl($indexcase['new_pro'])}" class="img-fluid"
+											alt="{$indexcase['title']}" />
+										<div class="cases_33_bottom">
+											<h3 class="index_sub_title">{$indexcase['title']}</h3>
+											<h5>{$caseName}</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+				<div class="text-center">
+					<a href="{$data674[4]}" class="index_btn cases_33_more my-mask-l">{:__('Read More')}</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

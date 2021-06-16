@@ -1,0 +1,59 @@
+<Include file="./Tpl/HJ02_JP/sidebar.html" />
+<script src="__TMPL__HJ02_JP/js/layer/layer.js"></script>
+
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/imagesloaded.min.js"></script>
+<!--Jquery图片延迟加载插件imagesLoaded-->
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/jquery.countup.min.js"></script>
+<!--jquery.countup.js是一款轻量级jquery数字动画插件-->
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/slick.min.js"></script>
+<!--jQuery幻灯片插件slick-->
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/jquery.lightbox-0.5.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/inPage_js.js"></script>
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/proDetail.js"></script>
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/swiper.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/imgSwitch.min.js"></script>
+
+<script type="text/javascript" src="__TMPL__HJ02_JP/js/muban.js"></script>
+<script>
+
+
+  $('#hj02_video').on('click', function(){
+    var data=$('#hj02_video').attr("data-video");
+    layer.open({
+      type: 2,
+      title: ['video', 'font-size:18px;'],
+      area: ['80%', '80%'],
+      shadeClose: true, //点击遮罩关闭
+      maxmin: true,
+      //content: '__TMPL__ZERO/video/a/demo.htm'
+      content: $('#hj02_video').attr("data-video")
+    });
+  });
+
+
+    $('#payment img').on('click', function(){
+        var mp4 = $(this).parent().attr("href");
+        if(mp4){
+            if(mp4.indexOf('.mp4')>0){
+                layer.open({
+                    type: 2,
+                    title: ['video', 'font-size:18px;'],
+                    area: ['80%', '80%'],
+                    shadeClose: true, //点击遮罩关闭
+                    maxmin: true,
+                    //content: '__TMPL__ZERO/video/a/demo.htm'
+                    content: data
+                });
+                return false;
+            }else{
+                $('#payment a').has('img').not(".pdf").lightBox();
+            }
+        }  
+    });
+</script>
+<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+  </body>
+</html>
+

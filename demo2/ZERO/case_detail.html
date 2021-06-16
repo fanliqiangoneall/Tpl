@@ -1,0 +1,54 @@
+<extend name="demo2:base" />
+<block name="content">
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) no-repeat center;"></div>
+<div class="mbx_bg">
+  <div class="r_mbx"><img src="__TMPL__demo2/img/in_home.png" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/cases')}" onFocus="blur()">Application</a>&nbsp;>&nbsp;{$newclass['class_name']}</div>
+</div>
+
+<div class="in_bodybg">
+    <Include file="./www/Tpl/ZERO/left2.html" />
+    <div style="min-width:1190px; max-width:1920px; margin:auto; height:1px; background:#14191b;"></div>
+    <div class="page_Main">
+    <div class="page_RightTitle">{$newclass['class_name']}</div>
+    <div class="page_RightMain">
+          <div class="news">
+          <div id="news_detail">
+            <div class="body">
+              <h1 class="fc_107fd0 fs_16 bold">{$news['title']}</h1>
+              <div class="news_view"><span class="right red">View:{$news['click_num']}</span><span class="right time">{:date('m/d/Y',$news['created'])}&nbsp;&nbsp;</span></div>
+              <div class="clear"></div>
+              <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+              <div class="bt" style="margin-top:22px; background:#FFFFFF; -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; "><a href="javascript:history.back()" onfocus="blur()" style="display:block; font-size:16px; text-align:center; line-height:43px; color:#222 !important;">Back</a></div>
+            </div>
+          </div>
+        </div>
+              
+        <div class="prev_next">
+            <ul>
+              <li>Prev:
+               <if condition="$newprev[0]['title'] eq ''">
+                No
+               <else/>
+                <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">{$newprev[0]['title']}</a>
+               </if>
+              </li>
+              <li>Next:
+                <if condition="$newnext[0]['title'] eq ''">
+                No
+               <else/>
+                <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">{$newnext[0]['title']}</a>
+               </if>
+              </li>
+            </ul>
+          </div>
+        <div style="clear:both; height:20px;"></div>
+        <include file="ZERO:relationinfo" />
+        <include file="ZERO:relationnew" />
+        <include file="ZERO:relationcase" />
+        <div style="clear:both"></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+  <div style="clear:both"></div>
+</div>
+</block>

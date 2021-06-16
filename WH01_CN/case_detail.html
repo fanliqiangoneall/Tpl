@@ -1,0 +1,70 @@
+<extend name="WH01_CN:basein" />
+<block name="content">
+
+    <if condition="$newscate['banner'] neq '' and $newscate['banner'] neq 0">
+        <style>
+            .in_banner{
+                background:url({:getimgurl($newscate['banner'])}) center no-repeat;
+            }
+        </style>
+
+        <elseif condition="$data30[13]"/>
+        <style>
+            .in_banner{
+                background:url({:getindeximgurl($data30[13])}) center no-repeat;
+            }
+        </style>
+        <elseif condition="$data3[7]"/>
+        <style>
+            .in_banner{
+                background:url({:getindeximgurl($data3[7])}) center no-repeat;
+            }
+        </style>
+    </if>
+
+    <div class="in_banner" style="width: 100%;height: 300px;margin: auto;"></div>
+    <div class="r_mbx"><Include file="./Tpl/WH01_CN/bread.html" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<if condition="$data1[10]">{$data1[10]}<else/>案例中心</if>&nbsp;>&nbsp;{$news['title']}</div>
+
+
+
+
+    <div class="page_nei_main">
+        <Include file="./Tpl/WH01_CN/leftcases.html" />
+          <div class="page_RightMain">
+                  <div class="page_class_head_1">
+                      <div class="indpro_title">
+                          <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>{$news['title']}</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+                      </div>
+                  </div>
+                        <div id="newsdetailshow">
+
+                          <div class="summary" style="margin-top: 30px;">
+                           </div>
+                          <div class="describe htmledit edit" id="infoContent">
+                              {:htmlspecialchars_decode($news['body'])}
+                          </div>
+                        </div>
+                    </div>
+        <script>
+            /*导航放多个案例类显示多个高亮问题*/
+            $(document).ready(function(){
+                var url=window.location.href;
+                if(url.indexOf("case_detail")!=-1){
+                    var current_nav_id = <?php echo $news['cates_class']?>;
+
+                }
+
+
+                jQuery(".index_nav2>ul>li").each(function(){
+                    var nav_id = jQuery(this).attr("nav-id");
+                    if(current_nav_id && nav_id==(current_nav_id)){
+                        jQuery(this).addClass("ba_on").siblings("li").removeClass("menu_on")
+                        return false;
+                    }
+                })
+            })
+        </script>
+            <div class="clearfix" style="height: 30px;width: 100%;"></div>
+      </div>
+
+</block>

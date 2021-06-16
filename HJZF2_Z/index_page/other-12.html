@@ -1,0 +1,108 @@
+<!--{$pagename}-->
+<div class="hjzf2_other-12 hidden-xs hidden-sm ">
+    <div class="container">
+        <div class="row">
+            <div class="flex row_box">
+                <div class="other-12__search flex">
+                    <div class="other-12__title index_sub_title">{:__('product search: ')}</div>
+                    <form action="{:U('/search')}" method="POST">
+                        <div class="selectWrap other-12__yiji">
+                            <div class="tit yiji_title"><span>Product Category</span><i class="fa fa-caret-down"></i></div>
+                            <ul name="yzcmc" id="yzcmc" class="down">
+                                <volist empty="" name="allclass" id="vo">
+                                    <li data-value="{$vo['pcid']}">{$vo['class_name']}</li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <div class="selectWrap other-12__erji">
+                            <div class="tit erji_title"><span>Product Category two</span><i class="fa fa-caret-down"></i></div>
+                            <ul name="dsmc" id="dsmc" class="down">
+                                <volist name="rs" id="vo">
+                                    <li data-value="{$vo.pcid}"><h3>{$vo.class_name}</h3></li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <div class="other-12_input"><input type="hidden" name="classid" value="" id="searchid"/><input type="hidden" name="classflag" value="1" id="searchflag"/></div>
+                        <div class="other-12__btn"><button type="submit" id="btns"><span>{:__('Search')}</span></button></div>
+                    </form>
+                </div>
+                <div class="other-12__smn hidden-md hidde-xs hidden-sm">
+                        <if condition="C('Language') eq 'cn'">
+                            <ul>
+                                <li><a href="{$data186[2]}" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                <li><a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,5)"><i class="fa fa-qq" aria-hidden="true"></i></a></li>
+                                <li><a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" onclick="turn_sta(8,5);"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                                <li><a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(3,5)"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                <li><a href="javascript:void(0)" id="to_top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a></li>
+                                <div class="clear"></div>
+                            </ul>
+                            <else/>
+                            <ul>
+                                <li><a href="{$data186[2]}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                <li><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,5)"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                <li><a href="{$data186[0]}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" onclick="turn_sta(8,5);"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                                <li><a href="javascript:void(0)" id="to_top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </if>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".tit").toggle(function(){
+        $(this).next(".down").show();
+    },function(){
+        $(this).next(".down").hide();
+    });
+    var search_data ={};
+    $('#yzcmc li').click(function(){
+        var objectModel = {};
+        var   value = $(this).attr("data-value");
+        var   yijiName= $(this).text();
+        if(value =='') {
+            return false;
+        };
+        $("#searchid").attr("value",value);
+        $(".yiji_title span").text(yijiName);
+        $(this).parent(".down").hide();
+        objectModel['parent_id']=value;
+        $.ajax({
+            cache:false,
+            type:"POST",
+            url:"{:U('/geterji')}",
+            dataType:"json",
+            data:objectModel,
+            timeout:30000,
+            success:function(rs){
+                $("#dsmc").empty();
+                var data = (rs.data);
+                if(data){
+                    var count = data.length;
+                    if(count>0 ){
+                        var i = 0;
+                        var b="";
+                        for(i=0;i<count;i++){
+                            b+="<li data-value='"+data[i].pcid+"'><h3>"+data[i].class_name+"</h3></li>";
+                        }
+                        $("#dsmc").append(b);
+                    }
+                };
+                $("#dsmc li").click(function(){
+                    var value2=$(this).attr("data-value");
+                    var erjiName=$(this).text();
+                    $(".erji_title span").text(erjiName);
+                    $("#searchid").attr("value",value2);
+                    $(this).parent(".down").hide();
+                });
+
+            }
+        });
+
+
+    });
+</script>

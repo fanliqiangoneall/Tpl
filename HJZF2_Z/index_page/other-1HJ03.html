@@ -1,0 +1,46 @@
+<!--{$pagename}-->
+<if condition="$data81[0]">
+    <style>
+        .HJZF2_Z_other_hj03{
+            background: url({:getindeximgurl($data81[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+.HJZF2_Z_other_hj03_line span{
+	border-color:#{$data81[4]};
+}
+.HJZF2_Z_other_hj03_infoicon{
+	background: #{$data81[4]};
+}
+.HJZF2_Z_other_hj03_inquiry .inquiry_box #inquiry_box6{
+	background: #{$data81[4]};
+}
+</style>
+<section class="HJZF2_Z_other_hj03 index_pd">
+    <div class="container">
+        <div class="row">
+           <div class="HJZF2_Z_other_hj03_body">
+           		<div class="col-sm-12 col-lg-6 col-xl-6">
+                	<div class="HJZF2_Z_other_hj03_left">
+                        <div class="HJZF2_Z_other_hj03_title index_title"><span>{$data81[1]}</span></div>
+                        <div class="HJZF2_Z_other_hj03_line"><span></span></div>
+                        <div class="clear"></div>
+                        <div class="HJZF2_Z_other_hj03_ms1"><span class="index_sub_title">{$data81[2]}</span></div>
+                        <div class="HJZF2_Z_other_hj03_ms2"><span class="index_text">{$data81[3]}</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                    <div class="HJZF2_Z_other_hj03_inquiry">
+                        <if condition="C('language') eq 'cn'">
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index_en.html" />
+                        </if>
+                    </div>
+                </div>
+                <div class="clear"></div>
+           </div>
+        </div>
+    </div>
+</section>

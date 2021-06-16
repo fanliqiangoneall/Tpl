@@ -1,0 +1,328 @@
+<style>
+	.form_itema {
+		margin-bottom: 15px;
+		position: relative;
+	}
+
+	.form_itema > span {
+		position: absolute;
+		left: 0;
+		bottom: -15px;
+		line-height: 15px;
+		white-space: nowrap;
+		font-size: 12px;
+	}
+
+	.form_itema:first-child,
+	.form_itema:nth-child(3),
+	.form_itema:nth-child(5),
+	.form_itema:nth-child(6) {
+		margin-left: 0
+	}
+
+	.form_itema input,
+	.form_itema textarea {
+		width: 100%;
+		border: 1px solid #e3e3e3;
+		border-radius: 5px;
+		padding-left: 10px;
+		line-height: 30px;
+		box-shadow: 0 0 1px 0px #e3e3e3;
+	}
+
+	.form_itema textarea {
+		min-height: 64px;
+	}
+
+	.form_itema_full #form_itemacodea {
+		width: 47%;
+	}
+	.form_itema_full p:after{
+		display: block;
+		content:'';
+		clear: both;
+	}
+	.form_itema_full input,.form_itema_full textarea{
+		width: 80%;
+		float: right;
+		margin-left: 0;
+	}
+	.form_itema_full p span{
+		float: left;
+		width: 20%;
+		line-height: 35px;
+		white-space: nowrap;
+	}
+	.form_itema_full p i,.form_itema_full p em{
+		font-style: normal;
+	}
+	.form_itema_full p i{
+		float: left;
+		width: 10px;
+		min-height: 5px;
+		color: #{$data307[2]};
+	}
+	
+
+	.bottom_forma_alert {
+		position: absolute;
+		right: -200px;
+		top: 50%;
+		transform: translate3d(0, -50%, 0);
+		-moz-transform: translate3d(0, -50%, 0);
+		-webkit-transform: translate3d(0, -50%, 0);
+		transition: 0.6s ease-in;
+		display: flex;
+		display: -webkit-flex;
+		flex-direction: column;
+	}
+
+	.bottom_forma_alert.active {
+		right: 0;
+		transition: 0.6s ease-in;
+	}
+
+	.bottom_forma_alert span.active {
+		text-align: right;
+		display: inline-block;
+		background: #fff;
+		line-height: 24px;
+		font-size: 16px;
+		padding: 4px 10px;
+		border-radius: 10px;
+		margin-bottom: 5px;
+		box-shadow: 0 0 1px 0px #666;
+	}
+	.form_itema{
+		color: #{$data307[5]};
+	}
+	.form_itema input[type="submit"] {
+		background: #{$data307[2]};
+		border: 1px solid #{$data307[2]};
+		color: #{$data307[6]};
+	}
+	@media (max-width: 991px) {
+		.bottom_forma_alert {
+			position: relative;
+			top: 0;
+			transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-webkit-transform: translate3d(0, 0, 0);
+		}
+
+		.bottom_forma_alert span.active {
+			background: inherit;
+			box-shadow: none;
+			text-align: left
+		}
+	}
+</style>
+
+<php>
+	$lan_submit = C('Language');
+</php>
+<script>
+	jQuery(function () {
+
+		jQuery("#message_side").focus(function () {
+			jQuery("#message_side_alert_side").html("").removeClass("active");
+		});
+		jQuery("#linkname_side").focus(function () {
+			jQuery("#linkname_side_alertab").html("").removeClass("active");
+		});
+		jQuery("#phone_side").focus(function () {
+			jQuery("#phone_side_alerta").html("").removeClass("active");
+		});
+		jQuery("#email_side").focus(function () {
+			jQuery("#email_side_alerta").html("").removeClass("active");
+		});
+		jQuery("#form_itemacodea").focus(function () {
+			jQuery("#code_char_side_alerta_side").html("").removeClass("active");
+		});
+
+
+		jQuery("#getcode_char_side_side").click(function () {
+			jQuery(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+	})
+
+
+
+	function yz_submit_xp() {
+		var language = '<?php echo $lan_submit;?>';
+		var count = 0;
+		var message_side = Trims(jQuery("#message_side").val());
+		var linkname_side = Trims(jQuery("#linkname_side").val());
+		var phone_side = Trims(jQuery("#phone_side").val());
+		var email_side = Trims(jQuery("#email_side").val());
+
+		if (linkname_side.length <= 0) {
+			if (language == 'cn' || language == 'zh') {
+				jQuery("#linkname_side_alertab").html("名称不能为空！").addClass("active");
+			} else {
+				jQuery("#linkname_side_alertab").html("The name cannot be empty!").addClass("active");
+			}
+			count++;
+		}
+		else {
+			jQuery("#linkname_side_alertab").html("").removeClass("active");
+		}
+	
+
+		if (language == 'cn' || language == 'zh') {
+			if (phone_side.length <= 0) {
+				jQuery("#phone_side_alerta").html("电话不能为空！").addClass("active");
+				count++;
+			} else {
+
+				if (is_phone(jQuery('#phone_side').val())) {
+					count++;
+					jQuery("#phone_side_alerta").html("电话格式有误！").addClass("active");
+				} else {
+					jQuery("#phone_side_alerta").html("");
+				}
+			}
+		} else {
+			if (phone_side.length > 0 && is_phone(jQuery('#phone_side').val())) {
+                jQuery("#phone_side_alerta").html("Telephone information is wrong!").addClass("active");
+				count++;
+			} else {
+				jQuery("#phone_side_alerta").html("").removeClass("active");
+			}
+		}
+
+
+		if (language == 'cn' || language == 'zh') {
+			if (email_side.length > 0 && !is_email_side(email_side)) {
+				jQuery("#email_side_alerta").html("邮箱格式有误！").addClass("active");
+				count++;
+			}
+			else {
+				jQuery("#email_side_alerta").html("").removeClass("active");
+			}
+		} else {
+			if (email_side.length <= 0) {
+				if (language == 'cn' || language == 'zh') {
+					jQuery("#email_side_alerta").html("电子邮件不能为空！").addClass("active");
+				} else {
+					jQuery("#email_side_alerta").html("The email can not be empty!").addClass("active");
+				}
+
+				count++;
+			}
+			else {
+				if (!is_email_side(email_side)) {
+					jQuery("#email_side_alerta").html("email format error!").addClass("active");
+					count++;
+				}
+				else {
+					jQuery("#email_side_alerta").html("").removeClass("active");
+				}
+			}
+		}
+
+
+
+
+		if (message_side.length <= 0) {
+			if (language == 'cn' || language == 'zh') {
+				jQuery("#message_side_alert_side").html("咨询内容不能为空！").addClass("active");
+			} else {
+				jQuery("#message_side_alert_side").html("Consulting content cannot be empty!").addClass("active");
+			}
+			count++;
+		}
+		else {
+			jQuery("#message_side_alert_side").html("");
+		}
+
+		var code_char_side = jQuery("#form_itemacodea").val();
+		jQuery.ajax({
+			type: "POST",
+            url: "{:U('/verification','','')}",
+			async: false,
+			data: { code: code_char_side },
+			success: function (data) {
+				if (data == 1) {
+					jQuery("#code_char_side_alerta_side").html("");
+				} else {
+					count++;
+					if (language == 'cn' || language == 'zh') {
+						jQuery("#code_char_side_alerta_side").html("验证码错误").addClass("active");
+					} else {
+						jQuery("#code_char_side_alerta_side").html("Verification code error").addClass("active");
+					}
+				}
+			}
+		});
+
+		$(".bottom_forma_alert").addClass("active");
+		if (count > 0) {
+			return false;
+		}
+		else {
+			if (language == 'cn' || language == 'zh') {
+				jQuery("#inbut").html('<h5 style="color:#F00;">请稍等</h5>');
+			} else {
+				jQuery("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+			}
+			return true;
+		}
+	}
+</script>
+<div>
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit_xp();" class="bottom_forma">
+		<div class="form_itema form_itema_full">
+			<p>
+				<span>
+					<i>*</i> <em>{:__('Name: ')}</em>
+				</span>
+				<input type="text" name="linkname" id="linkname_side">
+			</p>
+			<span class="yz_alert" id="linkname_side_alertab"></span>
+		</div>
+		<div class="form_itema form_itema_full">
+			<p>
+				<span>
+					<i></i> <em>{:__('Mobile: ')}</em>
+				</span>
+				<input type="text" name="phone" id="phone_side">
+			</p>
+			<span class="yz_alert" id="phone_side_alerta"></span>
+		</div>
+		<div class="form_itema form_itema_full">
+			<p>
+				<span>
+					<i>*</i> <em>{:__('E-mail: ')}</em>
+				</span>
+				<input type="text" name="email" id="email_side">
+			</p>
+			<span class="yz_alert" id="email_side_alerta"></span>
+		</div>
+		<div class="clear"></div>
+		<div class="form_itema form_itema_full">
+			<p>
+				<span>
+					<i>*</i> <em>{:__('Message: ')}</em>
+				</span>
+				<textarea name="message" id="message_side"></textarea>
+			</p>
+			<span class="yz_alert" id="message_side_alert_side"></span>
+		</div>
+		<div class="form_itema form_itema_full">
+			<p>
+				<i>*</i> <em>{:__('Verification code')}</em>
+				<input type="text" class="input" id="form_itemacodea" name="code" maxlength="3" />&nbsp;
+				<img src="//{$Think.EWMWEBURL}/code_char.php?webid={:c('webid')}&time={:rand(0,1000000000000000)}{:time()};"
+					style="position:relative; top:-1px;" id="getcode_char_side_side" height="32" width="50" title="Generate a new captcha"
+					align="absmiddle">
+			</p>
+			<span class="yz_alert" id="code_char_side_alerta_side"></span>
+		</div>
+		<div class="form_itema form_itema_full">
+			<input type="hidden" name="prodid" value="{$product['pid']}" />
+			<div id="form_submita"><input type="submit" value="{:__('Submit')}" name="submit" /></div>
+		</div>
+		<div class="clear"></div>
+	</form>
+</div>

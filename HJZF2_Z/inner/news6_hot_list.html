@@ -1,0 +1,140 @@
+<style>
+.inner_news6_list_wrapper {
+	padding-bottom: 50px;
+}
+
+.inner_news6_list_wrapper .swiper-slide {
+	display: flex;
+	flex-wrap: wrap;
+}
+.inner_news6_list_wrapper .swiper-slide .inner_news_6_pic{
+	width:100%;
+	padding-bottom:27%;
+	height:0;
+	overflow:hidden;
+}
+.inner_news6_list_wrapper .swiper-slide .inner_news_6_pic img{
+	width:100%;
+}
+.inner_news6_list_wrapper .inner_news6_list_pagination{
+	right:35px;
+	text-align:right;
+	left:auto;
+	width:auto;
+	bottom:335px;
+}
+.inner_news6_list_wrapper .swiper-pagination-bullet {
+	width: 12px;
+	height: 12px;
+	background:#FFFFFF;
+	opacity:1;
+}
+
+.inner_news6_list_wrapper .swiper-pagination-bullet-active {
+	background: #{$inner_data[1]};
+}
+
+.hjzf_news_19_wrapper li a{
+display: block;
+background-color: #fff;
+color: #333;
+height: 100%;
+}
+.inner_news_6_info .index_sub_title{
+    margin: 15px auto;
+    transition: all .5s;
+}
+.inner_news_6_info .index_sub_title:hover{
+    color: #{$color};
+}
+.inner_news_6_info {
+    padding: 30px;
+	border:2px solid #e1e1e1;
+	border-top:none;
+}
+.inner_news_6_info .mb10{
+    margin-bottom: 15px;
+    color: #666;
+    line-height: 25px;
+}
+.inner_news_6_info span{
+    margin-right: 20px;
+}
+.inner_news_6_info p{
+    color: #666;
+}
+.inner_news_6_info .inner_news_6_btn{
+    font-style: normal;
+	color:#{$inner_data[1]};
+}
+.hjzf_news_19_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+@media(max-width:1199px) and (min-width:992px){
+.inner_news_6_info {
+	padding:20px;
+}
+}
+@media(max-width:991px){
+.inner_news_6_info {
+	padding:15px;
+}
+}
+</style>
+<if condition="$inner_data[10]">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="swiper-container inner_news6_list_wrapper">
+                    <div class="swiper-wrapper">
+                        <volist name="allnews" id="indexnewb">
+                            <if condition="$indexnewb['is_hot']">
+                            <div class="swiper-slide">
+                                <a href="{:U('/new_detail',array('nid'=>$indexnewb['nid']))}">
+                                    <div class="inner_news_6_pic"><img src="{:getimgurl($indexnewb['new_pro'])}" alt="{$indexnewb['title']}" class="img-fluid"></div>
+                                    <div class="inner_news_6_info index_text">
+                                        <div class="index_sub_title ellipsis_one">{$indexnewb['title']}</div>
+                                        <div class="mb10">
+                                            <span class="index_text">
+                                                <if condition="$inner_data[11]">
+                                                    <img src="{:getindeximgurl($inner_data[11])}">
+                                                </if>
+                                                {:date('M d-Y',$indexnewb['created'])}
+                                            </span>
+                                            <span class="index_text">
+                                                <if condition="$inner_data[12]">
+                                                    <img src="{:getindeximgurl($inner_data[12])}">
+                                                </if>
+                                                {$indexnewb['click_num']}
+                                            </span>
+                                        </div>
+                                        <p class="pb20 ellipsis_two">{$indexnewb['news_description']}</p>
+                                        <span class="inner_news_6_btn">{:__('Read More')}</span>
+                                    </div>
+                                </a>
+                            </div>
+                            </if>
+
+                        </volist>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination inner_news6_list_pagination"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</if>
+<block name="footer_js">
+    <script>
+        require(['jquery', 'swiper'], function ($, Swiper) {
+            var swiper = new Swiper('.inner_news6_list_wrapper', {
+                pagination: {
+                    el: '.inner_news6_list_pagination',
+                    clickable: true
+                }
+            });
+        });
+    </script>
+</block>

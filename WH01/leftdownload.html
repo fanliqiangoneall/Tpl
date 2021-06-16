@@ -1,0 +1,78 @@
+<style>
+    .left_title{
+        width:144px;height: 94px;padding-top: 35px;float: left;font-size: 32px;font-weight: bold;color: #{$color};text-align: left;line-height: 35px;
+    }
+    li.yiji:hover:before{
+        content: '';display: table;width: 6px;height: 6px;background: #{$color};border: 1px solid #{$color};position: absolute;left: 0;top: 6px;
+    }
+    li.yiji h3:hover{
+        color: #{$color};
+    }
+    li.yijion:before{
+        content: '';display: table;width: 6px;height: 6px;background: #{$color};border: 1px solid #{$color};position: absolute;left: 0;top: 6px;
+    }
+    li.yijion>a>h3{
+        font-size: 18px;font-weight: normal;color: #{$color};font-family: Arial;display: inline-block;
+    }
+    .child h3:hover{
+        color:  #{$color};
+    }
+    .childon h3:hover{
+        color:  #{$color};
+    }
+    .left_contactbox{display: none;}
+</style>
+<if condition="$data1[4] neq ''">
+    <style>
+        .page_nei_main{margin-top: 35px;border-bottom: none;}
+        .main_left{width: 210px;float: left;position: relative;}
+        .page_RightMain{width: 930px;float: right;}
+        .left_title{
+            width: 100%;text-align: center;height: 47px;line-height: 47px;font-size: 16px;color: #ffffff;font-weight: bold;text-transform: uppercase;padding-top:0;background: url({:getindeximgurl($data1[5])}) no-repeat 0 0;
+        }
+        .left_con{width: 208px;border: 1px solid #d8d8d8;padding-top: 0;}
+        li.yiji{width: 100%;text-align: left;border-top: 1px solid #d8d8d8;padding-bottom:0;padding-left: 0;float: none;margin-right: 0;}
+        li.yiji:before{display: none}
+        li.yiji h3{padding: 10px 11px;width: auto;white-space:inherit;overflow: inherit;font-size: 16px;}
+        li.yiji:hover{height:auto;padding-bottom: 0;padding-left: 0;float: none;}
+        li.yiji:hover:before{display: none}
+        li.yijion{width: 100%;text-align: left;border-top: 1px solid #d8d8d8;padding-bottom:0;padding-left: 0;float: none;margin-right: 0;}
+        li.yijion:before{display: none;}
+        li.yijion>a>h3{padding: 10px 11px;width: auto;white-space:inherit;overflow: inherit;font-size: 16px;}
+        .left_contactbox{width: 100%;margin-top: 40px;display: block;}
+        .left_contact ul{padding: 10px 0;}
+        .left_contact ul li{font-size: 12px;color: #333333;line-height: 25px;}
+        .left_contact ul li a{font-size: 12px;color: #333333;line-height: 25px;text-decoration: underline}
+
+    </style>
+</if>
+<div class="main_left">
+    <div class="left_title">
+        Download Center
+    </div>
+
+
+        <ul class="left_con">
+            <volist name="alldownloadclass" id="alldownloadclass" offset="0">
+                <li class="yiji"><a class="fst_a" href="{:U('/download_category',array('classid'=>$alldownloadclass["classid"]))}">{$alldownloadclass['class_name']}</a></li>
+            </volist>
+        </ul>
+
+    <div class="clear" ></div>
+    <div class="left_contactbox">
+        <div class="left_title">
+            contact us
+        </div>
+        <div class="left_contact">
+            <div class="left_contact_pic"><img src="{:getindeximgurl($data1[6])}" alt=""/></div>
+            <ul>
+                <if condition="chaifen($about['phone'],0) neq '' ">
+                    <li style="background: url(__TMPL__WH01/img/left_tel.png) 4px center no-repeat; padding-left:34px;">{:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="chaifen($about['email'],0) neq '' ">
+                    <li style="background: url(__TMPL__WH01/img/left_mail.png) 5px center no-repeat; padding-left:34px;"><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></li>
+                </if>
+            </ul>
+        </div>
+    </div>
+</div>

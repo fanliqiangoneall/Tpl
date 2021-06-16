@@ -1,0 +1,123 @@
+<script src="__TMPL__demo2/js/wow.js"></script>
+<script src="__TMPL__demo2/js/slick.min.js"></script>
+<script src="__TMPL__demo2/js/statitics.js"></script>
+<script type="text/javascript" src="__TMPL__public/js/swiper.min.js"></script>
+<script>
+	/*banner*/
+	$('#HJ02-banner1').slick({infinite: true, slidesToShow: 1, slidesToScroll: 1, lazyLoad: 'ondemand',cssEase:'ease',autoplay:'true',dots:true});
+	/*banner*/
+	/*index product*/
+	var swiper_pro = new Swiper('.index_pro_slickbox', {
+		slidesPerView: 3,
+		spaceBetween: 50,
+		slidesPerGroup:3,
+		loop: true,
+		pagination: {
+			el: '.hj02-pro-pagination',
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.hj02-pro-next',
+			prevEl: '.hj02-pro-prev',
+		},
+	});
+	/*index product*/
+		var swiper = new Swiper('.demo2_news_list', {
+			slidesPerView: 3,
+			spaceBetween: 30,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+jQuery('#animate_banner').removeClass().addClass('fadeInLeft');
+function goTop(){
+  jQuery('html,body').animate({'scrollTop':0},600);
+}
+jQuery(function(){
+  jQuery('.skype-show').hide();   
+  jQuery(".skype-container").bind('mouseenter',function(){
+    jQuery('.skype-show').show();
+  })
+  jQuery(".skype-container").bind('mouseleave',function(){        
+    jQuery('.skype-show').hide();
+  });
+});
+jQuery(function(){
+  jQuery('.whatsapp-show').hide();   
+  jQuery(".whatsapp-container").bind('mouseenter',function(){
+    jQuery('.whatsapp-show').show();
+  })
+  jQuery(".whatsapp-container").bind('mouseleave',function(){        
+    jQuery('.whatsapp-show').hide();
+  });
+});
+jQuery(function(){
+  jQuery('.email-show').hide();   
+  jQuery(".email-container").bind('mouseenter',function(){
+    jQuery('.email-show').show();
+  })
+  jQuery(".email-container").bind('mouseleave',function(){        
+    jQuery('.email-show').hide();
+  });
+});
+
+//导航自动选定的方法
+
+jQuery(function(){
+	var color="#{$color}";
+	var url=window.location.href;
+	jQuery("#index_navigation_animate_2 li a").each(function(){
+		
+		var href=jQuery(this).attr("href");
+		href=href.toLowerCase();
+		url=url.toLowerCase();
+		//区分出啥是啥，主要就是区分出new pro case
+		
+		//优先找顶级，找不到在按规则排
+		//console.log(href);
+		//console.log("url",url);
+		if(href==url){
+			//设置成本来导航的情况
+			jQuery(".top_menu").find('h2').css("color","#333333");	
+			jQuery(this).parents(".top_menu").find('h2').css("color",color);
+			jQuery(this).parents(".class2_top_menu").css("background",color);
+			//跳出循环
+			return false;
+		}else{
+			//说明是产品
+			url=url.toLowerCase();
+			if(url.indexOf("product")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents(".top_menu").find('h2').css("color",color);
+					jQuery(this).parents(".class2_top_menu").css("background",color)
+				}
+			}
+			//说明是产品
+			if(url.indexOf("new")!=-1){
+				if(href.indexOf("new")!=-1){
+					jQuery(this).parents(".top_menu").find('h2').css("color",color);
+					jQuery(this).parents(".class2_top_menu").css("background",color);
+				}
+			}			
+			
+			//说明是产品
+			if(url.indexOf("case")!=-1){
+				if(href.indexOf("case")!=-1){
+					jQuery(this).parents(".top_menu").find('h2').css("color",color);
+					jQuery(this).parents(".class2_top_menu").css("background",color);
+				}
+			}
+						
+		}
+	})
+})
+
+var path="";
+</script>
+<Include file="./Tpl/demo2/sidebar.html" />
+	<script src="__TMPL__public/js/layer/layer.js"></script>
+
+  </body>
+</html>
+

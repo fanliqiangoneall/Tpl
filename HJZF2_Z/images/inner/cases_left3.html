@@ -1,0 +1,21 @@
+<style>
+.HJZF_Z__inner_product_categroy5 ul li.on a,
+.HJZF_Z__inner_product_categroy5 ul li:hover a {
+    background-color: #{$color};
+    color: #fff;
+}
+</style>
+<div class="HJZF_Z__inner_product_categroy5">
+    <div class="HJZF_Z__inner_product_categroy5_title">
+        <h2 class="fz28 text-center">{:__('Cases')}</h2>
+    </div>
+    <ul>
+      
+        <volist empty="no" name="allnewclass" id="new" offset="0">
+            <li <if condition="$newscate['classid'] eq $new['classid']">class="yiji on"
+                <else/>class="yiji"</if>>
+                <a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a>
+            </li>
+        </volist>
+    </ul>
+</div>

@@ -1,0 +1,28 @@
+<extend name="WAP:base" />
+<block name="content">
+<!--面包屑代码块开始-->
+
+<div class="context">首页 > {$download['title']}</div>
+
+
+<!--下载分类-->
+<H1 class="indextitle">下载分类</H1>
+    	<div class="context">
+				<ul>
+                  <volist empty="暂无下载类别" name="alldownloadclass" id="alldownloadclass" offset="0" length='5'>
+                   <li class="inprolist-2-child"><a href="{:U('/download_category',array('classid'=>$alldownloadclass["classid"]))}">{$alldownloadclass['class_name']}</a></li>
+                  </volist>                  
+                </ul>
+        </div>
+
+
+
+<!--下载详情-->
+
+<div class="context">
+<h1 >{$download['title']}<font style="margin-left:5px;color:#999;">{:date("Y-m-d",$download['update_time'])}</font></h1>
+<div class="newsinfo">{:htmlspecialchars_decode($download['content'])}</div>
+</div>
+
+
+</block>

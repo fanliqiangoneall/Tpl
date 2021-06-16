@@ -1,0 +1,46 @@
+<extend name="HJ02_JP:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs"><a href="{:U('/')}">ホーム</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">人才招請</span></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ02_JP/left.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain ">
+                    <div class="page_Main">
+                        <volist name="jobs" id="jobs" key="k">
+                            <li style="padding: 20px;border: 1px solid #ccc;margin-bottom: 20px;list-style-type: none">
+                                <div style="height: 70px;margin-left: 16px;">
+                                    <div style="width: 600px;float: left;">
+                                        <a href="{:U('/job',array('jobid'=>$jobs["jobid"]))}"><p style="font-size: 20px;color: #333;line-height: 48px"><span style="font-weight: bold;color: #{$color};font-size:20px;">{$k}.</span>&nbsp;&nbsp;{$jobs['jobname']}</p></a>
+                                        <p style="font-size: 14px;color: #666666;line-height: 24px;">{:date('Y-m-d')}</p>
+                                    </div>
+                                    <div style="float: right;margin-top: 25px;">
+                                        <a href="{:U('/job',array('jobid'=>$jobs["jobid"]))}"> <if condition="$jobs['people']"><span style="font-size: 20px;">人数：{$jobs['people']}</span></if></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </volist>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+</block>

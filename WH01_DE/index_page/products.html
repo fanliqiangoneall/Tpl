@@ -1,0 +1,219 @@
+<!--{$pagename}-->
+<style>
+    .class_nameon{
+        float: left;background-color: #{$color};margin-right: 10px;height: 34px;}
+</style>
+
+<!--index-product start-->
+<div class="page_probg">
+    <div class="page_cont">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01_DE/img/protitle_bg.png" alt="protitle_bg.png"><span>{$data9['0']}</span><img src="__TMPL__WH01_DE/img/protitle_bg2.png">
+        </div>
+        <div class="page_class">
+            <ul>
+                <li class="class_nameon" id="class1" onMouseOver="javascript:show(1);"><if condition="$data9[4]"><a href="{$data9[4]}"><else/><a href="{:U('/product')}"></if>{$data9['1']}</a></li>
+                <li class="class_name1" id="class2" onMouseOver="javascript:show(2);"><if condition="$data9[5]"><a href="{$data9[5]}"><else/><a href="{:U('/all_isnew')}"></if>{$data9['2']}</a></li>
+                <li class="class_name1" id="class3" onMouseOver="javascript:show(3);"><if condition="$data9[6]"><a href="{$data9[6]}"><else/><a href="{:U('/all_ishot')}"></if>{$data9['3']}</a></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="page_pro">
+            <if condition="$data9[7] eq ''">
+            <div  id="classlist1">
+                <volist empty="" name="indexpro" id="indexpro" key="k" offset="0" length="8">
+                    <div class="asd">
+                        <div class="img"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></div>
+                        <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                        <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+
+                            <div class="text" style="top:0px;">
+<div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+<!--孙改-->
+                                <div class="rsp_more" style=" position:relative; top:68px;"> {$indexpro['pro_name']}</div>
+</div>
+                            </div>
+                        </a>
+                    </div>
+                    <if condition="$k%4 neq 0">
+                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                        <else/>
+                        <li class="clear" style="height: 18px;"></li>
+                    </if>
+                </volist>
+                <div style="clear: both"></div>
+            </div>
+                <else/>
+                <div  id="classlist1">
+                    <php>
+                        $product_calss1=get_index_products_category($data9[7],8);
+                    </php>
+                    <volist empty="" name="product_calss1" id="product_calss1" key="k" offset="0" length="8">
+                        <div class="asd">
+                            <div class="img"><img src="{:getmainimgurl($product_calss1['main_img'])}" <if condition="$product_calss1['proalt'] neq ''">alt="{$product_calss1['proalt']}"<else/>alt="{$product_calss1['pro_name']}"</if> /></div>
+                            <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($product_calss1['pid'])}">{$product_calss1['pro_name']}</a></div>
+                            <a href="{:U('/Product','','')}/{:getproname($product_calss1['pid'])}">
+
+                                <div class="text" style="top:0px;">
+                                    <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                        <!--孙改-->
+                                        <div class="rsp_more" style=" position:relative; top:68px;"> {$product_calss1['pro_name']}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <if condition="$k%4 neq 0">
+                            <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                            <else/>
+                            <li class="clear" style="height: 18px;"></li>
+                        </if>
+                    </volist>
+                    <div style="clear: both"></div>
+                </div>
+            </if>
+            <if condition="$data9[8] eq ''">
+                <div  id="classlist2" style="display: none;">
+                    <div class="page_shebeiList" id="c1_slide2">
+                        <div class="section1">
+                            <ul class="c1_lc">
+                                <volist empty="" name="indexnewpro" id="indexnewpro1" key="k2" offset="0" length="8">
+                                    <div class="asd">
+                                        <div class="img"><img src="{:getmainimgurl($indexnewpro1['main_img'])}" <if condition="$indexnewpro1['proalt'] neq ''">alt="{$indexnewpro1['proalt']}"<else/>alt="{$indexnewpro1['pro_name']}"</if> /></div>
+                                        <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($indexnewpro1['pid'])}">{$indexnewpro1['pro_name']}</a></div>
+                                        <a href="{:U('/Product','','')}/{:getproname($indexnewpro1['pid'])}">
+
+                                            <div class="text">
+                                                <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                                    <!--孙改-->
+                                                    <div class="rsp_more" style=" position:relative; top:68px;">{$indexnewpro1['pro_name']}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <if condition="$k2%4 neq 0">
+                                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                                        <else/>
+                                        <li class="clear" style="height: 18px;"></li>
+                                    </if>
+
+                                </volist>
+                                <div style="clear: both"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <else/>
+                <div  id="classlist2" style="display: none;">
+                    <php>
+                        $product_calss2=get_index_products_category($data9[8],8);
+                    </php>
+                    <div class="page_shebeiList" id="c1_slide2">
+                        <div class="section1">
+                            <ul class="c1_lc">
+                                <volist empty="" name="product_calss2" id="product_calss2" key="k1" offset="0" length="8">
+                                    <div class="asd">
+                                        <div class="img"><img src="{:getmainimgurl($product_calss2['main_img'])}" <if condition="$product_calss2['proalt'] neq ''">alt="{$product_calss2['proalt']}"<else/>alt="{$product_calss2['pro_name']}"</if> /></div>
+                                        <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($product_calss2['pid'])}">{$product_calss2['pro_name']}</a></div>
+                                        <a href="{:U('/Product','','')}/{:getproname($product_calss2['pid'])}">
+
+                                            <div class="text">
+                                                <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                                    <!--孙改-->
+                                                    <div class="rsp_more" style=" position:relative; top:68px;">{$product_calss2['pro_name']}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <if condition="$k1%4 neq 0">
+                                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                                        <else/>
+                                        <li class="clear" style="height: 18px;"></li>
+                                    </if>
+
+                                </volist>
+                                <div style="clear: both"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </if>
+            <if condition="$data9[9] eq ''">
+                <div  id="classlist3" style="display: none;">
+                    <div class="page_shebeiList" id="c1_slide3">
+                        <div class="section1">
+                            <ul class="c1_lc">
+                                <volist empty="" name="indexhotpro" id="indexhotpro" key="k1" offset="0" length="8">
+                                    <div class="asd">
+                                        <div class="img"><img src="{:getmainimgurl($indexhotpro['main_img'])}" <if condition="$indexhotpro['proalt'] neq ''">alt="{$indexhotpro['proalt']}"<else/>alt="{$indexhotpro['pro_name']}"</if> /></div>
+                                        <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($indexhotpro['pid'])}">{$indexhotpro['pro_name']}</a></div>
+                                        <a href="{:U('/Product','','')}/{:getproname($indexhotpro['pid'])}">
+
+                                            <div class="text">
+                                                <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                                    <!--孙改-->
+                                                    <div class="rsp_more" style=" position:relative; top:68px;">{$indexhotpro['pro_name']}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <if condition="$k1%4 neq 0">
+                                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                                        <else/>
+                                        <li class="clear" style="height: 18px;"></li>
+                                    </if>
+
+                                </volist>
+                                <div style="clear: both"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <else/>
+                <php>
+                    $product_calss3=get_index_products_category($data9[9],8);
+                </php>
+                <div  id="classlist3" style="display: none;">
+                    <div class="page_shebeiList" id="c1_slide3">
+                        <div class="section1">
+                            <ul class="c1_lc">
+                                <volist empty="" name="product_calss3" id="product_calss3" key="k1" offset="0" length="8">
+                                    <div class="asd">
+                                        <div class="img"><img src="{:getmainimgurl($product_calss3['main_img'])}" <if condition="$product_calss3['proalt'] neq ''">alt="{$product_calss3['proalt']}"<else/>alt="{$product_calss3['pro_name']}"</if> /></div>
+                                        <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($product_calss3['pid'])}">{$product_calss3['pro_name']}</a></div>
+                                        <a href="{:U('/Product','','')}/{:getproname($product_calss3['pid'])}">
+
+                                            <div class="text">
+                                                <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                                    <!--孙改-->
+                                                    <div class="rsp_more" style=" position:relative; top:68px;">{$product_calss3['pro_name']}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <if condition="$k1%4 neq 0">
+                                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                                        <else/>
+                                        <li class="clear" style="height: 18px;"></li>
+                                    </if>
+
+                                </volist>
+                                <div style="clear: both"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </if>
+
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div style="clear: both;height: 30px;"></div>
+
+<!--index-product end-->

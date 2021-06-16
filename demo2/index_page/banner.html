@@ -1,0 +1,158 @@
+<!--{$pagename}-->
+<SCRIPT src="__TMPL__demo2/js/jquery-1.8.3.min.js" type="text/javascript"></SCRIPT>
+<php>
+    if(!$data3[3]){
+    $data3[3]=600;
+    }
+</php>
+<style>
+    .page_Banner{
+        width:100%; margin:0 auto;height:{$data3[3]}px!important; min-width:1190px; max-width:1920px;
+    }
+    .DB_tab25{
+    height:{$data3[3]}px !important;
+    }
+    .DB_tab25 .DB_menuWrap .DB_menuSet{
+        top: <php>echo $data3[3]-50;</php>px !important;
+    }
+</style>
+<if condition="$data3[4]">
+
+
+    <script src="__TMPL__demo2/js/jquery.banner.revolution.min.js"></script>
+    <script src="__TMPL__demo2/js/banner2.js"></script>
+    <link href="__TMPL__demo2/css/banner2.css" rel="stylesheet">
+    <style>
+        .tp-bullets.simplebullets.round .bullet:hover,
+        .tp-bullets.simplebullets.round .bullet.selected,
+        .tp-bullets.simplebullets.navbar .bullet:hover,
+        .tp-bullets.simplebullets.navbar .bullet.selected {
+            background: url({:getindeximgurl($data3[10])}) no-repeat center;
+        }
+        .tp-leftarrow:hover{
+            background: url({:getindeximgurl($data3[8])}) no-repeat;}
+        .tp-rightarrow:hover {
+            background: url(../img/nextArrow2.png) no-repeat;
+        }
+        .tp-bullets.simplebullets.round .bullet {
+            cursor: pointer;
+            position: relative;
+            background: url({:getindeximgurl($data3[9])}) no-repeat center;
+        width: 17px;
+        height: 16px;
+        float: left;
+        margin-right:16px;
+        -webkit-transition: background 0.1s linear;
+        -moz-transition: color, background 0.1s linear;
+        -o-transition: color, background 0.1s linear;
+        transition: color, background 0.1s linear;
+        }
+        .tp-leftarrow.large {
+            z-index: 100;
+            cursor: pointer;
+            position: relative;
+            background: url({:getindeximgurl($data3[5])}) no-repeat center;
+        width: 36px;
+        height: 69px;
+        margin-left: 9%;
+        margin-top: 2px;
+        }
+
+        .tp-rightarrow.large {
+            z-index: 100;
+            cursor: pointer;
+            position: relative;
+            background: url({:getindeximgurl($data3[6])}) no-repeat center;
+        width: 36px;
+        height: 69px;
+        margin-left:-9%;
+        margin-top:2px;
+        }
+    </style>
+
+    <div id="index_banner_animate">
+        <div class="page_Banner">
+            <div class="fullwidthbanner-container">
+                <div class="fullwidthbanner">
+                    <ul>
+                        <volist name="banner" id="banner_pic" key="k">
+                            <li data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" data-link="{$banner_pic['ad_link']}">
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="" />
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        jQuery('#index_banner_animate').removeClass().addClass('fadeInDown');
+    </script>
+
+
+    <else/>
+    <if condition="$data3[12]">
+        <style>
+            .DB_next{
+                background:url({:getindeximgurl($data3[12])});width:42px !important; height:42px !important;
+            }
+        </style>
+
+    </if>
+
+    <if condition="$data3[11]">
+        <style>
+            .DB_prev{
+                background:url({:getindeximgurl($data3[11])}); width:42px !important; height:42px !important;
+            }
+        </style>
+    </if>
+    <link href="__TMPL__demo2/css/banner.css" rel="stylesheet">
+    <script type="text/javascript" src="__TMPL__demo2/js/banner.js"></script>
+    <script>
+        var on="{:getindeximgurl($data3[1])}";
+        var off="{:getindeximgurl($data3[2])}";
+    </script>
+
+    <div class="page_Banner">
+        <div class="DB_tab25">
+
+            <ul class="DB_bgSet">
+                <volist name="banner" id="banners">
+                    <a href="<if condition="$banners['ad_link']">{:($banners['ad_link'])}<else/>javascript:void(0)</if>"><li title="{$banners['pic_title']}" style="background:url({:getimgurl($banners['ad_pic'])}) center no-repeat; height:{$data3[3]}px; display:block;"></li></a>
+</volist>
+</ul>
+
+<ul class="DB_imgSet">
+    <volist name="banner" id="banners">
+        <li></li>
+    </volist>
+</ul>
+
+<div class="DB_menuWrap">
+    <ul class="DB_menuSet">
+        <if condition="count($banner) gt 1">
+            <volist name="banner" id="banners">
+                <li><img src="{:getindeximgurl($data3[2])}" alt=""/></li>
+            </volist>
+        </if>
+    </ul>
+    <div class="DB_next"></div>
+    <div class="DB_prev"></div>
+</div>
+
+</div>
+</div>
+<script type="text/javascript">
+    $('.DB_tab25').DB_tabMotionBanner({
+        key:'b28551',
+        autoRollingTime:3000,
+        bgSpeed:500,
+        motion:{
+
+        }
+    })
+</script>
+
+</if>
+

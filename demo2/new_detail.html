@@ -1,0 +1,66 @@
+<extend name="demo2:basein" />
+<block name="content">
+
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+
+<div class="r_mbx"><img src="__TMPL__demo2/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;{$newclass['class_name']}</div>
+<div style="width: 1190px;margin:0 auto">
+    <if condition="$data1[17] neq ''">
+        <Include file="./Tpl/demo2/newleft2.html" />
+        <else/>
+        <Include file="./Tpl/demo2/newleft.html" />
+    </if>
+<div class="page_Main">
+    <div class="page_RightMain">
+      <div class="news">
+      <div id="news_detail">
+        <div class="body">
+          <h1 class="fc_107fd0 fs_16 bold">{$news['title']}</h1>
+          <div class="news_view"><span class="right red">View:{$news['click_num']}</span><span class="right time">{:date('m/d/Y',$news['created'])}&nbsp;&nbsp;</span></div>
+          <div class="clear"></div>
+          <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+          <div class="bt" style="margin-top:22px;"><a href="javascript:history.back()" onfocus="blur()" style="display:block; font-size:14px; text-align:center; line-height:35px; color:#fff;">Back</a></div>
+        </div>
+      </div>
+    </div>
+          
+    <div class="prev_next">
+        <ul>
+          <li>Prev:
+           <if condition="$newprev[0]['title'] eq ''">
+            No
+           <else/>
+            <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">{$newprev[0]['title']}</a>
+           </if>
+          </li>
+          <li>Next:
+            <if condition="$newnext[0]['title'] eq ''">
+            No
+           <else/>
+            <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">{$newnext[0]['title']}</a>
+           </if>
+          </li>
+        </ul>
+      </div>
+                <if condition="newscomment_show() eq 1">
+                    <include file="demo2:newscomment" />
+                </if>
+                <include file="demo2:relationinfo" />
+                <include file="demo2:relationnew" />
+    <div style="clear:both; height:20px;"></div>
+    <div style="clear:both"></div>
+    </div>
+    <div style="clear:both"></div>
+  </div>  
+</div>
+
+</block>

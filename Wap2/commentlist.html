@@ -1,0 +1,76 @@
+<extend name="Wap2:base" />
+<block name="content">
+    <php>
+$new_category__current=$inner_data[0] or $new_category__current="NEWS";
+if($inner_data[1]){
+    $new_category__title_bj=getindeximgurl($inner_data[1]);
+}else{
+    $new_category__title_bj="none"; 
+}
+if($inner_data[2]){
+    $new_category__content_bj=getindeximgurl($inner_data[2]);
+}else{
+    $new_category__content_bj="";   
+}
+    $new_category__title_color=$inner_data[4] or $new_category__title_color="#333";
+</php>
+ <style>
+ .HJZF_Z__Breadcrumbs span.current{
+    color: #{$inner_data[0]};
+}
+.InsidePages_content-right_content_title:before{
+    background: #{$inner_data[0]};
+}
+.new_category__Breadcrumbs{padding: 0 10px 10px;}
+.new_category__Breadcrumbs,.new_category__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+.new_category__title{
+    color:{$new_category__title_color};font-size:24px; font-weight:200; padding:5px 10px; background:url({$new_category__title_bj}) no-repeat;
+}
+</style>
+<div id="HJZF_Z__wrapper">
+    <div id="HJZF_Z__innerBanner">
+        <if condition="$banner neq ''">
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+            </volist>
+            <else/>
+            <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+        </if>
+    </div>
+    <div class="new_category__Breadcrumbs">
+        <div class="new_category__Breadcrumbs_down">
+           <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/news')}">{:__('News')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Comment lists')}</span>
+       </div>
+   </div>
+   <div class="new_category__title">
+    <div class="inpage__title_main">{:__('Comment lists')}</div>
+</div>
+<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+    <div class="container">
+        <div class="row">
+            <section class="InsidePages_content-right2">
+                <h5 class="InsidePages_content-right_content_title"></h5>
+                <div class="InsidePages_content-right_content">
+                    <div class="InsidePages_content-right_content-main">
+                        <volist name="list" id="list" key="k">
+                            <div style="width:100%;padding:10px 0;border-bottom: 1px solid #e2e2e2">
+                                <div style="float:left;width:2%;">{$k}, </div>
+                                <div style="float:left;width:88%;">{$list["content"]}</div>
+                                <div style="float:right;width:10%; text-align:right;">{:date("Y-m-d H:i:s",$list["adddate"])}</div>
+                                <div style="clear:both"></div>
+                            </div>
+                        </volist>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</block>

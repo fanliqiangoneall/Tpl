@@ -1,0 +1,84 @@
+<if condition="$data153[0]">
+    <style>
+        #cases-9{
+            background: url({:getindeximgurl($data153[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .case-9__content--left{
+        background: url({:getindeximgurl($data153[4])}) no-repeat right top;
+    }
+    .case-9__content--right .case-9__swiper-next i, .case-9__content--right .case-9__swiper-prev i{
+        color: #{$data153[1]};
+    }
+    .case-9__content--right .swiper-slide:hover .case-9__itemWrap,.case-9__content--right .swiper-slide.swiper-slide-active .case-9__itemWrap{
+        background: #{$data153[1]};
+    }
+</style>
+<section id="cases-9">
+    <div class="container">
+        <hgroup class="cases-9__title">
+            <h3 class="cases-9__title--miantitle">{$data153[2]}</h3>
+            <h5 class="cases-9__title--subtitle">{$data153[3]}</h5>
+        </hgroup>
+    </div>
+<div class="case-9__content flex">
+    <div class="case-9__content--left">
+        <p>{:HtmlEncode(subtxt($data153[5],400))}</p>
+        <div class="clear"></div>
+        <a href="{:U('/cases')}">{:__('Read More')} <i class="fa fa-long-arrow-right"></i>
+            <border class="border"></border><border class="border"></border><border class="border"></border><border class="border"></border>
+        </a>
+    </div>
+    <div class="case-9__content--right">
+        <div class="swiper-container case-9__swiper">
+            <if condition="$data153[7]">
+                <div class="swiper-wrapper">
+                    <volist empty="" name="allcaseclass" id="allcaseclass" key="k" offset="0" length="9">
+                        <div class="swiper-slide">
+                            <div class="case-9__itemImg">
+                                <img src="{:getpcimgurl($allcaseclass['fid'])}" class="middle_img{$k}">
+                            </div>
+                            <div class="case-9__itemWrap">
+                                <div class="index_case_title">
+                                    <if condition="$data153[6]">
+                                        <a href="javascript:void(0);">{$allcaseclass['class_name']}</a>
+                                        <else/>
+                                        <a href="{:U('/case_category/classid','','')}/{$allcaseclass['classid']}">{$allcaseclass['class_name']}</a>
+                                    </if>
+                                </div>
+                                <div class="index_case_title2 ellipsis_two">{:subtxt($allcaseclass['readme'],100)}</div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <else/>
+                <div class="swiper-wrapper">
+                    <volist empty="" name="indexcases" id="indexcase" key="k" offset="0" length="9">
+                        <div class="swiper-slide">
+                            <div class="case-9__itemImg">
+                                <img src="{:getpcimgurl($indexcase['new_pro'])}" class="middle_img{$k}">
+                            </div>
+                            <div class="case-9__itemWrap">
+                                <div class="index_case_title">
+                                    <if condition="$data153[6]">
+                                        <a href="javascript:void(0);">{$indexcase['title']}</a>
+                                        <else/>
+                                        <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">{$indexcase['title']}</a>
+                                    </if>
+                                </div>
+                                <div class="index_case_title2 ellipsis_two">{:subtxt($indexcase['news_description'],100)}</div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+            </if>
+
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next case-9__swiper-next"><i class="fa fa-long-arrow-right"></i></div>
+        <div class="swiper-button-prev case-9__swiper-prev"><i class="fa fa-long-arrow-left"></i></div>
+    </div>
+</div>
+</section>

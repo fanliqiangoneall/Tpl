@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<php>
+    if($data327[1]){ $service_17_bg = $data327[1];}    
+    if($data327[0]){
+        $service_17_bgimg=getindeximgurl($data327[0]);
+    }
+    $arr = get_list_val($data327[2]);
+    
+</php> 
+<style>
+    .service-17{
+        background: url({$service_17_bgimg}) no-repeat center;
+    }
+    .service-17{
+        background: #{$service_17_bg};
+    }
+
+     .service-17_tabs li.active,.service-17_tabs li:hover{
+        border-bottom:2px solid #{$data327[3]};
+     }
+    .service-17_tabs li.active a,.service-17_tabs li:hover a{
+        color:#{$data327[3]}
+    }
+    .service-17_descBox>.index_title{
+        color:#{$data327[3]}
+    }
+</style>
+<php>
+    if($data327[6]) {
+        $index = $data327[6] - 1;
+    }else{
+        $index = 0;
+    }
+</php>
+<script>
+    require(['jquery'], function ($) {
+        $(".service-17_tabs li").eq({$index}).addClass('active');
+    })
+</script>
+<section class="service-17 index_pd">
+    <div class="service-17_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="service-17_tabs">
+                        <volist name="arr" id="tab">                       
+                            <li><a href="{$tab['src']}" class="index_text">{$tab['tab']}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                
+                <div class="service-17_descBox">
+                    <div class="index_title">{$data327[5]}</div>
+                    <p class="index_text">{$data327[4]}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

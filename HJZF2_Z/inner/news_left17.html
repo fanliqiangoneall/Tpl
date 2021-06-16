@@ -1,0 +1,89 @@
+
+<style>
+    .inner_news_17_wrapper{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .inner_news_17{
+        text-transform: uppercase;
+		font-size:28px;
+    }
+    .inner_news_17_list{
+        display: flex;
+    }
+    .inner_news_17_list li a{
+        display: block;
+        padding: 15px 30px;
+        transition: all .5s;
+    }
+	.inner_news_17_list .yiji_news{
+		border: 1px solid #dddddd;
+		margin-left:20px;
+		position:relative;
+	}
+	.inner_news_17_list .yiji_news:before,.inner_news_17_list .yiji_news:after,.inner_news_17_list .yiji_news a:before,.inner_news_17_list .yiji_news a:after{ 
+		display:block; 
+		position:absolute; 
+		background:#{$color}; 
+		content: ''; 
+		transition: all 0.6s ease; 
+		-moz-transition: all 0.6s ease; 
+		-webkit-transition: all 0.6s ease; 
+		-o-transition: all 0.6s ease;
+	}
+	.inner_news_17_list .yiji_news:before{
+		right: 0;
+    	bottom: 0;
+    	width: 0;
+    	height: 1px;
+	}
+	.inner_news_17_list .yiji_news a:before{
+		left: 0;
+   		top: 0;
+   		width: 0;
+    	height: 1px;
+	}
+	.inner_news_17_list .yiji_news:after {
+		left: 0;
+    	bottom: 0;
+   		width: 1px;
+    	height: 0;
+	}
+	.inner_news_17_list .yiji_news a:after{
+		right: 0;
+    	top: 0;
+   		width: 1px;
+    	height: 0;
+	}
+	.inner_news_17_list li:hover:before,.inner_news_17_list li a:hover:before{
+		width:100%;
+	}
+	.inner_news_17_list li:hover:after,.inner_news_17_list li a:hover:after{
+		height:100%;
+	}
+    .inner_news_17_list li:hover a,.inner_news_17_list li.yijion_news a{
+        color: #{$color};
+    }
+	.inner_news_17_list li.yijion_news{
+		border: 1px solid #{$color};
+		margin-left:20px;
+		position:relative;
+	}
+    .inner_news_17_list li a h3{
+        font-size: 16px;
+    }
+</style>
+<div class="InsidePages_content-left_content inner_news_17_wrapper inner_hidden">
+    <div class="inner_news_17">
+        {:__('News')}
+    </div>
+    <ul class="inner_news_17_list">
+        <volist empty="" name="allnewclass" id="nav">
+            <li <if condition="$newscate['classid'] eq $nav['classid'] or $newclass['classid'] eq $nav['classid']">class="yijion_news"
+                <else />class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$nav["classid"]))}">{$nav['class_name']}</a></li>
+        </volist>
+    </ul>
+</div>

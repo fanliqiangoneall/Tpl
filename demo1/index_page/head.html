@@ -1,0 +1,144 @@
+<!--{$pagename}-->
+<style>
+.index_navigation_Logo ul li span{ 
+font-size:21px; color:#{$color}; font-weight:bold;
+}
+.menuon h2{
+	font-size:15px; color:#{$color} !important; font-weight:normal; line-height:49px;
+}
+.sidebar ul li .sidebox1:hover{
+	 background:#{$color};
+}
+.index_customer_title span{ 
+font-size:35px; color:#{$color};
+}
+.index_navigation_topmail span{ 
+font-size:27px; font-weight:bold; color:#{$color}; font-family:'Arial'
+}
+.index_navigation_page_Menu ul li ul li a:hover{
+color:#{$color};
+}
+.index_products_title span{ 
+font-size:35px; color:#{$color}; font-weight:bold;
+}
+.index_pro_head span{ 
+color:#{$color};
+}
+.thumbWrap DIV.on IMG {
+	BORDER: #{$color} 1px solid
+}
+.index_advantage_rightzx .ys_zx{
+	width:176px; height:49px; margin:auto; background:#fff; line-height:49px; text-align:center; font-size:26px; color:#{$color}; font-weight:bold; display:block; box-shadow:0 5px 5px #a2000d;
+}
+.index_adv_title span{
+	color:#{$color}; font-size:24px; font-weight:bold; font-family:'Microsoft YaHei';
+}
+.customer_logo:hover img{ 
+border:1px solid #{$color};
+}
+.index_news_News_1:hover .index_news_tt a{
+	font-size:15px; color:#{$color};
+}
+.in_tophead{
+	width:263px; height:63px; background:#{$color}; text-align:center; line-height:63px; font-size:25px; color:#ffffff;
+}
+.zparent:hover h3{
+font-size:14px; color:#{$color};
+}
+.zparent:hover h3{
+	font-size:14px; color:#{$color};
+}
+.zparent1 h3{
+	font-size:14px; color:#{$color}; padding:5px 15px 5px 25px; line-height:20px; font-weight:normal;
+}
+.left_contact ul li span{ 
+font-size:22px; color:#{$color}; font-weight:bold;
+}
+.bt{
+width:69px; margin:auto; border:none; text-align:center;
+color: #fff;
+background:#{$color};
+cursor: pointer;
+height: 24px !important;
+font-size:13px;
+}
+.pro_more{
+	width:151px; margin:auto; border:1px solid #{$color}; text-align:center; height:31px; -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px;
+}
+.pro_more a{ 
+font-size:14px; color:#{$color}; line-height:31px;
+}
+.index_products_proname a:hover{ 
+color:#{$color}
+}
+.page_RightTitle{
+width:858px; margin:auto; 
+background:url({:getindeximgurl($data1[3])}) left center no-repeat; font-size:25px; color:#333333; line-height:27px; padding:15px 0 15px 20px; text-align:left; border-bottom:1px solid #e2e1e0;
+}
+.mod18 .listBox li img:hover{ border:1px solid #{$color};}
+</style>
+<link href="__TMPL__demo1/css/navigation.css" rel="stylesheet">
+<div id="index_navigation_animate">
+  <div class="index_navigation_headbg">
+    <div class="index_navigation_head">
+       <ul>
+         <li>欢迎来到{$about['company_name']}！</li>
+         <li style="float:right;">&nbsp;&nbsp;</li>
+         <li style="margin-top:8px; margin-left:5px; float:right;"><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div></li>
+         <li style="float:right;"><a href="{:U('/')}" onFocus="blur()">网站首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:U('/contactus')}" onFocus="blur()" onclick="turn_sta(2,1)">联系我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;分享到：</li>
+       </ul>
+       <div class="clear"></div>
+    </div>
+  </div>
+</div>
+
+<div class="index_navigation_Top">
+   <div class="index_navigation_Logo">
+     <div id="index_navigation_animate_1">
+        <ul>
+           <li style="margin-top:25px; letter-spacing:1px; width:249px;"><a href="{:U('/')}">{$logo}</a>{$about['company_name']}</li>
+           <li style="padding-left:19px; border-left:1px dashed #b3b3b3; margin-top:28px;"><span>{$data1[0]}</span><br />{$data1[1]}</li>
+        </ul>
+     </div>
+   </div>
+   <div id="index_navigation_animate_2"> 
+      <div class="index_navigation_HeadRight">
+         <div class="index_navigation_topmail">——欢迎广大客户咨询参观<br /><span>{:chaifen($about['phone'],0)}</span></div>
+      </div>
+   </div>
+   <div class="clear"></div>
+</div>
+<script type="text/javascript" language="javascript" src="__TMPL__demo1/js/nav.js"></script>
+<script type="text/javascript" src="__TMPL__demo1/js/navcontrol.js"></script>
+<div class="index_navigation_page_Menubg">
+    <div class="index_navigation_page_Menu" id="smoothmenu1">
+        <ul>
+          <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+            <li id="menu{$key}"><a href="{$vo['url']}" onFocus="blur()">{$vo['title']}</a>
+               <if condition="$vo['child'] neq ''">
+                <ul>
+                <volist name="vo['child']" id="navchild">
+                  <li><a href="{$navchild['url']}">{$navchild['title']}</a></li>
+                </volist>
+                </ul>
+               </if>
+            </li>
+          </volist>
+
+            <div class="index_navigation_search_list" id="frn_l_9" style="display:none; right:-8px;">
+                <div class="index_navigation_Page_Search">
+                  <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm(this);">
+                      <div style="width:182px; float:left; border:none;">
+                        <input type="text" name="keywords" id="keywords1" value="请输入关键词" style="color:#737373; width:182px; border:none; height:26px; line-height:26px;" onfocus="OnFocusFun(this,&#39;请输入关键词&#39;)" onblur="OnBlurFun(this,&#39;请输入关键词&#39;)">
+                      </div>
+                      <div style="width:21px; float:right; margin-top:4px;">
+                        <input type="image" src="__TMPL__demo1/img/dot.png" height="18" name="submit" class="submit">
+                      </div>
+                  </form>
+                </div>
+            </div>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript" src="__TMPL__demo1/js/navigation.js"></script>

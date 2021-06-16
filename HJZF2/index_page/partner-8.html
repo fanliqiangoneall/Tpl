@@ -1,0 +1,23 @@
+<section class="HJZF2__partner--8">
+    <div class="container">
+        <if condition="$data184[0]"><div class="HJZF2__partner--8__mainTitle">{$data184[0]}</div></if>
+        <div id="HJZF2__partner--8__wai">
+            <div id="HJZF2__partner--8__box">
+                <ul id="HJZF2__partner--8__con1">
+                    <php>
+                        for($cu=1;$cu<5;$cu=$cu+1){
+                    </php>
+                    <if condition="$data184[$cu] neq ''">
+                        <li class="HJZF2__partner--8__item">
+                            <img class="lazy" src="{:getindeximgurl($data184[$cu])}" alt=""/>
+                        </li>
+                    </if>
+                    <php>
+                        }
+                    </php>
+                </ul>
+                <ul id="HJZF2__partner--8__con2"></ul>
+            </div>
+        </div>
+    </div>
+</section>

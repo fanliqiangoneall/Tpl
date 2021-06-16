@@ -1,0 +1,24 @@
+<!--{$pagename}-->
+<div id="index_customer_animate" style="visibility:hidden;">
+<div class="index_customer_hzbg" style="background:url({:getindeximgurl($data11[7])}) center no-repeat;">
+   <div class="index_customer_title">{$data11[6]}</div>
+   <div class="index_customer_hezuo">
+      <div class="index_customer_List" id="index_customer_c1_slide">
+         <div class="index_customer_section1">
+          <volist name="data11" id="customer1" key="key" offset="0" length="6">
+            <if condition="$key%6 eq 1"><ul class="index_customer_c1_lc"></if>
+            <li>
+            <div class="customer_logo" <if condition="$key%6 eq 0">style="margin-right:0;"</if>><img src="{:getindeximgurl($customer1)}" /></div>
+            </li>
+            <if condition="$key%6 neq 0">
+            <div style="width:26px; float:left; height:10px; background:none;"></div>
+            </if>
+            <if condition="$key%6 eq 0"></ul></if>
+          </volist>
+         </div>
+       </div>
+       <!--<a href="javascript:;" class="leftbtn" id="index_customer_c1_slide_prev"></a>
+       <a href="javascript:;" class="rightbtn" id="index_customer_c1_slide_next"></a>-->
+    </div>
+</div>
+</div>

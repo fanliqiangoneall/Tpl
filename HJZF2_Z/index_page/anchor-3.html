@@ -1,0 +1,25 @@
+<style>
+    .anchor_3_wrapper li.active:after{
+        background-color: #{$color};
+    }
+</style>
+<section class="anchor_3 index_pd">
+    <div class="anchor_3_wrapper_box">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="anchor_3_wrapper">
+                        <php>
+                            $arr = get_list_val($data379[0]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <li class="index_sub_title">
+                                <a href="{$a[id]}">{$a[name]}</a>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

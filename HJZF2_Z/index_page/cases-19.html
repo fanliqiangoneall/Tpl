@@ -1,0 +1,118 @@
+<!--{$pagename}-->
+<style>
+    .cases_19_title span.on {
+        background-color: #{$data398[1]};
+    }
+    .cases_19{
+        background-color: #{$data398[0]};
+    }
+    div[class^='cases_19_container_pagination'] span.swiper-pagination-bullet-active{
+        background-color: #{$data398[1]};
+    }
+</style>
+<section class="cases_19 index_pd">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 text-center">
+                <div class="index_title pb20">
+                    {$data398[2]}
+                </div>
+                <div class="index_sub_title pb40">
+                    {$data398[3]}
+                </div>
+            </div>
+            <php>
+                $arr_str=$data398[4];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $k=>$a){
+                $list[$k]=get_wap_case_class_name($a);
+                }
+
+                $arr_stra=$data398[4];
+                $arra=explode(',',$arr_stra);
+                foreach($arra as $ks=>$aa){
+                $lista[$ks]=get_index_cases_category($aa);
+                }
+            </php>
+            <div class="cases_19_title col-xs-12 index_text">
+                <volist empty="" name="list" id="li" key="key">
+                    <span>{$li}</span>
+                </volist>
+            </div>
+
+            <div class="col-xs-12">
+                <volist empty="" name="lista" id="lia" key="keya">
+                    <div class="cases_19_container_{$keya} cases_19_container_list">
+                        <div class="cases_19_container_main{$keya} cases_19_container swiper-container">
+                            <div class="swiper-wrapper">
+                                <volist name="lia" id="lib">
+                                    <div class="swiper-slide">
+                                        <a href="{:U('/case_detail',array('nid'=>$lib['nid']))}">
+                                            <img src="{:getimgurl($lib['new_pro'])}" alt="{$lib[title]}"
+                                                class="img-fluid">
+                                                <span class="fx-center index_sub_title">
+                                                    {$lib[title]}
+                                                </span>
+                                        </a>
+                                    </div>
+                                </volist>
+
+                            </div>
+                            <div class="cases_19_container_pagination{$keya} text-center"></div>
+                        </div>
+                        <div class="swiper-button-next swiper-button-black"></div>
+                        <div class="swiper-button-prev swiper-button-black"></div>
+                    </div>
+                </volist>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<if condition="$data398[6]">
+<!-- 成舍移动端 -->
+    <style>
+        @media(max-width: 767px) {
+            .cases_19{
+                display: none;
+            }
+        }
+    </style>
+    <div class="nav-hidden-pc case_19_mobile">
+      <volist empty="" name="lista" id="liab" key="keyb">
+          <div class="index_title text-center">
+            {$list[$keyb-1]}
+          </div>
+        <div class="cases_19_container_{$keyb} cases_19_container_list_mobile">
+            <div class="cases_19_container_main{$keyb} cases_19_container swiper-container">
+                <div class="swiper-wrapper">
+                    <volist name="liab" id="liba">
+                        <div class="swiper-slide">
+                            <a href="{:U('/case_detail',array('nid'=>$liba['nid']))}">
+                                <img src="{:getimgurl($liba['new_pro'])}" alt="{$liba[title]}"
+                                    class="img-fluid">
+                                    <div class="cases_19_mobile">
+                                        <div class="index_sub_title">
+                                            {$liba['title']}
+                                        </div>
+                                        <div class="index_text">
+                                            {$liba['news_description']}
+                                        </div>
+                                    </div>
+                            </a>
+                        </div>
+                    </volist>
+                </div>
+                <!-- <div class="cases_19_container_pagination{$keyb} text-center"></div> -->
+            </div>
+            <!-- <div class="swiper-button-next swiper-button-black"></div>
+            <div class="swiper-button-prev swiper-button-black"></div> -->
+        </div>
+    </volist>
+    </div>
+    </if>

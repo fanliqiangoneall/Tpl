@@ -1,0 +1,28 @@
+<!--{$pagename}-->
+<php>    
+    if($data268[0]){      
+        $other_28_bg=getindeximgurl($data268[0]);        
+    }else{
+        $other_28_bg='';
+    }
+    $color=explode("\\r\\n",$data268[2]);
+</php>
+<style>
+    .hjzf_other-29{
+        background: url('{$other_28_bg}') no-repeat center/cover;
+    }
+</style>
+<section class="hjzf_other-29 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="other-29_title index_title text-center">{$data268[1]}</div>
+            </div>
+            <div class="col-xs-12 col-lg-offset-1 col-lg-10">               
+                <div class="other-29_form">
+                    <Include file="./Tpl/HJZF2_Z/submitinquiry_other29.html" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

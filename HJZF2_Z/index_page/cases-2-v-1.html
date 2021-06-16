@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<php>
+	if($data650[3]){
+	$color = $data650[3];
+	}
+</php>
+<style>
+	.HJZF2_Z__cases-2_v_1 .HJZF2_Z__cases-2_v_1__title:after {
+		background: #{$color};
+	}
+
+	.HJZF2_Z__cases-2_v_1__button a:hover,
+	.HJZF2_Z__cases_2v1_wrapper_con p,
+	.cases_2_v_1_right a {
+		background-color: #{$color};
+	}
+
+	.HJZF2_Z__cases-2_v_1 {
+		background-color: #{$data650[5]};
+	}
+</style>
+
+<!--news start-->
+<section class="HJZF2_Z__cases-2_v_1 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="HJZF2_Z__cases-2_v_1_row col-xs-12">
+				<h3 class="HJZF2_Z__cases-2_v_1__title wow fadeInLeft pb20" data-wow-duration="0.5s" data-wow-delay="0">
+					<span class="ttwrap index_title">{$data650[0]}</span>
+				</h3>
+
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 HJZF2_Z__cases-2_v_1_pro">
+
+				<div class="HJZF2_Z__cases_wrapper_2_v1">
+					<div class="HJZF2_Z__cases_wrapper_2_v1_prev">
+						<if condition="$data650[6]">
+							<img src="{:getindeximgurl($data650[6])}" alt="">
+							<else />
+							<i class="fa fa-angle-left"></i>
+						</if>
+					</div>
+					<div class="HJZF2_Z__cases_wrapper_2_v1_next">
+						<if condition="$data650[7]">
+							<img src="{:getindeximgurl($data650[7])}" alt="">
+							<else />
+							<i class="fa fa-angle-right"></i>
+						</if>
+					</div>
+					<div class="HJZF2_Z__cases_wrapper swiper-container">
+						<div class="swiper-wrapper">
+							<volist empty="" name="indexcases" id="lia" key="key">
+								<php>
+									$case_name = get_wap_case_class_name($indexcase['cates_class']);
+								</php>
+								<div class="swiper-slide HJZF2_Z__cases_2v1_wrapper_con">
+									<a href="{:U('/case_detail',array('nid'=>$lia['nid']))}">
+										<div class="HJZF2_Z__cases_2v1_wrapper_con_img">
+										<img src="{:getimgurl($lia['new_pro'])}" alt="{$lia['title']}"
+											class="img-fluid">
+										</div>
+										<p>{$lia['title']}</p>
+									</a>
+								</div>
+							</volist>
+
+						</div>
+					</div>
+				</div>
+				<div class="cases_2_v_1_right text-center">
+					<a href="{$data650[2]}">{$data650[1]} <i class="fa fa-angle-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<!--news end-->

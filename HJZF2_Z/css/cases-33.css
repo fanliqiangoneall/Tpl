@@ -1,0 +1,112 @@
+.cases_33_wrapper ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.cases_33_wrapper ul li {
+	flex: 0 0 50%;
+	width: 50%;
+	overflow: hidden;
+}
+.cases_33_wrapper ul li a {
+	display: block;
+	position: relative;
+}
+.cases_33_wrapper ul li img {
+	width: 100%;
+	transition: all .5s .1s;
+}
+.cases_33_wrapper ul li:hover img {
+	transform: translateX(15px);
+}
+.cases_33_wrapper ul li{
+	padding: 70px;
+}
+.cases_33_wrapper ul li:first-child{
+	background-color: #cac7c2;
+}
+.cases_33_wrapper ul li:nth-child(2){
+	background-color: #9c9492;
+}
+.cases_33_wrapper ul li:nth-child(3){
+	background-color: #979692;
+}
+.cases_33_wrapper ul li:nth-child(4){
+	background-color: #d6d7d2;
+}
+.cases_33_more{
+	border: 1px solid #333;
+	color: #333;
+	display: inline-block;
+	margin-top: 50px;
+}
+.cases_33_more:hover{
+	color: #fff;
+}
+.cases_33_bottom {
+	position: absolute;
+	left: 5%;
+	width: 55%;
+	bottom: 30px;
+	background-color: rgba(255, 255, 255, .8);
+	padding: 10px 20px;
+	z-index: 99;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	color: #333;
+	opacity: 0;
+	transition: all .4s;
+	transform: translateY(30px) scale(1.1);
+}
+.cases_33_wrapper ul li:hover .cases_33_bottom {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+}
+.case_33_title .index_title,
+.case_33_title .index_sub_title {
+	font-weight: 100;
+	opacity: 0;
+	transform: rotate(-10deg) rotateX(65deg) translateX(60px) translateY(50px) translateZ(0);
+}
+.case_33_title .index_title {
+	transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.5s, opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+}
+.case_33_title .index_sub_title {
+	transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.6s, opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0.6s;
+}
+.case_33_title .index_sub_title:last-child {
+	transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.6s, opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0.7s;
+}
+.case_33_title .index_title.animated,.case_33_title .index_sub_title.animated {
+	transform: rotate(0) rotateX(0) translateX(0) translateY(0) translateZ(0);
+	opacity: 1;
+}
+
+@media(min-width: 1680px) {
+	.cases_33 .container {
+		max-width: 1610px;
+	}
+}
+
+@media(max-width: 767px) {
+	.cases_33 .index_sub_title{
+		font-size: 16px;
+	}
+	.cases_33_wrapper ul li{
+		flex: 0 0 100%;
+		width: 100%;
+	}
+	.cases_33_wrapper ul li{
+		padding: 20px;
+	}
+	.case_33_title{
+		margin-bottom: 20px;
+	}
+	.cases_33_bottom h5{
+		display: none;
+	}
+	.cases_33_bottom h3{
+		white-space: nowrap;
+	}
+}

@@ -1,0 +1,147 @@
+<!--{$pagename}-->
+<script type="text/javascript" src="__TMPL__demo2/js/swiper.min.js"></script>
+<link href="__TMPL__demo2/css/swiper.min.css" rel="stylesheet">
+<style>
+    .lf{
+        float: left;
+    }
+    .rt{
+        float: right;
+    }
+    .container{
+        width: 1190px;
+        height: auto;
+        margin: 0 auto;
+    }
+    .aboutUs02Container{
+        width: 100%;
+        height: 556px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+    }
+    .aboutUs02Container>.aboutUs02Content{
+        height: 405px;
+        margin: auto;
+        position: absolute;
+        top: 97px;
+        left: 0;
+        right:0;
+    }
+    .aboutUs02Left{
+        width: 540px;
+        height: 368px;
+        overflow: hidden;
+        position: absolute;
+        top: -32px;
+        left: 25px;
+    }
+    .aboutUs02Right{
+        width: 485px;
+        margin-right: 65px;
+        margin-top: 60px;
+    }
+    .aboutUs02Title{
+        color: #fff;
+        font-size: 35px;
+    }
+    .aboutUs02Tips{
+        font-size: 13px;
+        color: #9ea1b9;
+        margin-top: 5px;
+    }
+    .aboutUs02Text{
+        font-size: 14px;
+        color: #fff;
+        line-height: 20px;
+        margin-top: 35px;
+        height: 160px;
+    }
+    .aboutUs02More{
+        display: block;
+        width: 100px;
+        height: 40px;
+        line-height: 40px!important;
+        text-align: center;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: 16px;
+    }
+    .aboutUs02Container{
+        background-image: url({:getindeximgurl($data48[0])});
+    }
+    .aboutUs02Content{
+    background-color: {$data48[2]};
+    }
+    .aboutUs02More{
+        /*background: url({:getindeximgurl($data41[3])}) no-repeat center center;*/
+        margin-top:35px;
+        -webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;transition: all .5s;
+    }
+    .aboutUs02More:hover{
+        -webkit-transform: translate(25px);-moz-transform: translate(25px);-o-transform: translate(25px);transform: translate(25px);
+    }
+    .aboutUs02Icon{
+        margin: auto;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+    }
+    .aboutUs02Icon span{
+        background: #fff!important;
+        border:1px solid #fff!important;
+        margin-right: 15px;
+    }
+    .aboutUs02Icon span:last-child{
+        margin-right: 0;
+    }
+
+</style>
+<div class="aboutUs02Container">
+    <div class="aboutUs02Content container">
+        <div class="lf" style="position: relative;width: 540px;
+        height: 368px;">
+            <div class="aboutUs02Left swiper-container03">
+                <ul class="aboutUs02ListContainer swiper-wrapper">
+                    <php>
+                        for($i=4;$i<10;$i=$i+1){
+                    </php>
+                    <if condition="$data48[$i] neq ''">
+                        <li class="aboutUs02List swiper-slide">
+                            <img src="{:getindeximgurl($data48[$i])}" alt=""/>
+                        </li>
+                    </if>
+                    <php>
+                        }
+                    </php>
+                </ul>
+            </div>
+            <div class="swiper-pagination aboutUs02Icon"></div>
+        </div>
+        <div class="aboutUs02Right rt">
+            <div class="aboutUs02Title">关于我们</div>
+            <div class="aboutUs02Text">{:HtmlEncode(subtxt($data48[1],200))}</div>
+            <a href="{:U('/aboutus')}" class="aboutUs02More rt">查看更多</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container03', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.aboutUs02Icon',
+            clickable: true,
+        }
+    });
+
+    $(".aboutUs02Icon").css("width",$(".aboutUs02Icon span").length*25-15);
+</script>

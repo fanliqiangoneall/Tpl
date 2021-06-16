@@ -1,0 +1,338 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+
+<php>
+$classid=$product["class_id"];
+$prolist=get_index_products_categoryname($classid);
+$parent_path_str=','.$prolist['pcid'].','.$prolist['parent_path'].','.$prolist['parent_path'];
+if(strstr($parent_path_str,",256,")){
+	$htmltype="Product";
+    $typeid="256";
+}else{
+	$htmltype="Case";
+    $typeid="257";
+}
+
+</php>
+<!--banner-->
+
+<link href="__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/lingtongdetail.css" rel="stylesheet">
+<Include file="./Tpl/HJZF2_Z/HJZF2_Z-product_categories-lingtong/inner/shopping_car.html"/>
+    <div id="HJZF_Z__wrapper" style="margin-bottom: 0">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+            <if condition="$procate['banner']">
+                <div class="in_banner"><img
+                        src="{:getimgurl($procate['banner'])}" alt=""/></div>
+                <elseif condition="$banner neq '' "/>
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>
+                        &nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$product['pro_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="deatail_container container {$htmltype}">
+        <!--左边-->
+        <Include file="./Tpl/HJZF2_Z/HJZF2_Z-product_categories-lingtong/inner/left.html" />
+        <!--左边-->
+        <div class="inner-3__maincontent">
+            <div class="">
+                <div class="row">
+                    <section class="col-xs-12">
+                        <div class="inner-3__prodetail__topshow">
+                            <div class="InsidePages_content-right_content-main">
+                                <div id="lingtong_prodetail">
+                                    <div class="product_detail--top">
+                                        <!--left show-->
+                                        <div class="left">
+                                        	<img src="{:getmainimgurl($product['main_img'])}"    class="img-responsive hidden_mainimg"/>
+                                            <div class="left_center">
+                                                <div class="swiper-container detail-gallery-toplingtong" id="gallery">
+                                                    <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">
+                                                            <div class="inner-3__prodetail__img all_scale">
+                                                            	<if condition="$product['product_vod']">
+                                                                    <img vod="{$product['product_vod']}" class="bofangimg bofangmain" src="__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/bofang.png" alt="" />
+                                                                    <video 
+                                                                    class="lib-video product_main_img" 
+                                                                    preload="none" 
+                                                                    webkit-playsinline="webkit-playsinline" 
+                                                                    playsinline="playsinline" 
+                                                                    poster="{:getmainimgurl($product['main_img'])}" 
+                                                                    src="{$product['product_vod']}"
+                                                                    type="video/mp4"
+                                                                    x-webkit-airplay="true"
+                                                                    x5-playsinline="true">
+                                               						<source type="video/mp4" src="{$product['product_vod']}">
+							                   
+                                                                    </video>                                                                
+                                                                    
+                                                                
+                                                                <else/>
+                                                                <img src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if> class="jqzoom product_main_img"/>
+                                                            	</if>
+                                                            </div>
+                                                        </div>
+                                                        <volist name="proimg" id="proimgBig">
+                                                            <if condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                                                <div class="swiper-slide">
+                                                                    <div class="inner-3__prodetail__img all_scale"><img src="{:getfimgurl($proimgBig['field_auxiliary_fid'])}" class="jqzoom"  <if condition="$proimgBig['field_auxiliary_title'] eq ''">alt="{$proimgBig['pro_name']}"<else/>alt="{$proimgBig['field_auxiliary_title']}"</if>/></div>
+                                                                </div>
+                                                            </if>
+                                                        </volist>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                                        
+                                        <!--right info-->
+                                        <div class="inner_lingtong__prodetailinfo">
+                                            <div class="inner-3__prodetailinfobox">
+                                                <h3 class="inner-3__prodetailname">{$product['pro_name']}</h3>
+                                                <div class="inner-3__procatename">{$procate['class_name']}</div>
+                                                <div class="inner-3__prodetaildesc">{:htmlspecialchars_decode(HtmlEncode($product['pro_description']))}</div>
+                                                <div class="lingtong__prodetailbtnlist" >
+
+
+                                                    <div class="jump_inquiry lingtong_detail_btn">
+
+                                                
+                                                        <a onclick="javascript:jumpto()">
+                                                        <img src="__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/detail_inquiry.png" alt="" />
+                                                        <span>{:__('Inquiry Now')}</span>
+                                                        </a>
+                                                     
+                                                    </div>
+                                                    
+                                                    <div class="add_cat lingtong_detail_btn add_shop_car_btn" pid="{$product['pid']}" pro_img="{:getmainimgurl($product['main_img'])}" pro_name="{$product['pro_name']}">
+                                                    	<img src="__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/detail_car.png" alt="" />
+                                                    	<span>Add to Cart</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="inner-3__prodetail__thumbsbox">
+                                                <div class="swiper-container detail-gallery-thumbs3_lingtong">
+                                                    <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">
+                                                            <div class="inner-3__prodetail__img all_scale" >
+                                                            	<if condition="$product['product_vod']">
+                                                            	<img class="bofangimg" src="__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/bofang.png" alt="" />
+                                                                </if>
+                                                                <img  src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if> class="jqzoom">
+                                                            </div>
+                                                        </div>
+                                                        <volist name="proimg" id="proimgSm">
+                                                            <if condition="getfimgurl($proimgSm['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                                                <div class="swiper-slide">
+                                                                    <div class="inner-3__prodetail__img all_scale" >
+                                                                    
+                                                                        <img src="{:getfimgurl($proimgSm['field_auxiliary_fid'])}" class="jqzoom"  <if condition="$proimgSm['field_auxiliary_title'] eq ''">alt="{$proimgSm['pro_name']}"<else/>alt="{$proimgSm['field_auxiliary_title']}"</if>/>
+                                                                    </div>
+                                                                </div>
+                                                            </if>
+                                                        </volist>
+                                                    </div>
+                                                </div>
+                                                <div class="swiper-button-next swiper-button-next-detail"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                                                <div class="swiper-button-prev swiper-button-prev-detail"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                                            </div>                                            
+                                            
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+
+           
+            <div class="inner-3__editorcontent">
+                <!--more editors-->
+        
+                    <div>
+                    <volist name="searcheditors" id="searcheditor">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="product_detail_editor_content_title">{$searcheditor['name']}</div>
+                                    <div class="pro_detail detail_editor" id="gx1" style="display:block;">{:str_replace('&nbsp;',' ',htmlspecialchars_decode($searcheditor['content']))}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>    
+                    </div>
+
+
+
+
+
+                <!--more editors-->
+
+                <!--other product-->
+                
+                <if condition="$otherpro neq ''">
+                    <div class="inner_3__otherpro">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="inner_3__prodetail__otherpro">
+                                        <div class="swiper-container inner_3__prodetail__otherswiper">
+                                            <div class="swiper-wrapper">
+                                                <volist empty="" name="otherpro" id="otherpro" offset="0"  key="k">
+                                                    <div class="swiper-slide inner-3__probox">
+                                                        <figure class="inner-3__pro">
+                                                            <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                                                                <div>
+                                                                    <div class="inner-3__proimg">
+                                                                        <img src="{:getmainimgurl($otherpro['main_img'])}" alt="{$otherpro['pro_name']}"/>
+                                                                    </div>
+                                                                    <figcaption class="inner-3__proName ellipsis_two">
+                                                                        <h3 title="{$otherpro['pro_name']}">{$otherpro['pro_name']}</h3>
+                                                                    </figcaption>
+                                                                </div>
+                                                                <div class="inner-3__proMask">
+                                                                    <div class="inner-3__proMask__name inner-3__proMask__font">
+                                                                        {$otherpro['pro_name']}
+                                                                    </div>
+                                                                    <div class="inner-3__proMask__desc inner-3__proMask__font ellipsis_four">
+                                                                        {$otherpro['pro_description']}
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </figure>
+                                                    </div>
+                                                </volist>
+
+                                            </div>
+                                        </div>
+                                        <div class="swiper-button-next inner_3__prodetail__next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                                        <div class="swiper-button-prev inner_3__prodetail__prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                                    </div>
+
+                                        <div class="inner-3__prodetailbtn" style="float: inherit;left: 50%;transform: translate3d(-50%,0,0);-moz-transform: translate3d(-50%,0,0);-webkit-transform: translate3d(-50%,0,0);"><a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}"><span><if condition="$inner_data[12]">{$inner_data[12]}<else/>{$procate['class_name']}</if></span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </if>
+
+            	
+            </div>
+            
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 HJZF_Z__inner--right">
+                    	<div class="product_detail_editor_content_title">Inquiry Now</div>
+ 						<Include file="./Tpl/HJZF2_Z/submitinquiry.html" />                      
+                    
+                        <section>
+                            <if condition="comment_show() eq 1">
+                                <include file="HJZF2_Z:comment" />
+                            </if>
+                            <if condition="get_productkeyword($product['pid']) neq ''">
+                                <include file="HJZF2_Z:keywords2" />
+                            </if>
+                            <if condition="$labelprodlist neq ''">
+                                <h2 class="InsidePages_content2_commontitle" ><span>{:__('Related products')}</span></h2>
+
+                            </if>
+                            <include file="HJZF2_Z:relationinfo2" />
+                            <if condition="$labelnewlists neq ''">
+                                <h2 class="InsidePages_content2_commontitle" ><span>{:__('Related news')}</span></h2>
+                            </if>
+                            <include file="HJZF2_Z:relationnew" />
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<script>
+	/*第三套内页详情大小图切换*/
+require(['jquery', 'swiper'], function ($,Swiper) {
+
+$(function(){
+	var h = $(".left_center").eq(0).height();
+	$(".product_detail--top").css("min-height",h+8+"px");
+});
+
+	/*第三套内页详情大小图切换*/
+	var galleryThumbslingtong = new Swiper('.detail-gallery-thumbs3_lingtong', {
+		spaceBetween: 16,
+		slidesPerView: 5,
+		navigation: {
+			nextEl: '.swiper-button-next-detail',
+			prevEl: '.swiper-button-prev-detail',
+		},
+     	breakpoints: {
+        750: {  
+			//当屏幕宽度小于等于768
+			spaceBetween: 0,
+			slidesPerView: 5,
+        	}
+		},		
+		freeMode: true,
+		watchSlidesVisibility: true,//防止不可点击
+	
+	});
+
+	var galleryTop3 = new Swiper('.detail-gallery-toplingtong', {
+		thumbs: {
+			swiper: galleryThumbslingtong
+		},
+		  on:{
+			slideChange: function(){
+			  $(".lib-video").trigger('pause');
+			},
+		  },	
+	});
+
+$(document)
+.on("click",".bofangmain",function(){
+	$(".lib-video").trigger('play');
+	$(this).hide();
+})
+.on("pause",".lib-video",function() {
+	$(".bofangmain").show();
+});
+
+$(".lib-video").on("ended",function() {
+	$(".bofangmain").show();
+});
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
+</block>

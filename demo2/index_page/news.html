@@ -1,0 +1,89 @@
+<!--{$pagename}-->
+<link rel="stylesheet" href="__TMPL__demo2/css/news.css"/>
+<style>
+.news_more:hover{
+	border:1px solid #{$color};
+	}
+.news_more:hover a{
+	color: #{$color}
+	}
+    .demo2_news_list{margin-bottom: 20px;}
+</style>
+<div style="">
+<div class="index_jy_news" style=" height:auto;">
+    <div class="container" style="margin-bottom:30px;">
+        <div class="index_news_title">
+          {$data[0]}
+        </div>
+        <div style="margin-top: 35px;">
+            <if condition="$data8[1] gt '3'">
+                <div class="swiper-container demo2_news_list">
+                    <div class="swiper-wrapper">
+                        <volist name="indexnews" id="indexnews1" offset="0" length="$data8[1]">
+                            <li class="swiper-slide">
+
+                                <div class="news_pic"><if condition="$indexnews1['new_pro'] neq ''"><a href="{:U('/new_detail',array('nid'=>$indexnews1["nid"]))}" onFocus="blur()"><img src="{:getimgurl($indexnews1['new_pro'])}" border="0" alt="{$indexnews['title']}"></a><else/><img src="{:getindeximgurl($data47[8])}" border="0" /></if></div>
+                                <div class="newslist">
+                                    <div class="news_title"><a href="{:U('/new_detail',array('nid'=>$indexnews1["nid"]))}" onFocus="blur()">{:subtxt($indexnews1['title'],50)}</a></div>
+                                    <div class="news_time">{:date('M-d-Y',$indexnews1['created'])}</div>
+                                </div>
+                            </li>
+                        </volist>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <elseif condition="$data8[1] eq ''"/>
+                <ul class=" index_jy_newlist">
+
+                    <volist name="indexnews" id="indexnews" offset="0" length="3">
+
+                        <li>
+
+                            <div class="news_pic"><if condition="$indexnews['new_pro'] neq ''"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()"><img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}"></a><else/><img src="{:getindeximgurl($data47[8])}" border="0" /></if></div>
+                            <div class="newslist">
+                                <div class="news_title"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],50)}</a></div>
+                                <div class="news_time">{:date('M-d-Y',$indexnews['created'])}</div>
+                            </div>
+                        </li>
+                        <if condition="($key+1)%3 eq 0">
+                            <div style="clear:both; overflow:hidden; height:36px;"></div>
+                            <else/>
+                            <div style="width:30px; height:10px; background:none; float:left;"></div>
+                        </if>
+                    </volist>
+                </ul>
+            </if>
+
+
+            <div class="clear"></div>
+        </div>
+        <li class="news_more"><a href="{:U('/news')}">Read more</a></li>
+
+    </div>
+</div>
+</div>
+
+
+<script>
+
+$(function(){
+var top=$(".index_jy_news").offset().top;
+if(top<800){
+            $('.indexnewstitle').show().addClass('fadeInUp');
+            $('.index_jy_newlist').show().addClass('fadeInUp');
+}
+})
+    $(window).scroll( function() {
+        //scrollTop=$(document).scrollTop();
+		scrollTop=$(document).scrollTop();
+		var top=$(".index_jy_news").offset().top;
+        if(top-scrollTop<500){
+            $('.indexnewstitle').show().addClass('fadeInUp');
+            $('.index_jy_newlist').show().addClass('fadeInUp');
+
+
+        }
+    });
+</script>

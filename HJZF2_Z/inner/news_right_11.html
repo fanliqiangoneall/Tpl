@@ -1,0 +1,111 @@
+<style>
+    .news_11_top li {
+        padding: 15px;
+        margin-bottom: 35px;
+        background-color: #fafafa;
+    }
+    .news_11_top li h3 {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 40px;
+        font-weight: bold;
+        color: #{$color};
+    }
+    .news_11_top li span {
+        border: 1px solid #{$color};
+        padding: 5px 15px;
+        color: #{$color};
+        transition: all .5s;
+    }
+    .news_11_top li span:hover{
+        background-color: #{$color};
+        color: #fff;
+    }
+    .news_11_bottom .newLinkBox:last-child{
+        margin-bottom: 0;
+    }
+    .news_11_bottom .newLinkBox {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        height: 100%;
+        padding-right: 10%;
+        overflow: hidden;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #eee;
+        transition: all .5s;
+    }
+    .news_11_bottom .newLinkBox:hover .leftTimeBox{
+        background-color: #{$color};
+    }
+    .news_11_bottom .newLinkBox:hover .newData,.news_11_bottom .newLinkBox:hover .newYearMon{
+        color: #fff;
+    }
+    .news_11_bottom .leftTimeBox {
+        width: 80px;
+        height: 98px;
+        background: #f5f5f5;
+        text-align: center;
+        font-family: arial;
+        color: #{$color};
+        transition: all .5s ease;
+    }
+    .news_11_bottom .newData {
+        font-size: 44px;
+        line-height: 46px;
+        padding-top: 15px;
+    }
+    .news_11_bottom .centerContentBox {
+        width: calc((100% - 80px)/1);
+        padding-left: 3%;
+    }
+    .news_11_bottom .centerContentBox .newTitle{
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    .news_11_bottom .newLinkBox:hover{
+        padding-bottom: 25px;
+    }
+
+    @media(max-width: 1199px) {
+        .news_10_wrapper.flex-nowrap{
+            flex-wrap: wrap;
+        }
+        .news_10_wrapper .news_11_img{
+            width: 100%;
+        }
+    }
+</style>
+<div class="col-lg-3 col-xs-12 pull-right news_11_wrapper nav-hidden-mobile">
+    <ul class="news_11_top">
+        <!-- 置顶 -->
+        <volist name="newnews" id="allnewsaa" offset="0" length="1">
+                <li>
+                    <a href="{:U('/new_detail',array('nid'=>$allnewsaa["nid"]))}" onFocus="blur()" class="news_11_img">
+                        <h3 class="ellipsis_two">{$allnewsaa['title']}</h3>
+                        <span>{:__('Read More')}</span>
+                    </a>
+                </li>
+        </volist>
+    </ul>
+    <div class="news_11_bottom">
+        <!-- 热门新闻 -->
+        <volist name="hotnews" id="allnewsb">
+            <a href="{:U('/new_detail',array('nid'=>$allnewsb["nid"]))}" class="newLinkBox">
+                <div class="leftTimeBox">
+                    <div class="newData ellipsis_two">{:date('d',$allnewsb['created'])}</div>
+                    <div class="newYearMon ellipsis_two">{:date('Y-m',$allnewsb['created'])}</div>
+                </div>
+                <div class="centerContentBox">
+                    <h2 class="newTitle ellipsis_two">{$allnewsb['title']}</h2>
+                    <article class="newSummry ellipsis_two">{:subtxt($allnewsb['news_description'],25)}</article>
+                </div>
+            </a>
+        </volist>
+    </div>
+
+</div>

@@ -1,0 +1,67 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        };
+    </php>
+    <style>
+        .main_newslist3 li:hover a.more{
+            background-color: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-color: #{$color};
+        }
+        .main_page .current{
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/cases_bread3.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/cases_left3.html" />
+        <div class="container">
+            <div class="row">
+                <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                    <Include file="./Tpl/HJZF2_Z/leftcases_mobile.html" />
+                </section>
+                <section class="col-xs-12 InsidePages_content2">
+                    <div class="InsidePages_content-right__wrap">
+                        <div class="InsidePages_content-right_content-main">
+                            <ul class="main_newslist3 ul_li_list clearfix">
+                                <!-- loop start -->
+                                <php>
+                                    $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                </php>
+                                <volist empty="$no_empty" name="allnews" id="allnews">
+                                    <li class="clearfix">
+                                        <div class="newslist_img col-md-3 col-xs-12 fr">
+                                            <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">
+                                                <img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"
+                                                <else/>src="{:getindeximgurl($inner_data[2])}"</if> border="0" class="img-responsive"
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="newslist_left col-md-8 col-xs-12 fl">
+                                            <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}">
+                                                <h5 class="fz16">{$allnews['title']}</h5>
+                                            </a>
+                                            <span>{:date('Y-m-d ',$allnews['created'])}</span>
+                                            <p class="hidden-xs">{:subtxt($allnews['news_description'],200)}</p>
+                                        </div>
+                                        <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" class="more">{:__('Read More')}</a>
+                                    </li>
+                                </volist>
+                                <!-- loop end -->
+                            </ul>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</block>

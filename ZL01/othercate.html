@@ -1,0 +1,121 @@
+<extend name="ZL01:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#payment a').has('img').not(".pdf").lightBox();
+});
+</script>
+<style>
+#payment table td{ border:none !important;}
+</style>
+<script type="text/javascript" src="__TMPL__ZL01/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__ZL01/css/jquery.lightbox-0.5.css"/>
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="in_bodybg">
+    <div class="r_mbx"><img src="__TMPL__ZL01/img/in_home.png" style="vertical-align:top; margin-top:5px;">&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<span>{$intro_class['class_name']}</span></div>
+    <div class="page_Main">
+       
+       <div class="in_left">
+            <div class="left_search">
+               <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm1(this);">
+                  <div style="width:224px; float:left; height:27px; border:1px solid #e5e5e5; border-right:none;">
+                    <input type="输入关键词..." name="keywords" id="keywords2" placeholder="输入关键词..." value="输入关键词..." style="color:#999999; width:214px; margin-left:10px; border:none; line-height:26px; height:26px; background:none;" onfocus="OnFocusFun1(this,&#39;输入关键词...&#39;)" onblur="OnBlurFun1(this,&#39;输入关键词...&#39;)">
+                  </div>
+                  <div class="left_searchbg" style="width:50px; float:right; text-align:center;">
+                    <input type="image" src="__TMPL__ZL01/img/left_search.png" height="16" style="vertical-align:middle;" name="submit" class="submit">
+                  </div>
+               </form>
+            </div>
+            <if condition="count($navrs) gt 1">
+            <div class="in_tophead">{$navparentname}</div>
+            <div class="page_LeftClassbg">
+              <div class="page_LeftClass">
+                 <volist empty="" name="navrs" id="allclass_left">
+                      <div <if condition="$intro_class['classid'] eq $allclass_left['introclassid']">class="parent1"<else/>class="parent"</if>><a href="{$allclass_left['url']}">{$allclass_left['title']}</a></div>
+                 </volist>
+              </div>
+            </div>
+            </if>
+            <div class="left_contact_pic"><if condition="$data1[10]"><img src="{:getindeximgurl($data1[10])}" border="0" /><else/><img src="__TMPL__ZL01/img/left_contact.jpg" border="0" /></if></div>
+            <div class="left_contact">
+              <h2>联系我们</h2>
+              <ul>
+                 <if condition="chaifen($about['phone'],0)">
+                 <li>电话：{:chaifen($about['phone'],0)}</li>
+                 </if>
+                 <if condition="chaifen($about['fax'],0)">
+                 <li>传真：{:chaifen($about['fax'],0)}</li>
+                 </if>
+                 <if condition="chaifen($about['email'],0)">
+                 <li style="line-height:22px; padding-top:8px;">邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onClick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></li>
+                 </if>
+                 <if condition="chaifen($about['email'],1)">
+                 <li style="margin-left:70px; line-height:22px; padding-bottom:6px;"><a href="mailto:{:chaifen($about['email'],1)}" onClick="turn_sta(3,3)">{:chaifen($about['email'],1)}</a></li>
+                 </if>
+                 <if condition="$about['address']">
+                 <li>地址：{$about['address']}</li>
+                 </if>
+              </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <script>
+        $('#keywords2').keydown(function() {
+        var ordernubmer=$("#keywords2").val();
+          if (event.keyCode == 13) {
+            if(ordernubmer.length<=0){
+                alert("请输入关键词");
+                return false ;
+            }
+          }
+        });
+                 
+        function CheckForm1(theForm)
+          {
+              if (theForm.keywords.value=="输入关键词...")
+              {
+                  alert('请输入关键词');
+                  theForm.keywords.focus();
+                  return false;
+              }
+              
+              return true; 
+          }
+          
+        function OnFocusFun1(element,elementvalue)
+          {
+              if(element.value==elementvalue)
+              {
+                  element.value="";
+                  element.style.color="#333";
+              }
+          }
+          //离开输入框时触发事件
+          function OnBlurFun1(element,elementvalue)
+          {
+              if(element.value==""||element.value.replace(/\s/g,"")=="")
+              {
+                  element.value=elementvalue;    
+                  element.style.color="#333";
+              }
+          }	  
+        </script>
+       <div class="in_right">
+           <div class="page_RightTitle"><h2>{$intro_class['class_name']}</h2></div>
+           <div class="page_RightMain" id="payment">
+           {:get_zifu(htmlspecialchars_decode($intro_class['readme']))}
+           </div>
+       </div>
+       <div style="clear:both"></div>
+    </div>
+</div>
+</block>

@@ -1,0 +1,73 @@
+<!--{$pagename}-->
+<style>
+    .HJ05-bottom{
+        background: url({:getindeximgurl($data13[4])}) left center no-repeat !important;
+    }
+    .hj-bottom-item>p:after {
+        position: absolute;content: "";display: block;background: #{$data47[9]};width: 35px;height: 3px;margin-top: 15px;
+    }
+</style>
+
+<div class="hj-bottom HJ05-bottom">
+    <div class="container">
+        <ul class="HJ05_bottom_list">
+            <li class="hj-bottom-item hj-bottom_nav">
+                <p>{$data13[0]}</p>
+                <ul>
+                    <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+                        <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                    </volist>
+                </ul>
+            </li>
+            <li class="hj-bottom-item hj-bottom_class">
+                <p>{$data13[1]}</p>
+                <ul>
+                    <volist empty="" name="allclass" id="allclass_left" offset="0" length='7'>
+                        <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></li>
+                    </volist>
+                </ul>
+            </li>
+            <li class="hj-bottom-item hj-bottom_contact">
+                <p>{$data13[2]}</p>
+                <ul>
+                    <if condition="$about['phone']"><li><i class="fa fa-phone"></i>Phone: {:chaifen($about['phone'],0)}</li></if>
+                    <if condition="$about['email']"><li><i class="fa fa-envelope"></i>E-mail: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li></if>
+                    <if condition="$about['address']"><li><i class="fa fa-map-marker"></i>Add: <span>{$about['address']}</span></li></if>
+                </ul>
+            </li>
+            <li class="hj-bottom-item hj-bottom_share">
+                <p>{$data13[3]}</p>
+                <div class="ewm"><img src="{:getindeximgurl($data13[5])}" alt=""/></div>
+            </li>
+            <div class="clear"></div>
+        </ul>
+        <div class="hj-copy">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data13[6]){
+                $currtime=2019;
+                }else{
+                $currtime=$data13[6];
+                }
+
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp; {$about['company_name']} &nbsp;&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">All tags</a></span>&nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+        </div>
+        <if condition="$friend_link neq ''">
+            <div class="friendlink">
+
+                    <div class="link"><span>FriendLink: </span>
+                        <volist name="friend_link" id="friend_link">
+                            <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:30px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                                <div style="float:left; text-align:center;color: #fff;line-height: 24px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                            </if>
+                        </volist>
+                        <!--<div style="clear:both"></div>-->
+                    </div>
+                    <div style="clear:both"></div>
+
+            </div>
+        </if>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<!--{$pagename}-->
+<php>
+    $anchor=explode("\\r\\n",$data282[0]);
+
+    foreach($anchor as $k=>$an){
+    $mao[$k]['name']=$an;
+    }
+</php>
+<style>
+    .hjzf_anchor.on:after{
+    background-color: #{$data282[2]};
+}
+</style>
+<div class="hjzf_anchor">
+    <ul class="hjzf_anchor_wrapper">
+        <img src="__TMPL__HJZF2_Z/img/toTop.svg" class="toPrev">
+        <volist empty="" name="mao" id="li" key="k">
+            <li <if condition="$k eq 1">class="active"</if>><a href="#{$li['name']}" <if condition="$k eq 1">class="current"</if>><span></span></a></li>
+        </volist>
+        <img src="__TMPL__HJZF2_Z/img/toBottom.svg"  class="toNest">
+        <span>
+            {$data282[1]}
+        </span>
+        <i></i>
+    </ul>
+</div>

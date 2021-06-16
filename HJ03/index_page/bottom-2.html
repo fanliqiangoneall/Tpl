@@ -1,0 +1,98 @@
+<!--{$pagename}-->
+<style>
+    .HJ03_bottom-2{display: none;}
+	.HJ03_bottom-2-item ul li{color:#868585;}
+</style>
+<if condition="has_mould('bottom-2') eq true">
+    <style>
+        .HJ03_bottom-2{display: block}
+    </style>
+</if>
+<if condition="$data31[4] neq ''">
+    <style>
+        .HJ03_bottom-2{
+            background: url({:getindeximgurl($data31[4])}) left center no-repeat !important;
+        }
+    </style>
+</if>
+<if condition="$data31[6]">
+    <style>
+        .HJ03_bottom-2-item:first-child ul li a h2,.HJ03_bottom-2-item ul li,HJ03_bottom-2-item ul li a,.hj02-copy, .hj02-copy a{
+            color: #{$data31[6]};
+        }
+    </style>
+</if>
+<style>
+    .bottom_xian2{width: 100%;border-bottom: 1px solid rgba(255,255,255,.05);height: 2px;padding-bottom: 10px;padding-top: 30px;}
+</style>
+
+<div class="HJ03_bottom-2">
+    <div class="container">
+        <div class="HJ03_bottom-2-item lf">
+            <h3>{$data31[0]}</h3>
+            <ul>
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="HJ03_bottom-2-item lf">
+            <h3>{$data31[1]}</h3>
+            <ul>
+                <if condition="$about['contact']">
+                    <li>Contact: {:chaifen($about['contact'],0)}</li>
+                </if>
+                <if condition="$about['phone']">
+                    <li>Phone: {:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="$about['mobile']">
+                    <li>Mobile: {:chaifen($about['mobile'],0)}&nbsp;&nbsp;{:chaifen($about['mobile'],1)}</li>
+                </if>
+                <if condition="$about['fax']">
+                    <li>Fax: {:chaifen($about['fax'],0)}</li>
+                </if>
+                <if condition="$about['email']">
+                    <li>E-mail: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                </if>
+                <if condition="$about['address']">
+                    <li>Add: {$about['address']}</li>
+                </if>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="HJ03_bottom-2-item lf" style="margin-right: 0;">
+            <h3>{$data31[2]}</h3>
+            <img src="{:getindeximgurl($data31[3])}" alt=""/>
+        </div>
+       <div class="clear bottom_xian2"></div>
+
+        <div class="hj02-copy">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data31[5]){
+                $currtime=2019;
+                }else{
+                $currtime=$data31[5];
+                }
+
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp;{$about['company_name']}&nbsp;&nbsp;All rights reserved&nbsp;&nbsp;&nbsp;
+            <a style="" href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;<span style="font-size:14px;"><a  href="{:U('/alltag','','')}">All tags</a></span>&nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="Zhinghuan Internet" target="_blank">Zhonghuan Internet</a>
+        </div>
+        <if condition="$friend_link neq ''">
+        <div class="friendlink" style="margin-top: 0px;">
+            <div class="link">
+            <span style="font-size:14px; font-weight:bold; float:left;line-height:30px;">FriendLink: &nbsp;&nbsp;</span>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; text-align:center; line-height: 30px;margin-right: 15px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                    </if>
+                </volist>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    	</if>
+    </div>
+</div>

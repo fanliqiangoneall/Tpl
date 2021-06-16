@@ -1,0 +1,110 @@
+.hjzf_procate_16_wrapper > li{
+    flex: 0 0 24%;
+    width: 24%;
+    margin-bottom: 20px;
+    height: auto;
+    background-color: #fff;
+}
+.hjzf_procate_16_box_cate{
+    position: relative;
+}
+.hjzf_procate_16_box_img_text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,.3);
+    color: #fff;
+    transition: all .5s;
+}
+.hjzf_procate_16_box_img_text span{
+    opacity: 0;
+    visibility: hidden;
+}
+.hjzf_procate_16_box_img_text:hover span{
+    opacity: 1; 
+    visibility: visible;
+    animation: lhbd 1s ease-out infinite;
+}
+@keyframes lhbd{
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(15px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+.hjzf_procate_16_box_img_text:hover{
+    background-color: rgba(0,0,0,.6);
+}
+.hjzf_procate_16_box_img,.hjzf_procate_16_box_img img{
+    width: 100%;
+}
+
+/* bottom */
+.hjzf_procate_16_box_list_container li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 105px;
+}
+.hjzf_procate_16_box_text{
+    color: #333;
+    transition: all .5s;
+}
+.hjzf_procate_16_box_list .hjzf_procate_16_box_img{
+    position: relative;
+    display: block;
+    filter: grayscale(50%);
+    border-radius: 50%;
+    transition: all .5s;
+    overflow: hidden;
+    height: 0;
+    padding-top: 100%;
+    border: 1px solid #ccc;
+}
+.hjzf_procate_16_box_list .hjzf_procate_16_box_img img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.hjzf_procate_16_box_list .hjzf_procate_16_box_img:hover{
+    filter: grayscale(0);
+    transform: scale(1.02);
+}
+@media(max-width: 1365px) {
+    .hjzf_procate_16_wrapper > li{
+        flex: 0 0 49%;
+        width: 49%;
+    }
+}
+@media(max-width: 768px) {
+    .hjzf_procate_16_wrapper > li{
+        flex: 0 0 100%;
+        width: 100%;
+    }
+}
+
+.hjzf_procate_16_wrapper_container > ul > li{
+    width: 352.5px;
+    margin-right: 10px;
+    background-color: #fff;
+}
+.hjzf_procate_16_box_pagination span{
+    width: 12px;
+    height: 12px;
+}
+.hjzf_procate_16_box_pagination{
+    position: static;
+    margin-top: 20px;
+}

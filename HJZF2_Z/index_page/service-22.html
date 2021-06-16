@@ -1,0 +1,43 @@
+<!--{$pagename}-->
+<php>
+    $arr = get_list_val($data340[2]);
+</php>
+<style>
+    .service_22,.service_22_wrapper li span {
+        background-color: #{$data340[3]};
+    }
+    .service_22_wrapper li p{
+        color: #{$data340[3]};
+    }
+    .service_22_wrapper li{
+        background-color: #{$data340[4]};
+    }
+</style>
+<section class="service_22 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center index_title service_22_title pb40">
+                    <span>{$data340[1]}</span>
+                    {$data340[0]}
+                </div>
+                <ul class="service_22_wrapper">
+                    <volist name="arr" id="a">
+                        <li>
+                            <if condition="$a[link]">
+                                <a href="{$a[link]}">
+                            </if>
+                            <span><img src="{$a[img]}" alt="{$a[title]}" class="img-fluid"></span>
+                            <p class="index_text tac">{$a[title]}</p>
+                            <if condition="$a[link]">
+                                </a>
+                            </if>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</section>

@@ -1,0 +1,105 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+        if($inner_data[1]){
+           $color = $inner_data[1];
+        }
+    </php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current,.InsidePages2_contact_item strong,.HJZF_Z__Breadcrumbs span.current, .InsidePages2_contact_item strong{
+			color: #{$color};
+		}
+		.InsidePages_content-right_content_title:before,.InsidePages2_contact_item a.button,.productbutton{
+			background: #{$color};
+		}
+		.InsidePages_content2_commontitle span{
+			border-color: #{$color};color: #{$color};
+		}
+		.HJZF_Z__Breadcrumbs .row{
+			text-align: left;
+		}
+	</style>
+	<div id="HJZF_Z__wrapper" style="margin-bottom: 0">
+		<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner"><img
+							src="{:getimgurl($banner['ad_pic'])}" class="img-fluid"/></div>
+				</volist>
+				<else/>
+				<div class="in_banner" date="inner"><img src="{:getindeximgurl($inner_data[0])}"  class="img-fluid"/></div>
+			</if>
+
+		</div>
+
+				<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$intro_class['class_name']}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+		<div class="HJZF_Z__innerContent inner2_Content" id="main-content-wrapper">
+			<div class="container">
+				<div class="row">
+						<section class="col-xs-12 InsidePages_content2 InsidePages_content2_contact">
+						<div class="InsidePages_content-right__wrap">
+							<div class="InsidePages_content-right_content-main">
+								<div class="InsidePages2_contact-right HJZF_contact_editor">
+									<div class="hidden-xs hidden-sm hidden-md col-lg-12">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+									<div class="col-xs-12 hidden-lg hidden-xl">{:htmlspecialchars_decode($intro_class['wapreadme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+									<div class="clear"></div>
+								</div>
+								<div class="InsidePages2_contact-left">
+									<h3 id="inquiry" class="InsidePages2_contact_title InsidePages_content2_commontitle"><span>{:__('Inquire Now')}</span></h3>
+									<if condition="C('language') eq 'cn'">
+										<div class="page_Main"><Include file="./Tpl/HJZF2_Z/submitinquiry_cn.html" /></div>
+										<elseif condition="C('language') eq 'rus'"/>
+										<div class="page_Main"><Include file="./Tpl/HJZF2_Z/submitinquiry_rus.html" /></div>
+										<else/>
+										<div class="page_Main"><Include file="./Tpl/HJZF2_Z/submitinquiry.html" /></div>
+									</if>
+								</div>
+
+								<div style="clear:both"></div>
+							</div>
+						</div>
+						</section>
+						<div class="clear"></div>
+				</div>
+			</div>
+			<div class="InsidePages2_contact_down">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-4 col-lg-4 InsidePages2_contact_item">
+							<img src="./Tpl/HJZF2_Z/img/add_img.png" alt="address"/>
+							<h4>{:__('Visit US')}</h4>
+							<p>{$about['address']}</p>
+						</div>
+						<div class="col-xs-12 col-md-4 col-lg-4 InsidePages2_contact_item">
+							<img src="./Tpl/HJZF2_Z/img/call_img.png" alt="address"/>
+							<h4>{:__('Call US')}</h4>
+							<p>{:__('For general inquiry,call us at')}</p>
+							<strong> {:chaifen($about['phone'],0)}</strong><br/>
+							<strong> {:chaifen($about['phone'],1)}</strong>
+						</div>
+						<div class="col-xs-12 col-md-4 col-lg-4 InsidePages2_contact_item">
+							<img src="./Tpl/HJZF2_Z/img/chat_img.png" alt="address"/>
+							<h4>{:__('Online Chat')}</h4>
+							<p>{:__('Contact our customer support team')}<strong> 7×24 {:__('hours')}</strong></p>
+							<if condition="C('Language') neq 'cn'">
+								<a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,5)" class="button">{:__('Chat Online Live')}</a>
+								<else/>
+								<a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,5)" class="button">{:__('Chat Online Live')}</a>
+							</if>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

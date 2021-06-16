@@ -1,0 +1,13 @@
+<if condition="$labelnewlists neq ''">
+    <div style="color: #303030;height:42px;line-height:42px;font-size: 20px;background: url(__TMPL__HJ02_JP/img/detail_line.png) no-repeat 0 35px;clear: both;">
+        <span style="font-weight:normal;font-size: 24px;color: #333333;">Related News</span>
+    </div>
+    <div style="margin-top:15px;">
+        <volist empty="" id="labelnewlists" name="labelnewlists" key="k">
+            <div style="padding-top:5px; padding-bottom:5px;"><a href="{:U('/new_detail',array('nid'=>$labelnewlists["nid"]))}" style="color:#000;">{$k}.{$labelnewlists['title']}</a></div>
+            <div class="clear"></div>
+        </volist>
+    </div>
+</if>
+
+<div class="clear"></div>

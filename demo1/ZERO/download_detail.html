@@ -1,0 +1,68 @@
+<extend name="ZERO:base" />
+<block name="content">
+<!--面包屑代码块开始-->
+<div class="crumbs"><img src="__TMPL__ZERO/img/home.png" />&nbsp;&nbsp;<a href="{:U('/')}">首页</a> > {$download['title']}
+</div>
+<div class="clear"></div>
+<!--代码块结束-->
+
+
+<!--代码块开始-->
+<div class="inproductlist">
+	<div class="inprol">
+    	<div class="inprolsit">
+        	<div class="inprolist-1"><img src="__TMPL__ZERO/img/inprodian.jpg" />&nbsp;&nbsp;下载分类<div class="clear"></div></div>
+            <div class="inprolist-2">
+                <ul class="inprolist-2-1">
+                    <volist empty="No Content" name="alldownloadclass" id="alldownloadclass" offset="0" length='5'>
+                        <li class="inprolist-2-child"><a href="{:U('/download_category',array('classid'=>$alldownloadclass["classid"]))}">{$alldownloadclass['class_name']}</a></li>                       
+                    </volist>                  
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div style=" width:100%; height:15px;"></div>
+        <div class="contact">
+        	<div class="contacttext"><img src="__TMPL__ZERO/img/quan.png" />&nbsp;&nbsp;联系我们</div>	
+            <div class="incon">
+            	<img src="__TMPL__ZERO/img/intel.png" />
+                <div class="intiao"></div>
+                <div class="intext">
+                	<div class="intext-1">联系电话</div>
+                    <div class="intext-2">{$about['mobile']}</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="incon">
+            	<img src="__TMPL__ZERO/img/inemail.png" />
+                <div class="intiao"></div>
+                <div class="intext">
+                	<div class="intext-1">邮箱</div>
+                    <div class="intext-2"><a href="mailto:{$about['email']}">{$about['email']}</a></div>
+                </div>
+                <div class="clear"></div>
+            </div>            
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="inpror">
+    	<div class="inprocate">{$download['title']}</div>
+        <div style="width:100%; height:17px;"></div>
+        <div class="catex"></div>
+        <div style="width:100%; height:19px;"></div>
+        <div class="clear">
+            <div class="inproduct">
+                <div class="inproductlr">
+                    {:htmlspecialchars_decode($download['content'])}
+                    <a href="{:getimgurl($download['linkurl'])}" style="float:right;">下载</a>
+                </div>
+                <div class="clear"></div>
+            </div>           
+        </div>
+    </div>
+	
+	
+    <div class="clear"></div>
+</div>
+<!--代码块结束-->
+</block>

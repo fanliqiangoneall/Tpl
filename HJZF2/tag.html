@@ -1,0 +1,68 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+	<style>
+		.Breadcrumbs span.current {
+			color: #{$inner_data[0]};
+		}
+	</style>
+	<div id="wrapper">
+		<div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+					<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+				</volist>
+				<else/>
+				<div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+			</if>
+
+		</div>
+
+		<div class="Breadcrumbs">
+			<div class="Breadcrumbs_down">
+				<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Associated information')}</span>
+			</div>
+		</div>
+
+		<div class="InsidePages_content" id="main-content-wrapper">
+			<section class="InsidePages_content-left">
+			<Include file="./Tpl/HJZF2/left.html" />
+			</section>
+			<section class="InsidePages_content-right">
+			<div class="InsidePages_content-right_content">
+				<div class="InsidePages_content-right_content-main" >
+					<h5 class="InsidePages_content-right_content_title">{:__('Related products')}</h5>
+						<div class="proinquiry"><include file="HJZF2:relationinfo" /></div>
+						<div style="clear:both;"></div>
+
+					<h5 class="InsidePages_content-right_content_title">{:__('Related news')}</h5>
+
+						<div class="proinquiry"><include file="HJZF2:relationnew" /></div>
+						<div style="clear:both;"></div>
+
+					<div style="height: 30px;width: 100%"></div>
+
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

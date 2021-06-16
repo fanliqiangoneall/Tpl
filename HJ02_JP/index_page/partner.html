@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+
+<style>
+.partner .responsive-image{margin-bottom:0px;}
+.hj02-customer-prev {
+	height: 40px; width:40px;display: block;outline:none;background:url({:getindeximgurl($data11[6])}) no-repeat;  z-index:11;
+}
+.hj02-customer-next {
+	width: 40px; height:40px;display: block;outline:none;background:url({:getindeximgurl($data11[7])}) no-repeat;  z-index:11;
+}
+.hj02-customer-prev:hover {
+	background:url({:getindeximgurl($data11[8])}) no-repeat;
+}
+.hj02-customer-next:hover {
+	background:url({:getindeximgurl($data11[9])}) no-repeat;
+}
+</style>
+<!--customers start -->
+<section id="customers" class="margin-60px-bottom">
+	<div class="container">
+		<div class="hj02-customer-wai">
+			<div class="hj02-customer">
+				<div class="swiper-wrapper">
+					<php>
+						for($c=1;$c<5;$c=$c+1){
+					</php>
+					<if condition="$data11[$c] neq ''">
+						<div class="swiper-slide">
+							<img src="{:getindeximgurl($data11[$c])}" alt=""/>
+						</div>
+					</if>
+					<php>
+						}
+					</php>
+				</div>
+
+			</div>
+			<!-- Add Arrows -->
+			<div class=" hj02-customer-next swiper-button-next"></div>
+			<div class="hj02-customer-prev swiper-button-prev"></div>
+		</div>
+
+	</div>
+</section>
+<!--customers end -->

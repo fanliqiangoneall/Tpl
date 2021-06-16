@@ -1,0 +1,182 @@
+<!--{$pagename}-->
+<style>
+    /*#index_product_title_left1 h3{
+        color: #{$color};
+    }*/
+    .hj02_proclasslist li:hover{
+        background: #{$color};
+    }
+    .hj02_proclasslist li:hover a{
+        color: #fff;
+    }
+    .hj02_pro_more:hover{
+        color: #{$color};
+    }
+    .index_proitem_name h6{
+        color: #333
+    }
+    .index_proitem_box:after{
+        background: #{$color};
+    }
+    .proClass_on{
+        background: #{$color};
+    }
+    .hj02_proclasslist li.proClass_on a{
+        color: #fff;
+    }
+
+    .index_product_more:hover{
+    background: {$data1[0]};color:#fff;
+    }
+    .index_proitem_img a:before{
+    background: {$data1[0]};
+    }
+
+    .index_proitem_more{
+        color:{$data1[0]};
+    }
+    .index_proitem_more:hover:after{
+    background: {$data1[0]};
+        width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+    }
+    /*.slick-prev:before, .slick-next:before{
+        color: #{$color};
+    }*/
+    #index_prolist .slick-prev:hover:before,  #index_prolist .slick-next:hover:before{
+    color: {$data1[0]};
+    }
+   .index_pro_slickbox:hover .hj02-pro-prev{
+        background: #{$color};display: block;left: 1px;transition: .6s;
+    }
+    .index_pro_slickbox:hover  .hj02-pro-next{
+        background: #{$color};display: block;right: 1px;transition: .6s;
+    }
+</style>
+<php>
+    if($data9[12]==""){
+    $data9[12]=30;
+    }
+</php>
+<style>
+    .page_probg{
+        padding-bottom: {$data9[12]}px;
+    }
+</style>
+<!--index-product start-->
+<div class="page_probg">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left" >
+                <div id="index_product_title_left1"><h3>{$data9[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right1">
+                    <a href="{:U('/Product')}" class="hj02_pro_more">More -</a>
+                    <ul class="hj02_proclasslist hj02_proclasslist1">
+                        <php>for($a=1;$a<10;$a=$a+2){</php>
+                            <if condition="$data9[$a]">
+                                <li><a href="{$data9[$a+1]}">{$data9[$a]}</a></li>
+                            </if>
+
+                        <php>}</php>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <php>
+            if($data9[13]){
+            $banner_row=$data9[13];
+            }else{
+            $banner_row=1;
+            $all_pro=6*$banner_row;
+            }
+            $arr_str=$data9[11];
+            $arr=explode(',',$arr_str);
+            foreach($arr as $k=>$a){
+            $list[$k]['data']=get_index_products_category($a,$all_pro);
+            }
+        </php>
+<if condition="$banner_row gt 1">
+<style>
+.index_prolist_wai {
+    width: 100%;height:920px;overflow: hidden;position: relative;
+}
+.hj02-pro-prev, .hj02-pro-next{
+    top: 47% !important;
+}
+</style>
+</if>        
+        <div class="index_prolist_wai" id="index_prolist_wai">
+            <div class="index_prolist_waibox index_prolist_waibox1">
+                <volist empty="" name="list" id="li" key="k">
+                    <div class="index_prolist_wai_cont">
+                        <div class="swiper-container index_pro_slickbox">
+                            <div class="swiper-wrapper">
+                                <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="6">
+                                    <div class="swiper-slide index_proitem">
+                                                                            <div class="index_proitem_box">
+                                            <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                            <div class="index_proitem_second">
+                                                <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                                                <div class="index_proitem_name"><h6 title="{:subtxt($indexpro['pro_name'],80)}">{:subtxt($indexpro['pro_name'],60)}</h6></div>
+                                                <if condition="$indexpro['pro_description']"><div class="index_proitem_desc">{:subtxt($indexpro['pro_description'],60)}</div></if>
+                                                 </a>
+                                            </div>
+                                        </div>
+                                        <php>
+                                        $indexpro=$li['data'][$k+5];
+                                        </php>
+                                        <if condition="$banner_row gt 1 and $indexpro">
+                                        <!--2行的情况-->
+
+                                        <div class="index_proitem_box" style="margin-top:20px;">
+                                            <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                            <div class="index_proitem_second">
+                                                <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                                                <div class="index_proitem_name"><h6 title="{:subtxt($indexpro['pro_name'],80)}">{:subtxt($indexpro['pro_name'],60)}</h6></div>
+                                                <div class="index_proitem_desc">{:subtxt($indexpro['pro_description'],60)}</div>
+                                                 </a>
+                                            </div>
+                                        </div>
+                                        </if>
+                                    </div>
+                                </volist>
+
+                            </div>
+                            <div class="swiper-pagination hj02-pro-pagination"></div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next hj02-pro-next"></div>
+                            <div class="swiper-button-prev hj02-pro-prev"></div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div style="clear: both;"></div>
+<script>
+    $(document).ready(function(){
+        var waibox_width=1190*$(".index_prolist_wai_cont").length;
+        $(".index_prolist_waibox").css("width",waibox_width+'px');
+        $(".hj02_proclasslist li:first-child").addClass("proClass_on");
+        $(".hj02_proclasslist1 li").hover(function(){
+            var class_index = $(this).index();
+            $(this).addClass("proClass_on").siblings().removeClass("proClass_on");
+            var waibox_width_left = -1190*class_index;
+            $(".index_prolist_waibox1").stop().animate({left:waibox_width_left+"px"},600);
+
+        });
+        var index_prolist_wai_height = $(".index_prolist_waibox").height();
+        $(".index_prolist_wai").css("height",index_prolist_wai_height);
+    })
+$(window).load(function(){
+        var index_prolist_wai_height = $(".index_prolist_waibox").height();
+        $(".index_prolist_wai").css("height",index_prolist_wai_height);
+})
+</script>
+<!--index-product end-->

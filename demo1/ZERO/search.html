@@ -1,0 +1,46 @@
+<extend name="ZERO:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu3').removeClass().addClass("menuon");	
+});
+</script>
+<div id="animate6">
+<div class="in_banner_bg">
+	<div class="in_banner"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="page_Main">
+    <Include file="./www/Tpl/ZERO/left.html" />
+    <div class="page_right"> 
+      <div class="page_Right">
+        <div class="page_RightTitle"><span>当前位置：<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<a href="{:U('/product')}">产品世界</a>&nbsp;>&nbsp;搜索结果显示</span>搜索结果显示</div>
+        <div class="page_RightMain1">
+          <volist empty="" name="searchpro" id="searchpro">
+              <div class="asd_list">
+                  <div class="img_list"><a href="{:U('/Product','','')}/{:getproname($searchpro['pid'])}"><img src="{:getpcimgurl($searchpro['main_img'])}" <if condition="$searchpro['proalt'] neq ''">alt="{$searchpro['proalt']}"<else/>alt="{$searchpro['pro_name']}"</if> /></a></div>
+                  <div class="proname_list">
+                    <ul>
+                      <li><a href="{:U('/Product','','')}/{:getproname($searchpro['pid'])}"><h3>{$searchpro['pro_name']}</h3></a></li>
+                      <li style="height:70px;">{:subtxt($searchpro['pro_description'],80)}</li>
+                    </ul>
+                  </div>
+              </div>
+              <if condition="($key+1)%2 neq 0">
+              <div style="float:left; width:48px; height:10px; background:none;"></div>
+              <else/>
+              <div class="clear"></div>
+              </if>
+           </volist>
+           <div class="clear"></div>
+           <div class="main_page">{$page}</div>
+           <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <div style="clear:both"></div>
+</div>
+</div>
+</block>

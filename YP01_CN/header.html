@@ -1,0 +1,232 @@
+<!DOCTYPE html><head><script>var urlString="{$urlString}"; if(urlString!=""){location.href=urlString;}</script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<title>{$seo['page_title']}</title>
+<meta name="Keywords" content="{$seo['page_keywords']}"/>
+<meta name="Description" content="{$seo['page_descriptions']}"/>
+<!--是否有手机站-->
+<if condition="gethaswap() eq '1'">
+<script>
+function browserRedirect(){var c=navigator.userAgent.toLowerCase();var h=c.match(/ipad/i)=="ipad";var i=c.match(/iphone os/i)=="iphone os";var g=c.match(/midp/i)=="midp";var d=c.match(/rv:1.2.3.4/i)=="rv:1.2.3.4";var e=c.match(/ucweb/i)=="ucweb";var a=c.match(/android/i)=="android";var b=c.match(/windows ce/i)=="windows ce";var j=c.match(/windows mobile/i)=="windows mobile";if((i||g||d||a||j)){stringObj="__SELF__";var f=stringObj.replace("static/1","");f=f.replace("/index.php/Index/index/","mindex.html");window.location.href=f}}browserRedirect();
+</script>
+</if>
+	<!--commonjs START-->
+	<script>var commonurl = '{$commonurl}' ;</script>
+
+	<if condition="$commonlanguage eq 'zh'">
+		<script type="text/javascript" src="{$commonurl}/commonjs/Browser-detection-cn.js"></script>
+		<else/>
+		<script type="text/javascript" src="{$commonurl}/commonjs/Browser-detection-en.js"></script>
+	</if>
+
+	<!--commonjs END-->
+<script>var path="";</script>
+<if condition="$company_info['use_icon'] eq 1">
+<link rel="bookmark"  type="image/x-icon"  href="{:getimgurl($company_info['icon'])}"/>
+<link rel="shortcut icon" href="{:getimgurl($company_info['icon'])}"> 
+<link rel="icon" href="{:getimgurl($company_info['icon'])}">
+</if>
+<link href="__TMPL__YP01_CN/css/style.css" rel="stylesheet">
+<link href="__TMPL__YP01_CN/css/animate.min.css" rel="stylesheet">
+<script type="text/javascript" src="__TMPL__YP01_CN/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__TMPL__public/js/statitics.js"></script>
+	{:htmlspecialchars_decode(get_web_analysis_head())}
+</head>
+{:htmlspecialchars_decode(get_web_analysis())}
+
+<style type="text/css">
+/*首页产品*/
+.page_otherbtn ul li{ float:left;list-style:none;width:13px;height:13px;border-radius: 50px;
+  margin-right:12px;
+  cursor:pointer;overflow: hidden;
+  background:#999;
+}
+.page_otherbtn ul li.current{
+	width:13px;
+	height:13px;
+	margin-right:12px;
+	background:#{$color}
+}
+.page_list:hover a h3{ 
+	line-height: 43px;font-size: 18px;text-decoration: underline; color:#{$color};
+}
+.asd:hover img{
+	border-bottom: 3px solid #{$color}
+}    	
+.asd:hover .in_proname a{
+	font-size: 14px;
+	font-weight: bold;
+	color: #{$color}
+}
+/*首页关于我们*/
+.index_about_aboutbg{
+	width: 100%;
+	height: 654px;
+	padding-top: 100px;
+	background: url({:getindeximgurl($data4[8])}) center top no-repeat;
+}
+/*首页新闻*/
+.index_news_cont li:hover .index_news1 a{
+	color: #{$color}
+}
+.index_news_cont li:hover{
+	background: url({:getindeximgurl($data8[1])}) left bottom no-repeat;
+}
+/*首页小banner*/
+.page_ser{
+	width: 100%;
+	height: 277px;
+	padding-top: 43px;
+	clear: both ;
+	background: url({:getindeximgurl($data14[3])}) center top no-repeat;
+}
+
+/*首页问答*/
+.page_faq{
+	width: 100%;
+	height:920px;
+	padding-top:40px;
+	clear: both;
+	background: url({:getindeximgurl($data15[8])}) center center no-repeat; 
+}
+/*首页导航*/
+
+.index_navigation_page_Menu ul li:hover{
+	background: url({:getindeximgurl($data1[0])}) 20px center no-repeat #{$color}
+}
+.index_navigation_page_Menu ul li:first-child.menuon{
+	background: url({:getindeximgurl($data1[0])}) 20px center no-repeat #{$color} !important;;
+}
+.index_navigation_page_Menu ul li:first-child+li:hover{
+	background: url({:getindeximgurl($data1[1])}) 20px center no-repeat #{$color} !important;
+}
+.index_navigation_page_Menu ul li:first-child+li.menuon{
+	background: url({:getindeximgurl($data1[1])}) 20px center no-repeat #{$color} !important;
+}
+.index_navigation_page_Menu ul li:first-child+li+li:hover{
+	background: url({:getindeximgurl($data1[2])}) 20px center no-repeat #{$color} !important;
+}
+.index_navigation_page_Menu ul li:first-child+li+li.menuon{
+	background: url({:getindeximgurl($data1[2])}) 20px center no-repeat #{$color} !important;
+}
+.index_navigation_page_Menu ul li:first-child+li+li+li:hover{
+	background: url({:getindeximgurl($data1[3])}) 20px center no-repeat #{$color} !important;
+}
+.index_navigation_page_Menu ul li:first-child+li+li+li.menuon{
+	background: url({:getindeximgurl($data1[3])}) 20px center no-repeat #{$color} !important;
+}
+.index_navigation_page_Menu ul li:first-child+li+li+li+li:hover{
+	background: url({:getindeximgurl($data1[4])}) 20px center no-repeat #{$color} !important;
+}
+.index_navigation_page_Menu ul li:first-child+li+li+li+li.menuon{
+	background: url({:getindeximgurl($data1[4])}) 20px center no-repeat #{$color} !important;
+}
+.menuon{
+	display:block; 
+	background: url({:getindeximgurl($data1[0])}) 20px center no-repeat #{$color}
+}
+.menuon2{
+	display:block;
+    background: url({:getindeximgurl($data1[1])}) 20px center no-repeat #{$color} !important;
+}
+.menuon3{
+	display:block; 
+	background: url({:getindeximgurl($data1[2])}) 20px center no-repeat #{$color} !important;
+}
+.menuon4{
+	display:block; 
+	background: url({:getindeximgurl($data1[3])}) 20px center no-repeat #{$color} !important;
+}
+.menuon5{
+	display:block; 
+	background: url({:getindeximgurl($data1[4])}) 20px center no-repeat #{$color} !important;
+}
+.menuon h2{font-size: 17px;color: #fff;font-weight: normal;line-height: 51px;}
+.menuon2 h2{font-size: 17px;color: #fff;font-weight: normal;line-height: 51px;}
+.menuon3 h2{font-size: 17px;color: #fff;font-weight: normal;line-height: 51px;}
+.menuon4 h2{font-size: 17px;color: #fff;font-weight: normal;line-height: 51px;}
+.menuon5 h2{font-size: 17px;color: #fff;font-weight: normal;line-height: 51px;}
+/*首页font: ;*/
+.newstitle ul li .active {
+     background:url(../img/jia.png) right no-repeat ;
+     color:#{$color};
+     border-left:2px solid #{$color};
+}
+.index_bottom_left_d li a h2:hover{
+    color: #{$color}
+}
+.index_bottom_con  li a:hover{
+	color: #{$color}
+}
+/*内页产品导航*/
+.list_title{
+	width: 204px;
+	text-align: center;
+	font-size: 25px;
+	color: #fff;
+	height: 54px;
+	float: left;
+	line-height: 54px;
+    background: #{$color}
+}
+.yiji a h3:hover{
+	color: #{$color}
+}
+.yijion a h3{
+	line-height: 54px;
+	font-size: 18px;
+	font-weight: normal;
+	color: #{$color}
+}
+/*内页产品*/
+.asd2:hover img{
+	border-bottom: 3px solid #{$color}
+}    	
+.asd2:hover .in_proname2 a{
+	font-size: 14px;
+	font-weight: bold;
+	color: #{$color}
+}
+.in_promore{
+	width: 127px;
+	height: 37px;
+	text-align: center;
+	margin: auto;
+	background: #{$color}
+}
+.in_promore2{
+	width: 92px;
+	height: 26px;
+	text-align: center;
+	margin-top: 5px;
+	background: #{$color}
+}
+.bt{
+	color: #ffffff;
+	border: 0 !important;
+	cursor: pointer;
+	height: 35px !important;
+	padding: 0 10px 0 10px !important;
+	width:69px !important;
+	margin:auto;
+	background: #{$color}
+}
+.page_RightTitle{
+	width: 1000px;
+    padding-left: 20px;
+    margin: auto;
+    height: 50px;
+    line-height: 34px;
+    font-size: 26px;
+    color: #333333;
+    text-transform: unset;
+    background: url({:getindeximgurl($data9[2])}) left center no-repeat;
+}
+</style>
+
+<body>
+{:htmlspecialchars_decode(get_email_code())}
+{:htmlspecialchars_decode(get_skype_code())}
+{:htmlspecialchars_decode(get_phone_code())}
+

@@ -1,0 +1,124 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-06 09:20:01
+ * @LastEditTime: 2020-08-24 14:55:41
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \Admin2\\wenjian\www\Pc\Tpl\HJZF2_Z\inner\product_left7.html
+-->
+<style>
+.HJZF_Z_product_categroy7_mwrap{
+	border:2px #{$color} solid;
+	padding:40px;
+}
+.HJZF_Z_product_categroy7_mwrap .product7_xbt{
+	color:#{$color};
+	display:block;
+}
+.HJZF_Z_product_categroy7_mwrap .product7_bt{
+	color:#14203F;
+	display:block;
+}
+#product7_fenlei_menu{
+	width:100%;
+}
+#product7_fenlei_menu .HJZF_Z_product_categroy7_tit{
+	margin-top:10px;
+	background:#f3f9ff;
+	display:flex;
+	align-items: center;
+	position:relative;
+	height:60px;
+	padding-left: 10px;
+	padding-right: 40px;
+}
+.HJZF_Z_product_categroy7_tit a{
+	width: 100%;
+	position: relative;
+	z-index: 99;
+}
+.HJZF_Z_product_categroy7_tit img{
+	margin-right: 10px;
+}
+.pro_jiantou{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 10px;
+}
+.pro_jiantou img{
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: all .5s;
+}
+.pro_jiantou img.hover{
+	opacity: 0;
+	z-index: 9;
+	transform: translate(0);
+}
+#product7_fenlei_menu .HJZF_Z_product_categroy7_tit:hover .pro_jiantou img.hover,
+#product7_fenlei_menu .HJZF_Z_product_categroy7_tit.cur .pro_jiantou img.hover,
+.product7_left_menu li:hover .pro_jiantou img.hover,
+.product7_left_menu li.cur .pro_jiantou img.hover{
+	opacity: 1;
+}
+
+#product7_fenlei_menu .HJZF_Z_product_categroy7_tit h3{
+	font-size:18px;
+	color:#14203F;
+}
+#product7_fenlei_menu .HJZF_Z_product_categroy7_tit:hover,#product7_fenlei_menu .HJZF_Z_product_categroy7_tit.cur{
+	background-color:#{$inner_data[1]};
+}
+
+@media(max-width:1400px){
+.HJZF_Z_product_categroy7_mwrap{
+	padding:20px;
+}
+}
+@media(max-width:1200px){
+	#product7_fenlei_menu .HJZF_Z_product_categroy7_tit h3{
+	font-size:16px;
+}
+#product7_fenlei_menu .HJZF_Z_product_categroy7_tit img{
+	display:none;
+}
+#product7_fenlei_menu .HJZF_Z_product_categroy7_tit a{
+	padding:0;
+}
+}
+</style>
+<php>
+    if($inner_data[4]){
+        $imgs=[];$imgs_mobile=[];
+        $matches=getimages(htmlspecialchars_decode($inner_data[4]));
+        if(isset($matches[1])){
+            $imgs=$matches[1];
+            $imgs_mobile=$matches[1];
+        }
+    }
+    $img_index=0;
+    $img_index_mobile = 0;
+</php>
+<div class="HJZF_Z_product_categroy7_mwrap wow fadeInUp">
+	<div class="product_categroy7_title">
+    	<span class="index_text product7_xbt">{$inner_data[2]}</span>
+        <span class="index_title product7_bt">{$inner_data[3]}</span>
+    </div>
+    <div id="product7_fenlei_menu">
+        <volist empty="" name="allclass" id="allclass_fenlei">
+        	<php>
+            $tuji=$imgs[$img_index];
+            $img_index++;
+            </php>
+			<div <if condition="inthiscate($classid,$allclass_fenlei['pcid'],$product)">class="HJZF_Z_product_categroy7_tit cur"<else/>class="HJZF_Z_product_categroy7_tit"</if>><img src="{$tuji}"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_fenlei['pcid'])}">{$allclass_fenlei['class_name']}</a>
+				<i class="pro_jiantou">
+					<img src="{:getindeximgurl($inner_data[11])}" class="normal">
+					<img src="{:getindeximgurl($inner_data[12])}" class="hover">
+				</i>
+				<!-- <i class="fa demo-arrow-right"></i> -->
+			</div>
+        </volist>
+    </div>
+</div>

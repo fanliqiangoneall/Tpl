@@ -1,0 +1,38 @@
+<if condition="$data150[0]">
+    <style>
+        .HJZF2__partner--7{
+            background: url({:getindeximgurl($data150[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__partner--7__more:before{
+        background: #{$data150[1]};
+    }
+    .HJZF2__partner--7__more:hover{
+        border-color: #{$data150[1]};
+    }
+</style>
+
+<section class="HJZF2__partner--7">
+    <div class="container">
+        <div class="HJZF2__partner--7__Left lf wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__partner--7__title">{$data150[2]}</h3>
+            <div class="HJZF2__partner--7__content">{:HtmlEncode(subtxt($data150[3],400))}</div>
+            <a href="{$data150[4]}" class="HJZF2__partner--7__more wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="200"><span>{:__('More')}</span></a>
+        </div>
+        <div class="HJZF2__partner--7__Right rt">
+            <!-- Swiper -->
+            <div class="swiper-container HJZF2__partner--7__swiper">
+                <div class="swiper-wrapper">
+                    <if condition="$data150[5]"><div class="swiper-slide"><img src="{:getindeximgurl($data150[5])}" alt=""/></div></if>
+                    <if condition="$data150[6]"><div class="swiper-slide"><img src="{:getindeximgurl($data150[6])}" alt=""/></div></if>
+                    <if condition="$data150[7]"><div class="swiper-slide"><img src="{:getindeximgurl($data150[7])}" alt=""/></div></if>
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"><i class="fa fa-angle-down"></i></div>
+            <div class="swiper-button-prev"><i class="fa fa-angle-up"></i></div>
+        </div>
+    </div>
+</section>

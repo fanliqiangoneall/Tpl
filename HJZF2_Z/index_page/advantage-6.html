@@ -1,0 +1,43 @@
+<!--{$pagename}-->
+<if condition="$data108[0]">
+    <style>
+        .hjzf_z__advantage-6{
+            background: url({:getindeximgurl($data108[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .advantage-6__item:hover{
+        background-color: #{$data108[15]};
+    }
+    .advantage-6__item:hover .advantage-6__font{
+        color: #{$data108[16]};
+    }
+</style>
+<section class="hjzf_z__advantage-6 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 advantage-6__title text-center wow fadeInLeftBig index_title">{$data108[2]}</div>
+           
+            <div class="col-xs-12">
+                <div class="advantage-6__box flex">
+                    <php>
+                        for($a=3;$a<14;$a=$a+3){
+                    </php>
+                    <if condition="$data108[$a]">
+                        <div class="advantage-6__item wow fadeInRightBig">
+                            <article class="text-center">
+                                <if condition="$data108[$a+2]"><a href="{$data108[$a+2]}"></if>
+                                <h3 class="advantage-6__font index_title">{$data108[$a]}</h3>
+                                <p class="advantage-6__font index_text">{$data108[$a+1]}</p>
+                                <if condition="$data108[$a+2]"></a></if>
+                            </article>
+                        </div>
+                    </if>
+
+                    <php>}</php>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

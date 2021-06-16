@@ -1,0 +1,114 @@
+<!--{$pagename}-->
+<php>
+    if($data218[0]){
+    $bg_img=getindeximgurl($data218[0]);
+    }
+    if($data218[19]){
+        $other_bg1=getindeximgurl($data218[19]);
+    }
+	if($data218[39]) {
+		$color = $data218[39];
+	}
+</php>
+<style>
+    .HJZF_Z_other_HJ01{
+        background: url({$bg_img}) no-repeat center top/cover;
+    }
+.HJZF_Z_other_HJ01_swiper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.HJZF_Z_other_HJ01_pic li{
+    width: 163px;
+}
+.HJZF_Z_other_HJ01{
+    background:#{$data218[20]};
+}
+.HJZF_Z_other_HJ01_pic a div span:after{
+    background: url({$other_bg1}) no-repeat center top;
+}
+.HJZF_Z_other_HJ01_swiper .swiper-pagination-bullet{
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+}
+.HJZF_Z_other_HJ01_swiper .swiper-pagination-bullet-active{
+    background-color: #{$color};
+}
+@media (max-width: 768px) {
+    .HJZF_Z_other_HJ01{
+        background:#{$data218[20]};
+        height: auto;
+    }
+    {}
+}
+</style>
+<section class="HJZF_Z_other_HJ01 index_pd">
+    <if condition="$data218[41]">
+        <div class="index_title text-center pb40">
+            {$data218[41]}
+        </div>
+        </if>
+    <if condition="$data218[40]">
+            <div class="container">
+                <div class="row">
+            <style>
+                .HJZF_Z_other_HJ01_pic{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .HJZF_Z_other_HJ01_pic .swiper-slide{
+                    flex: 0 0 18%;
+                    width: 18%;
+                    margin: 0 1.5%;
+                    margin-bottom: 15px;
+                }
+                .HJZF_Z_other_HJ01_pic a div{
+                    transform: translateX(-50%);
+                    left: 50%;
+                    width: 100%;
+                }
+                @media(max-width: 768px) {
+                    .HJZF_Z_other_HJ01_pic .swiper-slide{
+                        flex: 0 0 46%;
+                        width: 46%;
+                        margin: 0 2%;
+                    }
+                }
+            </style>
+            <div class="HJZF_Z_other_HJ01_swiper_no wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".1s">
+                <else/>
+    <div class="w90p">
+        <div class="swiper-container HJZF_Z_other_HJ01_swiper wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".1s">
+            </if>
+            <div class="HJZF_Z_other_HJ01_pic swiper-wrapper">
+                <php>
+                  for($i=1,$j=7,$t=13;$i<7,$j<13,$t<19;$i=$i+1,$j=$j+1,$t=$t+1){
+              </php>
+              <if condition="$data218[$i]">
+                  <div class="swiper-slide">
+                    <a href="{$data218[$j]}"><div><img src="{:getindeximgurl($data218[$i])}" alt="{$data218[$t]}"><span><h3>{$data218[$t]}</h3></span></div></a>
+                </div>
+            </if>
+            <php>}</php>
+            <php>
+              for($o=21,$p=27,$q=33;$o<27,$p<23,$q<39;$o=$o+1,$p=$p+1,$q=$q+1){
+          </php>
+          <if condition="$data218[$o]">
+              <div class="swiper-slide">
+                <a href="{$data218[$p]}"><div><img src="{:getindeximgurl($data218[$o])}" alt="{$data218[$q]}"><span><h3>{$data218[$q]}</h3></span></div></a>
+            </div>
+        </if>
+        <php>}</php>
+
+    </div>
+    <div class="swiper-pagination HJZF_Z_other_HJ01_pagination"></div>
+</div>
+</div>
+<if condition="$data218[40]">
+</div>
+</div>
+</if>
+</section>

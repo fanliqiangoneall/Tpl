@@ -1,0 +1,68 @@
+<style>
+    .HJZF2_advantage9{
+        background: url({:getindeximgurl($data127[12])}) no-repeat center;
+    }
+    .swiper-slide-thumb-active .JZF2_advantage9--right__content{
+        background: #{$data127[13]};
+    }
+    .swiper-slide-thumb-active .JZF2_advantage9--right__content_title{
+        color: #fff;
+    }
+    .swiper-slide-thumb-active .JZF2_advantage9--right__content_subtitle{
+        color: rgba(255,255,255,0.6);
+    }
+</style>
+<section class="HJZF2_advantage9">
+    <div class="container">
+        <div class="swiper-container HJZF2_advantage9__gallery-top wow fadeInLeftBig" data-wow-duration="1s"  data-wow-offset="200">
+            <div class="swiper-wrapper">
+                <php>
+                    for($i=0;$i<11;$i=$i+4){
+                </php>
+                <div class="swiper-slide">
+                    <div class="JZF2_advantage9__content">
+                        <div class="JZF2_advantage9__content_pic">
+                            <img src="{:getindeximgurl($data127[$i+3])}" alt=""/>
+                        </div>
+                        <h3 class="JZF2_advantage9__content_title">{$data127[$i]}</h3>
+                        <p class="JZF2_advantage9__content_subtitle">{$data127[$i+1]}</p>
+                        <div class="JZF2_advantage9__content_desc">{:HtmlEncode(subtxt($data127[$i+2],400))}</div>
+                    </div>
+                </div>
+                <php>
+                    }
+                </php>
+            </div>
+            <!-- Add Arrows -->
+        </div>
+        <div class="HJZF2_advantage9__gallery-top__button">
+            <div class="swiper-button-next swiper-button-white"><i class="fa fa-angle-down"></i></div>
+            <div class="swiper-button-prev swiper-button-white"><i class="fa fa-angle-up"></i></div>
+        </div>
+
+        <div class="swiper-container HJZF2_advantage9__gallery-thumbs wow fadeInRightBig" data-wow-duration="1s"  data-wow-offset="200">
+            <div class="swiper-wrapper">
+                <php>
+                    for($i=0;$i<11;$i=$i+4){
+                </php>
+                <div class="swiper-slide">
+                    <div class="JZF2_advantage9--right__content flex">
+                        <div class="JZF2_advantage9--right__content_pic">
+                            <img src="{:getindeximgurl($data127[$i+3])}" alt=""/>
+                        </div>
+                        <div class="JZF2_advantage9--right__text">
+                            <h3 class="JZF2_advantage9--right__content_title">{$data127[$i]}</h3>
+                            <p class="JZF2_advantage9--right__content_subtitle">{$data127[$i+1]}</p>
+                        </div>
+
+                    </div>
+                </div>
+                <php>
+                    }
+                </php>
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>

@@ -1,0 +1,48 @@
+<extend name="YP01:base" />
+<block name="content">
+   <style>
+      .page_RightTitle{
+         position: relative;
+         line-height: 50px;
+         border-bottom: 1px solid #999;
+      }
+      .page_RightTitleIcon{
+         width: 5px;
+         height: 40px;
+         background: {$data1[13]};
+         margin: auto;
+         position: absolute;
+         top:0;
+         bottom: 0;
+         left: 0;
+      }
+   </style>
+<Include file="./Tpl/YP01/index_page/head.html" />
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="r_mbx"><img src="__TMPL__YP01/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;{$intro_class['class_name']}</div>
+
+<div class="page_LeftClass2">
+<div class="page_Main">
+   <div class="page_RightTitle" style="width: 100%">
+      {$intro_class['class_name']}
+      <div class="page_RightTitleIcon"></div>
+   </div>
+   <div class="page_RightMain" style="width: 100%">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+
+   </div>
+   <div class="page_RightTitle" id="inquiry">Inquiry Now<div class="page_RightTitleIcon"></div></div>
+   <div class="page_RightMain" style="margin-top:5px;width: 100%"><Include file="./Tpl/YP01/submitinquiry.html" /></div>
+   <div style="clear:both"></div>
+  </div> 
+</div>
+<Include file="./Tpl/YP01/index_page/bottom.html" />
+</block>

@@ -1,0 +1,88 @@
+<!--{$pagename}-->
+<style>
+</style>
+
+<if condition="$data123[7] neq ''">
+    <style>
+        .new_hjzf_bottom-7 .HJ03_bottom{
+            background: url({:getindeximgurl($data123[7])}) left center no-repeat !important;
+        }
+    </style>
+</if>
+<style>
+    .bottom_xian{width: 100%;border-bottom: 1px solid rgba(255,255,255,.05);height: 2px;padding-bottom: 10px;}
+</style>
+<div class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="300"><if condition="$data123[1] neq ''">
+    <a href="{$data123[1]}">
+</if>
+    <if condition="$data123[0]">
+        <img src="{:getindeximgurl($data123[0])}" alt="" width="100%"/>
+    </if>
+    <if condition="$data123[1] neq ''"></a></if>
+</div>
+<div class="HJ03_bottom">
+    <div class="container">
+        <div class="hj03-bottom-header">
+            <p class="hj03-bottom-title">{$data123[2]}</p>
+            <p class="hj03-bottom-title2">{$data123[3]}</p>
+        </div>
+        <div class="hj03-bottom-contactlist">
+            <ul>
+                <if condition="$about['address']">
+                    <li>{:__('Add: ')}{$about['address']}</li>
+                </if>
+                <if condition="$about['zip']">
+                    <li>{:__('Zip: ')}{:chaifen($about['zip'],0)}</li>
+                </if>
+                <if condition="$about['phone']">
+                    <li>{:__('Phone: ')}{:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="$about['mobile']">
+                    <li>{:__('Mobile: ')}{:chaifen($about['mobile'],0)}&nbsp;&nbsp;{:chaifen($about['mobile'],1)}</li>
+                </if>
+                <if condition="$about['fax']">
+                    <li>{:__('Fax: ')}{:chaifen($about['fax'],0)}</li>
+                </if>
+                <if condition="$about['email']">
+                    <li>{:__('E-mail: ')}<a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                </if>
+            </ul>
+        </div>
+        <div class="clear bottom_xian"></div>
+            <div class="swiper-container bottom-7-swiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        for($i=4;$i<7;$i=$i+1){
+                    </php>
+                    <if condition="$data123[$i]">
+                        <div class="swiper-slide"><img src="{:getindeximgurl($data123[$i])}" alt=""/></div>
+                    </if>
+                    <php>}</php>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+
+        <div class="hj02-copy">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data13[6]){
+                $currtime=2019;
+                }else{
+                $currtime=$data13[6];
+                }
+
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp;{$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+            <if condition="C('language') eq 'cn'">
+                <a id="mianze" title="常州网络公司中环互联网" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                <a href="https://www.one-all.com" title="常州网络公司" target="_blank">中环互联网设计制作</a>
+                <else/>
+                Designed by <a href="https://www.one-all.com" title="Zhinghuan Internet" target="_blank">Zhonghuan Internet</a>
+            </if>
+        </div>
+    </div>
+</div>

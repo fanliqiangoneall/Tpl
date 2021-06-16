@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+<style type="text/css">
+    .index_caseitem_img a:before{
+    background: rgba(0,0,0,0.5)
+    }
+    .index_caseitem:hover .index_case_title h4{
+        color: {$data1[0]};
+    }
+</style>
+
+<section class="hj01_cases">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left">
+                <div id="index_product_title_left2"><h3>{$data10[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right2">
+                    <a href="{:U('/cases')}" class="index_product_more font-weight-700">{$data10[1]}</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <div class="index_prolist_wai">
+            <div  id="index_caselist">
+                <volist name="indexcases" id="indexcase" offset="0" length="5">
+                    <div class="index_caseitem">
+                        <div class="index_caseitem_box">
+                            <div class="index_caseitem_img"> <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><if condition="$indexcase['new_pro'] eq 0 or $indexcase['new_pro'] eq ''"><img src="__TMPL__ZL01/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" /></if></a></div>
+                            <div class="index_caseitem_down">
+                                    <div class="index_caseitem_down_content">
+                                        <div class="index_case_title"><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><h4>{:subtxt($indexcase['title'],30)}</h4></a></div>
+                                        <div class="index_case_title2">{:subtxt($indexcase['news_description'],30)}</div>
+                                        <div class="index_case_share">
+                                            <div class="margin-20px-top ins-social-icons social-icons-small social-icons-colorful icon-colored social-icons-colored social-icons-square social-icons-effect-none icons-align-center ">
+                                                <a href="{$data1[2]}" class="social icon-twitter" target="_blank"><i class="fa fa-twitter icon-primary"></i></a>
+                                                <a href="{$data1[1]}" class="social icon-facebook" target="_blank"><i class="fa fa-facebook icon-primary"></i></a>
+                                                <a href="{$data1[4]}" class="social icon-linkedin" target="_blank"><i class="fa fa-linkedin icon-primary"></i></a>
+                                                <a href="skype:{:chaifen($about['msn'],0)}?chat" class="social icon-skype" target="_blank" onclick="turn_sta(4,5);"><i class="fa fa-skype icon-primary"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+</section>
+
+

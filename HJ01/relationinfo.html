@@ -1,0 +1,31 @@
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+    <div style="color: #303030;height:42px;line-height:42px;font-size: 20px;background: url(__TMPL__WH01/img/detail_line.png) no-repeat 0 35px;clear: both;">
+        <span style="font-weight:normal;font-size: 24px;color: #333333;">Related Products</span>
+    </div>
+
+<div style="margin-top:15px;">
+<volist empty="" id="labelprodlist" name="labelprodlist" key="k">
+    <div class="main_proitem">
+        <div class="main_proitem_box">
+            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a></div>
+            <div class="main_proitem_second">
+                <div class="main_proitem_name margin-10px-bottom"><h6>{:subtxt($labelprodlist['pro_name'],50)}</h6></div>
+                <div class="main_proitem_desc">{:subtxt($labelprodlist['pro_description'],70)}</div>
+                <div class="margin-15px-top">
+                    <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}" class="main_proitem_more">read more </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <if condition="$k%3 neq 0">
+        <li style="width:50px; height:50px; float:left;list-style: none"></li>
+        <else/>
+        <li class="clear"></li>
+    </if>
+</volist>
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</if>

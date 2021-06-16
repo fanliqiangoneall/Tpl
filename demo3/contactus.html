@@ -1,0 +1,106 @@
+<extend name="demo3:base" />
+<block name="content">
+<Include file="./Tpl/demo3/in_head.html" />
+<div id="">
+<if condition="$banner neq ''">
+	<volist name="banner" id="banner" offset="0" length="1">
+		<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+	</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$intro_class['class_name']}</div>
+
+<div style="width: 1190px;margin:0 auto">
+<div class="page_Main" style="width: 100%">
+   <div class="page_RightTitle" style="width: 100%"><span>{$intro_class['class_name']}</span></div>
+   <div class="page_RightMain" style="width: 100%">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+   
+   
+   
+  <if condition="C('webid') eq 1049">
+ <style>
+ .page_RightTitle{    
+ font-family:"Arial","Microsoft YaHei";
+     font-weight: bold;
+ color: #{$color}
+ }
+</style>
+</if>
+      <style type="text/css">
+		
+		#mapContainer{
+			width:100%; height:400px; margin-top:20px;
+		}
+		#tip{
+			height:30px;
+			background-color:#fff;
+			padding-left:10px;
+			padding-right:10px;
+			position:absolute;
+			font-size:12px;
+			right:10px;
+			bottom:20px;
+			border-radius:3px;
+			line-height:30px;
+			border:1px solid #ccc;
+		}
+		div.info-top {
+			position: relative;
+			background: none repeat scroll 0 0 #F9F9F9;
+			border-bottom: 1px solid #CCC;
+			border-radius:5px 5px 0 0;
+		}
+		div.info-top div {
+			display: inline-block;
+			color: #333333 !important;
+			font-size:14px;
+			font-weight:bold;
+			line-height:31px;
+			padding:0 10px;
+		}
+		div.info-top img {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			transition-duration: 0.25s;
+		}
+		div.info-top img:hover{
+			box-shadow: 0px 0px 5px #000;
+		}
+		div.info-middle {
+			font-size:12px;
+			padding:10px;
+			line-height:21px;
+			color: #333333 !important;
+		}
+		div.info-bottom {
+			height:0px;
+			width:100%;
+			clear:both;
+			text-align:center;
+		}
+		div.info-bottom img{
+			position: relative;
+			z-index:104;
+		}
+	</style>
+ 
+		
+	
+	
+   </div>
+   <div class="page_RightTitle2" id="inquiry" style="width: 100%;background: url({:getindeximgurl($data1[4])}) bottom left no-repeat">立即咨询</div>  
+   <div class="page_RightMain" style="margin-top:5px;width: 100%"><Include file="./Tpl/demo3/submitinquiry.html" /></div>
+   <div style="clear:both"></div>
+  </div> 
+</div>
+<Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div>
+	<Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div>
+	<Include file="./Tpl/demo3/index_page/bottom-4.html" /><div style="clear:both;"></div>
+	<Include file="./Tpl/demo3/index_page/bottom-5.html" />
+</block>

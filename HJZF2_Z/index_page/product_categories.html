@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+<style>
+    .swiper-pagination-bullet-active{
+        background: #{$data17[1]};
+    }
+</style>
+<if condition="$data17[0]">
+    <style>
+        .HJZF_Z__produCategory{
+            background: url({:getindeximgurl($data17[0])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<section class="HJZF_Z__produCategory index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 HJZF_Z__produCategoryWai">
+                <div class="HJZF_Z__produCategory__mainTitle index_title pb40">{$data17[2]}</div>
+                <div class="HJZF_Z__produCategory__wrap swiper-container">
+                    <php>
+                        $arr_str=$data17[3];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_index_products_categoryname($a);
+                        }
+                    </php>
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="list" id="li" key="k">
+                            <if condition="$li">
+                                <div class="swiper-slide HJZF_Z__produCategory__item" >
+                                    <div>
+                                        <div class="HJZF_Z__produCategory__icon"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}"><img src="{:getmainimgurl($li['fid'])}"  alt="{$li['class_name']}" class="img-fluid"/></a></div>
+                                        <div class="HJZF_Z__produCategory__title"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}" class="index_sub_title">{$li['class_name']}</a></div>
+                                        <div class="HJZF_Z__produCategory__desc"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}" class="index_text">{:HtmlEncode($li['readme'])}</a></div>
+                                    </div>
+                                </div>
+                            </if>
+                        </volist>
+                    </div>
+                </div>
+                <div class="swiper-pagination HJZF_Z__produCategory__pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>

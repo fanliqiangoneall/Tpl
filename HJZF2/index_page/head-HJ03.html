@@ -1,0 +1,164 @@
+<!--{$pagename}-->
+<php>
+        if($data47[21]==''){
+        $data47[21]==90;
+        }
+    </php>
+    <style>
+        .new_hjzf_head-HJ03 .module{
+        padding-top: {$data47[21]}px;
+        padding-bottom: {$data47[21]}px;
+        }
+        .new_hjzf_head-HJ03 #search-submit{
+            width: 100%;height: 100%;line-height: 40px;text-align: center;background:#{$color};color:#fff;border: none;
+        }
+        .new_hjzf_head-HJ03 .HJ03_head_menu{
+            background: #{$color};
+        }
+        .new_hjzf_head-HJ03 .hj-dropdown-menu{
+            border-color:#{$color};
+        }
+        .new_hjzf_head-HJ03 .hj-dropdown-menu>li:hover a h3{
+            color: #{$color};
+        }
+        .new_hjzf_head-HJ03 .hj-nav>li.menu_on{
+            background: #{$data71[2]};
+        }
+        .new_hjzf_head-HJ03 .hj-nav>li.menu_on>a>h2{
+            color: #{$color};
+        }
+		.new_hjzf_head-HJ03 .hj03-links span{
+			background: #{$color};
+		}
+    </style>
+    <header id="header" class="hj03_header">
+        <section class="header_wapper">
+            <div class="container">
+                <div class="page_Logo">
+                    <a href="{:U('/')}" style="float: left;">{$logo}</a>
+                </div>
+                <if condition="$data71[3]">
+
+                    <div class="hj03-language rt">
+                        <if condition="$data71[6]">
+                            <a href="javascript:void(0)"><span style="line-height: 26px;">{:__('Language')}</span></a>
+                            <else/>
+                            <a href="{$data71[3]}"><img src="{:getindeximgurl($data71[4])}" alt=""/><span>{$data71[5]}</span></a>
+                        </if>
+                        <if condition="$data71[6]">
+                            <ul>
+                                <li><a href="{$data71[3]}"><img src="{:getindeximgurl($data71[4])}" alt="" width="24" height="24"/><span>{$data71[5]}</span></a></li>
+                                <li><a href="{$data71[6]}"><img src="{:getindeximgurl($data71[7])}" alt="" width="24" height="24"/><span>{$data71[8]}</span></a></li>
+                            </ul>
+                        </if>
+                    </div>
+
+                </if>
+                <if condition="$data71[9]">
+
+                    <div class="hj03-links rt">
+                        <a href="javascript:void(0)"><span style="line-height: 26px;">{$data71[9]}</span></a>
+                        <if condition="$data71[10]">
+                            <php>
+                                $links_name=explode(",",$data71[10]);
+                            	$links_url=explode(",",$data71[11]);
+                                foreach($links_name as $k=>$v){
+                                    $links[$k]['name']=$v;
+                                }
+                                 foreach($links_url as $k=>$v){
+                                    $links[$k]['url']=$v;
+                                }
+                            </php>
+                            <ul>
+                            <volist name="links" id="li">
+                                <li><a href="{$li['url']}" target="_blank">{$li['name']}</a></li>
+                            </volist>
+                            </ul>
+                        </if>
+                    </div>
+
+                </if>
+                <if condition="C(language) eq 'en'">
+                    <div class="head_mail rt">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <span class="telNum font-weight-500"> <a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1)"> {:chaifen($about['email'],0)}</a></span>
+                    </div>
+                    <else/>
+                    <div class="head_mail rt">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <span class="telNum font-weight-500"> <a href="javascript:void(0);" onFocus="blur()" onClick="turn_sta(3,1)" style="cursor: default"> {:chaifen($about['phone'],0)}<if condition="$webid eq '222'"><br />{:chaifen($about['mobile'],0)}（{:chaifen($about['contact'],0)}）</if></a></span>
+                    </div>
+                </if>
+
+                <div class="head_seach rt">
+                    <if condition="C('LANGUAGE') eq 'de'">
+                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                            <ul>
+                                <li style="float: left;width: 268px;height: 42px;"><input style="height: 42px;width:258px;border-width:0px;padding-left: 10px;color:#999999;outline: none;background:#f1f1f1" type="text" value={:__('keyword')} name="keywords" id="keyword3" onfocus="OnFocusFun(this,&#39;Stichwort&#39;)" onblur="OnBlurFun(this,&#39;Stichwort&#39;)"></li>
+                                <li style="float: left;width:68px;height: 42px;"><button type="submit" id="search-submit" style="padding-top:1px;outline: none">Suche</button></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </form>
+
+                        <elseif condition="C('LANGUAGE') eq 'cn' or C('LANGUAGE') eq 'zh'"/>
+                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                            <ul>
+                                <li style="float: left;width: 268px;height: 42px;"><input style="height: 42px;width:258px;border-width:0px;padding-left: 10px;color:#999999;outline: none;background:#f1f1f1" type="text" value={:__('keyword')} name="keywords" id="keyword2" onfocus="OnFocusFun(this,&#39;产品搜索&#39;)" onblur="OnBlurFun(this,&#39;产品搜索&#39;)"></li>
+                                <li style="float: left;width:68px;height: 42px;"><button type="submit" id="search-submit" style="padding-top:1px;outline: none">搜索</button></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </form>
+                        <else/>
+                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                            <ul>
+                                <li style="float: left;width: 268px;height: 42px;"><input style="height: 42px;width:258px;border-width:0px;padding-left: 10px;color:#999999;outline: none;background:#f1f1f1" type="text" value="keyword" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)"></li>
+                                <li style="float: left;width:68px;height: 42px;"><button type="submit" id="search-submit" style="padding-top:1px;outline: none">Search</button></li>
+                                <div class="clear"></div>
+                            </ul>
+
+                        </form>
+                    </if>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </section>
+        <section class="header_navwapper HJ03_head_menu">
+            <div class="container">
+                <nav class="hj-navbar " role="navigation">
+                        <ul class="hj-nav">
+                            <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                                <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav_more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                                <if condition="$vo[child] neq '' ">
+                                    <ul class="hj-dropdown-menu hj02-menu">
+    
+                                        <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                            <li>
+                                                <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+    
+                                            </li>
+                                        </volist>
+    
+                                    </ul>
+                                    <else/>
+    
+                                    <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                        <ul class="hj-dropdown-menu hj02-menu hj02-pro-menu">
+                                            <volist empty="" name="allclass" id="allclass_head"   >
+                                                <li class="menu_on">
+                                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                                </li>
+                                            </volist>
+                                            <div class="clear"></div>
+    
+                                        </ul>
+                                    </if>
+                                </if>
+                                </li>
+                            </volist>
+                        </ul>
+                </nav>
+            </div>
+        </section>
+    
+    </header>

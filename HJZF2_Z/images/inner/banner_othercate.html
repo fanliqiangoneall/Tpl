@@ -1,0 +1,42 @@
+<style>
+.banner_othercate_pagination{
+    position: absolute;
+    bottom: 20px !important;
+    z-index: 9;
+    text-align: center;
+}
+.banner_othercate_pagination span{
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    opacity: 1 !important;
+}
+.banner_othercate_pagination span.active{
+	background-color: #{$inner_data[1]};
+}
+</style>
+<div class="swiper-container inner_banner_othercate">
+    <div class="swiper-wrapper">
+        <volist name="banner" id="banner_pic" offset="0">
+            <div class="swiper-slide">
+                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['title']}" class="img-full" data-swiper-parallax="0.15" data-swiper-parallax-opacity="0.5"  />
+            </div>
+        </volist>
+    </div>
+    <div class="banner_othercate_pagination"></div>
+</div>
+<script>
+require(['swiper', 'jquery'], function (Swiper, $) {
+    var galleryThumbs = new Swiper('.inner_banner_othercate', {
+		autoplay:true,
+		loop:true,
+		speed: 1000,
+        pagination: {
+            el: '.banner_othercate_pagination',
+            bulletActiveClass:'active',
+            clickable: true
+        }
+    });
+});
+</script>

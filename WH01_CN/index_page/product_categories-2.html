@@ -1,0 +1,109 @@
+<!--{$pagename}-->
+<if condition="has_mould('product_categories-2') eq false">
+    <style>
+        .index_productcategories_proclass{display: none;}
+    </style>
+    <else/>
+    <link href="__TMPL__WH01_CN/css/productcategories2.css" rel="stylesheet">
+</if>
+<link href="__TMPL__WH01_CN/css/productcategories.css" rel="stylesheet">
+<style>
+    .index_proclass2_list a{
+        background: #333333;
+    }
+.index_proclass2_list a.on{
+    background: #{$color};
+}
+</style>
+
+<div class="index_productcategories_proclass">
+    <div class="indpro_title">
+        <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>{$data44['0']}</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+    </div>
+    <div id="index_productcategories_animate_2" >
+        <div class="page_product">
+            <div class="zzsc">
+                <div class="tab index_proclass2_list">
+                    <div style="display: inline-block">
+
+                        <volist empty="" name="allclass" id="allclass_index">
+
+
+                            <a href="javascript:;" <if condition="$key eq 0">class="on"</if>>{$allclass_index['class_name']}</a>
+                            <if condition="($key+1)%5 neq 0">
+                                <div style="width:20px; height:22px; float:left;"></div>
+                                <else/>
+                                <div style="height:16px; clear:both"></div>
+                            </if>
+                        </volist>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="content index_proclass2_prolist">
+                    <ul>
+                        <volist empty="" name="allclass" id="allclass_index1">
+                            <php>
+                                $list=get_index_products_category($allclass_index1['pcid'],8);
+                            </php>
+                            <li>
+                                <volist empty="" name="list" id="indexpro" key="k" offset="0" length="8">
+                                    <div class="asd">
+                                        <div class="img"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></div>
+                                        <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                        <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+
+                                            <div class="text" style="top:0px;">
+                                                <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                                    <!--孙改-->
+                                                    <div class="rsp_more" style=" position:relative; top:68px;"> {$indexpro['pro_name']}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <if condition="$k%4 neq 0">
+                                        <div style="width:16px; height:50px; float:left;list-style: none"></div>
+                                        <else/>
+                                        <div class="clear" style="height: 18px;"></div>
+                                    </if>
+                                </volist>
+                            </li>
+                        </volist>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $('.zzsc .content ul').width(1190*$('.zzsc .content li').length+'px');
+        $(".zzsc .tab a").mouseover(function(){
+            $(this).addClass('on').siblings().removeClass('on');
+            var index = $(this).index()/2;
+            number = index;
+            var distance = -1190*(index);
+            $('.zzsc .content ul').stop().animate({
+                left:distance
+            });
+        });
+
+        var auto = 1;  //等于1则自动切换，其他任意数字则不自动切换
+        if(auto ==1){
+            var number = 0;
+            var maxNumber = $('.zzsc .tab a').length;
+            function autotab(){
+                number++;
+                number == maxNumber? number = 0 : number;
+                $('.zzsc .tab a:eq('+number+')').addClass('on').siblings().removeClass('on');
+                var distance = -1190*number;
+                $('.zzsc .content ul').stop().animate({
+                    left:distance
+                });
+            }
+
+        }
+    });
+</script>

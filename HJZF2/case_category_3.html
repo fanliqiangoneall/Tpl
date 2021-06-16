@@ -1,0 +1,98 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .main_page .current{
+            background: #{$inner_data[1]};border-color: #{$inner_data};
+        }
+        .InsidePage--3__breadcrumbs span.current{
+            color: #{$inner_data[1]};
+        }
+    </style>
+    <if condition="$inner_data[3]">
+        <style>
+            .InsidePage--3__contentNavbg{
+                background:url({:getindeximgurl($inner_data[3])}) center no-repeat
+            }
+        </style>
+    </if>
+    <if condition="$inner_data[4]">
+        <style>
+            .InsidePage--3__contentNav.left,.InsidePage--3__contentBox.left{float: left;}
+            .InsidePage--3__contentBox.left{padding-left: 60px;padding-right: 0;}
+            .InsidePage--3__contentNav.left .InsidePage--3__contentNavWrap--list li a{text-align: left;}
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><a href="{:U('/cases')}"><if condition="$inner_data[100]">{$inner_data[100]}<else/>{:__('Cases')}</if></a><i class="fa fa-angle-right"></i><span class="current">{$newscate['class_name']}</span></div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap">
+            <div class="container">
+                <section class="InsidePage--3__contentNav left">
+                    <if condition="$inner_data[5] eq '1'">
+                        <Include file="./Tpl/HJZF2/caseleft_3.html" />
+                        <elseif condition="$inner_data[5] eq '2'"/>
+                        <style>
+                            .InsidePage--3__contentNav{width: 300px}.InsidePage--3__contentBox{width: 840px;}.InsidePage--3__contentWrap{padding-top: 60px;}.InsidePage--3__contentNav{top: -125px;}.InsidePage--3__contentWrap:before{display: none}.InsidePage--3__title{line-height: 50px;height: 50px;border-bottom: 1px solid #bfbfbf;color: #333333;font-size: 24px;}.InsidePage--3__contentBoxMain{margin-top: 30px;}
+                            .InsidePage--3__contentCaseBox>ul>li.main_caseitem{width: 265px;}
+                        </style>
+                        <Include file="./Tpl/HJZF2/caseleft_3--2.html" />
+                        <elseif condition="$inner_data[5] eq '3'"/>
+                        <style>
+                            .InsidePage--3__contentNav{width: 100%;top: 0;}.main-content_inner_news{margin-top: 30px;}
+                            .main-content_inner_news>ul>li.yijion_news h3,.main-content_inner_news>ul>li:hover h3{color: #fff}
+                            .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li:hover{
+                                background: #{$inner_data[1]};color: #fff
+                            }
+                            .InsidePage--3__contentBox.left,.InsidePage--3__contentBox{padding-left: 0;padding-right: 0;width: 100%}
+                            .InsidePage--3__title{display: none}
+                            .InsidePage--3__contentCaseBox>ul>li.main_caseitem:nth-child(3n){margin-right: 21px;}
+                            .InsidePage--3__contentCaseBox>ul>li.main_caseitem:nth-child(4n){margin-right: 0;}
+                        </style>
+                        <Include file="./Tpl/HJZF2/caseleft.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2/caseleft_3.html" />
+                    </if>
+                </section>
+                <section class="InsidePage--3__contentBox left">
+                <div class="InsidePage--3__contentBoxWrap">
+                    <div class="InsidePage--3__contentBoxWrap--main">
+                        <div class="InsidePage--3__title">{$newscate['class_name']}</div>
+                        <div class="InsidePages_content-right_content-main">
+                            <div class="InsidePage--3__contentBoxWrap--main">
+                                <div class="InsidePage--3__contentCaseBox">
+                                    <ul class="InsidePage--3__contentCaseList">
+                                        <volist name="newscatelist" id="allnews" key="k">
+                                            <php>
+                                                $case_name=get_wap_case_class_name($allnews['cates_class']);
+                                            </php>
+                                            <li class="main_caseitem wow fadeInUp">
+                                                <div class="hj05-news-pic">
+                                                    <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($allnews['new_pro'])}" border="0" width="242" height="172"/></a>
+                                                </div>
+                                                <div class="news_info">
+                                                    <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">{:subtxt($allnews['title'],60)}</a></div>
+                                                </div>
+                                            </li>
+                                        </volist>
+                                        <div style="clear:both"></div>
+                                    </ul>
+                                </div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

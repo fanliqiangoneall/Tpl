@@ -1,0 +1,105 @@
+<!--{$pagename}-->
+<php>
+    if($data39[2]){
+    $bg_img=getindeximgurl($data39[2]);
+    }
+</php>
+<style>
+    .new_hjzf_product_three .hj-product{
+        background: url({$bg_img}) no-repeat center/cover;
+    }
+    .new_hjzf_product_three .HJ05-advan-title .ttwrap {
+        background: #{$color};
+    }
+    .new_hjzf_product_three .HJ05-advan-title .ttwrap:before {background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$color} 52%,#{$color} 100%);}
+    .new_hjzf_product_three .HJ05-advan-title .ttwrap:after {background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$color} 52%,#{$color} 100%);}
+    .hj05-product2 .indexhotpro-slide .in_proname_a a:hover,.index_product_categroy li:hover a h3{
+        color: #{$data39[3]};
+    }
+    .HJ05-advan-title .ttwrap:before{
+        background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$data37[5]} 52%,#{$data37[5]} 100%);
+    }
+    .HJ05-advan-title .ttwrap:after{
+        background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$data37[5]} 52%,#{$data37[5]} 100%);
+    }
+    .new_hjzf_product_three .hj05-index-more a{
+        background: #{$data39[3]};
+		border-radius: 5px;
+    }
+    .new_hjzf_product_three .index-more2 a:hover,.product_three_categroy .product_three_proClass_name:hover{
+        background: #{$data39[3]};
+    }
+	.product_three_des{
+		margin: 0 15px;
+	}
+</style>
+<div style="background: #f2f2f2">
+    <div class="hj-product HJ05-product-box2 index_pd">
+        <div class="container">
+            <div class="row">
+                <h3 class="HJ05-advan-title  wow fadeInUp col-xs-12" data-wow-duration="2s" data-wow-delay="0" ><span class="ttwrap index_title">{$data39[0]}</span></h3>
+                <if condition="$data39[1]">
+                <div class="index_product_categroy wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" >
+                    <ul>
+                        <li><a href="{:U('/product')}"><h3 style="font-weight: bold">
+							<if condition="$data39[5]">
+								{$data39[5]}
+								<else/>
+							{:__('All products')}
+							</if>
+						</h3></a></li>
+                        <php>
+                            $arr_str=$data39[1];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                                $list[$k]=get_index_products_categoryname($a);
+                            }
+                        </php>
+                        <volist empty="" name="list" id="li" key="k">
+                            <if condition="$li">
+                                <li class="index_proClass_name"><a class="index_text" data-ajax='false' href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a></li>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+                </if>
+                <php>
+                    $arr_str2=get_list_val($data39[4]);
+                </php>
+                <if condition="$data39[4]">
+                <div class="product_three_categroy wow fadeInUp" data-wow-duration="2s" data-wow-delay="0">
+                	<ul>
+                        <volist empty="" name="arr_str2" id="li2">
+                           <li class="product_three_proClass_name"><a class="index_text" data-ajax='false' href="{$li2[link]}">{$li2[title]}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                </if>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="HJ05-product-list">
+                    <div class="hj05-product2">
+                        <volist empty="" name="indexpro" id="indexpro" key="k" offset="0" length="8">
+                            <div class="col-xs-6 col-md-4 col-lg-3">
+                                <div class="indexhotpro-slide wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" >
+                                    <div class="img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                    <div class="in_proname_a box-sizing ellipsis_two"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}" class="index_text">{$indexpro['pro_name']}</a></div>
+									<if condition="$webid eq '1756'">
+										<div class="product_three_des">
+											{:subtxt($indexpro['pro_description'],40)}
+										</div>
+									</if>
+                                    <div class="hj05-index-more"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}" class="index_text">{:__('Read More')}</a></div>
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+            <div class="index-more2"><a href="{:U('/product')}" class="index_text">{:__('Read More')}</a></div>
+        </div>
+    </div>
+</div>
+

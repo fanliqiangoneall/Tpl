@@ -1,0 +1,45 @@
+
+<if condition="$procate['banner']">
+    <div class="in_banner" data="procate"><img src="{:getimgurl($procate['banner'])}" class="img-fluid" /></div>
+    <elseif condition="$prolist['banner']"/>        
+        <div class="in_banner" data="prolist">
+            <eq name="webid" value="1795">
+                <div class="text_jc" data-text="{$prolist['class_name']}"></div>
+            </eq>
+            <img src="{:getimgurl($prolist['banner'])}"  class="img-fluid"/></div>
+    <elseif condition="$banner" />
+        <volist name="banner" id="banner" offset="0" length="1">
+            <div class="in_banner volist_banner" data="banner">
+                <eq name="webid" value="1795">
+                    <div class="text_jc" data-text="{:__('Products')}"></div>
+                </eq>
+                <eq name="webid" value="1721">
+                    <a href="{$banner['ad_link']}">
+                </eq>
+                <img src="{:getimgurl($banner['ad_pic'])}" alt="" class="img-fluid" />
+                <eq name="webid" value="1721">
+                    </a>
+                </eq>
+            </div>
+        </volist>
+        <else />       
+        <div class="in_banner" date="inner"><img src="{:getindeximgurl($inner_data[0])}" alt="" class="img-fluid" />
+    </div>
+</if>
+
+<eq name="webid" value="1795">
+    <style>
+        .in_banner{
+            position: relative;
+        }
+        .text_jc{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            z-index: 9;
+            font-size: 30px;
+        }
+    </style>
+</eq>

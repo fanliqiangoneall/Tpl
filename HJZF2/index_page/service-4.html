@@ -1,0 +1,80 @@
+<if condition="$data189[0]">
+    <style>
+        .HJZF2__service-4{
+            background: url({:getindeximgurl($data189[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__service-2Next,.HJZF2__service-2Prev{
+        background: #{$data189[1]};
+    }
+</style>
+<section class="HJZF2__service-4">
+    <div class="container">
+            <hgroup>
+                <h3 class="HJZF2__service-4__title">{$data189[2]}</h3>
+                <h4 class="HJZF2__service-4__subtitle">{$data189[3]}</h4>
+            </hgroup>
+        <div class="HJZF2__service-4__down">
+            <ul class="HJZF2__service-4__itemWrap2">
+                <php>
+                    for($i=13;$i<18;$i=$i+1){
+                </php>
+                <li class="HJZF2__service-4__item">
+                    <span></span>
+                    <div class="HJZF2__service-4__itemName">{$data189[$i]}</div>
+                </li>
+                <php>
+                    }
+                </php>
+            </ul>
+            <div class="HJZF2__service-4__shuzi">
+                <ul>
+                    <php>for($i=4,$b=33;$i<11,$b<36;$i=$i+3,$b=$b+1){</php>
+
+                    <if condition="$data189[$i] neq ''">
+                        <li class="HJZF2__service-4__shuzi__item" id="count{$i}">
+                            <span class="count_shuzi timer" data-to="{$data189[$i]}" data-speed="1500" data-danwei="{$data189[$i+2]}" data-danwei2="{$data189[$b]}">{$data189[$i]}</span>
+                            <p class="HJZF2__service-4__shuzi__desc">{$data189[$i+1]}</p>
+                        </li>
+                    </if>
+                    <php>}</php>
+                </ul>
+            </div>
+            <div class="HJZF2__service-4__desc">
+                <div class="HJZF2__service-4__index">
+                    <span class="HJZF2__service-4__active">01</span>
+                    <i>/</i> <span class="HJZF2__service-4__all"></span><br/><img src="__TMPL__HJZF2/img/HJZF2__service-3.png" alt=""/>
+                </div>
+                <div class="HJZF2__service-4__descWrap">
+                    <php>
+                        for($i=18;$i<32;$i=$i+3){
+                    </php>
+                    <li>
+                        <p>{$data189[$i]}</p>
+                        <div> {:HtmlEncode($data189[$i+1])}</div>
+                    </li>
+                    <php>
+                        }
+                    </php>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="HJZF2__service-4__downImg">
+        <ul class="HJZF2__service-4__boxWrap2">
+            <php>
+                for($i=18;$i<32;$i=$i+3){
+            </php>
+            <li class="HJZF2__service-2__box" >
+                    <div style=" background: url({:getindeximgurl($data189[$i+2])}) no-repeat center /cover;">
+                    </div>
+            </li>
+            <php>
+                }
+            </php>
+        </ul>
+    </div>
+</section>

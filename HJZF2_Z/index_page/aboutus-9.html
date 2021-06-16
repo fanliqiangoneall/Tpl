@@ -1,0 +1,66 @@
+<!--{$pagename}-->
+<php>
+    $down_bg=$data125[26] or $down_bg=$color;
+    $herfs=explode("\\r\\n",$data125[27]);
+    $j=0;
+</php>
+<if condition="$data125[0]">
+    <style>
+        .hjzf_z__aboutus-9{
+            background: url({:getindeximgurl($data125[0])}) no-repeat center/cover;background-attachment: fixed;
+        }
+    </style>
+</if>
+<style>
+    .hjzf_z__aboutus-9__down{
+        background: #{$down_bg};
+    }
+    .hjzf_z__aboutus-9__more{
+        color: #{$down_bg};
+    }
+    .hjzf_z__aboutus-9__more:hover{
+        background: #{$down_bg};border: 1px solid #fff;color: #fff;
+    }
+</style>
+<section class="hjzf_z__aboutus-9 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="aboutus-9__title text-center pb40 aboutus-9__color wow fadeInLeftBig index_title">{$data125[2]}</div>
+            </div>
+            <div class="col-xs-12">
+                <ul class="aboutus-9__itemlist flex">
+                    <php>for($i=3;$i<22;$i=$i+4){</php>
+                    <php>
+                    $herf=$herfs[$j];
+
+                    </php>
+                        <if condition="$data125[$i]">
+                        
+                        <li class="text-center wow fadeInLeftBig" data-wow-delay="0.2s">
+                        <if condition="$herf"><a target="new" href="{$herf}"></if>
+                            <p class="aboutus-9_icon"><img src="{:getindeximgurl($data125[$i])}" alt="{$data125[$i+1]}"/></p>
+                            <div><span class="aboutus-9_count_shuzi <if condition="$data125[$i+1]">timer</if> aboutus-9__color index_sub_title" data-to="{$data125[$i+1]}" data-speed="1500" data-danwei="{$data125[$i+2]}">{$data125[$i+1]}</span></div>
+                            <p class="count_shuzi_desc index_text aboutus-9__color">{$data125[$i+3]}</p>
+                            <if condition="$herf"></a></if>
+                        </li>
+                        
+                    </if>
+                    <php>$j++;}</php>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hjzf_z__aboutus-9__down">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-8">
+                <p class="hjzf_z__aboutus-9__downtext index_sub_title">{$data125[23]}</p>
+            </div>
+            <div class="col-xs-12 col-lg-4 text-center">
+                <a href="{$data125[25]}" class="hjzf_z__aboutus-9__more index_text">{$data125[24]}</a>
+            </div>
+        </div>
+    </div>
+</section>

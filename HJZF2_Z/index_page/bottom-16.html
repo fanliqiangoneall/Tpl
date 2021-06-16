@@ -1,0 +1,99 @@
+<!--{$pagename}-->
+<php>
+    if($data473[0]){
+        $color = $data473[0];
+    }
+</php>
+<style>
+    .hjzf_Z_bottom_16_top_bg {
+        background-color: #{$data473[1]};
+    }
+    .hjzf_Z_bottom_16_bottom_bg {
+        background-color: #{$data473[3]};
+    }
+    .hjzf_Z_bottom_16_top li:hover a,.hjzf_Z_bottom_16_bottom_fnav li:hover a,.hjzf_Z_bottom_16_bottom_bg_bottom a:hover {
+        color: #{$color};
+    }
+</style>
+<div class="hjzf_Z_bottom_16">
+    <!-- top -->
+    <div class="hjzf_Z_bottom_16_top_bg">
+        <div class="container">
+            <div class="row">
+                <php>
+                    $arr = get_list_val($data473[2]);
+                    $arra = get_list_val($data473[5]);
+                </php>
+                <ul class="hjzf_Z_bottom_16_top">
+                    <volist name="arr" id="a">
+                        <li>
+                            <a href="{$a[link]}">
+                                <img src="{$a[img]}" alt="{$a[title]}">
+                                <p>{$a[title]}</p>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- bottom -->
+    <div class="hjzf_Z_bottom_16_bottom_bg">
+        <div class="container">
+            <div class="row">
+                <div class="hjzf_Z_bottom_16_bottom_bg_top">
+                    <div class="hjzf_Z_bottom_16_bottom_logo">
+                        <img src="{:getindeximgurl($data473[4])}" class="img-responsive">
+                    </div>
+                    <div class="hjzf_Z_bottom_16_bottom_fnav">
+                        <ul>
+                            <volist name="arra" id="a">
+                                <li>
+                                    <a href="{$a[link]}">{$a[title]}</a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="hjzf_Z_bottom_16_bottom_top_r">
+                        <p>{$about['company_name']}</p>
+                        <if condition="$about['address']">
+                            <p><em>{:__('Add: ')}</em> {$about['address']}</p>
+                        </if>
+                        <if condition="chaifen($about['phone'],0)">
+                            <p><em>{:__('Medical service hotline:')}</em>{:chaifen($about['phone'],0)}</p>
+                        </if>
+                    </div>
+                </div>
+                <div class="hjzf_Z_bottom_16_bottom_bg_bottom">
+                    <php>
+                        $nowtime=date("Y",time());
+                        </php>
+                    <div>
+                        CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights reserved')}&nbsp;
+                        <if condition="get_txtBeiAn()">
+                            <a href="http://beian.miit.gov.cn/"
+                                target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+                            </a>&nbsp;
+                        </if>
+                        <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                        <a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+                    </div>
+
+                    <div>
+                        <if condition="C('language') eq 'cn'">
+                            <if condition="$data453[9] eq ''"><a id="mianze" title="免责声明" target="_blank"
+                                    style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a
+                                    href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                            </if>
+                            <else />
+                            <if condition="$data453[9] eq ''">
+                                <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+                                    Zhonghuan Internet</a>
+                            </if>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bottom -->
+</div>

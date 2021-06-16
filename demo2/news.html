@@ -1,0 +1,80 @@
+<extend name="demo2:basein" />
+<block name="content">
+
+<script type="text/javascript" src="__TMPL__demo2/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__demo2/css/jquery.lightbox-0.5.css"/>
+
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+<div class="r_mbx"><img src="__TMPL__demo2/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<if condition="$data47[7]">{$data47[7]}
+    <else/>
+    News
+</if></div>
+    <style>
+        .page_RightTitle_2 {
+            background: #f8f8f8;
+            padding-top: 30px;
+            height: 70px;
+            line-height: 70px;
+            font-size: 30px;
+            color: #{$color};
+            padding-left: 20px;
+            overflow: hidden;
+            font-weight: bold;
+        }
+    </style>
+
+<div style="width: 1190px;margin:0 auto">
+    <if condition="$data1[17] neq ''">
+        <Include file="./Tpl/demo2/newleft2.html" />
+        <else/>
+        <Include file="./Tpl/demo2/newleft.html" />
+    </if>
+<div class="page_Main">
+    <if condition="$data1[17] neq ''">
+        <div class="page_RightTitle_2"><if condition="$data47[7]">{$data47[7]}
+            <else/>
+            News
+        </if></div>
+        <else/>
+        <div class="page_RightTitle"><span><if condition="$data47[7]">{$data47[7]}
+            <else/>
+            News
+        </if></span></div>
+    </if>
+
+  <div class="body" style="margin-top: 45px;">
+             <volist name="allnews" id="allnews" key="k">
+             <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                  <div class="in_case">
+                      <div class="incase_pic"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><if condition="$allnews['new_pro'] neq ''"><img src="{:getimgurl($allnews['new_pro'])}" border="0" alt="{$allnews['title']}" /><else/><img src="{:getindeximgurl($data47[8])}" border="0" /></if></a></div>
+                      <div class="incase_name">
+                         <li style="float: left;color: #999;font-size: 16px;line-height: 28px;margin-bottom: 10px">{:date('M-d-Y',$allnews['created'])}</li>
+                         <li style="margin-bottom: 10px;"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" style="font-size: 22px;color: #333333;line-height: 30px;">{$allnews['title']}</a></li>
+                         <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                         <li style="color: #999;font-size: 16px;line-height: 28px;">{:subtxt($allnews['news_description'],100)}</li>
+                         </a>
+                      </div>  
+                  </div>
+                  </a>
+                  <if condition="$k % 3 neq 0">
+                     <div style="width:32px; float:left; height:30px;"></div>
+                  <else/>
+                     <div style="clear:both"></div>
+                  </if>
+             </volist>
+             
+          </div>
+  <div class="clearfix clear"></div>
+<div class="green-black" style="text-align:center; padding:20px 20px;">{$page}</div>     
+</div>
+</div>
+
+</block>

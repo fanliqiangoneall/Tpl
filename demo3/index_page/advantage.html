@@ -1,0 +1,109 @@
+<!--{$pagename}-->
+<style>
+#index_advantage {
+    width: 100%;
+    height: 603px;
+    max-width: 1920px;
+    min-width: 1190px;
+    position: relative;
+    background: url({:getindeximgurl($data6[11])}) center center no-repeat;
+}
+
+.index_ad_title{
+	line-height: 50px;margin-top: 60px ; font-size: 35px;color: #111111;padding-bottom: 21px;
+	<if condition="$data6[15]">
+	background:url({:getindeximgurl($data1[1])}) bottom center no-repeat !important;
+	</if>
+	text-align: center;
+	}
+</style>
+
+
+<link href="__TMPL__demo3/css/advantage.css" rel="stylesheet">
+<php>
+    if(!$data6[16]){
+    $data6[16]=560;
+    }
+</php>
+<style>
+    .index_ad_left{
+    width: {$data6[16]}px;
+    }
+</style>
+<style>
+    .advantage_video{width: 53%;height: 100%;position: absolute;right: 0;top: 0;}
+    .advantage_video video{width: 100%;height: 100%;object-fit: fill}
+</style>
+<div id="index_advantage">
+    <if condition="$data6[17]">
+        <div class="advantage_video">
+            <video src="{$data6[17]}" poster='<img src="{:getindeximgurl($data6[18])}">' muted autoplay></video>
+        </div>
+    </if>
+  <div style="width: 1190px;margin: auto;height: 603px;position: relative;">
+   <div id="index_advantage_animate">
+    <div class="index_ad_left">
+    <if condition="$data[0]">
+       <div class="index_ad_title">
+           {$data[0]}
+       </div>
+   </if>    
+       <div class="ad_left1" style="margin-right:30px;">
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[1])}) center left no-repeat;">{$data[2]}</div>
+          <div class="ad_left_con">{$data[3]} </div>
+       </div>
+        <div class="ad_left2" style="margin-right:30px;">
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[4])}) center left no-repeat;">{$data[5]}</div>
+          <div class="ad_left_con">{$data[6]}</div>
+       </div>
+        <div class="ad_left3" style="margin-right:30px;">
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[7])}) center left no-repeat;">{$data[8]}</div>
+          <div class="ad_left_con">{$data[9]}</div>
+       </div>
+        <if condition="$data[12]">
+            <div class="ad_left3" style="margin-right:30px;">
+                <div class="ad_left_title" style="background: url({:getindeximgurl($data[12])}) center left no-repeat;">{$data[13]}</div>
+                <div class="ad_left_con">{$data[14]}</div>
+            </div>
+        </if>
+
+    </div>
+   </div>
+
+          <div id="index_advantage_animate_1">
+              <div class="index_advantage_adv_cont">
+                  <div class="index_advantage_adv_ad_1">
+                      <if condition="$data[10] neq ''">
+                      <img src="{:getindeximgurl($data[10])}">
+                      </if>
+                  </div>
+
+
+                  <div style="clear: both;"></div>
+
+              </div>
+          </div>
+
+
+  </div>
+</div>
+<script>
+$(window).scroll( function() {
+	var scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	var nowtop=$("#index_advantage_animate_1").offset().top;
+
+	if(nowtop-scrollTop<500){
+		$('#index_advantage_animate').show();
+		$('#index_advantage_animate').removeClass().addClass('fadeInDown');
+		$("#index_advantage_animate_1").show();
+		$("#index_advantage_animate_1").addClass("fadeInUpBig");
+		$(".ad_left1").show();
+		$(".ad_left1").addClass("fadeInRightBig");
+		$(".ad_left2").show();
+		$(".ad_left2").addClass("fadeInRightBig1");
+		$(".ad_left3").show();
+		$(".ad_left3").addClass("fadeInRightBig2");
+	}
+});
+</script>

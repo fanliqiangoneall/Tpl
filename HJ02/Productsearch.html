@@ -1,0 +1,115 @@
+<extend name="HJ02:basein" />
+<block name="content">
+
+	<style>
+		.main_content_slogan_right_more a{
+		background: {$data1[0]};
+		border-color:{$data1[0]};
+		}
+		.main_content_slogan_right_more a:hover{
+			background: transparent;border-color:#fff;
+		}
+		.HJ01_product_detail_title2 span{
+			color: #{$color};
+		}
+		#dituContent{width: 100%!important;border: none!important;}
+
+	</style>
+	<if condition="$data1[18] neq ''">
+		<div id="wrapper" style="padding-bottom: 0;margin-bottom: -7px;">
+			<else/>
+			<div id="wrapper" style="padding-bottom: 0;">
+	</if>
+
+		<div id="inbanner_box">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+			</if>
+		</div>
+
+		<div class="page_nei_contact" id="main-content-wrapper">
+
+			<section class="page_nei_contact_right right" style="background:#f5f5f5 !important;height:50px !important;padding-bottom:0px;">
+
+				<div class="page_nei_contact_right_box">
+					<div class="page-title-inner" style="width: 100%;position: absolute;right: 0;top: 0;border-bottom: none">
+						<div class="">
+							<div class="Breadcrumbs"  style="width: 100%;"><a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;Product search</div>
+						</div>
+					</div>
+				</div>
+			</section>
+        
+
+			<div class="clear"></div>
+
+			<div style="width:1200px;margin:30px auto;height:auto;">
+<style>
+.gstinput{width:160px; height:22px; line-height:15px;border:1px #CCCCCC solid;background:none;color:#000;cursor:text;}
+.gsta{height:22px; line-height:18px;}
+.gstleft{margin-left:17px;}
+</style>
+<div>
+<form action="/index.php/Productsearchen/searchlist" method="Post" >
+
+<a class="gsta">Model: </a>
+<input type="text" name="pro_model" class="gstinput" value="{$clist.pro_model}">
+
+<a class="gsta gstleft">inside diameter: </a>
+<input type="text" name="neijing" class="gstinput">&nbsp;<a class="gsta">mm</a>
+
+<a class="gsta gstleft">Outer diameter: </a>
+<input type="text" name="waijing" class="gstinput">&nbsp;<a class="gsta">mm</a>
+
+<a class="gsta gstleft">height: </a><input type="text" name="gaodu" class="gstinput">&nbsp;<a class="gsta">mm</a>
+<br>
+<a class="gsta">type: </a>
+<select name="class" style="font-size:12px;width: 300px;height: 24px;">
+    <option value="">--Select--</option>
+		<volist id="clist" name="clist">
+		<option value="{$clist.pcid}">{$clist.class_name}</option>
+		</volist>
+	</select>
+
+
+<input type="submit" style=" width:46px; height:24px; border:none; margin-top:16px;background: #333333;color: white;font-size: 14px;margin-left: 10px;" value="Search">
+<a href="/index.php/Productsearchen/searchlist" style="background: #333333;color: white;font-size: 14px;width:46px; height:24px;display: inline-block;text-align: center;line-height: 24px;margin-left: 10px;" >Reset</a>
+</form>
+</div>
+
+	<div style="margin-top:20px;">
+
+			<table width="100%" height="auto" border="0" cellpadding="1" cellspacing="1" style=" float:right;">  
+			  <tbody>
+			  <tr>
+				<td align="center" bgcolor="#4e999e" style="color:#FFF;">Model</td>
+				<td align="center" bgcolor="#4e999e" style="color:#FFF;">Attributes</td>
+				<td align="center" bgcolor="#4e999e" style="color:#FFF;">Type</td>
+				<td align="center" bgcolor="#4e999e" style="color:#FFF;">Inquiry</td>
+			  </tr>
+			<volist id="list" name="list"> 
+			  <tr>
+				<td width="20%" bgcolor="#ebe9e9" align="center" class="pro_link" style="font-family:微软雅黑; font-size:14px;text-decoration:underline;padding:10px 0;"><a href="/Product/{$list.pid}" target="_blank">{$list.pro_model}</a></td>
+				<td width="48%" bgcolor="#ebe9e9" align="center" style="font-family:微软雅黑; font-size:14px;color:#295c8d">{$list.pro_description}</td>
+				<td width="16%" bgcolor="#ebe9e9" align="center" style="font-family:微软雅黑; font-size:14px;color:#295c8d">{$list.cname}</td>
+				<td width="16%" bgcolor="#ebe9e9" align="center" style="font-family:微软雅黑; font-size:14px;color:#295c8d"><a href="/Product/{$list.pid}" target="_blank"><img src="__TMPL__HJ02_CN/images/car.gif" border="0"></a></td>
+			  </tr>  
+			</volist>
+			  </tbody>
+			  </table>
+			  <div class="clear"></div>
+			  <div style="margin-top:20px;float:right;font-size:14px;">{$page}</div>
+
+	</div>
+			<div class="clear"></div>
+		     </div>
+<div style="height:30px;width:100%;"></div>
+			<div class="clear"></div>
+		</div>
+	
+	</div>
+</block>

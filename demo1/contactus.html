@@ -1,0 +1,95 @@
+<extend name="demo1:base" />
+<block name="content">
+<div id="animate6">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data1[4])}) center no-repeat"></div>
+</if>
+</div>
+
+
+<Include file="./Tpl/demo1/top_search.html" />
+<div class="page_Main">
+   <div class="page_inleft">
+      <div class="in_tophead">关于我们</div>
+      <div class="page_LeftClass">
+         <volist empty="" name="navrs" id="allclass_left">
+              <div class="parent"><a href="{$allclass_left['url']}">{$allclass_left['title']}</a></div>
+         </volist>
+      </div>
+      <div class="left_contact">
+         <ul>
+            <li style="padding-left:30px;">全国服务热线<br /><span>{:chaifen($about['phone'],0)}</span></li>
+         </ul>
+      </div>
+   </div>
+   <div class="in_right">
+       <div class="page_RightTitle"><span class="r_mbx"><img src="__TMPL__demo1/img/in_home.jpg" style="vertical-align:middle; border:none;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$intro_class['class_name']}</span>{$intro_class['class_name']}</div>
+       <div class="page_RightMain">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+          <style type="text/css">
+            #mapContainer{
+                width:100%; height:400px; margin-top:20px;
+            }
+            #tip{
+                height:30px;
+                background-color:#fff;
+                padding-left:10px;
+                padding-right:10px;
+                position:absolute;
+                font-size:12px;
+                right:10px;
+                bottom:20px;
+                border-radius:3px;
+                line-height:30px;
+                border:1px solid #ccc;
+            }
+            div.info-top {
+                position: relative;
+                background: none repeat scroll 0 0 #F9F9F9;
+                border-bottom: 1px solid #CCC;
+                border-radius:5px 5px 0 0;
+            }
+            div.info-top div {
+                display: inline-block;
+                color: #333333 !important;
+                font-size:14px;
+                font-weight:bold;
+                line-height:31px;
+                padding:0 10px;
+            }
+            div.info-top img {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                transition-duration: 0.25s;
+            }
+            div.info-top img:hover{
+                box-shadow: 0px 0px 5px #000;
+            }
+            div.info-middle {
+                font-size:12px;
+                padding:10px;
+                line-height:21px;
+                color: #333333 !important;
+            }
+            div.info-bottom {
+                height:0px;
+                width:100%;
+                clear:both;
+                text-align:center;
+            }
+            div.info-bottom img{
+                position: relative;
+                z-index:104;
+            }
+        </style>
+       </div>
+   <div class="page_RightTitle" id="inquiry">立即咨询</div>  
+   <div class="page_RightMain" style="margin-top:5px;"><include file="demo1:submitinquiry" /></div>
+   </div>
+   <div style="clear:both"></div>
+</div>
+</block>

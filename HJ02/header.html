@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <script>var urlString = "{$urlString}";
+    if (urlString != "") {
+        location.href = urlString;
+    }</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <title>{$seo['page_title']}</title>
+    <meta name="Keywords" content="{$seo['page_keywords']}"/>
+    <meta name="Description" content="{$seo['page_descriptions']}"/>
+    <!--是否有手机站-->
+    <if condition="gethaswap() eq '1'">
+        <script>
+            function browserRedirect() {
+                var c = navigator.userAgent.toLowerCase();
+                var h = c.match(/ipad/i) == "ipad";
+                var i = c.match(/iphone os/i) == "iphone os";
+                var g = c.match(/midp/i) == "midp";
+                var d = c.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+                var e = c.match(/ucweb/i) == "ucweb";
+                var a = c.match(/android/i) == "android";
+                var b = c.match(/windows ce/i) == "windows ce";
+                var j = c.match(/windows mobile/i) == "windows mobile";
+                if ((i || g || d || a || j)) {
+                    stringObj = "__SELF__";
+                    var f = stringObj.replace("static/1", "");
+                    f = f.replace("/index.php/Index/index/", "mindex.html");
+                    window.location.href = f
+                }
+            }
+            browserRedirect();
+        </script>
+        <elseif condition="getmobileurl() neq '' "/>
+        <script>
+            function browserRedirect() {
+                var c = navigator.userAgent.toLowerCase();
+                var h = c.match(/ipad/i) == "ipad";
+                var i = c.match(/iphone os/i) == "iphone os";
+                var g = c.match(/midp/i) == "midp";
+                var d = c.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+                var e = c.match(/ucweb/i) == "ucweb";
+                var a = c.match(/android/i) == "android";
+                var b = c.match(/windows ce/i) == "windows ce";
+                var j = c.match(/windows mobile/i) == "windows mobile";
+                if ((i || g || d || a || j)) {
+                    stringObj = "__SELF__";
+                    var f = stringObj.replace("static/1", "");
+                    f = f.replace("/index.php/Index/index/", "mindex.html");
+                    window.location.href = "{:getmobileurl()}";
+                }
+            }
+            var where = document.referrer;
+            if (where == ""||where.toUpperCase().indexOf("BAIDU")||where.toUpperCase().indexOf("GOOGEL")||where.toUpperCase().indexOf("360")||where.toUpperCase().indexOf("BING")) {
+                browserRedirect();
+            }
+        </script>
+    </if>
+
+    <script>var path = "";</script>
+    <if condition="$company_info['use_icon'] eq 1">
+        <link rel="bookmark" type="image/x-icon" href="{:getimgurl($company_info['icon'])}"/>
+        <link rel="shortcut icon" href="{:getimgurl($company_info['icon'])}">
+        <link rel="icon" href="{:getimgurl($company_info['icon'])}">
+    </if>
+    <link href="__TMPL__HJ02/css/index.css" rel="stylesheet">
+    <link href="__TMPL__HJ02/css/style.css" rel="stylesheet">
+    <link href="__TMPL__HJ02/css/font-awesome.min.css" rel="stylesheet">
+    <link href="__TMPL__HJ02/css/animate.min.css" rel="stylesheet">
+    <link href="__TMPL__HJ02/css/swiper.min.css" rel="stylesheet">
+    <!--jQuery幻灯片插件slick-->
+    <link href="__TMPL__HJ02/css/slick.css" rel="stylesheet">
+    <link href="__TMPL__HJ02/css/slick-theme.css" rel="stylesheet">
+    <!--jQuery幻灯片插件slick-->
+
+    <link href="__TMPL__public/css/common.css" rel="stylesheet">
+    <!--jquery.themepunch.revolution.min.js-->
+    <link rel="stylesheet" type="text/css" href="__TMPL__HJ02/css/jquery.lightbox-0.5.css"/>
+    <script type="text/javascript" src="__TMPL__HJ02/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="__TMPL__public/js/common.js"></script>
+    <!--commonjs START-->
+    <script type="text/javascript" src="__TMPL__public/js/statitics.js"></script>
+    <if condition="$commonlanguage eq 'zh'">
+        <script type="text/javascript" src="__TMPL__public/js/Browser-detection-cn.js"></script>
+        <else/>
+        <script type="text/javascript" src="__TMPL__public/js/Browser-detection-en.js"></script>
+    </if>
+
+    <!--commonjs END-->
+    {:HtmlEncode($data50[0])}
+    {:htmlspecialchars_decode(get_web_analysis_head())}
+</head>
+<body>
+{:htmlspecialchars_decode(get_web_analysis())}
+

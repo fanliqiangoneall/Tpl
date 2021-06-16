@@ -1,0 +1,47 @@
+<extend name="demo1:base" />
+<block name="content">
+<Include file="./Tpl/demo1/index_page/head.html" />
+<script>
+$(document).ready(function () {
+	$('#payment a').has('img').not(".pdf").lightBox();
+});
+</script>
+<style>
+#payment table td{ border:none !important;}
+</style>
+<script type="text/javascript" src="__TMPL__demo1/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__demo1/css/jquery.lightbox-0.5.css"/>
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data1[4])}) center no-repeat"></div>
+</if>
+</div>
+
+<Include file="./Tpl/demo1/top_search.html" />
+<div class="page_Main">
+   <div class="page_inleft">
+      <div class="in_tophead">{$navparentname}</div>
+      <div class="page_LeftClass">
+         <volist empty="" name="navrs" id="allclass_left">
+              <div class="parent"><a href="{$allclass_left['url']}">{$allclass_left['title']}</a></div>
+         </volist>
+      </div>
+      <div class="left_contact">
+         <ul>
+            <li style="padding-left:30px;">服务热线<br /><span>{:chaifen($about['phone'],0)}</span></li>
+         </ul>
+      </div>
+   </div>
+   <div class="in_right">
+       <div class="page_RightTitle"><span class="r_mbx"><img src="__TMPL__demo1/img/in_home.jpg" style="vertical-align:middle; border:none;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$intro_class['class_name']}</span>{$intro_class['class_name']}</div>
+       <div class="page_RightMain" id="payment">
+       {:get_zifu(htmlspecialchars_decode($intro_class['readme']))}</div>
+   </div>
+   <div style="clear:both"></div>
+</div>
+<Include file="./Tpl/demo1/index_page/bottom.html" />
+</block>

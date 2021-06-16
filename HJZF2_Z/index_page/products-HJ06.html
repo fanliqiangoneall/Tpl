@@ -1,0 +1,142 @@
+<!--{$pagename}-->
+<style>
+  .products_hj06 {
+    background: url({:getindeximgurl($data224[0])}) no-repeat center/cover;
+  }
+  .products_hj06_title:before {
+    background: url({:getindeximgurl($data224[3])}) no-repeat center/100%;
+  }
+  .products_hj06_title_list li:hover a,
+  .products_hj06_title_list li.on a ,.products_hj06_con li:hover .products_hj06_con_text p{
+    color: #{$data224[2]};
+  }
+
+  .products_hj06_con_img p:before {
+    background-color: #{$data224[2]};
+  }
+
+  .products_hj06_con_box:after {
+    background: url({:getindeximgurl($data224[5])}) no-repeat center/100%;
+  }
+</style>
+      <if condition="$data224[6]">
+<script>
+  var products_hj06_flag = '{$data224[6]}';
+</script>
+<else/>
+<script>
+  var products_hj06_flag = false;
+</script>
+</if>
+<section class="products_hj06 index_pd">
+  <div class="container">
+    <div class="row products_hj06_scroll">
+      <!-- top start -->
+      <div class="clearfix products_hj06_title_box wow fadeInUp">
+        <div class="col-xs-12 products_hj06_title col-md-3 index_title">
+          {$data224[1]}
+        </div>
+        <php>
+          $arr_str=$data224[4]; $arr=explode(',',$arr_str); foreach($arr as $k=>$a) { $list[$k]=get_index_products_categoryname($a);
+          }
+        </php>
+        <ul class="col-md-9 col-xs-12 text-right products_hj06_title_list hidden-xs hidden-sm hidden-md">
+          <volist name="list" id="li" offset="0">
+            <li>
+              <a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">
+                {$li['class_name']}</a>
+            </li>
+          </volist>
+        </ul>
+      </div>
+      <!-- top end -->
+
+      <if condition="$data224[6]">
+        <!-- scroll start -->
+        <div class="products_hj06_boxout hidden-xs hidden-sm hidden-md wow fadeInUp">
+          <div class="products_hj06_box">
+            <php>
+              $arr_str=$data224[4]; $arr=explode(',',$arr_str); foreach($arr as $k=>$a){ $list[$k]['data']=get_index_products_category($a,
+              8); }
+            </php>
+            <volist name="list" id="lia" offset="0">
+              <div class="products_hj06_conbox">
+                <ul class="clearfix products_hj06_con">
+                  <volist name="lia['data']" id="proitem" offset="0" length="8">
+                    <li>
+                      <a href="{:U('/Product','','')}/{:getproname($proitem['pid'])}">
+                        <div class="products_hj06_con_box">
+                          <div class="products_hj06_con_img">
+                            <img src="{:getmainimgurl($proitem['main_img'])}" alt="{$proitem['pro_name']}" class="img-responsive">
+                            <p>
+                              <span class="ellipsis_four index_text">
+                                {:subtxt($proitem['pro_description'],200)}
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="products_hj06_con_text ">
+                          <p class="index_text ellipsis_one">{$proitem['pro_name']}</p>
+                        </div>
+                      </a>
+                    </li>
+                  </volist>
+                </ul>
+              </div>
+            </volist>
+          </div>
+        </div>
+        <!-- scroll end -->
+        <else />
+
+          <!-- normal start -->
+          <ul class="clearfix products_hj06_con wow fadeInUp hidden-xs hidden-sm hidden-md">
+                  <volist empty="" name="indexpro" id="indexproc" key="k" offset="0" length="8">
+                <li>
+                  <a href="{:U('/Product','','')}/{:getproname($indexproc['pid'])}">
+                    <div class="products_hj06_con_box">
+                      <div class="products_hj06_con_img">
+                        <img src="{:getmainimgurl($indexproc['main_img'])}" alt="{$indexproc['pro_name']}" class="img-responsive">
+                        <p>
+                          <span class="ellipsis_four index_text">
+                            {:subtxt($indexproc['pro_description'],200)}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="products_hj06_con_text text-center">
+                      <if condition="$webid eq '200'">
+                      <p class="index_text">{$indexproc['pro_name']}</p>
+                      <else/>
+                      <p class="index_text ellipsis_one">{$indexproc['pro_name']}</p>
+                      </if>
+                    </div>
+                  </a>
+                </li>
+              </volist>
+            </ul>
+          <!-- normal end -->
+      </if>
+
+       <!-- mobile start -->
+       <ul class="clearfix products_hj06_con_mobile hidden-lg wow fadeInUp">
+          <volist empty="" name="indexpro" id="indexproa" key="k" offset="0" length="8">
+          <li class="col-xs-6">
+          <a href="{:U('/Product','','')}/{:getproname($indexproa['pid'])}">
+            <div class="products_hj06_con_box_mobile">
+              <div class="products_hj06_con_img_mobile">
+                <img src="{:getmainimgurl($indexproa['main_img'])}" alt="{$indexproa['pro_name']}" class="img-responsive">
+              </div>
+            </div>
+            <div class="products_hj06_con_text_mobile ellipsis_two  text-center">
+              <p>{$indexproa['pro_name']}</p>
+            </div>
+          </a>
+        </li>
+      </volist>
+    </ul>
+  <!-- mobile end -->
+      
+    </div>
+  </div>
+</section>

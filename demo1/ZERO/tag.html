@@ -1,0 +1,25 @@
+<extend name="ZERO:base" />
+<block name="content">
+<div id="animate6">
+<div class="in_banner_bg">
+	<div class="in_banner"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="page_Main">
+  <Include file="./www/Tpl/ZERO/left.html" />
+  <div class="page_right">
+     <div class="page_RightTitle"><span>当前位置：<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;关联信息</span>关联信息</div>
+     <div class="page_RightMain">
+        <!--产品关键词-->
+		<!--关联产品-->
+		<include file="ZERO:relationinfo" />	
+		<include file="ZERO:relationnew" />	
+		<!--评论-->
+     </div>
+  </div>
+  <div style="clear:both"></div>
+</div>
+</div>
+</block>

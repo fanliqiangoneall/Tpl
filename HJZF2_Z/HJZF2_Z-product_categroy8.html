@@ -1,0 +1,157 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+<php>
+$xuhao = $inner_data[4];
+if($inner_data[0]){
+    $color = $inner_data[0];
+}
+</php>
+
+    <style>
+		.HJZF_Z_product_categroy8_list ul li:hover,.HJZF_Z__product_categroy8__line,.HJZF_Z__product_categroy8__list03 .hd li.cur{
+			background-color:#{$color};
+		}  
+		.HJZF_Z_product_categroy8_breadcrumbs .tar .current,.HJZF_Z_product_categroy8_erfenlei .erji_tit{
+		    color:#{$color};
+		}  
+		.HJZF_Z_product_categroy8_mwrap{
+			background-image:url({:getindeximgurl($inner_data[1])});
+		}
+		.HJZF_Z__product_categroy8__list03 .hd li{
+			width: calc(100% / {$xuhao});
+		}
+    </style>
+    <!-- bread start -->
+    <div class="HJZF_Z_product_categroy8_breadcrumbs" navcrumbs>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 tal">
+                   <div class="HJZF_Z_product_categroy8_infor"><span class="index_text">{:__('Products')}</span><i class="fa fa-caret-down"></i>
+                   		<div class="HJZF_Z_product_categroy8_list">
+                          <ul>
+                        	<volist empty="" name="allclass" id="allclass_left">
+                            	<li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></li>
+                            </volist>
+                          </ul>
+                        </div>
+                   </div>
+                </div>
+                <div class="col-xs-6 tar">
+                    <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    <a href="{:U('/product')}">{:__('Products')}</a><volist empty="" name="path" id="path">&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($path['pcid'])}">{$path['class_name']}</a></volist>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
+                    <span class="current">{$prolist['class_name']}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bread end -->
+    <!-- side start -->
+    <Include file="./Tpl/HJZF2_Z/inner/product_left8.html" />
+    <!-- side end -->
+
+    <!-- pro list start-->
+    <div class="HJZF_Z__innerContent HJZF_Z__product_categroy8_hd">
+        <div class="container">
+            <ul class="row HJZF_Z__innerContent_product_categroy8 clearfix">
+                <div class="row_little">
+                    <php>
+                        $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                    </php>
+                <volist empty="$no_empty" name="pro" id="pro" key="k">
+                    <li class="col-xs-6 col-md-3 wow fadeInUp">
+                        <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                            <div class="HJZF_Z__innerContent_product_categroy8_box HJZF_Z__innerContent">
+                                <div class="HJZF_Z__innerContent_product_categroy8_box_img">
+                                    <img src="{:getmainimgurl($pro['main_img'])}" class="img-responsive" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"
+                                        <else/>alt="{$pro['pro_name']}"</if> />
+                                </div>
+                                <div class="HJZF_Z__innerContent_product_categroy8_box_text">
+                                    <p class="ellipsis_two">{$pro['pro_name']}</p>
+                                    <span class="ellipsis_two">{:HtmlEncode(subtxt($pro['pro_description'],100))}</span>
+                                </div>
+                                <div class="HJZF_Z__product_categroy8__line"></div>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </div>
+            </ul>
+            <div class="main_page">{$page}</div>
+        </div>
+    </div>
+    <!-- pro list end -->
+    <if condition="$inner_data[4]">
+    <div class="HJZF_Z__product_categroy8__list03 wow fadeInUp">
+    	<div class="container">
+            <div class="row">
+            	<div class="col-xs-12">
+                    <div class="HJZF_Z__product_categroy8__infor">
+                        <div class="tit index_title">{$inner_data[2]}</div>
+                        <div class="con index_text">{$inner_data[3]}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hd">
+        	<div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                    	<div class="HJZF_Z__product_categroy8__wrap">
+                            <ul>
+                            	<php>
+                                    for($i=5,$x=1;$i<=15,$x<=4;$i=$i+3,$x=$x+1){
+                                </php>
+                                <li class="li{$x}">
+                                	<a href="javascript:;"> 
+                                    <div class="icon icon0{$x}" style="background-image:url({:getindeximgurl($inner_data[$i+1])})"></div> 
+                                    <div class="txt index_sub_title">{$inner_data[$i]}</div>
+                                    </a> 
+                                </li>
+                                <php>
+                                    }
+                                </php>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bd">
+            <div class="HJZF_Z__product_categroy8__bgbox">
+            	<php>
+                    for($j=7;$j<=16;$j=$j+3){
+                </php>
+            	<div class="bg"><img src="{:getindeximgurl($inner_data[$j])}" width="100%" border="0" /></div>
+                <php>
+                    }
+                </php>
+            </div>
+        </div>
+    </div>
+    </if>
+</block>
+<block name="footer_js">                              
+<script>
+require(['jquery'], function ($) {
+	$(".HJZF_Z_product_categroy8_infor").hover(function(){
+		$(this).addClass("on");
+		$(".HJZF_Z_product_categroy8_list").show();
+	},function(){
+		$(this).removeClass("on");
+		$(".HJZF_Z_product_categroy8_list").hide();
+	});
+	$(".HJZF_Z_product_categroy8_fenlei ul li").on("click",function(){
+		$(this).addClass("cur");
+	});
+	$(".HJZF_Z__product_categroy8__wrap li:first-child").addClass('cur');
+	$(".HJZF_Z__product_categroy8__bgbox div.bg:first-child").addClass('cur');
+	$('.HJZF_Z__product_categroy8__list03 .hd').on('mouseenter', 'li', function(event) {
+	  event.preventDefault();
+	  $(this).addClass('cur').siblings().removeClass('cur');
+	  var i = $(this).index();
+	  $('.HJZF_Z__product_categroy8__list03 .bd .HJZF_Z__product_categroy8__bgbox .bg').eq(i).addClass('cur').siblings().removeClass('cur');
+	});
+
+});
+</script>
+</block>

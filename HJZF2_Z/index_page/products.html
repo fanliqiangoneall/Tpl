@@ -1,0 +1,82 @@
+<!--{$pagename}-->
+<php>
+    $arr_str=$data9[3];
+    $arr=explode(',',$arr_str);
+    foreach($arr as $k=>$a){
+    $list[$k]['data']=get_index_products_category($a,$all_pro);
+    }
+    foreach($arr as $k=>$a) { $category[$k]=get_index_products_categoryname($a);}
+</php>
+<style>
+    <if condition="$data9[4]">
+        .HJZF2_Z__product{
+            background: url({:getindeximgurl($data9[4])}) no-repeat center/cover;
+        }
+        </if>
+    .HJZF2_Z__product__title:before,.HJZF2_Z__product-next, .HJZF2_Z__product-prev{
+        background: #{$data9[1]};
+    }
+</style>
+<section class="HJZF2_Z__product index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__product__title col-xs-12 index_title">{$data9[0]}</div>
+            <div class="HJZF2_Z__product__swiper_box col-xs-12">
+                <div class="swiper-container  HJZF2_Z__product__swiper">
+                    <div class="swiper-wrapper">
+                    	<if condition="$data9[3]">
+                        <volist empty="" name="list" id="li" key="k">
+                        <volist empty="" name="li['data']" id="indexnewpro" key="k">
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <div class="swiper-slide__inner_img">
+                                        <a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">
+                                        <img src="{:getmainimgurl($indexnewpro['main_img'])}" <if condition="$indexnewpro['proalt'] neq ''">alt="{$indexnewpro['proalt']}"<else/>alt="{$indexnewpro['pro_name']}"</if> />
+                                    </a>
+                                    </div>
+                                    <div class="swiper-slide__inner_title box-sizing ellipsis_one index_title"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">{$indexnewpro['pro_name']}</a></div>
+                                    <if condition="$data9[2]"><div class="swiper-slide__inner_dec box-sizing ellipsis_two index_text"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">{$indexnewpro['pro_description']}</a></div></if>
+                                </div>
+                            </div>
+                        </volist>
+                        </volist>
+                        <elseif condition="C('webid') eq '1582'" />
+                        <volist empty="" name="indexpro" id="indexnewpro" key="k" offset="0" length="20">
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <div class="swiper-slide__inner_img">
+                                        <a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">
+                                        <img src="{:getmainimgurl($indexnewpro['main_img'])}" <if condition="$indexnewpro['proalt'] neq ''">alt="{$indexnewpro['proalt']}"<else/>alt="{$indexnewpro['pro_name']}"</if> />
+                                    </a>
+                                    </div>
+                                    <div class="swiper-slide__inner_title box-sizing ellipsis_one index_title"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">{$indexnewpro['pro_name']}</a></div>
+                                    <if condition="$data9[2]"><div class="swiper-slide__inner_dec box-sizing ellipsis_two index_text"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">{$indexnewpro['pro_description']}</a></div></if>
+                                </div>
+                            </div>
+                        </volist>
+                        <else/>
+                        <volist empty="" name="indexpro" id="indexnewpro" key="k" offset="0" length="8">
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <div class="swiper-slide__inner_img">
+                                        <a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">
+                                        <img src="{:getmainimgurl($indexnewpro['main_img'])}" <if condition="$indexnewpro['proalt'] neq ''">alt="{$indexnewpro['proalt']}"<else/>alt="{$indexnewpro['pro_name']}"</if> />
+                                    </a>
+                                    </div>
+                                    <div class="swiper-slide__inner_title box-sizing ellipsis_one index_title"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">{$indexnewpro['pro_name']}</a></div>
+                                    <if condition="$data9[2]"><div class="swiper-slide__inner_dec box-sizing ellipsis_two index_text"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">{$indexnewpro['pro_description']}</a></div></if>
+                                </div>
+                            </div>
+                        </volist>
+                        </if>
+                    </div>
+                </div>
+                <div class="swiper-button-next HJZF2_Z__product-next"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-button-prev HJZF2_Z__product-prev"><i class="fa fa-angle-left"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

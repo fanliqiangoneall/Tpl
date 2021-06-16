@@ -1,0 +1,133 @@
+label{
+	font-weight: normal;
+}
+.member_page_left{
+    width:14%;float:left;
+}
+.member_page_right{
+    width:86%;float:left;
+}
+.main_tab {
+    width: 100%;
+    margin: auto;
+    height: auto;    
+}
+.main_tab dd{
+    width: auto;
+    height: 40px;
+    text-align: left;
+    line-height: 40px;    
+}
+.main_tab dd span{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    color: #333;
+    font-weight: normal;
+    text-decoration: none;
+}
+.main_tabcontent {
+    width: 100%;
+    padding: 50px 10px;
+    border: 1px solid #e3e3e3;
+}
+.order_list_table{
+    min-height:500px;
+}
+.tab_select {
+    display: none;
+}
+
+.tab_select.active {
+    display: block;
+}
+.member_item{
+    padding-bottom: 25px;
+	display: flex;
+	align-items: center;
+}
+.member_item:after,.member_item:before{
+	display: none;
+}
+.member_item .member_dt_val input.input_normal{
+	min-width: 300px;
+	border: 0;
+	background-color: #f8f8f8;
+	line-height: 45px;
+	height: 45px;
+	padding-left: 10px;
+	border-radius: 4px;
+}
+.member_item .member_dt_title {
+    width: 138px;
+    margin-right: 12px;
+    text-align: right;
+    font-size: 16px;
+    line-height: 30px;
+	color: #6f5d98;
+}
+.member_item .member_dt_val input{
+    height: 30px;
+	line-height: 30px;
+	text-indent: 5px;
+}
+.member_dt_val a{display: inline-block;padding: 4px 10px;margin-left: 8px;}
+.member_dt_val.sex{
+	display: flex;
+}
+.member_dt_val.sex label:nth-child(2){
+	margin-right: 30px;
+}
+.member_dt_val.sex .sex_check i{
+	display: none;
+}
+.member_dt_val.sex .sex_check.on i{
+	display: block;
+}
+.member_dt_val.sex .sex_check{
+	margin-right: 15px;
+}
+.member_dt_val.sex .sex_check.on i,.member_dt_val.sex .sex_check.on + label{
+	color:#ba5491;
+}
+.member_dt_val.sex .sex_check.on .sex_checked{
+	border-color: #ba5491;
+}
+.member_dt_val.sex .sex_checked{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width:20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 1px solid #666;
+}
+.hobbyitem{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-right: 10px;
+}
+.hobbyitem .hobbyitem_list{
+	width: 70px;
+	height: 70px;
+	background-size: 100%;
+}
+@media(max-width:768px){
+    .member_page_left,.member_page_right{
+        width:100%;float:none;
+    }
+    .main_tab dd{
+        float:left;margin-right:10px;
+    }
+    .main_tab:before,.main_tab:after{
+        content: ""; 
+        display: block; 
+        height: 0; 
+        clear: both; 
+        visibility: hidden;
+    }
+	
+}

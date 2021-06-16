@@ -1,0 +1,41 @@
+<style>
+    .other_pro_17{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .other_pro_17 li{
+        flex: 0 0 23%;
+        width: 24%;
+        margin-left: 2%;
+    }
+    
+    .other_pro_17 li h3{
+        color: #333;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: inherit;
+    }
+    @media(max-width: 1200px) {
+        .other_pro_17  li{
+            flex: 0 0 49%;
+            width: 49%;
+			margin-left:1%;
+        }
+    }
+    
+</style>
+<if condition="$otherpro neq ''">
+    <ul class="other_pro_17">
+        <volist empty="" name="otherpro" id="otherpro" key="k" offset="0" length="4">
+            <li>
+                <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                    <div class="inner-3__proimg">
+                        <img src="{:getmainimgurl($otherpro['main_img'])}" alt="{$otherpro['pro_name']}"  class="img-fluid"/>
+                    </div>
+                    <h3 title="{$otherpro['pro_name']}" class="text-center">{$otherpro['pro_name']}</h3>
+                </a>
+            </li>
+        </volist>
+    </ul>
+</if>

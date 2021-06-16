@@ -1,0 +1,39 @@
+<!--{$pagename}-->
+<php>
+	if($data709[3]){
+		$other_117_len = $data709[3];
+	}else{
+		$other_117_len = 5;
+	};
+</php>
+<script>
+	var other_117_len = '<?php echo $other_117_len;?>';
+</script>
+<style>
+	.hjzf_other_117 {
+		background-color: #{$data709[0]};
+	}
+</style>
+<section class="hjzf_other_117 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-center index_title wow fadeInUp">
+					{$data709[1]}
+				</div>
+				<div class="swiper-container other_117 wow fadeInUp">
+					<ul class="swiper-wrapper">
+						<php>
+							$arr = get_list_val($data709[2]);
+						</php>
+						<volist name="arr" id="a">
+							<li class="swiper-slide">
+								<img src="{$a[img]}" class="img-fluid">
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,240 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo3/css/navigation.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="__TMPL__demo3/js/nav.js"></script>
+<script type="text/javascript" src="__TMPL__demo3/js/navcontrol.js"></script>
+<style>
+.news_time:after{
+	content: "";display: table;position: absolute;width: 10%;height: 2px;background-color: #{$color};bottom: -9px;transition: all 0.6s
+}
+.bt{
+background: #{$color};
+color: #ffffff;
+border: 0 !important;
+cursor: pointer;
+height: 35px !important;
+padding: 0 10px 0 10px !important;
+width:69px !important;
+margin:auto;
+}
+.mod18 .listBox li img{
+	width:150px;height:130px; border:1px solid #{$color};
+	}
+.left_title{
+	background:#{$color};
+width: 261px;height: 79px;line-height: 79px;text-align: center;color: #fff;font-size: 28px;text-transform: uppercase;}
+.left_title2{
+	text-align:center;
+	background: #{$color};
+	width: 265px;height: 71px;line-height: 82px;color: #fff;font-size: 28px;text-transform: uppercase;}
+.left_title3{
+    background:#{$color};
+    width: 180px;
+    padding-left: 50px;
+    padding-right: 41px;
+    padding-top: 23px;
+    height: 55px;
+    line-height: 23px;
+    text-align: left;
+    color: #fff;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+.index_navigation_page_Menu{margin-top:-6px;}
+.index_navigation_page_Menu ul li h2:hover{ text-decoration:none; position:relative;
+color:#{$color};
+}
+.menuon h2{ font-size:14px;
+color:#{$color} !important;
+font-weight:normal; line-height:58px;
+}
+.subNav a:hover{
+	text-decoration:underline;
+	color:#fff;
+}
+.search{ position:absolute; z-index:99; right:20px; top:45px; background:url(__TMPL__demo3/img/fdj.png); width:20px; height:20px; background-size:100%;}
+.keywords{position:absolute; z-index:9999999999999999999999999999999999999999;right:25px; top:45px; height:20px; width:150px; outline:none; background:none; border:0px; border-bottom:1px solid #b7b7b7; padding-right:20px; }
+.search_a{ text-decoration:underline;}
+.index_news_title{
+	line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat;text-align: center;
+	}
+.index_fl_title{
+	line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat;text-align: center;
+	}
+.index_products_title{
+	line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat;text-align: center;
+	}
+.index_case_title{
+	line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat;text-align: center;
+}
+.page_RightTitle {
+	line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat;text-align: center;text-transform: uppercase;
+	}
+.page_RightTitle_2{
+    background: #f8f8f8;
+    padding-top: 30px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 30px;
+    color: #{$color};
+    padding-left: 20px;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.index_ad_title {
+    line-height: 50px;
+    margin-top: 60px;
+    font-size: 35px;
+    color: #111111;
+    padding-bottom: 21px;
+    background: url({:getindeximgurl($data1[1])}) bottom center no-repeat;
+    text-align: center;
+}
+
+.page_RightTitle2{ border-bottom:1px solid #cacaca;
+width:840px;text-transform: uppercase; height:42px;margin:auto; background:url({:getindeximgurl($data1[4])}) bottom left  no-repeat; text-align:left; font-size:20px;  line-height:45px; padding-left: 15px;
+}
+.detailtitle2{
+	width:100%; text-align:center; background:url({:getindeximgurl($data1[4])}) center bottom no-repeat; height:45px; line-height:40px; font-size:22px; color:#fefefe; font-weight:bold; text-transform:uppercase;
+	}
+.detail_title ul li {
+    width: 250px;
+    height: 34px;
+    padding-left: 15px;
+    margin: auto;
+    background: url({:getindeximgurl($data1[4])}) no-repeat;
+    text-align: left;
+    font-size: 18px;
+    color: #fff;
+    line-height: 34px;
+    float: left;
+    text-transform: uppercase;
+}
+
+.main_page .current{ padding:3px 8px;
+ background:#{$color};
+  color:#fff;border:1px solid #{$color}
+  }
+.top_menu{ position:relative;}
+.child_menu{ width:220px;}
+.page_Banner{ z-index:-1;}
+.erji:hover a h3{
+color: #{$color}
+}
+.erjion a h3{
+color: #{$color}
+}
+.erjion{border-bottom:1px solid #efefef;padding-top: 10px;font-size:14px;}
+.index_top4{
+    margin-left: 25px;
+    float: left;
+    padding-left: 15px;
+    font-size: #333;
+    font-size: 14px;
+    line-height: 40px;
+}
+</style>
+ <div class="index_top">
+    <div class="index_topcon">
+      <div id="index_navigation_animate_3">
+       <if condition="$data1['0']"><div class="index_top1">{$data1['0']}</div></if>
+       <div class="index_top2">{:chaifen($about['mobile'],0)}</div>
+          <if condition="chaifen($about[email],0) neq '' ">
+              <div class="index_top3"><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);gtag_report_conversion_email();" style="color:#333">{:chaifen($about['email'],0)}</a></div>
+          </if>
+          <if condition="chaifen($about[email],1) neq '' ">
+              <div class="index_top3"><a href="mailto:{:chaifen($about[email],1)}" onclick="turn_sta(3,4);gtag_report_conversion_email();" style="color:#333">{:chaifen($about['email'],1)}</a></div>
+          </if>
+
+		<if condition="$data1[10]"><a style="cursor:pointer;" href="{$data1[12]}"><div class="index_top4"><img style=" position:relative; top:3px;" src="{:getindeximgurl($data1[10])}">&nbsp;{$data1[11]}</div></div></a></if>
+       <div style="float: right;">
+       <p style="float:left; height:40px; line-height:40px; font-size: 14px;color: #333333;font-weight: normal;font-family: 微软雅黑;">分享到：</p>
+          <div style="float:left; margin-left:5px; height:40px; line-height:40px; margin-top:6px; ">
+
+                                            <div>
+                                                <div class="bdsharebuttonbox detail-share-box" data-tag="share_2">
+                                                    <a href="#" class="bds_more" data-cmd="more"></a>
+                                                    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+                                                    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+                                                    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+                                                    <a href="#" class="bds_renren" data-cmd="renren"></a>
+                                                    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+                                                </div>
+                                            </div>
+
+                                            </div>
+       </div>
+      </div>
+    </div>
+ </div>
+
+<div  class="page_Top">
+  <div class="page_Top2">
+   <div class="page_Logo">
+     <div id="animate2">
+      <ul>
+         <li id="index_navigation_animate_1"><a href="{:U('/')}">{$logo}</a></li>
+      </ul>
+     </div>
+   </div>
+    <div class="index_navigation_page_Menu" id="smoothmenu1">
+      <ul id="index_navigation_animate_2">
+        <volist name="web_navigation" id="vo" offset="0" length='9' key="key">
+          <li class="top_menu" id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a>
+              <!--子导航-->
+              <ul class="child_menu">
+              <volist name="vo['child']" id="v" offset="0" length='9' key="key" >
+                  <li class="child_li">
+                    <a href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$v['title']}</a>
+                  </li>
+              </volist>
+              </ul>
+          </li>
+
+        </volist>
+      </ul>
+      <div class="clear"></div>
+     <div <if condition="$data1[9]">style="display:none;"</if>>
+      	<input placeholder="搜索" id="keyword" class="keywords" value="" name="keywords"/>
+
+      <div class="search" onClick="searchfrom()"></div>
+      </div>
+
+</div>
+   <div class="clear"></div>
+  </div>
+</div>
+<div class="clear"></div>
+
+<script>
+
+
+
+$('#keyword').keydown(function() {
+var keyword=$("#keyword").val();
+if (event.keyCode == 13) {
+if(keyword.length<=0){
+alert("请输入搜索关键词！");
+}
+else{
+
+window.location.href="{:U('/search','','')}"+"?keywords="+keyword;
+}
+}
+});
+
+
+function searchfrom(){
+	var keywords=$("#keyword").val();
+	if(keywords){
+		window.location.href="{:U('/search','','')}"+"?keywords="+keywords;
+	}else{
+		alert("请输入搜索关键词！");
+	}
+}
+jQuery('#index_navigation_animate_3').removeClass().addClass('fadeInDown');
+jQuery('#index_navigation_animate_1').removeClass().addClass('fadeInLeft');
+jQuery('#index_navigation_animate_2').removeClass().addClass('fadeInRight');
+jQuery('#index_navigation_animate').removeClass().addClass('fadeIn');
+</script>
+

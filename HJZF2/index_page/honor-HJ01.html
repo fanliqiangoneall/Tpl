@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<if condition="$data64[10]">
+    <style>
+        .new_hjzf_honor .index_honor-hj{
+            background: url({:getindeximgurl($data64[10])}) no-repeat center; background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_honor-HJ01 .honr_title-hj01 h3{
+        color: #{$color};
+    }
+    .new_hjzf_honor-HJ01 .honr_title-hj012 h6{
+        color: #{$color};
+    }
+
+
+</style>
+
+
+<script>
+    var honor_num = "<?php echo $num;?>";
+</script>
+
+<div class="index_honor-hj">
+    <div class="container">
+        <div class="honr_title-hj01" id="honor_title"><h3>{$data64[0]}</h3></div>
+        <div class="honr_title-hj012" id="honor_title2"><h6>{$data64[1]}</h6></div>
+        <div id="index_honlist_wai">
+            <div id="new_hjzf_honor_hj01">
+                <ul id="con1">
+                    <php>
+                        for($ho=2;$ho<10;$ho=$ho+1){
+
+                    </php>
+                    <if condition="$data64[$ho] neq ''">
+                        <li class="new_hjzf_honor_hj01_item">
+                            <img class="lazy" data-original="{:getindeximgurl($data64[$ho])}" alt=""/>
+                        </li>
+                    </if>
+                    <php>
+                        }
+                    </php>
+                </ul>
+                <ul id="con2">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

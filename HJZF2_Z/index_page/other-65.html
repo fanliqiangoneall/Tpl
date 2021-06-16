@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_65_wrapper_right span:first-of-type {
+        border-color: #{$color};
+        color: #{$color};
+    }
+
+    .hjzf2_other_65_wrapper_right span:last-of-type {
+        border-color: #{$color};
+    }
+
+    .hjzf2_other_65_wrapper_right span:first-of-type:before {
+        background-color: #{$color};
+    }
+
+    .hjzf2_other_65_wrapper_right span:first-of-type:hover {
+        color: #fff;
+    }
+    .hjzf2_other_65_wrapper_right span:last-of-type:hover:before {
+        background-color: #fff;
+        width: 0;
+    }
+    .hjzf2_other_65_wrapper_right span:last-of-type:hover {
+        color: #{$color};
+    }
+    .hjzf2_other_65_wrapper_right span:last-of-type:before {
+        width: 100%;
+        background-color: #{$color};
+    }
+    @media(max-width: 1200px) {
+        .hjzf2_other_65_wrapper_right span:last-of-type {
+            background-color: #{$color};
+        }
+    }
+</style>
+<section class="hjzf2_other_65 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="hjzf2_other_65_wrapper">
+                    <php>
+                        $arr = get_list_val($data393[0]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li>
+                            <a href="{$a[link]}">
+                                <if condition="$a[img]">
+                                    <div class="hjzf2_other_65_wrapper_img">
+                                        <img src="{$a[img]}" alt="{$a[title]}" >
+                                    </div>
+                                </if>
+                                <div class="hjzf2_other_65_wrapper_right">
+                                    <if condition="$a[title]">
+                                        <div class="index_sub_title">
+                                            {$a[title]}
+                                        </div>
+                                    </if>
+                                    <if condition="$a[con]">
+                                        <div class="index_text">
+                                            {$a[con]}
+                                        </div>
+                                    </if>
+                                    <p><if condition="$data393[1]">
+                                        <span class="my-mask-l left index_btn">
+                                            {$data393[1]}
+                                        </span>
+                                    </if>
+                                    <if condition="$data393[2]">
+                                        <span class="my-mask-r right index_btn">
+                                            {$data393[2]}
+                                        </span>
+                                    </if></p>
+                                    
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>

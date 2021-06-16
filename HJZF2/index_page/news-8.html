@@ -1,0 +1,59 @@
+<style>
+    .gallery-thumbs-more:hover{
+        background: #{$data156[1]};color: #fff;border: 1px solid #{$data156[1]};transition: 0.6s;
+    }
+    .gallery-thumbs-next:hover,.gallery-thumbs-prev:hover{
+        background: #{$data156[1]};color: #fff;border: 1px solid #{$data156[1]};transition: 0.6s;
+    }
+    .HJZF2__newsgallery-top .swiper-slide.swiper-slide-active:before,.HJZF2__newsgallery-top .swiper-slide:hover:before,.HJZF2__news-8__more,.HJZF2__newsgallery-thumbs .swiper-slide.swiper-slide-active span{
+        background:#{$data156[1]}
+    }
+</style>
+<section class="HJZF2__news-8">
+    <div class="container">
+        <h3 class="HJZF2__news-8--title">{$data156[2]}</h3>
+        <h4 class="HJZF2__news-8--subtitle">{$data156[3]}</h4>
+    </div>
+
+    <div class="HJZF2__news-8--Content">
+        <div class="swiper-container HJZF2__newsgallery-top">
+            <div class="swiper-wrapper">
+                <volist name="indexnews" id="indexnew" offset="0" length="8" key="k">
+                    <div class="swiper-slide">
+                        <div class="HJZF2__news-8__img">
+                            <a href="{:U('/new_detail',array('nid'=>$indexnew["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnew['new_pro'])}" border="0" /></a>
+                        </div>
+                        <div class="HJZF2__news-8__wrap">
+                            <div class="HJZF2__news-8__wraText">
+                                <div class="HJZF2__news-8__name"><a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()">{:subtxt($indexnew['title'],40)}</a></div>
+                                <div class="HJZF2__news-8__date">{:date('Y-m-d ',$indexnew['created'])}</div>
+                            </div>
+                            <a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()" class="HJZF2__news-8__more"></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <div class="container HJZF2__newsgallery-container">
+        <div class="swiper-container HJZF2__newsgallery-thumbs">
+            <div class="swiper-wrapper">
+                <volist name="indexnews" id="indexnew" offset="0" length="8" key="k">
+                    <div class="swiper-slide" index="{$k}">
+                        <a href="javascript:void(0);" onFocus="blur()">{:date('Y-m',$indexnew['created'])}</a> <span>{:date('d ',$indexnew['created'])}</span>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next gallery-thumbs-next"><i class="fa  fa-long-arrow-right"></i></div>
+        <div class="swiper-button-prev gallery-thumbs-prev"><i class="fa  fa-long-arrow-left"></i></div>
+        <a href="{$data156[4]}" class="gallery-thumbs-more">{:__('Read More')}</a>
+    </div>
+</section>
+
+
+
+
+    

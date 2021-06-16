@@ -1,0 +1,55 @@
+<!--{$pagename}-->
+<style>
+
+</style>
+<div class="index_navigation_menubg" <if condition="$data1[8] eq ''">
+    style="background:#2b2b2b"
+    <else/>
+    style="background-color : {$data1[8]}!important;"
+</if>>
+
+   <div class="page_Logo">
+     <div id="animate2">
+      <ul>
+         <li><a href="{:U('/')}">{$logo}</a></li>
+      </ul>
+     </div>
+  </div>
+    <div class="index_navigation_page_Menu">
+        <ul>
+          <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+            <li id="menu{$key}">
+                <a href="{$vo['url']}"
+                    <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}
+                </a>
+            </li>
+          </volist>
+          <div style="margin-top: 15px;margin-left: 40px;clear: both;padding-top:10px;">
+             <!--[if gt IE 8]>
+             <!-- Go to www.addthis.com/dashboard to customize your tools -->
+              <div class="addthis_sharing_toolbox"></div>
+              <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+              <![endif]-->
+          </div>
+        </ul>
+        <div class="clear"></div>
+        <if condition="$data1[6]"><div class="" style="width:180px; text-align:center"><a href="{$data1[6]}" style="cursor:pointer;font-size:17px; color:#fff; line-height:51px;font-weight:normal;"><div style="width:25px; position:relative; top:2px; display:inline-block; height:16px; background:url({:getindeximgurl($data1[7])})"></div>&nbsp;&nbsp;{$data1[5]}</a></div></if>
+    </div>
+</div>
+<if condition="$data1[14]">
+    <php>
+        $arr_str=$data1[14];
+    </php>
+    <script>
+        $(document).ready(function(){
+            var arry_ph = "<?php echo $arr_str ?>";
+            var nav_array = arry_ph.split(',');
+            $.each(nav_array,function(ke,val){
+                $(".index_navigation_page_Menu>ul>li").eq(ke).attr("nav-id",val);
+            })
+        })
+
+    </script>
+
+
+</if>

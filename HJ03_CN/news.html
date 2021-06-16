@@ -1,0 +1,94 @@
+<extend name="HJ03_CN:basein" />
+<block name="content">
+    <style>
+        .class_t2d_all{
+            background: #{$color};
+        }
+        .inner_t2d_nav>ul>li.class_t2d_all a h3{color: #fff!important;}
+
+        .news_item:hover .news_item_date .more-button{
+            background: #{$color};color: #fff;text-indent: 0;transition: all .36s ease;
+        }
+        .news_item:hover .news_item-title a{
+            color: #{$color}
+        }
+        .Breadcrumbs{width: 50%;float: right;}
+
+    </style>
+    <if condition="$data47[29]">
+        <style>
+            .news_item:nth-child(even) .hjnews_pic,.news_item:nth-child(even) .hjnews_content,.news_item:nth-child(even) .news_item_date{float: left}
+        </style>
+    </if>
+    <script type="text/javascript" src="__TMPL__HJ03_CN/js/jquery.lightbox-0.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__TMPL__HJ03_CN/css/jquery.lightbox-0.5.css"/>
+    <div id="wrapper" style="background: #fff">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 40px;">
+            <div class="container">
+                <div class="Breadcrumbs">您的位置：<a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current"><if condition="$data47[4] neq ''">{$data47[4]} <else/>新闻中心</if></span></div>
+                    <section class="main-content-top">
+                        <Include file="./Tpl/HJ03_CN/newleft_2.html" />
+                    </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-right2">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                            <div class="HJ01_main_news">
+                                    <div class="main_newslist ul_li_list">
+                                        <volist name="allnews" id="allnews">
+                                            <div class="news_item news_item{$k}">
+                                                <div class="hjnews_pic">
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" >
+                                                    <if condition="$allnews['new_pro'] neq ''">
+                                                        <img src="{:getimgurl($allnews['new_pro'])}" border="0" />
+                                                        <else/>
+                                                        <img src="{:getindeximgurl($data47[10])}" alt=""/>
+                                                    </if>
+
+                                                    </a>
+                                                </div>
+                                                <div class="hjnews_content">
+                                                    <p class="news_item-title"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">{:subtxt($allnews['title'],40)}</a></p>
+                                                    <p class="news_item-desc-wai">{:subtxt($allnews['news_description'],100)}</p>
+                                                    <php>
+                                                        $newsclass_name = get_wap_news_class_name($allnews['news_class']);
+                                                    </php>
+                                                    <span>{$newsclass_name}</span>
+                                                </div>
+                                                <p class="news_item_date">
+                                                    <span>{:date('m月 d ',$allnews['created'])}</span>
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" class="more-button">更多</a>
+                                                </p>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </volist>
+
+                                    </div>
+                            </div>
+                        <div class="clearfix"></div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".main_left_news .main-content_inner_news>ul li:first-child").addClass("yijion_news")
+        })
+    </script>
+
+</block>

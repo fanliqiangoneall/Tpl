@@ -1,0 +1,186 @@
+<style>
+	.bottom_18_submit .productbutton {
+		background: #{$color};
+	}
+
+	.bottom_18_submit .productbutton:hover {
+		background: #{$data47[9]};
+	}
+	.bottom_18_submit .inquiryright{
+		padding-bottom: 20px;
+	}
+	.bottom_18_submit .inquiryinfo{
+		margin-bottom: 0;
+	}
+	.bottom_18_submit .inquiryright .yz_alert{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	.bottom_18_submit .inquiryinfo input[type=text],.bottom_18_submit .inquiryinfo textarea{
+		border: 1px solid #333;
+		background-color: transparent;
+		line-height: 45px;
+		border-radius: 5px;
+		max-height: 200px;
+		color: #{$txt_col} !important;
+	}
+	.bottom_18_submit #inbut_18 input{
+		width: 100% !important;
+		background-color: #{$color};
+		line-height: 45px;
+		border-radius: 5px;
+		max-height: 200px;
+		border: 0;
+		color: #fff;
+	}
+	.bottom_18_submit .inquiryinfo input[type=text]::-webkit-input-placeholder{color:#333;}
+	.bottom_18_submit .inquiryinfo input[type=text]::-moz-placeholder{color:#333;}
+	.bottom_18_submit .inquiryinfo input[type=text]:-moz-placeholder{color:#333;}
+	.bottom_18_submit .inquiryinfo textarea::-webkit-input-placeholder{color:#333;}
+	.bottom_18_submit .inquiryinfo textarea::-moz-placeholder{color:#333;}
+	.bottom_18_submit .inquiryinfo textarea:-moz-placeholder{color:#333;}
+</style>
+{:session("tncode_check","ok")}
+<php>
+	$lan_submit = C('Language');
+</php>
+<script>
+	jQuery(function () {
+		
+		jQuery("#message_18").focus(function () {
+			jQuery("#message_alert_18").html("");
+		});
+		jQuery("#linkname_18").focus(function () {
+			jQuery("#linkname_alert_18").html("");
+		});
+		jQuery("#phone_18").focus(function () {
+			jQuery("#phone_alert_18").html("");
+		});
+		jQuery("#email_18").focus(function () {
+			jQuery("#email_alert_18").html("");
+		});
+		jQuery("#code_char_18").focus(function () {
+			jQuery("#code_char_alert_18").html("");
+		});
+
+
+		jQuery("#getcode_char_18").click(function () {
+			jQuery(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char_18").click(function () {
+			jQuery("#getcode_char_18").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+	})
+	function yz_submit_18() {
+		var language = '<?php echo $lan_submit;?>';
+		if (language == 'cn' || language == 'zh') {
+			var error_name = '姓名不能为空！';
+			var error_tel = '*电话不能为空！';
+			var error_phone = '*手机号码有误！';
+			var error_email = '*邮箱格式有误！';
+			var error_email_emp = '*邮箱不能为空！';
+			var error_mes = '咨询内容不能为空！';
+			var error_wate = '请稍候';
+		}else{
+			var error_name = 'The name cannot be empty!';
+			var error_tel = '*The phone cannot be empty!';
+			var error_phone = '*The phone number is wrong!';
+			var error_email = '*The email format is wrong!';
+			var error_email_emp = '*E-mail can not be empty!';
+			var error_mes = 'Consultation content cannot be empty!';
+			var error_wate = 'Please wait';
+		}
+		var count = 0;
+		var message = Trims(jQuery("#message_18").val());
+		var linkname = Trims(jQuery("#linkname_18").val());
+		var phone = Trims(jQuery("#phone_18").val());
+		var email = Trims(jQuery("#email_18").val());
+		if (linkname.length <= 0) {
+			jQuery("#linkname_alert_18").html(error_name);
+			count++;
+		}
+		else {
+			jQuery("#linkname_alert_18").html("");
+		}
+
+		if (phone.length <= 0) {
+			jQuery("#phone_alert_18").html(error_tel);
+			count++;
+		} else if (is_phone(phone)) {
+			jQuery("#phone_alert_18").html(error_phone);
+			count++;
+		} else {
+			jQuery("#phone_alert_18").html("");
+		}
+
+		if (email.length > 0 && !is_email(email)) {
+			jQuery("#email_alert_18").html(error_email);
+			count++;
+		}
+		else if(email.length == 0) {
+			jQuery("#email_alert_18").html(error_email_emp);
+		}else{
+			jQuery("#email_alert_18").html("");
+		}
+		if (message.length <= 0) {
+			jQuery("#message_alert_18").html(error_mes);
+			count++;
+		}
+		else {
+			jQuery("#message_alert_18").html("");
+		}
+		if (count > 0) {
+			return false;
+		}
+		else {
+			jQuery("#inbut_18").html('<h5 style="color:#F00;">' + error_wate + '</h5>');
+			return true;
+		}
+	}
+</script>
+<script src="__TMPL__HJZF2_Z/js/submithot.js"></script>
+<div class="inquiry" id="zixun">
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit_18();">
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname_18"
+						placeholder="{:__('Name')}"><span class="yz_alert" id="linkname_alert_18"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryright"><input type="text" name="phone" id="phone_18" placeholder="{:__('Phone')}"><span
+						class="yz_alert" id="phone_alert_18"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryright"><input type="text" name="email" id="email_18" placeholder="{:__('E-mail')}"><span
+						class="yz_alert" id="email_alert_18"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryright"><textarea name="message" id="message_18" style="padding:5px; height:100px;"
+						placeholder="{:__('Message')}"></textarea><span class="yz_alert" id="message_alert_18"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12" data='aaaa'>
+			<div class="inquiryinfo">
+				<input type="hidden" name="prodid" value="{$product['pid']}" />
+				<div id="inbut_18"><input type="submit" value="{:__('Submit')}" name="submit" />
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>

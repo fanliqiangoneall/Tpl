@@ -1,0 +1,93 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .InsidePages_list li.yijion>a>h3:before,.InsidePages_list li.yiji:hover >a>h3:before,.InsidePages_list li.yijion>a>h3,.InsidePages_list li.yiji:hover >a>h3,.HJZF_Z__Breadcrumbs span.current,.main_news_dowm span a{
+            border-color: #{$color};color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .donload_list li:hover p{color: #333;}
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+        .donload_list li span:hover{
+            color: #{$color};
+        }
+        .InsidePages_content2_commontitle span{
+            color: #{$color};
+            border-bottom: 3px solid #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/download')}">{:__('Download')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$downcate['class_name']}</span>
+                    </div>
+                </div>
+             </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="HJZF_Z__inner--left2">
+                <div class="container">
+                    <div class="row">
+                        <Include file="./Tpl/HJZF2_Z/leftdownload2.html" />
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-md hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftdownload_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 InsidePages_content2">
+                        <div class="InsidePages_content-right__wrap">
+
+                            <div class="InsidePages_content-right_content-main">
+                                <h2 class="InsidePages_content2_commontitle"><span>{$downcate['class_name']}</span></h2>
+                                <div class="product_detail_editor_content">
+                                    <div class="download">
+                                        <div class="body">
+                                            <ul class="donload_list">
+                                                <volist name="download" id="download" key="k">
+                                                    <li>
+                                                        <a href="{:getimgurl($download['linkurl'])}" target="_blank"><span class="download_right">{:__('Download')}</span></a>
+                                                        <a href="{:U('/download_detail',array('id'=>$download["id"]))}" ><p>{$download['title']}</p></a>
+                                                        <div style="clear: both"></div>
+                                                    </li>
+                                                </volist>
+                                            </ul>
+                                            <div class="main_page">{$page}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page_nei_space"></div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</block>

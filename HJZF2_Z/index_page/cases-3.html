@@ -1,0 +1,99 @@
+<!--{$pagename}-->
+<php>
+    if($data36[4]){
+        $bdc = $data36[4];
+    }else{
+        $bdc = $color;
+    }
+    if($data36[5]){
+        $mbc = $data36[5];
+    }else{
+        $mbc = $color;
+    }
+    </php>
+<style>
+    .HJZF_Z_case_pagination span.swiper-pagination-bullet-active{
+    background-color: #{$color};
+}
+    <if condition="$data36[0]">
+        .HJZF_Z_cases--3{
+            background: url({:getindeximgurl($data36[0])}) no-repeat center/cover;
+        }
+    </if>
+    <if condition="$data36[4]">
+    .HJZF2_Z__cases-3__content:after{
+        border-bottom-color: #{$bdc};
+    }
+    </if>
+    <if condition="$data36[5]">
+    .HJZF2_Z__cases-3__hover{
+        background-color: #{$mbc};
+    }
+    </if>
+    
+    .HJZF2_Z__cases-3__content:after{
+        color: #{$data36[1]};
+    }
+    .HJZF2_Z__cases-3__mored{
+        background: #{$data36[1]};
+    }
+    <if condition="$data36[6]">
+    .HJZF2_Z__cases-3__mored{
+        background-color: #{$data36[6]};
+    }
+    </if>
+    <if condition="$data36[7]">
+        .HJZF2_Z__cases-3__mored:before{
+            background-color: #{$data36[7]};
+        }
+        .HJZF2_Z__cases-3__mored:after{
+            border-left-color: #{$data36[7]};
+        }
+    </if>
+</style>
+<section class="HJZF_Z_cases--3 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+				<if condition="$data36[2]">
+                <div class="cases--3__title wow fadeInUp index_title" data-wow-duration="1s" data-wow-delay="0">{$data36[2]}</div>
+				</if>
+				<if condition="$data36[8]">
+					<div class="wow fadeInUp index_sub_title text-center">
+						{$data36[8]}
+					</div>
+				</if>
+                <div class="cases--3__titlefu"><img src="{:getindeximgurl($data36[3])}" alt="{$data36[2]}"/></div>
+                <div class="cases--3__swiperbox wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                    <div class="swiper-container cases--3__container">
+                        <div class="swiper-wrapper">
+                            <volist name="indexcases" id="indexcase" offset="0" length="8">
+                                <div class="swiper-slide">
+                                    <div class="HJZF2_Z__cases-3__wrap">
+                                        <div class="HJZF2_Z__cases-3__img">
+                                            <img src="{:getimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" border="0" />
+                                        </div>
+                                        <php>
+                                            $case_name = get_wap_case_class_name($indexcase['cates_class']);
+                                        </php>
+                                        <div class="HJZF2_Z__cases-3__content">
+                                            <h3 class="HJZF2_Z__cases-3__casetitle index_sub_title">{$indexcase['title']}</h3>
+                                            <div class="HJZF2_Z__cases-3__desc index_text">{$indexcase['news_description']}</div>
+                                        </div>
+                                        <div class="HJZF2_Z__cases-3__hover">
+                                            <h3 class="HJZF2_Z__cases-3__casetitle HJZF2_Z__cases-3__casetitle2 index_sub_title">{$indexcase['title']}</h3>
+                                            <div class="HJZF2_Z__cases-3__desc HJZF2_Z__cases-3__desc2 index_text">{$indexcase['news_description']}</div>
+                                            <div class="HJZF2_Z__cases-3__mored"><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" onFocus="blur()" <if condition="$webid eq '1770'"> target="_blank"</if>></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination HJZF_Z_case_pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

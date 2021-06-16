@@ -1,0 +1,95 @@
+<!--{$pagename}-->
+<php>
+	if($data693[0]){
+	$color = $data693[0];
+	}
+</php>
+
+<style>
+	.cases_34 {
+		background-color: #{$data693[1]};
+	}
+	.cases_35_con:after ,
+	.cases_35_btn_swiper-button-next,
+	.cases_35_btn_swiper-button-prev{
+		background-color: #{$color};
+	}
+</style>
+<section class="cases_34 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="index_title pb40 text-center">
+					{$data693[2]}
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<if condition="$data693[3]">
+					<php>
+						$arr = get_list_val($data693[3]);
+					</php>
+					<div class="cases_35_big_wrapper swiper-container" data="arr">
+						<div class="swiper-wrapper">
+							<volist name="arr" id="v">
+								<div class="swiper-slide cases_35_big_wrapper_t">
+									<a href="{$v[link]}">
+									<img src="{$v[img]}" class="img-fluid" alt="{$v[title]}" />
+									<div class="cases_35_con">
+										<p>{$v[des]}</p>
+										<span>{$v[title]}</span>
+									</div>
+									</a>
+								</div>
+							</volist>
+						</div>
+					</div>
+					<div class="cases_35_bottom">
+						<div class="cases_35_thm_wrapper swiper-container">
+							<div class="swiper-wrapper">
+								<volist name="arr" id="v">
+									<div class="swiper-slide">
+										<img src="{$v[src]}" class="img-fluid" alt="{$v[title]}" />
+									</div>
+								</volist>
+							</div>
+						</div>
+						<div class="cases_35_btn_swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+						<div class="cases_35_btn_swiper-button-next"><i class="fa fa-chevron-right"></i></div>
+					</div>
+				<else/>
+				<div class="cases_35_big_wrapper swiper-container">
+					<div class="swiper-wrapper">
+						<volist name="indexcases" id="indexcase">
+							<div class="swiper-slide cases_35_big_wrapper_t">
+								<a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">
+									<img src="{:getimgurl($indexcase['new_pro'])}" class="img-fluid"
+										alt="{$indexcase['title']}" />
+									<div class="cases_35_con">
+										<p>{$indexcase['news_description']}</p>
+										<span>{$indexcase['title']}</span>
+									</div>
+								</a>
+							</div>
+						</volist>
+					</div>
+				</div>
+				<div class="cases_35_bottom">
+					<div class="cases_35_thm_wrapper swiper-container">
+						<div class="swiper-wrapper">
+							<volist name="indexcases" id="indexcase">
+								<div class="swiper-slide">
+									<img src="{:getimgurl($indexcase['new_pro'])}" class="img-fluid"
+										alt="{$indexcase['title']}" />
+								</div>
+							</volist>
+						</div>
+					</div>
+					<div class="cases_35_btn_swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+					<div class="cases_35_btn_swiper-button-next"><i class="fa fa-chevron-right"></i></div>
+				</div>
+
+				</if>
+			</div>
+		</div>
+	</div>
+</section>

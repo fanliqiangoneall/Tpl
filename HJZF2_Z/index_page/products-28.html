@@ -1,0 +1,127 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data439[0]">#products-28 {
+        background: url({:getindeximgurl($data439[0])}) no-repeat center/cover;
+    }
+    </if>.products-28__prev[aria-disabled="false"],
+    .products-28__next[aria-disabled="false"] {
+        background: #{$data439[2]};
+    }
+    .products_28_more a{
+        background-color: #{$color};
+    }
+    .product-11__item:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #{$data439[2]};
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        transition: 0.6s;
+        -webkit-transition: 0.6s;
+        -moz-transition: 0.6s;
+    }
+    .products-28--left__ul li:hover .products-28--left__className h3 {
+        color: #{$data439[2]}
+    }
+    .products-28__proName .product-11__icon {
+        color: #{$data439[2]}
+    }
+</style>
+<script>
+    var _products_28_enent = '<?php echo $data439[7];?>' + '';
+</script>
+<section id="products-28" class="index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-4 products-28--left wow fadeInLeft" data-wow-duration="1s">
+                <div>
+                    <div class="products-28--left__title flex index_title">{$data439[3]}</div>
+                    <ul class="products-28--left__ul flex">
+                        <php>
+                            $arr_str=$data439[5];
+                            $arra=explode(',',$arr_str);
+                            foreach($arra as $k=>$a){
+                            $list[$k]=get_index_products_categoryname($a);
+                            };
+
+                            $arr = get_list_val($data439[4]);
+                        </php>
+                        <volist name="list" id="proa" key="k">
+                            <li class="flex" data-k="{$k} ">
+                                <a href="javascript:;">
+                                    <div class="products-28--left__classImg">
+                                        <div class="products-28__classImg--before">
+                                            <if condition="$arr[$k-1][ico]"><img src="{$arr[$k-1][ico]}"
+                                                    alt="{$proa['class_name']}" /></if>
+                                        </div>
+                                        <div class="products-28__classImg--after">
+                                            <if condition="$arr[$k-1][hico]"><img src="{$arr[$k-1][hico]}"
+                                                    alt="{$proa['class_name']}" /></if>
+                                        </div>
+                                    </div>
+                                    <div class="products-28--left__className">
+                                        <h3>{$proa['class_name']}</h3>
+                                    </div>
+                                </a>
+                            </li>
+                        </volist>
+
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-8 products-28--right pro_28_right wow fadeInRight" data-wow-duration="1s">
+                <volist name="list" id="prob" key="k">
+                    <div class="swiper-container products-28--right__content">
+                        <div class="swiper-wrapper">
+                            <php>
+                                $pro_listb = get_index_products_category($prob['pcid'],4);
+                            </php>
+                            <volist empty="" name="pro_listb" id="prob" offset="0" length="4">
+                                <div class="swiper-slide" data-num="{$a}">
+                                    <div class="product-11__item">
+                                        <div class="products-28__proImg"><img src="{:getmainimgurl($prob['main_img'])}"
+                                                <if condition="$prob['proalt'] neq ''">alt="{$prob['proalt']}"
+                                            <else />alt="{$prob['pro_name']}"</if>/>
+                                            <a href="{:U('/Product','','')}/{:getproname($prob['pid'])}"
+                                                class="products-28__proImg_after"></a></div>
+                                        <div class="products-28__proName"><a
+                                                href="{:U('/Product','','')}/{:getproname($prob['pid'])}">{$prob['pro_name']}</a><span
+                                                class="product-11__icon"><i class="fa fa-angle-right"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </volist>
+
+
+                        </div>
+                    </div>
+                    <!-- <div class="page_box">
+                        <div class="swiper-button-next products-28__next"><i class="fa fa-angle-right"></i></div>
+                        <div class="swiper-button-prev products-28__prev"><i class="fa fa-angle-left"></i></div>
+                    </div> -->
+
+                </volist>
+            </div>
+            <if condition="$data439[6]">
+                <div class="col-xs-12 text-center">
+                    <div class="products_28_more">
+                        <php>
+                            $arrb = get_list_val($data439[6]);
+                        </php>
+                        <volist name="arrb" id="a">
+                            <a href="{$a[link]}">{$a[txt]} <i class="fa fa-angle-right"></i></a>
+                        </volist>
+                    </div>
+                </div>
+            </if>
+        </div>
+    </div>
+</section>

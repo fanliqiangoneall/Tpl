@@ -1,0 +1,128 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,.news_detail2_prev ul li a:hover,.news_detail2_prev ul li{
+            color: #{$color};
+        }
+        .productbutton,.HJZF_Z_news2_title{
+            background: #{$inner_data[0]};
+            color: #{$inner_data[2]};
+        }
+         .HJZF_Z_news2_title .news_view span,
+         .HJZF_Z_news2_title .news_view span i{
+            color: #{$inner_data[2]};
+         }
+		 
+		.news_detail2_maincontent .news_body{
+			border-top: 0;
+		}
+		.at-share-tbx-element .at-icon-wrapper{
+			border-radius:50% !important;
+			width:20px !important;
+			height:20px !important;
+			line-height:20px !important;
+		}
+		.at-share-tbx-element .at-icon-wrapper svg{
+			width:20px !important;
+			height:20px !important;
+		}
+		.at-share-btn-elements,.addthis_sharing_toolbox{
+			display: inline-block;
+		}
+    </style>
+    <div id="HJZF_Z__wrapper">
+       <div class="HJZF_Z_news2_title">
+           <div class="container">
+               <div class="row">
+                   <div class="col-xs-12">
+                       <h1 class="news_detail2_title">{$news['title']}</h1>
+                       <div class="news_view">
+                           <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{:zq_date($news['created'])}</span><span>|</span><span class="red"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;{:__('View:')}{$news['click_num']}</span>
+
+						   <if condition="$inner_data[3]"><span>|</span><if condition="C('Language') eq 'cn'">
+							<span class="index_text">分享到：</span><div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1596683573692"><a class="bds_weixin" data-cmd="weixin" title="分享到微信" ondragstart="return false"></a><a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友" ondragstart="return false"></a><a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" ondragstart="return false"></a><a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" ondragstart="return false"></a></div>
+							<script>
+							window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+							</script>
+							<else/>
+							<span class="index_text" style="margin-right:10px;">Share to: </span><!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>
+<script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+							</if></if>
+                           <div class="clear"></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                            href="{:U('/news')}">{:__('News')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newclass['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent news_detail2_maincontent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section class="InsidePages_content-right2">
+                            <div class="InsidePages_content-right_wrap">
+                                <div class="InsidePages_content-right_content-main">
+                                    <div class="news">
+                                        <div id="news_detail">
+                                            <div class="body">
+												
+                                                <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                                                <div class="news_detail2_prev">
+                                                    <ul>
+                                                        <if condition="$newprev[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_prev">
+                                                                {:__('Prev: ')}
+                                                                <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                    {$newprev[0]['title']}
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <if condition="$newnext[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_next">
+                                                                {:__('Next: ')}
+                                                                <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                   {$newnext[0]['title']}
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <div class="clear"></div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="newscomment_show() eq 1">
+                                        <include file="HJZF2_Z:newscomment" />
+                                    </if>
+                                    <div style="clear:both"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

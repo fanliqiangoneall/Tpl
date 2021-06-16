@@ -1,0 +1,210 @@
+<!--{$pagename}-->
+<if condition="$data51[6]">
+    <style>
+        .page_Logo img{
+            margin-top:-32px;
+            height: {$data51[6]}px;
+        }
+    </style>
+    <else/>
+    <style>
+        .page_Logo img{
+            margin-top: -23px;
+            height: 40px;
+        }
+    </style>
+</if>
+<if condition="$data13[21]">
+    <style>
+        .top{
+            background: url({:getindeximgurl($data13[21])}) center  repeat;height: 45px;
+        }
+        .top2{
+        color: {$data13[22]};
+        }
+        .top_mail{
+        color: {$data13[22]};
+        }
+        .top_mail a{
+        color: {$data13[22]};
+        }
+        .top4 ul li a{
+        color: {$data13[22]};
+        }
+    </style>
+    <else/>
+    <style>
+        .top{
+            background: #{$color};height: 45px;
+        }
+    </style>
+</if>
+<style>
+/*head*/
+.main-menu > ul > li > ul:not(.sub-menu){
+    border-top:3px solid #{$color};
+}
+.main-menu > ul > li > ul.sub-menu{
+    border-top:3px solid {$data51[0]};
+}
+.nav-tools .tools-btn-icon {
+    color: #{$color};
+}
+
+.main-menu > ul > li > a >h2{
+    color: #{$color};
+}
+.menu_on{
+
+}
+#main-menu>ul>li>ul>li a:hover{
+    color:{$data51[0]};
+}
+#main-menu>ul>li>ul>li>ul>li>a>h3:hover{
+        color:{$data51[0]};
+}
+#main-menu > ul > li.menu_on > a >h2{
+    color: {$data51[0]};
+}
+.main-menu > ul > li > ul.sub-menu > li:hover >a>h3{
+    color:{$data51[0]};
+}
+#wrapper{
+    margin-top: {$data52[17]}px;
+}
+/*head*/
+</style>
+<div id="header">
+<!--top-share start-->
+<div class="top">
+    <div class="top1">
+        <span class="top2"><if condition="$data51[10]"><else/>Welcome to visit&nbsp;</if>{$about['company_name']}</span>
+        <span  class="top_mail"><i class="fa fa-envelope-o" style="margin: 0 4px 8px 4px; font-size: 15px;"></i><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1)"> {:chaifen($about['email'],0)}</a></span>
+        <if condition="$data51[22]"><span class="top_mail"><i class="fa fa-phone"></i> {:chaifen($about['phone'],0)}</span></if>
+        <if condition="$data51[21] neq ''">
+            <span style="padding-left: 15px; line-height:45px;">
+                <a href="{:getindexlink($data51[19])}" style="color: #ffffff">
+                    <img src="{:getindeximgurl($data51[21])}">
+                    {$data51[20]}
+                </a>
+            </span>
+        </if>
+        <div class="top4">
+           <ul>
+               <li><a href="{$data51[1]}" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+               <li><a href="{$data51[2]}" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="{$data51[3]}" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="{$data51[4]}" target="_blank" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+               <if condition="$about['msn']">
+                   <li><a href="skype:{:chaifen($about['msn'],0)}?chat" target="_blank" title="skype" onclick="turn_sta(4,1)"><i class="fa fa-skype"></i></a></li>
+               </if>
+               <li><a href="{$data51[18]}" target="_blank" title="youtube" ><i class="fa fa-youtube"></i></a></li>
+           </ul>
+        </div>
+    </div>
+</div>
+<!--top-share end-->
+
+<!--head_middle-->
+<div class="head_menu">
+    <div class="container">
+        <div class="page_Logo">
+            <a href="{:U('/')}" style="float: left;">{$logo}</a>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-tools">
+                <li>
+                    <a href="javascript:void(0);" class="tools-btn">
+                        <span class="tools-btn-icon" id="tools-btn-icon">
+                            <i class="fa fa-search"></i>
+                            <i class="ti-close search-close"></i>
+                        </span>
+                    </a>
+                    <div class="ins-header-search-main">
+                        <div class="ins-header-search" id="ins-header-search">
+                            <div class="ins-search-wrap">
+                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                    <li style="float: left;width: 215px;height: 44px;"><input style="height: 42px;width:205px;border-width:0px;padding-left: 10px;color:#292929;outline: none;" type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                                    <li style="float: left;width:40px;height: 44px;"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                                    <div class="clear"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <nav class="main-menu" id="main-menu">
+                <ul id="menu-main-navigation">
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}"><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                            <if condition="$vo[child] neq '' ">
+                            <ul>
+
+                                    <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                        <li>
+                                            <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$v['title']}</a>
+
+                                        </li>
+                                    </volist>
+
+                            </ul>
+                                <else/>
+                                <php>
+                                    if(!$data51[16]){
+                                        $data51[16] = 8;
+                                    }
+                                </php>
+                                <if condition="strstr($vo['url'],'/product.html') eq '/product.html' and $data51[11] eq ''">
+                                    <ul class="sub-menu">
+                                        <volist empty="" name="allclass" id="allclass_head"  offset="0" length="$data51[16]" key="key">
+                                            <li <if condition="$allclass_head['childs'] neq ''">style="min-height: 260px;"</if>>
+                                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                            <if condition="$data51[17] eq ''">
+                                                <ul <if condition="$allclass_head['childs'] neq ''">style="display:block"<else/>style="display:none"</if>>
+                                                <volist empty="" name="allclass_head['childs']" id="allclass_headchild" key="k" offset="0" length="6">
+                                                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_headchild['pcid'])}#pro_head">{$allclass_headchild['class_name']}</a></li>
+                                                </volist>
+                                                </ul>
+                                    <else/>
+                                    <ul>
+                                        <php>
+                                            $head_pro = get_index_products_category($allclass_head['pcid'],8);
+                                        </php>
+                                        <volist empty="" name="head_pro" id="headpro"   key="key">
+                                            <li>
+                                                <a href="{:U('/Product','','')}/{:getproname($headpro['pid'])}">
+                                                    <h3>{$headpro['pro_name']}</h3>
+                                                </a>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                            </if>
+
+
+
+                                            </li>
+                        <if condition="($key)%4 eq 0">
+                            <div style="clear:both; overflow:hidden; height:10px;"></div>
+                        </if>
+                                        </volist>
+                                    <div class="clear"></div>
+
+                                    </ul>
+                                    </if>
+
+                            </if>
+                        </li>
+
+                    </volist>
+                </ul>
+            </nav>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!--head_middle-->
+</div>

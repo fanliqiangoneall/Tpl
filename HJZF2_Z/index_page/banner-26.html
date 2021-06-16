@@ -1,0 +1,32 @@
+<!--{$pagename}-->
+<style>
+
+</style>
+
+<div class="img"></div>
+
+<section class="banner_26">
+	<php>
+		$arr = get_list_val($data646[0]);
+		$arra = get_list_val($data646[2]);
+	</php>
+	<volist name="arra" id="banner_pic" >
+		<div class="nav-hidden-mobile">
+			<video muted src="{$banner_pic['pc']}" width="100%" autoplay loop></video>
+		</div>
+		<div class="nav-hidden-pc">
+			<img src="{$banner_pic['mob']}" alt="" class="img-fluid">
+		</div>
+	</volist>
+	<div class="banner_26_text nav-hidden-mobile">
+		<volist name="arr" id="a">
+			<div class="banner_26_text1 banner_26_text_st">{$a['tit1']}</div>
+			<div class="banner_26_text2 banner_26_text_st">{$a['tit2']}</div>
+			<div class="banner_26_text3 banner_26_text_st">{$a['tit3']}</div>
+			<div class="banner_26_con">{$a['info']}</div>
+		</volist>
+	</div>
+	<div class="banner_25_img">
+		<img src="{:getindeximgurl($data646[1])}">
+	</div>
+</section>

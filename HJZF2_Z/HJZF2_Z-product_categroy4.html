@@ -1,0 +1,139 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+    .inner4_breadcrumbs{
+        margin-top: -15px;
+    }
+    .inner4_procateitem:hover a{
+        background: #{$color};
+    }
+    .HJZF_Z__Breadcrumbs span.current,.inner4_title h3,.inner4__proName h3{
+        color: #{$color};
+    }
+    .inner4__proicon:before{
+        border-top: 1rem solid #{$color};
+    }
+    .inner4__pro:before{
+        border-bottom: 1px solid #{$color};
+    }
+    .main_page .current,.main_page span:hover,.main_page a:hover{
+        background: #{$color};border: 1px solid #{$color};
+    } 
+    .inner_4__innerContent,#HJZF_Z__wrapper{margin-bottom: 30px;overflow-x: hidden; }
+	.inner4__proms{
+		padding:5px 15px;
+		height:56px;
+	}
+</style>
+<div id="HJZF_Z__wrapper" class="inner_4__innerwrapper">
+    <Include file="./Tpl/HJZF2_Z/inner4_procateLeft.html" />
+    <div class="HJZF_Z__Breadcrumbs inner4_breadcrumbs clearfix" navcrumbs>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="HJZF_Z__innerContent inner_4__innerContent">
+
+        <div class="inner-3__maincontent">
+            <div class="container">
+                <div class="row">
+                    <div class="inner-3_titlepart">
+
+                        <div class="col-xs-12 inner4_title wow fadeInUp">
+                            <h3 class="text-center">{$prolist['class_name']}</h3>
+                        </div>
+                        <div class="col-xs-12 inner4_profile">
+                            {:htmlspecialchars_decode($prolist['cate_profile'])}
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <section class="inner-3__content">
+                <div class="container">
+                    <div class="row">
+                        <div class="inner4__proWrap">
+                            <php>
+                                $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                            </php>
+                            <volist empty="$no_empty" name="pro" id="pro" key="k">
+                                <div class="col-xs-6  col-md-4 col-lg-3 inner4__probox wow fadeInUp">
+                                    <figure class="inner4__pro">
+
+                                        <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                            <div class="inner4__proimg">
+                                                <div class="inner4__proicon"><img src="__TMPL__HJZF2_Z/img/inner_4proicon.png" alt=""/></div>
+                                                <img src="{:getmainimgurl($pro['main_img'])}" alt="{$pro['pro_name']}"/>
+                                            </div>
+                                            <figcaption class="inner4__proName ellipsis_two">
+                                                <h3 title="{$pro['pro_name']}">{$pro['pro_name']}</h3>
+                                            </figcaption>
+                                            <if condition="$inner_data[2]">
+                                            <figcaption class="inner4__proms index_text ellipsis_two">{:subtxt($pro['pro_description'],80)}</figcaption>
+                                            </if>
+                                        </a>
+                                    </figure>
+
+                                </div>
+                            </volist>
+                            <div class="clear"></div>
+                            <div class="main_page innner4_page">{$page}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+</block>
+<block name="footer_js">
+    <script>
+require(['jquery','matchHeight'],function($,matchHeight){
+	$(document).ready(function(e) {
+		//console.log("$('.inner4__pro').matchHeight()",$(".inner4__probox").matchHeight());
+		$(".inner4__pro").matchHeight(true);        
+    });
+
+});
+        require(['jquery','swiper'],function($,Swiper){
+            var inner4_swiper = new Swiper('.inner4_procateswiper', {
+                slidesPerView: 7,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.inner4_procatenext',
+                    prevEl: '.inner4_procateprev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 50,
+                    },
+                }
+            });
+            if(inner4_swiper.slides.length>8){
+                $(".inner4_procatenext").show();
+                $(".inner4_procateprev").show();
+            };
+        });
+    </script>
+</block>

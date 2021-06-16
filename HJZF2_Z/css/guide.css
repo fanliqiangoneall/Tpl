@@ -1,0 +1,49 @@
+.hjzf_guid .loader-wrap{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999999;
+}
+.hjzf_guid .overlay{
+    width: 100%;
+    height: 100%;
+    background-color: #999;
+    transition: all .5s;
+}
+.hjzf_guid .preloader{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 120px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    font-size: 16px;
+}
+.preloader-center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.preloader-center span{
+    font-size: 22px;
+}
+.hjzf_guid .loader-wrap{
+    display: flex;
+}
+.loader-wrap .layer{
+    flex: 0 0 33.333333%;
+    display: flex;
+    overflow: hidden;
+}
+.loader-wrap.on .layer .overlay{
+    transform: translate(100%);
+    z-index: 9;
+}

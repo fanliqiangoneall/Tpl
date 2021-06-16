@@ -1,0 +1,52 @@
+<!--{$pagename}-->
+<style>
+    .HJZF_Z_other_HJ08 .flex li em{
+        color: #{$data251[2]};
+    }
+    .HJZF_Z_other_HJ08{
+        background-color:#{$data251[0]};
+    }
+    
+    .HJZF_Z_other_HJ08 ,.HJZF_Z_other_HJ08 a{
+        color:#{$data251[1]};
+    }
+</style>
+<if condition="$data251[25]">
+    <style>
+         .HJZF_Z_other_HJ08{
+            background: url({:getindeximgurl($data251[25])}) no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF_Z_other_HJ08 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="tac pb40 HJZF_Z_other_HJ08_title">
+                <div class="index_title pb20">
+                    {$data251[3]}
+                </div>
+                <div class="sub_title">
+                    {$data251[4]}
+                </div>
+            </div>
+            <ul class="flex ">
+                <php>
+                for($i=5,$j=10,$t=15,$k=20;$i<10,$j<15,$t<20,$k<25;$i=$i+1,$j=$j+1,$t=$t+1,$k=$k+1){
+                </php>
+                <if condition="$data251[$i]">
+                <li class="tac">
+                    <span><img src="{:getindeximgurl($data251[$i])}" class="transition-ease" alt="{$data251[$j]}"></span>
+                    <p>{$data251[$j]}</p>
+                    <div>
+                        <em>{$data251[$t]}</em>
+                        <i>{$data251[$k]}</i>
+                    </div>
+                </li>
+            </if>
+                <php>
+                }
+                </php>
+            </ul>
+        </div>
+    </div>
+</section>

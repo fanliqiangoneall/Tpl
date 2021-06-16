@@ -1,0 +1,191 @@
+<!--{$pagename}-->
+<script>
+$(document).ready(function () { 
+  $('#index_se1 a').has('img').not(".pdf").lightBox();
+});
+</script>
+
+<script type="text/javascript" src="__TMPL__demo2/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__demo2/css/jquery.lightbox-0.5.css"/>
+<style type="text/css">
+.index_ser{width: 1190px;max-height: 610px;margin: 0 auto;padding-top: 30px;padding-bottom: 50px;}
+.index_se1{font-size: 16px;color: #999999;padding-top: 105px;text-align: center;m}
+.index_ser_title{
+	line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat;text-align: center;
+	}
+
+
+#jquery-lightbox{overflow: overlay}
+#index_about_animate,#index_about_animate_1,#index_se1,#index_serimg{
+-webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+backface-visibility: hidden;
+
+-webkit-animation-duration: 1s;
+-webkit-animation-delay: .2s;
+-webkit-animation-timing-function: ease;
+-webkit-animation-fill-mode: both;
+-moz-animation-duration: 1s;
+-moz-animation-delay: .2s;
+-moz-animation-timing-function: ease;
+-moz-animation-fill-mode: both;
+-ms-animation-duration: 1s;
+-ms-animation-delay: .2s;
+-ms-animation-timing-function: ease;
+-ms-animation-fill-mode: both;
+animation-duration: 1s;
+animation-delay: .2s;
+animation-timing-function: ease;
+animation-fill-mode: both;
+}
+</style>  
+    
+  
+<div class="index_ser">
+  <div id="index_se1" style="display: none;">
+   <div class="index_ser_title">
+         {$data[0]}
+    </div>
+    <div id="index_se1" style="margin-top: 40px;">
+       <a href="{:getindeximgurl($data[1])}"><img src="{:getindeximgurl($data[1])}"></a>
+    </div>
+  </div>
+    <if condition="$data[2] neq ''">
+        <div>
+            <script language="javascript">
+                var Speed_1 = 5; //速度(毫秒)
+                var Space_1 = 20; //每次移动(px)
+                var PageWidth_1 = 1190 * 1; //翻页宽度 192是翻一个
+                var interval_1 = 4000; //翻页间隔
+                var fill_1 = 0; //整体移位
+                var MoveLock_1 = false;
+                var MoveTimeObj_1;
+                var MoveWay_1="right";
+                var Comp_1 = 0;
+                var AutoPlayObj_1=null;
+                function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+                function AutoPlay_1(){clearInterval(AutoPlayObj_1);AutoPlayObj_1=setInterval('ISL_GoDown_1();ISL_StopDown_1();',interval_1)}
+                function ISL_GoUp_1(){if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="left";MoveTimeObj_1=setInterval('ISL_ScrUp_1();',Speed_1);}
+                function ISL_StopUp_1(){if(MoveWay_1 == "right"){return};clearInterval(MoveTimeObj_1);if((GetObj('ISL_Cont_1').scrollLeft-fill_1)%PageWidth_1!=0){Comp_1=fill_1-(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1);CompScr_1()}else{MoveLock_1=false}
+                    AutoPlay_1()}
+                function ISL_ScrUp_1(){if(GetObj('ISL_Cont_1').scrollLeft<=0){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft+GetObj('List1_1').offsetWidth}
+                    GetObj('ISL_Cont_1').scrollLeft-=Space_1}
+                function ISL_GoDown_1(){clearInterval(MoveTimeObj_1);if(MoveLock_1)return;clearInterval(AutoPlayObj_1);MoveLock_1=true;MoveWay_1="right";ISL_ScrDown_1();MoveTimeObj_1=setInterval('ISL_ScrDown_1()',Speed_1)}
+                function ISL_StopDown_1(){if(MoveWay_1 == "left"){return};clearInterval(MoveTimeObj_1);if(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1-(fill_1>=0?fill_1:fill_1+1)!=0){Comp_1=PageWidth_1-GetObj('ISL_Cont_1').scrollLeft%PageWidth_1+fill_1;CompScr_1()}else{MoveLock_1=false}
+                    AutoPlay_1()}
+                function ISL_ScrDown_1(){if(GetObj('ISL_Cont_1').scrollLeft>=GetObj('List1_1').scrollWidth){GetObj('ISL_Cont_1').scrollLeft=GetObj('ISL_Cont_1').scrollLeft-GetObj('List1_1').scrollWidth}
+                    GetObj('ISL_Cont_1').scrollLeft+=Space_1}
+                function CompScr_1(){if(Comp_1==0){MoveLock_1=false;return}
+                    var num,TempSpeed=Speed_1,TempSpace=Space_1;if(Math.abs(Comp_1)<PageWidth_1/2){TempSpace=Math.round(Math.abs(Comp_1/Space_1));if(TempSpace<1){TempSpace=1}}
+                    if(Comp_1<0){if(Comp_1<-TempSpace){Comp_1+=TempSpace;num=TempSpace}else{num=-Comp_1;Comp_1=0}
+                        GetObj('ISL_Cont_1').scrollLeft-=num;setTimeout('CompScr_1()',TempSpeed)}else{if(Comp_1>TempSpace){Comp_1-=TempSpace;num=TempSpace}else{num=Comp_1;Comp_1=0}
+                        GetObj('ISL_Cont_1').scrollLeft+=num;setTimeout('CompScr_1()',TempSpeed)}}
+                function picrun_ini(){
+                    GetObj("List2_1").innerHTML=GetObj("List1_1").innerHTML;
+                    GetObj('ISL_Cont_1').scrollLeft=fill_1>=0?fill_1:GetObj('List1_1').scrollWidth-Math.abs(fill_1);
+                    GetObj("ISL_Cont_1").onmouseover=function(){clearInterval(AutoPlayObj_1)}
+                    GetObj("ISL_Cont_1").onmouseout=function(){AutoPlay_1()}
+                    AutoPlay_1();
+                }
+
+
+            </script>
+            <style type="text/css">
+                .blk_18 {
+                    OVERFLOW: hidden;width:1190px;  margin:auto; ZOOM: 1; position: relative;
+                }
+                .blk_18 .pcont {
+                    OVERFLOW: hidden; WIDTH:1190px; margin:auto;
+                }
+                .blk_18 .ScrCont {
+                    WIDTH: 32766px; ZOOM: 1
+                }
+                .blk_18 #List1_1 {
+                    FLOAT: left;
+                }
+                .blk_18 #List2_1 {
+                    FLOAT: left;
+                }
+                .blk_18 .LeftBotton {
+                    height: 29px; width:29px; position:absolute; bottom:0px; background:url(__TMPL__demo2/img/pro_right.jpg) no-repeat; right: 0px; z-index:11;
+                }
+
+                .blk_18 .LeftBotton a{ width:18px; display:block;}
+                .blk_18 .RightBotton {
+                    WIDTH: 29px; HEIGHT:29px; position:absolute; bottom:0px; background:url(__TMPL__demo2/img/pro_left.jpg) no-repeat; right:42px; z-index:11;
+                }
+
+                .blk_18 .RightBotton a{ width:18px; display:block; cursor:pointer;}
+                .blk_18 .LeftBotton:hover {
+                }
+                .blk_18 .RightBotton:hover {
+                }
+                .blk_18 .asd{width:1190px; float:left; position:relative; overflow:hidden;font-size: 16px;color: #333333;line-height: 30px;}
+                .asd p{text-align: center;height: 60px;line-height: 60px;color: #5c5c5c}
+
+                .blk_18 .asd:hover img{}
+                .blk_18 .asd:hover p{color: #0050b9}
+                .commu_cont3 {
+                    MARGIN: 9px 7px 7px; LINE-HEIGHT: 150%
+                }
+                .commu_cont3 UL {
+                    WIDTH: 132px
+                }
+            </style>
+            <div class="blk_18" >
+                <A onMouseUp="ISL_StopUp_1()" class="LeftBotton" onMouseDown="ISL_GoUp_1()" onMouseOut="ISL_StopUp_1()" href="javascript:void(0);" target="_self" onFocus="blur();"></A>
+                <div class="pcont" id="ISL_Cont_1">
+                    <div class="ScrCont">
+                        <div id="List1_1">
+                            <div class="asd">
+                                <span style="font-size: 18px;color: #333333;line-height: 35px;">{$data[2]}</span>{$data[3]}
+                            </div>
+                            <div class="asd">
+                                <span style="font-size: 18px;color: #333333;line-height: 35px;">{$data[4]}</span>{$data[5]}
+                            </div>
+                        </div>
+                        <div id="List2_1">
+
+                        </div>
+                    </div>
+                </div>
+                <A class="RightBotton" onMouseUp="ISL_StopDown_1()" onMouseDown="ISL_GoDown_1()" onMouseOut="ISL_StopDown_1()" href="javascript:void(0);" target="_self" onFocus="blur();"></A>
+            </div>
+            <script type="text/javascript">picrun_ini()</script>
+            <div class="clear"></div>
+        </div>
+    </if>
+
+ 
+
+</div>
+
+
+
+<script>
+$(window).scroll( function() {
+    scrollTop=$(document).scrollTop();
+    //alert(scrollTop);
+    var indexsel = $('#index_se1').offset().top;
+    var window_height=$(window).height();
+
+    $('#index_se1').show();
+    $('#index_se1').removeClass().addClass('fadeInDown');
+    $('#index_serimg').show();
+    $('#index_serimg').removeClass().addClass('fadeInLeft');
+    $('#index_about_animate_2').show();
+    $('#index_about_animate_2').removeClass().addClass('swing');
+
+
+});
+
+function show(n)
+{
+document.getElementById(n).style.display="block";
+}
+function hide(n)
+{
+document.getElementById(n).style.display="none";
+}
+</script>

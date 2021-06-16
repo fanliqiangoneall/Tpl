@@ -1,0 +1,10 @@
+<div class="InsidePage--3__contentNavbg">
+    <div class="InsidePage--3__contentNavWrap">
+        <ul class="InsidePage--3__contentNavWrap--list">
+            <volist empty="" name="allnewclass" id="news_left">
+                <li <if condition="$newscate['classid'] eq $news_left['classid'] or $newclass['classid'] eq $news_left['classid']">class="InsidePage--3_yijion"<else/>class="InsidePage--3_yiji"</if>><a href="{:U('/new_category',array('classid'=>$news_left["classid"]))}">{$news_left['class_name']}</a></li>
+            </volist>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<style>
+    .HJZF_Z__inner_product_categroy5 ul li.on a,.HJZF_Z__inner_product_categroy5 ul li:hover a{
+        background-color: #{$inner_data[1]};
+        color: #fff;
+}
+</style>
+<div class="HJZF_Z__inner_product_categroy5">
+    <div class="HJZF_Z__inner_product_categroy5_title">
+        <h2 class="fz28 text-center">{$prolist['class_name']}</h2>
+    </div>
+    <ul>
+        <volist empty="" name="allclass" id="allclass_left">
+            <li 
+            <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yiji on"<else/>class="yiji"</if>
+            >
+            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+        </li>
+        </volist>
+    </ul>
+</div>

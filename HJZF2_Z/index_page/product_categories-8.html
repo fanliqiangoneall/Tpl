@@ -1,0 +1,63 @@
+<!--{$pagename}-->
+<style>
+  .hjzf_procate_8_right ul li{
+      height: {$data371[5]}px;
+  }
+  <if condition="$data371[0]">
+    .hjzf_procate_8{
+        background: url({:getindeximgurl($data371[0])}) no-repeat center/cover;
+    }
+  </if>
+    @media(max-width: 768px) {
+        .hjzf_procate_8_right ul li{
+            height: {$data371[6]}px;
+        }
+    }
+    .hjzf_procate_8_left:after{
+        background-color: #{$data371[3]};
+    }
+    .hjzf_procate_8_right ul li span b a:hover{
+        color: #{$color};
+    }
+</style>
+
+<section class="hjzf_procate_8 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="hjzf_procate_8_wrapper">
+                    <div class="hjzf_procate_8_left">
+                        <h3 class="pb20 index_sub_title">{$data371[1]}</h3>
+                        <p class="pb20">{$data371[2]}</p>
+                        <if condition="$data371[7]">
+                            <img src="{:getindeximgurl($data371[7])}">
+                        </if>
+                    </div>
+                    <div class="hjzf_procate_8_right">
+                        <ul>
+                            <php>
+                            $arr = get_list_val($data371[4]);
+                            </php>
+                            <volist name="arr" id="a">
+                                <li style="background: url({$a[img]}) no-repeat center;">
+                                    <div>
+										<a href="{$a[link]}">
+                                        <i>{$a[title]}</i>
+                                        <span>
+                                                <em class="index_sub_title">{$a[title]}</em>
+                                            <p>{$a[con]}</p>
+                                            <if condition="$a[title1]">
+                                            <b><a href="{$a[link1]}">{$a[title1]}</a><a href="{$a[link2]}">{$a[title2]}</a></b>
+                                            </if>
+                                        </span>
+									</a>
+								</div>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

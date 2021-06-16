@@ -1,0 +1,189 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $color;
+        }
+    </php>
+    <style>
+        .InsidePages_list li.yijion>a>h3,
+        .InsidePages_list li.yiji:hover>a>h3,
+        .HJZF_Z__Breadcrumbs span.current,
+        .InsidePages_left_content-main {
+            border-color: #{$color};
+            color: #{$color};
+        }
+
+        .HJZF_Z__inner_product_categroy5 {
+            margin-bottom: 0;
+        }
+
+        .main_cases_dowm span a:before {
+            background: #{$color};
+        }
+
+        .cases_12 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .cases_12 li {
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            transition: all .5s;
+            width: 100%;
+            border-bottom: 1px solid #eee;
+        }
+        .cases_12_wrapper {
+            height: 100%;
+            transition: all .4s;
+            padding-bottom: 20px;
+        }
+        .cases_12_info {
+            margin-top: 20px;
+            display: flex;
+            width: 100%;
+        }
+        .cases_12_info h5 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .main_page .current {
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+
+        .cases_11_more a {
+            padding: 5px 15px;
+            color: #{$color};
+            border: 1px solid #{$color};
+        }
+        .cases_bread_11 {
+            padding-top: 15px;
+        }
+        .cases_12_date{
+            width: 70px;
+            margin-right: 20px;
+            text-align: center;
+            flex:0 0 70px;
+        }
+        .cases_12_date span{
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #{$color};
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .cases_12_date em{
+            display: block;
+            font-style: normal;
+            border: 1px solid #ccc;
+            border-top: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        @media(min-width: 1200px) {
+            .cases_12_wrapper .cases_12_img {
+                flex: 0 0 100%;
+                position: relative;
+            }
+            .cases_12_img span{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9;
+                transition: all .5s;
+                transform: scale(0);
+            }
+            .ul_li_list li:hover .cases_12_img span{
+                transform: scale(1);
+            }
+            .cases_12_img span::before{
+                position: absolute;
+                display: block;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #{$color};
+                opacity: 0.8;
+                z-index: -1;
+                content:'';
+            }
+            .cases_12_img span i{
+                background-color: #fff;
+                display: block;
+                text-align: center;
+                line-height: 40px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                color: #{$color};
+                font-size: 20px;
+            }
+
+        }
+    </style>
+    <div class="inner9__wrapper" id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/cases_banner_10.html" />
+
+        <div class="HJZF_Z__innerContent">
+            <div class="index_inner container">
+                <div class="row">
+                    <Include file="./Tpl/HJZF2_Z/inner/cases_right_10.html" />
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftcases_mobile.html" />
+                    </section>
+
+                    <section class="col-xs-12 col-lg-8 pull-left">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="cases_12 ul_li_list">
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allnews" id="allcases" key="k">
+                                        <li id="case_list{$key}">
+                                            <div class="cases_12_wrapper d-flex ">
+                                                <a href="{:U('/case_detail',array('nid'=>$allcases["nid"]))}"
+                                                    onFocus="blur()" class="cases_12_img"><img class="img-fluid" src="{:getimgurl($allcases['new_pro'])}" border="0" />
+                                                    <span class="nav-hidden-mobile"><i class="fa fa-link"></i></span>
+                                                </a>
+                                                <div class="cases_12_info">
+                                                    <div class="cases_12_date">
+                                                        <span>{:date('d',$allcases['created'])}</span>
+                                                        <em>{:date('Y-m',$allcases['created'])}</em>
+                                                    </div>
+                                                    <div class="cases_12_title">
+                                                        <a href="{:U('/case_detail',array('nid'=>$allcases["nid"]))}">
+                                                            <h5>{$allcases['title']}</h5>
+                                                        </a>
+                                                        <div class="hidden-xs main_cases_desc">
+                                                            {:subtxt($allcases['cases_description'],200)}</div>
+                                                        <div class="cases_11_more"><a
+                                                                href="{:U('/case_detail',array('nid'=>$allcases["nid"]))}">{:__('Read More')}</a></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

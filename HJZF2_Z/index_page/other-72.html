@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+<php>
+    if($data411[3]){
+    $color = $data411[3];
+    }
+</php>
+<style>
+    .HJZF2_other_72 a:hover {
+        color: #{$color};
+    }
+    .HJZF2_other_72 .pic img{
+        max-width: 340px;
+    }
+</style>
+<section class="HJZF2_other_72 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title text-center pb20">
+                {$data411[0]}
+            </div>
+            <a href="{$data411[1]}" class="pb40 index_text text-center">
+                {$data411[2]}
+            </a>
+
+            <div class="HJZF2_other_72_wrapper">
+                <ul class="picList">
+                    <php>
+                        $arr = get_list_val($data411[4]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li>
+                            <div class="pic">
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}" target="_blank">
+                                </if>
+                                <img src="{$a[img]}">
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </div>
+                        </li>
+                    </volist>
+                    <volist name="arr" id="ab">
+                        <li>
+                            <div class="pic">
+                                <if condition="$ab[link]">
+                                    <a href="{$ab[link]}" target="_blank">
+                                </if>
+                                <img src="{$ab[img]}">
+                                <if condition="$ab[link]">
+                                    </a>
+                                </if>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,49 @@
+<extend name="HJ05:basein" />
+<block name="content">
+	<style>
+		.Breadcrumbs span.current{
+			color: #{$data47[9]};
+		}
+		.main_proitem_second .hj05-index-more{
+			background: #{$data47[9]};
+		}
+	</style>
+	<div id="wrapper">
+		<div id="inbanner_box">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="in_banner" style="background:url({:getindeximgurl($data47[10])}) center no-repeat"></div>
+			</if>
+			<div class="page-title-inner flex">
+				<div class="container">
+					<div class="Breadcrumbs">
+						<div class="Breadcrumbs_top_title">All tags</div>
+						<div class="Breadcrumbs_down">
+							<a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">All tags</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page_nei_main" id="main-content-wrapper">
+			<section class="main-content-left">
+				<Include file="./Tpl/HJ05/left.html" />
+			</section>
+			<section class="main-content-right">
+					<div class="page_RightMain">
+						<div class="page_Main">
+							<include file="HJ05:relationinfo" />
+							<div style="height: 30px;width: 100%"></div>
+							<include file="HJ05:relationnew" />
+						</div>
+						<div style="clear:both;height: 50px;"></div>
+					</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>

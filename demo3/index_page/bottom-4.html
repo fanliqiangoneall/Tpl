@@ -1,0 +1,109 @@
+<!--{$pagename}-->
+<!--{:dump(has_mould('bottom-2'))}-->
+<if condition="has_mould('bottom-4') eq false">
+<style>
+#bottom4{ display:none;}
+</style>
+<else/>
+<link href="__TMPL__demo3/css/bottom4.css" rel="stylesheet">
+</if>
+<div id="bottom4" style="min-height: 240px;">
+
+<style>
+    .bottom4_item>h2:after{
+        content:'';display: table;width: 50px;height: 4px;position: absolute;bottom: -6px;left: 0;background: #{$color};
+    }
+    .bottom4_item_contact li a:hover{
+        color: #{$color};
+    }
+</style>
+
+<div class="bottom_f">
+    <div class="container" style="width: 1190px;margin: auto">
+        <ul>
+            <li class="bottom4_item" style="width: 270px">
+                <h2>{$data43[0]}</h2>
+                <ul class="bottom4_item_ul">
+                    <php>
+                        for($a=1;$a<9;$a=$a+2){
+                    </php>
+                        <if condition="$data43[$a] neq ''">
+                            <li><a href="{$data43[$a+1]}"><h3>{$data43[$a]}</h3></a></li>
+                        </if>
+                    <php>
+                        }
+                    </php>
+                </ul>
+            </li>
+            <li class="bottom4_item" style="width: 300px">
+                <h2>{$data43[9]}</h2>
+                <ul class="bottom4_item_ul">
+                    <volist empty="No data" name="allclass" id="allclass_bottom">
+                        <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_bottom['pcid'])}">{$allclass_bottom['class_name']}</a></li>
+                    </volist>
+                </ul>
+            </li>
+            <li class="bottom4_item" style="width: 364px">
+                <h2>{$data43[10]}</h2>
+                <ul class="bottom4_item_contact">
+                   <if condition="chaifen($about['contact'],0)"><li>联系人：{:chaifen($about['contact'],0)}</li></if>
+                   <if condition="chaifen($about['mobile'],0)"><li>手机号：{:chaifen($about['mobile'],0)}</li></if>
+                    <if condition="chaifen($about['email'],0)"><li>邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></li></if>
+                    <if condition="$about['address']"><li>地址：{$about['address']}</li></if>
+                </ul>
+            </li>
+            <if condition="$data43[12]">
+            <li class="bottom4_item bottom4_item_four" style="float: right">
+                <h2 style="text-align: center">{$data43[11]}</h2>
+                <div><img src="{:getindeximgurl($data43[12])}" alt="手机站"/></div>
+            </li>
+            </if>
+            <div class="clear"></div>
+        </ul>
+        <div class="index_bottom_bottom4">
+            <php>
+                $nowtime=date("Y",time());
+                $currtime=$data43[13];
+            </php><div class="" style="margin-top:20px;">
+            <div style="width:50%; float:left;color:#fff;font-size:15px;">
+                <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} 版权所有.&nbsp;
+            </div>
+
+            <div style="width:50%; float:right;color:#fff;font-size:15px; text-align:right;">
+                <a  style="color:#fff" target="new" href="https://www.one-all.com/mianze.html" title="中环免责声明">免责声明
+                </a>&nbsp;&nbsp;
+                <a href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>&nbsp;&nbsp;
+                <span style="font-size:16px;  color:#ffff;"><a href="{:U('/alltag','','')}">所有标签</a></span>&nbsp;&nbsp;<a href="https://www.one-all.com" title="中环互联网" target="_blank">常州网络公司</a>中环互联网设计制作&nbsp;&nbsp;<a href="https://beian.miit.gov.cn" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;&nbsp;</div></div>
+            <div class="clear"></div>
+            </div>
+    </div>
+    <div class="clear" style="width:100%; height:10px;"></div>
+</div>
+    <div class="clear"></div>
+    </div>
+
+
+
+
+
+</div>
+<if condition="$friend_link neq ''">
+    <div >
+        <div class="container">
+            <div class="friendlink" style="margin-top: 0px;">
+                <div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">友情链接：</span>
+                    <volist name="friend_link" id="friend_link">
+                        <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                            <div style="float:left; text-align:center;color: #fff;line-height: 30px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                        </if>
+                    </volist>
+                    <!--<div style="clear:both"></div>-->
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+
+</if>
+

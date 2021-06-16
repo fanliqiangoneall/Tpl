@@ -1,0 +1,80 @@
+<!--{$pagename}-->
+<style>
+    .products-15__content--down__wrap li .products-15__item:hover .products-15__proName,.products-15__categroy li.swiper-slide-thumb-active{
+        background: #{$data37[22]};
+    }
+    .products-15__categroy li.swiper-slide-thumb-active div{
+        color: #fff;
+    }
+
+</style>
+<if condition="$data37[21]">
+    <style>
+        #products-15{
+            background: url({:getindeximgurl($data37[21])}) no-repeat center;
+        }
+    </style>
+</if>
+<php>
+    $num = $data37[23] or $num = 4;
+</php>
+<script>
+    var product_twonum = <?php echo "$num" ?>;
+</script>
+<section id="products-15" class="index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="products-15__title index_title pb20">{$data37[0]}</div>
+                <div class="products-15__title--subtitle index_sub_title pb20">{$data37[1]}</div>
+                <div class="products-15__content">
+                    <div style="position: relative">
+                        <div class="products-15__categroy swiper-container gallery-thumbs">
+                            <div class="swiper-wrapper">
+                                <php>
+                                    for($i=2;$i<19;$i=$i+3){
+                                </php>
+                                <if condition="$data37[$i]">
+                                    <li class="swiper-slide"><div><img src="{:getindeximgurl($data37[$i+1])}" alt="{$data37[$i]}"/><img src="{:getindeximgurl($data37[$i+2])}" alt="{$data37[$i]}"/></div><br/><div class="index_text">{$data37[$i]}</div></li>
+                                </if>
+                                <php>
+                                    }
+                                </php>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next swiper-next-product2"><i class="fa fa-angle-right"></i></div>
+                        <div class="swiper-button-prev swiper-prev-product2"><i class="fa fa-angle-left"></i></div>
+                    </div>
+
+
+                    <div class="products-15__content--down swiper-container gallery-top wow bounceInLeft" data-wow-duration="1s">
+                        <ul class="products-15__content--down__wrap swiper-wrapper">
+                            <php>
+                                $arr_str=$data37[20];
+                                $arr=explode(',',$arr_str);
+                                foreach($arr as $k=>$a){
+                                $list[$k]=get_index_products_categoryname($a);
+                                }
+                                foreach($arr as $c=>$b){
+                                $class[$c]['data']=get_index_products_category($b,$all_pro);
+                                }
+                            </php>
+                            <volist empty="" name="class" id="li" key="k">
+                                <li class="products-15__content__itemBox swiper-slide">
+                                    <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="5">
+                                        <div class="products-15__item">
+                                            <div class="products-15__proImg"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" width="437px" height="320px"/></div>
+                                            <div class="products-15__proName"><a class="index_text" href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                        </div>
+                                    </volist>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

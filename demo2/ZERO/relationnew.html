@@ -1,0 +1,12 @@
+<if condition="$labelnewlists neq ''">
+<div class="product_detail new_product" style="margin-top:20px;">
+<div class="pro_title">相关新闻</div></div>
+
+<div class="page_RightMain" style="padding-top:15px; border:none; width:700px;">
+<volist empty="" id="labelnewlists" name="labelnewlists" key="k">
+<div style="padding-top:5px; padding-bottom:5px;"><a href="{:U('/new_detail',array('nid'=>$labelnewlists["nid"]))}">{$k}.{$labelnewlists['title']}</a></div>
+<div class="clear"></div>
+</volist>
+</div>
+<div class="clear"></div>
+</if>

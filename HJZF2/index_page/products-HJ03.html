@@ -1,0 +1,192 @@
+<!--{$pagename}-->
+<php>
+    if($data77[4] ==''){
+        $data77[4] = 90;
+    }
+    if($data77[5] ==''){
+    $data77[5] = 90;
+    }
+</php>
+<style>
+    .new_hjzf_products-HJ03 .page_probg{
+        padding-bottom:{$data77[5]}px;padding-top:{$data77[4]}px;
+    }
+    /* .new_hjzf_products-HJ03 .hj02_proclasslist_on{
+        background: #{$color};
+    } */
+
+    .new_hjzf_products-HJ03 .hj02_proclasslist li:hover{
+        background: #{$color};transition: 0.9s ;-moz-transition: .9s;-webkit-transition: .9s;}
+    .new_hjzf_products-HJ03 .hj02_proclasslist li:hover a{
+        color: #fff;
+    }
+    .new_hjzf_products-HJ03 .hj02_proclasslist_on{
+        background: #{$color};
+    }
+    .new_hjzf_products-HJ03 .hj02_proclasslist_on a{
+        color: #fff;
+    }
+    .new_hjzf_products-HJ03 .index_proitem_box:hover .index_proitem_name h6{
+        color: #{$color};
+    }
+    .new_hjzf_products-HJ03 .index-product-next:hover{
+        background: #{$color}!important;
+    }
+    .new_hjzf_products-HJ03 .index-product-prev:hover{
+        background: #{$color}!important;
+    }
+    .new_hjzf_products-HJ03 .index-product-pagination .swiper-pagination-bullet{
+        width: 8px;height: 8px;margin: 0 5px;outline:none;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;background: #fff;border: 1px solid #{$color}}
+
+    .new_hjzf_products-HJ03 .index-product-pagination .swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+    
+
+</style>
+ <if condition="$data77[7]">
+    <style>
+        .new_hjzf_products-HJ03 .page_probg{
+        background: url({:getindeximgurl($data77[7])}) no-repeat center;
+    }
+
+    </style>
+ </if>
+<!--index-product start-->
+<div class="page_probg module">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="10">
+                <div id="index_product_title_left1"><p>{$data77[0]}</p><span>{$data77[1]}</span></div>
+            </div>
+            <div class="index_product_title_right wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="10">
+                    <ul class="hj02_proclasslist">
+                        <php>
+                        $arr_str=$data77[2];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_index_products_categoryname($a);
+                        }
+
+                    </php>
+                        <li class="hj02_proclasslist_on"><a href="{:U('/product')}">{:__('All')}</a></li>
+                        <volist empty="" name="list" id="li" key="k">
+                            <if condition="$li">
+                                <li><a data-ajax='false' href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a></li>
+                            </if>
+                        </volist>
+
+                    </ul>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <php>
+                $list = get_index_products_category($data77[6],12)
+           </php> 
+        <section style="position: relative;padding-bottom: 30px;">
+            <div <if condition="$data77[9]">class="swiper-container index_prolist_wai2" <else/>class="swiper-container index_prolist_wai"</if>>
+                <div class="swiper-wrapper index_proudct_box">
+                    <if condition="$data77[3] neq ''">
+                        <volist empty="" name="allclass" id="allclass_index" key="k" offset="0" length="6">
+                            <div class="swiper-slide index_proitem_box wow fadeInDown" data-wow-delay="0" data-wow-offset="200">
+                                <div>
+                                        
+                                    <div class="index_proitem_img"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}"><img src="{:getmainimgurl($allclass_index['fid'])}" alt="{$allclass_index['class_name']}" /></a></div>
+                                    <div class="index_proitem_second">
+                                        <div class="index_proitem_name">{:subtxt($allclass_index['class_name'],40)}</div>
+                                        <if condition="$allclass_index['readme'] neq ''">
+                                            <div class="index_proitem_desc">{:subtxt($allclass_index['readme'],30)}</div>
+                                        </if>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                        <elseif condition="$data77[6] neq ''"/>
+                        <volist empty="" name="list" id="indexpro" key="k" offset="0" length="12">
+                            <div class="swiper-slide index_proitem_box wow fadeInDown" data-wow-delay="0" data-wow-offset="200">
+                                <div>
+                                    <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                    <div class="index_proitem_second">
+                                        <div class="index_proitem_name"><h6 title="{:subtxt($indexpro['pro_name'],80)}">{:subtxt($indexpro['pro_name'],20)}</h6></div>
+                                        <if condition="$indexpro['pro_description'] neq ''">
+                                            <div class="index_proitem_desc">{:subtxt($indexpro['pro_description'],30)}</div>
+                                        </if>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                        <elseif condition="$data77[9] neq ''"/>
+                        <php>
+                            if(!$data77[9]){
+                            $data77[9]=6;
+                            }
+
+                            for($i=1;$i<$data77[9];$i+=6){
+                            $volist_count[]=$i;
+                            }
+                        </php>
+
+
+                                <volist name="volist_count" id="i_count">
+                                    <php>$zq_offsets=($i_count-1); </php>
+                                    <div class="swiper-slide swiper-slide-content">
+                                        <volist empty="" name="indexpro" id="indexpro1" key="k" offset="$zq_offsets" length="6">
+                                            <div class="index_proitem_box  index_proitem_box2">
+                                                <div class="index_proitem_row1" data-k="{$k}">
+                                                    <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro1['pid'])}"><img src="{:getmainimgurl($indexpro1['main_img'])}" <if condition="$indexpro1['proalt'] neq ''">alt="{$indexpro1['proalt']}"<else/>alt="{$indexpro1['pro_name']}"</if> /></a></div>
+                                                    <div class="index_proitem_second">
+                                                        <div class="index_proitem_name"><h6 title="{:subtxt($indexpro1['pro_name'],80)}">{:subtxt($indexpro1['pro_name'],20)}</h6></div>
+                                                        <if condition="$indexpro1['pro_description'] neq ''">
+                                                            <div class="index_proitem_desc">{:subtxt($indexpro1['pro_description'],30)}</div>
+                                                        </if>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <if condition="($key+1)%3 eq 0">
+                                                <div style="clear:both; width: 100%; height:20px;"></div>
+                                                <else/>
+                                                <div style="width:30px; height:10px; background:none; float:left;"></div>
+                                            </if>
+
+                                        </volist>
+                                    </div>
+                                </volist>
+
+
+                        <else/>
+                        <volist empty="" name="indexpro" id="indexpro" key="k" offset="0" length="6">
+                            <div class="swiper-slide index_proitem_box wow fadeInDown" data-wow-delay="0" data-wow-offset="200">
+                                <div>
+                                    <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                                        <if condition="$indexpro['main_img']">
+                                            <img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> />
+                                            <else/>
+                                            <img src="{:getindeximgurl($data77[8])}" alt=""/>
+                                        </if>
+                                        </a></div>
+                                    <div class="index_proitem_second">
+                                        <div class="index_proitem_name"><h6 title="{:subtxt($indexpro['pro_name'],80)}">{:subtxt($indexpro['pro_name'],20)}</h6></div>
+                                        <if condition="$indexpro['pro_description'] neq ''">
+                                            <div class="index_proitem_desc">{:subtxt($indexpro['pro_description'],30)}</div>
+                                        </if>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                    </if>
+
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination index-product-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next index-product-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev index-product-prev"><i class="fa fa-angle-left"></i></div>
+        </section>
+
+    <div style="clear: both"></div>
+    </div>
+</div>
+<div style="clear: both;"></div>
+
+<!--index-product end-->

@@ -1,0 +1,304 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,.HJZF_Z_product8_item_name{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before,.HJZF_Z_product8-pagination .swiper-pagination-bullet-active{
+            background: #{$color};
+        }
+        .main_product_title_right,.HJZF_Z_product8_item:hover .HJZF_Z_product8_item_box .HJZF_Z_product8_item_btn{
+            background: #{$color};
+        }
+        .InsidePages_left_navlist li.yiji:hover >a>h3,.InsidePages_left_navlist li.yiji:hover >.class_button:before,ul.InsidePages_left_navlist>li>ul > li:hover >a >h3,ul.InsidePages_left_navlist>li> ul > li>ul>li a h3:hover{
+            color: #{$color};
+        }
+        .main_page .current{
+            background: #{$color};border: 1px solid #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+		.HJZF_Z_product8_infor_link a:after,.HJZF_Z_product8__line{
+			background: #{$color};
+		}
+		.HJZF_Z_product8_infor_link a:hover h3{
+			color:#{$color};
+		}
+		.HJZF_Z_product8--casecenter{
+			width:100%;
+			background:url({:getindeximgurl($inner_data[4])});
+		}
+		.HJZF_Z_product8--servicecenter{
+			width:100%;
+			background:url({:getindeximgurl($inner_data[7])}) center;
+		}
+		.HJZF_Z_product8--servicebtn a:hover{
+			color:#fff; 
+			border-color:#{$color};
+			background:#{$color};
+		}
+		@media only screen and (max-width: 768px){
+			.HJZF_Z_product8--servicecenter{
+				background:#FFFFFF;
+			}
+		}
+    </style>
+    <php>
+    if($inner_data[0]){
+        $imgs=[];$imgs_mobile=[];
+        $matches=getimages(htmlspecialchars_decode($inner_data[0]));
+        if(isset($matches[1])){
+            $imgs=$matches[1];
+            $imgs_mobile=$matches[1];
+        }
+    }
+    $img_index=0;
+    $img_index_mobile = 0;
+    if($inner_data[1]){
+        $imgs_1=[];$imgs_mobile_1=[];
+        $matches_1=getimages(htmlspecialchars_decode($inner_data[1]));
+        if(isset($matches_1[1])){
+            $imgs_1=$matches_1[1];
+            $imgs_mobile_1=$matches_1[1];
+        }
+    }
+    $img_index_1=0;
+    $img_index_mobile_1 = 0;
+	</php>
+    <div class="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" alt=""/></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent HJZF_Z_product8_procenter">
+        	<div class="container">
+                <div class="row">
+                  <div class="col-xs-12">
+                	<div class="HJZF_Z_product8_swiper gallery swiper-container">
+                        <div class="swiper-wrapper">
+                            <volist empty="" name="hotpro" id="hotpro1" key="k" offset="0" length="6">
+                            <php>
+                                $tuji=$imgs[$img_index];
+                                $img_index++;
+                                $tuji_1=$imgs_1[$img_index_1];
+                                $img_index_1++;
+                            </php>
+                                <div class="HJZF_Z_product8_slide swiper-slide">
+                                	<div class="HJZF_Z_product8_item">
+                                    	<a href="{:U('/Product','','')}/{:getproname($hotpro1['pid'])}">
+                                        	<div class="HJZF_Z_product8_item_rect" style="background:url({$tuji})">
+                                              <div class="HJZF_Z_product8_item_box">
+                                                <div class="HJZF_Z_product8_item_name index_sub_title">{$hotpro1['pro_name']}</div>
+                                                <div class="HJZF_Z_product8_item_model index_title">{$hotpro1['pro_model']}</div>
+                                                <div class="HJZF_Z_product8_item_ms index_sub_title">{:HtmlEncode(subtxt($hotpro1['pro_description'],600))}</div>
+                                                <div class="HJZF_Z_product8_item_btn">{:__('Read More')}</div>
+                                              </div>
+                                            </div>
+                                            <div class="HJZF_Z_product8_item_imgbox"><img src="{$tuji_1}" alt="{$hotpro1['pro_name']}" border="0"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="swiper-pagination HJZF_Z_product8-pagination"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent HJZF_Z_product8_search">
+        	<div class="container">
+                <div class="row">
+                	<div class="col-xs-12">
+                    	<div class="HJZF_Z_product8_search--title index_title wow fadeInUp">{$inner_data[2]}</div>
+                        <div class="HJZF_Z_product8_form_box wow fadeInUp">
+                            <if condition="C('LANGUAGE') eq 'cn'">
+                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                    <input style="border-width:0px;outline: none;background: transparent;box-sizing: border-box;" type="text" value="{:__('Product Search')}" name="keywords" id="keyword2" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)">
+                                    <button type="submit" id="search-submit"  style="outline: none;border: none;"><i class="fa fa-search"></i></button>
+                                    <div class="clear"></div>
+                                </form>
+                                <else/>
+                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                    <input style="border-width:0px;outline: none;background: transparent" type="text" value="keyword" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)">
+                                    <button type="submit" id="search-submit" style="outline: none;border: none;"><i class="fa fa-search"></i></button>
+                                    <div class="clear"></div>
+                                </form>
+                            </if>
+
+                        </div>
+                        <div class="HJZF_Z_product8_infor_link wow fadeInUp">
+                			<volist empty="" name="allclass" id="allclass_product">
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_product['pcid'])}">{$allclass_product['class_name']}</a>
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z_product8--classbg">
+            <div class="container">
+                <div class="row">
+                    <div class="HJZF_Z_product8--wrap">
+                        <php>
+                            $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                        </php>
+                    	<volist empty="$no_empty" name="allclass" id="allclass_index1" key="k_class">
+                            <div class="col-xs-6 col-md-4 col-lg-3 HJZF_Z_product8--item wow fadeInUp">
+                                <figure class="HJZF_Z_product8__class">
+                                        <div class="HJZF_Z_product8__classimg">
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_index1['pcid'])}"><img src="{:getimgurl($allclass_index1['fid'])}" alt="{$allclass_index1['class_name']}" border="0" /></a>
+                                        </div>
+                                        <div class="HJZF_Z_product8__intro">
+                                        	<div class="HJZF_Z_product8__intro--box">
+                                                <div class="HJZF_Z_product8__className">
+                                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_index1['pcid'])}">{$allclass_index1['class_name']}</a>
+                                                </div>
+                                                <div class="HJZF_Z_product8__con">
+                                                	<volist empty="" name="allclass_index1['childs']" id="allclass_leftchild">
+                                                    	<a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a>
+                                                    </volist>
+                                                </div>
+                                                <div class="HJZF_Z_product8__intro_more"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index1['pcid'])}">{:__('Read More')}<i class="fa fa-external-link"></i></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="HJZF_Z_product8__line"></div>
+                                </figure>
+
+                            </div>
+                        </volist>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <if condition="$inner_data[6]">
+        <div class="HJZF_Z__innerContent HJZF_Z_product8--casecenter index_pd">
+            <div class="container">
+                <div class="row">
+                	<div class="col-xs-12">
+                    	<div class="HJZF_Z_product8--caseinfor clearfix">
+                        	<div class="HJZF_Z_product8--casebt"><a href="{:U('/cases')}" class="index_title">{:HtmlEncode($inner_data[5])}</a></div>
+                            <div class="HJZF_Z_product8--casebtn">
+                            	<div class="swiper-button-next HJZF_Z_product8--casenext"><i class="fa fa-angle-right"></i></div>
+                                <div class="HJZF_Z_product8--caseline"></div>
+                                <div class="swiper-button-prev HJZF_Z_product8--caseprev"><i class="fa fa-angle-left"></i></div>
+                            </div>
+                            <div class="HJZF_Z_product8--casecon">{$inner_data[6]}</div>
+                        </div>
+                        <div class="HJZF_Z_product8--casecontent">
+                        	<div class="swiper-container HJZF_Z_product8--caseswiper">
+                                <div class="swiper-wrapper">
+                                    <volist name="innercases" id="innercases">
+                                        <div class="swiper-slide HJZF_Z_product8--caseitem">
+                                        	<a href="{:U('/case_detail',array('nid'=>$innercases['nid']))}">
+                                                <div class="HJZF_Z_product8--casepic"><img src="{:getimgurl($innercases['new_pro'])}" alt="{$innercases['title']}" class="img-responsive"></div>
+                                                <div class="HJZF_Z_product8--caseintro">
+                                                    <div class="HJZF_Z_product8--casetit index_sub_title ellipsis_two">{$innercases['title']}</div>
+                                                    <div class="HJZF_Z_product8--casemore">{:__('Read More')}</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </volist>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </if>
+        <if condition="$inner_data[8]">
+        <div class="HJZF_Z__innerContent HJZF_Z_product8--servicecenter index_pd">
+            <div class="container">
+                <div class="row">
+                	<div class="col-xs-12" style="text-align:center;">
+                    	<div class="HJZF_Z_product8--servicetitle index_title wow fadeInUp">{$inner_data[8]}</div>
+                        <div class="HJZF_Z_product8--servicems index_sub_title wow fadeInUp">{:HtmlEncode($inner_data[9])}</div>
+                        <if condition="$inner_data[10]"><div class="HJZF_Z_product8--servicebtn index_text wow fadeInUp"><a href="{$inner_data[10]}">{:__('Read More')}</a></div></if>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </if>
+    </div>
+</block>
+<block name="footer_js">                              
+<script>
+     require(['jquery', 'swiper'], function ($, Swiper) {
+        var HJZF_Z_product8_swiper = new Swiper('.HJZF_Z_product8_swiper',{
+			speed:300,
+			slidesPerView:3,
+			slidesPerGroup:3, 
+			spaceBetween:15,
+			autoplay:true,
+			loop:true,
+			pagination: {
+				el:'.HJZF_Z_product8_swiper .HJZF_Z_product8-pagination',
+				clickable :true,
+			},
+			breakpoints: {
+				640: {
+					slidesPerView: 1,
+					spaceBetween: 15,
+					slidesPerGroup:1, 
+				},
+				768: {
+					slidesPerView: 2,
+					spaceBetween: 15,
+					slidesPerGroup:2, 
+				},
+				992: {
+					slidesPerView: 2,
+					spaceBetween: 15,
+					slidesPerGroup:2, 
+				},
+			},
+		}); 
+		var HJZF_Z_product8_swiper2 = new Swiper('.HJZF_Z_product8--caseswiper',{
+			speed:300,
+			slidesPerView:3,
+			spaceBetween:25,
+			autoplay:true,
+			loop:true,
+			navigation: {
+				nextEl: '.HJZF_Z_product8--casenext',
+				prevEl: '.HJZF_Z_product8--caseprev',
+			  },
+			breakpoints: {
+				640: {
+					slidesPerView: 1,
+					spaceBetween: 0,
+				},
+				768: {
+					slidesPerView: 2,
+					spaceBetween: 25,
+				},
+				992: {
+					slidesPerView: 2,
+					spaceBetween: 25,
+				},
+			},
+		}); 
+     });
+</script>
+</block>

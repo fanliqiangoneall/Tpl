@@ -1,0 +1,62 @@
+<!--{$pagename}-->
+<style>
+.index_news_NewsTitle{
+	width:100%; background:url({:getindeximgurl($data[6])}) left bottom no-repeat; text-align:left; font-size:20px; color:#514d4d; line-height:44px;
+}
+</style>
+<link href="__TMPL__demo1/css/news.css" rel="stylesheet">
+<div class="index_news">
+    <div id="index_news_animate" style="display:none;">
+    <div class="index_news_left">
+        <div class="index_news_NewsTitle"><span><a href="{:U('/new_category/classid/1544')}" onFocus="blur()">查看更多 ></a></span>{$data[0]}</div>
+        <div class="index_news_NewsList">
+            <volist empty="" name="indexnews" id="news1" offset="0" length="2"> 
+            <div class="index_news_News_1">
+               <div class="index_news_pic"><a href="{:U('/new_detail',array('nid'=>$news1["nid"]))}" onFocus="blur()"><if condition="$news1['new_pro'] neq ''"><img src="{:getimgurl($news1['new_pro'])}"  border="0" alt="{$news1['title']}" /><else/><img src="__TMPL__demo1/img/nopic.jpg" border="0" /></if></a></div>
+               <div class="index_news_right">
+                  <ul>
+                     <li class="index_news_tt"><span>{:date('Y-m-d',$news1['created'])}</span><a href="{:U('/new_detail',array('nid'=>$news1["nid"]))}" onFocus="blur()">{:subtxt($news1['title'],20)}</a></li>
+                     <li style="margin-top:9px;"><a href="{:U('/new_detail',array('nid'=>$news1["nid"]))}" onFocus="blur()">{:HtmlEncode(subtxt($news1['news_description'],58))}</a></li>
+                  </ul>
+               </div>
+               <div class="clear"></div>
+             </div>
+             </volist>
+        </div>
+    </div>
+    </div>
+    <div id="index_news_animate_1" style="display:none;">
+    <div class="index_news_ygtd">
+        <div class="index_news_NewsTitle"><span><a href="{:getindexlink($data[2])}" onFocus="blur()">查看更多 ></a></span>{$data[1]}</div>
+        <div class="index_news_2">    
+            <div id="focus_Box2"> 
+              <span class="prev">&nbsp;</span> <span class="next">&nbsp;</span>
+              <ul>
+              <for start="3" end="6" step="1">
+                <li><img width="280" height="190" alt="" src="{:getindeximgurl($data[$i])}" style="border:1px solid #c8c8c8;" /></li>
+                </for>
+              </ul>
+            </div>
+            <div class="clear"></div>
+       </div>
+    </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<SCRIPT src="__TMPL__demo1/js/ZoomPic.js" type="text/javascript"></SCRIPT>
+<script>
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>3900){	
+	$('#index_news_animate').show();
+	$('#index_news_animate').removeClass().addClass('fadeInLeft');
+	}
+	if(scrollTop>3950){	
+	$('#index_news_animate_1').show();
+	$('#index_news_animate_1').removeClass().addClass('fadeInRight');
+	}
+
+});
+</script>

@@ -1,0 +1,128 @@
+<!--{$pagename}-->
+<style>
+    .HJZF_Z_other_HJ10 {
+        background: url({:getindeximgurl($data253[0]) }) no-repeat center top/cover fixed;
+         max-height:100vh;
+    }
+
+    .HJZF_Z_other_HJ10,
+    .HJZF_Z_other_HJ10 a {
+        color: #{$data253[1]};
+    }
+    .other_HJ10__btn button{
+        background-color: #{$data253[5]};
+        color: #{$data253[6]};
+    }
+    @media(max-width: 768px) {
+        .HJZF_Z_other_HJ10 {min-height: 50vh; }
+        .HJZF_Z_other_HJ10 .row{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: calc(50vh - 60px);
+        }
+    }
+</style>
+<section class="HJZF_Z_other_HJ10 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF_Z_other_HJ10_title tac">
+                <span class="img">
+                    <img src="{:getindeximgurl($data253[3])}" alt="{$data253[2]}">
+                </span>
+                <span class="txt">{$data253[2]}</span>
+            </div>
+            <div class="HJZF_Z_other_HJ10_subtitle tac pb20">
+                {$data253[4]}
+            </div>
+
+            <!-- middle -->
+            <div class="HJZF_Z_other_HJ10_middle hidden-xs hidden-sm">
+                <div class="other_HJ10__search flex">
+                    <form action="{:U('/search')}" method="POST">
+                        <div class="selectWrap other_HJ10__yiji">
+                            <div class="tit yiji_title"><span>{:__('Product Categories')}</span><i class="fa fa-angle-down"></i></div>
+                            <ul name="yzcmc" id="yzcmc" class="down">
+                                <volist empty="" name="allclass" id="vo">
+                                    <li data-value="{$vo['pcid']}">{$vo['class_name']}</li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <div class="selectWrap other_HJ10__erji">
+                            <div class="tit erji_title"><span>{:__('Product category two')}</span><i class="fa fa-angle-down"></i></div>
+                            <ul name="dsmc" id="dsmc" class="down">
+                                <volist name="rs" id="vo">
+                                    <li data-value="{$vo.pcid}"><h3>{$vo.class_name}</h3></li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <div class="other_HJ10__btn"><button type="submit" id="btns"><span>{$data253[7]}</span></button></div>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- bottom -->
+            <div class="HJZF_Z_other_HJ10_des tac index_text">
+                <volist empty="no" name="allclass" id="vo" offset="0" length="12">
+                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$vo['class_name']}</a>
+                </volist>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+        $(".tit").toggle(function(){
+            $(this).next(".down").show();
+        },function(){
+            $(this).next(".down").hide();
+        });
+        var search_data ={};
+        $('#yzcmc li').click(function(){
+            var objectModel = {};
+            var   value = $(this).attr("data-value");
+            var   yijiName= $(this).text();
+            if(value =='') {
+                return false;
+            };
+            $("#searchid").attr("value",value);
+            $(".yiji_title span").text(yijiName);
+            $(this).parent(".down").hide();
+            objectModel['parent_id']=value;
+            $.ajax({
+                cache:false,
+                type:"POST",
+                url:"{:U('/geterji')}",
+                dataType:"json",
+                data:objectModel,
+                timeout:30000,
+                success:function(rs){
+                    $("#dsmc").empty();
+                    var data = (rs.data);
+                    if(data){
+                        var count = data.length;
+                        if(count>0 ){
+                            var i = 0;
+                            var b="";
+                            for(i=0;i<count;i++){
+                                b+="<li data-value='"+data[i].pcid+"'><h3>"+data[i].class_name+"</h3></li>";
+                            }
+                            $("#dsmc").append(b);
+                        }
+                    };
+                    $("#dsmc li").click(function(){
+                        var value2=$(this).attr("data-value");
+                        var erjiName=$(this).text();
+                        $(".erji_title span").text(erjiName);
+                        $("#searchid").attr("value",value2);
+                        $(this).parent(".down").hide();
+                    });
+    
+                }
+            });
+    
+    
+        });
+    </script>

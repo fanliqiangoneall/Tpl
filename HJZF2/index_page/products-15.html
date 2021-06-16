@@ -1,0 +1,59 @@
+<style>
+    .products-15__content--down__wrap li .products-15__item:hover .products-15__proName,.products-15__categroy li.proClass_on{
+        background: #{$data134[24]};
+    }
+    .products-15__categroy li.proClass_on a{
+        color: #fff;
+    }
+</style>
+<if condition="$data134[23]">
+    <style>
+        #products-15{
+            background: url({:getindeximgurl($data134[23])}) no-repeat center;
+        }
+    </style>
+</if>
+<section id="products-15">
+    <div class="container">
+        <div class="products-15__title">{$data134[0]}</div>
+        <div class="products-15__title--subtitle">{$data134[1]}</div>
+        <div class="products-15__content">
+            <ul class="products-15__categroy">
+                <php>
+                    for($i=2;$i<21;$i=$i+4){
+                </php>
+                    <li><div><img src="{:getindeximgurl($data134[$i+2])}" alt=""/><img src="{:getindeximgurl($data134[$i+3])}" alt=""/></div><br/><a href="{$data134[$i+1]}">{$data134[$i]}</a></li>
+                <php>
+                    }
+                </php>
+                <div class="clear"></div>
+            </ul>
+
+            <div class="products-15__content--down wow bounceInLeft" data-wow-duration="1s" data-wow-offset="200">
+                <ul class="products-15__content--down__wrap">
+                    <php>
+                        $arr_str=$data134[22];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_index_products_categoryname($a);
+                        }
+                        foreach($arr as $c=>$b){
+                        $class[$c]['data']=get_index_products_category($b,$all_pro);
+                        }
+                    </php>
+                    <volist empty="" name="class" id="li" key="k">
+                        <li class="products-15__content__itemBox">
+                            <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="5">
+                                <div class="products-15__item">
+                                    <div class="products-15__proImg"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" width="437px" height="320px"/></div>
+                                    <div class="products-15__proName"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                </div>
+                            </volist>
+                        </li>
+                    </volist>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,64 @@
+<!--{$pagename}-->
+<php>
+    if($data209[5]){
+    $imgs=[];
+    $matches=getimages(htmlspecialchars_decode($data209[5]));
+    if(isset($matches[1])){
+    $imgs=$matches[1];
+    }
+    }
+</php>
+<style>
+.products-hj06_box_con a span:after,.products-hj06_box_scrollbar .swiper-scrollbar-drag{
+  background-color: #{$data209[4]};
+}
+</style>
+<if condition="$data209[2]">
+  <style>
+  .products-hj06{
+    background: url({:getindeximgurl($data209[2])}) no-repeat center bottom;background-size: cover;
+}
+</style>
+</if>
+<section class="products-hj06">
+	<div class="container">
+   <div class="row">
+     <div class="col-xs-12 col-md-7 wow fadeInDown" data-wow-duration="1s">
+       <div class="products-hj06_title text-left">
+         <h2>{$data209[0]}</h2>
+         <p class="ellipsis_two">{$data209[1]}</p>
+       </div>
+     </div>
+   </div>
+   <div class="row">
+     <div class="swiper-container products-hj06_box text-center">
+      <div class="swiper-wrapper">
+        <php>
+          $arr_str=$data209[3];
+          $arr=explode(',',$arr_str);
+          foreach($arr as $k=>$a){
+          $list[$k]=get_index_products_categoryname($a);
+        }
+            $img_index=0;
+      </php>
+      <volist empty="" name="list" id="li" key="k">
+          <php>
+              $tuji=$imgs[$img_index];
+              $img_index++;
+          </php>
+        <if condition="$li">
+          <div class="swiper-slide products-hj06_box_con wow fadeInUp" data-wow-duration="1s">
+              <div class="products-hj06_shadow">
+                  <a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}"><img src="{$tuji}" alt="{$li['class_name']}"><span><h2>{$li['class_name']}</h2><p class="ellipsis_three">{$li['readme']}</p></span></a>
+              </div>
+          </div>
+        </if>
+      </volist>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-scrollbar products-hj06_box_scrollbar"></div>
+    
+  </div>
+</div>
+</div>            
+</section>

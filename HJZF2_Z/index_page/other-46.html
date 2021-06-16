@@ -1,0 +1,68 @@
+<!--{$pagename}-->
+<php>
+    if($data330[1]) {
+    $hight_color = $data330[1];
+    }else{
+    $hight_color = $color;
+    }
+</php>
+<style>
+    <if condition="$data330[0]">
+    .hjzf2_other_46{
+        background: url({:getindeximgurl($data330[0])}) no-repeat center top/100% 100%; 
+    }
+    </if>
+    .hjzf2_other_46_wrapper .info p a {
+        border-color: #{$hight_color};
+    }
+
+    .hjzf2_other_46_wrapper .info {
+        color: #{$data330[11]};
+    }
+    @media(max-width:1200px) {
+        <if condition="$data330[12]">
+        .hjzf2_other_46{
+            background: url({:getindeximgurl($data330[12])}) no-repeat center top/100% 100%; 
+        }
+        </if>
+    }
+</style>
+<section class="index_pd hjzf2_other_46">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title text-center pb40">
+                    {$data330[2]}
+                </div>
+                <div class="hjzf2_other_46_wrapper text-center">
+                    <div class="hjzf2_other_46_img">
+                        <img src="{:getindeximgurl($data330[3])}" alt="{$data330[2]}" class="img-fluid">
+                        <span></span>
+                        <i></i>
+                    </div>
+                    <div class="info">
+                        <div class="index_title pb40 wow fadeInUp">{$data330[4]}</div>
+                        <p class="index_text">
+                            <a href="{$data330[6]}" class="wow fadeInLeft">
+                                <if condition="$data330[9]">
+                                    <img src="{:getindeximgurl($data330[9])}" alt="{$data330[5]}">
+                                </if>
+                                <span>{$data330[5]}</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                            <a href="{$data330[8]}" class="wow fadeInRight">
+                                <if condition="$data330[10]">
+                                    <img src="{:getindeximgurl($data330[10])}" alt="{$data330[7]}">
+                                </if>
+                                <span>{$data330[7]}</span>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

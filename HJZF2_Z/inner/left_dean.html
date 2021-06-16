@@ -1,0 +1,448 @@
+<style>
+    .dean_right {
+        width: 25%;
+        float: right;
+    }
+    .info_com_right .i_r_1 {
+        float: left;
+        width: 32%;
+        height: 189px;
+        background: url("/Tpl/HJZF2_Z/img/images/comrbg.jpg") no-repeat center;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+    .info_com_right .i_r_1 img {
+        margin: 15% 0;
+        display: inline-block;
+    }
+    .info_com_right .i_r_1 span {
+        display: block;
+        font-size: 24px;
+        color: #ffffff;
+        margin: 0 auto;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+        cursor: default;
+        writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+    }
+
+    .info_com_right .i_r_1:hover {
+        cursor: default;
+    }
+
+    .info_com_right .info_c_r_1 {
+        overflow: hidden;
+    }
+
+    .info_com_right .i_r_2 {
+        float: left;
+        width: 68%;
+    }
+
+    .info_com_right .i_r_2 ul li {
+        width: 48%;
+        float: left;
+        background: #fff;
+        margin-left: 2%;
+        text-align: center;
+        padding: 10px 0;
+        height: 92px;
+        overflow: hidden;
+        margin-bottom: 5px;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .info_com_right .i_r_2 ul li a {
+        display: block;
+    }
+
+    .info_com_right .i_r_2 ul li:hover {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        -webkit-transform: translate3d(0, -2px, 0);
+        transform: translate3d(0, -2px, 0);
+    }
+
+    .info_com_right .i_r_2 ul li:hover span {
+        color: #{$color};
+    }
+
+    .info_com_right .i_r_2 ul li:hover img {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+
+    .info_com_right .i_r_2 ul li img {
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .info_com_right .i_r_2 ul li p {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .info_com_right .i_r_2 ul li p>* {
+        display: block;
+    }
+
+    .info_com_right .i_r_2 ul li p span {
+        font-size: 14px;
+        color: #1a1a1a;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .info_com_right .i_r_2 ul li p small {
+        font-size: 12px;
+        color: #999999;
+    }
+
+    .i_r_3,
+    .i_r_4 {
+        height: 90px;
+        margin-top: 2px;
+        background: #fff;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .i_r_3 {
+        width: 66%;
+        float: left;
+        padding-top: 30px;
+    }
+
+    .i_r_3 img {
+        float: left;
+        margin: 0 2% 0 20%;
+    }
+
+    .i_r_3 img {
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .i_r_3 a {
+        display: block;
+        overflow: hidden;
+    }
+
+    .i_r_3 p>* {
+        display: block;
+    }
+
+    .i_r_3 p span {
+        font-size: 14px;
+        color: #1a1a1a;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .i_r_3 p small {
+        font-size: 12px;
+        color: #999999;
+    }
+
+    .i_r_3:hover {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        -webkit-transform: translate3d(0, -2px, 0);
+        transform: translate3d(0, -2px, 0);
+    }
+
+    .i_r_3:hover span {
+        color: #{$color};
+    }
+
+    .i_r_3:hover img {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+
+    .i_r_4 {
+        width: 32%;
+        float: right;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .i_r_4 a {
+        display: block;
+    }
+
+    .i_r_4 p>* {
+        display: block;
+    }
+
+    .i_r_4 p span {
+        font-size: 14px;
+        color: #1a1a1a;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .i_r_4 p small {
+        font-size: 12px;
+        color: #999999;
+    }
+
+    .i_r_4 img {
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .i_r_4:hover {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        -webkit-transform: translate3d(0, -2px, 0);
+        transform: translate3d(0, -2px, 0);
+    }
+
+    .i_r_4:hover span {
+        color: #{$color};
+    }
+
+    .i_r_4:hover img {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+
+    /*info_com_tel*/
+    .info_com_tel {
+        margin: 6px 0;
+    }
+
+    .info_com_tel .info_com_tel_list {
+        background: #fff;
+        padding: 20px 0;
+        border-bottom: 1px solid #e2e2e2;
+        padding-left: 30px;
+    }
+
+    .info_com_tel .info_com_tel_list:nth-of-type(1) ul {
+        background-image: url("/Tpl/HJZF2_Z/img/images/info_c_ico8.png");
+    }
+
+    .info_com_tel .info_com_tel_list:nth-of-type(2) ul {
+        background-image: url("/Tpl/HJZF2_Z/img/images/info_c_ico9.png");
+    }
+
+    .info_com_tel .info_com_tel_list:nth-of-type(3) ul {
+        background-image: url("/Tpl/HJZF2_Z/img/images/info_c_ico10.png");
+    }
+
+    .info_com_tel ul {
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: 45px;
+    }
+
+    .info_com_tel ul li span {
+        font-size: 14px;
+        color: #3c3c3c;
+    }
+
+    .info_com_tel ul li strong {
+        font-size: 16px;
+        color: #{$color};
+    }
+
+    .info_com_tel ul li b {
+        font-size: 16px;
+    }
+
+    .info_com_tel ul li:nth-of-type(2) {
+        color: #929292;
+        font-size: 16px;
+    }
+
+    .info_com_doc .info_com_doc_t {
+        background: #{$color};
+        color: #fff;
+        height: 80px;
+        position: relative;
+    }
+
+    .info_com_doc .info_com_doc_t p {
+        background: url("/Tpl/HJZF2_Z/img/images/info_c_ico11.png") no-repeat left center;
+        padding-left: 45px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+    }
+    .info_com_doc .info_com_doc_t p span {
+        font-size: 18px;
+        display: block;
+    }
+    .info_com_doc .swiper-zj {
+        position: relative;
+        overflow: hidden;
+        height: 285px;
+        padding: 10px;
+        background: #fff;
+    }
+    .info_com_doc .swiper-zj .swiper-slide {
+        overflow: hidden;
+    }
+    .info_com_doc .swiper-zj .swiper-slide .s_zj_l {
+        width: 30%;
+        float: left;
+    }
+    .info_com_doc .swiper-zj .swiper-slide .s_zj_r {
+        width: 65%;
+        float: right;
+    }
+    .info_com_doc .swiper-zj .swiper-slide .s_zj_r span,
+    .info_com_doc .swiper-zj .swiper-slide .s_zj_r b {
+        font-size: 16px;
+        color: #1d1d1d;
+    }
+    .info_com_doc .swiper-zj .swiper-slide .s_zj_r b {
+        font-weight: 500;
+    }
+    .info_com_doc .swiper-zj .swiper-slide .s_zj_r small {
+        display: block;
+        font-size: 12px;
+        color: #767676;
+        margin-top: 10px;
+    }
+    .info_com_doc .swiper-zj .swiper-slide:hover span {
+        color: #{$color};
+    }
+    @-webkit-keyframes rotation {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes rotation {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    .Rotation {
+        -webkit-transform: rotate(360deg);
+        animation: rotation 3s linear infinite;
+        -moz-animation: rotation 3s linear infinite;
+        -webkit-animation: rotation 3s linear infinite;
+        -o-animation: rotation 3s linear infinite;
+    }
+
+    @media(max-width: 1200px) {
+        .news18_left,.dean_left{
+            width: 100%;
+            float: none;
+        }
+        .news18_right,.dean_right{
+            display: none;
+        }
+    }
+    .sb_maps_con{
+        display: flex;
+        padding: 5px 0;
+        background-color: #fff;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<div class="info_com_right">
+    <div class="info_c_r_1">
+        <div class="i_r_1">
+            <a href="/othercate/othername/jzzn.html">
+                <img src="/Tpl/HJZF2_Z/img/images/info_c_ico1.png" alt="就诊指南" class="Rotation">
+                <span>就诊指南</span>
+            </a>
+        </div>
+        <div class="i_r_2">
+            <ul>
+                <li>
+                    <a href="/othercate/othername/ljyy.html"><img src="/Tpl/HJZF2_Z//img/images/info_c_ico2.png" alt="体检预约">
+                        <p><span>检查预约</span><small>ORDER</small></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/othercate/othername/mzzn.html"><img src="/Tpl/HJZF2_Z/img/images/info_c_ico3.png" alt="门诊指南">
+                        <p><span>门诊指南</span><small>GUIDE</small></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/othercate/othername/contactus.html"><img src="/Tpl/HJZF2_Z/img/images/info_c_ico4.png" alt="交通导向">
+                        <p><span>交通导向</span><small>TRAFFIC</small></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Inquiry.html"><img src="/Tpl/HJZF2_Z/img/images/info_c_ico5.png" alt="在线咨询">
+                        <p><span>在线留言</span><small>CONSULT</small></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="i_r_3">
+            <a href="/othercate/othername/zuozb.html">
+                <img src="/Tpl/HJZF2_Z/img/images/info_c_ico6.png" alt="交通导向">
+                <p>
+                    <span>门诊坐诊表</span>
+                    <small>EXPERTS VISIT</small>
+                </p>
+            </a>
+        </div>
+        <div class="i_r_4">
+            <a href="/product.html?prokey=jcxz">
+                <img src="/Tpl/HJZF2_Z/img/images/info_c_ico7.png" alt="住院需知">
+                <p>
+                    <span>检查需知</span>
+                    <small>CHECK</small>
+                </p>
+            </a>
+        </div>
+    </div>
+    <div class="info_com_tel">
+        <div class="info_com_tel_list">
+            <ul>
+                <li><span>电话：</span><strong>{:chaifen($about['phone'],0)}</strong></li>
+                <li><span>邮编：</span><strong>{$about['zip']}</strong></li>
+            </ul>
+        </div>
+        <div class="info_com_tel_list">
+            <ul>
+                <li><b>门诊时间</b></li>
+                <li>08：00 - 17：00</li>
+            </ul>
+        </div>
+        <div class="info_com_tel_list">
+            <ul>
+                <li><b>医院地址</b></li>
+                <li style="font-size: 14px;">{$about['address']}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="info_com_doc">
+        <div class="info_com_doc_t">
+            <p>
+                <span>地理位置</span>
+                <small>GEOGRAPHICAL</small>
+            </p>
+        </div>
+        <div class="sb_maps_con">
+            <img src="__TMPL__/HJZF2_Z/img/images/m.jpg" alt="">
+        </div>
+
+    </div>
+</div>

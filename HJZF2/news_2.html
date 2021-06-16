@@ -1,0 +1,65 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .main_newslist li:hover .in_news_name{
+            color: #{$inner_data[0]};
+        }
+        .main_newslist li:hover .in_news_more{
+            color: white;
+            border: none;
+            background: #{$inner_data[0]}
+        }
+    </style>
+    <div class="inner_module2_news_page" id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('All news')}</span></div>
+            </div>
+        </div>
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+
+            <section class="inner_module2__inPage-left">
+                <Include file="./Tpl/HJZF2/newsleft_2.html" />
+            </section>
+            <section class="inner_module2__inPage-right">
+                <div class="inner_module2__inPageRight-content">
+                    <div class="inner_module2__inPageRight-content-box">
+                        <h5 class="inner_module2__inPage-title">{:__('All news')}</h5>
+                        <div class="inner_module2__inPage-list">
+                            <ul class="main_newslist ul_li_list">
+                                <volist name="allnews" id="allnews">
+                                    <li id="new_list{$key}">
+                                        <div class="main_newsimg">
+                                            <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"<else/>src="{:getindeximgurl($inner_data[2])}"</if> border="0" /></a>
+                                        </div>
+                                        <div class="main_news_right" style="height: 131px">
+                                            <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                                                <div class="in_news_name">{:subtxt($allnews['title'],40)}</div>
+                                                <div class="in_news_jj">{:HtmlEncode(subtxt($allnews['news_description'],120))}</div>
+                                                <div class="in_news_more">{:__('Read More')}</div>
+                                           </a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div class="inner_module2_page">{$page}</div>
+                    </div>
+                </div>
+
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,79 @@
+<!--{$pagename}-->
+<style>
+    .wap2_product_two .swiper-pagination .swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+    .wap2_product_two  .bg-highlight.button {
+        border: 2px solid #{$color};background: #{$color};
+    }
+    .wap2_product_two>h3 .color-highlight{
+        color: #{$color};
+    }
+</style>
+<div class="content product wap2_product_two">
+    <h3 class="uppercase bolder center-text line_height35">
+        {$data37[0]}<span class="color-highlight">{$data37[1]}</span>
+    </h3>
+    <div class="center-text boxed-text-large bottom-40 font-15">{$data37[2]}</div>
+    <div class="bottom-30"></div>
+
+
+    <!-- Add Pagination -->
+    <div class="wap2_product_two"><div class="swiper-pagination swiper_productTwo-pagination"></div></div>
+
+    <div class="swiper-container swiper_productTwo">
+        <div class="swiper-wrapper">
+            <php>
+                if($data37[5]){
+                $len=$data37[5];
+                }else{
+                $len=4;
+                }
+            </php>
+
+            <div class="swiper-slide">
+                <div class="index_pro">
+                <volist name="indexpro" id="indexprowap" key="k" offset="0" length='$len' >
+
+                        <a href="{:U('/Product','','')}/{:getproname($indexprowap['pid'])}"> <div class="index_proImg">
+                            <img
+                                    src="{:getmainimgurl($indexprowap['main_img'])}"
+                                    class="preload-image" alt="{$indexprowap['pro_name']}"/>
+                        </div>
+                            <h1 class="article-title font-14" style="color: #333333">{$indexprowap['pro_name']}</h1>
+                            <div class="clear"></div>
+                        </a>
+
+
+                    <if condition="$k%2 eq 0"><div class="clear"></div></if>
+                </volist>
+            </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="index_pro">
+                <volist name="indexpro" id="indexprowap"  key="k" offset="$len" length='$len' >
+
+                        <a  href="{:U('/product_detail','','')}/id/{$indexprowap['pid']}">
+                            <div class="index_proImg">
+                                <img
+                                        src="{:getmainimgurl($indexprowap['main_img'])}"
+                                        class="preload-image" alt="{$indexprowap['pro_name']}"/>
+                            </div>
+
+                            <h1 class="article-title font-14" style="color: #333333">{$indexprowap['pro_name']}</h1>
+                            <div class="clear"></div>
+                        </a>
+
+
+                    <if condition="$k%2 eq 0"><div class="clear"></div></if>
+                </volist>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="<if condition='$data37[4]'>{$data37[4]}<else/>{:U('/products','','')}</if>"
+       class="button button-s button-center-medium bg-highlight ultrabold button-round font-15">{$data37[3]}</a>
+</div>
+<div class="decoration decoration-margins"></div>

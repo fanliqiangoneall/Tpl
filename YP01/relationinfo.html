@@ -1,0 +1,38 @@
+<script>
+jQuery(document).ready(function(){	
+  jQuery(".in_asd .in_rsp").hide();	
+  jQuery(".in_asd").hover(function(){
+	  jQuery(this).find(".in_rsp").stop().fadeTo(500,0.7)
+	  jQuery(this).find(".in_text").stop().animate({left:'0'}, {duration: 500})
+  },
+  function(){
+	  jQuery(this).find(".in_rsp").stop().fadeTo(500,0)
+	  jQuery(this).find(".in_text").stop().animate({left:'375'}, {duration: "fast"})
+	  jQuery(this).find(".in_text").animate({left:'-375'}, {duration: 0})
+  });
+  });
+</script>
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+<div class="page_RightTitle">Related Products</div>
+<div class="page_RightMain" style="padding-bottom:0px;">
+ <volist empty="" name="labelprodlist" id="labelprodlist">
+            <div class="asd2">
+                <div class="img" ><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getpcimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a>
+                </div>
+ 
+                <div class="in_proname2">
+                   <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}" style="font-size: 14px;text-transform: uppercase;">{$labelprodlist['pro_name']}</a>
+                </div>
+              </div>
+            <if condition="($key+1)%4 eq 0">
+              <div style="clear:both; width: 100%; height:26px;"></div>
+          <else/>
+              <div style="width:3px; height:10px; background:none; float:left;"></div>
+          </if>  
+        </volist>  
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</if>

@@ -1,0 +1,94 @@
+<extend name="HJ02_JP:basein" />
+<block name="content">
+    <php>
+        if(!$data1[35]){
+            $data1[35] =310;
+        }
+        if(!$data1[36]){
+        $data1[36] =24;
+        }
+    </php>
+    <style>
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+
+        .main_proitem{
+            height: {$data1[35]}px;
+        }
+        .main_proitem_name h6{
+            color: #{$data1[6]};height: {$data1[36]}px;
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$color};
+        }
+        .main_proitem:after{
+            content: '';display: table;width: 0;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+        .main_proitem:hover:after{
+            content: '';display: table;width: 100%;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+        .main_product_more span{
+            color: #{$data1[6]};}
+        .main_product_more span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[16])}) no-repeat center;
+        }
+        .main_product_more:hover span{
+            color:#{$color};
+        }
+        .main_product_more:hover span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[17])}) no-repeat center;
+        }
+
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs"><a href="{:U('/')}">ホーム</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                        href="{:U('/product')}">製品センター</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ02_JP/left.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                        <section class="main_product_title">
+                            <h5 class="main-cases-detail-title">{$prolist['class_name']}</h5>
+                        </section>
+                        <div class="mainpage_probox margin-30px-top">
+                            <volist empty="" name="pro" id="pro" key="k">
+                                <div class="main_proitem">
+                                    <div class="main_proitem_box">
+                                        <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+                                        <div class="main_proitem_second">
+                                            <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],10)}</h6></div>
+                                            <div class="main_proitem_desc">{:subtxt($pro['pro_description'],28)}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <if condition="($k)%3 gt 0">
+                                    <div style="width:28px; height:10px; background:none; float:left;"></div>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

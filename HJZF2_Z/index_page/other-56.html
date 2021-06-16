@@ -1,0 +1,78 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data348[1]">
+    .hjzf2_other_56{
+        background: url({:getindeximgurl($data348[0])}) no-repeat center top/cover;
+    }
+    </if>
+    <if condition="$data348[3]">
+    .hjzf2_other_56_mid{
+        background: url({:getindeximgurl($data348[3])}) no-repeat center top;
+    }
+    </if>
+    .hjzf2_other_56_right .index_title{
+        color: #{$data348[3]};
+    }
+    .hjzf2_other_56_right .index_sub_title{
+        color: #{$data348[5]};
+    }
+    .hjzf2_other_56_right a{
+        color: #{$data348[10]};
+        background-color: #{$data348[9]};
+        transition: all .4s;
+    }
+    .hjzf2_other_56_right a:hover{
+        background-color: #{$data348[12]};
+    }
+    @media(max-width:768px) {
+        <if condition="$data347[13]">
+            .hjzf2_other_56_right{
+                background: url({:getindeximgurl($data348[13])}) no-repeat center top/cover;
+                width: 100% !important;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            </if>
+            <if condition="$data347[14]">
+            .hjzf2_other_56_left{
+                background: url({:getindeximgurl($data348[14])}) no-repeat center top/cover;
+                width: 100% !important;
+            }
+            </if>
+    }
+</style>
+<script>
+    var hjzf_other_56_video = '<?php echo $data348[15];?>';
+</script>
+<section class="hjzf2_other_56 fx-center">
+	<if condition="$data348[11]">
+    <div class="hjzf2_other_56_pro ab-center">
+        <img src="{:getindeximgurl($data348[11])}" class="img-fluid">
+    </div>
+	</if>
+    
+    <!-- 左边 -->
+    <div class="hjzf2_other_56_right  fx-center index_pd wow fadeIn" data-wow-delay=".3s">
+       
+        <div class="tal">
+        <div class="index_title pb40">
+            <php>
+                $arr = get_list_val($data348[2]);
+            </php>
+            <volist name="arr" id="a" key="k">
+                <p class="wow fadeInUp" data-wow-delay=".{$k}s">{$a[title]}</p>
+            </volist>
+        </div>
+        <div class="index_sub_title pb40 wow fadeInUp" data-wow-delay=".6s">
+            {:HtmlEncode($data348[4])}
+        </div>
+        <a href="{$data348[8]}" class="index_btn index_text wow fadeInUp"  data-wow-delay=".6s">{$data348[6]} <img src="{:getindeximgurl($data348[7])}" alt="{$data348[6]}"></a>
+        </div>
+    </div>
+    <!-- 右边 -->
+    <if condition="$data348[2]">
+        <div class="hjzf2_other_56_left">
+            <img src="{:getindeximgurl($data348[1])}" class="img-fluid">
+        </div>
+    </if>
+</section>

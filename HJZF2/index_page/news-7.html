@@ -1,0 +1,115 @@
+<style>
+    .HJZF2__news-7__itemRight__name span{
+        background: #{$color};
+    }
+    .HJZF2__news-7--title  a:hover{
+        color: #{$data147[1]};
+    }
+    .HJZF2__news-7__itemLeft:hover a{
+        color: #{$data147[1]};
+    }
+    .HJZF2__news-7__itemRight:hover .HJZF2__news-7__itemRight__name a{
+        color: #{$data147[1]};
+    }
+</style>
+<section class="HJZF2__news-7">
+    <div class="container">
+        <div class="HJZF2__news-7__left wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__news-7--title">{$data147[2]}<if condition="$data147[3]"><a href="{$data147[3]}">{:__('Read More')} +</a> <else/>
+                <a href="{:U('/news')}">{:__('Read More')} +</a></if></h3>
+            <php>
+                $arr_str=$data147[6];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $k=>$a){
+                $list[$k]['data']=get_index_news_category($a,8);
+                }
+            </php>
+            <div class="HJZF2__news-7--leftContent">
+                <volist name="list" id="li" >
+                    <ul alt="{$li['name']}" class="HJZF2__news-7--leftWrap">
+                        <volist name="li['data']" id="indexnews" offset="0" length="1" key="k">
+                            <li class="HJZF2__news-7__itemLeft HJZF2__news-7__itemLeft__first">
+                                <div class="HJZF2__news-7__itemLeft__img">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews['new_pro'])}" border="0" /></a>
+                                </div>
+                                <div class="HJZF2__news-7__itemLeft__imgRight">
+                                    <div class="HJZF2__news-7__itemLeft__name"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],40)}</a></div>
+                                    <div class="HJZF2__news-7__itemLeft__desc">{:subtxt($indexnews['news_description'],100)}</div>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" class="HJZF2__news-7__itemLeft__more">{:__('Read More')} +</a>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </volist>
+                        <volist name="li['data']" id="indexnews" offset="1" length="5" key="k">
+                            <li class="HJZF2__news-7__itemLeft">
+                                <div><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],40)}</a> <span>{:date('Y-m-d ',$indexnews['created'])}</span></div>
+                            </li>
+                        </volist>
+                    </ul>
+
+                </volist>
+            </div>
+
+        </div>
+        <div class="HJZF2__news-7__right  wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__news-7--title">{$data147[4]}
+                <if condition="$data147[5]"><a href="{$data147[5]}">{:__('Read More')} +</a> <else/>
+                    <a href="{:U('/news')}">{:__('Read More')} +</a></if>
+            </h3>
+            <if condition="$data147[7]">
+            <div class="HJZF2__news-7--RightContent">
+                <php>
+                    $arr_str=$data147[7];
+                    $arr=explode(',',$arr_str);
+                    foreach($arr as $k=>$a){
+                    $list[$k]['data']=get_index_news_category($a,8);
+                    }
+                </php>
+                <volist name="list" id="li" >
+                    <ul alt="{$li['name']}" class="HJZF2__news-7--rightWrap">
+                        <volist name="li['data']" id="indexnews" offset="0" length="3" key="k">
+                            <li class="HJZF2__news-7__itemRight">
+                                <div class="HJZF2__news-7__itemRight__name">
+                                    <span>{:__('Q')}</span>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],60)}</a><div class="clear"></div></div>
+                                <div class="HJZF2__news-7__itemRight__desc">
+                                    <span>{:__('A')}</span>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{$indexnews['news_description']}</a><div class="clear"></div></div>
+                            </li>
+                        </volist>
+                    </ul>
+
+                </volist>
+            </div>
+                <else/>
+                <div class="HJZF2__news-7--RightContent">
+
+                        <ul class="HJZF2__news-7--rightWrap">
+                            <php>
+                                for($i=8;$i<16;$i=$i+3){
+                            </php>
+
+                                <li class="HJZF2__news-7__itemRight">
+                                    <div class="HJZF2__news-7__itemRight__name">
+                                        <span>{:__('Q')}</span>
+                                        <a href="{$data147[$i+2]}" onFocus="blur()">{$data147[$i]}</a><div class="clear"></div></div>
+                                    <div class="HJZF2__news-7__itemRight__desc">
+                                        <span>{:__('A')}</span>
+                                        <a href="{$data147[$i+2]}" onFocus="blur()">{$data147[$i+1]}</a><div class="clear"></div></div>
+                                </li>
+                            <php>
+                                }
+                            </php>
+                        </ul>
+                </div>
+            </if>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+
+
+    
+    

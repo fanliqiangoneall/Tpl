@@ -1,0 +1,64 @@
+<!--{$pagename}-->
+<php>
+    if($data485[1]){
+    $color = $data485[1];
+    };
+    if($data485[4]){
+    $text_color = $data485[4];
+    }else{
+    $text_color = 'fff';
+    }
+
+</php>
+<style>
+    <if condition="$data485[0]">.HJZF2_Z_other_91 {
+        background: url({:getindeximgurl($data485[0])
+    }
+
+    ) no-repeat center/cover;
+    }
+    </if>
+    .HJZF2_Z_other_91_wrapper {
+        color: #{$text_color};
+    }
+    .HJZF2_Z_other_91_right {
+        border-bottom: 1px solid #{$text_color};
+    }
+    .HJZF2_Z_other_91_right:before,
+    .HJZF2_Z_other_91_right:after,
+    .HJZF2_Z_other_91_right span:before,
+    .HJZF2_Z_other_91_right span:after {
+        background-color: #{$text_color};
+    }
+</style>
+<section class="HJZF2_Z_other_91 index_pd">
+    <div class="container">
+        <div class="row">
+            <php>
+                $arr = get_list_val($data485[2]);
+                $arra = get_list_val($data485[3]);
+            </php>
+            <div class="col-xs-12 HJZF2_Z_other_91_wrapper d-flex justify-content-between align-items-center">
+                <div class="HJZF2_Z_other_91_left">
+                    <if condition="$data485[2]">
+                        <volist name="arr" id="a">
+                            <em>{$a[en]}</em>
+                            <div class="index_title">{$a[title]}</div>
+                            <div class="index_sub_title">{$a[sub]}</div>
+                        </volist>
+                    </if>
+                </div>
+                <div class="HJZF2_Z_other_91_right">
+                    <span></span>
+                    <if condition="$data485[3]">
+                        <volist name="arra" id="a">
+                            <em>{$a[en]}</em>
+                            <div>{$a[title]}</div>
+                        </volist>
+                    </if>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

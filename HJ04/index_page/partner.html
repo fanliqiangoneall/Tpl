@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+<style>
+    .customerPre,.customerNext{
+        background: #{$color};
+    }
+</style>
+<div style="margin: 60px 0;">
+    <div class="container customerDiv">
+        <div class="customerContainer swiper-container">
+            <ul class="customerContent swiper-wrapper">
+                <php>
+                    for($i=0;$i<11;$i=$i+1){
+                </php>
+                <if condition="$data11[$i] neq ''">
+                    <li class="customerList swiper-slide wow slideInUp" data-wow-duration="0.6s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                        <img src="{:getindeximgurl($data11[$i])}" alt=""/>
+                    </li>
+                </if>
+                <php>
+                    }
+                </php>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="customerPre">
+            <i class="fa fa-caret-left coF" aria-hidden="true"></i>
+        </div>
+        <div class="customerNext">
+            <i class="fa fa-caret-right coF" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        loop:true,
+        navigation: {
+            nextEl: '.customerNext',
+            prevEl: '.customerPre',
+        },
+
+    });
+</script>
+<!--customers end -->

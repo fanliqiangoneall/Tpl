@@ -1,0 +1,112 @@
+<extend name="Wap2:base" />
+<block name="content">
+<php>
+$product__current=$inner_data[1] or $product__current="Product";
+if($inner_data[2]){
+	$product__title_bj=getindeximgurl($inner_data[2]);
+}else{
+	$product__title_bj="";
+}
+if($inner_data[3]){
+	$product__content_bj=getindeximgurl($inner_data[3]);
+}else{
+	$product__content_bj="";
+}
+    $product__title_color=$inner_data[4] or $product__title_color="#333";
+</php>
+<style>
+.product__content{
+    padding:10px 0;
+}
+.product__banner{ width:100%;}
+.product__Breadcrumbs{padding: 0 10px 10px;}
+.product__Breadcrumbs, .product__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+.product__title{
+color:{$product__title_color};font-size:24px; font-weight:200; padding:5px 10px; background:url({$product__title_bj}) no-repeat;
+}
+.product__content img{ max-width:100%;}
+.product__content article{ padding:10px 0px;}
+.product__content>ul>li{ border-bottom:1px solid #d0d0d0;}
+.product__content li{ display:block;}
+.product__content li h3{ height:44px; line-height:44px; overflow:hidden; text-overflow:ellipsis; width:calc(100% - 10px); color:#333; text-decoration:none; font-size:16px; font-weight:400;padding-left: 10px;}
+.product__content li a{text-decoration:none;}
+.product__content>ul>li>a>h3{
+background:url({$product__content_bj}) no-repeat left;
+}
+.product__content li>ul{padding-left: 15px;}
+    .product_list{padding: 0 10px;}
+</style>
+    <div>
+        <if condition="$inner_data[0] neq ''">
+            <img class="product__banner" src="{:getindeximgurl($inner_data[0])}">
+        </if>
+    </div>
+    <section class="product__content">
+<php>
+    $product_first = $data50[1];
+</php>
+        <div class="product__Breadcrumbs">
+            <div class="product__Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span
+                    class="product__current">{$product__current}</span>
+            </div>
+        </div>
+        <div class="product__title">
+            <div class="inpage__title_main">{$product__current}</div>
+        </div>
+        <if condition="$product_first eq ''">
+            <ul class="product_list">
+                <volist empty="" name="allclass" id="allclass_left">
+                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                        <if condition='$allclass_left["childs"] neq ""'>
+                            <ul>
+                                <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                                    <li>
+                                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}#pro_head">{$allclass_leftchild['class_name']}</a>
+                                        <if condition='$allclass_left["childs"] neq ""'>
+                                            <ul>
+                                                <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftchild1">
+                                                    <li>
+                                                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild1['pcid'])}">{$allclass_leftchild1['class_name']}</a>
+                                                    </li>
+                                                </volist>
+                                            </ul>
+                                        </if>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </if>
+                    </li>
+                </volist>
+            </ul>
+            <else/>
+            <div class="new_hjzf_products__products_indexhotpro">
+                <volist name="allpro" id="pro" key="k" offset="0" length="9">
+                    <div class="new_hjzf_products__products_indexhotpro__product">
+                        <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><div class="new_hjzf_products__products_indexhotpro__img" style="background:url({:getmainimgurl($pro['main_img'])}) no-repeat center center / contain">
+                        </div></a>
+                        <div class="new_hjzf_products__products_indexhotpro__txt"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a></div>
+                    </div>
+                    <if condition="$k%3 eq 0">
+                        <div class="clear"></div>
+                    </if>
+                </volist>
+                <div class="clear"></div>
+            </div>
+        </if>
+
+<script>
+    require(['jquery', 'swiper'], function ($, Swiper) {
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (index + 1) + '</span>';
+                },
+            },
+        });
+    });
+</script>
+</section>
+</block>

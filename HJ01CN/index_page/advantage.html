@@ -1,0 +1,115 @@
+<!--{$pagename}-->
+<style>
+    /*advantage start*/
+    #hj01_advantage{
+        background:url({:getindeximgurl($data6[21])}) no-repeat center;
+    }
+    .adv_icon{width: 20px;height: 20px;position: relative}
+    .adv_icon:before{
+        content: '';display: table;position:absolute;left:-35px;top:2px;width: 20px;height: 20px;background:url({:getindeximgurl($data6[20])}) no-repeat center;
+    }
+    /*.hj01_adv_right_title{
+        color: #{$color}
+    }*/
+    /*.hj01_adv_right_title2 h5{
+        color: #{$color}
+    }*/
+    .advantage_more a{
+        background: {$data1[0]};
+    }
+    .advantage_more a:hover{
+    background: #{$color};
+    }
+    #tip ul li.current{
+        background: {$data1[0]};
+    }
+    /*advantage end*/
+
+</style>
+<!--choice start-->
+<div class="clear"></div>
+<div id="hj01_advantage">
+    <div class="container">
+            <div class="hj01_adv_left" id="hj01_adv_left">
+                <div id="ab_picbox">
+                    <div id="pic" class="page_indexpic">
+                        <ul>
+                            <if condition="$data6[0] neq ''">
+                                <li ><a href="javascript:void(0);" <if condition="$data6[26]">id="adv_video"</if>><img src="{:getindeximgurl($data6[0])}" border="0" /></a></li>
+                            </if>
+                            <if condition="$data6[23] neq ''">
+                                <li ><a href="javascript:void(0);"><img src="{:getindeximgurl($data6[23])}" border="0" /></a></li>
+                            </if>
+                            <if condition="$data6[24] neq ''">
+                                <li ><a href="javascript:void(0);"><img src="{:getindeximgurl($data6[24])}" border="0" /></a></li>
+                            </if>
+                        </ul>
+                    </div>
+                    <div id="tip">
+                        <ul>
+                            <if condition="$data6[0] neq ''">
+                                <li id="smallimg_1" onMouseOver="change(1)"></li>
+                            </if>
+                            <if condition="$data6[23] neq ''">
+                                <li id="smallimg_2" onMouseOver="change(2)"></li>
+                            </if>
+                            <if condition="$data6[24] neq ''">
+                                <li id="smallimg_3" onMouseOver="change(3)"></li>
+                            </if>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <div class="hj01_adv_right">
+            <h3 class="hj01_adv_right_title" id="hj01_adv_right_title">{$data6[1]}</h3>
+            <div class="advantage_text">
+                <p >{$data6[2]}</p>
+            </div>
+            <div class="hj01_adv_right_title2"><h5>{$data6[3]}</h5></div>
+            <ul class="hj01_advlist " id="hj01_advlist">
+                <php>
+
+                    for($i=4;$i<18;$i=$i+2){
+                </php>
+                <if condition="$data6[$i] neq ''">
+                    <li id="rs{$i}" class="margin-15px-bottom">
+                        <i class="adv_icon"></i>
+
+                        <a <if condition="$data6[$i+1]">href="{$data6[$i+1]}"<else/>href="javascript:void(0);"</if>>{$data6[$i]}</a>
+                    </li>
+                </if>
+
+                <php>
+                    }
+                </php>
+                <div class="clear"></div>
+            </ul>
+            <div class="advantage_more margin-20px-bottom margin-20px-top">
+                <a href="{$data6[22]}">查看更多</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!--choice end-->
+<script>
+    if($('#adv_video').length>-1){
+        $('#adv_video').on('click', function(){
+            var data = "<?php echo $data6[26]?>";
+
+            layer.open({
+                type: 2,
+                title: ['视频', 'font-size:18px;'],
+                area: ['80%', '80%'],
+                shadeClose: true, //点击遮罩关闭
+                maxmin: true,
+                //content: '__TMPL__ZERO/video/a/demo.htm'
+                content: data
+            });
+        });
+    }
+
+</script>
+
+
+

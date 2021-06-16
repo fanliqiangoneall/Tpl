@@ -1,0 +1,122 @@
+<!--{$pagename}-->
+<php>
+	if($data645[0]){
+	$color = $data645[0];
+	}
+	if($data645[1]){
+	$mobile_bg = $data645[1];
+	}else{
+	$mobile_bg = '333';
+	}
+	if($data645[2]){
+	$mobile_navbtn = $data645[2];
+	}else{
+	$mobile_navbtn = 'fff';
+	}
+	if($data645[3]){
+	$img_url = $data645[3];
+	}else{
+	$img_url = '';
+	}
+
+	if($data645[6]){
+		$img_urla = $data645[6];
+		}else{
+		$img_urla = '';
+	}
+
+	
+	if($data645[7]){
+		$img_plus = $data645[7];
+		}else{
+		$img_plus = '';
+	}
+	$searchurl = 'mobile_search1';
+
+	$arrList = get_list_val($data645[5]);
+</php>
+<if condition="$is_index eq '1'">
+	<style>
+		body,html{
+			overflow-x: hidden;
+		}
+	</style>
+
+</if>
+<style>
+	.head_hj26_nav_box ul li:hover h3 {
+		color: #{$color};
+	}
+</style>
+
+<if condition="$data645[5]">
+<style>
+	.nav > ul > li > a em{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, 100%);
+		font-style: normal;
+		color: #fff;
+		transition: all .5s;
+	}
+	.nav > ul > li > a{
+		position: relative;
+		display: block;
+		overflow: hidden;
+		min-width: 80px;
+		text-align: center;
+	}
+	.nav > ul > li > a h2{
+		transition: all .5s;
+	}
+	.nav > ul > li:hover > a h2{
+		transform: translateY(-100%);
+	}
+	.nav > ul > li:hover > a em{
+		transform: translate(-50%, -50%);
+	}
+	.head_hj26_fixed.up .nav > ul > li > a em{
+		color: #333;
+	}
+	.head_hj26_nav_box ul li:not(:first-child){
+		margin-left: 2.5vw;
+	}
+</style>
+</if>
+<!--mobile nav content-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/index_page/_mobile.css">
+<script src="__TMPL__HJZF2_Z/index_page/_mobile.js"></script>
+<Include file="./Tpl/HJZF2_Z/index_page/_mobile.html" />
+
+<!-- pc nav -->
+<header class="nav-hidden-mobile head_hj26_fixed">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 head_hj26_nav_box">
+				<div class="logo">
+					<a href="{:U('/')}" class="normal">{$logo}</a>
+					<a href="{:U('/')}" class="hovera">
+						<img src="{:getindeximgurl($data645[4])}">
+					</a>
+				</div>
+				
+				<nav class="nav menu">
+					<ul>
+						<volist name="web_navigation" id="vo" key="key">
+							<li id="menu{$vo['id']}">
+								<a href="{$vo['url']}"><span data="{$arrList[$key-1][navid]} {$vo['id']}">{$vo['title']}</span>
+									<if condition="$data645[5] and $arrList[$key-1][navid] eq $vo['id']">
+										<em>{$arrList[$key-1][en]}</em>
+									</if>
+								</a>
+							</li>
+						</volist>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+
+</header>

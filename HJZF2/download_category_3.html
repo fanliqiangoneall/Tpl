@@ -1,0 +1,76 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <if condition="$inner_data[2]">
+        <style>
+            .InsidePage--3__contentNav.left,.InsidePage--3__contentBox.left{float: left;}
+            .InsidePage--3__contentBox.left{padding-left: 60px;padding-right: 0;}
+            .InsidePage--3__contentNav.left .InsidePage--3__contentNavWrap--list li a{text-align: left;}
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <style>
+        .InsidePage--3__breadcrumbs span.current{
+            color: #{$inner_data[1]};
+        }
+    </style>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><a
+                        href="{:U('/download')}">{:__('Download')}</a><i class="fa fa-angle-right"></i><span class="current">{:__('Download')}</span></div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap">
+            <div class="container">
+                <section class="InsidePage--3__contentNav left">
+                    <if condition="$inner_data[4] eq '1'">
+                        <Include file="./Tpl/HJZF2/left_downloadNav3.html" />
+                        <elseif condition="$inner_data[4] eq '2'"/>
+                        <style>
+                            .InsidePage--3__contentNav{width: 300px}.InsidePage--3__contentBox{width: 840px;} .InsidePage--3__contentWrap{padding-top: 60px;}.InsidePage--3__contentNav{top: -125px;}.InsidePage--3__contentWrap:before{display: none}.InsidePage--3__title{line-height: 50px;height: 50px;border-bottom: 1px solid #bfbfbf;color: #333333;font-size: 24px;}.InsidePage--3__contentBoxMain{margin-top:40px;}
+                        </style>
+                        <Include file="./Tpl/HJZF2/left_downloadNav3_2.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2/left_downloadNav3.html" />
+                    </if>
+                </section>
+                <section class="InsidePage--3__contentBox left">
+                    <div class="InsidePage--3__contentBoxWrap">
+
+                        <div class="InsidePage--3__contentBoxWrap--main">
+                            <div class="InsidePage--3__title">{$downcate['class_name']}</div>
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="download InsidePage--3__download">
+                                    <div class="body">
+                                        <ul class="donload_list">
+                                            <volist name="download" id="download" key="k">
+                                                <li>
+                                                    <a href="{:getimgurl($download['linkurl'])}" target="_blank"><span class="download_right">{:__('Download')}</span></a>
+                                                    <a href="{:U('/download_detail',array('id'=>$download["id"]))}" ><p>{$download['title']}</p></a>
+                                                    <div style="clear: both"></div>
+                                                </li>
+                                            </volist>
+                                        </ul>
+                                        <div class="main_page">{$page}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page_nei_space"></div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>
+

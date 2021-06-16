@@ -1,0 +1,75 @@
+<!--{$pagename}-->
+<php>
+	if(!$data11[7]){
+		$data11[7] =80;
+	}
+	if($data11[9]==''){
+	$data11[9] =50;
+	}
+	if($data11[10]==''){
+	$data11[10] =50;
+	}
+</php>
+<style>
+	#customers{
+		padding-top:{$data11[9]}px;padding-bottom:{$data11[10]}px;background:url({:getindeximgurl($data11[2])}) no-repeat center;
+	}
+.hj03-customer{
+	height: {$data11[7]}px;
+}
+.hj03-customer-prev:before{
+	content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:0;background:url({:getindeximgurl($data11[0])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+.hj03-customer-next:before{
+	content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:0;background:url({:getindeximgurl($data11[1])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+.hj03-customer-prev:after{
+	content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:40px;opacity:0.7;background:url({:getindeximgurl($data11[0])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+.hj03-customer-next:after{
+	content:'';display:table;height: 40px; width:40px;outline:none;position:absolute;left:0;top:40px;opacity:0.7;background:url({:getindeximgurl($data11[1])}) no-repeat center;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+.hj03-customer-prev:hover:before{
+	top:-40px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+.hj03-customer-next:hover:before{
+	top:-40px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+.hj03-customer-prev:hover:after{
+	top:0px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+.hj03-customer-next:hover:after{
+	top:0px;-webkit-transition: .6s;-moz-transition: .6s;transition: .6s;
+}
+</style>
+<!--customers start -->
+<section id="customers">
+	<div class="container">
+		<if condition="$data11[8]">
+			<p class="hj03-customer-tittle">{$data11[8]}</p>
+		</if>
+		<div class="hj03-customer-wai">
+			<div class="hj03-customer">
+				<div class="swiper-wrapper">
+					<php>
+						for($c=3;$c<7;$c=$c+1){
+					</php>
+					<if condition="$data11[$c] neq ''">
+						<div class="swiper-slide wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+							<img src="{:getindeximgurl($data11[$c])}" alt=""/>
+						</div>
+					</if>
+					<php>
+						}
+					</php>
+				</div>
+
+			</div>
+			<!-- Add Arrows -->
+			<div class="hj03-customer-next swiper-button-next"></div>
+			<div class="hj03-customer-prev swiper-button-prev"></div>
+		</div>
+
+	</div>
+</section>
+<!--customers end -->

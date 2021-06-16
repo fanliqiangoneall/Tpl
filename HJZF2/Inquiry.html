@@ -1,0 +1,48 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+        <div class="Breadcrumbs">
+            <div class="Breadcrumbs_down"><a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Inquiry')}</span></div>
+        </div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section <if condition="count($navrs) gt 0">class="InsidePages_content-right" <else/> class="InsidePages_content-right2" </if>>
+            <div class="InsidePages_content-right_content">
+                <div class="InsidePages_content-right_content-main">
+                    <h5 id="inquiry" class="InsidePages_content-right_content_title">{:__('Inquiry Now')}</h5>
+                    <if condition="LANGUAGE eq 'en'">
+                        <div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry.html" /></div>
+                        <elseif condition="C('LANGUAGE') eq 'de'"/>
+                        <div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_de.html" /></div>
+                        <elseif condition="C('LANGUAGE') eq 'fra'or C('LANGUAGE') eq 'fr'"/>
+                        <div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_fra.html" /></div>
+                        <elseif condition="C('LANGUAGE') eq 'spa'or C('LANGUAGE') eq 'esp'"/>
+                        <div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_spa.html" /></div>
+                        <else/>
+                        <div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_cn.html" /></div>
+                    </if>
+
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,144 @@
+<div class="HJZF_Z__inner__product_categroy7__search flex">
+	<div class="container">
+        <div class="row">
+             <section class="col-xs-12">
+                <form action="{:U('/search')}" method="POST">
+                    <div class="selectWrap product_categroy7__yiji">
+                        <em>1</em>
+                        <div class="tit yiji_title"><span>{$inner_data[2]}</span><i class="fa fa-angle-down"></i></div>
+                        <ul name="yzcmc" id="yzcmc" class="down">
+                                <li class="active"><h3>{$inner_data[2]}</h3></li>
+                            <volist empty="" name="allclass" id="vo">
+                                <li data-value="{$vo['pcid']}">{$vo['class_name']}</li>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="selectWrap product_categroy7__erji">
+                        <em>2</em>
+                        <div class="tit erji_title"><span>{$inner_data[3]}</span><i class="fa fa-angle-down"></i></div>
+                        <ul name="dsmc" id="dsmc" class="down">
+                                <li class="active"><h3>{$inner_data[3]}</h3></li>
+                                <li data-value=""><h3></h3></li>
+                        </ul>
+                    </div>
+                    <div class="selectWrap product_categroy7__sanji">
+                        <em>3</em>
+                        <div class="tit sanji_title"><span>{$inner_data[4]}</span><i class="fa fa-angle-down"></i></div>
+                        <ul name="sdsmc" id="sdsmc" class="down">
+                                <li class="active"><h3>{$inner_data[4]}</h3></li>
+                                <li data-value=""><h3></h3></li>
+                        </ul>
+                    </div>
+                    <div class="product_categroy7_input"><input type="hidden" name="classid" value="" id="searchid"/><input type="hidden" name="classflag" value="1" id="searchflag"/></div>
+                    <div class="product_categroy7__btn"><button type="submit" id="btns"><span>GO</span></button></div>
+                </form>
+             </section>
+    	</div>
+    </div>
+</div>
+<script>
+    var w_width = $(window).width();
+            //获取要定位元素距离浏览器顶部的距离
+            var win = $(window);
+            var navH = $(".HJZF_Z__inner__product_categroy7__search").offset().top;
+            win.scroll(function () {
+                var scroH = $(this).scrollTop();
+                if (scroH >= navH) {
+                    $(".HJZF_Z__inner__product_categroy7__search").addClass('active');
+                } else if (scroH < navH) {
+                    $(".HJZF_Z__inner__product_categroy7__search").removeClass('active');
+                }else{
+                }
+            });
+    $(".tit").toggle(function(){
+        $(this).next(".down").show();
+		$(this).parent(".selectWrap").siblings().children(".down").hide();
+		console.log($(this).parent(".selectWrap").siblings());
+    },function(){
+        $(this).next(".down").hide();
+		$(this).parent(".selectWrap").siblings().children(".down").hide();
+    });
+	var search_data ={};
+    $('#yzcmc li').click(function(){
+        var objectModel = {};
+        var   value = $(this).attr("data-value");
+        var   yijiName= $(this).text();
+        if(value =='') {
+            return false;
+        };
+        $("#searchid").attr("value",value);
+        $(".yiji_title span").text(yijiName);
+        $(this).parent(".down").hide();
+        objectModel['parent_id']=value;
+        $.ajax({
+            cache:false,
+            type:"POST",
+            url:"{:U('/geterji')}",
+            dataType:"json",
+            data:objectModel,
+            timeout:30000,
+            success:function(rs){
+                $("#dsmc").empty();
+                var data = (rs.data);
+                if(data){
+                    var count = data.length;
+                    if(count>0 ){
+                        var i = 0;
+                        var b="";
+                        for(i=0;i<count;i++){
+                            b+="<li data-value='"+data[i].pcid+"'><h3>"+data[i].class_name+"</h3></li>";
+                        }
+                        $("#dsmc").append(b);
+                    }
+                };
+                $("#dsmc li").click(function(){
+					var objectModel2 = {};
+                    var value2=$(this).attr("data-value");
+                    var erjiName=$(this).text();
+                    $(".erji_title span").text(erjiName);
+                    $("#searchid").attr("value",value2);
+                    $(this).parent(".down").hide();
+					objectModel2['parent_id']=value2;
+					
+					console.log(objectModel2);
+					
+					$.ajax({
+						cache:false,
+						type:"POST",
+						url:"{:U('/geterji')}",
+						dataType:"json",
+						data:objectModel2,
+						timeout:30000,
+						success:function(rs2){
+							$("#sdsmc").empty();
+							
+							var data2 = (rs2.data);
+							if(data2){
+								var count2 = data2.length;
+								if(count2>0 ){
+									var i2 = 0;
+									var b2="";
+									for(i2=0;i2<count2;i2++){
+										b2+="<li data-value='"+data2[i2].pcid+"'><h3>"+data2[i2].class_name+"</h3></li>";
+									}
+									$("#sdsmc").append(b2);
+								}
+							};
+							$("#sdsmc li").click(function(){
+								var value3=$(this).attr("data-value");
+								var sanjiName=$(this).text();
+								$(".sanji_title span").text(sanjiName);
+								$("#searchid").attr("value",value3);
+								$(this).parent(".down").hide();
+							});
+			
+						}
+					});
+                });
+
+            }
+        });
+
+
+    });
+</script>

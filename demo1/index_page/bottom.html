@@ -1,0 +1,101 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo1/css/bottom.css" rel="stylesheet">
+<div class="index_bottom_bg">
+    <div class="index_bottom_footer">
+         <div id="index_bottom_animate">
+         <div class="index_bottom_contact">
+             <div class="bottom_head">联系我们</div>
+             <ul>
+                 <li><div style="width:50%; float:left;">服务热线：{:chaifen($about['phone'],0)}</div><div style="width:218px; float:left">地址：{$about['address']}</div><div class="clear"></div></li>
+                 <li>邮编：{$about['zip']}</li>
+                 <li>
+                 <if condition="chaifen($about['contact'],0)">
+                 <div style="width:50%; float:left;">联系人：{:chaifen($about['contact'],0)}</div>
+                 </if>
+                 <if condition="chaifen($about['contact'],1)">
+                 <div style="width:50%; float:left;">联系人：{:chaifen($about['contact'],1)}</div><!--<div style="width:218px; float:left;">联系人：{:chaifen($about['contact'],2)}</div>--><div class="clear"></div>
+                 </if>
+                 </li>
+                 
+                 
+                 <li>
+                 <if condition="chaifen($about['mobile'],0)">
+                 <div style="width:50%; float:left;">手机号：{:chaifen($about['mobile'],0)}</div>
+                 </if>
+                 <if condition="chaifen($about['mobile'],1)">
+                 <div style="width:50%; float:left;">手机号：{:chaifen($about['mobile'],1)}</div><!--<div style="width:218px; float:left;">手机号：{:chaifen($about['mobile'],2)}</div>--><div class="clear"></div>
+                 </if>
+                 </li>
+               
+                 
+                 <li>
+                 <if condition="chaifen($about['email'],0)">
+                 <div style="width:50%; float:left;">邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></div>
+                 </if>
+                 <if condition="chaifen($about['email'],1)"><div style="width:50%; float:left;">邮箱：<a href="mailto:{:chaifen($about['email'],1)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],1)}</a></div><!--<div style="width:218px; float:left;">邮箱：<a href="mailto:{:chaifen($about['email'],2)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],2)}</a></div>--><div class="clear"></div>
+                 </if>
+                 </li>
+                 
+             </ul>
+             <div class="clear"></div>
+             <div class="index_bottom_ewm">
+                <ul>
+                   <li><img src="{:getindeximgurl($data13[0])}" border="0" /><br />手机站</li>
+                   <li style="margin-left:40px; text-align:left; line-height:35px;"><img src="__TMPL__demo1/img/bottom_tel.png" border="0" style="vertical-align:middle;" />&nbsp;&nbsp;&nbsp;服务热线<br /><span>{:chaifen($about['phone'],0)}</span></li>
+                </ul>
+             </div>
+         </div>
+         </div>
+         <div id="index_bottom_animate_1">
+         <div class="index_bottom_right">
+            <div class="index_bottom_about" style="width:50%;">
+               <div class="bottom_head">{$data13[1]}</div>
+               <ul>
+               <for start="2" end="12" step="2">
+                 <li><a href="{:getindexlink($data13[$i+1])}" onFocus="blur()">{$data13[$i]}</a></li>
+				</for>
+               </ul>
+            </div>
+            <div class="index_bottom_product" style="width:50%">
+               <div class="bottom_head">产品分类</div>
+               <ul>
+                 <volist empty="" name="allclass" id="allclass_left">
+                     <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></li>
+                 </volist>
+               </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="index_bottom_bottom2">
+            <php>
+            $nowtime=date("Y",time());
+            $currtime=2018;
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} 版权所有.&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>
+            <span style="font-size:16px;  color:#ffff;"><a href="{:U('/alltag','','')}">所有标签</a></span><br /><a href="http://www.one-all.com" title="中环互联网" target="_blank">常州网络公司</a>中环互联网设计制作&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;&nbsp;
+  {:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}</div>
+         </div>
+         </div>
+         <div class="clear"></div>
+<if condition="$friend_link neq ''">
+<div class="index_bottom_friendlink" style="margin-top:20px;">
+    <div class="link"><span style="  color:#fff;float:left; ">友情链接：</span>
+          <volist name="friend_link" id="friend_link">
+          <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+          <div style=" margin-right:20px; float:left; color:#fff;"><a style="color:#fff" target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+          </if>
+          </volist>     
+          <div style="clear:both"></div>
+    </div>
+    
+    <div style="clear:both"></div>
+</div>
+</if> 
+
+   
+    </div>
+</div>
+
+<script type="text/javascript">
+jQuery('#index_bottom_animate').removeClass().addClass('fadeInLeft');
+jQuery('#index_bottom_animate_1').removeClass().addClass('fadeInRight');
+</script>

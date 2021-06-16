@@ -1,0 +1,57 @@
+<if condition="$data196[0]">
+    <style>
+        .HJZF2__news-12{
+            background: url({:getindeximgurl($data196[0])}) left center/cover no-repeat;
+        }
+    </style>
+</if>
+<style>
+	.HJZF2__news-12-left {
+	  background: url({:getindeximgurl($data196[2])}) no-repeat center /cover;
+	}
+    .HJZF2__news-12__itemmore:hover{
+        text-decoration: underline;
+    }
+</style>
+<section class="HJZF2__news-12">
+    <div class="container">
+        <div class="HJZF2__news-12maintitle">{$data196[3]}</div>
+        <div class="HJZF2__news-12-left">
+            <div class="HJZF2__news-12-leftbox">
+                <h2 class="title">{$data196[4]} <span>&nbsp;&nbsp;{$data196[3]}</span></h2>
+                <div class="line"></div>
+                <div class="desc">{:HtmlEncode(subtxt($data196[5],100))}</div>
+                <a class="more" href="{$data196[6]}">{:__('Read More')}</a>
+            </div>
+        </div>
+        <div class="HJZF2__news-12-right">
+            <div class="HJZF2__news-11main wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0" data-wow-offset="5">
+                <div class="HJZF2__news-12list">
+                        <volist name="indexnews" id="indexnews" offset="0" length="2" key="k">
+                            <div class="HJZF2__news-12__item">
+                                    <div class="HJZF2__news-12__itempic">
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()"><if condition="$indexnews['new_pro'] eq 0 or $indexnews['new_pro'] eq ''"><img src="{:getindeximgurl($data167[4])}" border="0" /><else/><img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}"></if>
+                                        </a>
+                                    </div>
+                                    <div class="HJZF2__news-12__itemkk">
+                                        <div class="HJZF2__news-12__itemName"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{$indexnews['title']}</a></div>
+                                        <div class="HJZF2__news-12__itemtime">{:date('m-d',$indexnews['created'])}</div>
+                                        <div class="clear"></div>
+                                        <div class="HJZF2__news-12__itemjj"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{$indexnews['news_description']}</a></div>
+                                        <div class="HJZF2__news-12__itemmore"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:__('Read More')}</a></div>
+                                    </div>
+                                    <div class="clear"></div>
+                            </div>
+                        </volist>
+
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+
+
+
+    

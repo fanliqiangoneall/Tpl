@@ -1,0 +1,66 @@
+<if condition="$data119[18]">
+    <style>
+        #cases-7{
+            background: url({:getindeximgurl($data119[18])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .cases-7__title--more{
+        background: #{$color};
+    }
+</style>
+<section id="cases-7">
+    <div class="cases-7__container">
+        <hgroup class="cases-7__title">
+            <h3 class="cases-7__title--miantitle">{$data119[0]}</h3>
+            <h5 class="cases-7__title--subtitle">{$data119[1]}</h5>
+            <if condition="$data119[19]">
+                <div class="cases-7__title--more"><a href="{$data119[19]}">{:__('Read More')}</a></div>
+                <else/>
+                <div class="cases-7__title--more"><a href="{:U('/cases')}">{:__('Read More')}</a></div>
+            </if>
+
+            <div class="clear"></div>
+        </hgroup>
+        <div class="cases-7__content">
+            <ul>
+                <li class="cases-7__content__item">
+                    <a href="{$data119[5]}">
+                        <img src="{:getindeximgurl($data119[4])}" alt=""/>
+                        <div class="cases-7__content__item--first__text">
+                            <div class="cases-7__content__item--name">{$data119[2]}</div>
+                            <div class="cases-7__content__item--desc"> {:HtmlEncode($data119[3])}</div>
+                        </div>
+
+                    </a>
+                </li>
+                <li class="cases-7__content__item">
+                    <a href="{$data119[8]}">
+                        <img src="{:getindeximgurl($data119[7])}" alt=""/>
+                        <div class="cases-7__content__item--name cases-7__content__item--name--small">{$data119[6]}</div>
+                    </a>
+                </li>
+                <li class="cases-7__content__item">
+                    <a href="{$data119[11]}">
+                        <img src="{:getindeximgurl($data119[10])}" alt=""/>
+                        <div class="cases-7__content__item--name cases-7__content__item--name--small">{$data119[9]}</div>
+                    </a>
+                </li>
+                <li class="cases-7__content__item">
+                    <a href="{$data119[14]}">
+                        <img src="{:getindeximgurl($data119[13])}" alt=""/>
+                        <div class="cases-7__content__item--name cases-7__content__item--name--small">{$data119[12]}</div>
+                    </a>
+                </li>
+                <li class="cases-7__content__item">
+                    <a href="{$data119[17]}">
+                        <img src="{:getindeximgurl($data119[16])}" alt=""/>
+                        <div class="cases-7__content__item--name cases-7__content__item--name--small">{$data119[15]}</div>
+                    </a>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+</section>

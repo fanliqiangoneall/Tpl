@@ -1,0 +1,81 @@
+<!--{$pagename}-->
+<php>
+    if($data332[3]) {
+    $hight_color = $data332[3];
+    }else{
+    $hight_color = $color;
+    }
+</php>
+<style>
+  <if condition="$data332[0]">
+    .advantage_20{
+        background: url({:getindeximgurl($data332[0])}) no-repeat center top/100% auto #{$data332[5]}; 
+		background-color: #fff;
+    }
+    </if>
+    @media(min-width: 1445px) {
+        <if condition="$data332[0]">
+    .advantage_20{
+        background: url({:getindeximgurl($data332[0])}) no-repeat center top/100% 100% #{$data332[5]}; 
+    }
+    </if>
+    }
+	 @media(max-width: 1200px) {
+        <if condition="$data332[0]">
+            .advantage_20{
+                background: url({:getindeximgurl($data332[0])}) no-repeat center top/100% auto #f8f8f6; 
+            }
+        </if>
+    }
+    .advantage_20_wrapper li,.advantage_20{
+        color: #{$data332[1]};
+    }
+    .advantage_20_wrapper li:hover span{
+        color: #{$hight_color};
+    }
+   
+</style>
+<section class="advantage_20 index_pd">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-xs-12">
+                <div class="text-center index_title wow fadeInUp pb40">
+                    {$data332[2]}
+                </div>
+				<if condition="$data332[7]">
+				<div class="text-center index_text wow fadeInUp pb40">
+					{$data332[7]}
+				</div>
+				</if>
+                <ul class="advantage_20_wrapper">
+                    <php>
+                        $arr = get_list_val($data332[4]);
+                    </php>
+                    <volist name="arr" id="a" key="k">
+                        <li class="text-center wow fadeInLeft" data-wow-delay=".{$k}s">
+                            <if condition="$a[link]">
+                                    <if condition="$data332[6]">
+                                    <a href="{$a[link]}" target="_blank" rel="nofollow">
+                                        <else/>
+                                    <a href="{$a[link]}">
+                                    </if>
+                                    </if>
+                            <i>
+                                <img src="{$a[img]}" class="normal" alt="{$a[title]}">
+                                <if condition="$a[hover]">
+                                <img src="{$a[hover]}" class="hover" alt="{$a[title]}">
+                                </if>
+                            </i>
+                            <span class="index_sub_title">{$a[title]}</span>
+                            <p class="index_text">{$a[des]}</p>
+                            <if condition="$a[link]">
+                                </a>
+                                    </if>
+                        </li>
+                    </volist>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>

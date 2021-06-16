@@ -1,0 +1,622 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<link href="__TMPL__HJZF2_Z/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+	
+	
+	<style>
+		/*会员登录*/
+.in_page_main2{width: 100%; min-height: 450px; padding:120px 0; background:url(../img/login_banner.jpg) center;}
+.login_bg{ width:697px; box-sizing:border-box; min-height:370px; padding-bottom: 30px; background:#ffffff; border-radius:20px; box-shadow:0 0 5px rgba(0,0,0,0.3);position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);z-index: 99999;}
+.login_title{ text-align:left; font-size:18px; color:#333333; line-height:50px; padding:0 30px; border-bottom:1px solid #f1f1f2;}
+.login_nr{ width:600px; margin:auto; padding-top:30px;}
+.login_nr_bt{ font-size:30px; color:#333333; line-height:36px; text-align:center;}
+.login_nr_row,.login_nr_row1{ padding-top:27px;}
+.login_nr_row1 input{width:100%; border:none; box-sizing: border-box; font-size:18px; color:#333333; line-height:30px;}
+.register_login_line{width:100%; border-bottom:1px solid #c8c9c9; position:relative;margin-top: 14px;padding-bottom: 6px;}
+.login_nr_row input{ float:left; width:100%; max-width:340px; margin-left:10px; border:none; box-sizing: border-box; font-size:18px; color:#333333; line-height:30px;}
+.login_nr_ts{ width:100%; text-align:right;}
+.login_nr_ts a{font-size:14px; color:#999999; line-height:30px;}
+.login_nr_row input.submit_btn,.login_nr_row1 input.submit_btn{ width:200px; height:40px; float:none; display:block; border:none; margin:auto; margin-top:30px; background:#ef8300; border-radius:20px; text-align:center; font-size:18px; color:#FFFFFF; line-height:40px;}
+.login_nr_row input::-moz-placeholder,.login_nr_row1 input::-moz-placeholder {
+	color: #333333;
+}
+.login_nr_row input::-webkit-input-placeholder,.login_nr_row1 input::-webkit-input-placeholder {
+        color: #333333;
+}   
+.login_nr_row input::-ms-input-placeholder,.login_nr_row1 input::-ms-input-placeholder {
+        color: #333333;
+}
+.login_nr_row .yz_alert,.login_nr_row1 .yz_alert{ position:absolute; top:5px; right:5px; z-index:9; color:#FF0000;}
+.register_login_title{font-size:16px; color:#333333; line-height:30px; text-align:left; float:left;}
+.login_alert{color:#ff0000; position:absolute; top:10px; right:5px; z-index:99;}
+
+@media(max-width:991px){
+.in_page_main2{ padding:80px 0;}
+.login_bg{ width:85%; height: auto; min-height: 300px;height: 60vh; min-height: 300px;overflow-y: auto;top: 40%;}
+.login_nr{ width:90%; margin:auto;}
+.login_nr_bt{ font-size:24px; line-height:42px;}
+.login_nr_row input,.login_nr_row1 input{ font-size:14px;}
+.login_nr_row input.submit_btn,.login_nr_row1 input.submit_btn{width: 120px; height: 30px; font-size: 14px; line-height: 30px;}
+}
+@media(max-width:768px){
+.login_nr_row input{max-width: 200px;}
+.login_nr_row input#code_char{ max-width:100px;}
+}
+#HJZF_Z__wrapper{margin-bottom: 0;}
+#main-content-wrapper{
+	background: url('{:getindeximgurl($inner_data[0])}') no-repeat center/cover;margin-bottom: 0;height: 100vh;
+}
+.hobbylist{ display:flex;}
+.hobbyitem{ display:flex;}
+.hobbyitem label{ float:left;}
+.hobbyitem input{ width:auto;}
+	</style>
+	<script>
+
+		
+		function yz_submit(){
+			var count=0;
+			var name=Trims($("#name").val());		
+			var password=Trims($('#password').val());
+			var password2=Trims($('#password2').val());
+			var realname=Trims($('#realname').val());
+			var company=Trims($('#company').val());
+			var tel=Trims($('#tel').val());
+			
+			if(name.length<=0){
+			$("#name_alert").html("×用户名不能为空！");
+			count++;
+			}else{
+			$("#name_alert").html("");	
+			}
+		   
+			var temp = name;
+			//对电子邮件的验证
+
+			if(!is_email(temp))
+			{
+				$("#name_alert").html("×请输入有效的邮箱！");
+			   return false;
+			}else{
+				$("#name_alert").html("");
+			}
+				
+		
+			if(password.length<=0){
+			$("#password_alert").html("×密码不能为空！");
+			count++;
+			}else{
+			$("#password_alert").html("");	
+			}
+			
+			if(password2!==password){
+				$("#password_alert2").html("×密码不一致！");
+				count++;
+			}else{
+				$("#password_alert2").html();
+			}
+		
+			if(realname.length<=0){
+			$("#realname_alert").html("×姓名不能为空！");
+			count++;
+			}else{
+			$("#realname_alert").html("");	
+			}
+		
+		
+			/* if(company.length<=0){
+			$("#company_alert").html("×公司名称不能为空！");
+			count++;
+			}else{
+			$("#company_alert").html("");	
+			}
+		 */
+			
+			
+				
+				
+		
+			if(tel.length<=0){
+			$("#tel_alert").html("×电话不能为空！");
+			count++;
+			}else{
+			$("#tel_alert").html("");	
+			}
+		
+						var code_char = jQuery("#code_char").val();
+						jQuery.ajax({
+									 type: "POST",
+									 url: "/verification",
+									 async:false,
+									 data: {code:code_char},
+									 success: function(data){	
+										 console.log(data);								
+									if(data==1){
+									  jQuery("#code_char_alert").html("");
+									}else{
+									
+									 jQuery("#code_char_alert").html("*验证码错误");
+									 count++;
+									}
+									}            
+								 });
+		
+			if(count>0){
+			return false;
+			}
+			else{
+			$('#bit1').html("<h5 style='color:#f00'>请等待...</h5>");			
+			return true;
+			}
+			}	
+			jQuery(function(){	
+				jQuery("#code_char").focus(function(){
+				jQuery("#code_char_alert").html("");
+				});
+				
+				
+				jQuery("#getcode_char").click(function(){
+					jQuery(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+					});
+				
+				jQuery("#getcode_char1").click(function(){
+					jQuery("#getcode_char").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+					});
+
+					var fromurl = document.referrer;
+
+					$("input[name='jumpurl']").val(fromurl);
+			})
+		
+		
+			
+							
+		</script>
+	<div id="HJZF_Z__wrapper">
+			<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+		
+				
+					
+				<div class="login_bg">
+					<div class="login_nr">
+						<div class="login_nr_bt">用户注册</div>
+						<div class="login_nr_row">
+						<if condition="C(webid) neq 1730">
+							<form action="http://yun.one-all.com/Admin/index.php/Vipapi/insert" method="post" onsubmit="return yz_submit()">
+								<input type="hidden" name="webid" value="{:C('webid')}" />
+								<input type="hidden" name="jumpurl" value="" />
+								<input type="hidden" name="is_use" value="1" />
+								<input type="hidden" name="endtime" value="{:time()}" />
+								<input type="hidden" name="vipgroup" value="{$classid}" />
+									<div class="register_login_line">
+										<div class="register_login_title">用户名/邮箱：</div>
+										<input type="text" id="name" size="50" name="name" value="" />
+										<span id="name_alert" class="yz_alert"></span>
+										<div class="clear"></div>
+									</div>
+									<div class="register_login_line" style="margin-top:30px;">
+										<div class="register_login_title">账号密码：</div>
+										<input type="password" id="password" size="50" name="password" value="" />
+										<span id="password_alert" class="yz_alert"></span>
+										<div class="clear"></div>
+									</div>
+									<div class="register_login_line" style="margin-top:30px;">
+										<div class="register_login_title">确认密码：</div>
+										<input type="password" id="password2" size="50" name="" value="" />
+										<span id="password_alert2" class="yz_alert"></span>
+										<div class="clear"></div>
+									</div>
+									<div class="register_login_line" style="margin-top:30px;">
+										<div class="register_login_title">姓名：</div>
+										<input type="text" id="realname" size="50" name="realname" value="" />
+										<span id="realname_alert" class="yz_alert"></span>
+										<div class="clear"></div>
+									</div>
+									
+									<div class="register_login_line hide" style="margin-top:30px;">
+										<div class="register_login_title">公司名称：</div>
+										<input type="text" id="company" size="50" name="company" value="" />
+										<span id="company_alert" class="yz_alert"></span>
+										<div class="clear"></div>
+									</div>
+								
+									<div class="register_login_line" style="margin-top:30px;">
+										<div class="register_login_title">电话：</div>
+										<input type="text" id="tel" size="50" name="tel" value="" />
+										<span id="tel_alert" class="yz_alert"></span>
+										<div class="clear"></div>
+									</div>
+								
+									<div class="register_login_line" style="margin-top:30px;">
+										<div class="register_login_title">验证码：</div>
+										
+										<input type="text" class="input" id="code_char" name="code" maxlength="3" style="width:150px;" />&nbsp;<img src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" id="getcode_char" title="点击刷新" style="vertical-align:middle; margin-bottom:5px;">&nbsp;<a href="javascript:void(0);" id="getcode_char1">点击刷新</a><span class="yz_alert" id="code_char_alert"></span>
+										<div class="clear"></div>
+									</div>    
+								
+									<div>
+									  <input type="submit" value="提&nbsp;&nbsp;交"  class="submit_btn" >
+									  <div class="clear"></div>
+									</div>
+								 </form>
+							<else/>
+							<form action="{:U('/vipinsert','','')}" method="post" onsubmit="return quinnoid_submit()">
+								<div class="register_login_line clear">
+									<div class="register_login_title">用户名：</div>
+									<input type="text" id="nickName" size="50" name="nickName" value="" />
+									<span id="nickName_alert" class="yz_alert"></span>		
+								</div>
+								<div class="register_login_line clear">
+									<div class="register_login_title">手机号：</div>
+									<input type="text" id="mobile" size="50" name="mobile" value="" />
+									<span id="mobile_alert" class="yz_alert"></span>									
+								</div>
+								<div class="register_login_line clear">
+									<div class="register_login_title">密码：</div>
+									<input type="password" id="password" size="50" name="password" value="" />
+									<span id="password_alert" class="yz_alert"></span>									
+								</div>
+								<div class="register_login_line clear">
+									<div class="register_login_title">生日：</div>
+
+									<input type="text" id="birthDay" size="50" name="birthDay" value="" readonly/>
+									<span id="birthDay_alert" class="yz_alert"></span>									
+								</div>								
+								<div class="register_login_line clear">
+									<div class="register_login_title">身高：</div>
+									<!-- <input type="text" id="height" size="50" name="height" value="" /> -->
+									<select name="height" id="height" style="width: 100px;height: 30px;border: 1px solid #bfbdbd;">
+										
+									</select>
+									(cm)
+									<span id="height_alert" class="yz_alert"></span>									
+								</div>
+								<div class="register_login_line clear">
+									<div class="register_login_title">体重：</div>
+									<!-- <input type="text" id="weight" size="50" name="weight" value="" /> -->
+									<select name="weight" id="weight"style="width: 100px;height: 30px;border: 1px solid #bfbdbd;">
+										
+									</select>(kg)
+									<span id="weight_alert" class="yz_alert"></span>									
+								</div>
+								<div class="register_login_line clear">
+									<div class="register_login_title">体质指数（BMI）：</div>
+									<input type="text" id="bmi" size="50" name="bmi" value="20.20" readonly/>
+									<span id="bmi_alert" class="yz_alert"></span>																											
+								</div>
+								<div class="register_login_line clear register_login_line_target hide">
+									<div class="register_login_title">健身目标：</div>
+									<input type="text" id="quinnoid_target" size="50" name="target" value="正常" readonly/>
+									<span id="target_alert" class="yz_alert"></span>																		
+								</div>
+								<div class="register_login_line clear">
+									<div class="register_login_title">有无健身基础：</div>
+									<select name="trainHisFlag" id="trainHisFlag" style="width: 100px;height: 30px;border: 1px solid #bfbdbd;">
+										<option value="0">无健身基础</option>
+										<option value="1">有过健身基础</option>
+									</select>
+									<span id="trainHisFlag_alert" class="yz_alert"></span>									
+								</div>
+								<div class="register_login_line clear">
+									<div class="register_login_title">性别：</div>
+									
+									<select name="gender" id="gender" style="width: 100px;height: 30px;border: 1px solid #bfbdbd;">
+										<option value="1">男</option>
+										<option value="2">女</option>
+									</select>									
+									<span id="weight_alert" class="yz_alert"></span>									
+								</div>
+								<div class="register_login_line clear" style="border-bottom: none;">
+									<div class="register_login_title">兴趣爱好：</div>
+									<div class="member_dt_val fl quinnoid_hobby">
+
+									</div>
+									<textarea name="hobbyId" id="hobbyId" rows="5" style="width: 100%;border: 1px solid #c8c9c9;display: none;"></textarea>
+									<span id="hobby_alert" class="yz_alert"></span>									
+								</div>
+								<div class="register_login_line">
+									<div class="register_login_title">验证码：</div>									
+									<input type="text" class="input" id="code" name="code" maxlength="6" style="width:150px;" />
+									<input type="hidden" class="input" id="verifyCodeId" name="verifyCodeId" />	
+									<a href="javascript:void(0);" id="get_verifyCodeId">点击发送手机验证码</a>
+									<a id="getMessageAgain" href="javascript:void(0);" class="hide"><b id="waittime">60</b>秒后重新获取手机验证码</a>  
+									<span class="yz_alert" id="code_char_alert"></span>
+									<div class="clear"></div>
+								</div>    
+							
+								<div>
+								  <input type="submit" value="提&nbsp;&nbsp;交"  class="submit_btn" >
+								  <div class="clear"></div>
+								</div>
+							</form>
+							<script>
+								$(document).ready(function(){
+									//身高体重选择器
+									var height_array=[140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230];
+									var weight_array=[40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130];								
+									function h_w_option(arryList,id){
+										var option="";
+										arryList.forEach(function(item){
+											if(item==165 || item==55 ){
+												option=option+"<option selected value='"+item+"'>"+item+"</option>"
+											}else{
+												option=option+"<option  value='"+item+"'>"+item+"</option>"
+											}
+										});
+										$("#"+id).append(option);
+									}
+									h_w_option(height_array,"height");
+									h_w_option(weight_array,"weight");
+									//身高体重选择器
+									$.ajax({
+																type:'post',
+																url: "{:U('/index.php/QuinnoidApi/get_I11X','','')}",
+																async: false,
+																data:{
+																	
+																},
+																success:function(data){																	
+																	var da = data.slice((data.indexOf('"')+1));																															
+																	var length = da.length;
+																		da = da.slice(0,length-2);																		
+																	var json_obj = JSON.parse(da);																	
+																	var hobbyList = json_obj.data.hobbyList;
+																	var _div = "<div class='hobbylist' name='hobbyId'>";
+																	
+																	$.each(hobbyList,function(i,val){
+																		var data_id = '';
+																		var data_hobby = '';
+																		var data_selectUrlPath = '';
+																		var data_unSelectUrlPath = '';
+																		$.each(val,function(j,va){
+																			if(j=="id"){
+																				data_id=va;
+																			}else if(j=="hobby"){
+																				data_hobby=va;
+																			}else if(j=="selectUrlPath"){
+																				data_selectUrlPath=va;
+																			}else if(j=="unSelectUrlPath"){
+																				data_unSelectUrlPath=va;
+																			}																			
+																		})
+																		
+																		_div = _div+ "<div class='hobbyitem'><input id='hobbyid_"+data_id+"' type='checkbox' value='"+data_id+"'><label for='hobbyid_"+data_id+"'>"+data_hobby+"</label></div>";
+																		
+																	})
+																	_div = _div+"</div>";
+																	$(".quinnoid_hobby").append(_div);
+																}
+															});
+															$("#nickName").focus(function(){
+										$(this).next().html("");
+								})
+								$("#mobile").focus(function(){
+										$(this).next().html("");
+								})
+								$("#password").focus(function(){
+										$(this).next().html("");
+								})
+								$("#birthDay").focus(function(){
+									$(this).next().html("");
+								})
+								$("#height").change(function(){
+										$("#bmi_alert").html("");
+								})
+								$("#weight").change(function(){
+										$("#bmi_alert").html("");
+								})
+								$(".hobbylist").change(function(){
+										$("#hobby_alert").html("");
+								})
+								$("#code").focus(function(){
+										$("#code_char_alert").html("");
+								})
+								})
+								$(document).on("click",'#get_verifyCodeId',function(){
+									var mobile = $("#mobile").val();
+									if(mobile==''){
+										$("#mobile_alert").html("手机号不能为空");
+									}else{
+										$("#mobile_alert").html("");
+										$.ajax({
+											type:'post',
+											url: "{:U('/index.php/QuinnoidApi/get_I030','','')}",
+											async: false,
+											data:{
+												mobile: mobile,
+												codeType: '10'
+											},
+											success: function(data){
+												var da = data.slice(12);																	
+												var length = da.length;
+												da = da.slice(0,length-2);
+												var json_obj = JSON.parse(da);
+												console.log(json_obj);
+												var message = json_obj.message;
+												if(message=="成功"){
+													$("#code_char_alert").html("验证码发送成功");
+													$("#verifyCodeId").val(json_obj.data.verifyCodeId);
+													$("#get_verifyCodeId").hide();
+													$("#getMessageAgain").removeClass("hide");
+													var wait = document.getElementById('waittime');
+													var interval = setInterval(function(){
+													var time = --wait.innerHTML;
+													if(time <= 0) {
+														$("#get_verifyCodeId").show();
+														$("#getMessageAgain").addClass("hide");
+														clearInterval(interval);
+													};
+												}, 1000);
+												}else{
+													$("#code_char_alert").html(message);
+												}
+											},
+											error:function(xhr,status,error){
+												console.log(xhr);
+												console.log(status);
+												console.log(error);
+											}							
+										})
+									}
+									
+								}).on("change","#weight",function(){
+									var height= $("#height").val();
+									var weight= $("#weight").val();
+									if(height.length>0 && weight.length>0){
+										var bmi=(weight/((height/100)*(height/100))).toFixed(2);										
+										$("#bmi").val(bmi);
+										$(".register_login_line_target").removeClass("hide");
+										if(bmi<18.5){
+											//过轻
+																						
+											$("#quinnoid_target").val("增肌");
+										}else if(bmi>=24){
+											//过重
+											$("#quinnoid_target").val("减脂");
+										}else{
+											$("#quinnoid_target").val("正常");
+										}						
+									}
+								}).on("change","#height",function(){
+									var height= $("#height").val();
+									var weight= $("#weight").val();
+									if(height.length>0 && weight.length>0){
+										var bmi=(weight/((height/100)*(height/100))).toFixed(2);										
+										$("#bmi").val(bmi);
+										$(".register_login_line_target").removeClass("hide");
+										if(bmi<18.5){
+											//过轻
+																						
+											$("#quinnoid_target").val("增肌");
+										}else if(bmi>=24){
+											//过重
+											$("#quinnoid_target").val("减脂");
+										}else{
+											$("#quinnoid_target").val("正常");
+										}						
+									}
+								})
+								
+								function quinnoid_submit(){
+									var nickName = $("#nickName").val();
+									var mobile = $("#mobile").val();
+									var password = $("#password").val();
+									var birthDay = $("#birthDay").val();
+									var bmi = $("#bmi").val();
+									var height = $("#height").val();
+									var weight = $("#weight").val();
+									var hobbyId ="";
+									var hobbyId_arr =[];
+									
+									$(".hobbyitem input:checked").each(function(index, element) {
+										hobbyId_arr.push($(this).val());	 
+									});
+									hobbyId=hobbyId_arr.join(",");
+									$("#hobbyId").val(hobbyId);
+									var gender = $("#gender option:selected").val();
+									var trainHisFlag = $("#trainHisFlag option:selected").val();
+									var code = $("#code").val();
+									var count = 0;
+									var reg= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+									
+									if(nickName.length<=0){
+										$("#nickName_alert").html("×用户名不能为空！");
+										count++;
+									}else{
+										$("#nickName_alert").html("");	
+									}
+									if(mobile.length<=0){
+										$("#mobile_alert").html("×手机号不能为空！");
+										count++;
+									}else{
+										$("#mobile_alert").html("");	
+									}
+									if(password.length<=0){
+										$("#password_alert").html("×密码不能为空！");
+										count++;
+									}else{
+										if(!reg.test(password)){
+											alert("×密码长度要大于6位，由数字和字母组成");										
+											
+											count++;
+										}else{
+											$("#password_alert").html("");	
+										}
+										
+									}
+									if(birthDay.length<=0){
+										$("#birthDay_alert").html("×生日不能为空！");
+										count++;
+									}else{
+										$("#birthDay_alert").html("");	
+									}
+									if(height.length<=0){
+										$("#height_alert").html("×身高不能为空！");
+										count++;
+									}else{
+										$("#height_alert").html("");	
+									}
+									if(weight.length<=0){
+										$("#weight_alert").html("×体重不能为空！");
+										count++;
+									}else{
+										$("#weight_alert").html("");	
+									}
+									if(bmi.length<=0){
+										$("#bmi_alert").html("×体质指数不能为空！");
+										count++;
+									}else{
+										$("#bmi_alert").html("");	
+									}
+									if(hobbyId.length<=0){
+										$("#hobby_alert").html("×兴趣爱好不能为空！");
+										count++;
+									}else{
+										$("#hobby_alert").html("");	
+									}
+									if(password.length<=0){
+										$("#password_alert").html("×密码不能为空！");
+										count++;
+									}else{
+										$("#password_alert").html("");	
+									}
+									if(code.length<=0){
+										$("#code_char_alert").html("验证码不能为空！");
+										count++;
+									}else{
+										$("#code_char_alert").html("");	
+									}
+									if(count>0){
+										return false;
+									}else{
+										return true;
+									}
+								}
+
+								
+								require(['jquery','datetimepicker'],function($,datetimepicker){
+									console.log(datetimepicker);
+									$('#birthDay').datetimepicker({
+										lang:'ch',
+										timepicker:false,
+										format:'Y-m-d'
+									});
+								});
+
+								
+							</script>
+						</if>
+						 
+						</div>
+					 </div>
+				  </div>
+			   </div>
+					
+			
+			
+		</div>
+	</div>
+</block>

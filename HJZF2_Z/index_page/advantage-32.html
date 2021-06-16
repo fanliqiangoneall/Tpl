@@ -1,0 +1,69 @@
+<!--{$pagename}-->
+
+<style>
+	<if condition="$data444[0]">.hjzf_advantage_32 {
+		background: url({:getindeximgurl($data444[0])
+	}
+
+	) no-repeat center/cover;
+	}
+
+	</if>.hjzf_advantage_32_con_container .swiper-pagination span {
+		background-color: #{$color};
+	}
+
+	.hjzf_advantage_32_title:before {
+		content:'{$data444[1]}';
+	}
+	.hjzf_advantage_32_con_container_btn .swiper-button-prev:hover,.hjzf_advantage_32_con_container_btn .swiper-button-next:hover{
+		background-color: #{$color};
+	}
+</style>
+<section class="hjzf_advantage_32 index_pd">
+	
+	<div class="container">
+		<div class="col-xs-12">
+			<div class="text-center pb40">
+				<div class="ruiyi_title">
+					<div class="index_title hjzf_advantage_32_title">
+						{$data444[2]}
+					</div>
+					<if condition="$data444[4]">
+						<div class="index_text pb40">
+							{$data444[4]}
+						</div>
+					</if>
+				</div>
+			</div>
+			<div class="hjzf_advantage_32_con_container_btn">
+				<if condition="$data444[5]">
+					<div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+					<div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+				</if>
+				<div class="swiper-container hjzf_advantage_32_con_container">
+					<ul class="hjzf_advantage_32_con swiper-wrapper">
+						<php>
+							$arr = get_list_val($data444[3]);
+						</php>
+						<volist name="arr" id="a">
+							<li class="swiper-slide">
+								<div>
+									<if condition="$a[link]">
+										<a href="{$a[link]}">
+									</if>
+									<img src="{$a[ico]}" class="img-fluid"><span
+										class="index_sub_title text-center">{$a[title]}</span>
+									<if condition="$a[link]">
+										</a>
+									</if>
+								</div>
+							</li>
+						</volist>
+					</ul>
+					<div class="swiper-pagination"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

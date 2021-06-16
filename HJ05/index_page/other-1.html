@@ -1,0 +1,115 @@
+<!--{$pagename}-->
+<php>
+    if($data14[22] ==''){
+        $data14[22] =0;
+    }
+    if($data14[23] ==''){
+        $data14[23] =70;
+    }
+</php>
+<style>
+    .HJ05-banner2-box{
+        background: url({:getindeximgurl($data[21])})no-repeat center;margin-top:{$data14[22]}px;margin-bottom:{$data14[23]}px;height:620px;
+    }
+    .swiper-slide .b_item1{
+        transform:translateY(-200px);
+        opacity:0;
+        transition:all .4s;
+    }
+    .swiper-slide .b_item1-delay1{
+        transform:translateY(-200px);
+        opacity:0;
+        transition:all .4s;
+    }
+    .swiper-slide .b_item2{
+        transform:translateX(-200px);
+        opacity:0;
+        transition:all .4s;
+    }
+    .swiper-slide .b_item2-delay1{
+        transform:translateX(-200px);
+        opacity:0;
+        transition:all .4s;
+    }
+    .ani-slide .b_item1{
+        transform:translateY(0);
+        opacity:1;
+    }
+    .ani-slide .b_item1{
+        transform:translateY(0);
+        opacity:1;
+    }
+    .ani-slide .b_item1-delay1{
+        transform:translateY(0);
+        opacity:1;
+        transition:all .4s .2s;
+    }
+    .ani-slide .b_item2{
+        transform:translateX(0);
+        opacity:1;
+    }
+    .ani-slide .b_item2-delay1{
+        transform:translateX(0);
+        opacity:1;
+        transition:all .4s .2s;
+    }
+    .hj05-banner2 .hj-banner-next,.hj05-banner2 .hj-banner-prev{background: rgba(113, 114, 115, 0.3);}
+    .hj05-banner2 .hj-banner-next i,.hj05-banner2 .hj-banner-prev i{font-size: 24px;line-height: 70px;text-align: center;font-weight: normal;color: #fff;}
+    .hj05-banner2:hover .hj-banner-next{right: 40px;}
+    .hj05-banner2:hover .hj-banner-prev{left: 40px;}
+</style>
+<section class="hj-banner HJ05-banner2-box">
+    <div id="HJ05-banner2">
+        <div class="swiper-container hj05-banner2">
+            <div class="swiper-wrapper">
+                <if condition="$data[0]">
+                    <div class="swiper-slide HJ-banner-item">
+                        <a href="<if condition="$data[6]">{$data[6]}<else/>javascript:void(0)</if>" title="{$data[0]}">
+                        <div class="hj05-banner2-itembox">
+                            <div class="banner_wrap2 flex">
+                                <if condition="$data[1]"><div class="b_item2"><img src="{:getindeximgurl($data[1])}" alt=""/></div></if>
+                                <if condition="$data[2]"><div class="b_item2-delay1"><img src="{:getindeximgurl($data[2])}" alt=""/></div></if>
+                                <if condition="$data[3]"><div class="b_item1-delay1"><img src="{:getindeximgurl($data[3])}" alt=""/></div></if>
+                            </div>
+                            <div class="banner_wrap2_right b_item1" title="{$data[4]}"><img src="{:getindeximgurl($data[5])}" alt=""/></div>
+                        </div>
+                        </a>
+                    </div>
+                    </if>
+                    <if condition="$data[7]">
+                    <div class="swiper-slide HJ-banner-item">
+                        <a href="<if condition="$data[13]">{$data[13]}<else/>javascript:void(0)</if>" title="{$data[7]}">
+                        <div class="hj05-banner2-itembox">
+                            <div class="banner_wrap2 flex">
+                                <if condition="$data[8]"><div class="b_item2"><img src="{:getindeximgurl($data[8])}" alt=""/></div></if>
+                                <if condition="$data[9]"><div class="b_item2-delay1"><img src="{:getindeximgurl($data[9])}" alt=""/></div></if>
+                                <if condition="$data[10]"><div class="b_item1-delay1"><img src="{:getindeximgurl($data[10])}" alt=""/></div></if>
+                            </div>
+                            <div class="banner_wrap2_right b_item1" title="{$data[11]}"><img src="{:getindeximgurl($data[12])}" alt=""/></div>
+                        </div>
+                        </a>
+                    </div>
+                    </if>
+                    <if condition="$data[14]">
+                    <div class="swiper-slide HJ-banner-item">
+                        <a href="<if condition="$data[20]">{$data[20]}<else/>javascript:void(0)</if>" title="{$data[14]}">
+                        <div class="hj05-banner2-itembox">
+                            <div class="banner_wrap2 flex">
+                                <if condition="$data[15]"><div class="b_item2"><img src="{:getindeximgurl($data[15])}" alt=""/></div></if>
+                                <if condition="$data[16]"><div class="b_item2-delay1"><img src="{:getindeximgurl($data[16])}" alt=""/></div></if>
+                                <if condition="$data[17]"><div class="b_item1-delay1"><img src="{:getindeximgurl($data[17])}" alt=""/></div></if>
+                            </div>
+                            <div class="banner_wrap2_right b_item1" title="{$data[18]}"><img src="{:getindeximgurl($data[19])}" alt=""/></div>
+                        </div>
+                        </a>
+                    </div>
+                    </if>
+            </div>
+
+            <div class="swiper-button-next hj-banner-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hj-banner-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+
+    </div>
+
+</section>

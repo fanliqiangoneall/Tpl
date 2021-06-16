@@ -1,0 +1,153 @@
+<!--{$pagename}-->
+<php>
+$classid=$data712[0];
+$prolist=get_index_products_categoryname($classid);
+$parent_path_str=','.$prolist['pcid'].','.$prolist['parent_path'].','.$prolist['parent_path'];
+if(strstr($parent_path_str,",256,")){
+	$htmltype="Product";
+    $typeid="256";
+}else{
+	$htmltype="Case";
+    $typeid="257";
+}
+$cates=get_children($classid);
+$related_products_ids = get_list_val($data712[5]);
+
+</php>
+
+
+
+<!--banner-->
+<div class="{$htmltype}">
+
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+        	<div class="in_banner"><img class="img-responsive" src="{:getimgurl($prolist['banner'])}" /></div>
+        </div>
+    </div>
+
+
+
+<!--banner-->
+<style>
+
+/*左边*/
+
+.current{ 
+	color:#{$color};
+}	
+.cate_19_product_more a{ color:#FFF; display:inline-block; padding:5px 20px; margin:40px 0px; font-size:20px; cursor:pointer; background:#{$color};}
+.cate_19_class_name_tip{ padding:25px; display:flex; justify-content:flex-end; color:#{$color};}
+
+.cates_19_case_tip{ width:80px; height:4px; border-radius:10px; margin:30px auto 40px auto; text-align:center; background:#{$color};}
+
+</style>
+
+
+<div class="HJZF2_Z-product_categories-lingtong">
+	<nav class="inner_daohang"><a href="{:U('/')}"><span class="navmap"></span>{:__('Your location:')}{:__('Home')}</a> &nbsp; <i class="fa fa-angle-right"></i>
+            <a >{$htmltype}</a> &nbsp; <i class="fa fa-angle-right"></i>
+            <span class="current">{$prolist['class_name']}</span></nav>
+            
+            
+    <div class="product_categories_content">
+        <!--左边-->
+        <Include file="./Tpl/HJZF2_Z/HJZF2_Z-product_categories-lingtong/inner/left.html" />
+        <!--左边-->
+        <div class="HJZF2_Z-product_categories-lingtong-right">
+        	<div class="product_cate_19_title">{$prolist['class_name']}</div>
+            <div class="product_cate_19_title_zhuangshi_row">
+                <div class="product_cate_19_title_zhuangshi">
+                    <if condition="$data712[1]"><img class="img-responsive" src="{:getindeximgurl($data712[1])}"/></if>
+                </div>
+            </div>
+            <div class="product_cate_19_des">
+            	{$prolist['readme']}
+            </div>
+            	
+            <div class="product_cate_19_des_detail_row">
+                <div class="product_cate_19_des_detail">
+                    {:htmlspecialchars_decode($prolist['cate_profile'])}
+                </div>
+            </div>
+            
+			<volist name="cates" id="cate" key="key">
+            	<div class="cate_19_row <if condition="$key%2 eq 1">cate_19_bj</if>">
+                    <div class="cate_19_info">
+                        <div class="cate_19_class_name">{$cate['class_name']}</div>
+                        <div class="cate_19_class_name_tip"><if condition="$data712[2]"><img class="img-responsive" src="{:getindeximgurl($data712[2])}"/></if></div>
+                        <div class="cate_19_class_des">{$cate['readme']}</div>
+                        <div class="cate_19_product_more"><a href="{:U('/product_category','','')}/{:getprocatename($cate['pcid'])}" class="inne-10_productscale">MORE</a></div>
+                        <div class="cate_19_product_row">
+                        <php>
+                        	$cate_products=get_allproducts_category_on_index($cate['pcid'],3);
+                        </php>
+                        <volist name="cate_products" id="cate_product">
+                        	
+                        	<div class="cate_19_product">
+                            	<a href="{:U('/Product','','')}/{:getproname($cate_product['pid'])}">
+                            	<div class="cate_19_product_img"><img class="img-responsive" src="{:getmainimgurl($cate_product['main_img'])}"/></div>
+                                <div class="cate_19_product_name">{$cate_product['pro_name']}</div>
+                            	</a>
+                            </div>
+                            
+                        </volist>
+                        </div>
+                    </div> 
+                    <div class="cate_19_show">
+                    	<img class="img-responsive" src="{:getimgurl($cate['fid'])}"/>
+                    </div>   
+                </div>
+                
+            </volist>
+        	    
+
+          <div class="cates_19_case_row">
+          		<div class="cates_19_case_title">{$data712[3]}</div>
+                <div class="cates_19_case_des">{$data712[4]}</div>
+                <div class="cates_19_case_tip"></div>
+                <div class="cates_19_cases">
+                	<volist name="related_products_ids" id="related_products_id">
+                    <php>
+                    $product_info=product_info_byid($related_products_id['pids']);
+                    </php>
+                		<div class="cates_19_one"><a href="{:U('/Product','','')}/{:getproname($product_info['pid'])}"><img class="img-responsive" src="{:getmainimgurl($product_info['main_img'])}"/></a></div>
+                    </volist>
+
+                </div>
+          
+          </div>
+          
+            
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+.fly_item {
+    border: 1px solid #000;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    position: absolute;
+	display:none;
+    opacity: .8;
+    filter: alpha(opacity=80);
+	border-radius:40px;
+}
+.fly_item img{ width:38px; height:38px; animation: zuan 2.5s ease-in-out infinite;}
+
+@keyframes zuan{
+	from{
+		transform: rotate(0);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+</style>
+
+
+
+<!--{$pagename}-->

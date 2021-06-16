@@ -1,0 +1,88 @@
+<style>
+    .xs_line{
+        width: 50px;
+        height: 3px;
+        display: inline-block;
+        background: #{$inner_data[1]};
+    }
+    .inner_news13_left{
+        width: 100%;margin-bottom: 40px;
+    }
+    .inner_news13_left h3 {
+        margin-top: 0;
+        padding-top: 15px;        
+    }
+    .recentcomments li{
+        padding: 10px 0 10px 20px;
+        width: 100%;
+        border-bottom: 1px solid #f0ebd8;
+        box-sizing: border-box;
+        position: relative;
+    }
+    .recentcomments li::before{
+        content: "\f292";
+        font-family: FontAwesome;
+        font-size: 11px;
+        left: 0;
+        position: absolute;
+        top: 30px;
+        color: #{$inner_data[1]};
+    }
+    .inner_news13_leftprolist{margin-top: 20px;display: flex;flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;}
+    .inner_news13_leftprolist .nav_probox{
+        width: 48%; float: left;margin-bottom: 20px;
+    }
+    .nav_probox_img img{max-width: 100%;}
+    .nav_probox_content h6{
+        padding: 10px 0 10px;
+    }
+    .inner_news13_left_tags{margin-top: 20px;}
+    .inner_news13_left_tags a{
+        margin: 0 10px 10px 0;
+    padding: 7px 15px 6px;
+    float: left;
+    font-size: 12px!important;
+    text-transform: capitalize;
+    color: #fff;
+    background: #{$inner_data[1]};
+    position: relative;
+    }
+    .inner_news13_left_tags a span{z-index: 2;position: relative;}
+    .inner_news13_left_tags a::before{
+        content: '';
+        position: absolute;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        width: 54px;
+        height: 100%;
+        z-index: 1;
+        right: 0;
+        top: 0;
+        margin: 0;
+        z-index: -1;
+        background: rgba(0, 0, 0, .1);
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+    }
+    .inner_news13_left_tags a:hover::before{
+        width: 100%;
+        z-index: 1;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+    }
+</style>
+<div class="inner_news13_left">
+    <span class="xs_line"></span>
+    <h3>{:__('Case category')}</h3>
+  <div class="inner_news13_navs nav">
+      <ul class="recentcomments">  
+          <volist empty="no" name="allnewclass" id="new"  offset="0">
+              <li <if condition="$newscate['classid'] eq $new['classid']">class="yijion_news"<else/>class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+          </volist>
+          <div class="clear"></div>
+      </ul>
+  </div>
+</div>

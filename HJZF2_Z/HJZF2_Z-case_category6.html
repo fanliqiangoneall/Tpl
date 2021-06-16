@@ -1,0 +1,135 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[1]){
+		$color = $inner_data[1];
+		};
+	</php>
+	<style>
+		.InsidePages_list li.yijion>a>h3:before,
+		.InsidePages_list li.yiji:hover>a>h3:before,
+		.InsidePages_list li.yijion>a>h3,
+		.InsidePages_list li.yiji:hover>a>h3,
+		.HJZF_Z__Breadcrumbs span.current,
+		.main_news_dowm span a,
+		.main_newslist2 li:hover .main_news_title a h5,
+		.InsidePages_left_content-main {
+			border-color: #{$color};
+			color: #{$color};
+		}
+
+		.main_news_dowm span a:before {
+			background: #{$color};
+		}
+	</style>
+	<div id="HJZF_Z__wrapper">
+		<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+			<if condition="$newscate['banner'] neq '0'">
+				<div class="in_banner"><img src="{:getimgurl($newscate['banner'])}" alt="" /></div>
+				<elseif condition="$banner neq ''" />
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+				</volist>
+				<else />
+				<div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+			</if>
+		</div>
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+							class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/cases')}">{:__('Cases')}</a>&nbsp;<i
+							class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="HJZF_Z__innerContent">
+			<div class="HJZF_Z__inner--left2">
+				<div class="container">
+					<div class="row">
+
+						<div class="InsidePages_content-left_content col-xs-12 hidden-xs hidden-sm hidden-md">
+							<div class="InsidePages_navswiper swiper-container">
+								<ul class="InsidePages_list swiper-wrapper">
+									<li class="yiji swiper-slide"><a href="{:U('/cases')}">
+											<h3>{:__('All cases')}</h3>
+										</a></li>
+									<volist empty="" name="allnewclass" id="new" offset="0">
+										<li <if condition="$newscate['classid'] eq $new['classid']">class="yijion
+											swiper-slide"
+											<else />class="yiji swiper-slide"</if>><a style="cursor:pointer;"
+												href="{:U('/case_category',array('classid'=>$new["
+												classid"]))}">{$new['class_name']}</a></li>
+									</volist>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+						<Include file="./Tpl/HJZF2_Z/leftcases_mobile.html" />
+					</section>
+					<section class="col-xs-12 InsidePages_content2">
+						<div class="InsidePages_content-right__wrap">
+							<div class="InsidePages_content-right_content-main">
+								<div class="HJ01_main_news">
+									<if condition="$newscatelist neq ''">
+										<ul class="main_newslist2" data-myli="1">
+											<else />
+											<ul class="main_newslist" data-myli="0">
+									</if>
+									<php>
+                                        $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                    </php>
+									<volist empty="$no_empty" name="newscatelist" id="newscatelist">
+										<li id="new_list{$key}">
+											<div class="new_list_row">
+												<div class="col-xs-12 col-lg-2 main_newsimg">
+													<a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}"
+														onFocus="blur()"><img <if
+															condition="$newscatelist['new_pro']">src="{:getimgurl($newscatelist['new_pro'])}"
+														<else />src="{:getindeximgurl($inner_data[2])}"</if> border="0"
+														/></a>
+												</div>
+												<div class="col-xs-12 col-lg-10 main_news_right">
+													<div class="col-xs-12 main_news_right_content lf">
+														<div class="main_news_title margin-20px-bottom"><a
+																href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}">
+																<h5>{$newscatelist['title']}</h5>
+															</a></div>
+														<div class="hidden-xs main_news_desc">
+															{:subtxt($newscatelist['news_description'],200)}</div>
+													</div>
+
+													<div class="clear"></div>
+													<div class="main_news_dowm"><span><img
+																src="__TMPL__HJ02/img/shijian.png"
+																alt="" />{:date('Y/m/d
+															',$newscatelist['created'])}</span><span
+															style="line-height: 30px;">|</span><span><img
+																src="__TMPL__HJ02/img/view_right.png" alt="" /><a
+																href="{:U('/case_detail',array('nid'=>$newscatelist["
+																nid"]))}">{:__('Read More')}</a></span></div>
+												</div>
+												<div class="clear"></div>
+											</div>
+										</li>
+									</volist>
+									</ul>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="main_page">{$page}</div>
+						</div>
+					</section>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

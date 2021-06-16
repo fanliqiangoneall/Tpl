@@ -1,0 +1,36 @@
+<style>
+    .InsidePage--3__prolist2Item:hover{
+        border-color: #{$color};
+    }
+    .InsidePage--3__prolist2Item:hover .InsidePage--3__prolist2--contentTitle a{
+        color: #{$color};
+    }
+    .InsidePage--3__prolist2Item:hover .InsidePage--3__prolist2--contentButton{
+        background: #{$color};color: #fff;border-color: #{$color};
+    }
+</style>
+<section class="InsidePage--3__contentBox InsidePage--3__contentBox--product left">
+        <div class="InsidePage--3__contentBoxWrap">
+            <div class="InsidePage--3__contentBoxWrap--main" style="margin-bottom: 60px;">
+                <h5 class="InsidePage--3__Protitle">{$type}</h5>
+                <ul class="InsidePage--3__prolist">
+                    <volist empty="" name="pro" id="allpro" key="k" offset="0">
+                        <li class="InsidePage--3__prolist2Item wow fadeInUp">
+                            <div class="InsidePage--3__prolist2--pic">
+                                <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                    <img src="{:getmainimgurl($allpro['main_img'])}" alt=""/>
+                                </a>
+                            </div>
+                            <div class="InsidePage--3__prolist2--content">
+                                <div class="InsidePage--3__prolist2--contentTitle" title="{$allpro['pro_name']}"><a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">{:subtxt($allpro['pro_name'],60)}</a></div>
+                                <div class="InsidePage--3__prolist2--contentDesac">{:htmlspecialchars_decode($allpro['pro_description'])}</div>
+                                <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" class="InsidePage--3__prolist2--contentButton">{:__('Read More')}</a>
+                            </div>
+                        </li>
+                    </volist>
+                    <div style="clear:both;"></div>
+                </ul>
+                <div class="main_page">{$page}</div>
+            </div>
+        </div>
+</section>

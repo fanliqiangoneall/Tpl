@@ -1,0 +1,53 @@
+<!--{$pagename}-->
+<if condition="$data34[10]">
+    <style>
+        .hj01_index_honor{
+            background: url({:getindeximgurl($data34[10])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .honr_title h3{
+        color: #{$color};
+    }
+    .honr_title2 h6{
+        color: #{$color};
+    }
+    .index_inquiry_left_title{
+        background: #{$color};
+    }
+    #index_honlist .slick-prev:hover:before,  #index_honlist .slick-next:hover:before{
+    color: {$data1[0]};
+    }
+</style>
+<div class="hj01_index_honor">
+    <div class="container">
+        <div class="honr_title" id="honor_title"><h3>{$data34[0]}</h3></div>
+        <div class="honr_title2" id="honor_title2"><h6>{$data34[1]}</h6></div>
+        <div class="index_honlist_wai">
+            <div  id="index_honlist">
+                <php>
+                    for($ho=2;$ho<8;$ho=$ho+1){
+
+                </php>
+                <if condition="$data34[$ho] neq ''">
+                    <div class="index_honitem">
+                        <img src="{:getindeximgurl($data34[$ho])}" alt=""/>
+                    </div>
+                </if>
+                <php>
+                    }
+                </php>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#index_honlist').slick({infinite: true, slidesToShow: 4, slidesToScroll: 1, lazyLoad: 'ondemand',});
+        if ($(".index_honitem").length <= 4) {
+            $("#index_prolist .slick-prev").hide();
+            $("#index_prolist .slick-next").hide()
+        }
+    });
+</script>

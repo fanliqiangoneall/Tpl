@@ -1,0 +1,127 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_advantage_26{
+        position: relative;
+    }
+    .hjzf_advantage_26_wrapper_con.first .index_title {
+        color: #{$data396[0]};
+    }
+
+    .hjzf_advantage_26_wrapper_con.last .index_btn {
+        border: 1px solid #{$data396[1]};
+        color: #{$data396[1]};
+        border-radius: 50px;
+        transition:all .5s;
+    }
+    .hjzf_advantage_26_wrapper_con.last .index_btn:hover{
+        background-color: #{$data396[1]};
+        color: #fff;
+    }
+    .hjzf_advantage_26{
+        background-color: #{$data396[17]};
+    }
+    .hjzf_advantage_26_title .index_sub_title{
+        color: #777;
+    }
+    <if condition="$data396[18]">
+    .hjzf_advantage_26 {
+        background: url({:getindeximgurl($data396[18])}) no-repeat top center/cover;
+    }
+    </if>
+    <if condition="$data396[19]">
+        .hjzf_advantage_26_lsp{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            cursor: pointer;
+        }
+</if>
+{}
+</style>
+<script>
+    var hjzf_advantage_26_video = '<?php echo $data396[19];?>';
+</script>
+<section class="hjzf_advantage_26 index_pd">
+    <if condition="$data396[19]">
+        <div class="hjzf_advantage_26_lsp fx-center">
+            <img src="{:getindeximgurl($data396[20])}">
+        </div>
+    </if>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center hjzf_advantage_26_title">
+                <div class="index_title pb20">
+                    {$data396[2]}
+                </div>
+                <div class="index_sub_title pb40">
+                    {$data396[3]}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <ul class="hjzf_advantage_26_wrapper">
+
+                <li class="hjzf_advantage_26_wrapper_img">
+                    <img src="{:getindeximgurl($data396[4])}" alt="{$data396[6]}">
+                </li>
+                <if condition="$data396[5]">
+                <li class="hjzf_advantage_26_wrapper_con first"
+                    style="background: url({:getindeximgurl($data396[5])}) no-repeat center/cover;">
+                    <else/>
+                <li class="hjzf_advantage_26_wrapper_con first">
+                </if>
+                    <div class="index_title pb20">
+                        {$data396[6]}
+                    </div>
+                    <div class="index_sub_title pb40">
+                        {$data396[7]}
+                    </div>
+                    <div class="index_text pb40">
+                        {$data396[8]}
+                    </div>
+					<if condition="$data396[21]">
+						<a href="{$data396[21]}" class="index_btn">{$data396[22]}</a>
+					</if>
+                    <php>
+                        $arr = get_list_val($data396[9]);
+                    </php>
+                    <div class="hjzf_advantage_26_wrapper_list">
+                        <volist name="arr" id="a">
+                            <dl>
+                                <a href="{$a[link]}">
+                                    <dd>
+                                        <img src="{$a[ico]}" alt="{$a[title]}">
+                                    </dd>
+                                    <dt>{$a[title]}</dt>
+                                </a>
+                            </dl>
+                        </volist>
+                    </div>
+                </li>
+                <if condition="$data396[10]">
+                <li class="hjzf_advantage_26_wrapper_con last"
+                style="background: url({:getindeximgurl($data396[10])}) no-repeat center/cover;">
+                <else/>
+                <li class="hjzf_advantage_26_wrapper_con last">
+            </if>
+                    <div class="index_title pb20">
+                        {$data396[11]}
+                    </div>
+                    <div class="index_sub_title pb40">
+                        {$data396[12]}
+                    </div>
+                    <div class="index_text pb40">
+                        {$data396[13]}
+                    </div>
+                    <a href="{$data396[15]}" class="index_btn index_text">
+                        {$data396[14]}
+                    </a>
+                </li>
+                <li class="hjzf_advantage_26_wrapper_img">
+                    <img src="{:getindeximgurl($data396[16])}" class="img-fluid" alt="{$data396[11]}">
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

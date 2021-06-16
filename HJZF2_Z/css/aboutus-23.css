@@ -1,0 +1,103 @@
+.hjzf2_z_aboutus_23_wrapper{
+    margin-top: 40px;
+}
+.hjzf2_z_aboutus_23 a.more{
+    display: block;
+    width: 170px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    transition: all .5s;
+}
+.hjzf2_z_aboutus_23 a.more:hover{
+    color: #fff;
+}
+.hjzf2_z_aboutus_23_wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.hjzf2_z_aboutus_23_wrapper li{
+    flex: 0 0 25%;
+    margin-right: 10px;
+    padding:20px 30px;
+    background-color: rgba(0,104,183,.3);
+}
+.hjzf2_z_aboutus_23_wrapper li:hover{
+    background-color: #fff;
+}
+.hjzf2_z_aboutus_23_wrapper li:last-child{
+    margin-right: 0;
+}
+.hjzf2_z_aboutus_23_wrapper li a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    height: 100%;
+}
+.hjzf2_z_aboutus_23_wrapper li i{
+    font-size: 22px;
+}
+.hjzf2_z_aboutus_23_wrapper li span{
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+.hjzf2_z_aboutus_23_wrapper li span img.hover{
+    opacity: 0;
+    visibility: hidden;
+}
+.hjzf2_z_aboutus_23_wrapper li span img{
+    position: absolute;
+    max-width: 30px;
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: all .5s;
+}
+.hjzf2_z_aboutus_23_wrapper li:hover{
+    background-color: #fff;
+} 
+.aboutus_13_left span{
+    margin-right: 20px;
+}
+.hjzf2_z_aboutus_23_wrapper li:hover span img.normal{
+    opacity: 0;
+    visibility: hidden;
+}
+.hjzf2_z_aboutus_23_wrapper li:hover span img.hover{
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+}
+.hjzf2_z_aboutus_23_wrapper li:last-child{
+    margin-right: 0;
+}
+.aboutus_13_left{
+    display: flex;
+    align-items: center;
+    transition: all .5s;
+}
+
+@media(min-width: 1200px) {
+    .hjzf2_z_aboutus_23_text{
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media(max-width: 1200px) {
+    .hjzf2_z_aboutus_23_wrapper{
+        flex-wrap: wrap;
+    }
+    .hjzf2_z_aboutus_23_wrapper li{
+        flex: 0 0 49%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}

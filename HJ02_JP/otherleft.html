@@ -1,0 +1,100 @@
+<!--left style-->
+<style>
+    .main-content_inner > ul > li{
+        background-color: #{$color};
+    }
+    .main-content_inner > ul > li.yiji  span.class_button{
+        background:url({:getindeximgurl($data1[10])}) no-repeat center;
+    }
+    .main-content_inner > ul > li.yijion span.class_button{
+        background:url({:getindeximgurl($data1[9])}) no-repeat center;
+    }
+    .main-content_inner > ul > li.yijion{
+        background:#{$data1[11]}
+    }
+    .main-content_inner > ul > li.yijion > ul{
+        margin-top:14px;
+        background:#{$data1[11]};
+        border-top: 1px solid rgba(0,0,0,0.05);
+        margin-bottom: -10px;
+    }
+    .main-content_inner > ul > li.yijion > ul>li.child{
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .main-content_inner > ul > li:hover{
+    background: {$data1[11]};
+    }
+    .main-content_inner > ul > li.yijion > ul>li.childon{
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+
+
+
+    .main-content_inner > ul >li:hover >a:before{
+    background: {$data1[0]};
+    }
+    .main-content_inner > ul >li.yijion >a:before{
+    background: {$data1[0]};
+    }
+    .main-content_inner > ul >li >a > h3{
+        color: #fff;
+    }
+    /*.main-content_inner_contact{
+        background:url({:getindeximgurl($data14[8])}) no-repeat center;
+    }
+
+    .main_content_slogan_right_more a{
+    background: {$data1[0]};
+    border-color:{$data1[0]};
+    }*/
+    .main_content_slogan_right_more a:hover{
+        background: transparent;border-color:#fff;
+    }
+    .yiji >ul >li >a >h3:hover{
+    color:{$data1[0]};
+    }
+    .yijion >ul >li >a >h3:hover{
+    color:{$data1[0]};
+    }
+
+</style>
+<if condition="$data1[33]">
+    <style>
+        .main-content_inner > ul > li{
+            background-color: #{$data1[33]};
+        }
+    </style>
+</if>
+<if condition="$data1[34]">
+    <style>
+        .main-content_inner > ul > li.yijion{
+            background:#{$data1[34]}
+        }
+        .main-content_inner > ul > li.yijion > ul{
+            margin-top:14px;
+            background:#{$data1[34]};
+            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: -10px;
+        }
+        .main-content_inner > ul > li:hover{
+        background: {$data1[34]};
+        }
+        .main-content_inner > ul > li:hover{
+            background:#{$data1[34]}
+        }
+    </style>
+</if>
+<!--left style-->
+<div class="main_left">
+    <div class="main-content_inner">
+        <div class="hj02_left_title"><if condition="$data1[21]">{$data1[21]}<else/>{$navparentname}</if></div>
+        <ul class="margin-20px-bottom">
+            <volist empty="No data" name="navrs" id="nav">
+
+                <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

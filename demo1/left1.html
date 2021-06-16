@@ -1,0 +1,14 @@
+<div class="page_inleft">
+  <div class="in_tophead">新闻中心</div>
+  <div class="page_LeftClass">
+     <volist empty="" name="allnewclass" id="news_left">
+        <div <if condition="$newscate['classid'] eq $news_left['classid'] or $newclass['classid'] eq $news_left['classid']">class="parent1"<else/>class="parent"</if>><a href="{:U('/new_category',array('classid'=>$news_left["classid"]))}">{$news_left['class_name']}</a></div>
+     </volist>
+  </div>
+  <div style="width:280px; height:128px; margin-top:25px;"><img src="__TMPL__demo1/img/left_contact.jpg" style="border:1px solid #ece9e9;"></div>
+  <div class="left_contact">
+     <ul>
+        <li style="padding-left:30px;"><span>咨询热线：</span>{:chaifen($about['phone'],0)}</li>
+     </ul>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_service_33_left {
+        background-color: #{$data394[2]};
+    }
+
+    .hjzf_service_33_right {
+        background-color: #{$data394[6]};
+       
+    }
+</style>
+<section class="hjzf_service_33">
+
+    <div class="container-fluid">
+        <div class="row hjzf_service_33_wrapper">
+            <div class="col-xs-12 col-md-6 hjzf_service_33_left">
+                <div class="w-75">
+                    <div class="clearfix pb20">
+                        <div class="index_sub_title fl">
+                            {$data394[0]}
+                        </div>
+                        <div class="fr">
+                            <a href="{$data394[1]}">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="hjzf_service_33_left_wrapper">
+                        <php>
+                            $arr = get_list_val($data394[3]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <li>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                <span>
+                                    <img src="{$a[img]}" class="normal img-fluid">
+                                    <img src="{$a[ico]}" class="hover img-fluid">
+                                </span>
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 hjzf_service_33_right">
+                <div class="w-75">
+                    <div class="clearfix pb20">
+                        <div class="index_sub_title fl">
+                            {$data394[4]}
+                        </div>
+                        <div class="fr">
+                            <a href="{$data394[5]}">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="hjzf_service_33_left_wrapper">
+                        <php>
+                            $arr = get_list_val($data394[7]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <li>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                <span>
+                                    <img src="{$a[img]}" class="normal img-fluid">
+                                    <img src="{$a[ico]}" class="hover img-fluid">
+                                </span>
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,64 @@
+<extend name="ZL01:base" />
+<block name="content">
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="in_bodybg">
+    <div class="r_mbx"><img src="__TMPL__ZL01/img/in_home.png" style="vertical-align:top; margin-top:5px;">&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<span>{$newclass['class_name']}</span></div>
+    <div class="page_Main">
+       <Include file="./Tpl/ZL01/newsleft.html" />
+       <div class="in_right">
+          <div class="page_RightTitle"><h2>{$newclass['class_name']}</h2></div>
+          <div class="page_RightMain">
+            <div class="news">
+            <div id="news_detail">
+              <div class="body">
+                <h1 class="fc_107fd0 fs_16 bold">{$news['title']}</h1>
+                <div class="news_view"><span class="right red">浏览次数：{$news['click_num']}</span><span class="right time">{:date('Y/m/d',$news['created'])}&nbsp;&nbsp;</span></div>
+                <div class="clear"></div>
+                <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                <div class="clear"></div>
+                <div class="bt" style="margin-top:22px;"><a href="javascript:history.back()" onfocus="blur()" style="display:block; text-align:center; color:#fff;">返回</a></div>
+              </div>
+            </div>
+          </div>
+                
+          <div class="prev_next">
+              <ul>
+                <li>上一条：
+                 <if condition="$newprev[0]['title'] eq ''">
+                  无
+                 <else/>
+                  <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">{$newprev[0]['title']}</a>
+                 </if>
+                </li>
+                <li>下一条：
+                  <if condition="$newnext[0]['title'] eq ''">
+                  无
+                 <else/>
+                  <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">{$newnext[0]['title']}</a>
+                 </if>
+                </li>
+              </ul>
+            </div>
+           <if condition="newscomment_show() eq 1">
+            <include file="ZERO:newscomment" />
+          </if>
+          <div style="clear:both;"></div>
+          <include file="ZERO:relationinfo" />
+          <include file="ZERO:relationnew" />
+          <include file="ZERO:relationcase" />
+          <div style="clear:both"></div>
+          </div>
+       </div>
+       <div style="clear:both"></div>
+    </div>
+</div>
+</block>

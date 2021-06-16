@@ -1,0 +1,78 @@
+<!--{$pagename}-->
+<php>
+    if($data486[1]){
+    $color = $data486[1];
+    }
+    if($data486[6]){
+    $txt_col = $data486[6];
+    }else{
+    $txt_col = 'fff';
+    }
+</php>
+<style>
+    .HJZF2_Z_other_92 {
+        background-color: #{$data486[0]};
+    }
+
+    .HJZF2_Z_other_92_title:after,
+    .HJZF2_Z_other_92_wrapper em:after,
+    .HJZF2_Z_other_92_wrapper em:before,.HJZF2_Z_other_92 .btn_more a {
+        background-color: #{$color};
+    }
+
+    .HJZF2_Z_other_92_title,
+    .HJZF2_Z_other_92_wrapper_info {
+        color: #{$txt_col};
+    }
+
+    .HJZF2_Z_other_92_wrapper li:hover .HJZF2_Z_other_92_wrapper_info:after {
+        background-color: #{$data486[4]};
+    }
+
+    .HJZF2_Z_other_92_wrapper em {
+        border-color: #{$color};
+        color: #{$color};
+    }
+
+</style>
+<section class="HJZF2_Z_other_92 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title HJZF2_Z_other_92_title text-center pb20 por">
+                    {$data486[2]}
+                </div>
+                <ul class="HJZF2_Z_other_92_wrapper">
+                    <php>
+                        $arr = get_list_val($data486[3]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li>
+                            <a href="{$a[link]}">
+                                <img src="{$a[img]}" alt="{$a[title]}" class="img-fluid">
+                                <div class="HJZF2_Z_other_92_wrapper_info">
+                                    <span class="index_text">
+                                        {$a[title]}
+                                    </span>
+                                    <p>
+                                        {$a[info]}
+                                    </p>
+                                    <if condition="$data486[5]">
+                                        <div class="more">
+                                            <img src="{:getindeximgurl($data486[5])}" >
+                                        </div>
+                                        <else />
+                                        <em></em>
+                                    </if>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+                <div class="text-center btn_more">
+                    <a href="{$data486[7]}" class="index_btn hx_btn">{:__('Read More')}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

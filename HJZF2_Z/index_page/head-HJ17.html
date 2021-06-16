@@ -1,0 +1,470 @@
+<!--{$pagename}-->
+<script>
+    var lan_str = "<?php echo $language;?>";   
+    var headIsIndex = "<?php echo $is_index;?>";   
+</script>
+<php>
+    if($data458[0]){
+    $color = $data458[0];
+    }
+</php>
+<style>
+    <if condition="$data458[9]">.search_submit_bg {
+        background: url({:getindeximgurl($data458[9])}) no-repeat center;
+    }
+    </if>
+    .head_hj17_top {
+        background-color: #{$data458[1]};
+        color: #{$data458[2]};
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .head_hj17_top a {
+        color: #{$data458[2]};
+    }
+    .head_hj17_search input,
+    .head_hj17_search button {
+        border-color: #{$color};
+    }
+    .hjzf_hj17_wrapper li a span {
+        color:#{$color};
+    }
+    .menu_bg {
+        background-color: #{$color};
+    }
+    .text{
+        height: 400px;
+        background-color: #f0f0f0;
+    }
+    .nav_search_sub form button{
+        background-color: #{$color};
+    }
+</style>
+
+<!-- <div class="top_isIndex_empty"></div>
+<div class="header_empty"></div> -->
+        <header class="nav-hidden-mobile isIndex">
+        <div class="header_fix isIndex">
+        <div class="head_hj17_top isIndex">
+    <div class="container">
+                <div class="row">
+                    <div class="head_hj17_left">
+                        <php>
+                            $arr = get_list_val($data458[3]);
+                            $arra = get_list_val($data458[4]);
+                            $arrb = get_list_val($data458[5]);
+                            $arrc = get_list_val($data458[7]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <span>
+                                <if condition="$a[ico]">
+                                    <img src="{$a[ico]}">
+                                </if>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                {$a[text]}
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </span>
+                        </volist>
+                    </div>
+                    <div class="head_hj17_right">
+                        <volist name="arra" id="a">
+                            <span>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                {$a[text]}
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </span>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- logo start -->
+        <div class="head_hj17_logo">
+        <div class="container">
+            <div class="row head_hj17_logo_wrapper">
+                <div class="head_hj17_logo">
+                    <a href="{:U('/')}">
+                        {$logo}
+                    </a>
+                </div>
+                <div class="head_hj17_search">
+                    <form action={:U( '/search' )} onSubmit="return CheckForm(this)" method="Post">
+                        <input type=" text " placeholder=" {:__( 'What are you looking for?' )} " name="keywords"
+                            class="mobile_search_input " id="keyword">
+                        <button type="submit" id="search-submit" class="search_submit_bg"></button>
+                    </form>
+                </div>
+                <div class="head_hj17_logo_r">
+                    <if condition="$data458[5]">
+                        <div class="head_hj17_share">
+                            <volist name="arrb" id="a">
+                                <a href="{$a[link]}"><img src="{$a[ico]}"></a>
+                            </volist>
+                        </div>
+                    </if>
+                    <if condition="$data458[7]">
+                        <div class="head_hj17_lang">
+                            <img src="{:getindeximgurl($data458[6])}">
+                            <volist name="arrc" id="a">
+                                <a href="{$a[link]}" target="_blank">{$a[lang]}</a>
+                            </volist>
+                        </div>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- logo end -->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="hjzf_hj17_wrapper">
+                    <div>
+                        <if condition="$data458[8]"><img src="{:getindeximgurl($data458[8])}"></if> {:__('Notice: ')}
+                    </div>
+                    <php>
+                        if($data458[16]){
+                        $num = $data458[16];
+                        }else{
+                        $num = 18;
+                        }
+                        $arr_str=$data458[10];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list=get_index_news_category($a,12);
+                        }
+                    </php>
+                    <div class="bd">
+                        <ul>
+                            <volist name="list" id="li" offset="0" key="k">
+                                <li><a href="{:U('/new_detail',array('nid'=>$li['nid']))}"
+                                        title="{$li[title]}"><em>{$li['title']}</em><span>{:__('Read More')}</span></a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- products menu -->
+    <php>
+        $tebie_navs=(get_list_val($data458[11]));
+    </php>
+    <div class="menu_bg isIndex">
+        
+        <div class="container">
+            <div class="row">
+                <nav class="menu nav">
+                    <ul class="menu_ul">
+                        <!-- 导航 开始-->
+                        <volist name="web_navigation" id="vo" key="key" offset="0" length="8">
+                            <li id="menu{$vo['id']}" data-id="{$vo['id']}">
+                                <a menu_data="{$vo['id']}" href="{$vo['url']}" <if
+                                    condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"
+                                    <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                                    class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                                <volist name="tebie_navs" id="tebie_nav">
+                                    <if condition="$vo['id'] eq $tebie_nav['navid']">
+                                        <php>
+                                            $pro_cate_hj17 = get_product_byclass_index($tebie_nav['sortid']);
+                                            $pro_cat = get_children($tebie_nav['sortid']);
+                                        </php>
+                                        <ul class="head_hj17_drap">
+                                            <!-- 分类 -->
+                                        <if condition="$pro_cat">
+                                            <volist empty="no" name="pro_cat" id="proList" offset="0" length="$num">
+                                                <li class="col-xs-2"><a
+                                                    href="{:U('/product_category','','')}/{:getprocatename($proList['pcid'])}">
+                                                    <img data-src="{:getmainimgurl($proList['fid'])}"
+                                                        data-alt="{$proList['class_name']}" class="img-fluid loading">
+                                                    <p>{$proList['class_name']}</p>
+                                                </a>
+                                            </li>
+                                            </volist>
+                                            <else/>
+                                            <!-- 产品 -->
+                                            <volist empty="no" name="pro_cate_hj17" id="proList" offset="0" length="$num">
+                                                <li class="col-xs-2">
+                                                    <a href="{:U('/Product','','')}/{:getproname($proList['pid'])}">
+                                                        <img data-src="{:getmainimgurl($proList['main_img'])}"
+                                                        data-alt="{$proList['pro_name']}" class="img-fluid loading">
+                                                        <p>{$proList['pro_name']}</p>
+                                                    </a></li>
+                                            </volist>
+                                        </if>
+                                    </ul>
+                                    </if>
+                                </volist>
+                                <if condition="$vo[child] neq ''">
+                                    <ul class="nav_drop">
+                                        <volist name="vo['child']" id="v" offset="0" key="key">
+                                            <li class="text-center">
+                                                <a href="{$v['url']}">
+                                                    <if condition="$v['nav_img']">
+                                                    <img src="{:getmainimgurl($v['nav_img'])}" alt="{$v['title']}" data="{:dump($v)}">
+                                                    </if>
+                                                    <p>{$v['title']}</p>
+                                                </a>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                </if>
+                            </li>
+                        </volist>
+                        <!-- 导航 结束-->
+                        <li class="nav_search">
+                            <img src="__TMPL__HJZF2_Z/img/mobile_search1.svg" style="width: 30px;"  />
+                            <div class="nav_search_sub">
+                                <!-- search -->
+                                <div class="header_search_form">
+                                    <div class="container">
+                                        <div class="row">
+                                            <if condition="C('language') eq 'cn'">
+                                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+                                                    class="head_hj06_search">
+                                                    <li class="search_first"><input type="text" value="{:__('Product Search')}" name="keywords"
+                                                            id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)"
+                                                            onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)">
+                                                    </li>
+                                                    <li class="search_second">
+                                                        <button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/mobile_search1.svg" width="30" /></button>
+                                                    </li>
+                                                </form>
+                                                <else />
+                                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+                                                    class="head_hj06_search">
+                                                    <li class="search_first"><input type="text" value="keyword" name="keywords" id="keyword"
+                                                            onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)">
+                                                    </li>
+                                                    <li class="search_second">
+                                                        <button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/mobile_search1.svg" width="30" /></button>
+                                                    </li>
+                                                </form>
+                                            </if>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- search -->
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <!-- products menu -->
+
+</header>
+
+
+
+<php>
+    if($data458[13]){
+    $mobile_bg = $data458[13];
+    }else{
+    $mobile_bg = 'fff';
+    }
+    if($data458[14]){
+    $mobile_navbtn = $data458[14];
+    }else{
+    $mobile_navbtn = '333';
+    }
+</php>
+
+<style>
+    .HJZF2__head_hj06_mobile {
+        background-color: #{$mobile_bg};
+    }
+
+    .mobile_navbutton span:before,
+    .mobile_navbutton span:after,
+    .mobile_navbutton span {
+        background: #{$mobile_navbtn};
+    }
+</style>
+
+
+
+<!--mobile nav-->
+<div class="HJZF2__head_hj06_mobile_empty nav-hidden-pc"></div>
+<div class="nav-hidden-pc mobile_head HJZF2__head_hj06_mobile">
+    <div class="mobile_search_content hidden-xl">
+        <div class="mobile_search">
+            <div class="mobile_search_box">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <div class="mobile_search_input">
+                        <if condition="C(Language) eq 'cn' or C(Language) eq 'zh'">
+                            <div class="mobile_search_input"><input type="text" value="{:__('Product Search')}"
+                                    name="keywords" id="keyword_mcn"
+                                    onfocus="OnFocusFun_m(this,&#39;{:__('Product Search')}&#39;)"
+                                    onblur="OnBlurFun_m(this,&#39;{:__('Product Search')}&#39;)"><button type="submit"
+                                    id="search-submit"><i class="fa fa-search"></i></button></div>
+                            <else />
+                            <div class="mobile_search_input"><input type="text" value="{:__('Product Search')}"
+                                    name="keywords" id="keyword_m"
+                                    onfocus="OnFocusFun_m(this,&#39;{:__('Product Search')}&#39;)"
+                                    onblur="OnBlurFun_m(this,&#39;{:__('Product Search')}&#39;)"><button type="submit"
+                                    id="search-submit"><i class="fa fa-search"></i></button></div>
+                        </if>
+                    </div>
+                    <div class="mobile_search_close">
+                        <img src="__TMPL__HJZF2_Z/img/mobile_close.svg" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-13 flex mobile_head_content">
+                <div class="mobile_logo">
+                    <a href="{:U('/')}">
+                        <if condition="$data458[15]">
+                            <img src="{:getindeximgurl($data458[12])}" />
+                            <else />
+                            {$logo}
+                        </if>
+                    </a>
+                </div>
+                <div>
+                    <div class="mobile_navbutton hidden-xl">
+                        <a href="javascript:void(0);" class="dt-mobile-menu-icon">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="mobile_searchbutton">
+                        <a href="javascript:void(0);">
+                            <if condition="$data458[12]">
+                                <img src="{:getindeximgurl($data458[12])}" />
+                                <else />
+                                <img src="__TMPL__HJZF2_Z/img/mobile_search1.svg" />
+                            </if>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--mobile nav-->
+<!--mobile nav content-->
+<div class="mobile-sticky-header-overlay nav-hidden-pc" id="mobile-sticky-header-overlay">
+    <div class="mobile-menu-Sidebar" id="mobile-menu-Sidebar">
+        <div class="mobile-menutop">
+            <div class="mobile-menutop-box">
+                <!-- <if condition="$data458[3]">
+                    <div class="mobile_languagebutton">
+                        <div>
+                            <img src="__TMPL__HJZF2_Z/img/langauge_icon.svg"  />
+                            <span>{:__('Language')}</span>
+                        </div>
+                    </div>
+                </if> -->
+                <div>
+                    <div class="mobile-menu-Sidebar-close">
+                        <span></span>
+                    </div>
+                    <div class="mobile_searchbutton">
+                        <a href="javascript:void(0);">
+                            <if condition="$data458[12]">
+                                <img src="{:getindeximgurl($data458[12])}" />
+                                <else />
+                                <img src="__TMPL__HJZF2_Z/img/mobile_search.svg" />
+                            </if>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile_languagelist">
+                <ul id="lang_ul_mobile" class="language_ul"></ul>
+            </div>
+        </div>
+        <div class="mobile-header-scrollbar-wrap HJZF2__header_hj06_navigation" id="mobile-header-scrollbar-wrap">
+            <ul class="hj_navbar_nav--mobile">
+                <volist name="web_navigation" id="vo" key="key">
+                    <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>>
+                        <a menu_data="{$vo['id']}" href="{$vo['url']}" <if
+                            condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"
+                            <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                            class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <span class="next-level-button">
+                                <img src="__TMPL__HJZF2_Z/img/plus.svg" />
+                            </span>
+                            <ul class="hj_navbar_nav_dropdown-menu">
+
+                                <volist name="vo['child']" id="v" offset="0" key="key">
+                                    <li>
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if
+                                            condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"
+                        </if> onFocus="blur()">
+                        <h3>{$v['title']}</h3>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+            <span class="next-level-button">
+                <img src="__TMPL__HJZF2_Z/img/plus.svg" />
+            </span>
+            <ul class="hj_navbar_nav_dropdown-menu  HJ01-pro-menu">
+
+                <volist empty="no" name="allcaseclass" id="allclass_head" offset="0" length="8">
+                    <li>
+                        <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">
+                            {$allclass_head['class_name']}</a>
+                    </li>
+                </volist>
+                <div class="clear"></div>
+            </ul>
+            <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+            <span class="next-level-button">
+                <img src="__TMPL__HJZF2_Z/img/plus.svg" />
+            </span>
+            <ul class="hj_navbar_nav_dropdown-menu  HJ01-pro-menu">
+
+                <volist empty="no" name="allnewclass" id="allclass_head" offset="0" length="8">
+                    <li>
+                        <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}">
+                            {$allclass_head['class_name']}</a>
+                    </li>
+                </volist>
+                <div class="clear"></div>
+            </ul>
+            <else />
+
+            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                <span class="next-level-button">
+                    <img src="__TMPL__HJZF2_Z/img/plus.svg" />
+                </span>
+                <ul class="hj_navbar_nav_dropdown-menu  HJ01-pro-menu">
+                    <volist empty="no" name="allclass" id="allclass_head" offset="0" length="8">
+                        <li>
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">
+                                {$allclass_head['class_name']}</a>
+                        </li>
+                    </volist>
+                    <div class="clear"></div>
+                </ul>
+            </if>
+            </if>
+            </li>
+            </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--mobile nav content-->

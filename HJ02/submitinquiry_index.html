@@ -1,0 +1,118 @@
+
+<div id="index_inquiry">
+
+<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+
+	<div class="inquiry_box margin-15px-bottom " id="inquiry_box1">
+		<div class="inquiry_box_animate"><input type="text" name="linkname" id="linkname" placeholder="Your Name *"><span class="yz_alert" id="linkname_alert"></span></div>
+	</div>
+	<div class="inquiry_box margin-15px-bottom " id="inquiry_box2">
+		<div class="inquiry_box_animate"><input type="text" name="email" id="email" placeholder="Your Email *"><span class="yz_alert" id="email_alert"></span></div>
+	</div>
+	<div class="inquiry_box margin-15px-bottom " id="inquiry_box3">
+		<div class="inquiry_box_animate"><input type="text" name="phone" id="phone" placeholder="Your Phone"><span class="yz_alert" id="phone_alert"></span></div>
+	</div>
+	<div class="inquiry_box margin-15px-bottom " id="inquiry_box4">
+		<div class="inquiry_box_animate"><textarea name="message" id="message" placeholder="Your Message *">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span></div>
+	</div>
+	<div class="inquiry_box margin-15px-bottom " id="inquiry_box5">
+		<div class="inquiry_box_animate"><input type="text" class="input" id="code_char" name="code" maxlength="3" style="width:30%" />&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:0;" id="getcode_char" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1">Click refresh</a><span class="yz_alert" id="code_char_alert"></span></div>
+	</div>
+	<div class="inquiry_box">
+		<div class="inquiry_box_animate" id="inquiry_box6">
+			<input type="submit" value="Submit"  name="SEND MESSAGE" id="index_submit"/>
+		</div>
+	</div>
+</form>
+</div>
+<script>
+	jQuery(function () {
+		jQuery("#message").focus(function () {
+			$(this).css('border-color', '#d5e1e4');
+			jQuery("#message_alert").html("")
+		});
+		jQuery("#linkname").focus(function () {
+			$(this).css('border-color', '#d5e1e4');
+			jQuery("#linkname_alert").html("")
+		});
+		jQuery("#phone").focus(function () {
+			$(this).css('border-color', '#d5e1e4');
+			jQuery("#phone_alert").html("")
+		});
+		jQuery("#email").focus(function () {
+			$(this).css('border-color', '#d5e1e4');
+			jQuery("#email_alert").html("")
+		});
+		jQuery("#code_char").focus(function () {
+			jQuery("#code_char_alert").html("");
+			$(this).css('border-color', '#d5e1e4')
+		});
+		jQuery("#getcode_char").click(function () {
+			jQuery(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};')
+		});
+		jQuery("#getcode_char1").click(function () {
+			jQuery("#getcode_char").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};')
+		})
+	})
+	function yz_submit() {
+		var count = 0;
+		var message = Trims(jQuery("#message").val());
+		var linkname = Trims(jQuery("#linkname").val());
+		var phone = Trims(jQuery("#phone").val());
+		var email = Trims(jQuery("#email").val());
+		if (linkname.length <= 0) {
+			jQuery("#linkname").css('border-color', '#f00')
+			count++
+		} else {
+			jQuery("#linkname").css('border-color', '#d5e1e4')
+		}
+		var str = /[\u4E00-\u9FA5a-zA-Z]/;
+		if (phone.length > 0 && str.test(jQuery('#phone').val())) {
+			count++
+		} else {
+		}
+		if (email.length <= 0) {
+			jQuery("#email").css('border-color', '#f00')
+			count++
+		} else {
+			if (!is_email(email)) {
+				jQuery("#email").css('border-color', '#f00');
+				count++
+			} else {
+				jQuery("#email_alert").html("");
+				jQuery("#email").css('border-color', '#d5e1e4')
+			}
+		}
+		if (message.length <= 0) {
+			jQuery("#message").css('border-color', '#f00')
+			count++
+		} else {
+			jQuery("#email").css('border-color', '#d5e1e4')
+			jQuery("#message_alert").html("")
+		}
+		var code_char = jQuery("#code_char").val();
+		jQuery.ajax({
+			type: "POST", url: "/verification", async: false, data: {code: code_char}, success: function (data) {
+				if (data == 1) {
+					jQuery("#code_char_alert").html("");
+					jQuery("#code_char").css('border-color', '#d5e1e4')
+				} else {
+					count++;
+					jQuery("#code_char").css('border-color', '#f00')
+				}
+			}
+		});
+		if (count > 0) {
+			return false
+		} else {
+			jQuery("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+			return true
+		}
+	}
+	function Trims(str) {
+		return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '')
+	}
+	function is_email(str) {
+		return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(str))
+	}
+</script>

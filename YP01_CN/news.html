@@ -1,0 +1,56 @@
+<extend name="YP01_CN:base" />
+<block name="content">
+<Include file="./Tpl/YP01_CN/index_page/head.html" />
+<script type="text/javascript" src="__TMPL__YP01_CN/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__YP01_CN/css/jquery.lightbox-0.5.css"/>
+
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+<style type="text/css">
+  .left_con:first-child li{display: block !important;}
+</style>
+
+<Include file="./Tpl/YP01_CN/newleft.html" />
+
+
+<div class="r_mbx"><img src="__TMPL__YP01_CN/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;新闻中心</div>
+
+
+<div style="width: 1190px;margin:0 auto">
+
+<div class="page_Main">
+  <div class="body" style="margin-top: 45px;">
+             <volist name="allnews" id="allnews" key="k">
+             <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                  <div class="in_case">
+                      <div class="incase_pic"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><if condition="$allnews['new_pro'] neq ''"><img src="{:getimgurl($allnews['new_pro'])}" border="0" alt="{$allnews['title']}" /><else/><img src="__TMPL__YP01_CN/img/case_pic.jpg" border="0" /></if></a></div>
+                      <div class="incase_name">
+                         <li style="float: left;color: #999;font-size: 16px;line-height: 28px;margin-bottom: 10px">{:date('m-d-Y',$allnews['created'])}</li>
+                         <li style="margin-bottom: 10px;"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" style="font-size: 22px;color: #333333;line-height: 30px;">{$allnews['title']}</a></li>
+                         <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                         <li style="color: #999;font-size: 16px;line-height: 28px;">{:subtxt($allnews['news_description'],100)}</li>
+                         </a>
+                      </div>  
+                  </div>
+                  </a>
+                  <if condition="$k % 3 neq 0">
+                     <div style="width:32px; float:left; height:30px;"></div>
+                  <else/>
+                     <div style="clear:both"></div>
+                  </if>
+             </volist>
+             
+          </div>
+  <div class="clearfix"></div>
+<div class="green-black" style="text-align:center; padding:20px 20px;">{$page}</div>     
+</div>
+</div>
+<Include file="./Tpl/YP01_CN/index_page/bottom.html" />
+</block>

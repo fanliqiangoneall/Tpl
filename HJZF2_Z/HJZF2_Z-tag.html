@@ -1,0 +1,92 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current{
+			color: #{$color};
+		}
+		.InsidePages_left_content-main{
+			border-top: 2px solid #{$color};
+		}
+		.InsidePages_left_content-main{
+			border-top: 2px solid #{$color};
+		}
+	</style>
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner"><img
+							src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+				</volist>
+				</volist>
+				<else/>
+				<div class="in_banner"><img
+						src="{:getindeximgurl($inner_data[1])}" alt=""/></div>
+			</if>
+
+		</div>
+
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Associated information')}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="container">
+				<div class="row">
+					<section class="hidden-xs hidden-sm col-md-3 HJZF_Z__inner--left">
+						<Include file="./Tpl/HJZF2_Z/left.html" />
+					</section>
+					<section class="hidden-md hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+						<Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+					</section>
+					<section class="col-xs-12 col-md-9 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                        {:htmlspecialchars_decode($tag_info['body'])}
+                        </div>
+						<div class="InsidePages_content-right__wrap">
+							<div class="InsidePages_content-right_content-main" >
+								<h5 class="InsidePages_content-right_content_title">{:__('Related products')}</h5>
+								<div class="proinquiry"><include file="HJZF2_Z:relationinfo" /></div>
+								<div style="clear:both;"></div>
+
+								<h5 class="InsidePages_content-right_content_title">{:__('Related news')}</h5>
+
+								<div class="proinquiry"><include file="HJZF2_Z:relationnew" /></div>
+								<div style="clear:both;"></div>
+
+								<div style="height: 30px;width: 100%"></div>
+
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+					</section>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

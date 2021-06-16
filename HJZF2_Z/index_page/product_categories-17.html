@@ -1,0 +1,87 @@
+<!--{$pagename}-->
+<if condition="$data550[0]">
+	<style>
+		.new_hjzf_procata_17 {
+			background: url({:getindeximgurl($data550[0])}) no-repeat center/cover;
+		}
+	</style>
+</if>
+<style>
+	.new_hjzf_procata_17_pagination .swiper-pagination-bullet-active,
+	.new_hjzf_procata_17__proMask {
+		background:#{$data550[3]};
+	}
+
+	.new_hjzf_procata_17__classname h3 {
+		color:#{$data550[3]};
+	}
+</style>
+<php>
+	$time = $data550[4] ? $data550[4]:3000;
+	$num = $data550[6] ? $data550[6]:4;
+</php>
+<script>
+	var protime_7 = '<?php echo $time ?>';
+	var pro_num = '<?php echo $num ?>';
+	var cate_17_autoplay = '<?php echo $data550[8];?>';
+</script>
+<section class="new_hjzf_procata_17 index_pd">
+	<div class="new_hjzf_procata_17_title">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="new_hjzf_procata_17_title--main index_title pb20 wow fadeInDown" data-wow-delay=".1s">{$data550[1]}</div>
+					<div class="new_hjzf_procata_17_title--desc index_sub_title pb40  wow fadeInDown" data-wow-delay=".2s">{:HtmlEncode($data550[2])}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<if condition="$data550[5]">
+		<div class="container">
+			<div class="row">
+	</if>
+	<div class="col-xs-12 new_hjzf_procata_17_Content wow fadeInUp" data-wow-delay=".3s">
+		<div class="new_hjzf_procata_17_productWrap">
+			<div class="new_hjzf_procata_17_product swiper-container">
+				<div class="swiper-wrapper">
+					<php>
+						$arr_str=$data550[7];
+						$arr=explode(',',$arr_str);
+						foreach($arr as $k=>$a){
+						$pro_list[$k]=get_index_products_categoryname($a);
+						};
+					</php>
+					<volist empty="" name="pro_list" id="prolistcate17" key="k">
+						<div class="swiper-slide new_hjzf_procata_17_productItem" data="{:dump($prolistcate17)}">
+							<div class="new_hjzf_procata_17_productItemBox">
+								<div class="new_hjzf_procata_17_productItemBox_img">
+									<a href="{:U('/product_category','','')}/{:getprocatename($prolistcate17['pcid'])}">
+										<img src="{:getmainimgurl($prolistcate17['fid'])}" alt="{$prolistcate17['class_name']}" />
+									</a>
+								</div>
+								<div class="new_hjzf_procata_17_productItemBox_name">
+									<a href="{:U('/product_category','','')}/{:getprocatename($prolistcate17['pcid'])}">
+										<h3 class="index_sub_title">{$prolistcate17['class_name']}</h3>
+									</a>
+								</div>
+								<a href="{:U('/product_category','','')}/{:getprocatename($prolistcate17['pcid'])}">
+									<div class="new_hjzf_procata_17__proMask">
+										 <div class="new_hjzf_procata_17__proMask__name new_hjzf_procata_17__proMask__font index_sub_title">{$prolistcate17['class_name']}</div>
+										 <div class="new_hjzf_procata_17__proMask__desc new_hjzf_procata_17__proMask__font index_text">
+											{$prolistcate17['readme']}</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</volist>
+				</div>
+				<div class="swiper-pagination new_hjzf_procata_17_pagination"></div>
+			</div>
+		</div>
+	</div>
+	<if condition="$data550[5]">
+		</div>
+		</div>
+	</if>
+	<div class="clear"></div>
+</section>

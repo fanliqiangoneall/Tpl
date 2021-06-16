@@ -1,0 +1,127 @@
+<!--{$pagename}-->
+<php>
+    if($data338[0]){
+    $bg_color = $data338[0];
+    }else{
+    $bg_color = $color;
+    }
+
+</php>
+<style>
+    .hjzf2_other_52 {
+        background-color: #{$bg_color};
+        color: #333;
+    }
+
+    .hjzf2_other_52_wrapper {
+        background-color: #{$data338[2]};
+        padding: 40px 20px;
+    }
+
+    .hjzf_other_52_box input[type="submit"] {
+        color: #fff;
+        background-color: #{$bg_color};
+        border-color: #{$bg_color};
+    }
+
+    .hjzf_other_52_box a {
+        color: #{$color};
+    }
+</style>
+
+<section class="hjzf2_other_52 index_pd">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-xs-12">
+
+                <div class="hjzf2_other_52_wrapper">
+                    <div class="tac index_title pb40">
+                        {$data338[1]}
+                    </div>
+                    <div class="index_text hjzf_other_52_box clearfix">
+                        <form action="__APP__/saveinquiry" onsubmit="return submit_xp();">
+                            <div class="col-xl-4 col-xs-12 mb10">
+                                <input type="text" class="name w-full index_text name_down" name="name"
+                                    placeholder="{:__('Name: ')} *">
+                                <span class="yz_alert name-error"></span>
+                            </div>
+                            <div class="col-xl-4 col-xs-12 mb10">
+                                <input type="text" class="tell_down w-full index_text" name="tell"
+                                    placeholder="{:__('Phone: ')} *">
+                                <span class="yz_alert phone-error"></span>
+                            </div>
+                            <div class="col-xl-4 col-xs-12">
+                                <input type="submit" value="{:__('Inquiry Now')}" class="w-full index_text">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- 验证码返回ok到后台 -->
+{:session("tncode_check","ok")}
+<script>
+    jQuery(".name_down").focus(function () {
+        jQuery(".name-error").html("");
+    });
+    jQuery(".tell_down").focus(function () {
+        jQuery(".phone-error").html("");
+    });
+
+   
+    function submit_xp() {
+        var count = 0;
+        var language = '<?php echo C(Language);?>';
+        var linknamea = $(".name_down").eq(0).val().trim();
+        var phone = $('.tell_down').eq(0).val().trim();
+
+        if (linknamea.length === 0) {
+            count++;
+            if (language == 'cn' || language == 'zh') {
+                $('.name-error').html('名称不能为空！')
+            } else {
+                $('.name-error').html('The name cannot be empty!')
+            };
+        } else {
+            $('.name-error').html('');
+        };
+
+        if (phone.length === 0) {
+            count++;
+            if (language == 'cn' || language == 'zh') {
+                $('.phone-error').html('电话不能为空！')
+            } else {
+                $('.phone-error').html('Telephone cannot be empty!')
+            };
+        } else {
+            if (phone.length > 0 && is_phone(phone)) {
+                if (language == 'cn' || language == 'zh') {
+                    jQuery(".phone-error").html("电话格式错误!");
+                } else {
+                    jQuery(".phone-error").html("Telephone information is wrong!");
+                }
+                count++;
+            } else {
+                jQuery(".phone-error").html("");
+            };
+        };
+
+        
+        
+        // 返回
+        if (count > 0) {
+            return false;
+        } else {
+            return true;
+        };
+
+    };
+
+
+</script>

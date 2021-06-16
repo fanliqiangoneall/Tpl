@@ -1,0 +1,41 @@
+<!--{$pagename}-->
+<php>
+	if($data703[0]){
+	$color = $data703[0];
+	}
+	if($data706[3]){
+		$sub = $data706[3];
+	}
+</php>
+<style>
+	<if condition="$data706[4]">
+		.hjzf_other_115{
+			background: #{$data706[4]};
+		}
+	</if>
+	.bottom_form_box form .form_item input#emaila_20{
+		background-color: transparent;
+	}
+</style>
+
+<section class="hjzf_other_115 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-center mb40">
+					<div class="index_title pb20">
+						{$data706[1]}
+					</div>
+					<if condition="$data706[2]">
+						<div class="index_sub_title pb40">
+							{$data706[2]}
+						</div>
+					</if>
+				</div>
+				<div class="other_115_input">
+					<Include file="./Tpl/HJZF2_Z/email_address.html" />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

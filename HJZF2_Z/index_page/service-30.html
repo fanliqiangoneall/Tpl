@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_service_30 .index_btn {
+        background-color: #{$data385[4]};
+        border: 1px solid #{$data385[4]};
+        color: #fff;
+    }
+    .hjzf_service_30 .index_btn:hover{
+        color: #{$data385[4]};
+    }
+</style>
+<section class="hjzf_service_30 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 index_title text-center pb40">
+                {$data385[0]}
+            </div>
+            <div class="clearfix"></div>
+            <php>
+                $arr = get_list_val($data385[1]);
+            </php>
+            <ul class="hjzf_service_30_wrapper pb40 clearfix">
+                <volist name="arr" id="a">
+                    <li class="col-xs-12 col-lg-3">
+                        <div class="hjzf_service_30_wrapper_p20">
+                            <if condition="$a[img]">
+                                <img src="{$a[img]}" alt="{$a[title]}" class="img-fluid pb20">
+                            </if>
+                            <div class="hjzf_service_30_wrapper_info">
+								<if condition="$a[title]">
+									<div class="index_sub_title pb20">
+										{$a[title]}
+									</div>
+								</if>
+								<if condition="$a[con]">
+									<div class="index_text pb20">
+										{$a[con]}
+									</div>
+								</if>
+                            </div>
+                        </div>
+                    </li>
+                </volist>
+            </ul>
+            <div class="col-xs-12 text-center">
+                <a href="{$data385[3]}" class="index_btn index_text">{$data385[2]}</a>
+            </div>
+        </div>
+    </div>
+</section>

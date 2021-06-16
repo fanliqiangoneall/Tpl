@@ -1,0 +1,44 @@
+<extend name="Wap2:base" />
+<block name="content">
+<style>
+.alltag_detail{ padding:10px;}
+.alltag__Breadcrumbs, .alltag__Breadcrumbs a{ text-decoration:none; color:#3d3d3d; font-size:13px;}
+.alltag_key a{ 
+text-decoration:none; padding:5px 20px; border:1px solid #ccc;
+border-radius:5px; display:inline-block; margin:5px; color:#3E3A3A;
+}
+</style>
+<div class="alltag_detail">
+
+
+<div class="alltag__Breadcrumbs">
+    <div>
+    	<a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span>{:__('All tags')}</span>
+    </div>
+</div>
+    <section>
+        <div class="alltag_key">
+            <volist name="labels" id="label">
+            	<a href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+            </volist>
+        </div>
+        <div style="clear:both;"></div>
+    </section>
+    <div class="clear"></div>
+</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

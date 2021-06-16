@@ -1,0 +1,100 @@
+<!--{$pagename}-->
+
+<script type="text/javascript">
+    jQuery(function(){
+        $('#menu1').removeClass().addClass("menu_on");
+    });
+</script>
+<php>
+    if(!$data3[6]){
+    $data3[6]=535;
+    }
+</php>
+<style>
+    .page_Banner{
+    height: {$data3[6]}px;
+    }
+    .main_image{
+    height: {$data3[6]}px;
+    }
+</style>
+<if condition="$data3[1] neq ''">
+    <style>
+        div.flicking_con .flicking_inner{
+            top: {$data3[7]}px;
+        }
+    </style>
+</if>
+<if condition="count($banner) eq 1">
+    <div class="page_Banner">
+        <div class="main_visual">
+            <div class="main_image">
+                <ul>
+                    <volist name="banner" id="banner_pic" key="k">
+                        <li><a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}">
+<span class="img_{$k}" style="background:url({:getimgurl($banner_pic['ad_pic'])}) center no-repeat"></span>
+</a>
+</li>
+</volist>
+</ul>
+</div>
+</div>
+</div>
+
+<elseif condition="count($banner) eq 4"/>
+<div class="page_Banner">
+    <div class="main_visual">
+        <div class="flicking_con">
+            <div id="ban_index">
+                <span>01</span>
+                <span>02</span>
+                <span>03</span>
+                <span>04</span>
+            </div>
+            <div class="flicking_inner">
+                <volist name="banner" id="banner_num" key="key">
+                    <a href="{$banner_num['ad_link']}"></a>
+                </volist>
+            </div>
+        </div>
+        <div class="main_image">
+            <ul>
+                <volist name="banner" id="banner_pic" key="k">
+                    <li><a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}">
+                        <span class="img_{$k}" style="background:url({:getimgurl($banner_pic['ad_pic'])}) center no-repeat"></span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <a href="javascript:;" id="btn_prev"></a>
+            <a href="javascript:;" id="btn_next"></a>
+        </div>
+    </div>
+</div>
+<else/>
+<div class="page_Banner">
+    <div class="main_visual">
+        <div class="flicking_con">
+            <div class="flicking_inner">
+                <volist name="banner" id="banner_num" key="key">
+                    <a href="{$banner_num['ad_link']}"></a>
+                </volist>
+            </div>
+        </div>
+        <div class="main_image">
+            <ul>
+                <volist name="banner" id="banner_pic" key="k">
+                    <li><a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}">
+                        <span class="img_{$k}" style="background:url({:getimgurl($banner_pic['ad_pic'])}) center no-repeat"></span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <a href="javascript:;" id="btn_prev"></a>
+            <a href="javascript:;" id="btn_next"></a>
+        </div>
+    </div>
+</div>
+
+</if>
+

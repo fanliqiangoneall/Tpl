@@ -1,0 +1,113 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <div id="HJZF_Z__wrapper">
+        <style>
+            .HJZF_Z__Breadcrumbs span.current{
+                color: #{$color};
+            }
+			.InsidePages_content__download3--title h3{
+				color:#{$color};
+			}
+			.InsidePages_content__download3--title h3:after{
+				background:#{$color};
+			}
+			.InsidePages_content__download3--title a:hover{
+				color:#{$color};
+			}
+        </style>
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Download')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                        <div class="InsidePages_content-right__wrap">
+
+                            <div class="InsidePages_content-right_content-main">
+                            	<volist empty="" name="alldownloadclass" id="alldownloadclass_pc">
+                                <div class="col-xs-12 HJZF_Z__innerContent">
+                                	<div class="InsidePages_content__download3--title"><a href="{:U('/download_category',array('classid'=>$alldownloadclass_pc["classid"]))}" class="index_text">{:__('Read More')}</a>{$alldownloadclass_pc['class_name']}</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <php>
+                                $classid=$alldownloadclass_pc['classid'];
+                                $download_list=get_download_byid($classid);
+                                </php>
+                                <div class="product_detail_editor_content">
+                                      <volist name="download_list" id="download2" key="k">
+                                      
+                                          <li class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                                              <div class="inner__download3--item">
+                                              <if condition="$webid eq 1840">
+                                              <if condition="$download2['linkurl']"><a class="vipdownload"   <if condition="session('vip')">href="{:getimgurl($download2['linkurl'])}"<else/>href="{:U('/login','','')}"</if> target="_self"><else/><a class="vipdownload"  <if condition="session('vip')">href="{$download2['downurl']}"<else/>href="{:U('/login','','')}"</if> target="_self"></if>
+                                              <else/>
+                                              <if condition="$download2['linkurl']"><a class="vipdownload"   href="{:getimgurl($download2['linkurl'])}" target="_blank"><else/><a class="vipdownload"  href="{$download2['downurl']}" target="_blank"></if>
+                                              </if>   
+                                                  <div class="inner__download3--pic"><img src="{:getimgurl($download2['banner'])}"></div>
+                                                  <div class="inner__download3--title index_text">{$download2['title']}</div>
+                                                  <div class="inner__download3--hover"><i class="fa fa-eye"></i></div>
+                                              </a>
+                                              </div>
+                                          </li>
+                                      </volist>
+                                      <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                                </volist>
+                            </div>
+                            <div class="page_nei_space"></div>
+                        </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</block>
+<block name="footer_js">
+<script>
+require(['jquery', 'layer'], function ($, layer) {
+	$(".inner__download3--hover").click(function () {
+		var mp4 = $(this).parent().attr("href");
+		if (mp4) {
+			if (mp4.indexOf(".mp4") > 0) {
+				openvideo(mp4);
+				return false;
+			}
+		}
+	});
+	
+	function openvideo(url) {
+	//iframe窗
+		layer.open({
+			type: 2,
+			title: false,
+			shadeClose: true,
+			shade: 0.8,
+			area: ['90%', '90%'],
+			content: url //iframe的url
+		});
+	};
+	
+
+	
+});
+</script>
+</block>

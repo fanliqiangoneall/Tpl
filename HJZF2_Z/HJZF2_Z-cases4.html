@@ -1,0 +1,74 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+<link href="__TMPL__HJZF2_Z/inner/cases4.css" rel="stylesheet">
+    <style>
+        .main_newslist3 li:hover a.more{
+            background-color: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-color: #{$color};
+        }
+        .main_page .current{
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+		.main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li.yiji_news:hover,.main-content_inner_news>ul>li:first-child,.mian_content_casebox>ul>li.main_caseitem:hover .hj05-news-pic{
+            background: #{$color};
+
+        }
+        .main-content_inner_news>ul>li.yijion_news a h3,.main-content_inner_news>ul>li.yiji_news:hover a h3,.main-content_inner_news>ul>li:first-child a h3{
+            color: #fff;
+        }
+		.inner_cases4_item:hover .inner_cases4_more{
+			background: #{$color};
+			border-color: #{$color};
+		}
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/cases_bread3.html" />
+        <div class="container">
+            <div class="row">
+            	<section class="hidden-xs hidden-sm hidden-md col-lg-12">
+                    <Include file="./Tpl/HJZF2_Z/inner/cases_left4.html" />
+                </section>
+                <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                    <Include file="./Tpl/HJZF2_Z/inner/leftcases2_mobile.html" />
+                </section>
+                <section class="HJZF_Z__innerContent">
+                    <div class="InsidePages_content-right__wrap">
+                        <div class="InsidePages_content-right_content-main">
+                            <ul class="inner_cases4_list ul_li_list clearfix">
+                                <!-- loop start -->
+                                <php>
+                                    $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                </php>
+                                <volist empty="$no_empty" name="allnews" id="allnews" key="k_cases4">
+                                    <li <if condition="$k_cases4%2 eq 1">class="clearfix inner_cases4_item"<else/>class="clearfix inner_cases4_item sec"</if>>
+                                        <div class="inner_cases4_img col-md-6 col-xs-12">
+                                            <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">
+                                                <img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"
+                                                <else/>src="{:getindeximgurl($inner_data[1])}"</if> border="0" class="img-responsive" />
+                                            </a>
+                                        </div>
+                                        <div class="inner_cases4_wz col-md-6 col-xs-12">
+                                            <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}">
+                                                <div class="inner_cases4_title index_sub_title">{$allnews['title']}</div>
+                                            	<div class="inner_cases4_des index_text ellipsis_three">{$allnews['news_description']}</div>
+                                           		<div class="inner_cases4_more"><span class="index_text">{:__('Read More')}</span></div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </volist>
+                                <!-- loop end -->
+                            </ul>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</block>

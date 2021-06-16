@@ -1,0 +1,325 @@
+<extend name="HJ02_JP:basein" />
+<block name="content">
+     <php>
+        if(!$data1[35]){
+            $data1[35] =310;
+        }
+        if(!$data1[36]){
+        $data1[36] =24;
+        }
+    </php>
+    <style type="text/css">
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+         .main_proitem{
+            height: {$data1[35]}px;
+        }
+        .main_proitem_name h6{
+            color: #{$data1[6]};height: {$data1[36]}px;
+        }
+        
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$color};
+        }
+        .main_proitem:after{
+            content: '';display: table;width: 0;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+        .main_proitem:hover:after{
+            content: '';display: table;width: 100%;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+        .main_product_more span{
+            color: #{$data1[6]};}
+        .main_product_more span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[16])}) no-repeat center;
+        }
+        .main_product_more:hover span{
+            color:#{$color};
+        }
+        .main_product_more:hover span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[17])}) no-repeat center;
+        }
+        .pro_info_box h3{
+            font-size: 24px;letter-spacing: 0;font-weight: normal;color: #{$data1[6]};
+        }
+        .hj02_detail_mail a{
+            color: #{$color};
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .s{overflow: auto }
+
+        .mod18 .btn{position:absolute;width:6px;height:10px; cursor:pointer;z-index:99;}
+        .mod18 .prev{
+            background:url({:getindeximgurl($data1[2])}) no-repeat;left:5px;top: 30px;
+        }
+        .mod18 .next{
+            background:url({:getindeximgurl($data1[3])}) no-repeat;right:5px;top: 30px;
+        }
+        .mod18 .prev:hover{
+            background:url({:getindeximgurl($data1[4])}) no-repeat;
+        }
+        .mod18 .next:hover{
+            background:url({:getindeximgurl($data1[5])}) no-repeat;
+        }
+
+        .detail_inquiry{
+            background: #{$color};
+        }
+        .detail_down{
+            background: #{$color};
+        }
+        .detail_inquiry:hover{
+            background: #{$data1[11]};
+        }
+        .detail_down:hover{
+            background: #{$data1[11]};
+        }
+        .mod18 .listBox ul li:hover{
+            border: 1px solid #{$color}
+        }
+        .mod18 .listBox ul li.hover{
+            border: 1px solid #{$color};
+        }
+
+
+
+        .main_proitem_more{
+        color:{$data1[0]};
+        }
+        .main_proitem_more:hover:after{
+        background: {$data1[0]};
+        width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+        }
+
+        .main_content_slogan_right_more a{
+        background: {$data1[0]};
+        border-color:{$data1[0]};
+        }
+        .main_content_slogan_right_more a:hover{
+            background: transparent;border-color:#fff;
+        }
+    </style>
+
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs"><a href="{:U('/')}">ホーム</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">製品センター</a>
+                    &nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$product['pro_name']}</span>
+                </div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ02_JP/left.html" />
+            </section>
+            <section class="main-content-right margin-40px-top">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                        <div id="product_detail">
+                            <div class="left">
+                                <div class="big_pic" id="gallery">
+                                    <a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if> class="jqzoom"></a> <a href="#" title="{$product['pro_name']}"></a>
+                                </div>
+                                <div class="pic_list smallImgList">
+                                    <div class="mod18"> <span id="prev" class="btn prev"></span> <span id="next" class="btn next"></span>
+                                        <div id="listBox" class="listBox">
+                                            <ul class="cf">
+                                                <li class="hover"><a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}" <if condition="$product['proalt'] neq ''">alt="{$product['proalt']}" title="{$product['proalt']}"<else/>alt="{$product['pro_name']}" title="{$product['pro_name']}"</if> class="jqzoom" width="326" height="241"></a></li>
+                                                <volist name="proimg" id="proimg">
+                                                    <if condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                                        <li><a href="{:getfimgurl($proimg['field_auxiliary_fid'])}" ><img src="{:getfimgurl($proimg['field_auxiliary_fid'])}" class="jqzoom"  <if condition="$proimg['field_auxiliary_title'] eq ''">alt="{$product['pro_name']}"<else/>alt="{$proimg['field_auxiliary_title']}"</if>/></a></li>
+                                                    </if>
+                                                </volist>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="product_info">
+                                <div class="pro_info_box">
+                                    <h3 class="margin-10px-bottom">{$product['pro_name']}</h3>
+                                    <div class="pro_info_desc">{:HtmlEncode(subtxt($product['pro_description'],600))}</div>
+                                    <div class="margin-30px-top pro_info_box_contact" >
+                                        <div class="hj02_detail_mail padding-10px-bottom" style="border-bottom: 1px solid #E5E5E5;"><i class="fa fa-envelope-o"></i><a href="mailto:{:chaifen($about['email'],0)}?chat" onclick="turn_sta(5,3);" onfocus="blur()">{:chaifen($about['email'],0)}</a></div>
+                                        <div class="margin-15px-top">
+                                            <div class="detail_inquiry"><a onclick="javascript:jumpto()"><img src="__TMPL__HJ02_JP/img/icon_inquiry.png" alt="" style="position: relative;left: -10px;top: 5px;"/>問い合わせ</a></div>
+                                            <if  condition="$product['pro_file'] neq ''and $product['pro_file'] neq 0">
+                                                <div class="detail_down"><a href="{:getimgurl($product['pro_file'])}" target="_blank"><img src="__TMPL__HJ02_JP/img/pdf.png" alt="" style="position: relative;left: -10px;top: 5px;"/>ダウンロードする</a></div>
+                                            </if>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clear" style="height:20px;"></div>
+                            <div class="product_detail_editor_content">
+                                <!--more editors-->
+                                <if condition="$editor_count eq 1">
+                                    <div class="pro_detail" id="gx1" style="display:block;">{:str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile']))}</div>
+                                    <else/>
+                                    <style>
+                                        .mainDetail-tabs {
+                                            width: 100%;
+                                            position: relative;
+                                            border-bottom: 1px solid #e3e3e3;
+                                        }
+                                        .tabsTitle {
+                                            display: inline-block;
+                                            line-height: 36px;
+                                            font-weight: 500;
+                                            letter-spacing: 0.5px;
+                                            font-size: 16px;
+                                            vertical-align: middle;
+                                            cursor: pointer;
+                                            color: #{$color};
+                                            padding: 14px 40px;
+                                            box-sizing: border-box;
+                                            -webkit-transition: background .2s ease-in-out,color .2s ease-in-out;
+                                            -o-transition: background .2s ease-in-out,color .2s ease-in-out;
+                                            transition: background .2s ease-in-out,color .2s ease-in-out;
+                                            border-bottom-width: 2px !important;
+                                        }
+                                        .tabsTitle.active {
+                                        border-bottom: 2px solid {$data1[0]};
+                                        color: {$data1[0]};
+                                        }
+
+                                    </style>
+                                    <ul class="mainDetail-tabs">
+                                        <for start="1" end="$editor_count+1">
+                                            <li index="{$i}" class="tabsTitle  <if condition="$i eq 1"> active </if>">{$data9[$i+1]}</li>
+                                </for>
+                                </ul>
+
+
+                                <for start="1" end="$editor_count+1">
+                                    <php>
+                                        if($i==1){
+                                        $edit_name="pro_profile";
+                                        }else{
+                                        $edit_name="pro_profile".$i;
+                                        }
+                                    </php>
+
+                                    <div index="{$i}" class="pro_detail"  <if condition="$i neq 1"> style="display:none" </if>  >{:str_replace('&nbsp;',' ',htmlspecialchars_decode($producteditors[$edit_name]))}</div>
+                            </for>
+
+
+                            </if>
+
+                            <div class="clear"></div>
+                            <if condition="comment_show() eq 1">
+                                <include file="HJ02_JP:comment" />
+                            </if>
+                            <if condition="get_productkeyword($product['pid']) neq ''">
+                                <include file="HJ02_JP:keywords" />
+                            </if>
+                            <include file="HJ02_JP:relationinfo" />
+                            <include file="HJ02_JP:relationnew" />
+
+
+
+                        </div>
+                        <div class="product_detail_editor_content margin-20px-top margin-30px-bottom">
+                            <!--询盘-->
+                            <div id="inquiry" class="HJ01_product_detail_title2">
+                                <span>問い合わせ</span>
+                            </div>
+                            <div class="proinquiry"> <Include file="./Tpl/HJ02_JP/submitinquiry.html" /></div>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <section>
+                            <if condition="$otherpro neq ''">
+                                <section class="main_product_title">
+                                    <h5 class="main-cases-detail-title">その他の商品</h5>
+                                </section>
+                                <div class="page_Main" >
+                                    <volist empty="" name="otherpro" id="otherpro" offset="0" length="3" key="k">
+                                        <div class="main_proitem">
+                                            <div class="main_proitem_box">
+                                                <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}"><img src="{:getmainimgurl($otherpro['main_img'])}" <if condition="$otherpro['proalt'] neq ''">alt="{$otherpro['proalt']}"<else/>alt="{$otherpro['pro_name']}"</if> /></a></div>
+                                                <div class="main_proitem_second">
+                                                    <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                                                        <div class="main_proitem_name margin-10px-bottom"><h6 title="{$otherpro['pro_name']}">{:subtxt($otherpro['pro_name'],10)}</h6></div>
+                                                        <div class="main_proitem_desc">{:subtxt($otherpro['pro_description'],28)}</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <if condition="($k)%3 gt 0">
+                                            <div style="width:28px; height:10px; background:none; float:left;"></div>
+                                        </if>
+                                    </volist>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </if>
+
+                            <if condition="$newpro neq ''">
+                                <section class="main_product_title">
+                                    <h5 class="main-cases-detail-title">最新の商品</h5>
+                                </section>
+                                <div class="page_Main">
+                                    <volist empty="" name="newpro" id="newpro" offset="0" length="3" key="k">
+                                        <div class="main_proitem">
+                                            <div class="main_proitem_box">
+                                                <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}"><img src="{:getmainimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> /></a></div>
+                                                <div class="main_proitem_second">
+                                                    <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                        <div class="main_proitem_name margin-10px-bottom"><h6 title="{$newpro['pro_name']}">{:subtxt($newpro['pro_name'],10)}</h6></div>
+                                                        <div class="main_proitem_desc">{:subtxt($newpro['pro_description'],28)}</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <if condition="($k)%3 gt 0">
+                                            <div style="width:28px; height:10px; background:none; float:left;"></div>
+                                        </if>
+                                    </volist>
+                                </div>
+                            </if>
+                        </section>
+
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+        </div>
+        </section>
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript" src="__TMPL__HJ02_JP/js/hj01_prodetail.js"></script>
+    </div>
+
+
+
+
+
+
+</block>

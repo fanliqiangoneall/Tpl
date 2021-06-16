@@ -1,0 +1,49 @@
+<style>
+    .HJZF2_advantage12__after{
+        background: #{$data141[1]};
+    }
+    .HJZF2_advantage12__content__more a,.HJZF2_advantage12__content__more span,.HJZF2_advantage12__content__more span i{
+        color: #{$data141[1]};
+    }
+    .HJZF2_advantage12__content__more span{
+        border-color: #{$data141[1]};
+    }
+    .HJZF2_advantage12__subtitle:before{
+        content: '';display: table;width: 40px;height: 3px;position: absolute;bottom: -20px;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);background: #{$data141[1]};}
+</style>
+<if condition="$data141[0]">
+    <style>
+        .HJZF2_advantage12{
+            background: url({:getindeximgurl($data141[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF2_advantage12">
+    <div class="container">
+        <div class="HJZF2_advantage12__title">{$data141[2]}</div>
+        <if condition="$data141[3]">
+            <p class="HJZF2_advantage12__subtitle">{$data141[3]}</p>
+        </if>
+        <div class="HJZF2_advantage12__content">
+            <ul class="HJZF2_advantage12__wrap flex" id="HJZF2_advantage12__wrap">
+                <php>
+                    for($i=4;$i<27;$i=$i+3){
+                </php>
+                <li class="HJZF2_advantage12__item wow fadeInUpBig" data-wow-duration="1s" data-wow-offset="200">
+                   <div class="HJZF2_advantage12--before">
+                       <div class="HJZF2_advantage12--before__img"><img src="{:getindeximgurl($data141[$i+2])}" alt=""/></div>
+                       <div class="HJZF2_advantage12--before__name">{$data141[$i]}</div>
+                   </div>
+                    <div class="HJZF2_advantage12__after">
+                        <div class="HJZF2_advantage12--after__name">{$data141[$i]}</div>
+                        <p class="HJZF2_advantage12--after__desc ellipsis_two">{$data141[$i+1]}</p>
+                    </div>
+                </li>
+                <php>
+                    }
+                </php>
+            </ul>
+            <div class="HJZF2_advantage12__content__more"><a href="">{:__('Read More')} <span><i class="fa fa-angle-right"></i></span></a></div>
+        </div>
+    </div>
+</section>

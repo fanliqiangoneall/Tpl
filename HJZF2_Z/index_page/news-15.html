@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+<php>
+    if($data250[0]){
+        $news15_bg = getindeximgurl($data250[0]);
+    }else{
+        $news15_bg = '';
+    }
+    if($data250[2]){
+        $color = $data250[2];
+    }
+</php>
+<style>
+    .news-15_bg{
+        background: url('{$news15_bg}') no-repeat center/cover #{$color};
+    }
+    .news-15__slide:hover .news-15__item__content,.news-15__prev,.news-15__next{
+        background: #{$data250[1]};
+    }
+    @media (max-width: 1024px) {
+        .news-15__slide:hover .news-15__item__content{
+            background: transparent;
+        }
+    }
+</style>
+<section class="hjzf2_news-15">
+    <div class="news-15_wrap">
+        <div class="news-15_bg"></div>
+        <div class="news-15_box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12  news-15__box">
+                        <div class="news-15_titlebox index_title">{$data250[3]}</div>
+                        <div class="news-15_content">
+                            <div class="swiper-container news-15_container">
+                                <div class="news-15__wrapper swiper-wrapper m-lightbox__container">
+                                    <volist name="indexnews " id="indexnews1">
+                                        <div class="news-15__slide js-news-15__slide swiper-slide animated fadeInMyRight">
+                                            <a class="news-15__item " href="{:U('/new_detail',array('nid'=>$indexnews1['nid']))}" rel="noopener noreferrer" data-t-name="NewsCardItems">
+                                            <div class="news-15__item__image" style="background: url({:getimgurl($indexnews1['new_pro'])}) no-repeat center/cover;"></div>
+                                            <div class="news-15__item__content">
+                                                <div class="news-15_time">{:date('Y-m-d',$indexnews1['created'])}</div>
+                                                <div class="news-15__item__title index_sub_title ellipsis_two">{$indexnews1['title']}</div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    </volist>
+
+                                </div>
+                                <div class="news-15__prev swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                                <div class="news-15__next swiper-button-next"><i class="fa fa-angle-right"></i></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

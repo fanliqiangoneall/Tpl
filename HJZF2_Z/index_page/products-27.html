@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+<php>
+    if($data436[0]){
+    $color=$data436[0];
+    }
+    $arr_str=$data436[1];
+    $arra=explode(',',$arr_str);
+    foreach($arra as $k=>$a){
+    $list[$k]=get_index_products_categoryname($a);
+    };
+</php>
+<style>
+    .hjzfz_products_27_title li:hover,
+    .hjzfz_products_27_title li.on {
+        background-color: #{$color};
+    }
+</style>
+
+<section class="hjzfz_products_27 index_pd">
+    <div class="container">
+        <div class="row">
+            <ul class="hjzfz_products_27_title">
+                <volist name="list" id="proa" key="k">
+                    <li><a
+                            href="{:U('/product_category','','')}/{:getprocatename($proa['pcid'])}">{$proa['class_name']}</a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="hjzfz_products_27_con">
+                <volist name="list" id="prob" key="k">
+                    <php>
+                        $pro_listb = get_index_products_category($prob['pcid'],4);
+                    </php>
+                    <ul class="hjzfz_products_27_wrapper">
+                        <volist empty="" name="pro_listb" id="prob">
+                            <li>
+                                <a href="{:U('/Product','','')}/{:getproname($prob['pid'])}">
+                                    <div class="hjzfz_products_27_wrapper_img">
+                                        <img src="{:getmainimgurl($prob['main_img'])}" alt="{$prob['pro_name']}" class="img-fluid">
+                                    </div>
+                                    <span>
+                                        {$prob['pro_name']}
+                                    </span>
+                                </a>
+                            </li>
+                        </volist>
+
+                    </ul>
+                </volist>
+            </div>
+
+        </div>
+    </div>
+</section>

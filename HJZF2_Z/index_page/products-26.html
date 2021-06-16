@@ -1,0 +1,74 @@
+<!--{$pagename}-->
+
+<php>
+    if($data428[2]){
+    $color = $data428[2];
+    }
+</php>
+<style>
+    <if condition="$data428[0]">
+    .hjzfz_products_26 {
+        background: url({:getindeximgurl($data428[0])}) no-repeat center/cover;
+    }
+    </if>
+    .products_26_list li:hover span,
+    .products_26_list li.on span,
+    .hjzfz_products_26_img_box em {
+        background-color: #{$color};
+    }
+</style>
+<php>
+    $arr = get_list_val($data428[5]);
+    $arr_str=$data428[6];
+    $arra=explode(',',$arr_str);
+    foreach($arra as $k=>$a){
+    $list[$k]=get_index_products_categoryname($a);
+    };
+</php>
+
+<section class="hjzfz_products_26 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6 hjzfz_products_26_wrapper">
+                <div class="index_title pb40">
+                    {$data428[1]}
+                </div>
+                <volist name="list" id="proa">
+                    <div class="proa">
+                        {$proa['readme']}
+                    </div>
+                </volist>
+
+                <ul class="products_26_list">
+                    <volist name="list" id="prob" key="k">
+                        <li>
+                            <span>
+                                <img src="{$arr[$k-1][ico]}" alt="{$prob['class_name']}" class="normal">
+                                <img src="{$arr[$k-1][icoh]}" alt="{$prob['class_name']}" class="hover">
+                            </span>
+                            <p>{$prob['class_name']}</p>
+                        </li>
+                    </volist>
+                </ul>
+                <a href="{$data428[3]}" class="more">
+                    <span class="line_1"></span>
+                    <span>{$data428[4]}</span>
+                    <span class="line_2"></span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-lg-5 col-lg-offset-1 hjzfz_products_26_img">
+                <volist name="list" id="proc" key="ka">
+                    <a href="{:U('/product_category','','')}/{:getprocatename($proc['pcid'])}">
+                        <img src="{:getmainimgurl($proc['fid'])}" alt="{$proc['class_name']}" class="img-fluid">
+                        <div class="hjzfz_products_26_img_box">
+                            <span class="enmae index_text">{$arr[$ka-1][enname]}</span>
+                            <span class="cnname">{$proc['class_name']}</span>
+                            <em>→</em>
+                        </div>
+                    </a>
+                </volist>
+            </div>
+        </div>
+    </div>
+
+</section>

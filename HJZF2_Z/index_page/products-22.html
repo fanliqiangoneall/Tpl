@@ -1,0 +1,49 @@
+<!--{$pagename}-->
+<style>
+    .products_9 {
+        background: url({:getindeximgurl($data285[1])
+    }) no-repeat center/100% 100%;}
+</style>
+
+<section class="products_9" class="index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="pb40 wow fadeInUp" data-wow-delay=".2s">
+                <div class="index_title">
+                    {$data285[2]}
+                </div>
+                <div class="index_sub_title">
+                    {$data285[3]}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="products_9_top_inner">
+        <div class="swiper-container products_9_top">
+            <div class="swiper-wrapper">
+                <volist empty="" name="indexhotpro" id="indexpro5" key="k" offset="0" length="$data285[4]">
+                    <div class="swiper-slide">
+                        <a class="products_9_top_box" href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+                            <img src="{:getmainimgurl($indexpro5['main_img'])}" alt="{$indexpro5['pro_name']}" class="img-responsive">
+                            <p class="index_sub_title">{$indexpro5['pro_name']}</p>
+                        </a>
+                        <span>{:date('Y-m-d',$indexnewb['created'])}</span>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <div class="products_9_top_navigation wow fadeInUp" data-wow-delay=".2s">
+            <div class="products_9_top_navigation_btn">
+                <div class="swiper-button-next swiper-button-white products_9_top_next"></div>
+                <div class="swiper-button-prev swiper-button-white products_9_top_prev"></div>
+            </div>
+            <div class="products_9_top_pagination hidden-xs hidden-sm"></div>
+            <div class="products_9_top_btn hidden-xs hidden-sm">
+                <i class="start" style="background: url(__TMPL__HJZF2_Z/img/stop.png) no-repeat center/ 100% 100%"></i>
+                <i class="stop" style="background: url(__TMPL__HJZF2_Z/img/start.png) no-repeat center/ 100% 100%"></i>
+            </div>
+        </div>
+    </div>
+
+</section>

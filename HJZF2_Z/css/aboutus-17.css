@@ -1,0 +1,63 @@
+.aboutus_17_title{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.aboutus_17_title .index_text{
+    opacity: 0.5;
+}
+
+.aboutus_17_title .more {
+    width: 10vw;
+    min-width: 170px;
+    position: relative;
+}
+
+.aboutus_17_title .more:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    right: 0;
+    top: 50%;
+    border-top-width: 4px;
+    border-right-width: 7px;
+    border-bottom-width: 4px;
+    border-left-width: 7px;
+    border-style: solid;
+    border-color: transparent;
+    border-left-color: #000;
+    content: '';
+    transform: translateY(-50%);
+}
+
+.aboutus_17_title .more span.line_1{
+   display: block;
+   float: left;
+   width: 0;
+   height: 1px;
+   background-color: #333;
+   transition: width .4s;
+   transform: translateY(10px);
+}
+.aboutus_17_title .more span.line_2{
+    display: block;
+    float: right;
+    width: 4vw;
+    height: 1px;
+    margin-right: 10px;
+    background-color: #333;
+    transform: translateY(10px);
+    transition: width .4s, margin .4s;
+}
+.aboutus_17_title .more:hover span.line_1{
+    width: 4vw;
+    margin-right: 10px;
+}
+.aboutus_17_title .more:hover span.line_2{
+    width: 0;
+}
+
+@media(max-width: 1200px) {
+    
+}

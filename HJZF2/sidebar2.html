@@ -1,0 +1,66 @@
+<style>
+.HJZF2__side2 ul li,.sidetop,.HJZF2__side2 ul li .sidebox,.HJZF2__side2 ul li .sidebox2,.HJZF2__side2 ul li .sidebox3{
+    background: #{$color};
+}
+.HJZF2__side2 ul li:hover .sidebox,.HJZF2__side2 ul li:hover .sidebox2,.HJZF2__side2 ul li:hover .sidebox3,.HJZF2__side2 ul li:hover{
+    background: #{$data47[9]};
+}
+</style>
+<div <if condition="C('language') eq 'en'">style="display:block" <else/>style="display:none;"</if>>
+    <div class="HJZF2__side2" >
+        <ul>
+            <li <if condition="$data50[10] eq ''"> style=" display:none;"</if>>
+            <div class="sidebox"><span><img src="{:getindeximgurl($data50[10])}" border="0" style="position: relative;"></span><span style="line-height:60px; color:#fff;margin-left: 5px"><b>{$data50[11]}<a href="{$data50[12]}" onclick="turn_sta(4,3)" target="_blank" style="color: #fff">{$data50[12]}</a></b></span></div>
+            </li>
+            <if condition="chaifen($about['msn'],0)">
+            <li>
+                <div class="sidebox"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" style="position: relative;left: -120px;"></span><span style="line-height:60px; color:#fff;margin-left: 5px"><b><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3)" target="_blank" style="color: #fff">{:chaifen($about['msn'],0)}</a></b></span></div>
+            </li>
+            </if>
+            <if condition="chaifen($about['whatsapp'],0)">
+            <li>
+                <div class="sidebox2"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" style="position: relative;left: -182px;"></span><span style="line-height:60px;margin-left: 5px;color:#fff;"><b><a href=" https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" onclick="turn_sta(6,4)" target="_blank" style="color: #fff">+86-{:chaifen($about['whatsapp'],0)}</a></b></span></div>
+            </li>
+            </if>
+            <if condition="chaifen($about['email'],0)">
+            <li>
+                <div class="sidebox2"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" style="position: relative;left: -240px;"></span><span style="line-height:60px;margin-left: 5px"><b><a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()" style="color:#fff" onclick="turn_sta(3,4)">{:chaifen($about['email'],0)}</a></b></span></div>
+            </li>
+            </if>
+            <li <if condition="$data50[6] eq ''">style="display:none"</if>>
+            <div class="sidebox_ewm"><a href="javascript:void(0)"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" alt="Top" style="position: relative;left:-598px;"></span></a></div>
+            <div class="side_ewm"><img src="{:getindeximgurl($data50[6])}" alt="" width="150" height="150"/><br/><span>{$data150[7]}</span></div>
+            </li>
+            <li>
+                <div class="sidebox_inquiry"><a href="{:U('/contactus#zixun')}" onclick="turn_sta(1,4)"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" alt="Top" style="position: relative;left:-297px;"></span></a></div>
+            </li>
+            <li style="height:60px;"><div class="sidetop"><a href="javascript:goTop();"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" alt="Top" style="position: relative;left:0;"></span></a></div></li>
+        </ul>
+    </div>
+</div>
+<div <if condition="C('language') eq 'cn'">style="display:block" <else/>style="display:none;"</if>>
+    <div class="HJZF2__side2">
+        <ul>
+            <li <if condition="$data50[10] eq ''"> style=" display:none;"</if>>
+            <div class="sidebox"><span><img src="{:getindeximgurl($data50[10])}" border="0" style="position: relative;"></span><span style="line-height:60px; color:#fff;margin-left: 5px"><b>{$data50[11]}<a href="{$data50[12]}" onclick="turn_sta(4,3)" target="_blank" style="color: #fff">{$data50[12]}</a></b></span></div>
+            </li>
+            <li style=" <if condition="chaifen($about['msn'],0) eq ''"> display:none;</if>">
+                <div class="sidebox"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" style="position: relative;left: -60px;"></span><span style="line-height:60px; color:#fff;margin-left: 5px"><b><a href="https://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,4)" target="_blank" style="color: #fff">{:chaifen($about['msn'],0)}</a></b></span></div>
+            </li>
+            <li  style=" <if condition="chaifen($about['phone'],0) eq ''"> display:none;</if>">
+                <div class="sidebox2"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" style="position: relative;left: -488px;"></span><span style="line-height:60px;margin-left: 5px;color:#fff;"><b>{:chaifen($about['phone'],0)}</b></span></div>
+            </li>
+            <li style=" <if condition="chaifen($about['email'],0) eq ''"> display:none;</if>">
+                <div class="sidebox2"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" style="position: relative;left: -240px;"></span><span style="line-height:60px;margin-left: 5px"><b><a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()" style="color:#fff" onclick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></b></span></div>
+            </li>
+            <li <if condition="$data50[6] eq ''">style="display:none"</if>>
+            <div class="sidebox_ewm"><a href="javascript:void(0)"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" alt="Top" style="position: relative;left:-598px;"></span></a></div>
+            <div class="side_ewm"><img src="{:getindeximgurl($data50[6])}" alt="" width="150" height="150"/><br/><span>{$data150[7]}</span></div>
+            </li>
+            <li>
+                <div class="sidebox_inquiry"><a href="{:U('/contactus#zixun')}" onclick="turn_sta(1,4)"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" alt="Top" style="position: relative;left: -297px;"></span></a></div>
+            </li>
+            <li style="height:60px;"><div class="sidetop"><a href="javascript:goTop();"><span><img src="__TMPL__HJZF2/img/side-sprites.png" border="0" alt="Top" style="position: relative;left: -360px;"></span></a></div></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<!--{$pagename}-->
+
+<php>
+$other_cates = get_list_val($data524[0]);
+</php>
+<style>
+.other34_cate{ border-bottom:1px solid #ced2d6; padding: 25px 0px 40px; cursor:pointer;}
+.hjzf2_other_34_btn { padding:10px 30px; color:#fff; background:#{$color}}
+.hjzf2_other_34_fbtn{ padding:20px 0px;}
+.hjzf2_other_34_v1{ padding:100px 0px;}
+.hjzf2_other_34_v1_right-img,.other_content{ display:none;}
+.choose_on{ display:block;}
+<if condition="$data524[2]">
+	.hjzf2_other_34_v1{
+			background:url({:getindeximgurl($data524[2])});
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+	}
+</if>
+</style>
+<section class="hjzf2_other_34_v1">
+    <div class="container">
+    <div class="row">
+		<div class="col-xs-12 col-sm-6">
+        	<div class="index_title">{$data524[1]}</div>
+            <volist name="other_cates" id="other_cate" key="key">
+            <div class="other34_cate on" imgid="imgid{$key}">
+            	
+                    <div class="index_sub_title">{$other_cate['name']}</div>
+                    <div class="<if condition="$key eq 1">choose_on</if> other_content">
+                        <div class="index_text">{$other_cate['des']}</div>
+                        <div class="hjzf2_other_34_fbtn"><a class="hjzf2_other_34_btn" href="{$other_cate['url']}">{$other_cate['btntxt']}<img src="{$other_cate['btnimg']}"></a></div>
+                    </div>
+            </div>    
+            </volist>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <volist name="other_cates" id="other_cate" key="key">
+            
+            <div imgid="imgid{$key}" class="hjzf2_other_34_v1_right-img <if condition="$key eq 1">choose_on</if>" >
+                <img class="img-responsive" src="{$other_cate['img']}">
+            </div>
+            
+            </volist>    
+        </div>
+   </div>     
+    </div>
+</section>

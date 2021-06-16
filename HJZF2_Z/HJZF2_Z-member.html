@@ -1,0 +1,532 @@
+<extend name="HJZF2_Z:basein"/>
+<block name="content">
+	<link href="__TMPL__HJZF2_Z/css/member.css" rel="stylesheet">
+	<link href="__TMPL__public/css/jquery.datetimepicker.css" rel="stylesheet">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,ul.InsidePages_left_navlist>li > a > h3:hover,ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+		}
+		#knd_table{
+			border:1px solid #e3e3e3;width: 72%;
+		}
+		#knd_table tr th{
+			padding: 25px 20px;
+		}
+		#knd_table tr td{
+			padding: 10px 20px;
+		}
+		#knd_table tr:nth-child(2n) td {
+			border-bottom: 1px solid #e3e3e3;
+		}
+		#knd_table input{
+			margin-right: 4px;
+		}
+		#knd_table input[type="submit"]{
+			padding: 5px 8px;
+			min-width: 120px;
+			border:none;
+			outline: none;
+			background: #{$inner_data[1]};
+			color:#fff;
+		}
+		.loginout_btn{
+			width:100%;
+			text-align: center;
+		}
+		.loginout_btn a{
+			display:inline-block;
+			padding: 10px;
+			border-radius:20px;
+			min-width: 200px;
+    		text-align: center;
+			border:1px solid #{$inner_data[1]};
+		}
+		.mobile_down{
+			background:#{$inner_data[1]};
+		}
+        @media(min-width: 1200px) {
+            #lightbox-container-image{
+                min-height: 400px;
+            }
+        }
+        @media(max-width: 1199px) {
+            #lightbox-container-image{
+                min-height: 80px;
+            }
+            #lightbox-container-image-box,#lightbox-container-image-data-box{
+                width: 80% !important;
+                height: auto !important;
+            }
+        }
+.hobbylist{ display:flex;}
+.hobbyitem label{ float:left;}
+.hobbyitem input{ width:auto;}		
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">			
+				<if condition="$inner_data[0]">
+					<div class="in_banner" date="inner"><img src="{:getindeximgurl($inner_data[0])}" alt=""  class="img-fluid"/></div>
+				</if>			
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Member information')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container" id="payment">
+                <div class="row">          
+                    
+                    <section class="col-xs-12">
+						<!-- 鲲诺得的安装咨询表 -->
+						<if condition="$type eq 1">
+						
+						<style>
+						#anzhuang_weizhi_alert,#anzhuang_qiangti_alert,#anzhuang_fangshi_alert,#elevator_alert,#distance_alert,#address_alert,#time_alert,#phone_alert{
+							color:#ff0000;
+						}
+						#knd_table label{
+							font-size:14px;font-weight:normal;margin-right:16px
+						}
+						#anzhuang_address{
+							width:50%;
+						}
+						</style>
+							
+							<div class="InsidePages_content-right__wrap">
+								<div class="index_title text-center pb40">设备安装咨询表</div>
+								<div class="InsidePages-tablewrapper">
+									<form action="{:U('/add_member_anzhuang','','')}" method="post" onsubmit="return yz_submit_installation();">
+										<table style="margin:auto" class="index_text" id="knd_table">
+											<thead>
+												<tr>
+												  <th>尊敬的{$_SESSION['vip']}先生/女士，为更好的为您服务，设备安装前需要您提供以下基础信息，便于我们快速上门为您服务。</th>											  
+												</tr>
+											  </thead>
+											  <tbody>
+												  <tr>
+													  <td>1,您有预想安装在府上的哪个位置吗 <input type="hidden" name="answer1" value="您有预想安装在府上的哪个位置吗"></td>
+												  </tr>
+												  <tr>
+													  <td>
+														  <input type="radio" name="anzhuang_weizhi" value="1" id="anzhuang_weizhi1"><label for="anzhuang_weizhi1" onclick="choosevals()">客厅</label>
+														  <input type="radio" name="anzhuang_weizhi" value="2" id="anzhuang_weizhi2"><label for="anzhuang_weizhi2" onclick="choosevals()">餐厅</label> 
+														  <input type="radio" name="anzhuang_weizhi" value="3" id="anzhuang_weizhi3"><label for="anzhuang_weizhi3" onclick="choosevals()">卧室</label> 
+														  <input type="radio" name="anzhuang_weizhi" value="4" id="anzhuang_weizhi4"><label for="anzhuang_weizhi4" onclick="choosevals()">阳台</label> 
+														  <input type="radio" name="anzhuang_weizhi" value="5" id="anzhuang_weizhi5"><label for="anzhuang_weizhi5" onclick="choosevals()">其他</label><input type="text" name="anzhuang_weizhi_other" value=""><span id="anzhuang_weizhi_alert"></span>
+													</td>											
+												  </tr>
+												  <tr>
+													  <td>2,请问设备安装的墙体结构 <input type="hidden" name="answer2" value="请问设备安装的墙体结构"></td>
+												  </tr>
+												  <tr>
+													  <td>
+														  <input type="radio" name="anzhuang_qiangti" value="1" id="anzhuang_qiangti1"><label for="anzhuang_qiangti1" onclick="choosevals()">水泥承重墙</label>
+														  <input type="radio" name="anzhuang_qiangti" value="2" id="anzhuang_qiangti2"><label for="anzhuang_qiangti2" onclick="choosevals()">砖墙</label>
+														  <input type="radio" name="anzhuang_qiangti" value="3" id="anzhuang_qiangti3"><label for="anzhuang_qiangti3" onclick="choosevals()">其他(落地安装)</label>
+														  <input type="radio" name="anzhuang_qiangti" value="4" id="anzhuang_qiangti4"><label for="anzhuang_qiangti4" onclick="choosevals()">不清楚，请客服与我联系</label>
+														  <span id="anzhuang_qiangti_alert"></span>
+													</td>
+												  </tr>
+												  <tr>
+													  <td>3,安装方式 <input type="hidden" name="answer3" value="安装方式"></td>
+												  </tr>
+												  <tr>
+													  <td>
+														<input type="radio" name="anzhuang_fangshi" value="1" id="anzhuang_fangshi1"><label for="anzhuang_fangshi1" onclick="choosevals()">壁挂</label>
+														<input type="radio" name="anzhuang_fangshi" value="2" id="anzhuang_fangshi2"><label for="anzhuang_fangshi2" onclick="choosevals()">落地</label>&nbsp;&nbsp;地面材质 <input type="text" name="caizhi" value="">
+														<span id="anzhuang_fangshi_alert"></span>
+													</td>													  
+												  </tr>
+												  <tr>
+													  <td>4,安装区域距离三孔电源插座
+													</td>
+												  </tr>
+												 <tr>
+													  <td><input type="text" name="distance" value=""/>米<input type="hidden" name="answer4" value="安装区域距离三孔电源插座()米">
+														<span id="distance_alert"></span></td>
+												  </tr>
+												  <tr>
+													  <td>5,您住的地方是否有电梯 <input type="hidden" name="answer5" value="您住的地方是否有电梯"></td>
+												  </tr>
+												  <tr>
+													  <td>
+														  <input type="radio" name="elevator" value="" id="elevator1"><label for="elevator1" onclick="choosevals()">有</label>
+														  <input type="radio" name="elevator" value="" id="elevator2"><label for="elevator2" onclick="choosevals()">否</label> &nbsp;&nbsp;(楼层 <input name="ground" type="text" value=""/>)														
+														  <span id="elevator_alert"></span></td>
+												  </tr>
+												  <tr>
+													  <td>6,您需要的送货地址 <input type="hidden" name="answer6" value="您需要的送货地址"></td>
+												  </tr>
+												  <tr>
+													  <td>
+													  	<textarea name="address" value="" rows="3" cols="20" id="anzhuang_address"></textarea>
+														<span id="address_alert"></span>
+													  </td>
+												  </tr>
+												  <tr>
+													<td>7,您期待的安装时间 <input type="hidden" name="answer7" value="您期待的安装时间" ></td>
+												</tr>
+												<tr>
+													<td>
+														<input type="text" name="time" value="" id="quinnoid_datetimepicker"><span id="time_alert"></span>
+													</td>
+												</tr>
+												<tr>
+													<td>8,请留下您的联系电话 <input type="hidden" name="answer8" value="请留下您的联系电话"></td>
+												</tr>
+												<tr>
+													<td>
+														<input type="text" name="phone" value=""><span id="phone_alert"></span>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<input type="submit" value="提交">
+													</td>
+												</tr>
+											  </tbody>
+											  <tfoot>
+												  <tr>
+													  <td>感谢您的支持！！！</td>
+												  </tr>
+											  </tfoot>
+										</table>
+									</form>									
+								</div>
+							</div>
+								
+						<!-- 鲲诺得的安装咨询表 -->
+							<else/>
+							<div class="InsidePages_content-right__wrap">
+								<div class="member_page_left">
+									<div class="index_sub_title pb20">{:__('Account management')}</div>
+									<dl class="main_tab">										
+										<dd class="active"><a href="{:U('/member')}"><span>{:__('Basic information')}</span></a></dd>
+										<dd class=""><a href="{:U('/order_list')}"><span>{:__('订单管理')}</span></a></dd>
+									</dl>
+								</div>
+								<div class="member_page_right">
+									<div class="InsidePages_content_main clearfix">									
+										<div class="main_tabcontent">
+											<div class="tab_select active">
+												<if condition="C('webid') neq 1730">
+													<div class="member_table">
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">{:__('User name: ')}</div>
+															<div class="member_dt_val fl"><input type="text" value="{$vo['name']}" readonly></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">{:__('Real name: ')}</div>
+															<div class="member_dt_val fl"><input type="text" value="{$vo['realname']}" readonly></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">{:__('Company name: ')}</div>
+															<div class="member_dt_val fl"><input type="text" value="{$vo['company']}" readonly></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">{:__('Tel: ')}</div>
+															<div class="member_dt_val fl"><input type="text" value="{$vo['tel']}" readonly></div>
+														</div>
+														<div class="member_item clearfix">												
+															<div class="member_dt_title fl">{:__('Shipping address: ')}</div>
+															<div class="member_dt_val fl"><input type="text" value="{$vo['shipping_address']}" readonly id="shipping_address" name="shipping_address"><a href="javascript:void(0);" onclick="toedit()" id="edit_add">编辑</a><a href="javascript:void(0);" onclick="addAddress()" id="edit_submit" class="hide">提交</a></div>
+														</div>
+														<input type="hidden" name="edit" id="toedit">
+													</div>
+													<else/>
+
+													<!-- start -->
+													<style>
+														.member_dt_val input{
+															border-color: #999;
+														}
+														.member_dt_val input:read-only{
+															border-color: #eee;color: #999;
+														}
+														.quinnoid_gender+label{
+															transform: translateY(-10px);
+															-webkit-transform: translateY(-10px);
+															margin-right: 10px;
+															color: #666;
+														}
+														.hobbylist{
+															display: flex;
+															align-items: center;
+															justify-content: flex-start;
+															flex-wrap: wrap;
+														}
+													</style>
+													<div class="member_table">
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">昵称：</div>
+															<div class="member_dt_val fl"><input type="text" value="" class="input_normal" name="nickName" id="quinnoid_nickname" readonly></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">手机号：</div>
+															<div class="member_dt_val fl"><input type="text" value="" class="input_normal" name="mobile" id="quinnoid_mobile" readonly></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">身高：</div>
+															<div class="member_dt_val fl"><input type="text" value="" class="input_normal"  name="height" id="quinnoid_height" readonly><span style="text-indent: 10px;display: inline-block;">单位（cm）</span></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">体重：</div>
+															<div class="member_dt_val fl"><input type="text" value="" class="input_normal"  name="weight" id="quinnoid_weight" readonly><span style="text-indent: 10px;display: inline-block;">单位（kg）</span></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">生日：</div>
+															<div class="member_dt_val fl"><input type="text" value="" class="input_normal"  name="birthDay" id="quinnoid_birthday" readonly></div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">性别：</div>
+															<div class="member_dt_val fl sex">
+																<!-- <input type="radio" value="1" name="gender" class="quinnoid_gender"> -->
+																<div class="sex_check on">
+																	<div class="sex_checked"><i class="fa fa-check"></i></div>
+																</div>
+																<label for="gender">男</label> 
+																<!-- <input type="radio" value="2" name="gender" class="quinnoid_gender"> -->
+																<div class="sex_check">
+																	<div class="sex_checked"><i class="fa fa-check"></i></div>
+																</div>
+																<label for="gender">女</label> 
+															</div>
+														</div>
+														<div class="member_item clearfix">
+															<div class="member_dt_title fl">体质指数：</div>
+															<div class="member_dt_val fl"><input type="text" value="" class="input_normal"  name="bmi" id="quinnoid_bmi" readonly><span id="quinnoid_target_text" style="margin: 0 10px;"></span><input type="hidden" name="target" value="" id="quinnoid_target"></div>
+														</div>														
+														<div class="member_item clearfix">												
+															<div class="member_dt_title fl">兴趣爱好：</div>
+															<div class="member_dt_val fl quinnoid_hobby"><textarea  cols="100" rows="10"  id="quinnoid_hobby" style="padding-left: 5px;display: none;"></textarea></div>
+														</div>
+														<input type="hidden" name="edit" id="toedit">
+													</div>
+													<!-- end -->
+													<script>
+														$(document).ready(function(){
+															var userId = localStorage.getItem("userId");
+															var login_token = localStorage.getItem("login_token");
+															//获取爱好id
+															$.ajax({
+																type:'post',
+																url: "{:U('/index.php/QuinnoidApi/get_I11X','','')}",
+																async: false,
+																data:{
+																	"login_token":login_token,
+																	"SID":11
+																},
+																success:function(data){																	
+																	var da = data.slice((data.indexOf('"')+1));																															
+																	var length = da.length;
+																		da = da.slice(0,length-2);	
+																	var json_obj = JSON.parse(da);
+																	var hobbyList = json_obj.data.hobbyList;
+																	var _div = "<div class='hobbylist' name='hobbyId'>";
+																	$.each(hobbyList,function(i,val){
+																		var data_id = '';
+																		var data_hobby = '';
+																		var data_selectUrlPath = '';
+																		var data_unSelectUrlPath = '';
+																		$.each(val,function(j,va){
+																			if(j=="id"){
+																				data_id=va;
+																			}else if(j=="hobby"){
+																				data_hobby=va;
+																			}else if(j=="selectUrlPath"){
+																				data_selectUrlPath=va;
+																			}else if(j=="unSelectUrlPath"){
+																				data_unSelectUrlPath=va;
+																			}			
+																		});
+																		
+																		_div = _div+ "<div class='hobbyitem'><div class='hobbyitem_list' data-url='"+ data_selectUrlPath + "' data-unurl='" + data_unSelectUrlPath +"' ></div><input id='hobbyid_"+data_id+"' type='checkbox' value='"+data_id+"'><label for='hobbyid_"+data_id+"'>"+data_hobby+"</label></div>"
+																		
+																	})
+																	_div = _div+"</div>";
+																	$(".quinnoid_hobby").append(_div);																	
+																	$(document).find('.hobbyitem_list').each(function () {
+																		var self = $(this);
+																		var url = self.attr('data-url');
+																		var unurl = self.attr('data-unurl');
+																		var flag = self.hasClass('on');
+																		if(flag){
+																			self.css('background-image', "url(" + url+ ")");
+																		}else{
+																			self.css('background-image', "url(" + unurl+ ")");
+																		};
+																	});
+																}
+															});
+															//获取用户信息
+															$.ajax({
+																type:'get',
+																url: "{:U('/index.php/QuinnoidApi/get_I044','','')}",
+																async: false,
+																data:{
+																	"userId": userId,
+																	"login_token":login_token,
+																	"SID":11								
+																},
+																success:function(data){			
+																	var da = data.slice((data.indexOf('"')+1));																	
+																	var length = da.length;
+																		da = da.slice(0,length-2);
+																	var json_obj = JSON.parse(da);
+																		console.log(json_obj);
+																		if(json_obj.code=="U0001"){
+																			$("#quinnoid_nickname").val(json_obj.data.nickName);
+																			$("#quinnoid_mobile").val(json_obj.data.mobile);
+																			$("#quinnoid_height").val(json_obj.data.height);
+																			$("#quinnoid_weight").val(json_obj.data.weight);
+																			$("#quinnoid_birthday").val(json_obj.data.birthDay);
+																			$("#quinnoid_bmi").val(json_obj.data.bmi);
+																			if(json_obj.data.bmi<18.5){																				
+																				//过轻
+																				$("#quinnoid_target_text").html("目标：增肌");
+																				$("#quinnoid_target").val("增肌");
+																			}else if(json_obj.data.bmi>=24){
+																				//过重
+																				$("#quinnoid_target_text").html("目标：减脂");
+																				$("#quinnoid_target").val("减脂");
+																			}else{
+																				$("#quinnoid_target").val("正常");
+																				$("#quinnoid_target_text").html("正常");
+																			}
+
+																			//$("#quinnoid_hobby").val(json_obj.data.hobbyId);
+																			 if(json_obj.data.gender==1){
+																				 $(".quinnoid_gender:first-child").attr("checked",true);
+																			 }else{
+																				$(".quinnoid_gender:last-child").attr("checked",true);
+																			 }
+																			 
+																			 $(".hobbyitem input").each(function(){
+																				 console.log($(this).html());
+																				 if(json_obj.data.hobbyId.indexOf($(this).val())!=-1){
+																					$(this).trigger("click");
+																				 }
+																				 
+																			 })
+
+																		}
+																									
+																}
+															});
+															
+															
+															$(document).on("blur","#quinnoid_height",function(){
+																//计算bmi值,判断健身目标
+																var height = $(this).val();
+																var weight = $("#quinnoid_weight").val();
+																var bmi=(weight/((height/100)*(height/100))).toFixed(2);
+																$("#quinnoid_bmi").val(bmi);
+																if(bmi<18.5){
+																	//过轻
+																	$("#quinnoid_target_text").html("目标：增肌");
+																	$("#quinnoid_target").val("增肌");
+																}else if(bmi>=24){
+																	//过重
+																	$("#quinnoid_target_text").html("目标：减脂");
+																	$("#quinnoid_target").val("减脂");
+																}else{
+																	$("#quinnoid_target").val("正常");
+																}
+															}).on("blur","#quinnoid_weight",function(){
+																//计算bmi值,判断健身目标
+																var weight = $(this).val();
+																var height = $("#quinnoid_height").val();
+																var bmi=(weight/((height/100)*(height/100))).toFixed(2);
+																$("#quinnoid_bmi").val(bmi);																
+																if(bmi<18.5){
+																	//过轻
+																	$("#quinnoid_target_text").html("目标：增肌");
+																	$("#quinnoid_target").val("增肌");
+																}else if(bmi>=24){
+																	//过重
+																	$("#quinnoid_target_text").html("目标：减脂");
+																	$("#quinnoid_target").val("减脂");
+																}else{
+																	$("#quinnoid_target").val("正常");
+																}
+															}).on("click","#quinnoid_submit",function(){
+																//
+																var height = $("#quinnoid_height").val();
+																var weight = $("#quinnoid_weight").val();
+																var birthDay = $("#quinnoid_birthday").val();
+																var bmi = $("#quinnoid_bmi").val();
+																var hobbyId = $(".hobbylist option:checked").attr("data-hobbyid");
+																var gender = $(".quinnoid_gender:checked").val();																
+																var target = $("#quinnoid_target").val();																
+																var login_token = localStorage.getItem("login_token");
+																var userId = localStorage.getItem("userId");
+																
+																$.ajax({
+																type:'post',
+																url: "{:U('/index.php/QuinnoidApi/get_I043','','')}",
+																async: false,
+																data:{
+																	"height": height,
+																	"weight":weight,
+																	"birthDay":birthDay,								
+																	"bmi":bmi,	
+																	"hobbyId":hobbyId,
+																	"login_token":login_token,
+																	"userId":userId,
+																	"gender":gender,
+																	"target":target
+																},
+																success:function(data){								
+																	var da = data.slice((data.indexOf('"')+1));																	
+																	var length = da.length;
+																		da = da.slice(0,length-2);
+																	var json_obj = JSON.parse(da);
+																		console.log(json_obj);	
+																}
+															});
+															})
+														})
+														
+													</script>
+												</if>
+													
+																				
+											</div>											
+												<div class="loginout_btn"><if condition="C('webid') eq 1730"><a href="javascript:void(0)" id="quinnoid_submit" style="margin-right: 20px;display:none">保存</a></if><a href="{:U('/loginout')}">退出登录</a></div>
+										</div>
+									</div>	
+								</div>
+								
+														
+							</div>
+						</if>
+                        
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<script src="__TMPL__HJZF2_Z/js/innerpage_HJZF2_Z-member.js">
+
+		
+			
+	</script>
+
+</block>

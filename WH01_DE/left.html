@@ -1,0 +1,111 @@
+<!--left style-->
+<style>
+    .left_title{
+        width:144px;height: 94px;padding-top: 35px;float: left;font-size: 32px;font-weight: bold;color: #{$color};text-align: left;line-height: 35px;
+    }
+    li.yiji:hover:before{
+        content: '';display: table;width: 6px;height: 6px;background: #{$color};border: 1px solid #{$color};position: absolute;left: 0;top: 6px;
+    }
+    li.yiji h3:hover{
+        color: #{$color};
+    }
+    li.yijion:before{
+        content: '';display: table;width: 6px;height: 6px;background: #{$color};border: 1px solid #{$color};position: absolute;left: 0;top: 6px;
+    }
+    li.yijion>a>h3{
+        font-size: 18px;font-weight: normal;color: #{$color};font-family: Arial;display: inline-block;
+    }
+    .child h3,.childon h3{font-size: 14px;}{font-size: 14px;}
+    .child h3:hover{
+        color:  #{$color};
+    }
+    .childon h3:hover{
+        color:  #{$color};
+    }
+    .left_contactbox{display: none;}
+</style>
+<!--��ҳ��ʽ2-->
+<if condition="$data1[4] neq ''">
+    <style>
+        .page_nei_main{margin-top: 35px;border-bottom: none;}
+        .main_left{width: 210px;float: left;position: relative;}
+        .page_RightMain{width: 930px;float: right;}
+        .left_title{
+            width: 100%;text-align: center;height: 47px;line-height: 47px;font-size: 16px;color: #ffffff;font-weight: bold;text-transform: uppercase;padding-top:0;background: url({:getindeximgurl($data1[5])}) no-repeat 0 0;
+        }
+        .left_con{width: 208px;border: 1px solid #d8d8d8;padding-top: 0;}
+        li.yiji{width: 100%;text-align: left;border-top: 1px solid #d8d8d8;padding-bottom:0;padding-left: 0;float: none;margin-right: 0;}
+        li.yiji:before{display: none}
+        li.yiji>a{display: block;}
+        li.yiji h3{padding: 10px 11px;width: auto;white-space:inherit;overflow: inherit;font-size: 15px;}
+        li.yiji:hover{height:auto;padding-bottom: 0;padding-left: 0;float: none;}
+        li.yiji:hover:before{display: none}
+        li.yijion{width: 100%;text-align: left;border-top: 1px solid #d8d8d8;padding-bottom:0;padding-left: 0;float: none;margin-right: 0;}
+        li.yijion:before{display: none;}
+        li.yijion>a>h3{padding: 10px 11px;width: auto;white-space:inherit;overflow: inherit;font-size: 15px;font-weight: bold}
+        .left_contactbox{width: 100%;margin-top: 40px;display: block;}
+        .left_contact ul{padding: 10px 0;}
+        .left_contact ul li{font-size: 14px;color: #333333;line-height: 25px;}
+        .left_contact ul li a{font-size: 14px;color: #333333;line-height: 25px;text-decoration: underline}
+        li.yiji>ul{position: relative;display: none;background: none;box-shadow: none;padding: 0 11px;top: 0;width: 188px;border-top: 1px solid #d8d8d8;}
+        li.child{border-top: 1px dashed #e3e3e3;}
+        li.child:first-child{border-top: none}
+        li.yijion>ul{position: relative;display: block;background: none;box-shadow: none;padding: 0 11px;top: 0;width: 188px;}
+        li.yijion>a{display: block;}
+        li.yijion h3 {padding: 10px 11px;width: auto;white-space: inherit;overflow: inherit;font-size: 16px;}
+        li.childon h3{
+            color: #{$color};font-size: 14px;
+        }
+        li.child h3{font-size: 14px;}
+    </style>
+</if>
+<!--left style-->
+<div class="main_left">
+    <div class="left_title">
+        Produktzentrum
+    </div>
+    <div class="left_con">
+        <volist empty="No data" name="allclass" id="allclass_left">
+
+            <li <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yijion"<else/>class="yiji"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+
+            <if condition='$allclass_left["childs"] neq ""'>
+                <ul>
+                    <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                        <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="childon"<else/>class="child"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}#pro_head">{$allclass_leftchild['class_name']}</a></li>
+                    </volist>
+                </ul>
+
+            </if>
+            </li>
+
+        </volist>
+    </div>
+    <div class="clear"></div>
+    <div class="left_contactbox">
+        <div class="left_title">
+            kontaktiere uns
+        </div>
+        <div class="left_contact">
+            <div class="left_contact_pic"><img src="{:getindeximgurl($data1[6])}" alt=""/></div>
+            <ul>
+                <if condition="chaifen($about['phone'],0) neq '' ">
+                    <li style="background: url(__TMPL__WH01/img/left_tel.png) 4px center no-repeat; padding-left:34px;">{:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="chaifen($about['email'],0) neq '' ">
+                <li style="background: url(__TMPL__WH01/img/left_mail.png) 5px center no-repeat; padding-left:34px;"><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></li>
+                    </if>
+            </ul>
+        </div>
+    </div>
+    <if condition="$data1[4] neq ''">
+    <script>
+        $(document).ready(function(){
+            var locationurl=window.location.href;
+            if(locationurl.indexOf('product.html')>0){
+                $(".yiji").eq(0).find("ul").css("display",'block');
+            }
+        })
+    </script>
+    </if>
+</div>

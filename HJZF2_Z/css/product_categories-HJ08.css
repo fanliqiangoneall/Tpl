@@ -1,0 +1,120 @@
+.hjzf_procate_wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.hjzf_procate_wrapper li{
+    width: 32%;
+    flex: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.hjzf_procate_wrapper li span{
+    position: relative;
+    display: block;
+}
+.hjzf_procate_wrapper li span dl{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    padding-left: 2vw;
+}
+/* 动画开始 */
+.hjzf_procate_wrapper dl .lines{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+}
+.hjzf_procate_wrapper dl .lines i{
+    display: block;
+    position: absolute;
+    background: #fff;
+}
+.lines i:first-child{
+    top:0;
+    left:0;
+    height: 2px;
+}
+.lines i:nth-child(2){
+    top:0;
+    right:0;
+    width: 2px;
+}
+.lines i:nth-child(3){
+    bottom:0;
+    right:0;
+    height: 2px;
+}
+.lines i:nth-child(4){
+    left:0;
+    bottom:0;
+    width: 2px;
+}
+.hjzf_procate_wrapper li:hover .lines_w{
+    -webkit-animation: line 2s linear 0s infinite alternate;
+    animation: line 2s linear 0s infinite alternate;
+}
+.hjzf_procate_wrapper li:hover .lines_h{
+    -webkit-animation: h_line 2s linear 0s infinite alternate;
+    animation: h_line 2s linear 0s infinite alternate;
+}
+@keyframes line {
+    0% {width:0;}
+    70% {width:100%;}
+    100% {width:100%;}
+}
+@keyframes h_line {
+    0% {height:0;}
+    70% {height:100%;}
+    100% {height:100%;}
+}
+/* 动画结束 */
+
+
+.hjzf_procate_wrapper a{
+    color: #fff;
+}
+.hjzf_procate_wrapper dl dt{
+    font-size: 24px;
+    line-height: 32px;
+    margin-top: 3vw;
+    margin-bottom: 1vw;
+    position: relative;
+    z-index: 9;
+}
+.hjzf_procate_wrapper dl dd{
+    position: relative;
+    padding-left: 2vw;
+    font-size: 16px;
+    line-height: 32px;
+    z-index: 9;
+    position: relative;
+}
+.hjzf_procate_wrapper dl dd:before{
+    position: absolute;
+    display: block;
+    content:'';
+    width: 8px;
+    height: 1px;
+    background: #fff;
+    left: 1vw;
+    top: 16px;
+}
+@media(max-width:768px){
+.hjzf_procate_wrapper{
+	flex-flow: column;
+}
+.hjzf_procate_wrapper li{
+	width:100%;
+	margin-bottom:15px;
+}
+}

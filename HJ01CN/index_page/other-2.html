@@ -1,0 +1,74 @@
+
+<!--{$pagename}-->
+<if condition="has_mould('other-2') eq false">
+	<style>
+		.HJ01CN_other2{ display:none}
+	</style>
+	<else/>
+	<link href="__TMPL__HJ01CN/css/other-2.css" rel="stylesheet">
+	<style>
+		.HJ01CN_other2{
+			background: url({:getindeximgurl($data15[0])}) center  no-repeat;
+		}
+	</style>
+</if>
+<if condition="$data15[26] neq ''">
+	<style>
+		.HJ01CN_other2-title{
+		padding-top: {$data15[26]}px;
+		}
+	</style>
+</if>
+<style>
+	.hj01cn_other_item_text h3{
+		color: #{$color};
+	}
+	.hj01cn_other_item_text p:before{
+		content: '';display: table;width: 5px;height: 5px;background: #{$color};position: absolute;;left: 3px;top: 9px;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);transform: rotate(45deg);
+	}
+	.hj01cn_other_item_text a{
+		color: {$data1[0]};
+	}
+	.hj01cn_other_item_text a:before{
+		content: '';display: table;width: 100%;;height: 2px;position: absolute;;left: 0;bottom: -6px;background: #dfdfdf;
+	}
+	.hj01cn_other_item_text a:hover:before{
+		content: '';display: table;width: 100%;;height: 2px;position: absolute;;left: 0;bottom: -6px;background: {$data1[0]};
+	}
+</style>
+
+<!--foot start-->
+<div class="HJ01CN_other2">
+	<div class="container">
+		<div class="HJ01CN_other2-title">{$data15[25]}</div>
+		<ul class="HJ01CN_other2_list">
+			<php>
+				for($i=1;$i<24;$i=$i+6){
+			</php>
+			<if condition="$data15[$i] neq ''">
+				<li id="other_item{$i}" class="hj01cn_other_item margin-20px-bottom ">
+					<div class="hj01cn_other_item_pic"><a href="{$data15[$i+5]}" target="_blank"><img src="{:getindeximgurl($data15[$i])}" alt=""/></a></div>
+					<div class="hj01cn_other_item_text padding-50px-top">
+						<h3>{$data15[$i+1]}</h3>
+						<h5 class="margin-10px-bottom">{$data15[$i+2]}</h5>
+						<img src="{:getindeximgurl($data15[$i+3])}" alt=""/>
+						<p class="margin-15px-bottom">{$data15[$i+4]}</p>
+						<a href="{$data15[$i+5]}" target="_blank">查看很多</a>
+					</div>
+					<div class="clear"></div>
+				</li>
+			</if>
+
+			<php>
+				}
+			</php>
+			<li></li>
+		</ul>
+
+	</div>
+</div>
+
+
+
+
+

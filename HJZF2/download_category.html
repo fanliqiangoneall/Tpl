@@ -1,0 +1,74 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <div id="wrapper">
+        <style>
+            /*产品侧边栏样式*/
+            ul.InsidePages_left_navlist>li:hover >a >h3{
+                color: #{$inner_data[0]};
+            }
+            ul.InsidePages_left_navlist>li.yijion >a >h3{
+                color: #{$inner_data[0]};
+            }
+            ul.InsidePages_left_navlist>li.yijion>ul li:hover >a>h3{
+                color: #{$inner_data[0]};
+            }
+            .main_proitem_second .hj05-index-more{
+                background: #{$inner_data[0]};
+            }
+            /*产品侧边栏样式*/
+            .Breadcrumbs span.current {
+                color: #{$inner_data[0]};
+            }
+        </style>
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+        <div class="Breadcrumbs">
+
+            <div class="Breadcrumbs_down"><a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i><a
+                    href="{:U('/download')}">{:__('Download')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$downcate['class_name']}</span></div>
+        </div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left">
+                <Include file="./Tpl/HJZF2/leftdownload.html" />
+            </section>
+            <section class="InsidePages_content-right">
+                <div class="InsidePages_content-right_content">
+
+                    <div class="InsidePages_content-right_content-main">
+                        <h5 class="InsidePages_content-right_content_title">{:__('Download')}</h5>
+                        <div class="product_detail_editor_content">
+                            <div class="download">
+                                <div class="body">
+                                    <ul class="donload_list">
+                                        <volist name="download" id="download" key="k">
+                                            <li>
+                                                <if condition="$download['linkurl'] neq ''"><a href="{:getimgurl($download['linkurl'])}" target="_blank"><span class="download_right">{:__('Download')}</span><p>{$download['title']}</p></a><else/><a href="{$download['downurl']}" target="_blank"><span class="download_right">{:__('Download')}</span><p>{$download['title']}</p></a></if>
+                                                <div style="clear: both"></div>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                    <div class="main_page">{$page}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page_nei_space"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>

@@ -1,0 +1,156 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[0]){
+		$color = $inner_data[0];
+		}
+	</php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current {
+			color: #{$color};
+		}
+
+		.InsidePages_content-right_content_title:before {
+			background: #{$color};
+		}
+
+		.main_product_title_right {
+			background: #{$color};
+		}
+
+		.InsidePages_left_navlist li.yiji:hover>a>h3,
+		.InsidePages_left_navlist li.yiji:hover>.class_button:before,
+		ul.InsidePages_left_navlist>li>ul>li:hover>a>h3,
+		ul.InsidePages_left_navlist>li>ul>li>ul>li a h3:hover {
+			color: #{$color};
+		}
+
+		.main_page .current {
+			background: #{$color};
+			border: 1px solid #{$color};
+		}
+
+		.InsidePages_left_content-main {
+			border-top: 2px solid #{$color};
+		}
+
+		.InsidePages_content-right_content_title h3 {
+			font-size: 22px;
+			color: #333333;
+			letter-spacing: 0;
+			line-height: 50px;
+			font-weight: bold;
+			display: inline-block;
+		}
+
+		.product_noimg {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+		}
+		.product_noimg li {
+			border-bottom: 1px solid #ddd;
+			padding-bottom: 8px;
+			margin-bottom: 10px;
+			position: relative;
+			padding-left: 15px;
+			flex: 0 0 100%;
+			width: 100%;
+		}
+		.product_noimg li a{
+			color: #333;
+			font-size: 16px;
+			display: block;
+			margin-bottom: 10px;
+			transition: all .5s;
+		}
+		.product_noimg li p{
+			color: #666;
+			font-size: 14px;
+			margin-bottom: 10px;
+		}
+		.product_noimg li:after{
+			position: absolute;
+			display: block;
+			content:'';
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background-color: #333;
+			left: 0;
+			top: 8px;
+		}
+		.product_noimg li a:hover{
+			color: #{$color};
+		}
+	</style>
+
+	<div class="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+
+			<if condition="$banner[0]['use_wap']">
+				<div class="nav-hidden-pc">
+					<volist name="banner" id="bannera" offset="0" length="1">
+						<div class="in_banner"><img src="{:getimgurl($bannera['logo_wap_bg'])}" class="img-fluid" />
+						</div>
+					</volist>
+				</div>
+				<div class="nav-hidden-mobile">
+					<if condition="$banner neq ''">
+						<volist name="banner" id="bannerb" offset="0" length="1">
+							<div class="in_banner"><img src="{:getimgurl($bannerb['ad_pic'])}" class="img-fluid" />
+							</div>
+						</volist>
+					</if>
+				</div>
+				<else />
+				<if condition="$banner neq ''">
+					<volist name="banner" id="bannerc" offset="0" length="1">
+						<div class="in_banner"><img src="{:getimgurl($bannerc['ad_pic'])}" class="img-fluid" /></div>
+					</volist>
+					<else />
+					<div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" class="img-fluid" /></div>
+				</if>
+			</if>
+
+		</div>
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="{:U('/')}"> {:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+							class="fa fa-angle-right"></i>&nbsp;<span class="current">
+							{:__('Products')}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="HJZF_Z__innerContent">
+			<div class="container">
+				<div class="row">
+					<section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left">
+						<Include file="./Tpl/HJZF2_Z/left.html" />
+					</section>
+					<section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+						<Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+					</section>
+					<section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+						<ul class="product_noimg mb-20">
+							<volist empty="$no_empty" name="pro" id="allproa" offset="0">
+								<li>
+									<a
+										href="{:U('/Product','','')}/{:getproname($allproa['pid'])}">{:subtxt($allproa['pro_name'],60)}</a>
+										<p>{:subtxt($allproa['pro_description'],80)}</p>
+									</li>
+							</volist>
+						</ul>
+						<div class="main_page">{$page}</div>
+					</section>
+					<div class="clear"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

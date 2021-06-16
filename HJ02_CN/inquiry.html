@@ -1,0 +1,36 @@
+<extend name="HJ02_CN:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+
+
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs">当前位置: <a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">反馈</span>
+                    <div class="back_tolast"><a href="javascript:history.go(-1)" onfocus="blur()"><img src="__TMPL__HJ02_CN/img/back_to2.png" alt="" style="margin-right: 10px;"/><img src="__TMPL__HJ02_CN/img/back_to.png" alt="" style="margin-right: 10px;"/>返回</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ02_CN/left.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain">
+                    <h5 class="main-cases-detail-title">查询</h5>
+                    <div class="page_Main"style="padding: 20px;box-sizing: border-box;background: #fff;margin-top: 40px;"><Include file="./Tpl/HJ02_CN/submitinquiry.html" /> </div>
+                    <div style="clear:both"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

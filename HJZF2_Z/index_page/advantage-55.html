@@ -1,0 +1,89 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data481[0]">.HJZF2_Z_advantage_55 {
+        background: url({:getindeximgurl($data481[0])
+    }
+
+    ) no-repeat right top;
+    background-attachment: fixed;
+    
+}
+
+    </if>
+   .HJZF2_Z_advantage_55_wrapper_con{
+    background-color: #{$data481[1]};
+}
+.HJZF2_Z_advantage_55_wrapper_con .index_sub_title{
+    color: #{$color};
+}
+
+</style>
+<section class="HJZF2_Z_advantage_55 clearfix">
+    <div class="HJZF2_Z_advantage_55_wrapper index_pd">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    <div class="HJZF2_Z_advantage_55_wrapper_con tar">
+                        <php>
+                            $arra = get_list_val($data481[2]);
+                        </php>
+                        <volist name="arra" id="a" length="1" offset="0">
+                            <div class="subtitle">
+                                {$a[sub]}
+                            </div>
+                            <div class="index_title">
+                                {$a[tit]}
+                            </div>
+                            <div class="index_sub_title pb40">
+                                {$a[down]}
+                            </div>
+                        </volist>
+                        <p class="tar pb40">
+                            {:HtmlEncode($data481[3])}
+                        </p>
+                            <if condition="$data481[4]">
+                                <php>
+                                    $arr = get_list_val($data481[4]);
+                                    if($arr[0][col]){
+                                    $col = $arr[0][col];
+                                    }else{
+                                    $col = $color;
+                                    }
+                                    if($arr[0][txtc]){
+                                    $cla = $arr[0][txtc];
+                                    }else{
+                                    $cla = '333';
+                                    }
+                                    if($arr[0][hcol]){
+                                        $bghc = $arr[0][hcol];
+                                    }else{
+                                        $bghc = $color;
+                                    }
+                                </php>
+                                <style>
+                                    .HJZF2_Z_advantage_55_wrapper_con a.index_btn:hover {
+                                        background-color: #{$bghc} !important;
+                                        color: #{$arr[0][htxtc]} !important;
+                                    }
+                                </style>
+                                <volist name="arr" id="a" length="1" offset="0">
+                                    <a href="{$a[link]}" class="index_btn"
+                                        style="background-color: #{$col}; color: #{$cla}">
+                                        {$a[txt]}
+                                        <span>
+                                            <if condition="$a[ico]">
+                                                <em class="normal"><img src="{$a[ico]}" alt="{$a[txt]}"></em>
+                                            </if>
+                                            <if condition="$a[hico]">
+                                                <em class="hover"><img src="{$a[hico]}" alt="{$a[txt]}"></em>
+                                            </if>
+                                        </span>
+                                    </a>
+                                </volist>
+                            </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

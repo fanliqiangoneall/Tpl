@@ -1,0 +1,41 @@
+<extend name="WAP:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu2').removeClass().addClass("menuon1");
+});
+jQuery(document).ready(function(){
+    jQuery("table").wrap("<div id='div_table'></div>");
+});
+jQuery(document).ready(function(){
+    jQuery("table").append(function(){
+      return "<div class='table_jt'><img src='__TMPL__WAP/img/table_jt.png' border='0' /></div>";
+    });
+});
+</script>
+<div><img src="__TMPL__WAP/img/banner1.jpg" border="0" width="100%" /></div>
+<div data-role="content" style="padding-top:15px;">
+    <div class="main_top"><a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/product')}">Products</a>&nbsp;>&nbsp;{$procate['class_name']}</div>
+  <div class="lmtitle">Product Details</span></div>
+      <div style="width:100%; height:10px;"></div>
+      <div class="page_main" id="detail">
+        <h4 style="line-height:16px; padding:8px 0"><b>Product Name:</b> {$product['pro_name']}</h4>
+        <div style="width:100%; margin:0 auto; text-align:center;">
+        <img src="{:getimgurl($product['main_img'])}" title="{$product['pro_name']}" style="max-width:100%">
+        <volist name="proimg" id="proimg">
+            <if condition="getimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+              <br />
+              <a href="{:getimgurl($proimg['field_auxiliary_fid'])}" ><img src="{:getimgurl($proimg['field_auxiliary_fid'])}" width="100%" alt="{$product['pro_name']}"/></a>
+            </if>
+          </volist>
+          </div>
+          <div style="width:96%; margin:0 auto;overflow: auto;"><if condition=" $product['is_pc_to_mobile'] eq 0">{:get_zifu($product['pro_profile_mobile'])}</if><if condition=" $product['is_pc_to_mobile'] eq 1 or $product['is_pc_to_mobile'] eq '' ">{:get_zifu($product['pro_profile'])}</div>
+
+      </div>
+      <div class="page_inMore">
+    <span onClick="history.go(-1)">BACK</span>
+    </div>
+    <div class="lmtitle" style="margin-top:10px; margin-bottom:5px;">Immediately Consult</span></div>
+    <div class="page_main"><include file="WAP:submitinquiry" /></div>
+</div>
+</block>

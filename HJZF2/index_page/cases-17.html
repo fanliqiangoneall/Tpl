@@ -1,0 +1,39 @@
+<if condition="$data197[0]">
+    <style>
+        .hjzf_case-17 {
+            background: url({:getindeximgurl($data197[0])}) no-repeat center /cover;
+        }
+    </style>
+</if>
+
+<section class="hjzf_case-17">
+    <div class="container">
+        <div class="hjzf_case-17_maintitle">{$data197[2]}</div>
+        <div class="hjzf_case-17_content">
+            <div class="swiper-container hjzf_case-17_swiper">
+                <div class="swiper-wrapper">
+                   <php>
+                       for($i=3;$i<22;$i=$i+4){
+                   </php>
+                    <if condition="$data197[$i]">
+                        <div class="swiper-slide hjzf_case-17_item">
+                            <div class="hj05-news-pic">
+                                <a href="{$data197[$i+2]}" onFocus="blur()" ><img src="{:getindeximgurl($data197[$i+3])}" border="0" /></a>
+                            </div>
+                            <div class="news_info">
+                                <div class="hjzf_case-17_itemtitle"><a href="{$data197[$i+3]}" onFocus="blur()">{:subtxt($data197[$i],60)}</a></div>
+                                <div class="hjzf_case-17_itemdesc">{:subtxt($data197[$i+1],100)}</div>
+                                <a href="{$data197[$i+2]}" class="hjzf_case-17_itemmore">{:__('Read More')}</a>
+                            </div>
+                        </div>
+                    </if>
+                   <php>
+                       }
+                   </php>
+                </div>
+            </div>
+            <div class="swiper-button-next hjzf_case-17_next"></div>
+            <div class="swiper-button-prev hjzf_case-17_prev"></div>
+        </div>
+    </div>
+</section>

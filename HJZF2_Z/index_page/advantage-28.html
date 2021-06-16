@@ -1,0 +1,46 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data408[0]">.hjzf_advantage_28 {
+        background: url({:getindeximgurl($data408[0])
+    }
+
+    ) no-repeat center/ cover;
+    }
+
+    </if>.hjzf_advantage_28 {
+        color:#{$data408[1]};
+    }
+</style>
+<section class="hjzf_advantage_28 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title pb40 text-center">
+                    {$data408[2]}
+                </div>
+                <div class="index_text subtitle pb40 text-center">
+                    {$data408[3]}
+                </div>
+                <ul class="hjzf_advantage_28_wrapper">
+                    <php>
+                        $arr = get_list_val($data408[4]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li class="text-center">
+                            <div class="hjzf_advantage_28_topbox">
+                                <div>
+                                    <if condition="$a[dw1]"><em>{$a[dw1]}</em></if><span class="timer" data-to="{$a[num]}" data-speed="2000">{$a[num]}</span><if condition="$a[dw2]"><em>{$a[dw2]}</em></if>
+                                </div>
+                                <p class="index_text">{$a[info]}</p>
+                            </div>
+                            <div class="info2 ">
+                                {$a[info2]}
+                            </div>
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

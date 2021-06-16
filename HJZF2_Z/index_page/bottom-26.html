@@ -1,0 +1,120 @@
+<!--{$pagename}-->
+<style>
+	<if condition="$data680[0]">.hjzf2_z_bottom_25 {
+		background-color: url({:getindeximgurl($data680[0])
+	}
+
+	);
+	}
+
+	</if> 
+	<if condition="$data681[2]">
+		.hjzf2_z_bottom_26{
+			background-color: #{$data681[2]};
+		}
+	</if>
+	.HJZF2_Z__bottom_26__friendlink{
+		background-color: #{$data681[0]};
+	}
+</style>
+<if condition="$friend_link neq ''">
+	<div class="HJZF2_Z__bottom_26__friendlink">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+		<div class="HJZF2_Z__bottom_2__link"><span style="float:left; margin-right:5px;">{:__('FriendLink: ')}</span>
+			  <volist name="friend_link" id="friend_link">
+			  <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+			  <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+			  </if>
+			  </volist>     
+			  <div style="clear:both"></div>
+		</div>
+		<div class="clear"></div>
+	</div>	
+	</div>
+	</div>
+	</div>
+	</if>
+<section class="hjzf2_z_bottom_26">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="d-flex justify-content-between align-items-center">
+					<div class="hjzf2_z_bottom_26_left">
+						<if condition="$data681[3]">
+							<img src="{:getindeximgurl($data681[3])}" alt="foot logo">
+						</if>
+						<if condition="$data681[4]">
+							<php>
+								$arra = get_list_val($data681[4]);
+							</php>
+							<div class="hjzf2_z_bottom_26_info">
+								<p>{$arra[0][title]}</p>
+								<p>{$arra[0][info]}</p>
+							</div>
+						</if>
+						<php>
+							$arrb = get_list_val($data681[6]);
+						</php>
+						<if condition="chaifen($about['phone'],0)">
+							<div class="hjzf2_z_bottom_26_add">
+								<img src="{$arrb[0][tel]}">
+								<span>{:__('Tel: ')} {:chaifen($about['phone'],0)}</span>
+							</div>
+						</if>
+						<if condition="chaifen($about['email'],0)">
+							<div class="hjzf2_z_bottom_26_add">
+								<img src="{$arrb[0][mail]}">
+								<span>{:__('E-mail: ')} {:chaifen($about['email'],0)}</span>
+							</div>
+						</if>
+						<if condition="$about['address']">
+							<div class="hjzf2_z_bottom_26_add">
+								<img src="{$arrb[0][add]}">
+								<span>{:__('Add: ')} {$about['address']}</span>
+							</div>
+						</if>
+
+				</div>
+					<if condition="$data681[5]">
+						<php>
+							$arr = get_list_val($data681[5]);
+						</php>
+						<div class="hjzf2_z_bottom_26_right text-center">
+							<a href="{$arr[0][link]}">
+								<img src="{$arr[0][img]}" alt="">
+								<p>{$arr[0][text]}</p>
+							</a>
+						</div>
+					</if>
+				</div>
+
+				<php>
+					$nowtime=date("Y",time());
+				</php>
+				<div class="bottom_26_bottom d-flex justify-content-between">
+					<div class="left">
+						CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights reserved')}&nbsp;
+					</div>
+					<div class="right">
+						<if condition="get_txtBeiAn()">
+							<a href="http://beian.miit.gov.cn/"
+								target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+							</a>&nbsp;
+						</if>
+						<a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+						<a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+						<if condition="C('language') eq 'cn'">
+							免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a href="https://www.one-all.com" title="常州网站建设"
+								target="_blank">常州网站建设</a>
+							<else />
+							<a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+								Zhonghuan Internet</a>
+						</if>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

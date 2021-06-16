@@ -1,0 +1,52 @@
+<style>
+    .aboutus-7__gallery-top--right__more{
+        border: 1px solid #{$data120[26]};color: #{$data120[26]};
+    }
+    .aboutus-7__gallery-top--right__title:before, .aboutus-7__gallery-top--right__more:hover:before{
+        background: #{$data120[26]};
+    }
+
+</style>
+<section id="aboutus-7">
+    <div class="aboutus-7__container">
+        <h3 class="aboutus-7__title">{$data120[0]}</h3>
+        <div class="swiper-container aboutus-7__gallery-thumbs">
+            <div class="swiper-wrapper">
+                <php>
+                    for($i=1;$i<25;$i=$i+5){
+                </php>
+                <div class="swiper-slide aboutus-7__thumbs_item" style="background: url({:getindeximgurl($data120[$i+1])}) no-repeat center;">
+                   {$data120[$i]}
+                </div>
+                <php>
+                    }
+                </php>
+            </div>
+            <!-- Add Arrows -->
+
+        </div>
+        <div class="swiper-container aboutus-7__gallery-top">
+            <div class="swiper-wrapper">
+                <php>
+                    for($i=1;$i<25;$i=$i+5){
+                </php>
+                <div class="swiper-slide">
+                    <div class="aboutus-7__gallery-top--left">
+                        <img src="{:getindeximgurl($data120[$i+2])}" alt="{$data120[$i]}"/>
+                    </div>
+                    <div class="aboutus-7__gallery-top--right">
+                        <div class="aboutus-7__gallery-top--right__title">{$data120[$i]}</div>
+                        <div class="aboutus-7__gallery-top--right__context">{:HtmlEncode(subtxt($data120[$i+3],400))}</div>
+                        <a href="{$data120[$i+4]}" class="aboutus-7__gallery-top--right__more">{:__('Read More')}</a>
+                    </div>
+                </div>
+                <php>
+                    }
+                </php>
+            </div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+
+    </div>
+</section>

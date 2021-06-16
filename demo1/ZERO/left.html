@@ -1,0 +1,25 @@
+<div class="Page_classbg">
+  <div class="left1">
+     <volist empty="" name="allclass" id="allclass_left">
+        <div class="child"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></div>
+        <div style="margin-left:32px;">
+        <volist empty="" name="allclass_left['childs']" id="allclass_three">
+             <div <if condition="inthiscate($classid,$allclass_three['pcid'],$product)">class="parent1"<else/>class="parent"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_three['pcid'])}">→ {$allclass_three['class_name']}</a></div>
+        </volist>
+        </div>
+        <div class="child_div"></div>
+     </volist>
+     
+  </div>
+  <div class="left_contacttitle"></div>
+  <div class="left_contact_in">
+     <ul>
+        <li>电话：{:chaifen($about['phone'],0)}</li>
+        <li>手机：{:chaifen($about['mobile'],0)}</li>
+        <li>传真：{:chaifen($about['fax'],0)}</li>
+        <li>邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></li>
+        <li>地址：{$about['address']}</li>
+     </ul>
+   </div>
+   <div class="left_map"></div>
+</div>

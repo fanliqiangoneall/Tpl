@@ -1,0 +1,94 @@
+<extend name="HJ01CN:basein" />
+<block name="content">
+    <style>
+        .main_news_title{
+            border-left: 3px {$data1[0]}  solid;
+        }
+    </style>
+    <script type="text/javascript" src="__TMPL__HJ01CN/js/jquery.lightbox-0.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__TMPL__HJ01CN/css/jquery.lightbox-0.5.css"/>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[5])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner">
+                <div class="container">
+                    <h1 class="ins-page-title-txt no-margin padding-5px-tb">新闻中心</h1>
+                    <div class="Breadcrumbs"><a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;新闻中心</div>
+                </div>
+            </div>
+            <div class="ins-pagetitle-scroll-wrapper container"><a class="ins-pagetitle-scroll-link" href="javascript:goToMain()"><i class="fa fa-angle-down"></i></a></div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ01CN/newleft.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                            <div class="HJ01_main_news">
+                                    <ul class="main_newslist ul_li_list">
+                                        <volist name="allnews" id="allnews">
+                                            <li>
+                                                <div class="main_newsimg">
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" >
+                                                    <if condition="$allnews['new_pro'] neq ''">
+                                                        <img src="{:getimgurl($allnews['new_pro'])}" border="0" />
+                                                        <else/>
+                                                        <img src="{:getindeximgurl($data1[11])}" border="0" />
+                                                    </if>
+                                                   </a>
+                                                </div>
+                                                <div class="main_news_right">
+                                                    <div class="main_news_title margin-20px-bottom"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><h5>{$allnews['title']}</h5></a></div>
+                                                    <div class="main_news_desc">{:subtxt($allnews['news_description'],200)}</div>
+
+                                                    <div class="HJ01_bottom_share">
+                                                        <div class="ins-social-icons social-icons-small social-icons-colorful icon-colored social-icons-colored social-icons-round social-icons-effect-none icons-align-left" style="margin-top:-20px;">
+                                                            <a href="{$data1[1]}" style="color: #fff;" class="social icon-twitter" target="_blank"><i class="fa fa-weibo icon-primary"></i></a>
+                                                            <a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" style="color: #fff;" class="social icon-facebook" target="_blank" onclick="turn_sta(5,5);"><i class="fa fa-qq icon-primary"></i></a>
+                                                            <a href="{$data1[2]}" style="color: #fff;" class="social icon-google" target="_blank"><i class="fa fa-linkedin icon-primary"></i></a>
+                                                            <a href="mailto:{:chaifen($about['email'],0)}" style="color: #fff;" class="social icon-instagram" target="_blank"><i class="fa fa-envelope-o icon-primary"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </li>
+
+                                        </volist>
+
+                                    </ul>
+                            </div>
+                        <div class="clearfix"></div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="main_content_slogan">
+            <div class="container">
+                <div class="main_content_slogan_left ">
+                    <if condition="$data14[18]">
+                        <h3 class="margin-10px-bottom">{$data14[18]}：{:chaifen($about['phone'],0)}</h3>
+                        <else/>
+                        <h3 class="margin-10px-bottom">获取报价或致电：{:chaifen($about['phone'],0)}</h3>
+                    </if>
+                    <p class="main_content_slogan_text" style="letter-spacing: 1px">{$data14[10]}</p>
+                </div>
+                <div class="main_content_slogan_right ">
+                    <div class="main_content_slogan_right_more text-right">
+                        <a href="{:U('/contactus')}">联系我们</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+
+</block>

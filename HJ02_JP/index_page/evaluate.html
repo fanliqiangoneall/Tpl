@@ -1,0 +1,53 @@
+<!--{$pagename}-->
+<style>
+	.hj01-evaluate{
+		background: url({:getindeximgurl($data7[13])}) no-repeat center;background-size: cover;
+	}
+	.section-heading-title:after{
+	border-bottom-color: {$data1[0]};
+	}
+	.insignia-testimonial-meta_name{
+		color: #{$color};
+	}
+	.insignia-testimonial-meta_job{
+		color: {$data1[0]};
+	}
+</style>
+
+
+<div class="hj01-evaluate">
+		<div class="hj01-evaluate_content">
+			<div class="hj01-evaluate_right">
+				<div class="padding-50px-top padding-40px-right padding-10px-bottom padding-40px-left hj01-evaluate_right_content" id="hj01-evaluate_right_content">
+					<div class="hj01-evaluate_right_title">
+						<h3 class="section-heading-title margin-10px-top">{$data7[0]}</h3>
+					</div>
+					<div class="evaluate_list margin-25px-tb">
+						<php>
+
+							for($a=1;$a<12;$a=$a+4){
+						</php>
+						<if condition="$data7[$a] neq ''">
+							<div id="ev{$a}">
+								<div class="insignia-testimonial-image padding-30px-bottom">
+									<img src="{:getindeximgurl($data7[$a])}" alt=""/>
+								</div>
+								<div class="insignia-testimonial-text padding-25px-bottom">
+									{$data7[$a+1]}
+								</div>
+								<div class="insignia-testimonial-meta">
+									<div class="insignia-testimonial-meta_name font-weight-500 line-height-16">{$data7[$a+2]}</div>
+									<span class="insignia-testimonial-meta_job">{$data7[$a+3]}</span>
+								</div>
+							</div>
+						</if>
+
+						<php>
+							}
+						</php>
+					</div>
+				</div>
+
+			</div>
+		</div>
+</div>

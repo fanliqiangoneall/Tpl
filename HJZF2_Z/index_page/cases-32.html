@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<php>
+	if($data548[0]){
+		$color = $data548[0];
+	}
+</php>
+<style>
+ <if condition="$data548[1]">
+    .hjzf2_Z_case32 {
+        background-image: url({:getindeximgurl($data548[1])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+.hjzf2_Z_case32_con span:after{
+	background-color: #{$color};
+}
+</style>
+<section class="hjzf2_Z_case32 index_pd">
+
+	<div class="text-center pb40">
+		<div class="ruiyi_title">
+			<div class="index_title">
+				{$data548[2]}
+			</div>
+			<div class="index_text">
+				{$data548[3]}
+			</div>
+		</div>
+	</div>
+	<php>
+		$arr = get_list_val($data548[4]);
+		$arra = get_list_val($data548[5]);
+	</php>
+	<div class="hjzf2_Z_case32_wrapper">
+		<ul class="hjzf2_Z_case32_wrapper_left">
+			<volist name="arr" id="a" offset="0" length="6">
+				<li class="hjzf2_Z_case32_con_box">
+					<a href="{$a[link]}">
+						<img src="{$a[img]}" alt="{$a[title]}" class="img-full">
+						<div class="hjzf2_Z_case32_con_title">{$a[title]}</div>
+						<div class="hjzf2_Z_case32_con">
+							<span>{$a[title]}</span>
+							<p class="index_text">{$a[info]}</p>
+						</div>
+					</a>
+				</li>
+			</volist>
+		</ul>
+		<div class="hjzf2_Z_case32_wrapper_right">
+			<volist name="arra" id="a" offset="0" length="1">
+				<a href="{$a[link]}" class="hjzf2_Z_case32_con_box">
+					<img src="{$a[img]}" alt="{$a[title]}" class="img-full">
+						<div class="hjzf2_Z_case32_con_title">{$a[title]}</div>
+						<div class="hjzf2_Z_case32_con">
+						<span>{$a[title]}</span>
+						<p class="index_text">{$a[info]}</p>
+					</div>
+				</a>
+			</volist>
+		</div>
+	</div>
+
+</section>

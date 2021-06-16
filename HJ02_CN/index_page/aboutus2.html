@@ -1,0 +1,39 @@
+<!--{$pagename}-->
+<if condition="$data41[0]">
+        <style>
+            .HJ02-aboutus2-left{
+                background: url({:getindeximgurl($data41[0])}) no-repeat center;
+            }
+        </style>
+    </if>
+    <if condition="$data41[1]">
+        <style>
+            .HJ02-aboutus2-right{
+                background: url({:getindeximgurl($data41[1])}) repeat center;
+            }
+        </style>
+    </if>
+    <style>
+        .HJ02-aboutus2-content a{
+            background: #{$color};
+        }
+    </style>
+    
+    
+    <div id="HJ02-aboutus2">
+        <div class="HJ02-aboutus2-left ">
+    
+        </div>
+        <div class="HJ02-aboutus2-right ">
+                <div class="HJ02-aboutus2-content" id="HJ02-aboutus2-content">
+                        <h3>{$data41[2]}</h3>
+                    <div class="HJ02-abus_content">
+                        {:HtmlEncode(subtxt($company_info['description'],420))}&nbsp;&nbsp;
+                    </div>
+                    <a <if condition="$data41[3]">href="{$data41[3]}" <else/> href="{:U('/aboutus')}"</if>>查看更多</a>
+                </div>
+        </div>
+    </div>
+    
+    
+    

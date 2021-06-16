@@ -1,0 +1,71 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<style>
+		.HJZF_Z__Breadcrumbs span.current{
+			color: #{$color};
+		}
+		.InsidePages_left_content-main{
+			border-top: 2px solid #{$color};
+		}
+		.InsidePages_left_content-main{
+			border-top: 2px solid #{$color};
+		}
+	</style>
+	<div class="index_wrapper inner9__wrapper" id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner"><img	src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+				</volist>
+				</volist>
+				<else/>
+				<div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+			</if>
+
+		</div>
+
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="index_inner container">
+				<div class="row HJZF_Z__innerContent_product_categroy9 clearfix">
+                	<div class="InsidePages_content2 col-xs-12">
+                        <div class="InsidePages_content-right__wrap">
+                        	{:htmlspecialchars_decode($tag_info['body'])}
+                        </div>                    
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main" >
+                                <div class="inner-9_editor_content_title index_sub_title">{:__('Related products')}</div>
+                                <div class="proinquiry"><include file="HJZF2_Z:relationinfo" /></div>
+                                <div style="clear:both;"></div>
+    
+                                <div class="inner-9_editor_content_title index_sub_title">{:__('Related news')}</div>
+    
+                                <div class="proinquiry"><include file="HJZF2_Z:relationnew" /></div>
+                                <div style="clear:both;"></div>
+    
+                                <div style="height: 30px;width: 100%"></div>
+    
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

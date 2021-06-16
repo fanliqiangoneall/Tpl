@@ -1,0 +1,47 @@
+<!--{$pagename}-->
+<style>
+    .other_40_wrapper a:hover,
+    .other_40_wrapper a i {
+        color: #{$data292[0]};
+    }
+    .hjzf2_other_40 .index_title{
+        border-bottom: 1px solid #{$data292[0]};
+    }
+</style>
+<section class="hjzf2_other_40 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="pb40">
+                <div class="index_title pb20">
+                    {$data292[1]}
+                </div>
+                <div class="index_sub_title">
+                    {$data292[2]}
+                </div>
+            </div>
+            <php>
+                $bottom_nav_str2=explode("\\n",$data292[3]); foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2) { $bottom_navs2=explode("：",$bottom_nav_arr2);
+                $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+            </php>
+            <php>
+                if($data292[4]){ $imgs=[];$imgs_mobile=[]; $matches=getimages(htmlspecialchars_decode($data292[4])); if(isset($matches[1])){
+                $imgs=$matches[1]; $imgs_mobile=$matches[1]; } } $img_index=0; $img_index_mobile = 0;
+            </php>
+            <ul class="clearfix row-little other_40_wrapper">
+                <if condition="$bottom_nav2">
+                    <volist name="bottom_nav2" id="nav">
+                        <php>
+                            $tuji=$imgs[$img_index]; $img_index++;
+                        </php>
+                        <li class="col-xs-6 col-md-4">
+                            <a href="{$nav['href']}">
+                                <img src="{$tuji}" class="img-responsive" alt="{$nav['name']}">
+                                <p class="index_sub_title">{$nav['name']}</p>
+                            </a>
+                        </li>
+                    </volist>
+                </if>
+            </ul>
+        </div>
+    </div>
+</section>

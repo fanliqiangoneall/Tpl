@@ -1,0 +1,103 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_advantage-21 .hj01-advantage2 {
+        background: url({:getindeximgurl($data367[0])
+    }
+    ) no-repeat center;
+    background-size: cover;
+    }
+    .new_hjzf_advantage-21 .section-heading-title:after {
+        border-bottom-color: #{$data1[0]};
+    }
+    .new_hjzf_advantage-21 .insignia-testimonial-meta_name {
+        color: #{$color};
+    }
+    .new_hjzf_advantage-21 .insignia-testimonial-meta_job {
+        color: #{$data1[0]};
+    }
+    .new_hjzf_advantage-21 .advantages2_list {
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    .new_hjzf_advantage-21 .advantages2_list .swiper-button-prev {
+        right: 90px !important;
+        left: auto;
+        top: auto;
+        bottom: 7px;
+        background: url({:getindeximgurl($data367[3])}) no-repeat center bottom;
+        opacity: .8;
+    }
+    .new_hjzf_advantage-21 .advantages2_list .swiper-button-prev:hover {
+        opacity: 1;
+    }
+    .new_hjzf_advantage-21 .advantages2_list .swiper-button-next {
+        right: 0px !important;
+        left: auto;
+        top: auto;
+        bottom: 7px;
+        background: url({:getindeximgurl($data367[4])}) no-repeat center bottom;
+        opacity: .8;
+    }
+    .new_hjzf_advantage-21 .advantages2_list .swiper-button-next:hover {
+        opacity: 1;
+
+    }
+    .new_hjzf_advantage-21 .advantages2_list .swiper-pagination {
+        text-align: right;
+        display: inline-block;
+        width: auto;
+        position: absolute;
+        right: 40px;
+        bottom: 6px;
+    }
+    .new_hjzf_advantage-21 .advantages2_list .swiper-pagination .swiper-pagination-current {
+        color:#{$data1[0]};
+    }
+</style>
+
+
+<div class="hj01-advantage2 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-5 fr adv-20-bg">
+                <div class="hj01-evaluate_right_content" id="hj01-evaluate_right_content">
+                    <div class="hj01-adv2_right_title">
+                        <h3 class="section-heading-title index_title">{$data367[1]}</h3>
+                    </div>
+                    <if condition="$data367[6]">
+                    <div class="adv2-image"><a href="javascript:void(0);" id="adv_video1" data-video="{$data367[6]}"><img src="{:getindeximgurl($data367[5])}" border="0" width="100%" height="auto"/></a></div>
+                    <else/>
+                    <div class="advantages2_list swiper-container">
+                        <div class="swiper-wrapper">
+                            <php>
+                                $arr = get_list_val($data367[2]);
+                            </php>
+                            <volist name="arr" id="a">
+                                <div class="swiper-slide">
+                                    <if condition="$a[sub]">
+                                        <div class="index_sub_title pb20">
+                                            {$a[sub]}
+                                        </div>
+                                    </if>
+                                    <div class="insignia-testimonial-text">
+                                        {$a[title]}
+                                    </div>
+                                    <div class="adv2-image ">
+                                        <img src="{$a[img]}" alt="{$a[title]}" />
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                    </div>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

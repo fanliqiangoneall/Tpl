@@ -1,0 +1,130 @@
+<!--{$pagename}-->
+<php>
+    if($data73[0]) {
+    $ab_bg = getindeximgurl($data73[0]);
+} elseif ($data73[33]){
+$ab_bgcolor = $data73[33];
+}else{
+$ab_bg = '';
+}
+</php>
+
+<style>
+.hjzf2_z__aboutus-hj03-topitem .button_wrap a{
+    color: #{$data73[1]};
+}
+.hjzf2_z__aboutus-hj03-downItem.red{
+    background: #{$data73[18]};
+}
+.hjzf2_z__aboutus-hj03-downItem.blue{
+    background: #{$data73[22]};
+}
+.hjzf2_z__aboutus-hj03-downItem.purple{
+    background: #{$data73[26]};
+}
+.hjzf2_z__aboutus-hj03-downItem.green{
+    background: #{$data73[30]};
+}
+.hjzf2_z__aboutus-hj03{
+    background: url({$ab_bg}) no-repeat center/cover;
+}
+.hjzf2_z__aboutus-hj03{
+    background:#{$$ab_bgcolor};
+}
+
+</style>
+
+<section class="hjzf2_z__aboutus-hj03 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf2_z__aboutus-hj03-top">
+                <div class="col-xs-12 col-lg-6 col-xl-3 hjzf2_z__aboutus-hj03-topitem">
+                    <div class="first">
+                        <h3 class="first_name index_title">{$data73[2]}</h3>
+                        <p class="first_desc index_text"> {:HtmlEncode($data73[3])}</p>
+                        <div class="button_wrap">
+                            <a href="{$data73[4]}" class="index_text">{:__('Read More')}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 col-xl-3 hjzf2_z__aboutus-hj03-topitem">
+                    <div class="second">
+                        <div class="second_img">
+                            <img class="lazy" src="{:getindeximgurl($data73[5])}" alt="{$data73[6]}"/>
+                        </div>
+                        <div class="second_name index_sub_title">{$data73[6]}</div>
+                        <p class="second_desc index_text"> {:HtmlEncode($data73[7])}</p>
+                        <div class="button_wrap">
+                            <a href="{$data73[8]}" class="index_text">{:__('Read More')}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 col-xl-3 hjzf2_z__aboutus-hj03-topitem">
+                    <div class="second">
+                        <div class="second_img">
+                            <img class="lazy" src="{:getindeximgurl($data73[9])}" alt="{$data73[10]}"/>
+                        </div>
+                        <div class="second_name index_sub_title">{$data73[10]}</div>
+                        <p class="second_desc"> {:HtmlEncode($data73[11])}</p>
+                        <div class="button_wrap">
+                            <a href="{$data73[12]}" class="index_text">{:__('Read More')}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 col-xl-3 hjzf2_z__aboutus-hj03-topitem">
+                    <div class="second">
+                        <div class="second_img">
+                            <img class="lazy" src="{:getindeximgurl($data73[13])}" alt="{$data73[14]}"/>
+                        </div>
+                        <div class="second_name index_sub_title">{$data73[14]}</div>
+                        <p class="second_desc"> {:HtmlEncode($data73[15])}</p>
+                        <div class="button_wrap">
+                            <a href="{$data73[16]}" class="index_text">{:__('Read More')}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="col-xs-12">
+                <div class="hjzf2_z__aboutus-hj03-down">
+                    <div class="hjzf2_z__aboutus-hj03-downItem red">
+                        <a href="{$data73[33]}">
+                            <div class="down_img">
+                                <img class="lazy" src="{:getindeximgurl($data73[17])}" alt="{$data73[19]}"/>
+                            </div>
+                            <h2 class="down_name index_sub_title">{$data73[19]}</h2>
+                            <p class="down_desc index_text">{:HtmlEncode($data73[20])}</p>
+                        </a>
+                    </div>
+                    <div class="hjzf2_z__aboutus-hj03-downItem blue">
+                        <a href="{$data73[34]}">
+                            <div class="down_img">
+                                <img class="lazy" src="{:getindeximgurl($data73[21])}" alt="{$data73[23]}"/>
+                            </div>
+                            <h2  class="down_name index_sub_title">{$data73[23]}</h2>
+                            <p  class="down_desc index_text">{:HtmlEncode($data73[24])}</p>
+                        </a>
+                    </div>
+                    <div class="hjzf2_z__aboutus-hj03-downItem purple">
+                        <a href="{$data73[35]}">
+                            <div class="down_img">
+                                <img class="lazy" src="{:getindeximgurl($data73[25])}" alt="{$data73[27]}"/>
+                            </div>
+                            <h2  class="down_name index_sub_title">{$data73[27]}</h2>
+                            <p  class="down_desc index_text">{:HtmlEncode($data73[28])}</p>
+                        </a>
+                    </div>
+                    <div class="hjzf2_z__aboutus-hj03-downItem green">
+                        <a href="{$data73[36]}" class="d-b">
+                            <div class="down_img">
+                                <img class="lazy" src="{:getindeximgurl($data73[29])}" alt="{$data73[31]}"/>
+                            </div>
+                            <h2  class="down_name index_sub_title">{$data73[31]}</h2>
+                            <p  class="down_desc index_text">{:HtmlEncode($data73[32])}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

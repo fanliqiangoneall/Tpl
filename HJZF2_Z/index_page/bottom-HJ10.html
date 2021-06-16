@@ -1,0 +1,157 @@
+<!--{$pagename}-->
+<php>
+    if($data318[2]){
+    $high_color = $data318[2];
+    }else{
+    $high_color = $color;
+    }
+</php>
+<style>
+    .bottom_hj10 {
+        background: #{$data318[0]};
+    }
+
+    .bottom_hj10 a,
+    .bottom_hj10 {
+        color: #{$data318[3]};
+    }
+
+    .bottom_hj10 .toTop {
+        background-color: #{$data318[1]};
+    }
+
+    .bottom_hj10_submit button:last-child {
+        background-color: #{$data318[5]};
+    }
+
+    .bottom_hj10_wrapper li>a:first-child:before {
+        background-color: #{$high_color};
+    }
+
+    .bottom_hj10_wrapper li a:hover,
+    .bottom_hj10_copyright a:hover {
+        color: #{$high_color};
+    }
+</style>
+<php>
+    if($data318[13]){
+    $tij = $data318[13];
+    }else{
+    $tij = 'SUBSCRIBE';
+    }
+</php>
+<section class="bottom_hj10">
+    <button class="toTop flex-center" onclick="goTop()">
+        <img src="__TMPL__HJZF2_Z/img/jt_left.png">
+        Top
+    </button>
+    <div class="container clearfix">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bottom_hj10_submit">
+                    <Include file="./Tpl/HJZF2_Z/email_address_chuanwu.html" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_hj10_linewave">
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="bottom_hj10_wrapper hidden-sm hidden-md hidden-xs">
+                    <php>
+                        $arr = get_list_val($data318[6]);
+                    </php>
+                    <li>
+                        <volist name="arr" id="a" key="k">
+                            <php>
+                                $ks = ($k*2)/10;
+                            </php>
+                            <a href="{$a[link]}" class="wow fadeInUp" data-wow-delay="{$ks}s">{$a[title]}</a>
+                        </volist>
+                    </li>
+                    <php>
+                        $arra = get_list_val($data318[7]);
+                    </php>
+                    <li>
+                        <volist name="arra" id="b" key="ka">
+                            <php>
+                                $kas = ($ka*2)/10;
+                            </php>
+                            <a href="{$b[link]}" class="wow fadeInUp" data-wow-delay="{$kas}s">{$b[title]}</a>
+                        </volist>
+                    </li>
+                    <php>
+                        $arrb = get_list_val($data318[8]);
+                    </php>
+                    <li>
+                        <volist name="arrb" id="c" key="kb">
+                            <php>
+                                $kbs = ($kb*2)/10;
+                            </php>
+                            <a href="{$c[link]}" class="wow fadeInUp" data-wow-delay="{$kbs}s">{$c[title]}</a>
+                        </volist>
+                    </li>
+                    <li class="last">
+                        <a href="{$data318[10]}" class="wow fadeInUp" data-wow-delay=".2s" <if
+                            condition="chaifen($about['email'],0)">
+                            onclick="turn_sta(3,2);"
+                            </if>
+                            >{$data318[9]}</a>
+                        <if condition="chaifen($about['phone'],0)">
+                            <p class="wow fadeInUp" data-wow-delay=".4s"><i class="fa fa-phone"></i>
+                                <span>{:chaifen($about['phone'],0)}</span></p>
+                        </if>
+                        <if condition="chaifen($about['email'],0)">
+                            <p class="wow fadeInUp" data-wow-delay=".6s"><i class="fa fa-envelope-o"></i> <span><a
+                                        href="mailto:{:chaifen($about['email'],0)}">{:chaifen($about['email'],0)}</a></span>
+                            </p>
+                        </if>
+                        <if condition="chaifen($about['fax'],0)">
+                            <p class="wow fadeInUp" data-wow-delay=".8s"><i class="fa fa-fax"></i>
+                                <span>{:chaifen($about['fax'],0)}</span></p>
+                        </if>
+                        <if condition="chaifen($about['address'],0)">
+                            <p class="wow fadeInUp" data-wow-delay="1s"><i class="fa fa-map-marker"></i>
+                                <span>{:chaifen($about['address'],0)}</span></p>
+                        </if>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="bottom_hj10_copyright clearfix index_text">
+                <php>
+                    $nowtime=date("Y",time());
+                </php>
+                <div class="fl col-xs-12 col-lg-8">CopyRight © {$nowtime} - {$about['company_name']}&nbsp;&nbsp;{:__('All rights reserved')}&nbsp;
+                    <if condition="get_txtBeiAn()">
+                        <a href="https://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;
+                    </if>
+                    <a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;
+                    <a href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<if
+                            condition="$data318[12]">{$data318[12]}
+                            <else />中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        </if>
+                        <else />
+                        <if condition="$data318[12]">{$data318[12]}
+                            <else /><a href="https://www.one-all.com" title="Zhonghuan Internet"
+                                target="_blank">Designed by Zhonghuan Internet</a></if>
+                    </if>
+                </div>
+                <div class="fr col-xs-12 col-lg-4 share text-right">
+                    <php>
+                        $arrc = get_list_val($data318[11]);
+                    </php>
+                    <volist name="arrc" id="d">
+                        <a href="{$d[link]}" target="_blank"><img src="{$d[img]}"></a>
+                    </volist>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

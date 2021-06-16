@@ -1,0 +1,39 @@
+
+<style type="text/css">
+    .hj02_left_title{
+        background: #{$color};
+    }
+    .main-content_inner >ul{
+        border:1px solid #{$color};
+    }
+    .main-content_inner > ul > li > ul>li:hover a h3{
+        color: #{$color};text-decoration: underline;
+    }
+    .main-content_inner > ul > li.yijion>a{
+        background:#f0f0f0;
+    }
+    .main-content_inner > ul > li.yijion>a>h3{
+        color: #{$color};
+    }
+    .main-content_inner > ul > li:hover >a{
+        background: #f0f0f0;
+    }
+    .main-content_inner > ul > li:hover >a>h3{
+        color: #{$color};
+    }
+    .main-content_inner > ul > li.yijion > ul>li.childon >a>h3{
+        color:#{$color};
+    }
+</style> 
+
+<div class="main_left">
+    <div class="main-content_inner">
+        <div class="hj02_left_title"><if condition="$data47[5]">{$data47[5]}<else/>Case classification</if></div>
+        <ul class="margin-20px-bottom">
+            <volist empty="no" name="allnewclass" id="new"  offset="0">
+                <li <if condition="$newscate['classid'] eq $new['classid']">class="yijion"<else/>class="yiji"</if>><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>

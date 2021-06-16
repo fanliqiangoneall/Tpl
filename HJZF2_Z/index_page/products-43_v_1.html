@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<php>
+	if($data644[0]){
+	$color = $data644[0];
+	};
+</php>
+<style>
+	.products_43{
+		background-color: #{$data644[2]};
+	}
+	.products_43_right h2 a{
+		color: #{$color};
+	}
+	.products_43_right a.more:hover{
+		color: #{$color};
+		border-color: #{$color};
+	}
+</style>
+<php>
+	$arr = get_list_val($data644[3]);
+</php>
+<section class="products_43">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				
+				<ul class="products_43_wrapper">
+					<div class="products_43_title index_title pb20">
+						{$data644[1]}
+					</div>
+					<volist name="arr" id="a">
+						<li>
+							<div class="products_43_left">
+								<a href="{$a[link]}">
+									<img src="{$a[img]}" alt="{$a[title]}" class="img-fluid">
+								</a>
+							</div>
+							<div class="products_43_right">
+								<h2><a href="{$a[link]}">{$a[title]}</a></h2>
+								<p>{$a[info]}</p>
+								<a href="{$a[link]}" class="more">{:__('Read More')}</a>
+							</div>
+						</li>
+					</volist>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</section>

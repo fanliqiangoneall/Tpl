@@ -1,0 +1,153 @@
+
+<script>
+$(function(){
+$("#content").focus(function(){
+$("#content_alert").html("");
+});
+
+$("#code_char2").focus(function(){
+$("#code_char2_alert").html("");
+});
+    jQuery("#getcode_char2").click(function(){
+        jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+    });
+    jQuery("#getcode_char12").click(function(){
+        jQuery("#getcode_char2").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+    });
+
+})
+function yz_comment(){
+var count=0;
+var content =Trims($("#content").val());
+    var str="<?php echo LANGUAGE?>";
+if(content .length<=0){
+    if(str=='cn'){
+        $("#content_alert").html("*评论内容不能为空");
+    }else{
+        $("#content_alert").html("*Comment cannot be empty");
+    }
+
+count++;
+}
+else{
+$("#content_alert").html("");
+}
+    var code_char2 = jQuery("#code_char2").val();
+    jQuery.ajax({
+        type: "POST",
+        url: "/verification",
+        async:false,
+        data: {code:code_char2},
+        success: function(data){
+
+            if(data==1){
+                jQuery("#code_char2_alert").html("");
+            }else{
+                count++;
+                if(str=='cn'){
+                    jQuery("#code_char2_alert").html("验证码错误");
+                }else{
+                    jQuery("#code_char2_alert").html("Verification code error");
+                }
+
+            }
+        }
+    });
+
+if(count>0){
+return false;
+}
+else{
+$("#commentsubmit").attr("disabled","true");
+return true;
+}
+
+}
+
+</script>
+<style>
+    .commententries h3,.comment_form h3{
+        font-size: 20px;margin-bottom: 40px;text-transform: uppercase;
+    }
+    ul.commentlist{
+        margin: 20px 0 20px 0;
+    padding: 0 0 20px 0;
+    }
+    .commentlist ul li{
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+        border-bottom: 1px dashed #e3e3e3;
+    }
+    .comment-author{
+        width: 80px;height: 80px;margin-right: 30px;overflow: hidden;border-radius: 50%;flex-shrink: 0;
+    }
+    .comment-author img{max-width: 100%;}
+    .author-name{
+        font-size: 18px;
+        color: #000;
+        margin-bottom: 10px;
+    }
+    .comment_more{text-align: right;}
+    #commentsubmit{
+        background: #{$inner_data[1]};
+        color: #fff;
+    }
+   
+</style>
+<section class="commententries">
+    
+    <h3 class="">COMMENT ( {:newscommentlistcount($news['nid'])} )</h3>
+    <ul class="commentlist">
+        <if condition="newscommentlistcount($news['nid']) eq 0">
+            <font style="color:#999999;">{:__('No Comment')}</font>
+         <else/>
+             <ul>
+               <volist empty="No Content" name="commentlist" id="commentlist" key="k">
+                   <li>
+                       <div class="comment-author">
+                           <img src="__TMPL__HJZF2_Z/img/none.png" alt="">
+                       </div>
+                       <div class="comment-details">
+                        <div class="author-name">{:date("Y-m-d",$commentlist["adddate"])}</div>
+                        <div class="comment-body">{$commentlist["content"]}</div>
+                       </div>
+                     </li>
+               </volist>
+             </ul>
+             <div class="comment_more">
+                <a href="{:U('/newscommentlist',array('nid'=>$news['nid']))}" target="_blank">{:__('View More')}</a>
+             </div>
+          </if>
+    </ul>
+</section>
+
+<div class="comment_form">
+    <h3>{:__('I want to comment')}</h3>
+    <form action="__APP__/newssavecontent" method="post" onsubmit="return yz_comment();">
+        <div class="inquiryinfo">
+            <div class="inquiryleft">{:__('Content')}<span style="color:#f00">*</span></div>
+            <div class="inquiryright">
+                <textarea name="content" id="content" style="height: 200px;"></textarea><span class="yz_alert" id="content_alert" style="color:#f00"></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="inquiryinfo">
+            <div class="inquiryleft">{:__('Verification code')}<span style="color:#f00">*</span></div>
+
+            <div class="inquiryright">
+                <input type="text" class="input" id="code_char2"  name="code2" maxlength="3" style="width: 30%"/>&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char2" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;
+                <a href="javascript:void(0);" id="getcode_char12">
+                    <img src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -4px;top: -1px;height: 32px;"/>
+                </a>
+                <br/>
+                <span class="yz_alert" id="code_char2_alert" style="color: #f00"></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="inquiryinfo">
+            <input class="productbutton" id="commentsubmit" type="submit" value="{:__('Submit')}"  name="submit"/>
+        </div>
+    </form>
+    <div class="clear"></div>
+</div>

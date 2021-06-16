@@ -1,0 +1,75 @@
+<extend name="HJ01:base" />
+<block name="content"><div id="wrapper">{$tpl}</div>
+    <!--浮窗-->
+    <if condition="$data47[0]">
+        <style>
+            .floadAd { position: absolute;z-index: 999900; }
+            .floadAd .item { display: block; }
+            .floadAd .item img { vertical-align: bottom; }/* a img 的组合浏览器默认下边会有几个像素的空白，这里可以消除空白*/
+        </style>
+        <div id="floadAD" class="floadAd">
+            <a class="close" href="javascript:void(0);" style="color: red;position: absolute;right: 0;top: 0"><img src="__TMPL__HJ01/img/close.jpg" alt=""/></a>
+            <a class="item" title='' href="{$data47[1]}" target="_blank">
+                <img src="{:getindeximgurl($data47[0])}" alt="" /></a>
+        </div>
+        <script>
+            FloatAd("#floadAD");//调用
+
+            //广告漂浮窗口
+            function FloatAd(selector) {
+                var obj = $(selector);
+                if (obj.find(".item").length == 0) return;
+                var windowHeight = $(window).height();
+                var windowWidth = $(window).width();
+                var dirX = -1.5;
+                var dirY = -1;
+
+                var delay = 30;
+                obj.css({left: windowWidth / 2 - obj.width() / 2 + "px", top: windowHeight / 2 - obj.height() / 2 + "px"});
+                obj.show();
+                var handler = setInterval(move, delay);
+
+                obj.hover(function () {
+                    clearInterval(handler);
+                }, function () {
+                    handler = setInterval(move, delay);
+                });
+
+                obj.find(".close").click(function () {
+                    close();
+                });
+                $(window).resize(function () {
+                    windowHeight = $(window).height();
+                    windowWidth = $(window).width();
+                });
+                function move() {
+                    var currentPos = obj.position();
+                    var nextPosX = currentPos.left + dirX;
+                    var nextPosY = currentPos.top + dirY;
+
+                    /* if (nextPosX >= windowWidth - obj.width()) {
+                     close();
+                     }*/
+
+                    if (nextPosX <= 0 || nextPosX >= windowWidth - obj.width()) {
+                        dirX = dirX * -1;
+                        nextPosX = currentPos.left + dirX;
+                    }
+                    if (nextPosY <= 0 || nextPosY >= windowHeight - obj.height() - 5) {
+                        dirY = dirY * -1;
+                        nextPosY = currentPos.top + dirY;
+                    }
+                    obj.css({left: nextPosX + "px", top: nextPosY + "px"});
+                }
+
+                function close() {
+                    clearInterval(handler);
+                    obj.remove();
+                }
+            }
+
+        </script>
+    </if>
+
+    <!--浮窗-->
+</block>

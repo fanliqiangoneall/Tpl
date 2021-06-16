@@ -1,0 +1,133 @@
+<!--{$pagename}-->
+<php>
+    if($data8[2] ==''){
+    $data8[2] =70;
+    }
+    if($data8[3] ==''){
+    $data8[3] =50;
+    }
+    if($data8[4] ==''){
+    $data8[4] =0;
+    }
+    if($data8[5] ==''){
+    $data8[5] =0;
+    }
+</php>
+<style>
+    .new_hjzf_news .HJ05-news{padding-bottom: 50px;}
+    .new_hjzf_news .HJ05-news-box{
+        padding-top: {$data8[2]}px;padding-bottom:{$data8[3]}px;margin-top:{$data8[4]}px;margin-bottom:{$data8[5]}px;background:#f2f2f2;
+    }
+    .new_hjzf_news .news_item-title:hover a,.new_hjzf_news .news_item_more:hover{
+        color: #{$data8[6]};
+    }
+    .new_hjzf_news .HJ05-news .swiper-button-next:hover,.new_hjzf_news .HJ05-news .swiper-button-prev:hover,.new_hjzf_news .HJ05-news .swiper-slide .hj05-news-pic .news_item_date,.new_hjzf_news .HJ05-advan-title .ttwrap{
+        background: #{$data8[6]};
+    }
+    .new_hjzf_news .HJ05-advan-title .ttwrap:before{
+        background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$data8[6]} 52%,#{$data8[6]} 100%);
+    }
+    .new_hjzf_news .HJ05-advan-title .ttwrap:after{
+        background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$data8[6]} 52%,#{$data8[6]} 100%);
+    }
+    .new_hjzf_news .HJ05-news .swiper-button-next{width: 36px;height: 36px;background: #fff;top: 95%;text-align: center;right: calc(50% - 40px);}
+    .new_hjzf_news .HJ05-news .swiper-button-prev{width: 36px;height: 36px;background: #fff;top: 95%;text-align: center;left: calc(50% - 40px);}
+    .new_hjzf_news .HJ05-news .swiper-button-next i,.new_hjzf_news .HJ05-news .swiper-button-prev i{font-size: 24px;line-height: 36px;text-align: center;font-weight: normal}
+    .new_hjzf_news .HJ05-news .swiper-button-next:hover i,.new_hjzf_news .HJ05-news .swiper-button-prev:hover i{color: #fff;}
+</style>
+
+<!--news start-->
+<if condition="$data8[7]">
+    <section class="hj-news HJ05-news-box">
+        <div class="container">
+            <h3 class="HJ05-advan-title wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data[0]}</span></h3>
+            <p class="HJ05-advan-title_2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{$data[1]}</p>
+            <div class="HJ05-news-content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">
+                <php>
+                    $arr_str=$data8[7];
+                    $arr=explode(',',$arr_str);
+
+                    foreach($arr as $k=>$a){
+                    $list[$k]['name']=get_wap_news_class_name($a);
+                    $list[$k]['data']=get_index_news_category($a,18);
+                    }
+                </php>
+                <volist name="list" id="li" offset="0" length="1">
+                    <div class="swiper-container HJ05-news">
+                        <div class="swiper-wrapper">
+                            <volist name="li['data']" id="indexnews" offset="0" length="18" key="h">
+                                <div class="swiper-slide news_item">
+                                    <div class="hj05-news-pic">
+                                        <if condition="C('language') eq 'en'">
+                                            <p class="news_item_date flex"><span class="bt">{:date('d ',$indexnews['created'])}</span><span class="mnth">{:date('M',$indexnews['created'])}</span></p>
+                                            <elseif condition="C('language') eq 'cn'"/>
+                                            <p class="news_item_date flex"><span class="bt">{:date('d ',$indexnews['created'])}</span><span class="mnth">{:date('m',$indexnews['created'])}月</span></p>
+                                        </if>
+
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img <if condition="$indexnews['new_pro']">src="{:getimgurl($indexnews['new_pro'])}"<else/>src="{:getindeximgurl($data47[13])}"</if> border="0" /></a>
+                                    </div>
+                                    <php>
+                                        $newsclass_name = get_wap_news_class_name($indexnews['news_class']);
+                                    </php>
+                                    <div class="news_info">
+                                        <div class="news_class_name">{$newsclass_name}</div>
+                                        <div class="news_item-title ellipsis_two"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],60)}</a></div>
+                                        <div class="news_item-desc ellipsis_two">{:subtxt($indexnews['news_description'],100)}</div>
+                                        <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" class="news_item_more">{:__('Read More')}<i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+                        <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                    </div>
+                </volist>
+
+
+            </div>
+
+        </div>
+    </section>
+    <else/>
+    <section class="hj-news HJ05-news-box">
+        <div class="container">
+            <h3 class="HJ05-advan-title wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data[0]}</span></h3>
+            <p class="HJ05-advan-title_2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{$data[1]}</p>
+            <div class="HJ05-news-content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">
+                <div class="swiper-container HJ05-news">
+                    <div class="swiper-wrapper">
+                        <volist name="indexnews" id="indexnews" offset="0" length="6" key="h">
+                            <div class="swiper-slide news_item">
+                                <div class="hj05-news-pic">
+                                    <if condition="C('language') eq 'en'">
+                                        <p class="news_item_date flex"><span class="bt">{:date('d ',$indexnews['created'])}</span><span class="mnth">{:date('M',$indexnews['created'])}</span></p>
+                                        <elseif condition="C('language') eq 'cn'"/>
+                                        <p class="news_item_date flex"><span class="bt">{:date('d ',$indexnews['created'])}</span><span class="mnth">{:date('m',$indexnews['created'])}月</span></p>
+                                    </if>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img <if condition="$indexnews['new_pro']">src="{:getimgurl($indexnews['new_pro'])}"<else/>src="{:getindeximgurl($data47[13])}"</if> border="0" /></a>
+                                </div>
+                                <php>
+                                    $newsclass_name = get_wap_news_class_name($indexnews['news_class']);
+                                </php>
+                                <div class="news_info">
+                                    <div class="news_class_name">{$newsclass_name}</div>
+                                    <div class="news_item-title ellipsis_two"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],60)}</a></div>
+                                    <div class="news_item-desc ellipsis_two">{:subtxt($indexnews['news_description'],100)}</div>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" class="news_item_more">{:__('Read More')}<i class="fa fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+                    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</if>
+
+
+<!--news end-->
+

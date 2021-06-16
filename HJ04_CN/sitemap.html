@@ -1,0 +1,73 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <div class="pageTitleContainer">
+                <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                    您的位置：&nbsp;
+                    <a href="{:U('/')}">首页</a>&nbsp;&nbsp;
+                    <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                    <span class="pageTitleActive">
+                       网站地图
+                    </span>
+                </div>
+            </div>
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[6])}) center no-repeat"></div>
+            </if>
+        </div>
+
+        <div <if condition="$data47[39] neq ''">style="background: {$data47[21]};"<else/></if>>
+            <div class="page_nei_main container" id="main-content-wrapper">
+                <if condition="$data47[39] neq ''">
+                    <Include file="./Tpl/HJ04_CN/left02.html" />
+                    <else/>
+                    <section class="main-content-left">
+                        <Include file="./Tpl/HJ04_CN/left.html" />
+                    </section>
+                </if>
+
+                <section <if condition="$data47[39] eq ''">class="main-content-right rt" <else/>class="main-content-right02" style="margin-top:25px;"</if>>
+                <div class="page_RightMain">
+                    <div class="page_Main" id="sitemap">
+                        <ul>
+                            <volist name="web_navigation" id="vo_map" offset="0" length='8' key="key">
+                                <li><a href="{$vo_map['url']}" <if condition="strstr($vo_map['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,5)"</if>>{$vo_map['title']}</a>
+                                    <if condition="strstr($vo_map['url'],'/product.html') eq '/product.html'">
+                                        <ul style="margin-bottom:10px;">
+                                            <volist empty="" name="allclass" id="allclass_map">
+                                                <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_map['pcid'])}">{$allclass_map['class_name']}</a>
+                                                    <if condition="$allclass_map['childs'] neq ''">
+                                                        <ul>
+                                                            <volist empty="" name="allclass_map['childs']" id="allclass_mapchild">
+                                                                <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_mapchild['pcid'])}">{$allclass_mapchild['class_name']}</a></li>
+                                                            </volist>
+                                                        </ul>
+                                                    </if>
+                                                </li>
+                                            </volist>
+                                        </ul>
+                                    </if>
+                                    <if condition="$vo_map['child'] neq ''">
+                                        <ul style="margin-bottom:10px;">
+                                            <volist name="vo_map['child']" id="navchild">
+                                                <li><a href="{$navchild['url']}"><h3>{$navchild['title']}</h3></a></li>
+                                            </volist>
+                                        </ul>
+                                    </if>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

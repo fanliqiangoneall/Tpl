@@ -1,0 +1,51 @@
+<!--{$pagename}-->
+<php>
+	if($data600[0]){
+		$color = $data600[0];
+	};
+</php>
+<style>
+	.zuanshi_5lei_wrapper_info .zuanshi_5lei_wrapper_title,.zuanshi_5lei_wrapper_info span{
+		color: #{$color};
+	}
+</style>
+<section class="products_zuanshi_cate">
+	<div class="products_zuanshi_cate_bread">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-right">
+					<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;
+					<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$data600[1]}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="container">
+		<div class="row">
+			<ul class="col-xs-12 zuanshi_5lei_wrapper">
+				<php>
+					$arr = get_list_val($data600[2]);
+					</php>
+				<volist name="arr" id="a">
+					<li>
+						<a href="{$a[link]}">
+							<img src="{$a['img']}">
+							<div class="zuanshi_5lei_wrapper_info">
+								<div class="zuanshi_5lei_wrapper_title index_title">
+									{$a[title]}
+								</div>
+								<div class="zuanshi_5lei_wrapper_text index_text">
+									{$a[info]}
+								</div>
+								<span class="index_sub_title">{:__('Read More')}</span>
+							</div>
+						</a>
+					</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+
+</section>

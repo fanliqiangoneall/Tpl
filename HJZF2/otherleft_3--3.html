@@ -1,0 +1,17 @@
+<style>
+    .InsidePage--3__contentNavWrap--100 .InsidePage--3__contentNavWrap--100__list li:hover,.InsidePage--3__contentNavWrap--100 .InsidePage--3__contentNavWrap--100__list li.yijion{
+        background: #{$color};color: #fff;
+    }
+    .InsidePage--3__contentNavWrap--100 .InsidePage--3__contentNavWrap--100__list li:hover a h3, .InsidePage--3__contentNavWrap--100 .InsidePage--3__contentNavWrap--100__list li.yijion a h3{
+        color: #fff;
+    }
+</style>
+    <div class="InsidePage--3__contentNavWrap--100 swiper-container">
+        <ul class="InsidePage--3__contentNavWrap--100__list swiper-wrapper">
+            <volist empty="" name="navrs" id="nav">
+                <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion swiper-slide"<else/>class="yiji swiper-slide"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="swiper-button-next InsidePage--3-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev InsidePage--3-button-prev"><i class="fa fa-angle-left"></i></div>

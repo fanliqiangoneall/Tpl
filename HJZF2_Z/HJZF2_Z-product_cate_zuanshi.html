@@ -1,0 +1,63 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[0]){
+		$color = $inner_data[0];
+		}
+	</php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current {
+			color: #{$color};
+		}
+		.InsidePages_content-right_content_title:before,
+		.main_page .current,
+		.productbutton {
+			background: #{$color};
+		}
+		.main_product_title_right {
+			background: #{$color};
+		}
+		.InsidePages_left_navlist li.yiji:hover>a>h3,
+		.InsidePages_left_navlist li.yiji:hover>.class_button:before,
+		.InsidePages_left_navlist li.yijion>a>h3,
+		ul.InsidePages_left_navlist>li>ul>li:hover>a>h3,
+		ul.InsidePages_left_navlist>li>ul>li.childon>a>h3,
+		ul.InsidePages_left_navlist>li>ul>li>ul>li a h3:hover,
+		ul.InsidePages_left_navlist>li>ul>li>ul>li.thirdon a h3 {
+			color: #{$color};
+		}
+		.InsidePages_left_content-main {
+			border-top: 2px solid #{$color};
+		}
+		.cate_zuanshi li.on a,.noUi-connect,.noUi-touch-area,.noUiSlider.horizontal > a,.filter,.zuanshi_con_left .view,.zuanshi_con_right ul:hover {
+			background-color: #{$color} !important;
+		}
+		.main_page .current {
+			border-color: #{$color};
+		}
+		.page span.current{
+			color: #fff;
+			background-color: #{$color};
+		}
+	</style>
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile.html" />
+		</div>
+
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+							class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<Include file="./Tpl/HJZF2_Z/inner/zuanshi_search.html" />
+
+		
+	</div>
+</block>

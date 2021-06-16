@@ -1,0 +1,124 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+		.HJZF_Z__innerContent_jobs4_list .jobs4_item{
+			margin-bottom: 45px;
+    		border: 1px solid #d9d9d9;
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_title{
+			background: #ebf4fa;
+    		padding: 15px 20px;
+   			position: relative;
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_title span{
+			font-weight:bold;
+			color:#{$color};
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_data{ 
+			position: absolute;
+    		top: 15px;
+    		right: 20px;
+			z-index:91;
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_description{
+			padding: 20px;
+   			position: relative;
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_btn{
+			margin-top: 40px;
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_btn .jobs4_info{
+			display:inline-block;
+			color:#d2d7da;
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_btn a{
+			display: inline-block;
+			float:right;
+			line-height: 32px;
+			color: #fff;
+			border-radius: 32px;
+			padding: 0 25px;
+			transition: all 0.2s ease-out;
+			-webkit-transition: all 0.2s ease-out;
+			-o-transition: all 0.2s ease-out;
+			-moz-transition: all 0.2s ease-out;
+			background: #{$color};
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_btn a i{
+			margin-right:10px;
+		}
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .selInfo dl dd button{
+            background: #{$color};
+        }
+		@media(max-width:767px){
+		.HJZF_Z__innerContent_jobs4_list .jobs4_btn{
+			margin-top: 20px;
+		}
+		.HJZF_Z__innerContent_jobs4_list .jobs4_btn a{
+			float:none;
+			margin-top:15px;
+		}
+		}
+		
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row"><div class="col-xs-12"><a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Jobs')}</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                	<div class="col-xs-12">
+                    <section class="HJZF_Z__innerContent">
+                        <div class="InsidePages_content-right_content-main">
+                            <div class="HJZF_Z__innerContent_jobs4_list">
+                            	<volist name="jobs" id="jobs" key="k">
+                            	<div class="fadeInUp jobs4_item">
+                                      <div class="jobs4_title"><span class="index_sub_title">{$jobs['jobname']}</span>
+                                          <div class="jobs4_data index_text">{:date('Y-m-d',$jobs['updatetime'])}</div>
+                                      </div>
+                                      <div class="jobs4_description">
+                                      		<span class="index_text ellipsis_four">{:htmlspecialchars_decode($jobs['content'])}</span>
+                                      		<div class="jobs4_btn index_text">
+                                            	<div class="jobs4_info"><if condition="$jobs['people']"><i class="fa fa-user"></i>{$jobs['people']}&nbsp;&nbsp; </if><i class="fa fa-institution"></i> {$about['company_name']}</div>
+                                                <a href="{:U('/job',array('jobid'=>$jobs['jobid']))}"><i class="fa fa-paper-plane"></i><span><if condition="$inner_data[2]">{$inner_data[2]}<else/>{:__('Release')}</if></span></a></div>
+                                      </div>
+                                </div>
+                                </volist>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="page_nei_space"></div>
+                    </section>
+                    <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+

@@ -1,0 +1,49 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<style>
+		.HJZF_Z__contactus13{ 
+			padding:10px;
+		}
+		.HJZF2_Z-contactus13_title{
+			width: 100%;
+			height: auto;
+			background-color: #eeeeee;
+			margin-bottom: 15px;
+			text-align:center;
+		}
+		.HJZF_Z__inner--right{
+			width:100%;
+		}
+		@media (min-width: 768px) {
+		.HJZF2_Z-contactus13_title h3 {
+			font-size: 28px;
+		}
+		.HJZF2_Z-contactus13_title h4 {
+			font-size: 20px;
+		}
+		}
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="HJZF_Z__contactus13" id="payment">
+                 <section class="HJZF_Z__inner--right">
+                      <if condition="$inner_data[0]">
+                      <div class="HJZF2_Z-contactus13_title">
+                          <!--<if condition="$inner_data[1]"><h3>{$inner_data[1]}</h3></if>
+                          <if condition="$inner_data[2]"><h4>{$inner_data[2]}</h4></if>-->
+                          <img src="{:getindeximgurl($inner_data[0])}" width="100%" border="0" />
+                      </div>
+                      </if>
+                      <div class="InsidePages_content-right__wrap">
+                          <div class="InsidePages_content-right_content-main">
+                              <div class="hidden-xs hidden-sm hidden-md InsidePages_content-right_editor" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                              <div class="hidden-lg hidden-xl InsidePages_content-right_editor" id="payment1"><if condition="$intro_class['wapreadme']">{:htmlspecialchars_decode($intro_class['wapreadme'])} <else/>{:htmlspecialchars_decode($intro_class['readme'])}</if></div>
+                              <div class="page_nei_space"></div>
+                          </div>
+                      </div>
+                  </section>
+                  <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,72 @@
+<!--{$pagename}-->
+<style>
+    .tp-leftarrow:hover{
+        background: url({:getindeximgurl($data30[2])}) no-repeat;
+    }
+    .tp-rightarrow:hover {
+        background: url({:getindeximgurl($data30[3])}) no-repeat;
+    }
+    .tp-leftarrow.large{
+        background: url({:getindeximgurl($data30[0])}) no-repeat;
+    }
+    .tp-rightarrow.large{
+        background: url({:getindeximgurl($data30[1])}) no-repeat;
+    }
+    .tp-bullets.simplebullets.round .bullet:hover,
+    .tp-bullets.simplebullets.round .bullet.selected,
+    .tp-bullets.simplebullets.navbar .bullet:hover,
+    .tp-bullets.simplebullets.navbar .bullet.selected {
+        background: url({:getindeximgurl($data30[4])}) no-repeat;
+    }
+    .tp-bullets.simplebullets.round .bullet{
+        background: url({:getindeximgurl($data30[5])}) no-repeat;
+    }
+</style>
+<script src="__TMPL__WH01_DE/js/jquery.banner.revolution.min.js"></script>
+<script src="__TMPL__WH01_DE/js/banner.js"></script>
+
+<php>
+    if(!$data30[6]){
+    $data30[6]=535;
+    }
+</php>
+<style>
+    .page_Banner{
+    height: {$data30[6]}px;
+    }
+    .fullwidthbanner-container{
+    height: {$data30[6]}px!important;
+    }
+    .fullwidthbanner-container .fullwidthbanner{
+    height: {$data30[6]}px!important;
+    }
+</style>
+<if condition="count($banner) neq 1">
+    <div id="index_banner_animate">
+        <div class="page_Banner">
+            <div class="fullwidthbanner-container">
+                <div class="fullwidthbanner">
+                    <ul>
+                        <volist name="banner" id="banner_pic" key="k">
+                            <li data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" data-link="{$banner_pic['ad_link']}">
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="" width="100%"/>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <else/>
+    <div class="page_Banner">
+        <ul style="height: {$data30[6]}px;">
+            <volist name="banner" id="banner_pic" key="k">
+                <li data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" data-link="{$banner_pic['ad_link']}" style="height: {$data30[6]}px;">
+                   <div style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center;background-size: cover;width: 100%;height: {$data30[6]}px;"></div>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</if>
+
+

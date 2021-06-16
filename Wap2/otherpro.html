@@ -1,0 +1,38 @@
+<if condition="$otherpro neq ''">
+<section>
+<style>
+.otherpro__title{ font-size:18px; font-weight:200; margin-top:20px;}
+.otherpro__pros{ width:33%; float:left; box-sizing:border-box;}
+.otherpro__pro{ padding:5px;}
+.otherpro__pro img { width:100%;}
+.otherpro__pro a{ font-size:13px; text-decoration:none; font-weight:200px; color:#3d3d3d;}
+</style>
+    <h5 class="otherpro__title">{:__('Other products')}</h5>
+    <div class="otherpro__oher">
+        <volist empty="" name="otherpro" id="otherpro" offset="0" length="3" key="k">
+        <div class="otherpro__pros">
+            <div class="otherpro__pro">
+                <div class=""><a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                    <if condition="$otherpro['main_img']">
+                    <img src="{:getmainimgurl($otherpro['main_img'])}" <if condition="$otherpro['proalt'] neq ''">alt="{$otherpro['proalt']}"<else/>alt="{$otherpro['pro_name']}"</if> />
+                    <else/>
+                    <img src="{:getindeximgurl($inner_data[3])}" alt=""/>
+                    </if>
+                    </a>
+                </div>
+                <div class="">
+                <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                <div class=""><h6 title="{$otherpro['pro_name']}">{:subtxt($otherpro['pro_name'],60)}</h6></div>
+                </a>
+                </div>
+            </div>
+        </div>
+        <if condition="($k)%3 eq 0">
+        <div class="clear"></div>
+        </if>
+        </volist>
+    </div>
+    <div class="clear"></div>
+    </if>
+</section>
+</if>                            

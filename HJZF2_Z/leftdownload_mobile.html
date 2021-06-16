@@ -1,0 +1,36 @@
+<div class="InsidePages_content-left_content">
+    <script>
+        $(document).ready(function(){
+            $(".class_button").on("click",function(){
+                $(this).next('ul').slideToggle();
+            });
+            $(".HJZF_Z__inner__mobileLeftMenu .mobile--left_showButton").on("click",function(){
+                $(".HJZF_Z__inner__mobileLeftMenu .InsidePages_left_navlist").slideToggle();
+            });
+        })
+    </script>
+    <div class="HJZF_Z__inner--left__content">
+
+            <div class="InsidePages_left_search">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if condition="C('Language') eq 'cn'">id="keyword2"<else/>id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                    <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                    <div class="clear"></div>
+                </form>
+            </div>
+
+
+        <div class="InsidePages_left_content-main">
+            <p>{:__('Download Categories')}<span class="mobile--left_showButton"><i></i></span></p>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="alldownloadclass" id="alldownloadclass_m">
+                    <li <if condition="$alldownloadclass_m['classid'] eq $downcate['classid'] or $alldownloadclass_m['classid'] eq $download['file_type']">class="yijion"<else/>class="yiji"</if>><a href="{:U('/download_category',array('classid'=>$alldownloadclass_m["classid"]))}">{$alldownloadclass_m['class_name']}</a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+</div>
+

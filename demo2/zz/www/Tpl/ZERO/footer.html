@@ -1,0 +1,46 @@
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__TMPL__demo2/js/wow.js"></script>
+ <script src="__TMPL__demo2/js/statitics.js"></script>
+    <script>
+jQuery('#animate_banner').removeClass().addClass('fadeInLeft');
+function goTop(){
+  jQuery('html,body').animate({'scrollTop':0},600);
+}
+jQuery(function(){
+  jQuery('.skype-show').hide();   
+  jQuery(".skype-container").bind('mouseenter',function(){
+    jQuery('.skype-show').show();
+  })
+  jQuery(".skype-container").bind('mouseleave',function(){        
+    jQuery('.skype-show').hide();
+  });
+});
+jQuery(function(){
+  jQuery('.whatsapp-show').hide();   
+  jQuery(".whatsapp-container").bind('mouseenter',function(){
+    jQuery('.whatsapp-show').show();
+  })
+  jQuery(".whatsapp-container").bind('mouseleave',function(){        
+    jQuery('.whatsapp-show').hide();
+  });
+});
+jQuery(function(){
+  jQuery('.email-show').hide();   
+  jQuery(".email-container").bind('mouseenter',function(){
+    jQuery('.email-show').show();
+  })
+  jQuery(".email-container").bind('mouseleave',function(){        
+    jQuery('.email-show').hide();
+  });
+});
+var path="";
+    </script>
+<Include file="./www/Tpl/ZERO/sidebar.html" />    
+  </body>
+</html>
+

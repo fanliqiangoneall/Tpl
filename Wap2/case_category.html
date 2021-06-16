@@ -1,0 +1,92 @@
+<extend name="Wap2:base" />
+<block name="content">
+<php>
+$cases__current=$inner_data[0] or $cases__current="CASES";
+if($inner_data[1]){
+	$cases__title_bj=getindeximgurl($inner_data[1]);
+}else{
+	$cases__title_bj="none";	
+}
+if($inner_data[2]){
+	$cases__content_bj=getindeximgurl($inner_data[2]);
+}else{
+	$cases__content_bj="none";	
+}
+    $cases__title_color=$inner_data[4] or $cases__title_color="#333";
+</php>
+<style>
+.cases__content{
+	padding:10px 0;
+}
+.cases__banner{ width:100%;}
+.cases__Breadcrumbs{padding: 0 10px 10px;}
+.cases__Breadcrumbs,.cases__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+.cases__title{
+    color:{$cases__title_color};font-size:24px; font-weight:200; padding:5px 10px; background:url({$cases__title_bj}) no-repeat;
+}
+.cases__content img{ max-width:100%;}
+.cases__content article{ padding:10px 0px;}
+.cases__content li{ display:block; border-bottom:1px solid #d0d0d0;}
+.cases__content li h3{ height:44px; line-height:44px; overflow:hidden; text-overflow:ellipsis; width:100%; color:#333; text-decoration:none; font-weight:normal; font-size:13px;}
+.cases__content li a{text-decoration:none;}
+.cases__content li{
+	padding:5px 0px;
+	line-height:25px;
+	font-size:16px;
+	color:#010101;
+	padding-left:20px;
+background:url({$cases__content_bj}) no-repeat left center;
+}
+.cases__content li h5{font-weight: normal;width: 80%;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: keep-all;color: #333;font-size: 16px;}
+.cases__content li span{font-weight: normal;width: 20%;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: keep-all;color: #333;font-size: 16px;text-align:right}
+.cases__content li a{color:#010101;display: block;height: 25px;}
+.cases_main_page{ margin-top:5px;}
+.cases_main_page,.cases_main_page a{ 
+text-align:center; padding:10px; 
+}
+.cases_main_page a{ 
+border-radius:5px;
+color:#fff;
+text-decoration:none;
+background:#{$color}
+}
+.cases_main_page .current{padding:10px;}
+    .cases__list{padding: 0 10px;}
+</style>
+    <div>
+        <if condition="$inner_data[3] neq ''">
+            <img class="othercate__banner" src="{:getindeximgurl($inner_data[3])}" width="100%">
+        </if>
+    </div>
+    <section class="cases__content">
+
+
+        <div class="cases__Breadcrumbs">
+            <div class="cases__Breadcrumbs_down">
+            	<a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span>{:__('Cases')}</span>
+            </div>
+        </div>
+        <div class="cases__title">
+            <div class="inpage__title_main">{$cases__current}</div>
+        </div>
+        <ul class="cases__list">
+            <volist name="newscatelist" id="allcases">
+                <li >
+                <div class="">
+                    <div class="">
+                    <a href="{:U('/case_detail',array('nid'=>$allcases["nid"]))}">
+                    <h5>{$allcases['title']}</h5><span>{:date('m-d',$allcases['created'])}</span>
+                    </a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                </li>
+            </volist>
+        </ul>
+        <div class="clearfix"></div>
+        <div class="cases_main_page">{$page}</div>
+</section>
+
+
+</block>

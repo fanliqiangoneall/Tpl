@@ -1,0 +1,62 @@
+<extend name="demo1:base" />
+<block name="content">
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data1[4])}) center no-repeat"></div>
+</if>
+</div>
+
+<Include file="./Tpl/demo1/top_search.html" />
+<div class="page_Main">
+   <div class="page_inleft">
+      <div class="in_tophead">新闻中心</div>
+      <div class="page_LeftClass">
+      	<volist name="allnewclass" id="newclass">
+         <div class="parent"><a href="{:U('/new_category',array('classid'=>$newclass["classid"]))}" onFocus="blur()">{$newclass['class_name']}</a></div>
+        </volist> 
+      </div>
+      <div class="left_contact">
+         <ul>
+            <li style="padding-left:30px;">全国服务热线<br /><span>{:chaifen($about['phone'],0)}</span></li>
+         </ul>
+      </div>
+   </div>
+   <div class="in_right">
+        <div class="page_RightTitle"><span class="r_mbx"><img src="__TMPL__demo1/img/in_home.jpg" style="vertical-align:middle; border:none;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$newscate['class_name']}</span>{$newscate['class_name']}</div>
+        <div class="page_RightMain">
+           <div class="news">
+              <if condition="$newscate['classid'] neq 1356">
+              <div class="body">
+                <ul>
+                 <volist name="newscatelist" id="newscatelist">
+                  <li><span class="right_time">{:date('Y-m-d',$newscatelist['created'])}</span><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}">{$newscatelist['title']}</a></li>
+                 </volist>
+                </ul>
+              </div>
+              <else/>
+              <div class="body">
+                 <volist name="newscatelist" id="newscatelist" key="k">
+                      <div class="in_case">
+                          <div class="incase_pic"><a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}"><if condition="$newscatelist['new_pro'] neq ''"><img src="{:getimgurl($newscatelist['new_pro'])}" border="0" alt="{$newscatelist['title']}" /><else/><img src="__TMPL__demo1/img/case_pic.jpg" border="0" /></if></a></div>
+                          <div class="incase_name"><a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}">{$newscatelist['title']}</a></div> 
+                      </div>
+                      <if condition="$k % 3 neq 0">
+                         <div style="width:32px; float:left; height:100px;"></div>
+                      <else/>
+                         <div style="clear:both"></div>
+                      </if>
+                 </volist>
+              </div>
+              </if>
+            </div>
+            <div style="clear:both"></div>
+            <div class="main_page">{$page}</div>
+        </div>
+    </div>
+    <div style="clear:both; height:30px;"></div>
+</div>
+</block>

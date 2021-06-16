@@ -1,0 +1,81 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_news_19_info em {
+        color:#{$data384[4]};
+    }
+
+    <if condition="$data384[0]">.hjzf_news_19 {
+        background: url({:getindeximgurl($data384[0])
+    }
+
+    ) no-repeat center top/cover;
+    }
+
+    </if>.hjzf_news_19_info .index_sub_title:hover {
+        color: #{$data384[4]};
+    }
+
+    .hjzf_news_19_more a {
+        background: #{$data384[4]};
+        color: #fff;
+    }
+
+    .hjzf_news_19_more a:hover {
+        color: #{$data384[4]};
+        border:1px solid #{$data384[4]};
+    }
+
+    @media(max-width: 768px) {
+        .hjzf_news_19 {
+            background: #{$data384[5]};
+        }
+    }
+</style>
+<section class="hjzf_news_19 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title col-xs-12 text-center pb40">
+                {$data384[1]}
+            </div>
+            <div class="clearfix"></div>
+            <ul class="hjzf_news_19_wrapper">
+                <volist name="indexnews" id="new" offset="0" length="3">
+                    <li class="col-xs-12 col-sm-6 col-lg-4">
+                        <a href="{:U('/new_detail',array('nid'=>$new['nid']))}">
+                            <img src="{:getimgurl($new['new_pro'])}" alt="{$new['title']}" class="img-fluid">
+                            <div class="hjzf_news_19_info index_text">
+                                <div class="index_sub_title">{$new['title']}</div>
+                                <div class="mb10">
+                                    <span>
+                                        <if condition="$data384[2]">
+                                            <img src="{:getindeximgurl($data384[2])}">
+                                        </if>
+                                        <if condition="C('Language') eq 'cn'">
+                                            {:date('Y-m-d',$new['created'])}
+                                            <else />
+                                            {:date('M d-Y',$new['created'])}
+                                        </if>
+                                    </span>
+                                    <span>
+                                        <if condition="$data384[3]">
+                                            <img src="{:getindeximgurl($data384[3])}">
+                                            {$new['click_num']}
+                                        </if>
+                                    </span>
+                                </div>
+                                <p class="pb40">{$new['news_description']}</p>
+                                <em class="pb20">{:__('Read More')}</em>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="hjzf_news_19_more">
+                <a href="{$data384[7]}">
+                    <if condition="$data384[6]">{$data384[6]}
+                        <else />Read More</if>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

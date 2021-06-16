@@ -1,0 +1,97 @@
+<!--{$pagename}-->
+<php>
+    if($data264[0]){      
+        $other_28_bg=getindeximgurl($data264[0]);        
+    }else{
+        $other_28_bg='';
+    }
+
+    if($data264[4]){
+        $imgs=[];
+        $matches=getimages(htmlspecialchars_decode($data264[4]));
+        if(isset($matches[1])){
+            $imgs=$matches[1];
+        }
+    }
+    foreach($imgs as $k=>$img){
+        $icon1[$k]['leftimg']=$img;
+        }
+        if($data264[9]){
+            $imgs1=[];
+            $matches=getimages(htmlspecialchars_decode($data264[9]));
+            if(isset($matches[1])){
+                $imgs1=$matches[1];
+            }
+        }
+        foreach($imgs1 as $k=>$img){
+            $icon1[$k]['rightimg']=$img;
+            }
+            if($data264[10]){
+                $imgs2=[];
+                $matches=getimages(htmlspecialchars_decode($data264[10]));
+                if(isset($matches[1])){
+                    $imgs2=$matches[1];
+                }
+            }
+            foreach($imgs2 as $k=>$img){
+                $icon1[$k]['rightimgon']=$img;
+                }
+    $icon1_name=explode("\\r\\n",$data264[5]);
+    $icon1_a=explode("\\r\\n",$data264[6]);
+
+    foreach($icon1_name as $k=>$name1){
+    $icon1[$k]['name']=$name1;
+    }
+    foreach(icon1_a as $k=>$a){
+    $icon1[$k]['href']=$a;
+    }
+</php> 
+<style>
+    .HJZF2_Z_other-28{
+            background: url({$other_28_bg}) no-repeat center/cover;
+        }
+        .HJZF2_Z_other-28{
+            background: #{$data264[1]};
+        }
+    .HJZF2_Z_other-28_itemright{
+        background: #{$data264[7]};
+    }
+    .HJZF2_Z_other-28_itemright:hover{
+        background: #{$data264[8]};
+    }
+    .HJZF2_Z_other-28_itemright:hover .HJZF2_Z_other-28_itemheader h3{
+        color: #{$data264[7]};
+    }
+</style>
+<section class="HJZF2_Z_other-28">
+    <div class="container">
+        <div class="row">
+           <div class="HJZF2_Z_other-28_body">
+                <div class="HJZF2_Z_other-28_title"><span>{$data264[2]}</span></div>
+                <div class="HJZF2_Z_other-28_ms"><span>{$data264[3]}</span></div>
+                <div class="clear"></div>
+                <div class="HJZF2_Z_other-28_list">
+                    <ul>
+                        <volist empty="" name="icon1" id="li" key="k">
+                        <li class="col-sm-12 col-lg-4 col-xl-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.{$k}s">
+                        	<div class="HJZF2_Z_other-28_item">
+                                <div class="HJZF2_Z_other-28_itemleft">
+                                    <img src="{$li['leftimg']}" alt="{$li['name']}"/>
+                                </div>
+                                <div class="HJZF2_Z_other-28_itemright">
+                                    <div class="HJZF2_Z_other-28_itemheader">
+                                        <a href="{$li['href']}">
+                                            <img src="{$li['rightimg']}" alt="{$li['name']}"><img src="{$li['rightimgon']}" alt="{$li['name']}">
+                                            <h3>{$li['name']}</h3></a>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </li>
+                    </volist>
+                    <div class="clear"></div>
+                    </ul>
+                </div>
+           </div>
+        </div>
+    </div>
+</section>

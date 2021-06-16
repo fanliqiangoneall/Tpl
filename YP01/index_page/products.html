@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<style>
+.inpage_list{ display:none;}
+</style>
+<div class="index_products">
+ <div style="width: 1020px;margin: auto;position: relative;height: 587px;">
+ <div id="index_products_animate">
+  <div class="index_product_title">
+     {$data9[0]}
+     <div style="font-size: 14px;color: #a2a2a2;margin-top: 22px;font-weight: normal;">{$data9[1]}</div>
+  </div>
+</div> 
+
+
+
+   <div class="inpage_list">
+
+       <div style="width: 400px;margin-left: 400px;" >
+              <volist empty="no" name="allclass" id="allclass_left"  offset="0" length="2">
+                   <div class="page_list"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}" style="cursor:pointer;">{$allclass_left['class_name']}</a></div>
+               </volist>
+       </div> 
+  </div>
+
+  <div class="page_indexpic swiper-container" id="pic">
+      <ul class="c2_lc swiper-wrapper">
+          <li class="poster-item swiper-slide">
+            <volist empty="" name="indexpro" id="indexpro1" offset="0" length="4">
+              <div class="asd">
+                <div class="img">
+                    <a href="{:U('/Product','','')}/{:getproname($indexpro1['pid'])}">
+                        <img src="{:getpcimgurl($indexpro1['main_img'])}" <if condition="$indexpro1['proalt'] neq ''">alt="{$indexpro1['proalt']}"<else/>alt="{$indexpro1['pro_name']}"</if> />
+                    </a>
+                </div>
+                <div class="in_proname">
+                   <a href="{:U('/Product','','')}/{:getproname($indexpro1['pid'])}" alt="{$indexpro1['pro_name']}" title="{$indexpro1['pro_name']}">{:HtmlEncode(subtxt($indexpro1['pro_name'],30))}</a>
+                </div>
+              </div>
+              <if condition="($key+1)%4 eq 0">
+                <div style="clear:both; width: 100%; height:26px;"></div>
+              <else/>
+                <div style="width:3px; height:10px; background:none; float:left;"></div>
+              </if>  
+            </volist>  
+          </li>
+          <li class="poster-item swiper-slide">
+            <volist empty="" name="indexpro" id="indexpro2" offset="4" length="4">
+                <div class="asd">
+                  <div class="img"><a href="{:U('/Product','','')}/{:getproname($indexpro2['pid'])}"><img src="{:getpcimgurl($indexpro2['main_img'])}" <if condition="$indexpro2['proalt'] neq ''">alt="{$indexpro2['proalt']}"<else/>alt="{$indexpro2['pro_name']}"</if> /></a>
+                  </div>
+                  <div class="in_proname">
+                     <a href="{:U('/Product','','')}/{:getproname($indexpro2['pid'])}" title="{$indexpro2['pro_name']}">{:HtmlEncode(subtxt($indexpro2['pro_name'],30))}</a>
+                  </div>
+                </div>
+                <if condition="($key+1)%4 eq 0">
+                  <div style="clear:both; width: 100%; height:26px;"></div>
+                <else/>
+                  <div style="width:3px; height:10px; background:none; float:left;"></div>
+                </if>  
+            </volist>  
+          </li>
+          <li class="poster-item swiper-slide">
+            <volist empty="" name="indexpro" id="indexpro3" offset="8" length="4">
+              <div class="asd">
+                <div class="img" ><a href="{:U('/Product','','')}/{:getproname($indexpro3['pid'])}"><img src="{:getpcimgurl($indexpro3['main_img'])}" <if condition="$indexpro3['proalt'] neq ''">alt="{$indexpro3['proalt']}"<else/>alt="{$indexpro3['pro_name']}"</if> /></a>
+                </div>
+ 
+                <div class="in_proname">
+                   <a href="{:U('/Product','','')}/{:getproname($indexpro3['pid'])}" alt="{$indexpro3['pro_name']}" title="{$indexpro3['pro_name']}">{:HtmlEncode(subtxt($indexpro3['pro_name'],30))}</a>
+                </div>
+              </div>
+              <if condition="($key+1)%4 eq 0">
+                <div style="clear:both; width: 100%; height:26px;"></div>
+              <else/>
+                <div style="width:3px; height:10px; background:none; float:left;"></div>
+              </if>  
+            </volist>  
+          </li>
+    </ul>
+  </div>
+  <div class="page_otherbtn swiper-pagination " id="tip">
+  </div>
+    
+ </div>
+</div>

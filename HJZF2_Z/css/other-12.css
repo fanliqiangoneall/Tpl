@@ -1,0 +1,80 @@
+.hjzf2_other-12{width: 100%;margin: auto;height: 60px;line-height: 60px;background: #17181a;}
+.other-12__search{justify-content: flex-start;align-items: center;width: 70%;}
+.other-12__title{color: #ffffff;line-height: inherit;padding-right: 10px;text-transform: capitalize}
+.row_box{justify-content: space-between;align-items: center;padding: 0 15px;}
+.other-12__yiji select,.other-12__erji select{border: none;border-bottom: 1px solid #fff;min-width: 270px;}
+
+
+.other-12__search form{width: 80%;}
+.selectWrap {
+    width: 28%;
+    float: left;
+    margin-right: 2%;
+    text-align: center;
+    padding: 12px 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.selectWrap .tit {
+    color: #c8c8c8;
+    border-bottom: 1px solid #a0a0a0;
+    border-color: rgba(160,160,160,.3);
+    line-height: 33px;
+    position: relative;
+}
+.selectWrap .tit i{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+.selectWrap .tit span{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inherit;}
+.selectWrap .down {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    background: #000;
+    display: none;
+    z-index: 22;
+}
+.selectWrap .down li h3{
+    padding: 0 15px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+}
+.selectWrap .down li h3:hover{
+    background: #333333;
+}
+.selectWrap input{position: absolute;top: 0;left: 0;z-index: -1;}
+.other-12__btn button{padding: 0 30px;background: #fcb026;color: #fff;font-size: 14px;line-height: 30px;border: none;outline: none;position: relative}
+.other-12__btn button span{position: relative;z-index: 3;}
+.other-12__btn button:after {
+    content: '';
+    width: 0%;
+    height: 100%;
+    background: #333f47;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+.other-12__btn button:hover:after{width: 100%;transition: all 0.5s ease;}
+.other-12__smn{width: 30%; }
+.other-12__smn ul{display: flex;display: -webkit-flex;justify-content: space-between;align-items: center;width: 100%;}
+.other-12__smn ul li{background: #fcb026;flex-grow:1;flex-shrink:1;text-align: center;}
+.other-12__smn ul li a{padding: 0 15px;display: inline-block;font-size: 16px;}
+.other-12__smn ul li i{color: #fff;}
+.other-12__smn ul li:hover{opacity: 0.9}
+@media (max-width: 1440px) {
+    .other-12__search{width: 75%;}
+    .other-12__smn{width: 25%;}
+    .selectWrap{width: 36%}
+}
+@media (max-width: 991px) {
+    .other-12__search{width: 100%}
+    .other-12__title{font-size: 0.4rem;}
+}

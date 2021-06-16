@@ -1,0 +1,37 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data263[4]">
+    .new_hjzf_news_14{
+        background: url({:getindeximgurl($data263[4])}) no-repeat center / cover;
+    }
+    </if>
+    .new_hjzf_news_14{
+        background-color: #{$data263[0]};
+        color: #{$data263[1]};
+    }
+    .new_hjzf_news_14 a {
+        color: #{$data263[1]};
+    }
+</style>
+<section class="new_hjzf_news_14 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title pb40">
+                    {$data263[3]}
+                </div>
+                <ul class="row-little flex index_text">
+                    <volist name="indexnews" id="new" offset="0" length="6">
+                        <li class="flex-item">
+                            <a href="{:U('/new_detail',array('nid'=>$new['nid']))}">
+                                <img src="{:getimgurl($new['new_pro'])}" alt="{$new['title']}" class="img-responsive">
+                                <span>{$new['title']}</span>
+                                <p>{$new['news_description']}</p>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

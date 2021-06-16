@@ -1,0 +1,424 @@
+<!-- <style>
+  .header_bott .h_tools .h_language>a i:first-child{
+    background: #ccc url({:getindeximgurl($data242[9])}) no-repeat center/100%;
+  }
+.xiala_nav{
+  background: #00f url({:getindeximgurl($data242[12])}) no-repeat center;
+}
+</style> -->
+
+<header class="header xc_header"> 
+        <div class="header_top"> 
+         <div class="wrap fix"> 
+          <div class="h_top_tool fix"> 
+           <div class="h_tel">
+            {$data242[4]}
+           </div> 
+           <div class="guanhui"> 
+            <a href="javascript:;"> <span>{$data242[6]}</span> <i class="icon"></i> </a> 
+            <div class="guanhui_ewm"> 
+             <div class="img_"> 
+              <img src="{:getindeximgurl($data242[7])}" class="img-fluid">
+            </div> 
+            </div> 
+           </div> 
+           <ul class="top_list"> 
+            <php>
+                $bottom_nav_str=explode(",",$data242[5]); foreach($bottom_nav_str as $k=>$bottom_nav_arr){ $bottom_navs=explode(":",$bottom_nav_arr);
+                $bottom_nav[$k]['name']=$bottom_navs[0]; $bottom_nav[$k]['href']=$bottom_navs[1]; }
+            </php>
+            <if condition="$bottom_nav">
+                <volist name="bottom_nav" id="nava">
+                    <li>
+                        <a href="{$nava['href']}" target="_blank">{$nava['name']}
+                        </a>
+                    </li>
+                </volist>
+            </if>
+           </ul> 
+          </div> 
+         </div> 
+        </div> 
+       
+
+
+
+
+        <div class="header_bott"> 
+            <div class="container-fluid"> 
+             <h1 class="logo"><a href="{:U('/')}">{$logo}</a></h1> 
+             <div class="inav_wrapper"> 
+              <nav class="inav" id="menu">
+               <ul> 
+                <php>
+                 $top_nav_arr=explode(",",$data242[10]); foreach($top_nav_arr as $k=>$bottom_nav_arr){ $top_nava[$k]['name']=$bottom_nav_arr;
+               }
+               $top_nav_arar=explode("|",$data242[11]); foreach($top_nav_arar as $k=>$bottom_nav_arra){ $top_navb[$k]['name']=$bottom_nav_arra;
+             }
+           </php>
+           <volist name="web_navigation" id="vo" offset="1" length='$data242[8]' key="key">
+             <li class="nav_li"> <a href="{$vo['url']}" 
+               <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">
+                 onclick="turn_sta(2,1)"
+                 <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" /> class="menu_product"
+               </if>
+               >{$vo['title']}<i <if condition="$vo[child] neq '' ">class="fa fa-angle-down nav-more"<else/> class="fa fa-angle-down" </if>></i></a> 
+               <div class="xiala_nav"> 
+                <div class="container-fluid"> 
+                 <!-- right start -->
+                 <php>
+                   $top_lista = $top_navb[$key-2]['name'];
+                   $menu_stra=explode(",",$top_lista); 
+                   foreach($menu_stra as $keya=>$menu_arra){ 
+                   $menusa=explode(":",$menu_arra);
+                   $nav_lista[$keya]['name']=$menusa[0]; 
+                   $nav_lista[$keya]['href']=$menusa[1]; 
+                 }
+               </php>
+               <div class="right"> 
+                <dl class="r_infor"> 
+                 <dt class="t">
+                   {$top_nava[$key-2]['name']}
+                 </dt> 
+                 
+                    <foreach name="nav_lista" item="vo">
+                       <dd><a href="{$vo['href']}">{$vo['name']}</a></dd>
+                    </foreach>
+                
+               </dl> 
+             </div> 
+             <!-- right end -->
+
+             <!-- left start -->
+             <div class="left"> 
+              <div class="nav_infor"> 
+               <div class="t">
+                {$vo['title']}
+              </div> 
+              <div class="c">
+                <p>{:HtmlEncode(subtxt($vo['nav_desc'],300))}</p>
+              </div> 
+              <!-- 二级 start -->
+              <if condition="$vo[child] neq '' ">
+                <div class="list"> 
+                  <ul class="fix"> 
+                   <volist name="vo['child']" id="v" offset="0" key="key">
+                    <li><a href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">
+                    onclick="turn_sta(2,1)"</if>>{$v['title']}</a>
+                  </li>
+                </volist>
+              </ul> 
+            </div> 
+            <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+            <div class="list"> 
+              <ul class="fix"> 
+               <volist empty="" name="allcaseclass" id="allclass_head" >
+                 <li><a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}" >{$allclass_head['class_name']}</a>
+                 </li>
+               </volist>
+             </ul> 
+           </div> 
+           <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+           <div class="list"> 
+            <ul class="fix"> 
+             <volist empty="" name="allnewclass" id="allclass_head">
+               <li><a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}" >{$allclass_head['class_name']}</a>
+               </li>
+             </volist>
+           </ul> 
+         </div> 
+         <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+           <div class="list"> 
+            <ul class="fix"> 
+             <volist empty="" name="allnewclass" id="allclass_head">
+               <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}" >{$allclass_head['class_name']}</a>
+               </li>
+             </volist>
+           </ul> 
+         </div> 
+       </if>
+       <!-- 二级 end -->
+       </div> 
+       <div class="nav_img"> 
+         <div> 
+          <img src="{:getmainimgurl($vo['nav_img'])}" class="img-fluid"> 
+        </div> 
+       </div> 
+       </div> 
+       <!-- left end -->
+       
+       
+       </div> 
+       </div> </li> 
+       </volist>
+       
+       
+       </ul> 
+       </nav> 
+       </div> 
+       <div class="h_tools"> 
+        <div class="mobile_key r"> 
+         <span></span> 
+       </div> 
+       <!-- 20191012 --> 
+       <div class="h_search nolink"> 
+        <i class="fa fa fa-search" aria-hidden="true"></i>
+       </div> 
+       <!--首页手机端默认不显示--> 
+       <div class="h_search a_link"> 
+         <i class="fa fa-search"></i>
+       </div> 
+       <!-- 20191012 end--> 
+       <div class="h_language pc_language"> 
+         <a href="javascript:;"> <span> <i class="fa fa-angle-down" aria-hidden="true"></i> 语言选择 <i class="fa fa-angle-down" aria-hidden="true"></i> </span> </a> 
+       </div> 
+       <!--首页手机端默认不显示--> 
+       <div class="h_language mobile_language"> 
+         <a href="javascript:;"> <span> EN </span> </a> 
+       </div> 
+       </div> 
+       </div> 
+       <!-- 语言下拉 --> 
+                <!--
+                  1745 区域列表
+                1746 语言/网址列表
+              --> 
+              <!-- 20191112 手机站头部 3 --> 
+              <div class="header-overlay"></div> 
+              <div class="mLan_down"> 
+               <ul> 
+                <li> <a href="http://www.xcmg.com">中文</a> </li> 
+                <li> <a href="http://www.xcmg.com/en-af/">English</a> </li> 
+              </ul> 
+            </div> 
+            <div class="mSearch"> 
+             <div class="search-inner"> 
+              <form action="/site/zhan-nei-sou-suo.htm"> 
+               <div class="search-input"> 
+                <input name="keywords" id="" type="text" placeholder="请输入关键词"> 
+              </div> 
+              <div class="search-btn"> 
+                <button> <img src="/resources/web/img/m_sousuo.png" alt=""> </button> 
+              </div> 
+            </form> 
+          </div> 
+        </div> 
+        <!-- 手机端下拉 --> 
+        <!--首页手机端默认不显示--> 
+        <div class="m_nav"> 
+         <div class="mNav_bott"> 
+          <ul> 
+           <li class="m_navli m_navli01 "> <a href="javascript:;">走进徐工 </a> 
+            <div class="m_secNav"> 
+             <div class="li-title"> 
+              <a href="javascript:;"> 走进徐工 </a> 
+            </div> 
+            <ul> 
+              <li><a href="/about/liao-jie-xu-gong.htm" target="">了解徐工</a> </li> 
+              <li><a href="/about/quan-qiu-bu-ju.htm" target="">全球布局</a> </li> 
+              <li><a href="/about/pin-pai-li-nian.htm" target="">品牌文化</a> </li> 
+              <li><a href="/about/she-hui-ze-ren.htm" target="">社会责任</a> </li> 
+              <li><a href="/about/shi-li-xu-gong.htm" target="">实力徐工</a> </li> 
+              <li><a href="/about/da-shi-ji-xia-ceng.htm">大事记</a> </li> 
+              <li><a href="/about/lian-xi-wo-men.htm" target="">联系我们</a> </li> 
+            </ul> 
+          </div> </li> 
+          <li class="m_navli m_navli02 "> <a href="javascript:;">产品中心 </a> 
+            <div class="m_secNav"> 
+             <div class="li-title"> 
+              <a href="/proall.htm"> 产品中心 </a> 
+            </div> 
+            <ul> 
+              <li><a href="/product/product/pro-list-32200.htm">桩工机械</a></li> 
+              <li><a href="/product/product/pro-list-1876.htm">工程起重机械</a></li> 
+              <li><a href="/product/product/pro-list-32201.htm">非开挖机械</a></li> 
+              <li><a href="/product/product/pro-list-1915.htm">矿业机械</a></li> 
+              <li><a href="/product/product/pro-list-34958.htm">挖掘机械</a></li> 
+              <li><a href="/product/product/pro-list-1948.htm">铁路工程机械</a></li> 
+              <li><a href="/product/product/pro-list-35015.htm">铲土运输机械</a></li> 
+              <li><a href="/product/product/pro-list-1924.htm">道路机械</a></li> 
+              <li><a href="/product/product/pro-list-1691.htm">重卡</a></li> 
+              <li><a href="/product/product/pro-list-34885.htm">混凝土机械</a></li> 
+              <li><a href="/product/product/pro-list-32193.htm">专用车辆</a></li> 
+              <li><a href="/product/product/pro-list-33997.htm">高空作业机械</a></li> 
+              <li><a href="/product/product/pro-list-34048.htm">环保机械</a></li> 
+              <li><a href="/product/product/pro-list-1891.htm">消防安全机械</a></li> 
+            </ul> 
+          </div> </li> 
+          <li class="m_navli m_navli03 nav_link"> <a href="/solution/jie-jue-fang-an.jsp">解决方案 </a> </li> 
+          <li class="m_navli m_navli04 "> <a href="javascript:;">新闻中心 </a> 
+            <div class="m_secNav"> 
+             <div class="li-title"> 
+              <a href="javascript:;"> 新闻中心 </a> 
+            </div> 
+            <ul> 
+              <li><a href="/news/xu-gong-xin-wen-0-0-0-0-0.htm" target="">新闻动态</a> </li> 
+              <li><a href="/news/mei-ti-bao-dao-0-0-0-0-0.htm" target="">媒体报道</a> </li> 
+              <li><a href="/news/shi-pin-zhong-xin.jsp" target="">视频中心</a> </li> 
+              <li><a href="/news/news-activity-15.jsp?cat=all" target="">互动活动</a> </li> 
+              <li><a href="/news/she-jiao-mei-ti.htm" target="">社交媒体</a> </li> 
+              <li><a href="/news/xu-gong-xin-wen.htm" target="">公司新闻稿</a> </li> 
+            </ul> 
+          </div> </li> 
+          <li class="m_navli m_navli05 "> <a href="javascript:;">工作机会 </a> 
+            <div class="m_secNav"> 
+             <div class="li-title"> 
+              <a href="javascript:;"> 工作机会 </a> 
+            </div> 
+            <ul> 
+              <li><a href="/company/gong-zuo-ji-hui.htm" target="">加入徐工</a> </li> 
+              <li><a href="/company/xue-xi-fa-zhan.htm" target="">发展平台</a> </li> 
+              <li><a href="/company/cheng-zhang-gu-shi.jsp" target="">成长在徐工</a> </li> 
+            </ul> 
+          </div> </li> 
+          <li class="m_navli m_navli06 "> <a href="javascript:;">电商平台 </a> 
+            <div class="m_secNav"> 
+             <div class="li-title"> 
+              <a href="javascript:;"> 电商平台 </a> 
+            </div> 
+            <ul> 
+              <li><a href="http://www.xcmgmall.com/" target="_blank">徐工商城</a> </li> 
+              <li><a href="https://www.tlang.com/" target="_blank">螳螂网</a> </li> 
+              <li><a href="http://www.roadhome.cn/" target="_blank">路之家</a> </li> 
+              <li><a href="http://loaderking.com/" target="_blank">装载之王</a> </li> 
+              <li><a href="https://www.machmall.com/" target="_blank">Machmall</a> </li> 
+            </ul> 
+          </div> </li> 
+        </ul> 
+       </div> 
+       </div> 
+       <!-- 手机端下拉 end--> 
+       <div class="lan_down" style=""> 
+         <div class="wrap"> 
+          <div class="lan_content"> 
+           <ul class="row"> 
+            <li class="span-4 smal-12"> 
+             <div class="sl sl01"> 
+              <i class="map"></i> 
+              <dl class="links"> 
+               <dt>
+                 AFRICA 
+               </dt> 
+               <dd> 
+                <a href="http://www.xcmg.com/en-af" target="_blank">English</a> 
+              </dd> 
+            </dl> 
+          </div> </li> 
+          <li class="span-4 smal-12"> 
+           <div class="sl sl02"> 
+            <i class="map"></i> 
+            <dl class="links"> 
+             <dt>
+               MIDDLE-EAST NORTH AFRICA 
+             </dt> 
+             <dd> 
+              <a href="http://www.xcmg.com/en-mena" target="_blank">English</a> 
+            </dd> 
+            <dd> 
+              <a href="http://www.xcmg.com/ar-mena" target="_blank">عربي</a> 
+            </dd> 
+          </dl> 
+        </div> </li> 
+        <li class="span-4 smal-12"> 
+         <div class="sl sl03"> 
+          <i class="map"></i> 
+          <dl class="links"> 
+           <dt>
+             COMMONWEALTH OF INDEPENDENT STATES 
+           </dt> 
+           <dd> 
+            <a href="http://www.xcmg.com/en-cis" target="_blank">English</a> 
+          </dd> 
+          <dd> 
+            <a href="http://www.xcmg.com/ru-cis" target="_blank">Русский</a> 
+          </dd> 
+          <dd> 
+            <a href="http://xcmg-ru.ru" target="_blank">XCMG RU</a> 
+          </dd> 
+        </dl> 
+       </div> </li> 
+       <li class="span-4 smal-12"> 
+         <div class="sl sl04"> 
+          <i class="map"></i> 
+          <dl class="links"> 
+           <dt>
+             ASIA-PACIFIC 
+           </dt> 
+           <dd> 
+            <a href="http://www.xcmg.com" target="_blank">简体中文</a> 
+          </dd> 
+          <dd> 
+            <a href="http://www.xcmg.com/cht-ap" target="_blank">繁体中文</a> 
+          </dd> 
+          <dd> 
+            <a href="http://www.xcmg.com/en-ap" target="_blank">English</a> 
+          </dd> 
+        </dl> 
+       </div> </li> 
+       <li class="span-4 smal-12"> 
+         <div class="sl sl05"> 
+          <i class="map"></i> 
+          <dl class="links"> 
+           <dt>
+             EUROPE 
+           </dt> 
+           <dd> 
+            <a href="http://www.xcmg.com/en-eu" target="_blank">English</a> 
+          </dd> 
+          <dd> 
+            <a href="http://fr.xcmgeu.com" target="_blank">Français</a> 
+          </dd> 
+        </dl> 
+       </div> </li> 
+       <li class="span-4 smal-12"> 
+         <div class="sl sl06"> 
+          <i class="map"></i> 
+          <dl class="links"> 
+           <dt>
+             NORTH AMERICA 
+           </dt> 
+           <dd> 
+            <a href="http://www.xcmg.com/en-na" target="_blank">English</a> 
+          </dd> 
+        </dl> 
+       </div> </li> 
+       <li class="span-4 smal-12"> 
+         <div class="sl sl07"> 
+          <i class="map"></i> 
+          <dl class="links"> 
+           <dt>
+             LATIN AMERICA 
+           </dt> 
+           <dd> 
+            <a href="http://www.xcmg.com/en-la" target="_blank">English</a> 
+          </dd> 
+          <dd> 
+            <a href="http://www.xcmg.com/es-la" target="_blank">Español</a> 
+          </dd> 
+          <dd> 
+            <a href="http://www.xcmg.com/pt-la" target="_blank">Português</a> 
+          </dd> 
+        </dl> 
+       </div> </li> 
+       </ul> 
+       </div> 
+       </div> 
+       </div> 
+       </div> 
+
+
+
+
+
+
+
+        <div class="search-alert" style="height: 108px;"> 
+         <span class="close"></span> 
+         <div class="cent-form"> 
+          <form action="/site/zhan-nei-sou-suo.htm" method="GET" id="pro-ser-frm"> 
+           <input class="fl tex" type="text" name="keywords" placeholder="请输入关键字"> 
+           <input class="fr sub-butn gotham-bold" type="submit" value="提交"> 
+          </form> 
+         </div> 
+        </div> 
+       </header>

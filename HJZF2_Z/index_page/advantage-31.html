@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+
+<style>
+    <if condition="$data443[0]">.hjzf_advantage_31 {
+        background: url({:getindeximgurl($data443[0])
+    }
+
+    ) no-repeat center/cover;
+    }
+
+    </if>.hjzf_advantage_31_con a:before {
+        background: linear-gradient(to right, #{$col[0]}, #{$col[1]});
+    }
+
+    .hjzf_advantage_31_con_container .swiper-pagination span {
+        background-color: #{$color};
+    }
+
+    .hjzf_advantage_31_title:before {
+        content:'{$data443[1]}'
+    }
+</style>
+<section class="hjzf_advantage_31 index_pd">
+    <div class="container">
+        <div class="col-xs-12">
+            <div class="index_title hjzf_advantage_31_title text-center pb40 wow fadeInUpBig" data-wow-duration="1S" data-wow-delay="0">
+                {$data443[2]}
+            </div>
+            <div class="swiper-container hjzf_advantage_31_con_container">
+                <ul class="hjzf_advantage_31_con swiper-wrapper">
+                    <php>
+                        $arr = get_list_val($data443[3]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li class="swiper-slide">
+                            <if condition="$a[link]">
+                                <a href="{$a[link]}">
+                            </if>
+                            <img src="{$a[ico]}" class="img-fluid">
+                            <if condition="$a[link]">
+                                </a>
+                            </if>
+                        </li>
+                    </volist>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>

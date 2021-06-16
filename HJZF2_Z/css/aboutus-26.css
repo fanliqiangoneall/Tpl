@@ -1,0 +1,105 @@
+.HJZF2_Z_aboutus_26_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+.HJZF2_Z_aboutus_26_wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.HJZF2_Z_aboutus_26_left_box,.HJZF2_Z_aboutus_26_left_box a{
+    color: #fff;
+}
+.HJZF2_Z_aboutus_26_left {
+    position: relative;
+    padding-right: 0;
+    padding-left: 0;
+}
+.HJZF2_Z_aboutus_26_left img{
+    width: 100%;
+}
+.HJZF2_Z_aboutus_26_left_box{
+    z-index: 9;
+}
+.HJZF2_Z_aboutus_26_left_box,.HJZF2_Z_aboutus_26_left_box:after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content:'';
+}
+.HJZF2_Z_aboutus_26_left_box:after{
+    z-index: -1;
+    opacity: .5;
+}
+.HJZF2_Z_aboutus_26_left_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 50%;
+    transition: all .5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.HJZF2_Z_aboutus_26_left_box a{
+    margin-top: 30px;
+    padding: 5px 15px;
+}
+.HJZF2_Z_aboutus_26_left_box .index_sub_title{
+    transition: all .5s .3s;
+    transform: translateX(-80px);
+    opacity: 0;
+}
+.HJZF2_Z_aboutus_26_left_box a{
+    transition: all .5s .5s;
+    transform: translateX(-30px);
+    opacity: 0;
+}
+.HJZF2_Z_aboutus_26_wrapper:hover .HJZF2_Z_aboutus_26_left_box{
+    opacity: 1;
+    visibility: visible;
+}
+.HJZF2_Z_aboutus_26_wrapper:hover .HJZF2_Z_aboutus_26_left_box .index_sub_title,.HJZF2_Z_aboutus_26_wrapper:hover .HJZF2_Z_aboutus_26_left .HJZF2_Z_aboutus_26_left_box a{
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+
+@media(max-width: 1200px) {
+    
+    .HJZF2_Z_aboutus_26_wrapper .HJZF2_Z_aboutus_26_left_box{
+        display: none;
+    }
+    .HJZF2_Z_aboutus_26_wrapper .HJZF2_Z_aboutus_26_left_box .index_sub_title,.HJZF2_Z_aboutus_26_wrapper .HJZF2_Z_aboutus_26_left .HJZF2_Z_aboutus_26_left_box a{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@media(max-width: 1365px) {
+    .HJZF2_Z_aboutus_26_left{
+        order: 1;
+        width: 100%;
+    }
+    .HJZF2_Z_aboutus_26_right{
+        width: 100%;
+        padding: 30px 15px;
+    }
+    .HJZF2_Z_aboutus_26_right a{
+        color: #fff;
+        margin-top: 15px;
+        display: block;
+    }
+}
+@media(max-width: 1200px) {
+    .HJZF2_Z_aboutus_26_right a i{
+        margin-left: 10px;
+    }
+}

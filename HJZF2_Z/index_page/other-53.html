@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data345[1]">
+    .hjzf2_other_53{
+        background: url({:getindeximgurl($data345[1])}) no-repeat center top/cover;
+    }
+    <else/>
+    .hjzf2_other_53{
+        background-color: #{$data345[0]};
+    }
+    </if>
+    <if condition="$data345[3]">
+    .hjzf2_other_53_mid{
+        background: url({:getindeximgurl($data345[3])}) no-repeat center top;
+    }
+    </if>
+</style>
+<section class="hjzf2_other_53 fx-center">
+    <!-- 右边 -->
+    <if condition="$data345[2]">
+        <div class="w-50 hjzf2_other_53_right">
+            <img src="{:getindeximgurl($data345[2])}">
+        </div>
+    </if>
+    <!-- 中间 -->
+    <div class="hjzf2_other_53_mid text-center fx-center index_pd wow fadeIn" data-wow-delay=".3s">
+        <if condition="$data345[4]">
+            <img src="{:getindeximgurl($data345[4])}" class="pb20 wow slideInUp" data-wow-delay=".4s" alt="{:HtmlEncode($data345[5])}">
+        </if>
+        <div class="index_title pb20 wow slideInUp" data-wow-delay=".5s">
+            {:HtmlEncode($data345[5])}
+        </div>
+        <div class="index_text pb20 wow slideInUp" data-wow-delay=".6s">
+            {:HtmlEncode($data345[6])}
+        </div>
+        <if condition="$data345[7] ">
+            <img src="{:getindeximgurl($data345[7])}" class="wow slideInUp" data-wow-delay=".7s" alt="{:HtmlEncode($data345[6])}">
+        </if>
+    </div>
+</section>

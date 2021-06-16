@@ -1,0 +1,81 @@
+.hjzf_advantage_62_list {
+	display: flex;
+	flex-direction: column;
+}
+.hjzf_advantage_62_list li{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+.hjzf_advantage_62_list li > div{
+	flex: 0 0 48%;
+	width: 48%;
+}
+.hjzf_advantage_62_list li > div.left span > img{
+	width: 100%;
+	border-radius: 3px;
+}
+.hjzf_advantage_62_list li > div.left{
+	box-shadow: 0 5px 8px 3px rgba(0,0,0,.2);
+	border-radius: 5px;
+}
+.hjzf_advantage_62_list li > div span{
+	display: block;
+	position: relative;
+}
+.hjzf_advantage_62_list li > div .ico62{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+}
+.hjzf_advantage_62_list li > div.right{
+	display: flex;
+	padding-top: 3vw;
+}
+.hjzf_advantage_62_list li > div.right span{
+	width: 40px;
+	padding-top: 10px;
+}
+.hjzf_advantage_62_list li > div .ico62 img{
+	margin-bottom: 15px;
+}
+.right_con{
+	line-height: 2.3;
+	font-size: 16px;
+	margin-bottom: 60px;
+}
+.hjzf_advantage_62_list li > div img{
+	max-width: 100%;
+}
+@media(min-width: 1200px) {
+	.hjzf_advantage_62_list li:nth-child(2n) div.left{
+		order: 2;
+	}
+	.hjzf_advantage_62_list li:nth-child(2n) div.right{
+		padding-left: 50px;
+	}
+	.hjzf_advantage_62_list li:nth-child(2n-1) div.right .right_con_more{
+		text-align: right;
+	}
+}
+
+
+@media(max-width: 1200px) {
+	.hjzf_advantage_62_list li > div{
+		flex: 0 0 100%;
+		width: 100%;
+	}
+	.right_con{
+		margin-bottom: 20px;
+	}
+}

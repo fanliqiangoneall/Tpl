@@ -1,0 +1,56 @@
+<extend name="YP01_CN:base" />
+<block name="content">
+<Include file="./Tpl/YP01_CN/index_page/head.html" />
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<Include file="./Tpl/YP01_CN/newleft.html" />
+
+
+<div class="r_mbx"><img src="__TMPL__YP01_CN/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$newscate['class_name']}</div>
+
+
+<div style="width: 1190px;margin:0 auto">
+
+<div class="page_Main">
+  <div class="page_RightMain">
+       <div class="news">
+          <if condition="$newscate['classid'] neq 1840">
+          <div class="body">
+            <ul>
+             <volist name="newscatelist" id="newscatelist">
+              <li><span class="right_time">{:date('Y-m-d',$newscatelist['created'])}</span><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}">{$newscatelist['title']}</a></li>
+             </volist>
+            </ul>
+          </div>
+          <else/>
+          <div class="body">
+             <volist name="newscatelist" id="newscatelist" key="k">
+                  <div class="in_case">
+                      <div class="incase_pic"><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}"><if condition="$newscatelist['new_pro'] neq ''"><img src="{:getimgurl($newscatelist['new_pro'])}" border="0" alt="{$newscatelist['title']}" /><else/><img src="__TMPL__YP01_CN/img/news1.jpg" border="0" /></if></a></div>
+                      <div class="incase_name">
+                         <li style="float: left;color: #999;font-size: 16px;line-height: 28px;margin-bottom: 10px">{:date('Y.m.d',$newscatelist['created'])}</li>
+                         <li style="margin-bottom: 10px;"><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}" style="font-size: 22px;color: #333333;line-height: 30px;">{$newscatelist['title']}</a></li>
+                         <li style="color: #999;font-size: 16px;line-height: 28px;">{:subtxt($newscatelist['news_description'],100)}</li>
+                         <li style="margin-top: 15px;"><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}" style="font-size: 14px;color: #333333;line-height: 30px;">更多</a></li>
+                      </div>  
+                  </div>
+             </volist>
+          </div>
+          </if>
+        </div>
+        <div style="clear:both"></div>
+        <div class="main_page">{$page}</div>
+    </div>
+    <div style="clear:both; height:30px;"></div>
+  </div>  
+</div>
+<Include file="./Tpl/YP01_CN/index_page/bottom.html" />
+</block>

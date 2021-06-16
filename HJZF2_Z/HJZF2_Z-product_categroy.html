@@ -1,0 +1,346 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[1]){
+		$color = $inner_data[1];
+		}
+	</php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current {
+			color: #{$color};
+		}
+
+		.InsidePages_content-right_content_title:before,
+		.main_page .current,
+		.productbutton {
+			background: #{$color};
+		}
+
+		.main_product_title_right {
+			background: #{$color};
+		}
+
+		.InsidePages_left_navlist li.yiji:hover>a>h3,
+		.InsidePages_left_navlist li.yiji:hover>.class_button:before,
+		.InsidePages_left_navlist li.yijion>a>h3,
+		ul.InsidePages_left_navlist>li>ul>li:hover>a>h3,
+		ul.InsidePages_left_navlist>li>ul>li.childon>a>h3,
+		ul.InsidePages_left_navlist>li>ul>li>ul>li a h3:hover,
+		ul.InsidePages_left_navlist>li>ul>li>ul>li.thirdon a h3 {
+			color: #{$color};
+		}
+
+		.InsidePages_left_content-main {
+			border-top: 2px solid #{$color};
+		}
+
+		.main_page .current {
+			border-color: #{$color};
+		}
+
+		.hjzf_z_inner_right_con {
+			width:100%;
+			display: flex;
+			flex-wrap: wrap;
+		}
+	</style>
+	<if condition="$webid eq '1810'">
+		<style>
+			.main_proitem_img a.none:before,.main_proitem_img a.none:after{
+			display: none;
+		}
+		.main_proitem_img a.none img{
+			transform: scale(1) !important;
+		}
+		.main_proitem_img a:after{
+			content: "\\\\f2d0";
+		}
+		.main_proitem_img a:before,.main_proitem_img a:after{
+			display: none;
+		}
+		.main_proitem_img a img{
+			transform: scale(1) !important;
+		}
+		.main_proitem:hover .main_proitem_img a.on img{
+			transform: scale(1.1) !important;
+		}
+		.main_proitem_img a.on:before,.main_proitem_img a.on:after{
+			display: block;
+		}
+		</style>
+		</if>
+	<if condition="$inner_data[2]">
+		<style>
+			.yijion>a>h3,
+			.childon>a>h3,
+			.thirdon>a>h3,
+			.four_class_on>a>h3,
+			.fiv_class_on>a>h3 {
+				color: #{$color} !important;
+			}
+			ul.InsidePages_left_navlist2 li h3:hover,
+			ul.InsidePages_left_navlist2>li.yiji>ul>li>a>h3:hover {
+				color: #{$color};
+			}
+			
+		</style>
+	</if>
+	<!-- 李梅邹平双飞 -->
+	<if condition="$webid eq '1817'">
+		<if condition="$prolist['pcid'] eq '43413'">
+		<style>
+			.InsidePages_left_navlist li:not(:last-child){
+				display: none;
+			}
+		</style>
+		<else/>
+		<style>
+			.InsidePages_left_navlist li:last-child{
+				display: none;
+			}
+		</style>
+	</if>
+</if>
+	<!-- 李梅邹平双飞 -->
+
+	<if condition="$webid eq 295 and $prolist['pcid'] eq 41033">
+		<style>
+			@media(min-width: 768px) {
+				.main_proitem {
+					width: 33.43333333%;
+				}
+			}
+		</style>
+	</if>
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner" class="products_banner">
+			<Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile.html" />
+		</div>
+		<if condition="$webid eq 295">
+			<style>
+				#HJZF_Z__innerBanner {
+					display: none;
+				}
+
+				.Page_inBanner_changcheng {
+					background: url('{:getindeximgurl($inner_data[0])}') no-repeat center/cover !important;
+				}
+			</style>
+		</if>
+		<if condition="WEBID eq '295'">
+			<Include file="./Tpl/HJZF2_Z/gun_banner.html" />
+		</if>
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>
+						<if condition="$inner_data[3]">
+							<else />&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
+							<if condition="$webid eq '295'">
+								<a href="{:U('/product')}">解决方案</a>
+								<elseif condition="$webid eq '1800'" />
+								<a href="{:U('/othercate/othername/xczn')}">新创智能</a>
+								<else/>
+								<a href="{:U('/product')}">{:__('Products')}</a>
+							</if>
+						</if>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+							class="current">{$prolist['class_name']}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="HJZF_Z__innerContent">
+			<div class="container">
+				<div class="row">
+					<div class="search_rs flex"></div>
+					<section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left">
+						<if condition="$inner_data['2'] eq 2">
+							<Include file="./Tpl/HJZF2_Z/left2.html" />
+							<else />
+							<Include file="./Tpl/HJZF2_Z/left.html" />
+						</if>
+					</section>
+					<section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+						<if condition="$inner_data['2'] eq 2">
+							<Include file="./Tpl/HJZF2_Z/left_mobile2.html" />
+							<else />
+							<Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+						</if>
+					</section>
+					<section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+						<div class="InsidePages_content-right__wrap">
+							<div class="InsidePages_content-right_content-main">
+								<h5 class="InsidePages_content-right_content_title">{$prolist['class_name']}</h5>
+								<div class="InsidePages_content-right_proWrap">
+									<if condition="$webid neq '426'">
+										<div class="col-xs-12 InsidePages_content-right_proClassDesc" id="payment">
+											{:htmlspecialchars_decode($prolist['cate_profile'])}</div>
+									</if>
+									<if condition="$webid eq '426'">
+										<div class="main_page mb-20">{$page}</div>
+									</if>
+									<php>
+										$no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+									</php>
+
+									<!-- 管荣杰 森鸿需求 -->
+									<if condition="$webid eq '1769'">
+										<php>
+											$childList = get_children($classid);
+										</php>
+										<if condition="$childList">
+											<style>
+												.hjzf_z_inner_right_con {
+													display: none;
+												}
+											</style>
+											<volist empty="" name="childList" id="pro_list" key="k">
+												<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem" picd="{$pro_list['pcid']}">
+													<div class="main_proitem_box">
+														<div class="main_proitem_img">
+															<a href="{:U('/product_category','','')}/{:getprocatename($pro_list['pcid'])}">
+															<img src="{:getmainimgurl($pro_list['fid'])}" />
+															</a>
+														</div>
+														<div class="main_proitem_second">
+															<a href="{:U('/product_category','','')}/{:getprocatename($pro_list['pcid'])}">
+																<div class="main_proitem_name margin-10px-bottom">
+																	<h6 title="{$pro_list['class_name']}">
+																		{:subtxt($pro_list['class_name'],60)}</h6>
+																</div>
+															</a>
+														</div>
+													</div>
+												</div>
+											</volist>
+										</if>
+									</if>
+									<!-- 管荣杰 森鸿需求 -->
+
+									<div class="hjzf_z_inner_right_con" picd="{$classid}">
+										<volist empty="$no_empty" name="pro" id="pro" key="k">
+											<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem" >
+												<div class="main_proitem_box">
+													<div class="main_proitem_img">
+														<if condition="$webid eq '1810' or $webid eq '1811'">
+															<a data-href="{:getmainimgurl($pro['main_img'])}" class="lightBox_a" title="{$pro['pro_name']}" rel="{$pro['pro_name']}">
+																<else />
+																<a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+														</if>
+															<if condition="$pro['main_img']">
+																<img src="{:getmainimgurl($pro['main_img'])}" <if
+																	condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"
+																<else />alt="{$pro['pro_name']}"
+															</if> />
+															<else />
+															<img src="{:getindeximgurl($inner_data[3])}" alt="" />
+															</if>
+														</a>
+													</div>
+													<div class="main_proitem_second">
+															<if condition="$webid eq '1810' or $webid eq '1811'">
+																<a href="{:getmainimgurl($pro['main_img'])}" class="lightBox_a" title="{$pro['pro_name']}" rel="{$pro['pro_name']}">
+																	<else />
+																	<a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+															</if>
+															<div class="main_proitem_name margin-10px-bottom">
+																<h6 title="{$pro['pro_name']}">
+																	<if condition="$webid eq '1765' or $webid eq '1826'">{$pro['pro_name']}
+																		<else />{:subtxt($pro['pro_name'],60)}
+																	</if>
+																</h6>
+															</div>
+														</a>
+													</div>
+												</div>
+											</div>
+										</volist>
+									</div>
+
+									<if condition="$webid eq '426'">
+										<div class="main_page mb-20">{$page}</div>
+									</if>
+									<if condition="$webid eq '426'">
+										<div class="col-xs-12 InsidePages_content-right_proClassDesc" id="payment">
+											{:htmlspecialchars_decode($prolist['cate_profile'])}</div>
+									</if>
+								</div>
+								<div class="clear"></div>
+								<if condition="$webid neq '426'">
+									<div class="main_page">{$page}</div>
+								</if>
+								<div class="clear"></div>
+								<if condition="$prolist['pcid'] eq 35503 or $prolist['pcid'] eq 35502">
+									<div class="product_detail_editor_content">
+										<!--询盘-->
+										<div id="inquiry" class="product_detail_editor_content_title">{:__('Inquiry
+											Now')}</div>
+										<div class="proinquiry">
+											<Include file="./Tpl/HJZF2_Z/submitinquiry.html" />
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+								</if>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script>
+		require(['jquery','lightBox'], function ($) {
+			$(function () {
+				$('.lightBox_a').lightBox();
+				$('.main_proitem_img a').each(function () {
+					var dataHref = $(this).attr('data-href');
+					$(this).attr('href', dataHref);
+					$(this).addClass('on');
+				});
+			});
+		});
+	</script>
+	<if condition="C('webid') eq 1803">
+		<script>
+
+			$.ajax({
+				type: 'post',
+				url: "{:U('/index.php/yumingdaidingApi/get_all_searcate','','')}",
+				async: false,
+				data: {
+					"classid": 100,
+					"shape": "290",
+					"price": "310,320",
+					"carat": "0.27,0.36",
+					"cut": "320",
+					"color": "325,326",
+					"clarity": "332",
+					"report": "340",
+					"l_w_ratio": "1.00,1.20",
+					"fluor": "355",
+					"polish": "360",
+					"symmetry": "363",
+					"table": "45.00,45.08",
+					"depth": "0.40,2.00"
+				},
+				dataType: "json",
+				success: function (data) {
+					console.log(data);
+					if (data.status == 1) {
+
+						$(".hjzf_z_inner_right_con").empty();
+						var arr = data.data;
+						var _item = "";
+						$.each(arr, function (key, val) {
+							_item += "<div class='col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem'><div class='main_proitem_box'><a href='/pc/Product_detail/pid/" + val.pid + "'><img src='http://yun.one-all.com/uploadfiles/103.120.83.63/" + val.pro_img + "'/></a></div><div class='main_proitem_second'><a href='/pc/Product_detail/pid/" + val.pid + "'>" + val.pro_name + "</a></div></div>";
+						})
+
+						$(".hjzf_z_inner_right_con").append(_item);
+					}
+				}
+			});
+		</script>
+	</if>
+</block>

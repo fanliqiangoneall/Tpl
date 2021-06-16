@@ -1,0 +1,70 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_aboutus_19_left li a span.year{
+        background:url({:getindeximgurl($data380[1])}) no-repeat center;
+    }
+    .hjzf_aboutus_19_left li a span.year:before{
+        border-bottom-color: #{$color};
+    }
+    .hjzf_aboutus_19_container .swiper-pagination span.swiper-pagination-bullet-active{
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf_aboutus_19 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-4 hjzf_aboutus_19_left">
+                <div class="swiper-container hjzf_aboutus_19_container">
+                    <ul class="swiper-wrapper">
+                        <php>
+                            $arra = get_list_val($data380[0]);
+                        </php>
+                        <volist name="arra" id="b">
+                            <li class="swiper-slide">
+                                <a href="{$b[link]}">
+                                    <img src="{$b[img]}" alt="{$b[title]}" class="img-fluid">
+                                    <span class="year">
+                                        <em class="index_title">{$b[year]}</em>
+                                        <span>{$b[title]}</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </volist>
+                    </ul>
+                    <div class="swiper-pagination"></div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-8 hjzf_aboutus_19_right">
+                <div class="index_title pb20">
+                    {$data380[2]}
+                </div>
+                <div class="index_text pb40">
+                    {$data380[3]}
+                </div>
+                <ul>
+                    <if condition="$data380[6]">
+                    <img src="{:getindeximgurl($data380[6])}" class="hidden-xs hidden-sm" alt="{$data380[2]}">
+                    </if>
+                    <php>
+                        $arr = get_list_val($data380[4]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li>
+                            <if condition="$a[link]">
+                            <a href="{$a[link]}">
+                                <else/>
+                            <a>
+                                </if>
+                                <img src="{$a[ico]}" alt="{$a[title]}">
+                                <em class="index_title">{$a[year]}</em>
+                                <span>{$a[title]}</span>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

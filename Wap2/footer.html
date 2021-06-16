@@ -1,0 +1,55 @@
+</body>
+<script src="__TMPL__Wap2/js/muban.js"></script>
+    <script>
+		require(['jquery','statitics','layer','lightBox'], function ($,statitics,layer,lightBox){
+			window.path="/";
+			var path=window.path;
+			load_tongji(path);
+			var $prevAll=0,$nextAll=0,window_height=0;
+			$(document).ready(function(e) {
+				$(".min_height").prev().each(function(index, element) {
+					$prevAll=$prevAll+$(this).height(); 	   
+				});
+				$(".min_height").next().each(function(index, element) {
+					$nextAll=$nextAll+$(this).height(); 	   
+				}); 
+				window_height=$(window).height();
+				var min_height=window_height-$prevAll-$nextAll;
+				$(".min_height").css("min-height",min_height);		           
+            });
+
+			var width=$(".labelprod__img").eq(0).width();
+			var height=width/4*3;
+			$(".labelprod__img").height(height);
+
+			$(".siderNav_button").click(function(){
+				if($(".siderNav_lanList").is(".active")){
+					$(".siderNav_lanList").animate({left:"-100%"}).removeClass("active");
+				}else{
+					$(".siderNav_lanList").animate({left:"10px"}).addClass("active");
+				}
+			});
+			$("#payment img").parent("a").click(function(){
+            	event.preventDefault();
+        	});			
+			$(document).ready(function(){
+				if(typeof lan_str!="undefined"){
+					var ul = document.getElementById("lang_ul");
+					var arry = [];
+					arry = lan_str.split('<br>');
+					for (i=0;i<arry.length ;i++){
+						var country_src = arry[i].substring(arry[i].indexOf("：")+1,arry[i].length);
+						var country_name = arry[i].substring(0,arry[i].indexOf("："));
+						var li = document.createElement("li");
+						li.className += country_name;
+						li.setAttribute('data-count',country_name);
+						li.innerHTML="<a href="+country_src+">"+country_name+"</a>";
+						ul.append(li);
+					}
+				}
+			});
+		});
+
+    </script>
+</html>
+

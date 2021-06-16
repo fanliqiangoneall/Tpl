@@ -1,0 +1,78 @@
+<!--{$pagename}-->
+<php>
+    if($data196[0]){
+    $bg_img=getindeximgurl($data196[0]);
+    }
+</php>
+<style>
+    .hjzf2_news-12{
+        background: url({$bg_img}) no-repeat center top/cover;
+    }
+    .news-12__page .swiper-pagination-bullet,.news-12__downitem .news-12__date{
+        border:1px solid #{$data196[1]};
+    }
+    .news-12__page .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        border:1px solid #{$data196[1]};background: #{$data196[1]};
+    }
+    .news-12__more a,.news-12__downitem:hover .fang{
+        background: #{$data196[1]};
+    }
+    .news-12__downitem:hover .news-12__InfoTitle h3,.news-12__date span{
+        color: #{$data196[1]};
+    }
+</style>
+<section class="hjzf2_news-12 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="news-12_titlebox text-center">
+                    <div class="index_title pb20">{$data196[2]}</div>
+                    <div class="index_sub_title pb40">{$data196[3]}</div>
+                </div>
+                <div class="hjzf2_news-12__swiperbox">
+                    <div class="swiper-container news-12__swiper">
+                        <div class="swiper-wrapper">
+                            <php>
+                                $list=get_index_news_category($data196[6],20);
+                            </php>
+                            <volist name="list" id="indexnewstop" offset="0" key="k">
+                            <div class="swiper-slide news-12__slide">
+                                <div class="news-12__img">
+                                    <img src="{:getimgurl($indexnewstop['new_pro'])}" border="0" alt="{$indexnewstop['title']}"/>
+                                </div>
+                                <div class="news-12__name">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnewstop['nid']))}" onFocus="blur()" class="">
+                                        <h3 class="index_sub_title ellipsis_two">{$indexnewstop['title']}</h3>
+                                        <span class="line"></span>
+                                        <div class="fang"><span></span></div>
+                                    </a>
+                                </div>
+                            </div>
+                            </volist>
+                        </div>
+                        <div class="swiper-pagination news-12__page"></div>
+                    </div>
+                </div>
+                <div class="news-12__more text-center">
+                    <a href="{$data196[5]}"><span>{$data196[4]}</span></a>
+                </div>
+            </div>
+            <php>
+                $list2=get_index_news_category($data196[7],20);
+            </php>
+            <volist name="list2" id="indexnews1" offset="0" length="6" key="h">
+                <div class="col-xs-12 col-lg-6 news-12__downitem flex">
+                    <div class="news-12__date">
+                        <span class="day">{:date('d ',$indexnews1['created'])}</span>
+                        <span class="year">{:date('Y-m ',$indexnews1['created'])}</span>
+                    </div>
+                    <div class="news-12__Info">
+                        <div class="news-12__InfoTitle "><a href="{:U('/new_detail',array('nid'=>$indexnews1['nid']))}" onFocus="blur()"><h3 class="index_sub_title ellipsis_one">{$indexnews1['title']}</h3></a></div>
+                        <div class="news-12__InfoDesc index_text ellipsis_two">{$indexnews1['news_description']}</div>
+                        <div class="fang"><a href="{:U('/new_detail',array('nid'=>$indexnews1['nid']))}" ><span></span></a></div>
+                    </div>
+                </div>
+            </volist>
+        </div>
+    </div>
+</section>

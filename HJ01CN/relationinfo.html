@@ -1,0 +1,29 @@
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+    <div style="color: #303030;height:42px;line-height:42px;font-size: 20px;background: url(__TMPL__WH01/img/detail_line.png) no-repeat 0 35px;clear: both;">
+        <span style="font-weight:normal;font-size: 24px;color: #333333;">相关产品</span>
+    </div>
+
+<div style="margin-top:15px;">
+<volist empty="" id="labelprodlist" name="labelprodlist" key="k">
+  <div class="main_proitem">
+        <div class="main_proitem_box">
+            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a></div>
+            <div class="main_proitem_second">
+                <div class="main_proitem_name margin-10px-bottom"><h6>{$labelprodlist['pro_name']}</h6></div>
+                <div class="main_proitem_desc">{:subtxt($labelprodlist['pro_description'],30)}</div>
+                <div class="margin-15px-top">
+                    <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}" class="main_proitem_more">查看更多</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <if condition="$k%2 eq 0">
+        <div class="clear" style="height: 18px;"></div>
+    </if>
+</volist>
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</if>

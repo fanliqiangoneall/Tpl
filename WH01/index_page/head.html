@@ -1,0 +1,178 @@
+<!--{$pagename}-->
+<php>
+    if(!$data1[7]){
+    $data1[7]=267;
+    }
+</php>
+<style>
+    /*head*/
+    .logo_em a{
+        font-size: 20px;color: #{$color};font-family: Arial;font-weight:bold;display: block;
+    }
+    .logo_wenzi{
+        width: {$data1[7]}px;
+    }
+    .index_nav2 ul li:hover{
+        background-color:#{$color};height: 44px;
+    }
+    .index_nav2>ul>li.menu_on{float: left}
+    .menu_on{
+        background-color: #{$color};height: 44px;
+    }
+    .top_language{float: right;color: #fff;line-height: 40px;font-weight: normal;margin-right: 10px;}
+    .top_language a{color: #fff;line-height: 40px;font-weight: normal;}
+    /*head*/
+
+    <if condition="$data1[2]">
+    .top {
+        width: 100%;
+        background:url({:getindeximgurl($data1[2])});
+    background-repeat:no-repeat;
+    background-position:center;
+    height: 40px;
+    }
+    </if>
+      <if condition="$data1[3]">
+    .banner_top {
+        width: 100%;
+        margin: 0 auto;
+        height: 101px;
+        z-index: 56;
+        background:url({:getindeximgurl($data1[3])});
+    background-repeat:no-repeat;
+    background-position:center;
+    border-bottom: 0px solid #c1c1c1
+    }
+    </if>
+      <if condition="$data1[19]">
+    .top2,.top5,.top_language {
+       color:#{$data1[19]};
+    }
+    </if>
+</style>
+<if condition="$data1[8]">
+    <style>
+        .logo_em a{
+        color: {$data1[8]};
+        }
+    </style>
+</if>
+
+<if condition="$data1[12]">
+<style>
+.menu_li ul {
+    width: auto;
+    float: left;
+    position: absolute;
+    z-index: 30;
+    top: 44px;
+}
+.menu_li ul li a h3{
+	color:#333333;
+	font-size:14px;
+	padding:0 60px 0 5px;
+	border-bottom:1px solid #eae7e7;
+	font-weight:200;
+}
+.menu_li ul li{
+	background:rgba(250,249,227,0.76);
+	padding:0 15px;
+	height:44px; line-height:44px;
+}
+.menu_li ul li:last-child a h3{border-bottom: none}
+.menu_li ul li:hover a h3{
+    color: #fff;
+}
+</style>
+<script>
+$(document).ready(function(e) {
+$(".menu_li").mousemove(function(){
+	console.log(1);
+	$(this).find('ul').show();
+}).mouseout(function(){
+	$(this).find('ul').hide();
+})  
+
+$(".menu_li ul").mousemove(function(){
+	console.log(1);
+	$(this).find('ul').show();
+}).mouseout(function(){
+	$(this).find('ul').hide();
+})   
+  
+});
+
+</script>
+</if>
+<!--top-share start-->
+<div id="head">
+<div class="top">
+    <div class="top1">
+        <span class="top2">Welcome to {$about['company_name']}</span>
+        <div class="top4">
+            <div class="addthis_sharing_toolbox" style="width: 105px;float: right;"></div>
+        </div>
+        <div class="top5">Follow us:&nbsp;</div>
+        <div class="top_language"><if condition="$data1[9]"><a href="{$data1[9]}" target="_blank">中文</a>&nbsp;/&nbsp;</if><if condition="$data1[10]"><a href="{$data1[10]}" target="_blank">English</a>&nbsp;/&nbsp;</if><if condition="$data1[21]"><a href="{$data1[21]}" target="_blank">Deutsch</a></if></div>
+    </div>
+</div>
+<!--top-share end-->
+
+<!--head_middle-->
+<div class="banner_top">
+    <div class="banner_top2">
+        <div class="page_Logo flex">
+            <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            <div style="height: 58px;width: 2px;background: url(__TMPL__WH01/img/logo_line.jpg) no-repeat center;float: left;margin:0 13px;display:inline-block;"></div>
+            <div class="logo_wenzi">
+                <p style="font-size: 19px;color: #333333;font-family:Arial;font-weight: normal;position: relative">{$data1['0']}</p>
+            </div>
+        </div>
+        <div class="logo_em" style="background: url({:getindeximgurl($data1[1])}) no-repeat left;">
+            <p>E-mail:</p>
+            <a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1)"> {:chaifen($about['email'],0)}</a>
+        </div>
+    </div>
+</div>
+<!--head_middle-->
+
+<!--head_dowm-->
+<div class="banner_title">
+    <div class="banner_title2">
+        <div class="index_nav">
+            <div class="index_nav2">
+                <ul id="index_navigation_animate_2">
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}" class="menu_li"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a>
+                            <if condition="$vo['child'] neq ''">
+                                <ul style="display: none">
+                                    <volist name="vo['child']" id="navchild">
+                                        <li><a href="{$navchild['url']}" <if condition=" $navchild['nav_way'] eq 1">target="_new"</if>>
+                                            <h3>{$navchild['title']}</h3></a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                        </li>
+                        <div class="menu_line"></div>
+                    </volist>
+                </ul>
+
+                <div class="search_box" >
+                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL" style="width: 242px;height:30px;float: right;background: #f2f2f2;margin-top: 7px;overflow: hidden; ">
+                        <li style="float: left;width: 191px;height: 24px;margin-top: 3px;"><input style="height: 23px;width:181px;border-width:0px;padding-left: 9px;color:#cdcdcd;border-right:1px solid #b3b3b3;outline: none;background: #f2f2f2;" type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                        <li style="float: left;height: 23px;margin-top: 4px;margin-left: 13px;"><input type="image" src="__TMPL__WH01/img/search_pic.png" style="background: #f2f2f2"></li>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $(document).ready(function(){
+        if($(".index_nav2>ul>li").length>=7){
+            $(".index_nav2>ul>li>a>h2").css({'margin-left':'25px','margin-right':'25px'})
+        }
+    })
+</script>
+<!--head_dowm-->

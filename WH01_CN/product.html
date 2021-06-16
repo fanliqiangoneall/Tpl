@@ -1,0 +1,185 @@
+<extend name="WH01_CN:basein" />
+<block name="content">
+    <style>
+        .pro_more{
+            width: 138px;height: 37px;border: 1px solid #{$color};border-radius: 6px;margin:auto;background-color: #{$color};margin-bottom: 49px;
+        }
+        .pro_more a {
+            display: block;width: 138px;height: 37px;line-height: 37px;color: #ffffff;font-size: 16px;text-align: center;
+        }
+    </style>
+<div>
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+    <Include file="./Tpl/WH01_CN/in_banner.html" />
+</if>
+</div>
+
+<div class="r_mbx"><Include file="./Tpl/WH01_CN/bread.html" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;产品中心</div>
+
+<div class="page_nei_main">
+<Include file="./Tpl/WH01_CN/left.html" />
+<div class="page_RightMain">
+
+    <div class="page_Main">
+        <defined name="PRODIMGFLAG">
+            <script>
+                function changeprod(type,pid){
+                    //console.log(type)
+                    if(type==1){
+                        $("#cpordlist2_"+pid).show();
+                        $("#cpordlist1_"+pid).hide();
+                    }
+                    else{
+                        $("#cpordlist1_"+pid).show();
+                        $("#cpordlist2_"+pid).hide();
+                    }
+                }
+            </script>
+            <div class="page_class_head_1">
+                <div class="indpro_title">
+                    <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>产品中心</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+                </div>
+            </div>
+        <div class="page_pro">
+            <volist empty="" name="allpro" id="allpro" key="k" offset="0" length="9">
+            <div class="asd2" style="border:0;border-radius:2px;box-shadow: 0 0 20px #ccc;"  onmouseover="changeprod(1,{$allpro['pid']})" onmouseout="changeprod(2,{$allpro['pid']})">
+
+
+                <div style="border-radius:2px;border:0;background:#f2f2f2;position:relative;height:221px;" id="cpordlist1_{$allpro['pid']}">
+                    <div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" style="color:#333;font-size:16px;">{$allpro['pro_name']}</a>
+                    </div>
+                    <div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}"style="color:#666;font-size:14px;">{$allpro['pro_description']}</a>
+                    </div>
+                    <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+                        <div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+                        <div style="width:80%;margin:0 auto;padding-top:8px;"><img src="__TMPL__WH01_CN/img/hui.png" ></div>
+                    </a>
+                </div>
+
+
+                <div style="border-radius:2px;border:0;background:#{$color};position:relative;height:221px;display:none;" id="cpordlist2_{$allpro['pid']}">
+                    <div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" style="color:#fff;font-size:16px;">{$allpro['pro_name']}</a>
+                    </div>
+                    <div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}"style="color:#dddddd;font-size:14px;">{$allpro['pro_description']}</a>
+                    </div>
+                    <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+                        <div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+                        <div style="width:80%;margin:0 auto;padding-top:8px;"><img src="__TMPL__WH01_CN/img/lan.png" ></div>
+                    </a>
+                </div>
+
+
+            </div>
+                <if condition="$data1[7]">
+                    <if condition="$k%3 neq 0">
+                        <li style="width:39px; height:50px; float:left;list-style: none"></li>
+                        <else/>
+                        <li class="clear" style="height: 18px;"></li>
+                    </if>
+                    <else/>
+                    <if condition="$k%4 neq 0">
+                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                        <else/>
+                        <li class="clear" style="height: 18px;"></li>
+                    </if>
+                </if>
+            </volist>
+            <div class="clear"></div>
+
+        </div>
+            <div class="main_page">{$page}</div>
+        <else/>
+            <div class="page_class_head_1">
+                <div class="indpro_title">
+                    <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>热门产品</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+                </div>
+            </div>
+        <div class="page_pro">
+            <volist empty="" name="hotpro" id="hotpro" key="k" offset="0" length="9">
+                <div class="asd">
+                    <div class="img"><img src="{:getmainimgurl($hotpro['main_img'])}" <if condition="$hotpro['proalt'] neq ''">alt="{$hotpro['proalt']}"<else/>alt="{$hotpro['pro_name']}"</if> /></div>
+                    <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">{$hotpro['pro_name']}</a></div>
+
+                    <div class="rsp"></div>
+                    <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                        <div class="text" style="top:0px;">
+                            <div class=""  style="width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                <div class="rsp_more" style=" position:relative; top:68px;">{$hotpro['pro_name']}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <if condition="$data1[7]">
+                    <if condition="$k%3 neq 0">
+                        <li style="width:39px; height:50px; float:left;list-style: none"></li>
+                        <else/>
+                        <li class="clear" style="height: 18px;"></li>
+                    </if>
+                    <else/>
+                    <if condition="$k%4 neq 0">
+                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                        <else/>
+                        <li class="clear" style="height: 18px;"></li>
+                    </if>
+                </if>
+            </volist>
+            <div style="clear:both;"></div>
+        </div>
+        <div style="clear: both;height: 30px;"></div>
+        <div class="pro_more"><a href="{:U('/all_ishot')}" onfocus="blue()">更多</a></div>
+        <div class="page_class_head_1">
+            <div class="indpro_title">
+                <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>新品推荐</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+            </div>
+        </div>
+        <div class="page_pro">
+            <volist empty="" name="newpro" id="newpro" key="k" offset="0" length="9">
+                <div class="asd">
+                    <div class="img"><img src="{:getmainimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> /></div>
+                    <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">{$newpro['pro_name']}</a></div>
+                    <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                        <div class="rsp"></div>
+                        <div class="text" style="top:0px;">
+                            <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                <div class="rsp_more" style=" position:relative; top:68px;">{$newpro['pro_name']}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <if condition="$data1[7]">
+                    <if condition="$k%3 neq 0">
+                        <li style="width:39px; height:50px; float:left;list-style: none"></li>
+                        <else/>
+                        <li class="clear" style="height: 18px;"></li>
+                    </if>
+                    <else/>
+                    <if condition="$k%4 neq 0">
+                        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                        <else/>
+                        <li class="clear" style="height: 18px;"></li>
+                    </if>
+                </if>
+            </volist>
+            <div style="clear:both;"></div>
+        </div>
+        <div style="clear: both;height: 30px;"></div>
+        <div class="pro_more" style=""><a href="{:U('/all_isnew')}" onfocus="blue()">更多</a></div>
+            <div style="clear:both; height:40px;"></div>
+        </defined>
+    </div>
+
+
+</div>
+</div>
+
+</block>

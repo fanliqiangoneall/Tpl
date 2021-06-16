@@ -1,0 +1,85 @@
+<if condition="$data162[0]">
+    <style>
+        .HJZF2__news-10{
+            background: url({:getindeximgurl($data162[0])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__news-10--leftContent ul li.active .HJZF2__news-10__itemName{
+        background: #{$color};
+    }
+    .HJZF2__news-10--leftContent ul li:hover .HJZF2__news-10__itemName{
+        background: #{$color} !important;
+    }
+</style>
+<section class="HJZF2__news-10">
+    <div class="container">
+        <div class="HJZF2__news-10left wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__news-10__title">{$data162[2]}</h3>
+            <div class="swiper-container HJZF2__news-10left">
+                <php>
+                    $arr_str=$data162[4];
+                    $arr=explode(',',$arr_str);
+                    foreach($arr as $k=>$a){
+                    $list[$k]['data']=get_index_news_category($a,4);
+                    }
+                </php>
+                <div class="HJZF2__news-10--leftContent">
+                    <volist name="list" id="li" >
+                        <ul alt="{$li['name']}" class="HJZF2__news-7--leftWrap">
+                            <volist name="li['data']" id="indexnews" offset="0" length="4" key="k">
+                                <li class="HJZF2__news-10__item">
+                                    <div class="HJZF2__news-10__itemName">{$indexnews['title']}</div>
+                                    <div class="HJZF2__news-10_wrap">
+                                        <div class="HJZF2__news-10__itemContent flex">
+                                            <div class="HJZF2__news-7__itemLeft__img">
+                                                <img src="{:getimgurl($indexnews['new_pro'])}" border="0" />
+                                            </div>
+                                            <div class="HJZF2__news-7__itemLeft__desc">
+                                                <p><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()">{:subtxt($indexnews['news_description'],100)}</a></p>
+                                                <div><img src="{:getindeximgurl($data162[5])}" alt=""/><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()">{:__('Read More')}</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </volist>
+                        </ul>
+                    </volist>
+                </div>
+            </div>
+
+        </div>
+        <div class="HJZF2__news-10right wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__news-10__title">{$data162[3]}</h3>
+            <div class="HJZF2__news-10rightDesc">{:HtmlEncode($data162[12])}</div>
+            <p class="HJZF2__news-10__rightTitle">{$data162[6]}</p>
+            <div style="position: relative">
+                <div class="swiper-container HJZF2__news-10right__swiper">
+                    <div class="swiper-wrapper">
+                        <php>
+                            for($i=7;$i<12;$i=$i+1){
+                        </php>
+                        <if condition="$data162[$i]">
+                            <div class="swiper-slide"><img src="{:getindeximgurl($data162[$i])}" alt=""/></div>
+                        </if>
+                        <php>
+                            }
+                        </php>
+                    </div>
+
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next HJZF2__news-10right-next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                <div class="swiper-button-prev HJZF2__news-10right-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+
+
+
+    

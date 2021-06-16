@@ -1,0 +1,105 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo3/css/products.css" rel="stylesheet">
+
+
+<div class="index_products">
+<div class="index_product2">
+ <div>
+ <if condition="$data15[1]"><a href="{$data15[1]}"></if>
+  <div class="index_products_title" style="padding-top:10px;">
+   {$data15[0]}
+  </div>
+  <if condition="$data15[1]"></a></if>
+ </div>
+
+    <div class="index_products_zwbg" id="pic">
+     <div> 
+     <if condition="$data15[3]"><a href="{$data15[3]}"></a>
+      <div class="index_proleft">
+          <img src="{:getindeximgurl($data15[2])}">
+      </div>
+      <if condition="$data15[3]"></a></if>
+     </div> 
+     <div >
+     
+
+
+
+      <div style="width: 843px;float: right; height:538px; overflow:hidden; position:relative;">
+              <div class="swiper-container">
+        <div class="swiper-wrapper">        
+
+
+        
+		<div class="swiper-slide">
+        <php>
+        $num=0;
+        </php>
+        <for start="4" end="21"  step="3" name="i" >
+
+  
+   			  <div class="asd2"  <if condition="$data15[$i] eq ''">style="display:none"</if> >
+                <div class="img2" >
+                <if condition="$data15[$i+2]">
+                <a href="{$data15[$i+2]}">
+                </if>
+                <if condition="$data15[$i]">
+                <img src="{:getindeximgurl($data15[$i])}">
+                </if>
+                <if condition="$data15[$i+2]">
+                </a>
+                </if>
+                </div>
+                
+                <div class="in_proname2">
+                <if condition="$data15[$i+2]">
+                   <a href="{$data15[$i+2]}">
+                   </if>
+                   {$data15[$i+1]}
+                   <if condition="$data15[$i+2]">
+                   </a>
+                   </if>
+                </div>
+                
+              </div>
+  
+
+              <if condition="($num+1)%3 eq 0">
+              <div style="clear:both; width: 100%; height:34px;"></div>
+          <else/>
+              <div style="width:32px; height:10px; background:none; float:left;"></div>
+          </if>  
+           <php>$num=$num+1;</php>
+</for>
+
+     </div>
+  
+        </div></div>   
+        <div style="clear: both;width: 100%;height: 22px;"></div> 
+        <div class="pagination"></div>
+       </div>  
+
+
+
+    </div>
+  </div>
+ </div> 
+</div>
+
+
+
+   <div style="clear:both;"></div>
+   <style>
+   .in_proname2{background:none;}
+   .in_proname2 {
+    display: block;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: normal;
+    width: 235px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+   </style>

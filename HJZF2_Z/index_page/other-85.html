@@ -1,0 +1,52 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_Z_other_84_right {
+        background: url({:getindeximgurl($data469[2])
+    }
+
+    ) no-repeat center/cover;
+    }
+
+    .HJZF2_Z_other_84_right,.HJZF2_Z_other_84_right_list li a {
+        color: #{$data469[3]};
+    }
+    .HJZF2_Z_other_84_right_list + a{
+        color: #fff;
+        background-color: #{$color};
+        align-self: flex-start;
+    }
+</style>
+<script>
+    var hjzf_other_85_video = '<?php echo $data469[1];?>';
+</script>
+<section class="HJZF2_Z_other_84 index_pd">
+    <div class="HJZF2_Z_other_84_left">
+        <img src="{:getindeximgurl($data469[0])}" alt="{$data469[4]}" class="img-fluid">
+    </div>
+    <div class="HJZF2_Z_other_84_right">
+        <div class="HJZF2_Z_other_84_right_con">
+            <div class="index_title pb20">
+                {$data469[4]}
+            </div>
+            <div class="index_text pb40">
+                {$data469[5]}
+            </div>
+            <ul class="HJZF2_Z_other_84_right_list">
+                <php>
+                    $arr = get_list_val($data469[6]);
+                </php>
+                <volist name="arr" id="a">
+                    <li>
+                        <a href="{$a[link]}">
+                            <img src="{$a[img]}" alt="{$a[title]}">
+                            <p>{$a[title]}</p>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <if condition="$data469[7]">
+                <a href="{$data469[7]}" class="index_btn">{:__('Read More')}</a>
+            </if>
+        </div>
+    </div>
+</section>

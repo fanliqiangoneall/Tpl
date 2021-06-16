@@ -1,0 +1,95 @@
+<!--{$pagename}-->
+<link rel="stylesheet" href="__TMPL__demo3/css/news.css"/>
+<if condition="$data36[1]">
+    <style>
+        #index_news{
+            background: url({:getindeximgurl($data36[1])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+
+.news_more:hover{
+	border:1px solid #{$color};
+	}
+.news_more:hover a{
+	color: #{$color}
+	}
+</style>
+
+<php>
+if($data36[2]){
+$cases_new_list36=get_index_cases_category($data36[2]);
+}else{
+	$cases_new_list36=$indexcases;
+}
+</php>
+
+
+<div style="" id="index_news">
+<div class="index_jy_news" style=" height:auto;">
+    <div class="container" style="margin-bottom:30px;">
+        <div class="index_news_title">
+          {$data[0]}
+        </div>
+        <div style="margin-top: 35px;">
+            <ul class=" index_jy_newlist">
+
+                <volist name="cases_new_list36" id="cases_new" offset="0" length="3">
+
+                    <li>
+
+                            <div class="news_pic"><if condition="$cases_new['new_pro'] neq ''"><a href="{:U('/case_detail',array('nid'=>$cases_new["nid"]))}" onFocus="blur()"><img src="{:getimgurl($cases_new['new_pro'])}" border="0" alt="{$cases_new['title']}"></a><else/><img src="__TMPL__demo3/img/newspic.jpg" border="0" /></if></div>
+                            <div class="newslist">
+                                <div class="news_title"><a  href="{:U('/case_detail',array('nid'=>$cases_new["nid"]))}" onFocus="blur()">{:subtxt($cases_new['title'],50)}</a></div>
+                                <div class="news_time" style="color: #666; font-size:16px; font-style:normal;">{:subtxt($cases_new['news_description'],20)}</div>
+                            </div>
+                    </li>
+                    <if condition="($key+1)%3 eq 0">
+                        <div style="clear:both; overflow:hidden; height:36px;"></div>
+                        <else/>
+                        <div style="width:30px; height:10px; background:none; float:left;"></div>
+                    </if>
+                </volist>
+            </ul>
+
+            <div class="clear"></div>
+        </div>
+        <div class="clear" style="width:100%; height:15px;"></div>
+        <if condition="$data36[2]">
+            <li class="news_more" style="margin-top:15px;"><a href="{:U('/case_category',array('classid'=>$data36[2]))}">更多</a></li>
+            <else/>
+            <li class="news_more" style="margin-top:15px;"><a href="{:U('/cases')}">更多</a></li>
+        </if>
+
+
+    </div>
+</div>
+</div>
+
+
+<script>
+
+$(function(){
+var top=$(".index_jy_news").offset().top;
+if(top<800){
+            $('.indexnewstitle').show().addClass('fadeInUp');
+            $('.index_jy_newlist').show().addClass('fadeInUp');
+}
+})
+    $(window).scroll( function() {
+        //scrollTop=$(document).scrollTop();
+		scrollTop=$(document).scrollTop();
+		var top=$(".index_jy_news").offset().top;
+		console.log("top",top);
+		console.log("scrollTop",scrollTop);
+        if(top-scrollTop<400){
+            $('.indexnewstitle').show().addClass('fadeInUp');
+            $('.index_jy_newlist').show().addClass('fadeInUp');
+
+
+        }
+    });
+</script>
+
+   <div style="clear:both;"></div>

@@ -1,0 +1,116 @@
+.hjzf_procate_8_wrapper{
+    display: flex;
+}
+.hjzf_procate_8_left{
+    flex: 0 0 20%;
+    position: relative;
+    padding-top: 20px;
+}
+.hjzf_procate_8_left p{
+    color: #999;
+}
+.hjzf_procate_8_left:after{
+    display: block;
+    position: absolute;
+    z-index: 9;
+    width: 110px;
+    height: 25px;
+    background-color: green;
+    bottom: 10%;
+    right: -40px;
+    content:'';
+}
+.hjzf_procate_8_right{
+    flex: 0 0 80%;
+}
+.hjzf_procate_8_right ul{
+    display: flex;
+    justify-content: space-between;
+}
+.hjzf_procate_8_right ul li{
+    position: relative;
+    width: 24%;
+    text-align: center;
+    overflow: hidden;
+    transition: all .5s;
+}
+.hjzf_procate_8_right ul li:hover,.hjzf_procate_8_right ul li.on{
+    width: 50%;
+}
+.hjzf_procate_8_right ul li div{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.hjzf_procate_8_right ul li img{
+    max-width: 100%;
+}
+.hjzf_procate_8_right ul li i{
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 0;    
+    right: 0;
+    color: #fff;
+    font-style: normal;
+    transition: all .3s;
+}
+.hjzf_procate_8_right ul li span{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: all .8s .3s;
+    background: rgba(0,0,0,.4);
+}
+.hjzf_procate_8_right ul li:hover span,.hjzf_procate_8_right ul li.on span{
+    transform: translateX(0);
+}
+.hjzf_procate_8_right ul li:hover i,.hjzf_procate_8_right ul li.on i{
+    opacity: 0;
+}
+.hjzf_procate_8_right ul li span em{
+    font-style: normal;
+    line-height: 2;
+    color: #fff;
+}
+.hjzf_procate_8_right ul li span b{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.hjzf_procate_8_right ul li span b a{
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: normal;
+    transition: all .5s;
+}
+.hjzf_procate_8_right ul li span b a:hover{
+    background-color: #fff;
+}
+
+@media(max-width: 768px){
+    .hjzf_procate_8_left:after{
+        display: none;
+    }
+    .hjzf_procate_8_wrapper,.hjzf_procate_8_wrapper .hjzf_procate_8_right ul{
+        flex-direction: column;
+    }
+    .hjzf_procate_8_right ul li,.hjzf_procate_8_right ul li.on{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .hjzf_procate_8_right ul li:hover{
+        width: 100%;
+    }
+}

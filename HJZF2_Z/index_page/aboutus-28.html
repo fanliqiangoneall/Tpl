@@ -1,0 +1,34 @@
+<!--{$pagename}-->
+<style>
+
+</style>
+<section class="hjzf_z_aboutus28 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-10 col-lg-offset-1 wow fadeInDown">
+                <div class="text-center pb40 hjzf_z_aboutus28_title">
+                    <img src="{:getindeximgurl($data530[1])}" alt="{$data530[2]}">
+                </div>
+            </div>
+            <div class="col-xs-12 wow fadeInDown" data-wow-delay=".5s">
+                <div class="index_sub_title hjzf_z_aboutus28_subt text-center">
+                    {:HtmlEncode($data530[2])}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hjzf_z_aboutus28_bottom">
+        <php>
+            $arr = get_list_val($data530[3]);
+        </php>
+        <div class="hjzf_z_aboutus28_bottom_hd">
+            <ul>
+                <volist name="arr" id="a">
+                    <li>
+                        <img src="{$a[img]}" alt="{$data530[2]}" class="img-fluid">
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</section>

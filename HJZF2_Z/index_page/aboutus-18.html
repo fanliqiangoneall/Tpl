@@ -1,0 +1,42 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_aboutus-18 .aboutUsContentContainer {
+        background-image: url({:getindeximgurl($data369[0])
+    }
+
+    );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    }
+
+    .new_hjzf_aboutus-18 .aboutUsContent {
+        font-size: 13px;
+        line-height: 26px;
+        color: #999;
+        margin-top: 40px;
+    }
+    #aboutus-18_1322.new_hjzf_aboutus-18 .aboutUsTitle{
+        color: #{$color}
+    }
+</style>
+<section class="aboutUsContentContainer index_pd">
+    <div class="aboutUsContainer container">
+        <div class="aboutUsLeft lf wow fadeInLeft col-xs-12 col-lg-6" data-wow-duration="1s" >
+            <div class="row-little">
+                <p class="aboutUsTitle index_title">{$data369[3]}</p>
+                <p class="aboutUsContent">{$data369[4]}</p>
+                <a href="{$data369[5]}" class="aboutUsMore">
+                    {:__('Read More')}
+                </a>
+            </div>
+        </div>
+        <div class="aboutUsRight rt wow fadeInRight col-xs-12 col-lg-6" data-wow-duration="1s" >
+            <div class="row-little">
+                <img src="{:getindeximgurl($data369[2])}" class="img-fluid" alt="{$data369[3]}" />
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>

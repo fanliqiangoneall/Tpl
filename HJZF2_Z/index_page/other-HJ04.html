@@ -1,0 +1,106 @@
+<!--{$pagename}-->
+<style>
+    .HJZF_Z_other_HJ04_swiper_slide_next,
+    .HJZF_Z_other_HJ04_swiper_slide_prev {
+        background: #{$data230[0]};
+    }
+    .HJZF_Z_other_HJ04_swiper_slide_next:hover,
+    .HJZF_Z_other_HJ04_swiper_slide_prev:hover {
+        background: #{$data230[1]};
+    }
+    <if condition="$data230[2]">
+    .HJZF_Z_other_HJ04 {
+        background: url({:getindeximgurl($data230[2])}) no-repeat center/cover;
+        overflow: hidden;
+    }
+    </if>
+    @media (max-width: 1200px) {
+        .HJZF_Z_other_HJ04 {
+            background: #{$data230[3]};
+        }
+    }
+	<if condition="$data230[21]">
+		.HJZF_Z_other_HJ04_swiper .swiper-wrapper{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.HJZF_Z_other_HJ04_swiper .swiper-wrapper .swiper-slide{
+		width: 13%;
+	}
+	@media(max-width: 1200px) {
+		.HJZF_Z_other_HJ04_swiper .swiper-wrapper .swiper-slide{
+			width: 23%;
+			margin: 0 1%;
+			margin-bottom: 10px;
+		}	
+		.HJZF_Z_other_HJ04_swiper .swiper-wrapper{
+			justify-content: flex-start;
+		}
+	}
+	</if>
+	
+    .new_hjzf_product7_title--main:after,
+	#other-HJ04_1765 > section > div > div.index_title.text-center.pb40:after,
+	#news-19_1765 > section > div > div > div.index_title.col-xs-12.text-center.pb40:after{
+        display: block;
+        width: 120px;
+        height: 4px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        content:'';
+        background-color: #fff;
+    }
+</style>
+<script>
+	var is_show_other_hj04 = "<?php echo $data230[21];?>"
+</script>
+<section class="HJZF_Z_other_HJ04 index_pd">
+    <div class="container">
+        <if condition="$data230[19]">
+            <div class="index_title text-center pb40">
+                {$data230[19]}
+            </div>
+        </if>
+        
+        <div class="row wow fadeInUp por" data-wow-duration="1.5s" data-wow-delay=".1s">
+            <div class="col-xs-12">
+                <!-- swiper loop start -->
+                <div class="swiper-container HJZF_Z_other_HJ04_swiper">
+                    <div class="swiper-wrapper">
+                        <if condition="$data230[20]">
+                            <php>
+                                $arr = get_list_val($data230[20]);
+                            </php>
+                                <volist name="arr" id="a">
+                                    <div class="swiper-slide HJZF_Z_other_HJ04_swiper_slide">
+                                        <img src="{$a[img]}" alt="{$data230[19]}">
+                                    </div>
+                                </volist>
+                            <else/>
+                            <php>
+                            for($i=4;$i<=18;$i=$i+1){ </php>
+                                <if condition="$data230[$i]">
+                                    <div class="swiper-slide HJZF_Z_other_HJ04_swiper_slide">
+                                        <img src="{:getindeximgurl($data230[$i])}" alt="{$data230[19]}">
+                                    </div>
+                                </if>
+                                <php>}</php>
+
+                            </if>
+                    </div>
+
+                </div>
+                <!-- swiper loop end -->
+                <!-- Add Arrows -->
+                <div class="HJZF_Z_other_HJ04_swiper_slide_next swiper-button-next">
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="HJZF_Z_other_HJ04_swiper_slide_prev swiper-button-prev">
+                    <i class="fa fa-angle-left"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,109 @@
+<!--{$pagename}-->
+<style>
+  <if condition="$data281[29]">
+  .hjzf2_other_33{
+    background: url({:getindeximgurl($data281[29])}) no-repeat top center/cover;
+}
+  </if>
+.hjzf2_other_33{
+  background-color: #{$data281[0]};
+}
+.hjzf2_other_33,.hjzf2_other_33 a{
+  color: #{$data281[1]};
+}
+.hjzf2_other_33_inna div:after{
+  background-color: #{$data281[28]};
+}
+
+</style>
+<section class="hjzf2_other_33">
+ <div class="container">
+   <div class="row por">
+     <div class="col-xs-12">
+       <div class="hjzf2_other_33_inna">
+        <php>for($i=5;$i<=24;$i=$i+4){</php>
+        <if condition="$data281[$i]">
+          <div></div>
+        </if>
+        <php>}</php>
+      </div>
+      <div class="hjzf2_other_33_wrapper">
+		  <if condition="$data281[30]">
+			<php>
+				$arr = get_list_val($data281[30]);
+			</php>
+			<div class="pb40">
+				<div class="other_33_new_title pb20">
+					<span class="index_title">
+						{$arr[0][title]}
+					</span>
+					<span class="index_sub_title">
+						{$arr[0][sub]}
+					</span>
+				</div>
+				<div class="text-center index_text other_33_new_title_index">
+					{$arr[0][info]}
+				</div>
+				<div class="text-center index_text other_33_new_title_index">
+					{$arr[0][infor]}
+				</div>
+            </div>
+
+			  <else/>
+        <div class="text-center pb40">
+          <div class="index_title wow fadeInUp" data-wow-delay=".2s">
+            {$data281[3]}
+          </div>
+          <div class="index_sub_title wow fadeInUp" data-wow-delay=".4s">
+            {$data281[4]}
+          </div>
+        </div>
+		</if>
+        <ul class="hjzf2_other_33_ul">
+          <php>
+            for($i=5;$i<=24;$i=$i+4){
+          </php>
+          <if condition="$data281[$i]">
+           <li class="index_text">
+             <img src="{:getindeximgurl($data281[$i])}" alt="{$data281[$i+1]}">
+             <dl>
+               <dt>{$data281[$i+1]}</dt>
+               <dd>
+                 <span class="timer" data-to="{$data281[$i+2]}" data-speed="2000">{$data281[$i+2]}</span>
+                 <p>{:HtmlEncode($data281[$i+3])}</p>
+               </dd>
+             </dl>
+           </li>
+         </if>
+         <php>}</php>
+       </ul>
+       <style>
+         .hjzf2_other_33_bottom li:first-child span{
+          color: #{$data281[26]};
+         }
+         .hjzf2_other_33_bottom li:last-child span{
+          color: #{$data281[27]};
+         }
+       </style>
+       <ul class="hjzf2_other_33_bottom">
+        <php>
+          $arr = get_list_val($data281[25]);
+        </php>
+        <volist name="arr" id="a">
+          <li>
+            <if condition="$a[link]"><a href="{$a[link]}"><else/><a href="javascript:void(0);"></if>
+              <img src="{$a[img]}" alt="{$a[title]}">
+             <span>
+               <div class="index_title">{$a[title]}</div>
+               <div class="index_sub_title">{$a[con]}</div>
+             </span>
+           </a>
+         </li>
+       </volist>
+     </ul>
+   </div>
+ </div>
+</div>
+</div>
+
+</section>

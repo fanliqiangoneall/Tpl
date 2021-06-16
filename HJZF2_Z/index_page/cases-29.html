@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+<php>
+    if($data512[1]){
+        $color = $data512[1];
+    }
+</php>
+<style>
+    .hjzf2_Z_case29{
+        background-color: #{$data512[0]};
+    }
+    .hjzf2_Z_case29_title .index_title:after,.hjzf2_Z_case29_title .index_title:before{
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf2_Z_case29">
+    <div class="hjzf2_Z_case29_title wow fadeInDown text-center pb40">
+        <div class="index_title">{$data512[2]}</div>
+        <div class="index_text">{$data512[3]}</div>
+    </div>
+    <div class="hjzf2_Z_case29_container swiper-container">
+        <div class="swiper-wrapper">
+            <php>
+                $arr = get_list_val($data512[5]);
+            </php>
+            <volist empty="" name="arr" id="a" >
+            <div class="swiper-slide hjzf2_Z_case29_slide">
+                <a href="{$a[link]}">
+                    <div class="hjzf2_Z_case29_wrapper_img">
+                        <img src="{$a[img]}" class="img-fluid" alt="{$a[title]}">
+                    </div>
+                    <div class="hjzf2_Z_case29_wrapper_con">
+                        <div class="index_title pb20">
+                            {$a[title]}
+                        </div>
+                        <div class="index_text pb20">
+                            {$a[info]}
+                        </div>
+                        <em><img src="{:getindeximgurl($data512[4])}"></em>
+                    </div>
+                </a>
+            </div>
+            </volist>
+        </div>
+    </div>
+</section>

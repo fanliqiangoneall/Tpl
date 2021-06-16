@@ -1,0 +1,30 @@
+<if condition="$banner[0]['use_wap']">
+    <div class="nav-hidden-pc">
+        <volist name="banner" id="bannera" offset="0" length="1">
+            <div class="in_banner"><img src="{:getimgurl($bannera['logo_wap_bg'])}" class="img-fluid" />
+            </div>
+        </volist>
+    </div>
+    <div class="nav-hidden-mobile">
+        <if condition="$banner neq ''">
+            <volist name="banner" id="bannerb" offset="0" length="1">
+                <div class="in_banner"><img src="{:getimgurl($bannerb['ad_pic'])}" class="img-fluid" />
+                </div>
+            </volist>
+        </if>
+    </div>
+    <else />
+
+
+    <if condition="$banner neq ''">
+        <if condition="($webid eq 516 and $intro_class['banner'] gt 0) or ($webid eq 440 and $intro_class['banner'] gt 0)">
+    		<div class="in_banner"><img src="{:getimgurl($intro_class['banner'])}" class="img-fluid" /></div>
+    	<else/>
+            <volist name="banner" id="bannerc" offset="0" length="1">
+                <div class="in_banner"><img src="{:getimgurl($bannerc['ad_pic'])}" class="img-fluid" /></div>
+            </volist>
+        </if>
+        <else />
+        <div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" class="img-fluid" /></div>
+    </if>
+</if>

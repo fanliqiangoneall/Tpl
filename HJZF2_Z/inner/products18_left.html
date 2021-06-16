@@ -1,0 +1,106 @@
+<style>
+    .hjzf2_products_18_left {
+        background-color: #fff;
+        border: 1px solid #e8e8e8;
+    }
+
+    .hjzf2_products_18_left li {
+        padding: 10px;
+    }
+    .hjzf2_products_18_left> li{
+        border-bottom: 1px solid #eee;
+        padding: 20px 10px;
+    }
+    .hjzf2_products_18_left> li > a{
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .hjzf2_products_18_left> li > a h3, .hjzf2_products_18_left> li > a i{
+        font-weight: bold;
+    }
+   
+    .hjzf2_products_18_left li a{
+        display: flex;
+        justify-content: flex-start;
+        justify-items: center;
+    }
+    .hjzf2_products_18_left li span h3{
+        font-size: 16px;
+        color: #333;
+        transition: all .5s;
+    }
+    .hjzf2_products_18_left li a:hover,.hjzf2_products_18_left li a:hover span h3,.hjzf2_products_18_left li a:hover span i,
+    .hjzf2_products_18_left li.on > a i,
+    .hjzf2_products_18_left li.on > a span h3,
+    .hjzf2_products_18_left li .on > a span h3,
+    .hjzf2_products_18_left li .on > a i{
+        color: #{$color};
+    }
+    .hjzf2_products_18_left li i{
+        width: 10px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .erji{
+        border-bottom: 1px dashed #eee;
+    }
+    .sanjiList{
+        padding-left: 15px;
+        margin-top: 15px;
+    }
+    .sanjiList dd h3{
+        line-height: 2;
+    }
+</style>
+<div class="col-md-3  nav-hidden-mobile">
+    <ul class="hjzf2_products_18_left">
+        <volist empty="" name="allclass" id="allclass_left">
+            <li data-id="{$allclass_left['pcid']}" data-pro="{$classid}" data-par="{$prolist['parent_id']}" data-topid="{$allclass_left['pcid']}" class="yiji">
+                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                    <i class="fa fa-angle-right"></i> <span>{$allclass_left['class_name']}</span>
+                </a>
+                <!-- 二级 -->
+                <if condition='$allclass_left["childs"] neq ""'>
+                    <ul class="hjzf2_products_18_left_erji">
+                        <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                            <li data-id="{$allclass_leftchild['pcid']}" data-pro="{$classid}" data-par="{$prolist['parent_id']}" data-topid="{$allclass_leftchild['pcid']}" class="erji">
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">
+                                    <i class="fa fa-angle-right"></i> <span>{$allclass_leftchild['class_name']}</span>
+                                </a>
+                                <!-- 三级 -->
+                                <if condition='$allclass_leftchild["childs"] neq ""'>
+                                    <dl class="sanjiList">
+                                        <foreach name="allclass_leftchild['childs']" item="vo">
+                                            <dd data-id="{$vo['pcid']}" data-pro="{$classid}" data-par="{$prolist['parent_id']}" data-topid="{$vo['pcid']}" class="sanji"><a href="{:U('/product_category','','')}/{:getprocatename($vo['pcid'])}"><i class="fa fa-angle-right"></i> <span>{$vo['class_name']}</span></a></dd>
+                                        </foreach>
+                                    </dl>
+                                </if>
+                                <!-- 三级 -->
+                            </li>
+                        </volist>
+                    </ul>
+                </if>
+                <!-- 二级 -->
+            </li>
+        </volist>
+    </ul>
+</div>
+
+<script>
+    $(function () {
+        $('.yiji,.erji, .sanji').each(function () {
+            var self = $(this);
+            var dataId = self.attr('data-id');
+            var dataPro = self.attr('data-pro');
+            var dataPar = self.attr('data-par');
+            var dataTop = self.attr('data-topid');
+            if(dataId == dataPro || dataPar == dataId){
+                self.addClass('on');
+            };
+        });
+        $('.erji.on').parents('.yiji').addClass('on');
+    });
+</script>

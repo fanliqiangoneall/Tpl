@@ -1,0 +1,53 @@
+<extend name="ZERO:base" />
+<block name="content">
+
+<div id="animate6">
+<div class="in_banner_bg">
+	<div class="in_banner"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="page_Main">
+  <Include file="./www/Tpl/ZERO/left.html" />
+  <div class="page_right">
+    <div class="page_RightTitle"><span>当前位置：<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;在线反馈</span>在线反馈</div>
+    <div class="page_RightMain">
+      <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto">
+       <tr>
+        <th align="center" bgcolor="#cccccc">信息</th>
+       </tr>
+       <tr>
+        <td align="center"> 
+         <br />
+         <present name="message" style=" text-align:center;">
+         {$message}<br />
+         </present>
+         <present name="error" style=" text-align:center;">
+         {$error}<br />
+         </present>
+      <p class="detail"></p>
+      <p class="jump" style=" text-align:center;">
+      <a id="href" href="<?php echo($jumpUrl); ?>">点击返回到上一页</a> 等待时间：<b id="wait">5</b>
+      </p><br /></td>
+       </tr>
+      </table>
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+	var time = --wait.innerHTML;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>   
+{:htmlspecialchars_decode(get_inquiry_code())}
+    </div>
+  </div>
+  <div style="clear:both"></div>
+</div>
+</div>
+</block>

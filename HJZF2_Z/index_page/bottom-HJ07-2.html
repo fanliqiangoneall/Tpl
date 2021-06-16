@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<style>
+    .bottom_hj07_2_box {
+        background-color: #{$data232[0]};
+        color: #{$data232[1]};
+    }
+    .bottom_hj07_2_box a {
+        color: #{$data232[1]};
+    }
+    .bottom_hj07_2_box a:hover {
+        color: #{$data232[2]};
+    }
+    
+</style>
+<php>
+    $nowtime=date("Y",time());
+</php>
+<div class="container-fluid bottom_hj07_2_box">
+    <div class="container">
+    	<div class="row">
+            <div class="col-xs-12 text-center">
+                CopyRight © {$nowtime} - {$about['company_name']}&nbsp;{:__('All rights reserved')}&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>&nbsp;
+                <a style="" href="{:U('/sitemap')}"
+                    onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                <a href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;
+                <if condition="C('language') eq 'cn'">
+                    <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;
+                    <if condition="$data50[15] eq ''">
+                        中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                    </if>
+                    <else/>
+                    <if condition="$data50[15] eq ''">
+                        Designed by
+                        <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                    </if>
+                </if>
+            </div>
+        </div>
+    </div>
+</div>

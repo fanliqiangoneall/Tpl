@@ -1,0 +1,59 @@
+<extend name="demo3:base" />
+<block name="content">
+<Include file="./Tpl/demo3/in_head.html" />
+<div id="">
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</div>
+<div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;网站地图</div>
+
+
+<div style="width: 1190px;margin:0 auto">
+    <if condition="$data1[14] neq ''">
+        <Include file="./Tpl/demo3/left2.html" />
+        <else/>
+        <Include file="./Tpl/demo3/left.html" />
+    </if>
+<div class="page_Main">
+    <if condition="$data1[14] neq ''">
+        <div class="page_RightTitle_2">网站地图</div>
+        <else/>
+        <div class="page_RightTitle"><span>网站地图</span></div>
+    </if>
+
+    <div class="page_RightMain" id="sitemap" style="margin-top:30px;">
+        <ul>
+          <volist name="web_navigation" id="vo_map" offset="0" length='6' key="key">
+           <li><a href="{$vo_map['url']}" <if condition="strstr($vo_map['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,5)"</if>>{$vo_map['title']}</a>
+             <if condition="strstr($vo_map['url'],'/product.html') eq '/product.html'">
+               <ul style="margin-bottom:10px;">
+                  <volist empty="" name="allclass" id="allclass_map">
+                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_map['pcid'])}">{$allclass_map['class_name']}</a>
+                        <if condition="$allclass_map['childs'] neq ''">
+                            <ul>
+                            <volist empty="" name="allclass_map['childs']" id="allclass_mapchild">
+                            <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_mapchild['pcid'])}">{$allclass_mapchild['class_name']}</a></li>
+                            </volist>
+                          </ul>
+                         </if>
+                    </li>
+                  </volist>
+               </ul>
+             </if>
+             <if condition="$vo_map['child'] neq ''">
+               <ul style="margin-bottom:10px;">
+                  <volist name="vo_map['child']" id="navchild">
+                    <li><a href="{$navchild['url']}"><h3>{$navchild['title']}</h3></a></li>
+                  </volist>
+               </ul>
+             </if>
+           </li>
+           </volist>
+        </ul>
+     </div>
+     <div style="clear:both"></div>
+   </div>  
+</div>
+<Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" />
+</block>

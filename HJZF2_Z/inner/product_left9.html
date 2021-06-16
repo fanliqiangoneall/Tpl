@@ -1,0 +1,43 @@
+<php>
+    if($inner_data[3]){
+        $imgs=[];$imgs_mobile=[];
+        $matches=getimages(htmlspecialchars_decode($inner_data[3]));
+        if(isset($matches[1])){
+            $imgs=$matches[1];
+            $imgs_mobile=$matches[1];
+        }
+    }
+    $img_index=0;
+    $img_index_mobile = 0;
+</php>
+<style>
+.HJZF_Z_product_categroy9_breadcrumbs{
+	background-color: #{$inner_data[2]};
+}
+</style>
+<div class="HJZF_Z__inner__product_categroy9__search index_pd flex">
+	<div class="index_inner container">
+        <div class="row">
+            <volist empty="" name="allclass" id="vo" offset="0" length="2" key="kk_class">
+                <php>
+                    $tuji=$imgs[$img_index];
+                    $img_index++;
+                </php>
+                <div class="col-xs-6">
+                    <div class="selectWrap product_categroy9__item">
+                        <a href="{:U('/product_category','','')}/{:getprocatename($vo['pcid'])}"><div class="yiji_title"><img src="http://yun.one-all.com/{$tuji}"><span>{$vo['class_name']}</span></div></a>
+                        <if condition="$vo['childs']">
+                        <div class="yiji_type">
+                            <ul>
+                                <volist empty="" name="vo['childs']" id="allclass_index2">
+                                    <li class="col-xs-12 col-md-4" data-value="{$allclass_index2['pcid']}" <if condition="inthiscate($classid,$allclass_index2['pcid'],$product)">id="cur"</if>><i class="fa fa-circle-o"></i><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index2['pcid'])}">{$allclass_index2['class_name']}</a></li>
+                                </volist>
+                            </ul>
+                        </div>
+                        </if>
+                    </div>
+                </div>
+            </volist>
+    	</div>
+    </div>
+</div>

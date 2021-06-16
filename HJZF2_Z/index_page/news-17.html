@@ -1,0 +1,51 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_news_17{
+        background-image: url({:getindeximgurl($data315[0])});
+    }
+	.new_hjzf_news_17--more a:hover{
+		border:1px solid #{$data315[4]};
+		color:#{$data315[4]};
+	}
+	.new_hjzf_news_17--item a:hover .news_17--title{
+		color:#{$data315[4]};
+	}
+	.new_hjzf_news_17--btn a:hover{
+		border:2px solid #{$color};
+	}
+</style>
+<section class="new_hjzf_news_17 index_pd">
+	<div class="new_hjzf_news_17--line"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="new_hjzf_news_17--title">
+                    <div class="header_title index_title">{$data315[1]}</div>
+                    <div class="header_subtitle index_text">{$data315[2]}</div>
+                    <div class="new_hjzf_news_17--more"><if condition="$data315[3]"><a href="{$data315[3]}"><else/><a href="{:U('/news')}"></if>{:__('Read More')}</a></div>
+                </div>
+                <div class="new_hjzf_news_17--main">
+                	<div class="new_hjzf_news_17--list">
+                        <volist name="indexnews" id="new" offset="0" length="5">
+                            <div class="new_hjzf_news_17--item clear">
+                                <a href="{:U('/new_detail',array('nid'=>$new['nid']))}">
+                                	<div class="news_17--itemleft">
+                                    	<div class="news_17--text_wrap">
+                                            <div class="news_17--title index_sub_title">{$new['title']}</div>
+                                            <div class="news_17--desc index_text ellipsis_two">{$new['news_description']}</div>
+                                        </div>
+                                    </div>
+                                    <div class="news_17--itemright">
+                                    	<div class="news_17--md index_text">{:date('m-d',$new['created'])}</div>
+                                        <div class="news_17--year index_sub_title">{:date('Y',$new['created'])}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="new_hjzf_news_17--btn"><if condition="$data315[3]"><a href="{$data315[3]}"><else/><a href="{:U('/news')}"></if></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

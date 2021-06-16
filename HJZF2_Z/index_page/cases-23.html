@@ -1,0 +1,82 @@
+<!--{$pagename}-->
+<php>    
+    if($data426[1]){
+    $color = $data426[1];
+    }
+</php>
+
+<style>
+    <if condition="$data426[0]">
+        .hjzf_case_23 {
+        background: url({:getindeximgurl($data426[0])}) no-repeat center / cover;
+    }
+        </if>  
+        .case_23_btn{
+            color: #{$data426[1]};}
+            
+            .cases_23_pagination span.swiper-pagination-bullet-active{
+                background-color: #{$color};
+            }
+</style>
+
+<section class="hjzf_case_23 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">                
+                <div class="case_23_title index_title pb20 tac">
+                    {$data426['2']}
+                </div>
+            </div>
+            <div class="col-xs-12 nav-hidden-mobile">
+                <div class="case_23_main">
+                    <ul class="case_23_itemlist">
+                        <volist name="indexcases" id="indexcase" offset="0" length="4">
+                            
+                                <li class="case_23_item">
+                                    <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" onFocus="blur()">
+                                    <div class="case_23_item__img tac">
+                                        <img src="{:getimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" border="0" />
+                                    </div>                                
+                                    <div class="case_23_item__content">
+                                        <h3 class="case_23_item__casetitle index_sub_title ellipsis_one">{$indexcase['title']}</h3>
+                                        <div class="case_23_item__desc index_text ellipsis_three">{$indexcase['news_description']}</div>
+                                        <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" class="case_23_btn">{:__('Read More')} ></a>
+                                    </div>
+                                    </a>                             
+                                </li>
+                            
+                        </volist>
+                    </ul>                
+                </div>
+            </div>
+
+
+
+
+            <div class="col-xs-12 nav-hidden-pc">
+                <div class="swiper-container case_23_main_container">
+                    <ul class="swiper-wrapper">
+                        <volist name="indexcases" id="indexcase" offset="0" length="4">
+                                <li class="case_23_item swiper-slide">
+                                    <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" onFocus="blur()">
+                                    <div class="case_23_item__img tac">
+                                        <img src="{:getimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" border="0" class="img-fluid" />
+                                    </div>                                
+                                    <div class="case_23_item__content">
+                                        <h3 class="case_23_item__casetitle index_sub_title ellipsis_one">{$indexcase['title']}</h3>
+                                        <div class="case_23_item__desc index_text ellipsis_three">{$indexcase['news_description']}</div>
+                                        <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" class="case_23_btn">{:__('Read More')} ></a>
+                                    </div>
+                                    </a>                             
+                                </li>
+                            
+                        </volist>
+                    </ul>  
+                    <div class="cases_23_pagination text-center"></div>              
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</section>

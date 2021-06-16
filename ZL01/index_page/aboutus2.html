@@ -1,0 +1,52 @@
+<!--{$pagename}-->
+<style>
+    #ZL01_class3_abus{width: 100%;min-width: 1190px;max-width: 1920px;margin: auto;height: 670px;padding-top: 60px;}
+    .container{width: 1190px;margin: auto;}
+    .ZL01_class3_abus_img{position: absolute;left: 0;top: 30px;}
+    .ZL01_class3_abus_img2{position: absolute;left: 40px;top: 250px;z-index: 991;}
+    .ZL01_class3_abus_right{width: 766px;height: 455px;padding:60px 50px 40px 97px;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing:border-box;background: rgba(237, 237, 237, 1);float: right;margin-top: 140px;position: relative;z-index: 99;}
+    .ZL01_class3_abus_right h3{
+        font-size: 30px;font-weight: bold;line-height: 40px;margin-bottom:24px;color: #{$color}
+    }
+    .ZL01_class3_abus_right_text{font-size: 14px;line-height: 2.2;font-weight: normal;color: #707070;font-family: 微软雅黑;}
+    .ZL01_class3_abus_tezheng{width: 100%;margin-top: 40px;}
+    .ZL01_class3_abus_tezheng ul li{
+        float: left;width: 25%;
+    }
+    .ZL01_class3_abus_tezheng ul li span{
+        font-size: 28px;font-weight: bold;color: #{$color};line-height: 36px;position: relative;display: inline-block;;
+    }
+    .ZL01_class3_abus_tezheng ul li span:before{
+        content:'';display: table;width: 100%;bottom: -6px;position: absolute;height: 5px;background: #{$color};
+    }
+</style>
+<section id="ZL01_class3_abus">
+    <div class="container"style="position: relative">
+        <div class="ZL01_class3_abus_animate1">
+            <div class="ZL01_class3_abus_img">
+                <img src="{:getindeximgurl($data41[0])}" alt=""/>
+            </div>
+        </div>
+        <div class="ZL01_class3_abus_animate2">
+            <div class="ZL01_class3_abus_img2">
+                <img src="{:getindeximgurl($data41[1])}" alt=""/>
+            </div>
+        </div>
+        <div class="ZL01_class3_abus_animate3">
+            <div class="ZL01_class3_abus_right">
+                <h3>{$data41[2]}</h3>
+                <div class="ZL01_class3_abus_right_text">
+                    {:HtmlEncode(htmlspecialchars_decode(subtxt($company_info['description'],400)))}<a href="{:U('/aboutus')}" onFocus="blur()" style="color: #{$color}">查看更多>></a>
+                </div>
+                <div class="ZL01_class3_abus_tezheng">
+                    <ul>
+                        <li style="width: 20%;"><span>{$data41[3]}</span></li>
+                        <li><span>{$data41[4]}</span></li>
+                        <li><span>{$data41[5]}</span></li>
+                        <li style="width: 30%;"><span>{$data41[6]}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,120 @@
+.hjzf_bottom_11 {
+    padding-top: 80px;
+}
+.mx-85{
+    max-width: 85%;
+}
+/* top */
+.hjzf_bottom_11_top:before,.hjzf_bottom_11_top:after{
+    display: none;
+}
+.hjzf_bottom_11_top{
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+.hjzf_bottom_11_top li{
+    padding-left: 15px;
+    flex:1;
+}
+.hjzf_bottom_11_top li:nth-child(2){
+    padding-left: 10%;
+    position: relative;
+}
+.hjzf_bottom_11_top li:nth-child(2):before,
+.hjzf_bottom_11_top li:nth-child(2):after{
+    position: absolute;
+    content:'';
+    width: 2px;
+    height: 170px;
+    top: 0;
+}
+.hjzf_bottom_11_top li:nth-child(2):before{
+    left: 0;
+}
+.hjzf_bottom_11_top li:nth-child(2):after{
+    right: 20%;
+}
+.hjzf_bottom_11_top li:first-child{
+    padding-left: 15px;
+    position: relative;
+}
+.hjzf_bottom_11_top li:first-child p{
+    display: flex;
+    flex-wrap: wrap;
+}
+.hjzf_bottom_11_top li:first-child p a{
+    flex: 0 0 40%;
+}
+.hjzf_bottom_11_top li span{
+    position: relative;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.hjzf_bottom_11_top li span:before{
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    content:'';
+    left: -15px;
+    top: 6px;
+}
+.hjzf_bottom_11_top li p{
+    line-height: 2;
+}
+.hjzf_bottom_11_top li:last-child p{
+    display: flex;
+}
+.hjzf_bottom_11_top li p em,.hjzf_bottom_11_top li p i{
+    font-style: normal;
+}
+.hjzf_bottom_11_top li p em{
+    flex: 0 0 50px;
+}
+.hjzf_bottom_11_top li a,.hjzf_bottom_11_b .fl,.hjzf_bottom_11_b .fr,
+.hjzf_bottom_11_top li p em,.hjzf_bottom_11_top li p i{
+    text-shadow: 2px 2px 6px rgba(0,0,0,.4);
+}
+
+/* bottom */
+.hjzf_bottom_11_b {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #222;
+    position: relative;
+}
+.hjzf_bottom_11_b:before{
+    position: absolute;
+    top: 1px;
+    width: 100%;
+    height: 1px;
+    content:'';
+    background-color: #484848;
+}
+.hjzf_bottom_11_b img{
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+.hjzf_bottom_11_b .fr a {
+    margin-left: 10px;
+}
+
+@media(max-width:1200px ){
+    .hjzf_bottom_11_top li:first-child p{
+        flex-direction: column;
+    }
+    .hjzf_bottom_11_top li:first-child p a{
+        flex: none;
+    }
+}
+@media(max-width: 768px) {
+    .hjzf_bottom_11 {
+        padding-top: 40px;
+    }
+    .hjzf_bottom_11_top{
+        margin-bottom: 40px;
+    }
+}
+

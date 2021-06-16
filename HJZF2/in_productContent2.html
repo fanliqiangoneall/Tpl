@@ -1,0 +1,82 @@
+<style>
+    .InsidePage--3__prolist2Item:hover{
+        border-color: #{$color};
+    }
+    .InsidePage--3__prolist2Item:hover .InsidePage--3__prolist2--contentTitle a{
+        color: #{$color};
+    }
+    .InsidePage--3__prolist2Item:hover .InsidePage--3__prolist2--contentButton{
+        background: #{$color};color: #fff;border-color: #{$color};
+    }
+</style>
+<section class="InsidePage--3__contentBox InsidePage--3__contentBox--product left">
+    <if condition="$inner_data[2] neq ''">
+        <div class="InsidePage--3__contentBoxWrap">
+            <div class="InsidePage--3__contentBoxWrap--main">
+                <div class="InsidePage--3__Protitle">{:__('Hot products')} <a href="{:U('/all_ishot')}" class="InsidePage--3__ProtitleMore">{:__('View More')}</a></div>
+                <ul class="InsidePage--3__prolist2">
+                    <volist empty="" name="hotpro" id="hotpro" key="k" offset="0">
+                        <li class="InsidePage--3__prolist2Item wow fadeInUp">
+                            <div class="InsidePage--3__prolist2--pic">
+                                <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                    <img src="{:getmainimgurl($hotpro['main_img'])}" alt=""/>
+                                </a>
+                            </div>
+                            <div class="InsidePage--3__prolist2--content">
+                                <div class="InsidePage--3__prolist2--contentTitle" title="{$hotpro['pro_name']}"><a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">{:subtxt($hotpro['pro_name'],60)}</a></div>
+                                <div class="InsidePage--3__prolist2--contentDesac">{:htmlspecialchars_decode($hotpro['pro_description'])}</div>
+                                <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}" class="InsidePage--3__prolist2--contentButton">{:__('Read More')}</a>
+                            </div>
+                        </li>
+                    </volist>
+                    <div style="clear:both;"></div>
+                </ul>
+                <div style="clear: both;height: 30px;"></div>
+            </div>
+            <div class="InsidePage--3__contentBoxWrap--main">
+                <div class="InsidePage--3__Protitle">{:__('New products')} <a href="{:U('/all_isnew')}" class="InsidePage--3__ProtitleMore">{:__('View More')}</a></div>
+                <ul class="InsidePage--3__prolist">
+                    <volist empty="" name="newpro" id="newpro" key="k" offset="0">
+                        <li class="InsidePage--3__prolist2Item wow fadeInUp">
+                            <div class="InsidePage--3__prolist2--pic">
+                                <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                    <img src="{:getmainimgurl($newpro['main_img'])}" alt=""/>
+                                </a>
+                            </div>
+                            <div class="InsidePage--3__prolist2--content">
+                                <div class="InsidePage--3__prolist2--contentTitle" title="{$newpro['pro_name']}"><a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">{:subtxt($newpro['pro_name'],60)}</a></div>
+                                <div class="InsidePage--3__prolist2--contentDesac">{:htmlspecialchars_decode($newpro['pro_description'])}</div>
+                                <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" class="InsidePage--3__prolist2--contentButton">{:__('Read More')}</a>
+                            </div>
+                        </li>
+                    </volist>
+                    <div style="clear:both;"></div>
+                </ul>
+            </div>
+        </div>
+        <else/>
+        <div class="InsidePage--3__contentBoxWrap">
+            <div class="InsidePage--3__contentBoxWrap--main" style="margin-bottom: 60px;">
+                <h5 class="InsidePage--3__Protitle">{:__('All products')}</h5>
+                <ul class="InsidePage--3__prolist">
+                    <volist empty="" name="allpro" id="allpro" key="k" offset="0">
+                        <li class="InsidePage--3__prolist2Item wow fadeInUp">
+                            <div class="InsidePage--3__prolist2--pic">
+                                <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                    <img src="{:getmainimgurl($allpro['main_img'])}" alt=""/>
+                                </a>
+                            </div>
+                            <div class="InsidePage--3__prolist2--content">
+                                <div class="InsidePage--3__prolist2--contentTitle" title="{$allpro['pro_name']}"><a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">{:subtxt($allpro['pro_name'],60)}</a></div>
+                                <div class="InsidePage--3__prolist2--contentDesac">{:htmlspecialchars_decode($allpro['pro_description'])}</div>
+                                <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" class="InsidePage--3__prolist2--contentButton">{:__('Read More')}</a>
+                            </div>
+                        </li>
+                    </volist>
+                    <div style="clear:both;"></div>
+                </ul>
+                <div class="main_page">{$page}</div>
+            </div>
+        </div>
+    </if>
+</section>

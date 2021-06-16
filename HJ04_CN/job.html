@@ -1,0 +1,26 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <style>
+        table{border:none; background:none;}
+        td{border:none;}
+    </style>
+    <div  class="jobsContainer">
+        <div class="body_nr container" style="overflow: hidden;margin-bottom: 60px;">
+            <div class="page_main1">
+                <div style="text-align:center; font-size:16px; font-weight:bold;color: #333;margin-top: 60px;">{$job['jobname']}</div>
+                <div style="margin-top: 10px;">{:get_zifu($job['content'])}</div>
+                <div class="clear"></div>
+                <div style="margin-top: 5px;">时间：{:date('Y/m/d H:i',$job['updatetime'])}</div>
+            </div>
+            <script language="javascript">
+                function openIT(theURL){
+                    var show=window.open(theURL,'win_name','width=748,height=455,scrollbars=1,resizable=no');
+                }
+            </script>
+            <div class="page_main1">
+                <!--<div class="title" style="width:100%; text-align:left; font-size:22px; font-weight:bold; padding-bottom:10px;" onclick='openIT("{:U('/getjob','','')}")'>立即应聘</div>-->
+                <Include file="./Tpl/HJ04_CN/submitjob.html" />
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+<php>
+
+</php>
+<style>
+.hjzf_other_119_title .index_sub_title:before{
+	background-color: #{$data716[3]};
+}
+</style>
+<section class="hjzf_other_119 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-center hjzf_other_119_title pb40 wow fadeInUp">
+					<div class="index_title">
+						{$data716[1]}
+					</div>
+					<div class="index_sub_title">
+						{$data716[2]}
+					</div>
+				</div>
+				<div class="other_119_wrapper wow fadeInUp">
+					<ul>
+						<php>
+							$arr = get_list_val($data716[4]);
+						</php>
+						<volist name="arr" id="a" offset="0" length="6">
+							<li class="other_119_con" style="color: #{$a[col]};">
+								<img src="{$a[img]}" alt="">
+								<div class="other_119_con_a">
+									<div class="index_sub_title pb20">
+										{$a[title]}
+									</div>
+									<div>
+										{$a[content]}
+									</div>
+								</div>
+							</li>
+						</volist>
+					</ul>
+					<volist name="arr" id="a" offset="6" length="1">
+						<div class="other_119_wrapper_r other_119_con">
+							<img src="{$a[img]}" alt="">
+							<div class="other_119_con_a">
+								<div class="index_sub_title pb40">
+									{$a[title]}
+								</div>
+								<div>
+									{$a[content]}
+								</div>
+							</div>
+						</div>
+					</volist>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

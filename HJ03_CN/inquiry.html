@@ -1,0 +1,43 @@
+<extend name="HJ03_CN:basein" />
+<block name="content">
+    <style>
+        .page-title-inner{margin-top: 20px;}
+        .main-content-right {
+            width: 880px;
+            float: right;
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+            </if>
+
+
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 40px;">
+            <div class="container">
+                <div class="Breadcrumbs">您的位置：<a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">客户反馈</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ03_CN/left.html" />
+            </section>
+            <section class="main-content-right">
+                <div class="page_RightMain">
+                    <h5 class="main-cases-detail-title">客户反馈</h5>
+                    <div class="page_Main"style="padding: 20px;box-sizing: border-box;background: #fff;margin-top: 40px;"><Include file="./Tpl/HJ03_CN/submitinquiry.html" /> </div>
+                    <div style="clear:both"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

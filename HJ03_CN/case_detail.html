@@ -1,0 +1,100 @@
+<extend name="HJ03_CN:basein" />
+<block name="content">
+
+    <style type="text/css">
+        .Breadcrumbs{width: 50%;float: right;}
+        .main_news_prev_next ul li.news_next:hover{
+            background: #A9A9A9;;
+        }
+        .main_news_prev_next ul li.news_prev:hover{
+            background: #A9A9A9;;
+        }
+        .main_news_prev_next ul li.news_next:hover img{opacity: 1}
+        .main_news_prev_next ul li.news_prev:hover img{opacity: 1}
+        .main_news_prev_next ul li.news_next:hover p{
+            color:#fff
+        }
+        .main_news_prev_next ul li.news_prev:hover p{
+            color:#fff
+        }
+        .main_news_prev_next ul li.news_next:hover p:after{
+            content: '';display: table;width: 20px;height: 11px;background: #DADADA;position: absolute;;right: -45px;top: 50%;transform: translateY(-6px);background: url(__TMPL__HJ03_CN/img/newsnext_2.png);
+        }
+        .main_news_prev_next ul li.news_prev:hover p:after{
+            content: '';display: table;width: 20px;height: 11px;background: #DADADA;position: absolute;;left: -45px;top: 50%;transform: translateY(-6px);background: url(__TMPL__HJ03_CN/img/newsprev_2.png);
+        }
+
+
+        .main_caseitem_img a:before{
+        background: {$data1[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_caseitem_tan{
+            background: #{$color};
+        }
+    </style>
+
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$data1[1] neq ''">
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[1])}) no-repeat center;"></div>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 40px;">
+            <div class="container">
+                <div class="Breadcrumbs">您的位置: <a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/cases')}"><if condition="$data47[5] neq ''">{$data47[5]} <else/>案例中心</if></a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$news['title']}</span>
+                </div>
+                <if condition="$data47[2] neq ''">
+                    <section class="main-content-top">
+                        <Include file="./Tpl/HJ03_CN/caseleft_2.html" />
+                    </section>
+                </if>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+           <!-- <section class="main-content-left2">
+                <Include file="./Tpl/HJ02/caseleft.html" />
+            </section>-->
+            <section class="main-content-right2 ">
+                <div class="page_RightMain">
+                    <h5 class="main-cases-detail-title">{$news['title']}</h5>
+                    <div class="page_Main" id="payment">{:htmlspecialchars_decode($news['body'])}</div>
+                    <div style="clear:both;height: 30px;"></div>
+                    <div class="main_news_prev_next">
+                        <ul>
+                            <if condition="$newprev[0]['title'] eq ''">
+
+                                <else/>
+                                <li class="news_prev">
+                                    <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                        <p>{$newprev[0]['title']}</p>
+                                        <img src="{:getimgurl($newprev[0]['new_pro'])}" alt=""/>
+                                    </a>
+
+                                </li>
+                            </if>
+                            <if condition="$newnext[0]['title'] eq ''">
+                                <else/>
+                                <li class="news_next">
+                                    <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                        <img src="{:getimgurl($newnext[0]['new_pro'])}" alt=""/>
+                                        <p>{$newnext[0]['title']}</p>
+                                    </a>
+
+                                </li>
+                            </if>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

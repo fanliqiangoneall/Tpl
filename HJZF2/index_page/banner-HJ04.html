@@ -1,0 +1,76 @@
+<style>
+    .new_hjzf_banner-HJ04 .bannerIcon{
+        color: #{$color};
+    }
+    .new_hjzf_banner-HJ04 #btn_prev:hover,.hjzf_banner-HJ04_search_box .search_second button{
+        background: #{$color};
+    }
+    .new_hjzf_banner-HJ04 #btn_prev:hover .bannerIcon{
+        color: #fff;
+    }
+    .new_hjzf_banner-HJ04 #btn_next:hover{
+        background: #{$color};
+    }
+    .new_hjzf_banner-HJ04 #btn_next:hover .bannerIcon{
+        color: #fff;
+    }
+</style>
+<if condition="$data97[0]">
+    <style>
+        .hjzf_banner-HJ04_searchwrap{display: block;}
+    </style>
+</if>
+<div class="bannerContainer swiper-container02">
+    <div class="bannerContent swiper-wrapper">
+        <volist name="banner" id="banner_pic" key="k">
+            <div class="bannerList swiper-slide" style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center">
+                <a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}">
+                    <img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""/>
+                </a>
+            </div>
+        </volist>
+    </div>
+    <div class="swiper-pagination" style="display: none;"></div>
+    <div class="swiper-button-prev">
+        <i class="fa fa-caret-left bannerIcon" aria-hidden="true"></i>
+        <div class="prevImgContainer">
+            <img src="" alt=""/>
+        </div>
+    </div>
+    <div class="swiper-button-next">
+        <i class="fa fa-caret-right bannerIcon" aria-hidden="true"></i>
+        <div class="nextImgContainer">
+            <img src="" alt=""/>
+        </div>
+    </div>
+    <div class="hjzf_banner-HJ04_searchwrap">
+        <div class="container">
+            <div class="hjzf_banner-HJ04_keywords">
+                <span>{:__('Popular keyword search: ')}</span><span><volist name="friend_linktop" id="friend_linktop">
+                <if condition="$friend_linktop['linkurl'] neq ''" ><a target="_new" href="{$friend_linktop['link_url']}" title="{$friend_linktop['link_title']}"><img style="width:70px; height:30px; float:left;"  src="{:getimgurl($friend_linktop['linkurl'])}"/></a>&nbsp;&nbsp;&nbsp;<else/>
+                    <a target="_new" href="{$friend_linktop['link_url']}" title="{$friend_linktop['link_title']}">{$friend_linktop['link_title']}</a>&nbsp;&nbsp;&nbsp;
+                </if>
+            </volist></span>
+            </div>
+            <div class="hjzf_banner-HJ04_search">
+                <if condition="C('language') eq 'cn'">
+                    <div class="hjzf_banner-HJ04_search_box">
+                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                            <li class="search_first"><input type="text" value="产品搜索" name="keywords" id="keyword2" onfocus="OnFocusFun(this,&#39;产品搜索&#39;)" onblur="OnBlurFun(this,&#39;产品搜索&#39;)"></li>
+                            <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                            <div class="clear"></div>
+                        </form>
+                    </div>
+                    <else/>
+                    <div class="hjzf_banner-HJ04_search_box">
+                        <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                            <li class="search_first"><input type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                            <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                            <div class="clear"></div>
+                        </form>
+                    </div>
+                </if>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+<!--{$pagename}-->
+<php>
+	if($data694[1]){
+	$top_bg = $data694[1];
+	}else{
+	$top_bg = '222';
+	}
+	if($data694[2]){
+	$top_color = $data694[2];
+	}else{
+	$top_color = 'cbc7c7';
+	}
+	if($data694[3]){
+	$bottom_bg = $data694[3];
+	}else{
+	$bottom_bg = '3e3f40';
+	}
+	if($data694[2]){
+	$bottom_color = $data694[2];
+	}else{
+	$bottom_color = '808080';
+	}
+</php>
+<style>
+	#form_submit input{
+		background-color: #{$color};
+	}
+	.hjzf2_z_bottom_27_top_bg {
+		background-color: #{$top_bg};
+	}
+
+	.hjzf2_z_bottom_27_top_bg a,
+	.hjzf2_z_bottom_27_top_bg {
+		color: #{$top_color};
+	}
+
+	.hjzf2_z_bottom_27_bottom_bg {
+		background-color: #{$bottom_bg};
+		color: #{$bottom_color}
+	}
+
+	.hjzf2_z_bottom_27_bottom_bg a {
+		color: #{$bottom_color}
+	}
+	.hjzf2_z_bottom_27_contact b{
+		color: #{$color};
+	}
+</style>
+<section class="hjzf2_z_bottom_27">
+	<div class="hjzf2_z_bottom_27_top_bg nav-hidden-mobile">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-5 hjzf2_z_bottom_27_left">
+					<div class="hjzf2_z_bottom_27_logo">
+						<img src="{:getindeximgurl($data694[5])}" alt="foot logo" class="img-responsive">
+						<p>
+							{:HtmlEncode($data694[6])}
+						</p>
+						<php>
+							$arr = get_list_val($data694[7]);
+							$arra = get_list_val($data694[8]);
+							$arrb = get_list_val($data694[11]);
+						</php>
+						<ul>
+							<volist name="arr" id="a">
+								<li>
+									<a href="{$a[link]}" target="_blnak">
+										<img src="{$a[ico]}" alt="">
+									</a>
+								</li>
+							</volist>
+						</ul>
+					</div>
+					<ul class="hjzf2_z_bottom_27_menu">
+						<volist name="arra" id="a" key="k">
+							<if condition="$k eq 1">
+								<li class="bottom_title">
+									<h3><a href="{$a[link]}">{$a[title]}</a></h3>
+								</li>
+								<else />
+								<li>
+									<a href="{$a[link]}">{$a[title]}</a>
+								</li>
+							</if>
+						</volist>
+					</ul>
+				</div>
+				<div class="col-xs-7 hjzf2_z_bottom_27_right">
+					<ul class="hjzf2_z_bottom_27_case">
+						<li class="bottom_title">
+							<h3>
+								<if condition="$data694[10]">
+									<a href="{$data694[10]}">
+										<else />
+										<a>
+								</if>
+								{$data694[9]}</a>
+							</h3>
+						</li>
+						<div class="swiper-container hjzf2_z_bottom_27_case_wrapper">
+							<div class="swiper-wrapper">
+								<volist name="arrb" id="a">
+									<div class="swiper-slide">
+										<a href="{$a[link]}">
+											<img src="{$a[img]}" class="img-responsive" alt="">
+										</a>
+									</div>
+								</volist>
+							</div>
+						</div>
+					</ul>
+					<ul class="hjzf2_z_bottom_27_contact">
+						<li class="bottom_title">
+							<h3>
+								<if condition="$data694[13]">
+									<a href="{$data694[13]}">
+										<else />
+										<a>
+								</if>
+								{$data694[12]}</a>
+							</h3>
+						</li>
+						<b>{$data694[14]}</b>
+						<if condition="chaifen($about['email'],0)">
+							<p>{:__('E-mail: ')} {:chaifen($about['email'],0)}</p>
+						</if>
+						<if condition="chaifen($about['fax'],0)">
+							<p>{:__('Fax: ')} {:chaifen($about['fax'],0)}</p>
+						</if>
+						<if condition="$about['address']">
+						<p>{:__('Add: ')} {$about['address']}</p>
+						</if>
+					</ul>
+					<div class="hjzf2_z_bottom_27_email">
+						<Include file="./Tpl/HJZF2_Z/email_mail_address.html" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<php>
+		$nowtime=date("Y",time());
+	</php>
+	<div class="hjzf2_z_bottom_27_bottom_bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights reserved')}&nbsp;
+					<if condition="get_txtBeiAn()">
+						<a href="http://beian.miit.gov.cn/"
+							target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+						</a>&nbsp;
+					</if>
+					<a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+					<a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+					<if condition="C('language') eq 'cn'">
+						免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a href="https://www.one-all.com" title="常州网站建设"
+							target="_blank">常州网站建设</a>
+						<else />
+						<a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+							Zhonghuan Internet</a>
+					</if>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

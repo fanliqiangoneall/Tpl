@@ -1,0 +1,57 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+        .productbutton:hover{
+            background: #{$inner_data[0]};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+        <div class="Breadcrumbs">
+
+            <div class="Breadcrumbs_down"><a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                    href="{:U('/jobs')}">{:__('Jobs')}</a><i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$job['jobname']}</span></div>
+        </div>
+
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left"  <if condition="count($navrs) gt 0">style="display:block"<else/> style="display:none"</if>>
+            <Include file="./Tpl/HJZF2/otherleft.html" />
+            </section>
+            <section <if condition="count($navrs) gt 0">class="InsidePages_content-right" <else/> class="InsidePages_content-right2" </if>>
+            <div class="InsidePages_content-right_content">
+
+                <div class="InsidePages_content-right_content-main">
+                    <h5 class="InsidePages_content-right_content_title">{:__('Job details')}</h5>
+                    <div class="product_detail_editor_content">{:htmlspecialchars_decode($job['content'])}</div>
+
+                    <div class="product_detail_editor_content">
+                        <if condition="LANGUAGE eq 'en'">
+                            <include file="./Tpl/HJZF2/submitjob_en.html" />
+                            <elseif condition="C('LANGUAGE') eq 'de'"/>
+                            <include file="./Tpl/HJZF2/submitjob_de.html" />
+                            <else/>
+                            <include file="./Tpl/HJZF2/submitjob.html" />
+                        </if>
+                    </div>
+                </div>
+                <div class="page_nei_space"></div>
+            </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

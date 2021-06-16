@@ -1,0 +1,435 @@
+<if condition="$data1[2] neq 2 and $data1[8] neq 3">
+	<script type="text/javascript" language="javascript" src="__TMPL__ZL01/js/nav.js"></script>
+	<script type="text/javascript" src="__TMPL__ZL01/js/navcontrol.js"></script>
+	<script type="text/javascript" src="__TMPL__ZL01/js/navigation.js"></script>
+</if>
+
+
+<script type="text/javascript" src="__TMPL__ZL01/js/jquery.event.drag-1.5.min.js"></script>
+<script type="text/javascript" src="__TMPL__ZL01/js/jquery.touchSlider.js"></script>
+<script type="text/javascript" src="__TMPL__ZL01/js/banner.js"></script>
+<script type="text/javascript" src="__TMPL__ZL01/js/layer.js"></script>
+
+<script type="text/javascript" src="__TMPL__ZL01/js/tools.min.js"></script>
+
+<script src="__TMPL__ZL01/js/layer/layer.js"></script>
+<script>
+	$(".head_search_class2 a").toggle(function(){
+		$(".head_searchlan_class2").addClass("search_show");
+	},function(){
+		$(".head_searchlan_class2").removeClass("search_show");
+	})
+	$(".head_search_class2 a").toggle(function(){
+		$(".head_searchlan_class2").addClass("search_show");
+	},function(){
+		$(".head_searchlan_class2").removeClass("search_show");
+	})
+
+
+	$('#adv_video').on('click', function(){
+		layer.open({
+			type: 2,
+			title: ['视频', 'font-size:18px;'],
+			area: ['80%', '80%'],
+			shadeClose: true, //点击遮罩关闭
+			maxmin: true,
+			//content: '__TMPL__ZERO/video/a/demo.htm'
+			content: '{$data4[3]}'
+		});
+	});
+
+jQuery('#index_banner_animate').removeClass().addClass('fadeInDown');
+
+if($("#index_products_animate_1").length>0){
+$(document).ready(function(){
+	//判断一下是不是在首页上
+	var window_height=$(window).height();
+	//alert(window_height);
+
+	var top=$("#index_products_animate_1").offset().top;
+	//alert(top);
+	if(top<window_height){
+
+		$('#index_products_animate_1').css("visibility","visible");
+		$('#index_products_animate_1').addClass('fadeInUp');
+	}
+})
+
+jQuery('#index_products_animate').removeClass().addClass('fadeInUp');
+jQuery('#index_products_animate1').removeClass().addClass('fadeInUp');
+jQuery('#index_products_animate2').removeClass().addClass('fadeInUp');
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	var top=$("#index_products_animate_1").offset().top;
+	if(top-scrollTop<580){
+	$('#index_products_animate_1').css("visibility","visible");
+	$('#index_products_animate_1').removeClass().addClass('fadeInUp');
+	}
+
+});
+}
+
+$("#index_product_c1_slide").scrollable({
+  circular: true,
+  prev:"#index_product_c1_slide_prev",
+  next:"#index_product_c1_slide_next",
+  speed: 500
+ }).autoscroll({
+  autoplay: true,
+  interval: 4000
+ }).navigator();
+ 
+$("#index_product_c2_slide").scrollable({
+  circular: true,
+  prev:"#index_product_c2_slide_prev",
+  next:"#index_product_c2_slide_next",
+  speed: 500
+ }).autoscroll({
+  autoplay: true,
+  interval: 4000
+ }).navigator();
+
+if($("#index_about_animate").length>0){
+$(document).ready(function(){
+	//判断一下是不是在首页上
+	var window_height=$(window).height();
+	//alert(window_height);
+	var top=$("#index_about_animate").offset().top;
+	//alert(top);
+	if(top<window_height){
+		$('#index_about_animate').css("visibility","visible");
+		$('#index_about_animate').addClass('fadeInUp');
+
+	}
+})
+
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	var top=$("#index_about_animate").offset().top;
+	if(top-scrollTop<580){
+	$('#index_about_animate').css("visibility","visible");
+	$('#index_about_animate').removeClass().addClass('fadeInUp');
+		$('#index_about_animate1').css("visibility","visible");
+		$('#index_about_animate2').css("visibility","visible");
+		$('#index_about_animate3').css("visibility","visible");
+		$('#index_about_animate1').addClass('fadeInRight');
+		$('#index_about_animate2').addClass('fadeInRight');
+		$('#index_about_animate3').addClass('fadeInRight');
+	}
+});
+}
+
+if($("#index_advantage_animate").length>0){
+$(document).ready(function(){
+	//判断一下是不是在首页上
+	var window_height=$(window).height();
+	//alert(window_height);
+	var top=$("#index_advantage_animate").offset().top;
+	var top1=$("#index_advantage_animate_1").offset().top;
+	//alert(top);
+	if(top<window_height){
+		$('#index_advantage_animate').css("visibility","visible");
+		$('#index_advantage_animate').addClass('fadeInUp');
+	}
+	if(top1<window_height){
+		$('#index_advantage_animate_1').css("visibility","visible");
+		$('#index_advantage_animate_1').addClass('fadeInUp');
+	}
+})
+
+
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	var top=$("#index_advantage_animate").offset().top;
+	var top1=$("#index_advantage_animate_1").offset().top;
+	if(top-scrollTop<480){
+	$('#index_advantage_animate').css("visibility","visible");
+	$('#index_advantage_animate').removeClass().addClass('fadeInUp');
+	}
+
+	if(top1-scrollTop<580){
+	$('#index_advantage_animate_1').css("visibility","visible");
+	$('#index_advantage_animate_1').removeClass().addClass('fadeInUp');
+	}
+});
+}
+
+if($("#index_news_animate").length>0){
+$(document).ready(function(){
+	//判断一下是不是在首页上
+	var window_height=$(window).height();
+	var top=$("#index_news_animate").offset().top;
+	if(top<window_height){
+		$('#index_news_animate').css("visibility","visible");
+		$('#index_news_animate').addClass('fadeInUp');
+	}
+})
+
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	var top=$("#index_news_animate").offset().top;
+	if(top-scrollTop<580){
+	$('#index_news_animate').css("visibility","visible");
+	$('#index_news_animate1').css("visibility","visible");
+	$('#index_news_animate2').css("visibility","visible");
+	$('#index_news_animate').removeClass().addClass('fadeInUp');
+	$('#index_news_animate1').removeClass().addClass('fadeInLeft');
+	$('#index_news_animate2').removeClass().addClass('fadeInRight');
+	}
+});
+}
+
+if($("#index_case_animate").length>0){
+$(document).ready(function(){
+	//判断一下是不是在首页上
+	var window_height=$(window).height();
+	//alert(window_height);
+	var top=$("#index_case_animate").offset().top;
+	//alert(top);
+	if(top<window_height){
+		$('#index_case_animate').css("visibility","visible");
+		$('#index_case_animate').addClass('fadeInUp');
+	}
+})
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	var top=$("#index_case_animate").offset().top;
+	if(top-scrollTop<580){
+	$('#index_case_animate').css("visibility","visible");
+	$('#index_case_animate').removeClass().addClass('fadeInUp');
+	}
+});
+}
+
+
+
+
+
+if($("#index_customer_animate").length>0){
+$(document).ready(function(){
+	//判断一下是不是在首页上
+	var window_height=$(window).height();
+	//alert(window_height);
+	var top=$("#index_customer_animate").offset().top;
+	//alert(top);
+	if(top<window_height){
+		$('#index_customer_animate').css("visibility","visible");
+		$('#index_customer_animate').addClass('fadeInUp');
+	}
+})
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	var top=$("#index_customer_animate").offset().top;
+	if(top-scrollTop<580){
+		$('#index_customer_animate').css("visibility","visible");
+		$('#index_customer_animate').addClass('fadeInUp');
+	}
+});
+}
+
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+jQuery('#index_bottom_animate').removeClass().addClass('fadeInUp');
+
+$('#test2').on('click', function(){
+    layer.open({
+      type: 2,
+      title: ['免责声明', 'font-size:18px;'],
+      area: ['70%', '85%'],
+      shadeClose: true, //点击遮罩关闭
+      content: 'https://www.one-all.com/mianze.html'
+    });
+  });
+</script>
+
+<script src="__TMPL__ZL01/js/statitics.js"></script>
+<script>
+jQuery('#animate_banner').removeClass().addClass('fadeInLeft');
+function goTop(){
+  jQuery('html,body').animate({'scrollTop':0},600);
+}
+jQuery(function(){
+  jQuery('.mobile-show').hide();
+  jQuery(".mobile-container").bind('mouseenter',function(){
+    jQuery('.mobile-show').show();
+  })
+  jQuery(".mobile-container").bind('mouseleave',function(){
+    jQuery('.mobile-show').hide();
+  });
+});
+jQuery(document).ready(function(){
+  jQuery(".sidebar ul li").hover(function(){
+    jQuery(this).find(".sidebox").stop().animate({"width":"230px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"
+		})
+    jQuery(this).find(".sidebox2").stop().animate({"width":"250px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"
+		})
+    jQuery(this).find(".sidebox3").stop().animate({"width":"300px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"
+	})
+  },function(){
+    jQuery(this).find(".sidebox").stop().animate({"width":"60px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"{$data13[12]}"
+		})
+    jQuery(this).find(".sidebox2").stop().animate({"width":"60px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"{$data13[12]}"
+	})
+    jQuery(this).find(".sidebox3").stop().animate({"width":"60px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"{$data13[12]}"
+		})
+  });
+});
+
+//导航自动选定的方法
+jQuery(function(){
+	var color="#{$color}";
+	var url=window.location.href;
+	jQuery(".index_navigation_page_Menu li a").each(function(){
+		//console.log(href);
+		//当前each的导航是啥
+		var href=jQuery(this).attr("href");
+		href=href.toLowerCase();
+		url=url.toLowerCase();
+		//区分出啥是啥，主要就是区分出new pro case 优先找顶级，找不到在按规则排
+		//console.log("导航li a 的网址",href);
+		//当前网址是啥
+		//console.log("url",url);
+		
+		if(href==url){
+			jQuery(this).parents("li").addClass("menuon");
+			return false;
+		}else{
+			
+			//说明是关于我们
+			url=url.toLowerCase();
+			if(url.indexOf("aboutus")!=-1){
+				if(href.indexOf("aboutus")!=-1){
+					jQuery(this).parents("li").addClass("menuon");
+				}
+			}
+
+			//说明是产品
+			if(url.indexOf("product")!=-1||url.indexOf("all_isnew")!=-1){
+				if(href.indexOf("product")!=-1 ){
+					 jQuery(this).parents("li").addClass("menuon");
+					 
+				}
+			}
+			
+			if(url.indexOf("all_ishot")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menuon");
+				}
+			}
+			
+
+			//说明是新闻
+			if(url.indexOf("new")!=-1&&url.indexOf("all_isnew")==-1){
+				if(href.indexOf("new")!=-1){
+					jQuery(this).parents("li").addClass("menuon");
+				}
+			}
+			if(url.indexOf("new_category")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menuon");
+				}
+			}
+			if(url.indexOf("new_detail")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menuon");
+				}
+			}
+
+			//说明是案例
+			if(url.indexOf("case")!=-1){
+				if(href.indexOf("case")!=-1){
+					jQuery(this).parents("li").addClass("menuon");
+				}
+			}
+
+		}
+
+	})
+})
+//导航自动选定的方法2
+jQuery(function(){
+	var color="#{$color}";
+	var url=window.location.href;
+	jQuery(".ZL01_header_class3_menu_right li a").each(function(){
+		//console.log(href);
+		//当前each的导航是啥
+		var href=jQuery(this).attr("href");
+		href=href.toLowerCase();
+		url=url.toLowerCase();
+		//区分出啥是啥，主要就是区分出new pro case 优先找顶级，找不到在按规则排
+		//console.log("导航li a 的网址",href);
+		//当前网址是啥
+		//console.log("url",url);
+		
+		if(href==url){
+			jQuery(this).parents("li").addClass("menuon2");
+			return false;
+		}else{
+			
+			//说明是关于我们
+			url=url.toLowerCase();
+			if(url.indexOf("aboutus")!=-1){
+				if(href.indexOf("aboutus")!=-1){
+					jQuery(this).parents("li").addClass("menuon2");
+				}
+			}
+
+			//说明是产品
+			if(url.indexOf("product")!=-1||url.indexOf("all_isnew")!=-1){
+				if(href.indexOf("product")!=-1 ){
+					 jQuery(this).parents("li").addClass("menuon2");
+					 
+				}
+			}
+			
+			if(url.indexOf("all_ishot")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menuon2");
+				}
+			}
+			
+
+			//说明是新闻
+			if(url.indexOf("new")!=-1&&url.indexOf("all_isnew")==-1){
+				if(href.indexOf("new")!=-1){
+					jQuery(this).parents("li").addClass("menuon2");
+				}
+			}
+			if(url.indexOf("new_category")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menuon2");
+				}
+			}
+			if(url.indexOf("new_detail")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menuon2");
+				}
+			}
+
+			//说明是案例
+			if(url.indexOf("case")!=-1){
+				if(href.indexOf("case")!=-1){
+					jQuery(this).parents("li").addClass("menuon2");
+				}
+			}
+
+		}
+
+	})
+})
+var path="";
+    </script>
+<Include file="./Tpl/ZL01/sidebar.html" />    
+</body>
+</html>
+

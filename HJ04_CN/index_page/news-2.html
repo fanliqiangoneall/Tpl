@@ -1,0 +1,71 @@
+<!--{$pagename}-->
+<style>
+	.indexNews2More a{
+		color: #{$color};
+	}
+</style>
+<!--news start-->
+<div class="indexNews2Container" <if condition="$data33[8] neq '' and $data33[9] neq ''">style="padding-top: {$data33[8]}px;padding-bottom: {$data33[9]}px;"</if>>
+    <div class="indexNews2Content container">
+        <div class="indexNews2Left lf">
+            <div class="indexNews2TopTitle">
+                <div class="serviceTopTitle">{$data33[0]}</div>
+                <div class="serviceTopTips">{$data33[1]}</div>
+                <php>
+                    $arr_str=$data33[2];
+                    $arr=explode(',',$arr_str);
+
+                    foreach($arr as $k=>$a){
+                    $list[$k]['name']=get_wap_news_class_name($a);
+                    $list[$k]['data']=get_index_news_category($a,4);
+                    }
+                </php>
+                <div class="indexNews2More"><a href="{:U('/new_category/classid','','')}/{$arr[0]}">更多</a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexNews2TopPic"><img src="{:getindeximgurl($data33[3])}" border="0" /></div>
+            <div class="indexNews2List">
+                    
+                    <volist name="list" id="li" >
+                        <volist name="li['data']" id="indexnews" offset="0" length="4" key="h">
+                            <div class="indexNews2_item" id="indexNews2_item">
+                                <span>【{:date('Y-m-d ',$indexnews['created'])}】</span><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],30)}</a>
+                            </div>
+                        </volist>
+                    </volist>
+           </div>
+        </div>
+        <div class="indexNews2Right rf">
+            <div class="indexNews2TopTitle">
+                <div class="serviceTopTitle">{$data33[4]}</div>
+                <div class="serviceTopTips">{$data33[5]}</div>
+                <php>
+                    $arr_str2=$data33[6];
+                    $arr2=explode(',',$arr_str2);
+
+                    foreach($arr2 as $k=>$a){
+                    $list2[$k]['name']=get_wap_news_class_name($a);
+                    $list2[$k]['data']=get_index_news_category($a,4);
+                    }
+                </php>
+                <div class="indexNews2More"><a href="{:U('/new_category/classid','','')}/{$arr2[0]}">更多</a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexNews2TopPic"><img src="{:getindeximgurl($data33[7])}" border="0" /></div>
+            <div class="indexNews2List">
+                    
+                    <volist name="list2" id="li2" >
+                        <volist name="li2['data']" id="indexnews2" offset="0" length="4" key="h">
+                            <div class="indexNews2_item" id="indexNews2_item">
+                                <span>【{:date('Y-m-d ',$indexnews2['created'])}】</span><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()">{:subtxt($indexnews2['title'],30)}</a>
+                            </div>
+                        </volist>
+                    </volist>
+           </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<!--news end-->
+

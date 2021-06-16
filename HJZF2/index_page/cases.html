@@ -1,0 +1,72 @@
+<!--{$pagename}-->
+<php>
+    if($data10[2] ==''){
+    $data10[2] =70;
+    }
+    if($data10[3] ==''){
+    $data10[3] =50;
+    }
+    if($data10[4] ==''){
+    $data10[4] =0;
+    }
+    if($data10[5] ==''){
+    $data10[5] =0;
+    }
+</php>
+<style>
+    .new_hjzf_cases .HJ05-case{padding-bottom: 50px;}
+    .new_hjzf_cases .HJ05-case-box{
+    padding-top: {$data10[2]}px;padding-bottom:{$data10[3]}px;margin-top:{$data10[4]}px;margin-bottom:{$data10[5]}px;background:#f2f2f2;
+    }
+    .new_hjzf_cases .news_item-title:hover a,.new_hjzf_cases .news_item_more:hover{
+        color: #{$data10[6]};
+    }
+    .new_hjzf_cases .HJ05-case .swiper-button-next:hover,.new_hjzf_cases .HJ05-case .swiper-button-prev:hover{
+        background: #{$data10[6]};
+    }
+    .new_hjzf_cases .HJ05-case .swiper-button-next{width: 36px;height: 36px;background: #fff;top: 95%;text-align: center;right: calc(50% - 40px);}
+    .new_hjzf_cases .HJ05-case .swiper-button-prev{width: 36px;height: 36px;background: #fff;top: 95%;text-align: center;left: calc(50% - 40px);}
+    .new_hjzf_cases .HJ05-case .swiper-button-next i,.new_hjzf_cases .HJ05-case .swiper-button-prev i{font-size: 24px;line-height: 36px;text-align: center;font-weight: normal}
+    .new_hjzf_cases .HJ05-case .swiper-button-next:hover i,.new_hjzf_cases .HJ05-case .swiper-button-prev:hover i{color: #fff;}
+    .new_hjzf_cases .case_item-title{position: relative;margin-bottom: 20px;}
+    .new_hjzf_cases .case_item-title a:after{
+        display: table;margin: auto;content: '';overflow: hidden;height: 3px;border-bottom: #{$data10[6]} solid 3px;margin-top: 14px;width: 35px;
+    }
+</style>
+
+<!--news start-->
+<section class="hj-news HJ05-case-box">
+    <div class="container">
+        <h3 class="HJ05-advan-title wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data[0]}</span></h3>
+        <p class="HJ05-advan-title_2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{$data[1]}</p>
+        <div class="HJ05-news-content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">
+            <div class="swiper-container HJ05-case">
+                <div class="swiper-wrapper">
+                    <volist name="indexcases" id="indexcase1" offset="0" length="6" key="h">
+                        <div class="swiper-slide news_item">
+                            <div class="hj05-news-pic" style="margin: 20px;">
+                                <a href="{:U('/case_detail',array('nid'=>$indexcase1["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexcase1['new_pro'])}" border="0" /></a>
+                            </div>
+                            <php>
+                                $case_name = get_wap_case_class_name($indexcase1['cates_class']);
+                            </php>
+                            <div class="news_info">
+                                <div class="news_class_name" style="text-align: center">{$case_name}</div>
+                                <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_detail',array('nid'=>$indexcase1["nid"]))}" onFocus="blur()">{:subtxt($indexcase1['title'],60)}</a></div>
+                                <div class="news_item-desc" style="text-align: center">{:subtxt($indexcase1['news_description'],100)}</div>
+                                <a href="{:U('/case_detail',array('nid'=>$indexcase1['nid']))}" class="news_item_more" style="margin: auto;display: block;text-align: center">{:__('Read More')}<i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!--news end-->
+

@@ -1,0 +1,91 @@
+<!--{$pagename}-->
+<php>
+    $col = explode(",",$data441[3]);
+</php>
+<style>
+    @media(min-width:1200px) {
+        .hjzf_banner_23_fx.index_title {
+            font-size: 80px;
+        }
+    }
+    .banner_23_foot_ewm span a {
+        background: linear-gradient(to right, #{$col[0]}, #{$col[1]});
+    }
+</style>
+<section class="hjzf_banner_23">
+    <div class=" hjzf_banner_23_fx index_title wow fadeInDown">
+        <span class="fx-center">
+            {$data441[0]}
+        </span>
+    </div>
+    <volist name="banner" id="banner_pic" key="k">
+        <if condition="$banner_pic['use_video']">
+            <div class="hjzf_banner_videoBox">
+                <video poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video" <if
+                    condition='$data441[7] eq ""'>autoplay
+        </if> muted width="100%">
+        <source src="{$banner_pic['ad_link']}" type="video/mp4">
+        </video>
+        </div>
+        <elseif condition="$banner_pic['ad_link']" />
+        <a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}" target="_blank"
+            class="hjzf_banner_link"></a>
+        <else />
+        <a href="javascript:void(0)" title="{$banner_pic['pic_title']}" class="hjzf_banner_link"></a>
+        </if>
+    </volist>
+
+    <!-- 定位在底部文案 -->
+    <div class="hjzf_banner_23_foot nav-hidden-mobile">
+        <div class="container-full">
+            <div class="row clearfix row_flex">
+                <div class="col-xs-6">
+                    <div class="index_sub_title pb20">
+                        {$data441[1]}
+                    </div>
+                    <span class="hjzf_banner_23_foot_box">
+                        <php>
+                            $arr = get_list_val($data441[2]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <a href="{$a[link]}">
+                                <if condition="$a[ico]">
+                                    <img src="{$a[ico]}" alt="{$a[title]}">
+                                </if>
+                                {$a[title]}
+                            </a>
+                        </volist>
+                    </span>
+                </div>
+                <div class="col-xs-6 ">
+                    <php>
+                        $arrb = get_list_val($data441[4]);
+                    </php>
+                    <div class="banner_23_foot_ewm">
+                        <span>
+                            <volist name="arrb" id="a">
+                                <a href="{$a[link]}">
+                                    <if condition="$a[ico]">
+                                        <img src="{$a[ico]}" alt="{$a[title]}">
+                                    </if>
+                                    {$a[title]}
+                                </a>
+                            </volist>
+                        </span>
+                        <div class="ban_ewm">
+                            <if condition="$data441[5]">
+                                <img src="{:getindeximgurl($data441[5])}">
+                            </if>
+                            <if condition="$data441[6]">
+                                <div class="ban_ewm_con">
+                                    <img src="{:getindeximgurl($data441[6])}">
+                                </div>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

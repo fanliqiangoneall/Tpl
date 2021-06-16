@@ -1,0 +1,102 @@
+<!--{$pagename}-->
+<style>
+	.hj01-advantage2{
+		background: url({:getindeximgurl($data35[15])}) no-repeat center;background-size: cover;
+	}
+	.section-heading-title:after{
+	border-bottom-color: {$data1[0]};
+	}
+	.insignia-testimonial-meta_name{
+		color: #{$color};
+	}
+	.insignia-testimonial-meta_job{
+		color: {$data1[0]};
+	}
+	.advantages2_list{width: 100%;margin: auto;overflow: hidden}
+
+
+
+    .advantages2_list .swiper-button-prev{
+           left: 552px !important; top: 95%;background: url({:getindeximgurl($data35[16])}) no-repeat center;
+    }
+    .advantages2_list .swiper-button-prev:hover{
+        background: url({:getindeximgurl($data35[18])}) no-repeat center;
+    }
+    .advantages2_list .swiper-button-next{
+        right: 34px !important;  top: 95%;background: url({:getindeximgurl($data35[17])}) no-repeat center;
+
+    }
+    .advantages2_list .swiper-button-next:hover{
+        background: url({:getindeximgurl($data35[19])}) no-repeat center;
+
+    }
+	.advantages2_list .swiper-pagination{text-align: right;display: inline-block;width: auto;position: absolute;right: 65px;bottom:16px;}
+	.advantages2_list .swiper-pagination .swiper-pagination-current{
+		color:{$data1[0]};
+	}
+	/*.hj01-adv2_right_title h3{
+		color: #{$color};
+	}*/
+</style>
+
+
+<div class="hj01-advantage2">
+		<div class="hj01-adv2_content">
+			<div class="hj01-adv2_right">
+				<div class="padding-50px-top padding-40px-right padding-10px-bottom padding-40px-left hj01-evaluate_right_content" id="hj01-evaluate_right_content">
+					<div class="hj01-adv2_right_title">
+						<h3 class="section-heading-title margin-10px-top">{$data35[0]}</h3>
+					</div>
+					<div <if condition="$data35[3] neq ''">class="advantages2_list margin-25px-tb"<else/>class="advantages2_list2 margin-25px-tb"</if>>
+						<div class="swiper-wrapper">
+							<php>
+
+								for($ad=1;$ad<14;$ad=$ad+2){
+							</php>
+							<if condition="$data35[$ad] neq ''">
+								<div id="ad2item{$ad}" class="swiper-slide">
+									<div class="insignia-testimonial-text padding-25px-bottom">
+										{$data35[$ad]}
+									</div>
+									<div class="adv2-image padding-30px-bottom">
+										<img src="{:getindeximgurl($data35[$ad+1])}" alt=""/>
+									</div>
+								</div>
+							</if>
+
+							<php>
+								}
+							</php>
+							<php>
+
+								for($ad1=20;$ad1<25;$ad1=$ad1+2){
+							</php>
+							<if condition="$data35[$ad1] neq ''">
+								<div id="ad2item{$ad1}" class="swiper-slide">
+									<div class="insignia-testimonial-text padding-25px-bottom">
+										{$data35[$ad1]}
+									</div>
+									<div class="adv2-image padding-30px-bottom">
+										<img src="{:getindeximgurl($data35[$ad1+1])}" alt=""/>
+									</div>
+								</div>
+							</if>
+
+							<php>
+								}
+							</php>
+						</div>
+					<if condition="$data35[3] neq ''">
+						<div class="swiper-pagination"></div>
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</if>
+					</div>
+				</div>
+
+			</div>
+		</div>
+</div>
+<script>
+
+</script>

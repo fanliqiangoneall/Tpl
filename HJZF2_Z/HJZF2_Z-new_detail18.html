@@ -1,0 +1,73 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <link rel="stylesheet" href="__TMPL__/HJZF2_Z/inner/css/HJZF2_Z-news18.css">
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+        <div class="HJZF2_Z-news18_box_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="HJZF2_Z-news18_box clearfix">
+                        <!-- left -->
+                        <div class="news18_left dean_left">
+                            <h5 class="dean_news_title">{$news['title']}</h5>
+                            <div class="news_time_share">
+                                <div class="news_time">
+                                    <span>时间：{:date('Y-m-d',$news['created'])}</span>
+                                    <span>查看：{:__('View:')}{$news['click_num']}</span>
+                                </div>
+                                <div class="baidu_share">
+                                    <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1606379908568"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                                </div>
+                            </div>
+                            {:htmlspecialchars_decode($news['body'])}
+                            <div class="cases_detail2_prev">
+                                <ul>
+                                    <if condition="$newprev[0]['title'] eq ''">
+
+                                        <else/>
+                                        <li class="news_prev">
+                                            {:__('Prev: ')}
+                                            <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                {$newprev[0]['title']}
+                                            </a>
+                                        </li>
+                                    </if>
+                                    <if condition="$newnext[0]['title'] eq ''">
+
+                                        <else/>
+                                        <li class="news_next">
+                                            {:__('Next: ')}
+                                            <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                {$newnext[0]['title']}
+                                            </a>
+                                        </li>
+                                    </if>
+                                    <div class="clear"></div>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- right -->
+                        <div class="news18_right dean_right">
+                            <Include file="./Tpl/HJZF2_Z/inner/left_dean.html" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</block>

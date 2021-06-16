@@ -1,0 +1,57 @@
+<!--left style-->
+<style>
+  .inner_module2__inPageLeft_title{
+      background: #{$inner_data[0]};
+  }
+  .inner_module2__inPageLeft-box >ul{
+      border:1px solid #{$inner_data[0]};
+  }
+  .inner_module2__inPageLeft-box > ul > li > ul>li:hover a h3{
+      color: #{$color};text-decoration: underline;
+  }
+  .inner_module2__inPageLeft-box > ul > li.module2_yijion>a{
+      background:#f0f0f0;
+  }
+  .inner_module2__inPageLeft-box > ul > li.module2_yijion>a>h3{
+      color: #{$color};
+  }
+  .inner_module2__inPageLeft-box > ul > li:hover >a{
+      background: #{$inner_data[0]};
+  }
+  .inner_module2__inPageLeft-box > ul > li:hover >a>h3{
+      color: #fff;
+  }
+  ul.inner_module2__inPageLeft-list > li>span.class_button i{
+      color: #{$inner_data[0]};
+  }
+  .inner_module2__inPageLeft-box > ul > li:hover >span.class_button i{
+      color: #fff;
+  }
+  .inner_module2__inPageLeft-box > ul > li.module2_yijion > ul>li.module2_childon >a>h3{
+      color:#{$color};
+  }
+
+</style>
+<!--left style-->
+<script>
+  $(document).ready(function(){
+      $(".class_button").on("click",function(){
+          if( $(this).next('ul').css("display")=="none"){
+              $(this).parent().addClass("module2_yijion").siblings("li").removeClass("module2_yijion").addClass("module2_yiji");
+          }else{
+              $(this).parent().removeClass("module2_yijion").addClass("module2_yiji");
+          }
+      })
+  })
+</script>
+<div class="inner_module2__inPageLeft-content">
+  <div class="inner_module2__inPageLeft-box">
+      <div class="inner_module2__inPageLeft_title">{:__('News Categories')}</div>
+      <ul class="inner_module2__inPageLeft-list">
+        <volist empty="" name="allnewclass" id="news_left">
+          <li <if condition="$newscate['classid'] eq $news_left['classid'] or $newclass['classid'] eq $news_left['classid']">class="module2_yijion"<else/>class="module2_yiji"</if>><a href="{:U('/new_category',array('classid'=>$news_left["classid"]))}">{$news_left['class_name']}</a></li>
+       </volist>
+      </ul>
+  </div>
+  <div class="clear"></div>
+</div>

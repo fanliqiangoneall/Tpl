@@ -1,0 +1,96 @@
+<!--{$pagename}-->
+<style>
+    #products-8{
+        background: url({:getindeximgurl($data111[0])}) no-repeat center/cover;
+    }
+    .products-8__prev[aria-disabled="false"],.products-8__next[aria-disabled="false"]{
+        background: #{$data111[2]};
+    }
+    .product-11__item:after{
+        content: '';display: block;width: 100%;height: 100%;position:absolute;top:0;left:0;background: #{$data111[2]};-moz-opacity:0;-khtml-opacity: 0;opacity: 0;filter:alpha(opacity=0);transition: 0.6s;-webkit-transition: 0.6s;-moz-transition: 0.6s;
+    }
+    .products-8--left__ul li:hover .products-8--left__className h3{
+        color: #{$data111[2]}
+    }
+    .products-8__proName .product-11__icon{
+        color: #{$data111[2]}
+    }
+</style>
+
+<section id="products-8" class="index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-4 products-8--left wow fadeInLeft" data-wow-duration="1s">
+                <div>
+                    <div class="products-8--left__title flex index_title">{$data111[3]}</div>
+                    <ul class="products-8--left__ul flex">
+                        <php>
+                            for($i=4;$i<27;$i=$i+4){
+                        </php>
+                        <li class="flex">
+                            <a href="{$data111[$i+3]}">
+                                <div class="products-8--left__classImg">
+                                    <div class="products-8__classImg--before"><if condition="$data111[$i+1]"><img src="{:getindeximgurl($data111[$i+1])}" alt="{$data111[$i]}" /></if></div>
+                                    <div class="products-8__classImg--after"><if condition="$data111[$i+2]"><img src="{:getindeximgurl($data111[$i+2])}" alt="{$data111[$i]}" /></if></div>
+                                </div>
+                                <div class="products-8--left__className"><h3>{$data111[$i]}</h3></div>
+                            </a>
+                        </li>
+                        <php>
+                            }
+                        </php>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-8 products-8--right wow fadeInRight" data-wow-duration="1s">
+                <div class="swiper-container products-8--right__content">
+                    <div class="swiper-wrapper">
+                        <php>                          
+                            for($a = 0; $a<16; $a=$a+4){
+                        </php> 
+                        <div class="swiper-slide" data-num="{$a}">
+                           
+                        <volist empty="" name="indexpro" id="indexpro_in" key="k" offset="$a" length="4">
+                            <div class="product-11__item">
+                                <div class="products-8__proImg"><img src="{:getmainimgurl($indexpro_in['main_img'])}" <if condition="$indexpro_in['proalt'] neq ''">alt="{$indexpro_in['proalt']}"<else/>alt="{$indexpro_in['pro_name']}"</if>/>
+                                    <a href="{:U('/Product','','')}/{:getproname($indexpro_in['pid'])}" class="products-8__proImg_after"></a></div>
+                                <div class="products-8__proName"><a href="{:U('/Product','','')}/{:getproname($indexpro_in['pid'])}">{$indexpro_in['pro_name']}</a><span class="product-11__icon"><i class="fa fa-angle-right"></i></span></div>
+                            </div>
+                        </volist>
+                        </div>
+                            <php>}</php>
+                    </div>
+                </div>
+                <div class="page_box">
+                    <div class="swiper-button-next products-8__next"><i class="fa fa-angle-right"></i></div>
+                    <div class="swiper-button-prev products-8__prev"><i class="fa fa-angle-left"></i></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script>$(function () {
+    if ($("[data-id = 'PICNIC BLANKET']").length > 0) {
+        $(".cateprofile__part5--left a").attr("href", 'https://www.aofanoutdoor.com/product_category/SLEEPING-BAG.html');
+        $(".cateprofile__part5--left div").text("SLEEPING BAG");
+        $(".cateprofile__part5--left").css('background-image', 'url(https://www.aofanoutdoor.com/pcuploadfiles/128.1.174.214/webid1545/MOD/202005/1588757684744.jpeg)');
+        $(".cateprofile__part5--right .cateprofile__part5--leftname").text("OTHER PRODUCTS");
+        $(".cateprofile__part5--right a").attr("href", 'https://www.aofanoutdoor.com/product_category/OTHER-PRODUCTS.html');
+    }
+    if ($("[data-id = 'SLEEPING BAG']").length > 0) {
+        $(".cateprofile__part5--left a").attr("href", 'https://www.aofanoutdoor.com/product_category/PICNIC-BLANKET.html');
+        $(".cateprofile__part5--left div").text("PICNIC BLANKET");
+        $(".cateprofile__part5--right .cateprofile__part5--leftname").text("OTHER PRODUCTS");
+        $(".cateprofile__part5--left").css("background-image", 'url(https://www.aofanoutdoor.com/pcuploadfiles/128.1.174.214/webid1545/MOD/202004/1587460691428.jpeg)');
+        $(".cateprofile__part5--right a").attr("href", 'https://www.aofanoutdoor.com/product_category/OTHER-PRODUCTS.html');
+    }
+    if ($("[data-id = 'OTHER PRODUCTS']").length > 0) {
+        $(".cateprofile__part5--left a").attr("href", 'https://www.aofanoutdoor.com/product_category/PICNIC-BLANKET.html');
+        $(".cateprofile__part5--left div").text("PICNIC BLANKET");
+        $(".cateprofile__part5--right .cateprofile__part5--leftname").text("SLEEPING BAG");
+        $(".cateprofile__part5--left").css("background-image", 'url(https://www.aofanoutdoor.com/pcuploadfiles/128.1.174.214/webid1545/MOD/202004/1587460691428.jpeg)');
+        $(".cateprofile__part5--right a").attr("href", 'https://www.aofanoutdoor.com/product_category/SLEEPING-BAG.html');
+    }
+});</script>

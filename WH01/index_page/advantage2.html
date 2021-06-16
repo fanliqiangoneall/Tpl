@@ -1,0 +1,69 @@
+<!--{$pagename}-->
+<style>
+
+
+    .advantage2_box{
+        height: 494px;
+        width: 100%;min-width: 1190px;max-width: 1920px;padding-top: 40px;margin-bottom: 50px;
+        background: url({:getindeximgurl($data35[1])}) no-repeat center;
+    }
+    .advantage2_container{width: 1190px;margin: auto;height: auto;}
+    .advantage2_list li{float: left;width: 25%;height: 200px;text-align: center;padding-top: 20px;position: relative}
+    .advantage2_list li .adv2_item{margin: 10px 20px 10px 20px;}
+    .advantage2_list li .adv2_name{margin-bottom: 10px;color: #fff;font-size: 18px;line-height: 24px;font-weight: normal;}
+    .advantage2_list li .adv2_name a{margin-top: 10px;color: #fff;font-size: 18px;line-height: 24px;font-weight: normal;}
+    .advantage2_list li .adv2_content{color: #fff;font-size: 14px;line-height: 20px;font-weight: normal;}
+    .adv2_item .adv2_span{width: 100%;text-align: center;margin-top: 56px;}
+    .adv2_item .adv2_span span{width: 10px;height: 10px;border-radius: 50%;-moz-border-radius:50%;-webkit-border-radius:50%;background:#fff;display: inline-block;margin: 0 4px;}
+    .advantage2_list li:before{
+         content: '';display: table;width: 1px;height: 160px;position: absolute;left: 0;top: 30px;background: rgba(255,255,255,0.2);
+     }
+    .advantage2_list li:first-child:before,.advantage2_list li:nth-child(5):before{display: none}
+    .advantage2_list li:first-child:after, .advantage2_list li:nth-child(3):after,.advantage2_list li:nth-child(2):after,.advantage2_list li:nth-child(4):after{
+        content: '';display: table;width: 252px;height: 1px;position: absolute;left: 22px;bottom: 0;background: rgba(255,255,255,0.2);
+    }
+    .advantage2_list li:hover .advantage2_pic img{transform: rotateY(360deg);transition: .6s;}
+</style>
+<!--choice start-->
+
+<div class="advantage2_box">
+    <div class="advantage2_container">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01/img/quilicon1.png" alt="protitle_bg.png"><span style="color: #fff;">{$data35['0']}</span><img src="__TMPL__WH01/img/quilicon2.png">
+        </div>
+        <ul class="advantage2_list">
+            <php>
+
+                for($adv=2;$adv<=23;$adv=$adv+3){
+            </php>
+            <if condition="$data35[$adv] neq ''">
+                <li id="advantage{$adv}">
+                    <div class="advantage2_pic"><img src="{:getindeximgurl($data35[$adv])}" alt=""/></div>
+                    <div class="adv2_item">
+                        <p class="adv2_name">{$data35[$adv+1]}</p>
+                        <p class="adv2_content">{$data35[$adv+2]}</p>
+                    </div>
+                </li>
+            </if>
+
+            <php>
+            }
+            </php>
+            <if condition="$data[23] eq ''">
+                <li>
+
+                    <div class="adv2_item">
+                        <p class="adv2_span"><span></span><span></span><span></span></p>
+                        <p class="adv2_name"><a href="{:U('/contactus')}#zixun">INQUIRY NOW</a></p>
+                    </div>
+                </li>
+            </if>
+
+        </ul>
+    </div>
+</div>
+<div class="clear"style="height: 10px;"></div>
+<!--choice end-->
+
+
+

@@ -1,0 +1,340 @@
+<if condition="$data50[2]">
+    <Include file="./Tpl/HJZF2/sidebar2.html" />
+	<elseif condition="$data50[8]"/>
+	<Include file="./Tpl/HJZF2/sidebar3.html" />
+	<elseif condition="$data50[13]"/>
+	<Include file="./Tpl/HJZF2/sidebar4.html" />
+    <elseif condition="$data50[15]"/>
+	<Include file="./Tpl/HJZF2/sidebar6.html" />
+    <else/>
+    <Include file="./Tpl/HJZF2/sidebar.html" />
+</if>
+<if condition="$data183[0]">
+	<div class="foregin_msn">
+		<ul>
+			<if condition="$data183[0]"><li style="background: rgb(59, 89, 152)"><a href="{$data183[0]}" target="_blank"><i class="fa fa-facebook"></i></a></li></if>
+			<if condition="$data183[1]"><li style="background: rgb(0, 119, 181)"><a href="{$data183[1]}" target="_blank"><i class="fa fa-youtube"></i></a></li></if>
+			<if condition="$data183[2]"><li style="background: rgb(203, 32, 39)"><a href="{$data183[2]}" target="_blank"><i class="fa fa-amazon"></i></a></li></if>
+			<if condition="$data183[3]"><li style="background: rgb(29, 161, 242)"><a href="{$data183[3]}" target="_blank"><i class="fa fa-linkedin"></i></a></li></if>
+			<if condition="$data183[4]"><li style="background: rgb(255, 101, 80)"><a href="{$data183[4]}" target="_blank"><i class="fa fa-twitter"></i></a></li></if>
+            <if condition="$data183[5]"><li style="background: rgb(250, 34, 2)"><a href="{$data183[5]}" target="_blank"><i class="fa fa-instagram"></i></a></li></if>
+		</ul>
+	</div>
+</if>
+
+
+
+<volist empty="" name="floatWindow" id="floatWindow" key="k" offset="0" length="8">
+	<if condition="$floatWindow['windowImg']">
+		<section id="HJZF2_floatWindow">
+			<a href="{$floatWindow['windowUrl']}">
+				<if condition="$floatWindow['windowImg']">
+					<php>
+						$hjzf2_floatWindow_img=getimgurl($floatWindow['windowImg']);
+						$window_type = $floatWindow['windowType'] or $window_type='0';
+					</php>
+					<script>
+						var window_type = <?php echo $window_type;?>;
+					</script>
+					<style>
+						.HJZF2_floatWindow_img{
+							background:url(
+							{$hjzf2_floatWindow_img}
+							) center/100% no-repeat;
+						}
+					</style>
+					<div class="HJZF2_floatWindow_img"></div>
+                    
+                    
+				</if>
+			</a>
+            <if condition="$floatWindow['windowprice']">
+    <div id="paypal-button-container"></div>
+                     <script
+                src="https://www.paypal.com/sdk/js?client-id=AWo0bwUWFk7WiWj6-xTzyNpn9ITP2nDMqJHwZ1BBcSCB7XHCK9IPMA1wixO4PcZtFJpNtMHzw0XpNBP5&locale=en_AM&disable-funding=credit,card"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+        </script>
+        <script>
+
+
+            paypal.Buttons({
+
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: "{$floatWindow['windowprice']}"
+                            }
+                        }]
+                    });
+                },
+
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+
+                        jQuery.ajax({
+                            type: "POST",
+                            url: "/insertPayrecord",
+                            async:false,
+                            data: {
+                                email_address:details.payer.email_address,
+                                price:'{$floatWindow['windowprice']}'
+                            }
+                        });
+                        alert('Transaction completed by ' + details.payer.name.given_name + '.   orderID:'+data.orderID);
+                        // Call your server to save the transaction
+                        return fetch('/paypal-transaction-complete', {
+                            method: 'post',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                orderID: data.orderID
+                            })
+                        });
+
+                    });
+                }
+            }).render('#paypal-button-container');
+			 </script>
+			</if>
+    
+		</section>
+	</if>
+    
+</volist>
+
+
+
+<script>
+	require(['jquery','move_port'],function($,move_port){
+		$(function(){
+			if($("#HJZF2_floatWindow").length>0){
+				function close(){
+					var close = "<div class=\"close_port\">×</div>";
+					$("#HJZF2_floatWindow").append(close);
+					$(".close_port").css({
+						position: 'absolute',
+						display: 'none',
+						width: '20px',
+						height: '20px',
+						top: 0,
+						right: 0,
+						color: 'red',
+						border: '1px solid red',
+						background: '#ccc',
+						textAlign: 'center',
+						lineHeight: '20px',
+						cursor: 'pointer'
+					});
+					$("#HJZF2_floatWindow").hover(function(){
+						$(this).find('.close_port').show();
+					},function(){
+						$(this).find('.close_port').hide();
+					});
+					$("#HJZF2_floatWindow").find('.close_port').on('click',function(){
+						$(this).parent().remove();
+					});
+				}
+				if(typeof window_type!="undefined" && window_type===0){
+					//去除浮窗
+					$("#HJZF2_floatWindow").remove();
+				}else if(typeof window_type!="undefined" && window_type===1){
+					//靠左漂浮
+					$("#HJZF2_floatWindow").addClass("left_show");
+					close();
+				}else if(typeof window_type!="undefined" && window_type===2){
+					//靠右漂浮
+					$("#HJZF2_floatWindow").addClass("right_show");
+					close();
+
+				}else if(typeof window_type!="undefined" && window_type===3){
+					$("#HJZF2_floatWindow").addClass("window_fei");
+					$("#HJZF2_floatWindow").css("zIndex","10000");
+					move_port.move_obj("#HJZF2_floatWindow");
+				}else{
+					return false;
+				}
+			}
+		});
+	});
+
+</script>
+<script type="text/javascript" src="__TMPL__HJZF2/js/muban.js"></script>
+<script type="text/javascript" src="__TMPL__HJZF2/js/wow.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJZF2/js/hc-sticky.js"></script>
+
+<script>
+var wow = new WOW(
+      {
+        animateClass: 'animated',
+      }
+    );
+    wow.init();
+</script>
+<if condition="C('Language') eq 'cn' or C('Language') eq 'zh'">{:htmlspecialchars_decode(get_web_analysis())}</if>
+<if condition="$data50[4]">{:HtmlEncode($data50[4])}</if>
+<script defer async="true" type="text/javascript" src="//download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+<if condition="WEBID eq 1"><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></if>
+<script>
+//google的回调
+function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+			//var google_translate_element=$("#google_translate_element").html();
+			//console.log("google_translate_element",google_translate_element);
+			$("#google_translate_element").val("af");
+			
+}
+
+//清除googel logo
+function clear_googel_logo(){
+	//console.log(1);
+	var googel_logo=$('.skiptranslate iframe').contents().find('.goog-logo-link');
+	if(googel_logo.html()){
+		googel_logo.html(""); 
+		
+	}
+	$('.skiptranslate iframe').contents().find('#options').css("display","none");
+	//console.log($('.skiptranslate iframe').css("display"));
+	if($('.skiptranslate iframe').contents().find('#options').css("display")=="none"){
+	return ;
+	}
+	setTimeout(function(){clear_googel_logo()}, 100);
+}
+
+  function downloadJSAtOnload() {
+    var element = document.createElement("script");
+    element.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    document.body.appendChild(element);
+  }
+
+if($("#google_translate_element").attr("translate")){
+  if (window.addEventListener){
+    window.addEventListener("load", downloadJSAtOnload, false);
+  }
+  else if (window.attachEvent)
+  {
+
+  }
+  else window.onload = downloadJSAtOnload;
+  {
+	clear_googel_logo();
+	doGTranslate('en');
+  }
+}
+
+
+function doGTranslate(b) {
+	var c;
+	var d = document.getElementsByTagName('select');
+	for (var i = 0; i < d.length; i++)
+		if (d[i].className == 'goog-te-combo') c = d[i];
+	if (document.getElementById('google_translate_element') == null || document.getElementById('google_translate_element').innerHTML.length == 0 || c.length == 0 || c.innerHTML.length == 0) {
+		setTimeout(function () {
+			doGTranslate(b)
+		}, 500)
+	} else {
+		c.value = b;
+		//addCssRule('#goog-gt-tt', 'display:none !important;');
+		//addCssRule('.goog-te-banner-frame', 'display:none !important;');
+		//addCssRule('.goog-te-menu-value:hover', 'text-decoration:none !important;');
+		//addCssRule('body', 'top:0 !important;');
+		//addCssRule('#google_translate_element2', 'display:none!important;');
+		GTranslateFireEvent(c, 'change');
+		GTranslateFireEvent(c, 'change')		
+	}
+}
+
+
+function GTranslateFireEvent(a, b) {
+	try {
+		if (document.createEvent) {
+			var c = document.createEvent("HTMLEvents");
+			c.initEvent(b, true, true);
+			a.dispatchEvent(c)
+		} else {
+			var c = document.createEventObject();
+			a.fireEvent('on' + b, c)
+		}
+	} catch (e) {}
+}
+
+
+
+</script>
+<if condition="C('webid') eq 0">
+<script type='text/javascript'>
+function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'zh-CN',autoDisplay: false}, 'google_translate_element2');}
+function doGTranslate(b) {
+	var c;
+	var d = document.getElementsByTagName('select');
+	for (var i = 0; i < d.length; i++)
+		if (d[i].className == 'goog-te-combo') c = d[i];
+	if (document.getElementById('google_translate_element2') == null || document.getElementById('google_translate_element2').innerHTML.length == 0 || c.length == 0 || c.innerHTML.length == 0) {
+		setTimeout(function () {
+			doGTranslate(b)
+		}, 500)
+	} else {
+		c.value = b;
+		//addCssRule('#goog-gt-tt', 'display:none !important;');
+		//addCssRule('.goog-te-banner-frame', 'display:none !important;');
+		//addCssRule('.goog-te-menu-value:hover', 'text-decoration:none !important;');
+		//addCssRule('body', 'top:0 !important;');
+		//addCssRule('#google_translate_element2', 'display:none!important;');
+		GTranslateFireEvent(c, 'change');
+		GTranslateFireEvent(c, 'change')		
+	}
+}
+  function downloadJSAtOnload() {
+	var div = document.createElement('div');  
+	div.setAttribute('id','google_translate_element2');
+	document.body.appendChild(div);
+    var element = document.createElement('script');
+    element.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
+    document.body.appendChild(element);
+  }
+var addCssRule = function() {
+    function createStyleSheet() {
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        document.head.appendChild(style);
+        return style.sheet;
+    }
+    var sheet = createStyleSheet();
+    return function(selector, rules, index) {
+        index = index || 0;
+        sheet.insertRule(selector + '{' + rules + '}', index);
+    }
+}();
+function GTranslateFireEvent(a, b) {
+	try {
+		if (document.createEvent) {
+			var c = document.createEvent("HTMLEvents");
+			c.initEvent(b, true, true);
+			a.dispatchEvent(c)
+		} else {
+			var c = document.createEventObject();
+			a.fireEvent('on' + b, c)
+		}
+	} catch (e) {}
+}
+function gtranslate_init(a){	
+if (window.addEventListener){
+	window.addEventListener('load', downloadJSAtOnload, false);
+}
+else if(window.attachEvent){
+	window.attachEvent('onload', downloadJSAtOnload);
+}
+else {
+	window.onload = downloadJSAtOnload;
+}
+doGTranslate(a);
+}
+
+</script> 
+</if>
+</body>
+
+</html>
+

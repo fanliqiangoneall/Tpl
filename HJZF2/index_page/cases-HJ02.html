@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<php>
+    if($data89[3] ==''){
+    $data89[3] = 0;
+    }
+</php>
+<style type="text/css">
+    .new_hjzf_cases-HJ02 .hj02_cases{
+        background: url({:getindeximgurl($data89[1])}) no-repeat center;padding-top:{$data89[3]}px;
+    }
+    .new_hjzf_cases-HJ02 .hj02_cases_more{
+        color: #{$data89[2]};
+    }
+    .new_hjzf_cases-HJ02 .hj02_cases_more:after{
+        content: '';display: table;width: 12px;height: 2px;background: #{$data89[2]};position: absolute;right: 0;top: 20px;
+    }
+    .new_hjzf_cases-HJ02 .hj02_cases_more:hover{
+        color: #{$color};
+    }
+    .new_hjzf_cases-HJ02 .hj02_cases_more:hover:after {
+        content: '';
+        display: table;
+        width: 12px;
+        height: 2px;
+        background: #{$color};
+        position: absolute;
+        right: 0;
+        top: 20px;
+    }
+    .new_hjzf_cases-HJ02 #index_product_title_left2 h3{
+        color: #{$data89[2]};
+    }
+    .new_hjzf_cases-HJ02 .index_case_title:after{
+        content: '';display: table;width: 100px;height: 1px;position: absolute;bottom: -20px;left: 0;background: #{$color};transition: .6s;}
+    .new_hjzf_cases-HJ02 .index_caseitem_box:hover .index_case_title:after{
+        width: 100%;transition: .6s;
+    }
+    .new_hjzf_cases-HJ02 #index_caselist:hover .hj02-case-prev{
+        left: 0;transition: .6s;}
+    .new_hjzf_cases-HJ02 #index_caselist  .hj02-case-prev:hover,.new_hjzf_cases-HJ02 #index_caselist .hj02-case-next:hover{
+        background: #{$color}
+    }
+    .new_hjzf_cases-HJ02 #index_caselist:hover .hj02-case-next{
+        right: 0;transition: .6s;
+    }
+</style>
+<section class="hj02_cases">
+    <div class="container">
+        <section class="index_product_title margin-40px-bottom">
+            <div class="index_product_title_left">
+                <div id="index_product_title_left2" class="hj02_cases_title"><h3>{$data89[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right" style="text-align: right">
+                <a href="{:U('/cases')}" class="hj02_cases_more">{:__('Read More')} </a>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <div class="index_prolist_wai2">
+            <div  id="index_caselist">
+                <div class="swiper-container hj02_cases_swiper">
+                    <div class="swiper-wrapper">
+
+                        <volist name="indexcases" id="indexcase" offset="0" length="6">
+                            <div class="index_caseitem swiper-slide">
+                                <div class="index_caseitem_box">
+                                    <div class="index_caseitem_img"> <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><if condition="$indexcase['new_pro'] eq 0 or $indexcase['new_pro'] eq ''"><img src="{:getindeximgurl($data47[13])}" border="0" /><else/><img src="{:getpcimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" /></if></a></div>
+                                    <div class="index_caseitem_down">
+                                        <div class="index_case_title margin-40px-bottom"><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><h4>{:subtxt($indexcase['title'],30)}</h4></a></div>
+                                        <div class="index_case_title2">{:subtxt($indexcase['news_description'],150)}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="swiper-pagination  hj02-case-pagination"></div>
+                    <div class="swiper-button-next hj02-case-next"></div>
+                    <div class="swiper-button-prev hj02-case-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

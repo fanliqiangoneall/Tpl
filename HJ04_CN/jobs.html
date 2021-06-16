@@ -1,0 +1,40 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <div  class="jobsContainer">
+        <div class="container">
+            <div class="cateContainer">
+                <p class="cateTitle">
+                    <if condition="$data47[10] eq ''">
+                        人才招聘
+                        <else/>
+                        {$data47[10]}
+                    </if>
+                </p>
+            </div>
+            <div class="page_main">
+                <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#ccc">
+                    <tbody>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#EEEEEE"><strong>招聘职位</strong></td>
+                        <td align="center" valign="middle" bgcolor="#EEEEEE"><strong>性别</strong></td>
+                        <td align="center" valign="middle" bgcolor="#EEEEEE"><strong>年龄</strong></td>
+                        <td align="center" valign="middle" bgcolor="#EEEEEE"><strong>人数</strong></td>
+                        <td align="center" valign="middle" bgcolor="#EEEEEE"><strong>学历</strong></td>
+                        <td align="center" valign="middle" bgcolor="#EEEEEE"><strong>发布日期</strong></td>
+                    </tr>
+                    <volist name="jobs" id="jobs">
+                        <tr>
+                            <td align="center" valign="middle" bgcolor="#FFFFFF"><a href="{:U('/job',array('jobid'=>$jobs["jobid"]))}">{$jobs['jobname']}</a></td>
+                            <td align="center" valign="middle" bgcolor="#FFFFFF"><if condition="$jobs['sex'] eq 1">男<elseif condition="$jobs['sex'] eq 2" />女<else/>不限</if></td>
+                            <td align="center" valign="middle" bgcolor="#FFFFFF">{$jobs['age']}</td>
+                            <td align="center" valign="middle" bgcolor="#FFFFFF">{$jobs['people']}</td>
+                            <td align="center" valign="middle" bgcolor="#FFFFFF">{$jobs['edu']}</td>
+                            <td align="center" valign="middle" bgcolor="#FFFFFF">{:date('Y/m/d H:i',$jobs['updatetime'])}</td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</block>

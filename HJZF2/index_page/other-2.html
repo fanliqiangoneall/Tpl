@@ -1,0 +1,125 @@
+<!--{$pagename}-->
+<style>
+    .HJ01_other2{
+        background: url({:getindeximgurl($data15[12])}) no-repeat center;background-size: cover;
+    }
+</style>
+<if condition="$data[20]">
+    <style>
+        .hj01_contact_item-title{
+        color: {$data[20]};
+        }
+        .hj01_contact_item_btn a:after{
+        background: {$data[20]};
+        }
+        .hj01_contact_item_content p{
+        color: {$data[20]};
+        }
+        .hj01_contact_item_content p a{
+        color: {$data[20]};
+        }
+        .hj01_contact_item_btn a{
+        color: {$data[20]};
+        }
+    </style>
+    <else/>
+    <style>
+        .hj01_contact_item-title{
+            color: #fff;
+        }
+    </style>
+</if>
+<div class="HJ01_other2">
+    <div class="container">
+        <ul class="hj01_bottom_contact">
+
+            <if condition="$data15[0] neq ''">
+                <li id="hj01_contact_item1" class="hj01_contact_item">
+                    <div class="hj01_contact_item_img">	<img class="hj01_contact_item_icon" src="{:getindeximgurl($data15[0])}"/></div>
+                    <div class="hj01_contact_item_content">
+                        <h6 class="hj01_contact_item-title">{$data15[1]}</h6>
+                        <p>
+                            <if condition="chaifen($about['mobile'],0) neq ''">{:chaifen($about['mobile'],0)}<br/></if>
+                            <if condition="chaifen($about['phone'],0) neq ''">{:chaifen($about['phone'],0)}<br/></if>
+                            <if condition="chaifen($about['phone'],1) neq ''">{:chaifen($about['phone'],1)}</if>
+
+                        </p>
+                        <div class="hj01_contact_item_btn"><a href="{$data15[23]}">{$data15[2]}</a></div>
+                    </div>
+                </li>
+            </if>
+            <if condition="$data15[3] neq ''">
+                <li id="hj01_contact_item2" class="hj01_contact_item">
+                    <div class="hj01_contact_item_img">	<img class="hj01_contact_item_icon" src="{:getindeximgurl($data15[3])}"/></div>
+                    <div class="hj01_contact_item_content">
+                        <h6 class="hj01_contact_item-title margin-15px-bottom font-weight-600 letter-spacing-1">{$data15[4]}</h6>
+                        <p>
+                            <if condition="chaifen($about['email'],0) neq ''"><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2)"> {:chaifen($about['email'],0)}</a></if>
+                            <br/>
+                            <if condition="chaifen($about['email'],1) neq ''"><a href="mailto:{:chaifen($about['email'],1)}" onFocus="blur()" onClick="turn_sta(3,2)" > {:chaifen($about['email'],1)}</a></if>
+                        </p>
+                        <div class="hj01_contact_item_btn margin-15px-top"><a href="{$data13[24]}">{$data15[5]}</a></div>
+                    </div>
+                </li>
+            </if>
+            <if condition="$data15[6] neq ''">
+                <li id="hj01_contact_item3" class="hj01_contact_item">
+                    <div class="hj01_contact_item_img">	<img class="hj01_contact_item_icon" src="{:getindeximgurl($data15[6])}"/></div>
+                    <div class="hj01_contact_item_content">
+                        <h6 class="hj01_contact_item-title margin-15px-bottom font-weight-600 letter-spacing-1">{$data15[7]}</h6>
+                        <p>
+                            <if condition="$about['address'] neq ''">{$about['address']}</if>
+                        </p>
+                        <div class="hj01_contact_item_btn margin-15px-top"><a href="{$data13[25]}">{$data15[8]}</a></div>
+                    </div>
+                </li>
+            </if>
+            <if condition="$data15[9] neq ''">
+                <li id="hj01_contact_item4" class="hj01_contact_item">
+                    <div class="hj01_contact_item_img">	<img class="hj01_contact_item_icon" src="{:getindeximgurl($data15[9])}"/></div>
+                    <div class="hj01_contact_item_content">
+                        <h6 class="hj01_contact_item-title margin-15px-bottom font-weight-600 letter-spacing-1">{$data15[10]}</h6>
+                        <p>
+                            <if condition="chaifen($about['msn'],0) neq ''">Skype: <a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,4);" target="_blank" >{:chaifen($about['msn'],0)}</a><br></if>
+
+                            <if condition="chaifen($about['whatsapp'],0) neq ''">WhatsApp: +86-{:chaifen($about['whatsapp'],0)}</if>
+                        </p>
+                        <div class="hj01_contact_item_btn margin-15px-top"><a href="{$data13[26]}">{$data15[11]}</a></div>
+                    </div>
+                </li>
+            </if>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

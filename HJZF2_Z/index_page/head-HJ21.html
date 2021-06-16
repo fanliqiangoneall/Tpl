@@ -1,0 +1,174 @@
+<php>
+    if($data478[1]){
+    $mobile_bg = $data478[1];
+    }else{
+    $mobile_bg = 'fff';
+    }
+    if($data478[2]){
+    $mobile_navbtn = $data478[2];
+    }else{
+    $mobile_navbtn = '333';
+    }
+    if($data478[3]){
+    $img_url = $data478[3];
+    }else{
+    $img_url = '';
+    }
+    $searchurl = 'mobile_search';
+    if($data478[0]){
+        $color = $data478[0];
+    };
+    
+    $language_text = HtmlEncode($data478[4]);  
+</php>
+<script>  
+    var lan_str = "<?php echo $language_text;?>";
+</script>
+<style>
+    .head_hj21_nav .menu ul li:hover h2,
+    .nav_drop li:hover h3,
+    .nav_drop li:hover a span,
+    .head_hj21_nav .menu ul li:hover em{
+        color: #{$color};
+    }
+</style>
+<!--mobile nav content-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/index_page/_mobile.css">
+<script src="__TMPL__HJZF2_Z/index_page/_mobile.js"></script>
+<Include file="./Tpl/HJZF2_Z/index_page/_mobile.html" />
+
+<div class="hader_hj12_nav_con_empty nav-hidden-mobile"></div>
+<header class="nav-hidden-mobile header_hj12_nav_fixed">
+    <!-- search -->
+<div class="header_search_form">
+    <div class="container">
+        <div class="row">
+            <if condition="C('language') eq 'cn'">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+                    class="head_hj06_search">
+                    <li class="search_first"><input type="text" value="{:__('Please enter the keywords')}" name="keywords"
+                            id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Please enter the keywords')}&#39;)"
+                            onblur="OnBlurFun(this,&#39;{:__('Please enter the keywords')}&#39;)">
+                    </li>
+                    <li class="search_second">
+                        <button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/mobile_search.svg" width="30" /></button>
+                    </li>
+                    <li class="closeda">
+                        <span></span>
+                    </li>
+                    <div class="clear"></div>
+                </form>
+                <else />
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+                    class="head_hj06_search">
+                    <li class="search_first"><input type="text" value="keyword" name="keywords" id="keyword"
+                            onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)">
+                    </li>
+                    <li class="search_second">
+                        <button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/mobile_search.svg" width="30" /></button>
+                    </li>
+                    <li class="closeda">
+                        <span></span>
+                    </li>
+                    <div class="clear"></div>
+                </form>
+            </if>
+        </div>
+    </div>
+</div>
+<!-- search -->
+
+<php>
+    $arr = get_list_val($data478[6]);
+</php>
+
+    <div class="container hader_hj12_nav_con">
+        <div class="head_hj21_nav row-little">
+            <div class="logo">
+                <a href="{:U('/')}">{$logo}</a>
+            </div>
+            <nav class="nav menu">
+                <ul>
+                    <volist name="web_navigation" id="vo" offset="0" key="key">
+                        <li id="menu{$vo['id']}" class="nav_li" data-url="{$vo['url']}">
+                            <a href="{$vo['url']}"  <if
+                                condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">
+                                onclick="turn_sta(2,1)"
+                                <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                                class="nav_pro"
+                                </if> >
+                                <span>{$vo['title']}</span>
+                                <if condition="$data478[6]">
+                                    <em data='{$key-1}'>{$arr[$key-1]['name']}</em>
+                                </if>
+                            </a>
+                            <!-- 二级 start -->
+                            <if condition="$vo[child] neq '' ">
+                                <ul class="nav_drop">
+                    <div>
+                        <volist name="vo['child']" id="v" offset="0" key="key">
+                                        <li>
+                                            <a href="{$v['url']}" <if
+                                                condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">
+                            </if>> <span>{$v['title']}</span></a>
+                        </li>
+                    </volist>
+                </div>
+            </ul>
+                <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                <ul class="nav_drop">
+                    <div>
+                        <volist empty="" name="allclass" id="allclass_head">
+                        <li>
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}"><span>{$allclass_head['class_name']}</span></a>
+                        </li>
+                    </volist>
+                </div>
+            </ul>
+                <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+                <ul class="nav_drop">
+                    <div>
+                    <volist empty="" name="allcaseclass" id="allclass_head">
+                        <li>
+                            <a
+                                href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}"><span>{$allclass_head['class_name']}</span></a>
+                        </li>
+                    </volist>
+                </div>
+                </ul>
+                <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+                <ul class="nav_drop">
+                    <div>
+                        <volist empty="" name="allnewclass" id="allclass_head">
+                        <li>
+                            <a
+                                href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}"><span>{$allclass_head['class_name']}</span></a>
+                        </li>
+                    </volist>
+                </div>
+            </ul>
+                </if>
+                </li>
+                </volist>
+                <if condition="$data478[4]">
+                    <div class="hj21_language hj21_roght_mb5">
+                        <span>{:__('Language')} <i class="fa fa-angle-down"></i></span>
+                        <ul id="lang_ul" class="language_ul">                            
+                        </ul>
+                    </div>
+                </if>
+                <div class="hj21_search hj21_roght_mb5">
+                    <span>
+                        <if condition="$data478[5]">
+                            <img src="{:getindeximgurl($data478[5])}" />
+                            <else />
+                            <img src="__TMPL__HJZF2_Z/img/mobile_search.svg" width="30" />
+                        </if>
+                    </span>
+                </div>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</header>

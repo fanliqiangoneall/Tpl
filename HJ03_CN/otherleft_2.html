@@ -1,0 +1,27 @@
+<!--left style-->
+<style>
+    .inner_t2d_nav>ul>li:hover{
+        background: #{$color};
+    }
+    .inner_t2d_nav>ul>li:hover >a>h3{
+        color: #fff;
+    }
+    .inner_t2d_nav>ul>li.class_t2don{
+        background: #{$color};
+    }
+    .inner_t2d_nav>ul>li.class_t2don >a>h3{
+        color: #fff;
+    }
+</style>
+
+<!--left style-->
+<div class="main_left">
+    <div class="inner_t2d_nav">
+        <ul>
+            <volist empty="No data" name="navrs" id="nav">
+                <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="class_t2don"<else/>class="class_t2d"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,48 @@
+<!--{$pagename}-->
+<style>
+    .indexNewsDetail>li:hover div.newsTitle{
+        color: #{$color};
+    }
+</style>
+<!--news start-->
+<div class="indexNewsContainer" <if condition="$data8[3] neq '' and $data8[4] neq ''">style="padding-top: {$data8[3]}px;padding-bottom: {$data8[4]}px;"</if>>
+    <div class="indexNewsContent container">
+        <div class="serviceTopContainer">
+            <div class="serviceLeft lf">
+
+                <div class="serviceTopTitle">{$data8[0]}</div>
+                <div class="serviceTopTips">{$data8[1]}</div>
+            </div>
+            <ul class="serviceRight rt">
+                <php>
+                    $arr_str=$data8[2];
+                    $arr=explode(',',$arr_str);
+                    foreach($arr as $k=>$a){
+                    $list[$k]['name']=get_wap_news_class_name($a);
+                    }
+                </php>
+                <li class="serviceActive"><a href="{:U('/news')}"><h3>全部</h3></a></li>
+                <volist name="list" id="li">
+                    <li class="class_name1" <if condition="$li['name'] eq ''">style="display:none;"</if>><a href="{:U('/new_category/classid','','')}/{$arr[$key]}"><h3>{$li['name']}</h3></a></li>
+                </volist>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <ul class="indexNewsDetail">
+            <volist name="indexnews" id="indexnews" offset="0" length="6">
+                <li class="indexNewsList wow slideInUp" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="5"  data-wow-iteration="1">
+                    <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()">
+                        <div class="indexNewsDate">{:date('m-d ',$indexnews['created'])}</div>
+                        <div class="indexNewsTitle ellipsis_one">{$indexnews['title']}</div>
+                        <div class="indexNewsText ellipsis_two">{$indexnews['news_description']}</div>
+                        <div class="serviceMore">更多</div>
+                    </a>
+                </li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>
+
+<!--news end-->
+

@@ -1,0 +1,69 @@
+<extend name="demo1:base" />
+<block name="content">
+<Include file="./Tpl/demo1/index_page/head.html" />
+
+
+
+<div class="container" style="padding-top: 35px;">
+<div class="row">
+    <div class="col-md-3 col-xs-12" id="box_main_sub4_sub1_sub1" >
+        <div class="in_l_head">新闻分类</div>
+        <ul class="leftnav">
+   
+                    <volist empty="No Content" name="allnewclass" id="allnewclass" offset="0" length='5'>
+        <li><a href="{:U('/new_category',array('classid'=>$allnewclass["classid"]))}">{$allnewclass['class_name']}</a></li>
+       </volist>
+
+        </ul>
+    </div>
+ 
+<div class="col-md-9" style="position:static;">
+<div class="daohangtop">
+	<a href="{:U('index','','')}" target="_self">网站首页</a>
+		&gt;&gt;&nbsp;<a  href="#">公司新闻</a>
+		</div>
+<div class="row">
+<div class="col-md-12">
+<ul class="comstyle newslist-01" style="list-style:none;">
+
+  <volist empty="No Content" name="allnews" id="allnews" key="k">
+ 	<li class="content column-num1" >
+ 	<div class="newstitle" style="height:55px; line-height:55px;">
+				<ul style="list-style:none;">
+					<li class="title" style="float:left;">
+						<h3>
+						<a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">{$allnews['title']}</a>
+        							</h3>
+					</li>
+					<li class="date" style="font-size:12px;"><span style="color: #999;">发布时间：</span>{:date('Y-m-d',$allnews['created'])}
+</li>
+			   	</ul>
+			</div>
+			</li>
+		<li class="clearBoth"></li>
+        
+  </volist>        
+        
+			
+			</ul>
+</div>
+            	
+ 
+
+</div>
+
+
+</div>
+                
+                              
+
+                 
+            </div>
+            </div>
+       
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="green-black" style="text-align:center; padding:20px 20px;">{$page}</div>
+<Include file="./Tpl/demo1/index_page/bottom.html" />
+</block>

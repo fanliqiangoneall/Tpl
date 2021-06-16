@@ -1,0 +1,77 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+	<style>
+		.Breadcrumbs span.current {
+			color: #{$inner_data[0]};
+		}
+		.HJZF_contact_inquiry{
+			background: #fff;width: 1150px;padding: 20px;
+		}
+	</style>
+	<div id="wrapper">
+		<div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+					<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+				</volist>
+				<else/>
+				<div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+			</if>
+
+		</div>
+
+				<div class="Breadcrumbs">
+
+					<div class="Breadcrumbs_down"><a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$intro_class['class_name']}</span></div>
+				</div>
+<if condition="$inner_data[2] eq '2'">
+	<style>
+		.InsidePages_content-right_content-main{
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			background: #fff;
+		}
+		.HJZF_contact_editor,.HJZF_contact_inquiry{
+			width: 50%;
+		}
+
+		#zixun form div{width: 100%!important;margin-left: 0!important;}
+		#zixun form div#inbut{text-align: left!important;}
+	</style>
+
+</if>
+		<div class="InsidePages_content" id="main-content-wrapper">
+			<section <if condition="count($navrs) gt 0">class="InsidePages_content-right" <else/> class="InsidePages_content-right2" </if>>
+				<div class="InsidePages_content-right_content">
+					<div class="InsidePages_content-right_content-main">
+						<div class="HJZF_contact_editor">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+						<div class="HJZF_contact_inquiry">
+							<h5 id="inquiry" class="HJ01_product_detail_title2" style="padding-left: 0;margin-bottom: 10px;"><span style="font-weight: bold">{:__('Inquire Now')}</span></h5>
+							<if condition="C('LANGUAGE') eq 'en'">
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry.html" /></div>
+							<elseif condition="C('LANGUAGE') eq 'rus'" />
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_ru.html" /></div>
+								<elseif condition="C('LANGUAGE') eq 'de'" />
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_de.html" /></div>
+								<elseif condition="C('LANGUAGE') eq 'fra'or C('LANGUAGE') eq 'fr'"/>
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_fra.html" /></div>
+								<elseif condition="C('LANGUAGE') eq 'spa'or C('LANGUAGE') eq 'esp'"/>
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_spa.html" /></div>
+								<elseif condition="C('LANGUAGE') eq 'ja'or C('LANGUAGE') eq 'jp'"/>
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_jp.html" /></div>
+							<else/>
+								<div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry_cn.html" /></div>
+							</if>
+						</div>
+						<div style="clear:both"></div>
+					</div>
+				</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>

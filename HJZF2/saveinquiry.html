@@ -1,0 +1,95 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .Breadcrumbs span.current {
+            color: #{$color};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+        <div class="Breadcrumbs">
+            <div class="Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Feedback')}</span>
+            </div>
+        </div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left"  <if condition="count($navrs) gt 0">style="display:block"<else/> style="display:none"</if>>
+            <Include file="./Tpl/HJZF2/left.html" />
+            </section>
+            <section <if condition="count($navrs) gt 0">class="InsidePages_content-right" <else/> class="InsidePages_content-right2" </if>>
+
+            <div class="InsidePages_content-right_content">
+                <div class="InsidePages_content-right_content-main" style="text-align:center;">
+
+
+                        <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;margin-bottom: 60px;">
+                            <tr>
+                                    <if condition="C('language') eq 'cn'">
+                                            <th align="center" bgcolor="#cccccc">消息提示</th>
+                                        <elseif condition="C('language') eq 'rus'" />
+                                        <th align="center" bgcolor="#cccccc">подсказка</th>
+                                        <elseif condition="C('language') eq 'ja' or C('language') eq 'jp'" />
+                                        <th align="center" bgcolor="#cccccc">メッセージプロンプト</th>
+                                            <else/>
+                                            <th align="center" bgcolor="#cccccc">Message Tips</th>
+                                        </if>
+                                
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <br />
+                                    <present name="message" style=" text-align:center;">
+                                        {$message}<br />
+                                    </present>
+                                    <present name="error" style=" text-align:center;">
+                                        {$error}<br />
+                                    </present>
+                                    <p class="detail"></p>
+                                    <p class="jump" style=" text-align:center;">
+                                        <if condition="C('language') eq 'cn'">
+                                            <a id="href" href="<?php echo($jumpUrl); ?>">单击以返回上一页</a> 等待时间 <b id="wait">5</b> 秒
+                                        <elseif condition="C('language') eq 'rus'" />
+                                        <a id="href" href="<?php echo($jumpUrl); ?>">Нажмите для возвращения предыдущей страницы</a> Минуточку <b id="wait">5</b> секунда
+                                            <elseif condition="C('language') eq 'ja' or C('language') eq 'jp'" />
+                                            <a id="href" href="<?php echo($jumpUrl); ?>">クリックして前のページに戻る</a> 待ち時間 <b id="wait">5</b> 秒
+                                            <else/>
+                                            <a id="href" href="<?php echo($jumpUrl); ?>">Click to return to the previous page</a> Please waite <b id="wait">5</b> seconds
+                                        </if>
+                                    </p><br /></td>
+                            </tr>
+                        </table>
+
+                    <script type="text/javascript">
+                        (function(){
+                            var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+                            var interval = setInterval(function(){
+                                var time = --wait.innerHTML;
+                                if(time <= 0) {
+                                    location.href = href;
+                                    clearInterval(interval);
+                                };
+                            }, 1000);
+                        })();
+                    </script>
+                    {:htmlspecialchars_decode(get_inquiry_code())}
+                </div>
+            </div>
+
+            </section>
+            <div class="clear"></div>
+        </div>
+
+
+    </div>
+</block>

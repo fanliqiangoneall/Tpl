@@ -1,0 +1,46 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+	<div id="inner_module2__wrapper">
+		<div id="inner_module2__inbanner_box">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+			</if>
+		</div>
+		<div class="inner_module2__bread">
+			<div class="container">
+				<div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Associated information')}</span></div>
+			</div>
+		</div>
+
+		<div class="inner_module2__inPage" id="main-content-wrapper">
+			<section class="inner_module2__inPage-left">
+				<Include file="./Tpl/HJZF2/left_2.html" />
+			</section>
+			<section class="inner_module2__inPage-right">
+				<div class="inner_module2__inPageRight-content">
+
+					<div class="inner_module2__inPageRight-content-box">
+						<h5 class="inner_module2__inPage-title">{:__('Related products')}</h5>
+
+							<div class="proinquiry"><include file="HJZF2:relationinfo_2" /></div>
+
+						<h5 class="inner_module2__inPage-title">{:__('Related news')}</h5>
+
+							<div class="proinquiry"><include file="HJZF2:relationnew_2" /></div>
+
+					</div>
+				</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>
+
+
+
+
+

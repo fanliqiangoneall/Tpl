@@ -1,0 +1,82 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data234[0]">
+    .HJZF_Z_other_HJ06 {
+        background: url({:getindeximgurl($data234[0])}) no-repeat center/cover;
+    }
+    </if>
+    .HJZF_Z_other_HJ06_box a:hover h4,
+    .HJZF_Z_other_HJ06_box a h4 i {
+        color: #{$data234[1]};
+    }
+
+    /* mobile 背景色 */
+
+    @media (max-width: 1200px) {
+        .HJZF_Z_other_HJ06 {
+            background-color: #{$data234[2]};
+        }
+    }
+</style>
+<section class="HJZF_Z_other_HJ06">
+    <div class="container">
+        <ul class="row HJZF_Z_other_HJ06_box">
+            <li class="between">
+                <a href="{$data234[19]}" class="first text-center">
+                    <span class="pic-normal">
+                        <img src="{:getindeximgurl($data234[11])}" alt="{$data234[3]}">
+                    </span>
+                    <span class="pic-hover">
+                        <img src="{:getindeximgurl($data234[15])}" alt="{$data234[3]}">
+                    </span>
+                    <h4 class="index_sub_title">
+                        <i class="fa fa-angle-right"></i>{$data234[3]}
+                    </h4>
+                    <p class="index_text">{$data234[7]}</p>
+                </a>
+            </li>
+            <li>
+                <a href="{$data234[20]}" class="mid text-center">
+                    <span class="pic-normal">
+                        <img src="{:getindeximgurl($data234[12])}" alt="{$data234[4]}">
+                    </span>
+                    <span class="pic-hover">
+                        <img src="{:getindeximgurl($data234[16])}" alt="{$data234[4]}">
+                    </span>
+                    <h4 class="index_sub_title">
+                        <i class="fa fa-angle-right"></i>{$data234[4]}
+                    </h4>
+                    <p class="index_text">{$data234[8]}</p>
+                </a>
+            </li>
+            <li>
+                <a href="{$data234[21]}" class="mid text-center">
+                    <span class="pic-normal">
+                        <img src="{:getindeximgurl($data234[13])}" alt="{$data234[5]}">
+                    </span>
+                    <span class="pic-hover">
+                        <img src="{:getindeximgurl($data234[17])}" alt="{$data234[5]}">
+                    </span>
+                    <h4 class="index_sub_title">
+                        <i class="fa fa-angle-right"></i>{$data234[5]}
+                    </h4>
+                    <p class="index_text">{$data234[9]}</p>
+                </a>
+            </li>
+            <li class="between">
+                <a href="{$data234[22]}" class="last text-center">
+                    <span class="pic-normal">
+                        <img src="{:getindeximgurl($data234[14])}" alt="{$data234[6]}">
+                    </span>
+                    <span class="pic-hover">
+                        <img src="{:getindeximgurl($data234[18])}" alt="{$data234[6]}">
+                    </span>
+                    <h4 class="index_sub_title">
+                        <i class="fa fa-angle-right"></i>{$data234[6]}
+                    </h4>
+                    <p class="index_text">{$data234[10]}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+.hjzf2_service-10{width: 100%;margin: auto;height: auto;}
+.service-10_titlebox,.service-10_content{margin: auto;flex-wrap: wrap;justify-content: space-around;}
+.service-10_content li .imgwrap{margin: auto;position: relative;padding-top: 50%;overflow: hidden;}
+.service-10_content li .imgwrap .img-0,.service-10_content li .imgwrap .img-1{position: absolute;top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;}
+
+.service-10_content li .imgwrap .img-1{
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+.service-10_content li:hover .img-0 {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%)
+}
+.service-10_content li .imgwrap img{max-height: 100%;max-width: 100%;}
+.service-10_content li:hover .img-1{
+     -webkit-transform: translateY(0);
+     transform: translateY(0);
+ }
+.service-10_content li .imgwrap .img-0,.service-10_content li .imgwrap .img-1,.service-10_content li:hover .img-0,.service-10_content li:hover .img-1{
+    -webkit-transition: all .4s cubic-bezier(.4,.01,.165,.99);
+    transition: all .4s cubic-bezier(.4,.01,.165,.99)
+}
+.service-10_content li .item{
+    margin: auto;width: 80%;padding: 10px;
+}
+.service-10_content li .item .name{font-weight: bold;padding-bottom: 5px;color: #333;}
+.service-10_content li .item .desc{font-weight: normal;color: #666}
+@media (max-width:768px) {
+    .service-10_content li .item{
+        width: 100%;
+        padding: 10px 0;
+    }
+}

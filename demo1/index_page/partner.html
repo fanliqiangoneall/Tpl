@@ -1,0 +1,43 @@
+<!--{$pagename}-->
+<style>
+.index_customer_line{ min-width:1190px; max-width:1920px; height:2px; margin:auto; margin-top:23px; background:url({:getindeximgurl($data[2])}) center no-repeat;}
+</style>
+<link href="__TMPL__demo1/css/customer.css" rel="stylesheet">
+<div id="index_customer_animate" style="display:none;">
+   <div class="index_customer_title"><span>{$data[0]}</span>&nbsp;<span><img src="__TMPL__demo1/img/round.jpg" style="vertical-align:middle;"></span>{$data[1]}</div>
+   <div class="index_customer_line"></div>
+</div>
+<div id="index_customer_animate1" style="display:none;">
+<div class="index_customer_hezuo">
+   <div class="index_customer_section1">
+   <for start="3" end="13" step="1">
+
+      <div class="customer_logo"><img src="{:getindeximgurl($data[$i])}" /></div>
+      <if condition="$i eq 7">
+      <div class="clear" style="height:30px;"></div>
+      <else/>
+      <div style="width:30px; float:left; height:10px; background:none;"></div>
+      </if>
+   
+   
+   </for>
+
+   </div>
+</div>
+</div>
+<script>
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>4300){	
+	$('#index_customer_animate').show();
+	$('#index_customer_animate').removeClass().addClass('fadeInDown');
+	}
+	if(scrollTop>4400){	
+	$('#index_customer_animate1').show();
+	$('#index_customer_animate1').removeClass().addClass('bounceIn');
+	}
+
+});
+</script>

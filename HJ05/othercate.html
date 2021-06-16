@@ -1,0 +1,48 @@
+<extend name="HJ05:basein" />
+<block name="content">
+    <style>
+        .Breadcrumbs span.current{
+            color: #{$data47[9]};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[10])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner flex">
+                <div class="container">
+                    <div class="Breadcrumbs">
+                        <div class="Breadcrumbs_top_title">{$intro_class['class_name']}</div>
+                        <div class="Breadcrumbs_down">
+                            <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$intro_class['class_name']}</span>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page_nei_main" id="main-content-wrapper">
+
+            <section class="main-content-left"  <if condition="count($navrs) gt 0">style="display:block"<else/> style="display:none"</if>>
+                    <Include file="./Tpl/HJ05/otherleft.html" />
+            </section>
+            <section <if condition="count($navrs) gt 0">class="main-content-right" <else/> class="main-content-right2" </if>>
+                <div class="page_RightMain">
+                    <if condition="count($navrs) gt 0">
+                        <h5 class="main-cases-detail-title">{$intro_class['class_name']}</h5>
+                    </if>
+
+                    <div class="page_Main" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                    <div style="clear:both;height: 30px;"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>

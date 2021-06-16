@@ -1,0 +1,71 @@
+<!--{$pagename}-->
+<style>
+    .banner__hj04_tab .num{
+        color: #{$data97[0]};
+    }
+    .banner__hj04_tabnav,.banner__hj04_page .swiper-pagination-bullet-active,.banner__hj04_mobile_page .swiper-pagination-bullet-active{
+        background: #{$data97[0]};z-index: 1;
+    }
+
+</style>
+<script>
+    var guan = "<?php echo $data3[25] ?>";
+</script>
+<section class="banner__hj04">
+    <div class="banner__hj04box">
+        <div class="swiper-container banner__hj04_swiper">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k">
+                    <div class="swiper-slide banner__hj04_item">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}">
+                            <div class="bg " style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center/cover "></div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-pagination banner__hj04_page"></div>
+            <div class="main-scroll-icon">
+                <img src="__TMPL__HJZF2_Z/img/main_scroll_icon.png">
+                <span>{:__('SCROLL DOWN')}</span>
+            </div>
+        </div>
+        <div class="banner_hj04_sm">
+            <div class="swiper-container banner__hj04_tab">
+                <div class="swiper-wrapper">
+                    <volist name="banner" id="banner_pic" key="k">
+                        <div class="swiper-slide banner__hj04_tabitem">
+                            <div>
+                                <a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}">
+                                    <div class="num">/0{$k}</div>
+                                    <div class="desc">
+                                        {$banner_pic['pic_title']}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+            <div class="banner__hj04_tabnav">
+                <div class="swiper-button-next banner__hj04_tabnext"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-button-prev banner__hj04_tabprev"><i class="fa fa-angle-left"></i></div>
+            </div>            
+        </div>
+    </div>
+    <div class="swiper-container banner__hj04_mobile">
+        <div class="swiper-wrapper">
+            <volist name="banner" id="banner_pic" key="k">
+                <div class="swiper-slide banner__hj04_mobileitem">
+                    <if condition="$banner_pic['use_wap']">
+                        <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}">
+                        <else/>
+                        <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}">
+                    </if>
+                </div>
+            </volist>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination banner__hj04_mobile_page"></div>
+        
+    </div>
+</section>

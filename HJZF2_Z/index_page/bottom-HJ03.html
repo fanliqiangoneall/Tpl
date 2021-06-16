@@ -1,0 +1,189 @@
+<!--{$pagename}-->
+<php>
+    if($data80[12]){
+        $color = $data80[12];
+    }
+</php>
+<style>
+    .footer-info,
+    .footer-info a,
+    .bottom-hj03_footnav li a h2 {
+        color: #{$data80[6]};
+    }
+    .hjzf2_Z_bottom_hj03_jia{
+        background-color: #{$data80[11]};
+    }
+    .hjzf2_Z_bottom_hj03_jia_title .index_title:after,.hjzf2_Z_bottom_hj03_jia_title .index_title:before{
+        background-color: #{$color};
+    }
+</style>
+<if condition="$data80[7]">
+    <script>
+        var url = window.location.href;
+    </script>
+</if>
+<section class="hjzf_bottom-hj03">
+<if condition="$data80[10] and $is_index eq '1'">
+    <style>
+        @media(min-width: 1200px) {
+            .hjzf2_Z_bottom_hj03_jia{
+                height: 55vh;
+            }
+            .bottom-hj03_wrap{
+                height: 45vh;
+            }
+        }
+    </style>
+<div class="hjzf2_Z_bottom_hj03_jia" >
+    <div class="hjzf2_Z_bottom_hj03_jia_title wow fadeInDown text-center pb40">
+        <div class="index_title ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">{$data80[13]}</div>
+        <div class="index_text ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">{$data80[14]}</div>
+    </div>
+    <div class="hjzf2_Z_bottom_hj03_jia_container swiper-container">
+        <div class="swiper-wrapper">
+            <php>
+                $arr = get_list_val($data80[16]);
+            </php>
+            <volist empty="" name="arr" id="a" >
+            <div class="swiper-slide hjzf2_Z_bottom_hj03_jia_slide">
+                <a href="{$a[link]}">
+                    <div class="hjzf2_Z_bottom_hj03_jia_wrapper_img">
+                        <img src="{$a[img]}" class="img-fluid" alt="{$a[title]}">
+                    </div>
+                    <div class="hjzf2_Z_bottom_hj03_jia_wrapper_con">
+                        <div class="index_title pb20">
+                            {$a[title]}
+                        </div>
+                        <div class="index_text pb20">
+                            {$a[info]}
+                        </div>
+                        <em><img src="{:getindeximgurl($data80[15])}"></em>
+                    </div>
+                </a>
+            </div>
+            </volist>
+        </div>
+    </div>
+</div>
+    </if>
+    <div class="bottom-hj03_wrap">
+        <if condition="$data80[0]">
+        <div class="bottom-hj03_bg" style="background: url({:getindeximgurl($data80[0])}) no-repeat center/cover"></div>
+        </if>
+        <div class="bottom-hj03_foot">
+            <div>
+                <if condition="$data80[17]">
+                <div class="ani nav-hidden-mobile" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"><img src="{:getindeximgurl($data80[1])}" alt="foot logo" /></div>
+                <div class="nav-hidden-pc">
+                    <img src="{:getindeximgurl($data80[17])}" alt="foot logo" class="img-fluid">
+                </div>
+                <else/>
+                <div><img src="{:getindeximgurl($data80[1])}" alt="foot logo" /></div>
+                </if>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="bottom-hj03_footnav">
+                                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                                    <li><a menu_data="{$vo['id']}" href="{$vo['url']}" <if
+                                            condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,2)"
+                                            </if> onFocus="blur()">{$vo['title']}</a></li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-full"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="footer-info flex">
+                                <div class="footer-info-left">
+                                    <p><i class="fa fa-map-marker"></i>{$about['address']}</p>
+                                    <p>
+                                        <if condition="chaifen($about['phone'],0)">
+                                        <span><i class="fa fa-phone"></i>{:__('Tel: ')}&nbsp;{:chaifen($about['phone'],0)}</span>
+                                        </if>
+                                    <if condition="$about['fax']"><span><i class="fa fa-fax"></i>{:__('Fax: ')}&nbsp;{:chaifen($about['fax'],0)}</span></if>
+                                    <span><i class="fa fa-envelope"></i>{:__('E-mail: ')}&nbsp;<a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></span></p>
+                                    <p>
+                                        <php>
+                                            $nowtime=date("Y",time());
+                                            if(!$data13[6]){
+                                            $currtime=2019;
+                                            }else{
+                                            $currtime=$data13[6];
+                                            }
+                                        </php>
+                                        <if condition="$nowtime gt $currtime">
+                                            CopyRight&nbsp;©&nbsp;{$nowtime}
+                                            <else />CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+                                        &nbsp; {$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;&nbsp;
+                                        <if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/"
+                                                target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if><a
+                                            style="" href="{:U('/sitemap')}"
+                                            onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a
+                                                href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+                                                <if condition="$data50[15] eq ''">
+                                                <if condition="C('language') eq 'cn'">
+                                                    <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                                                        中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                                                    <else />
+                                                    <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by Zhonghuan Internet</a>
+                                        </if>
+                                    </if>
+                                    </p>
+                                </div>
+                                <div class="footer-info-right nav-hidden-mobile">
+                                    <if condition="$data80[9]">
+                                        <!-- 孙润舒 轩盛要求 -->
+                                        <div class="bottom_hj03_1767">
+                                            <if condition="$data80[2]"><img src="{:getindeximgurl($data80[2])}" alt="{$data80[4]}" />
+                                                <div>{$data80[4]}</div>
+                                            </if>
+                                        </div>
+                                        <div class="bottom_hj03_1767">
+                                            <if condition="$data80[3]"><img src="{:getindeximgurl($data80[3])}" alt="{$data80[5]}" />
+                                                <div>{$data80[5]}</div>
+                                            </if>
+                                        </div>
+                                        <div class="bottom_hj03_1767">
+                                            <if condition="$data80[7]"><img src="{:getindeximgurl($data80[7])}" alt="{$data80[8]}" />
+                                                <div>{$data80[8]}</div>
+                                            </if>
+                                        </div>
+                                        <else/>
+                                        <if condition="$data80[2]"><img src="{:getindeximgurl($data80[2])}" alt="{$data80[4]}" />
+                                            <div>{$data80[4]}</div>
+                                        </if>
+                                        <if condition="$data80[3]"><img src="{:getindeximgurl($data80[3])}" alt="{$data80[5]}" />
+                                            <div>{$data80[5]}</div>
+                                        </if>
+                                        <if condition="$data80[7]"><img src="{:getindeximgurl($data80[7])}" alt="{$data80[8]}" />
+                                            <div>{$data80[8]}</div>
+                                        </if>
+                                    </if>
+                                </div>
+                                <div class="nav-hidden-pc footer_info_right_footer">
+                                    <if condition="$data80[2]">
+                                        <span><img src="{:getindeximgurl($data80[2])}" alt="{$data80[4]}" />
+                                        <div>{$data80[4]}</div>
+                                    </span>
+                                    </if>
+                                    <if condition="$data80[3]"><span><img src="{:getindeximgurl($data80[3])}" alt="{$data80[5]}" />
+                                        <div>{$data80[5]}</div></span>
+                                    </if>
+                                    <if condition="$data80[7]"><span><img src="{:getindeximgurl($data80[7])}" alt="{$data80[8]}" />
+                                        <div>{$data80[8]}</div></span>
+                                    </if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+<style>
+.HJZF_Z__inner_product_categroy5 ul li.on a,.HJZF_Z__inner_product_categroy5 ul li:hover a{
+    background-color: #{$color};
+    color: #fff;
+}
+</style>
+<div class="HJZF_Z__inner_product_categroy5">
+    <div class="HJZF_Z__inner_product_categroy5_title">
+        <h2 class="fz35 text-center">
+            <if condition="$webid eq '1721'">
+                        所有案例
+                        <else/>
+            {:__('All products')}
+            </if>
+            </h2>
+    </div>
+    <ul>
+        <li class="yiji on"><a javascript=";">
+            <if condition="$webid eq '1721'">
+                        所有案例
+                        <else/>
+            {:__('All products')}
+            </if>
+            </a></li>
+        <volist empty="" name="allclass" id="allclass_left">
+            <li 
+            <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yiji on"<else/>class="yiji"</if>
+            >
+            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+        </li>
+    </volist>
+</ul>
+</div>

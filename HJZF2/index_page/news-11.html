@@ -1,0 +1,66 @@
+<if condition="$data167[5]">
+    <style>
+        .HJZF2__news-11{
+            background: url({:getindeximgurl($data167[5])}) left center no-repeat !important;
+        }
+    </style>
+</if>
+<style>
+   .HJZF2__news-11__pagination .swiper-pagination-bullet {
+	  display: inline-block;
+	  width: 12px;
+	  height: 12px;
+	  border-radius:12px;
+	  margin: 0 6px;
+	  cursor: pointer;
+	  outline:medium;
+	  background: url({:getindeximgurl($data167[2])}) no-repeat center;
+	}
+	.HJZF2__news-11__pagination .swiper-pagination-bullet-active {
+	  background: url({:getindeximgurl($data167[3])}) no-repeat center;
+	}
+</style>
+<section class="HJZF2__news-11">
+    <div class="container">
+        <div class="HJZF2__news-11__title">
+            <div class="HJZF2__news-11left wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0" data-wow-offset="5">{$data167[0]}</div>
+            <div class="HJZF2__news-11right wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0" data-wow-offset="5">
+                <a href="{:U('/news')}" class="HJZF2__news-11__more">{$data167[1]}</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="HJZF2__news-11main wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0" data-wow-offset="5">
+          <div class="swiper-container HJZF2__news-11list">
+             <div class="swiper-wrapper">
+                <volist name="indexnews" id="indexnews" offset="0" length="12" key="k">
+                    <div class="swiper-slide HJZF2__news-11__item">
+                        <div class="HJZF2__news-11__itemlist">
+                            <div class="HJZF2__news-11__itempic">
+                              <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()"><if condition="$indexnews['new_pro'] eq 0 or $indexnews['new_pro'] eq ''"><img src="{:getindeximgurl($data167[4])}" border="0" /><else/><img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}"></if>
+                              </a>
+                            </div>
+                            <div class="HJZF2__news-11__itemkk">
+                                <div class="HJZF2__news-11__itemName"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{$indexnews['title']}</a></div>
+                                <div class="HJZF2__news-11__itemtime">{:date('m-d',$indexnews['created'])}</div>
+                                <div class="clear"></div>
+                                <div class="HJZF2__news-11__itemjj"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{$indexnews['news_description']}</a></div>
+                            </div>
+                            <div class="HJZF2__news-11__itempic2">
+                              <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()"><if condition="$indexnews['new_pro'] eq 0 or $indexnews['new_pro'] eq ''"><img src="{:getindeximgurl($data167[4])}" border="0" /><else/><img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}"></if>
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+             </div>
+           </div>
+           <div class="HJZF2__news-11__pagination"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+
+
+
+    

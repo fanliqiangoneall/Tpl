@@ -1,0 +1,28 @@
+<style>
+    .pro_con_bg_title_wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pro_con_bg_title_list {
+        padding-right: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .HJZF_Z__Breadcrumbs a:first-child:before {
+        display: none;
+    }
+</style>
+<div class="HJZF_Z__Breadcrumbs clearfix" navcrumbs>
+    <div class="pro_con_bg_title_wrapper col-xs-12">
+        <div class="pro_con_bg_title">
+            {$prolist['class_name']}
+        </div>
+        <div class="pro_con_bg_title_list">
+            {:__('Home')}</a>&nbsp; / &nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp; / &nbsp;<span
+                class="current">{$prolist['class_name']}</span>
+        </div>
+    </div>
+</div>

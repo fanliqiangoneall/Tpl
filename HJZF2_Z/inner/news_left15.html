@@ -1,0 +1,72 @@
+<style>
+.InsidePages_left_content-main{
+    margin-bottom: 20px;
+}
+.inner_contact {
+	box-shadow: 0.5px 0.866px 5px 0px rgba(179, 179, 179, 0.3);
+	padding: 20px 10px 10px 10px;
+	border-top: 2px solid #{$color};
+}
+.inner_contact_con {
+	padding-left: 10px;
+	padding-right: 20px;
+	padding-bottom: 15px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	border-bottom: 0;
+	line-height: 24px;
+}
+.inner_contact pre{
+	display: block;
+	background-color: transparent;
+	border: 0;
+	font-size: 14px;
+	color: #666;
+	line-height: 2;
+	word-break:normal;
+	word-wrap:normal;
+	white-space: normal;
+	font-family: Arial,HELVETICA;
+}
+.inner_contact span{
+	font-size: 18px;
+	line-height: 24px;
+	margin-bottom: 15px;
+	display: block;
+}
+</style>
+<div class="InsidePages_content-left_content inner_hidden">
+    <div class="HJZF_Z__inner--left__content">
+        <div class="InsidePages_left_search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if
+                        condition="C('Language') eq 'cn'">id="keyword2"
+                    <else />id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)"
+                    onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <if condition="count($allnewclass) gt 0">
+        <div class="InsidePages_left_content-main">
+            <p>{:__('News Categories')}</p>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="allnewclass" id="nav">
+                    <li <if condition="$newscate['classid'] eq $nav['classid']">class="yijion_news"<else/>class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$nav["classid"]))}">{$nav['class_name']}</a></li>
+                </volist>
+            </ul>
+        </div>
+        </if>
+        <if condition="$system_set['inpage_custom']">
+        <div class="inner_contact">
+            <span>{:__('Contact us ')}</span>
+            <div class="inner_contact_con">
+                <pre>{:get_zifu(htmlspecialchars_decode($system_set['inpage_custom']))}
+            </pre>
+            </div>
+        </div>
+        </if>
+    </div>
+    <div class="clear"></div>
+</div>

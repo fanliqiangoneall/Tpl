@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo1/css/service.css" rel="stylesheet">
+<div class="index_servicebg">
+    <div id="index_service_animate" style="display:none;">
+       <div class="index_service_title">{$data[0]}<span><img src="__TMPL__demo1/img/round1.jpg" style="vertical-align:middle;"></span>{$data[1]}</div>
+    </div>
+    <div id="index_service_animate1" style="display:none;">
+    <div class="index_service_list">
+    
+    
+<for start="2" end="13" step="2">
+          <div class="service_logo">
+             <div class="service_pic"><img src="{:getindeximgurl($data[$i])}" border="0" /></div>
+             <div class="service_title">{$data[$i+1]}</div>
+          </div>
+          <if condition="$i neq 13"><div class="service_jt"></div></if>
+</for>
+    
+
+          <div class="clear"></div>
+    </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script>
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>3100){	
+	$('#index_service_animate').show();
+	$('#index_service_animate').removeClass().addClass('fadeInLeft');
+	}
+	if(scrollTop>3200){	
+	$('#index_service_animate1').show();
+	$('#index_service_animate1').removeClass().addClass('swing');
+	}
+
+});
+</script>

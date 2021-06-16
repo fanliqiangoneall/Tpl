@@ -1,0 +1,58 @@
+<style>
+	.chengshe_left {
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+	.Chengshe_left_navlist {
+		display: flex;
+	}
+	.Chengshe_left_navlist li {
+		flex: 0 0 15%;
+		width: 15%;
+		text-align: center;
+		margin-right: 2%;
+	}
+	.Chengshe_left_navlist li a{
+		display: block;
+		border: 1px solid #ccc;
+		transition: all .4s;
+		overflow: hidden;
+	}
+	.Chengshe_left_navlist li h3{
+		font-size: 16px;
+		line-height: 2.5;
+		color: #333;
+		transition: all .4s;
+	}
+	.Chengshe_left_navlist li:hover a,.Chengshe_left_navlist li.yijion a{
+		background-color: #{$color};
+	}
+	.Chengshe_left_navlist li:hover h3,.Chengshe_left_navlist li.yijion h3{
+		color: #fff;
+	}
+</style>
+<div class="inner_hidden">
+	<div class="HJZF_Z__inner--left__content">
+		<php>
+			$mycout = count($navrs);
+		</php>
+		<neq name="mycout" value="0">
+			<div class="chengshe_left">
+				<ul class="Chengshe_left_navlist">
+					<volist empty="" name="navrs" id="nav">
+						<li {$nav['introclassid']} data-cid="{$intro_class['classid']} {$nav['introclassid']}" <if
+							condition="$nav['introclassid'] eq $intro_class['classid']"> class="yijion"
+							<elseif condition="($intro_class['classid'] eq '9846' and $nav['introclassid'] eq '0')" />
+							class="yijion"
+							<else />
+							class="yiji"</if> pro-class-id="{$nav['nav_belong']}">
+							<a href="{$nav['url']}" <if condition="$nav['introclassid'] eq '0'">target="_blank" </if>>{$nav['title']}</a>
+						</li>
+					</volist>
+				</ul>
+			</div>
+		</neq>
+
+	</div>
+	<div class="clear"></div>
+</div>

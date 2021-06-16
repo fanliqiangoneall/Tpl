@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<style>
+.products-hj05_con:hover a.more{ 
+  background-color: #{$data207[2]}; color: #fff;
+}
+.products-hj05{
+  background: url({:getindeximgurl($data207[3])}) no-repeat center bottom;background-size: cover;
+}
+</style>
+<section class="products-hj05 index_pd">
+	<div class="container">
+   <div class="row">
+     <div class="col-xs-12 wow fadeInDown" data-wow-duration="1s">
+       <div class="products-hj05_title text-center">
+         <h2 class="index_title pb20">{$data207[0]}</h2>
+         <span class="index_sub_title">{$data207[1]}</span>
+       </div>
+     </div>
+     <ul class="products-hj05_box text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+      <volist empty="" name="indexpro" id="indexpro5" key="k" offset="0" length="12">
+        <php> 
+          $icon_key1=$k*2+3;
+          $icon_key2=$k*2+4;
+
+          if($icon_key1){
+          $icon_url_1=getindeximgurl($data207[$icon_key1]);
+          if(!$data207[$icon_key1]) {
+          $icon_url_1=getindeximgurl($data207[4]);
+        }
+      }
+      if($icon_key2){
+      $icon_url_2=getindeximgurl($data207[$icon_key2]);
+      if(!$data207[$icon_key2]) {
+      $icon_url_2=getindeximgurl($data207[4]);
+    }
+  }
+
+</php>
+<li class="col-xs-12 col-md-3 products-hj05_con">
+ <div class="products-hj05_con_inner">
+  <span>
+    <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+      <img src="{$icon_url_1} " <if condition="$indexpro5['proalt'] neq ''">alt="{$indexpro5['proalt']}"<else/>alt="{$indexpro5['pro_name']}"</if> />
+    </a>
+  </span>
+  <span class="active">
+    <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+      <img src="{$icon_url_2}" <if condition="$indexpro5['proalt'] neq ''">alt="{$indexpro5['proalt']}"<else/>alt="{$indexpro5['pro_name']}"</if> />
+    </a>
+  </span>
+  <h3 class="ellipsis_one index_text"><a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">{$indexpro5['pro_name']}</a></h3>
+  <p class="ellipsis_three">{$indexpro5['pro_description']}</p>
+  <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}" class="more">{:__('Read More')}</a>
+</div>
+</li>
+</volist>
+</ul>
+</div>
+</div>            
+</section>

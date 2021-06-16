@@ -1,0 +1,46 @@
+<style>
+.cases-8__title--miantitle{
+    color: #{$color};
+}
+.cases-8_content_tab li.index_caseitem:hover .index_case_title,.cases-8_content_tab li.index_caseitem.active .index_case_title{
+    background: #{$color};
+}
+</style>
+<if condition="$data143[2]">
+    <style>
+        #cases-8{
+            background: url({:getindeximgurl($data143[2])}) no-repeat center;
+        }
+    </style>
+</if>
+<section id="cases-8">
+    <div class="cases-8__container">
+        <hgroup class="cases-8__title">
+            <h3 class="cases-8__title--miantitle">{$data143[0]}</h3>
+            <h5 class="cases-8__title--subtitle">{$data143[1]}</h5>
+        </hgroup>
+        <div class="cases-8__box">
+            <div class="cases-8_page wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+                <ul>
+                    <volist empty="" name="indexcases" id="indexcaseimg" key="k" offset="0" length="9">
+                        <li >
+                            <img src="{:getpcimgurl($indexcaseimg['new_pro'])}" class="middle_img{$k}">
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="cases-8_content wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+                <ul class="cases-8_content_tab">
+                    <volist name="indexcases" id="indexcase" offset="0" length="9">
+                        <li class="index_caseitem">
+                            <div class="index_case_title"><span>{$key+1}</span><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><h4>{:subtxt($indexcase['title'],30)}</h4></a></div>
+                            <div class="index_case_title2">{:subtxt($indexcase['news_description'],30)}</div>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>

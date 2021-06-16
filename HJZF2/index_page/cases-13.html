@@ -1,0 +1,52 @@
+<if condition="$data164[0]">
+    <style>
+        .HJZF2__case13 {
+            background: url({:getindeximgurl($data164[0])
+        }
+
+        )
+        no-repeat center
+
+        ;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__case13--next:hover,.HJZF2__case13--prev:hover{
+        color: #{$data164[1]};
+    }
+    .HJZF2__case13--leftMore:hover{
+        background: #{$data164[1]};color: #fff;border: 1px solid #{$data164[1]};
+    }
+</style>
+<section class="HJZF2__case13">
+    <div class="container flex">
+        <div class="HJZF2__case13--left wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+            <div class="HJZF2__case13--leftContent">{:HtmlEncode($data164[2])}</div>
+            <p class="HJZF2__case13--leftImg"><img src="{:getindeximgurl($data164[3])}" alt=""/></p>
+            <a href="{$data164[5]}" class="HJZF2__case13--leftMore">{$data164[4]}</a>
+        </div>
+        <div class="HJZF2__case13--right">
+            <div class="swiper-container HJZF2__case13--rightswiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        for($i=6;$i<29;$i=$i+4){
+                    </php>
+                    <div class="swiper-slide" style="background-image: url({:getindeximgurl($data164[$i+2])});">
+                        <a href="{$data164[$i+3]}">
+                            <div class="HJZF2__case13--rightName">{$data164[$i]}</div>
+                            <div class="HJZF2__case13--rightDesc">{:HtmlEncode($data164[$i+1])}</div>
+                        </a>
+
+                    </div>
+                    <php>
+                        }
+                    </php>
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next HJZF2__case13--next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+            <div class="swiper-button-prev HJZF2__case13--prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+        </div>
+    </div>
+</section>

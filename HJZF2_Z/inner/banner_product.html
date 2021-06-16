@@ -1,0 +1,12 @@
+<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2" data-banner="a">
+    <if condition="$banner neq ''">
+        <volist name="banner" id="banner" offset="0" length="1">
+            <div class="in_banner">
+                <img src="{:getimgurl($banner['ad_pic'])}" alt="" class="img-fluid"/>
+            </div>
+        </volist>
+        <else/>
+        <div class="in_banner"><img
+                src="{:getindeximgurl($inner_data[0])}" alt="" class="img-fluid"/></div>
+    </if>
+</div>

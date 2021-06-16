@@ -1,0 +1,212 @@
+<!--{$pagename}-->
+<php>
+	if($data214[0]) { $bg=$data214[0]; };
+	if($data214[11]) { $tell=getindeximgurl($data214[11]); } ;
+	if($data214[12]) { $email=getindeximgurl($data214[12]);
+	} ; if($data214[3]) { $ico1=getindeximgurl($data214[3]); }; if($data214[4]) { $ico2=getindeximgurl($data214[4]);};
+	if($data214[5])
+	{ $ico3=getindeximgurl($data214[5]); }; if($data214[6]) { $ico4=getindeximgurl($data214[6]); }
+	if($data214[21]) { $ico_ewm_1=getindeximgurl($data214[21]); }
+	if($data214[22]) { $ico_ewm_2=getindeximgurl($data214[22]); }
+</php>
+<style>
+	.new_hjzf_bottom-HJ06 {
+		background-color: #{$bg};
+	}
+
+	<if condition="$data214[19]">@media(min-width: 1200px) {
+		.new_hjzf_bottom-HJ06 {
+			background: url({:getindeximgurl($data214[19])
+		}
+
+		) no-repeat center/cover;
+	}
+	}
+	</if>.submit_form_submit {
+		color: #{$bg};
+	}
+	.new_hjzf_bottom-HJ06_tell i {
+		background: url({$tell}) no-repeat center;
+	}
+	.new_hjzf_bottom-HJ06_email i {
+		background: url({$email}) no-repeat center;
+	}
+	.foot_top_right .tncode.success {
+		color: #{$bg};
+	}
+	.foot_ico a{
+		position: relative;
+	}
+	.foot_ico a:hover .foot_ico_ewm{
+		opacity: 1;
+		visibility: visible;
+	}
+	.foot_ico a .foot_ico_ewm{
+		position: absolute;
+		left: 0;
+		bottom: 30px;
+		width: 110px;
+		height: 110px;
+		opacity: 0;
+		visibility: hidden;
+	}
+	.foot_ico_ewm img{
+		max-width: 100%;
+	}
+</style>
+<footer>
+	<div class="container-fluid foot_box">
+		<div class="container">
+			<div class="row">
+				<div class="foot_top clearfix">
+					<if condition="$data214[1]">
+						<h2 class="index_title pb40 wow fadeInDown">{$data214[1]}</h2>
+					</if>
+					<div class="row-little">
+						<div class="col-xs-12 col-md-5 foot_top_left wow fadeInLeft">
+							<p class="index_text">{:HtmlEncode($data214[2])}</p>
+							<ul class="foot_ico">
+								<if condition="$data214[21]">
+									<a>
+										<else />
+										<a href="{$data214[7]}">
+								</if>
+								<img src="{$ico1}">
+
+								<if condition="$data214[21]">
+									<div class="foot_ico_ewm">
+										<img src="{$ico_ewm_1}" alt="">
+									</div>
+								</if>
+								</a>
+
+								<if condition="$data214[22]">
+									<a>
+										<else />
+										<a href="{$data214[8]}">
+								</if>
+								<img src="{$ico2}">
+								<if condition="$data214[22]">
+									<div class="foot_ico_ewm">
+										<img src="{$ico_ewm_1}" alt="">
+									</div>
+								</if>
+								</a>
+								<a href="{$data214[9]}">
+									<img src="{$ico3}">
+								</a>
+								<a href="{$data214[10]}">
+									<img src="{$ico4}">
+								</a>
+							</ul>
+						</div>
+						<div class="col-xs-12 col-md-6 col-md-offset-1 foot_top_right wow fadeInRight">
+							<if condition="C('language') eq 'cn'">
+								<Include file="./Tpl/HJZF2_Z/submit_hjzf.html" />
+								<else />
+								<Include file="./Tpl/HJZF2_Z/submit_hjzf_en.html" />
+							</if>
+						</div>
+
+					</div>
+				</div>
+				<!-- 友情链接 -->
+				<if condition="$friend_link neq ''">
+					<div class="foot_mid clearfix">
+						<div class="col-xs-12 index_text">
+							<div class="HJZF2_Z__bottom__link"><span
+									style="float:left; margin-right:5px; line-height: 30px;">{:__('FriendLink:
+									')}</span>
+								<volist name="friend_link" id="friend_link">
+									<if condition="$friend_link['linkurl'] neq ''"><a target="_new"
+											href="{$friend_link['link_url']}"><img
+												style="width:70px; height:30px; float:left;"
+												src="{:getimgurl($friend_link['linkurl'])}" alt="friend link" /></a>
+										<else />
+										<div
+											style="float:left; line-height:30px; text-align:center; margin-right:20px;">
+											<a target="_new"
+												href="{$friend_link['link_url']}">{$friend_link['link_title']}</a>
+										</div>
+									</if>
+								</volist>
+								<div style="clear:both"></div>
+							</div>
+						</div>
+					</div>
+				</if>
+
+				<div class="foot_bottom clearfix">
+					<div class="row-little clearfix">
+						<div class="col-xs-12 foot_bottom_left index_text hidden-xs hidden-sm hidden-md col-lg-7">
+							<div class="new_hjzf_bottom-HJ06_tell fl">
+								<i></i> {$data214[13]}
+							</div>
+							<div class="new_hjzf_bottom-HJ06_email fl">
+								<i></i>
+								<a href="mailto:{$data214[14]}" onclick="turn_sta(3,2);">{$data214[14]}</a> &nbsp;
+								<a href="mailto:{$data214[17]}" onclick="turn_sta(3,2);">{$data214[17]}</a>
+							</div>
+						</div>
+						<php>
+							$nowtime=date("Y",time());
+						</php>
+						<div class="text-right index_text col-lg-5 col-xs-12">
+							Copyright © {$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights reserved')}
+						</div>
+					</div>
+					<div class="row-little clearfix">
+						<if condition="$webid eq '1717'">
+							<div class="col-xs-12 foot_bottom_left index_text hidden-xs hidden-sm hidden-md col-lg-6">
+								<div class="new_hjzf_bottom-HJ06_tell fl">
+									<i></i> 新科汽车电子：{:chaifen($about['phone'],1)}（车载电子系列产品）
+								</div>
+							</div>
+							<div class="text-right index_text col-lg-6 col-xs-12">
+								<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/"
+										target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;</if>
+								<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;<a
+									href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;
+								<if condition="$data214['18'] neq 1">
+									<a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;
+									中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+								</if>
+								<if condition="$data214[20]">
+									<div class="bottom-HJ06__text">{$data214[20]}</div>
+								</if>
+							</div>
+							<else />
+							<div class="col-xs-12 text-right">
+								<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/"
+										target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;</if>
+								<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;<a
+									href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;
+								<if condition="$data214[18]">
+									<style>
+										.dbzhhlw {
+											display: none;
+										}
+									</style>
+								</if>
+								<span class="dbzhhlw">
+									<if condition="C('language') eq 'cn'">
+										<a id="mianze" title="免责声明" target="_blank"
+											style="cursor:pointer;">免责声明</a>&nbsp;
+										中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+										<else />
+										<a href="https://www.one-all.com" title="Zhonghuan Internet"
+											target="_blank">Designed by Zhonghuan Internet</a>
+									</if>
+								</span>
+								<if condition="$data214[20]">
+									<div class="bottom-HJ06__text">{$data214[20]}</div>
+								</if>
+						</if>
+						</if>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

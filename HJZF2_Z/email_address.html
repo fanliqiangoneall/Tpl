@@ -1,0 +1,82 @@
+<style>
+    .bottom_form_box form {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+    .bottom_form_box form .form_item {
+        flex: auto;
+    }
+    .bottom_form_box form .form_item input {
+        width: 100%;
+        padding: 5px 10px;
+        background-color: #fff;
+    }
+    .bottom_email_submit {
+        border: none;
+        color: #fff;
+    }
+    #form_submit,
+    .bottom_email_submit {
+        height: 100%;
+    }
+    .form_item{
+        position: relative;
+    }
+    .yz_alert{
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+        font-size: 12px;
+    }
+    #emaila_20 {
+        color: #333;
+    }
+	@media(max-width: 1200px) {
+		#emaila_20{
+			font-size: 16px;
+		}
+	}
+</style>
+{:session("tncode_check","ok")}
+<php>
+    $lan_submit = C('Language');
+</php>
+<script>
+	var language = '<?php echo $lan_submit;?>';
+</script>
+<script src="__TMPL__HJZF2_Z/js/email_address.js"></script>
+
+<div class="bottom_form_box">
+    <form action="__APP__/saveinquiry" method="post" onsubmit="return yzsubmitb20()" class="bottom_form">
+        <div class="form_item hidden">
+            <input type="text" name="linkname" id="linknamea_20" placeholder="{:__('Name: ')}" value="Email submit">
+            <span class="yz_alert" id="linknamea_20_alert"></span>
+        </div>
+        <div class="form_item hidden">
+            <input type="text" name="phone" id="phone_20" placeholder="{:__('Mobile: ')}" value="Email submit">
+            <span class="yz_alert" id="phone_20_alert"></span>
+        </div>
+        <div class="form_item hidden">
+            <textarea name="message" id="messagea_20" placeholder="{:__('Message: ')}">You have a new email subscription</textarea>
+            <span class="yz_alert" id="messagea_alert"></span>
+        </div>        
+        <div class="form_item">
+			
+				<input type="text" name="email" id="emaila_20" placeholder="{:__('Enter your email address')}">
+            <span class="yz_alert" id="emaila_20_alert"></span>
+        </div>
+        <div class="form_item">
+            <input type="hidden" name="prodid" value="{$product['pid']}" />
+            <div id="form_submit" data="{$sub}">
+				<if condition="$sub neq ''">
+				<input type="submit" value="{$sub}" name="submit" class="bottom_email_submit" id="bottom_20_submit" /></div>
+				<else/>
+				<input type="submit" value="{:__('Send E-mail')}" name="submit" class="bottom_email_submit" id="bottom_20_submit" /></div>
+			</if>
+
+        </div>
+    </form>
+</div>
+

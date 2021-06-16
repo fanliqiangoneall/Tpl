@@ -1,0 +1,56 @@
+<extend name="ZL01:base" />
+<block name="content">
+<div id="animate_banner">
+<div class="in_banner" style="background:url({:getindeximgurl($data3[1])}) center no-repeat"></div>
+</div>
+
+<div class="in_bodybg">
+  <div class="r_mbx"><img src="__TMPL__ZL01/img/in_home.png" style="vertical-align:top; margin-top:5px;">&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<span>{$newclass['class_name']}</span></div>
+  <div class="page_Main">
+    <Include file="./Tpl/ZL01/caseleft.html" />
+    <div class="in_right">
+       <div class="page_RightTitle"><h2>{$newclass['class_name']}</h2></div>
+       <div class="page_RightMain">
+          <div class="news">
+              <div id="news_detail">
+                <div class="body">
+                  <h1 class="fc_107fd0 fs_16 bold">{$news['title']}</h1>
+                  <div class="news_view"><span class="right time">{:date('Y-m-d',$news['created'])}&nbsp;&nbsp;</span></div>
+                  <div class="clear"></div>
+                  <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                  <div class="clear"></div>
+                  <div class="bt" style="margin-top:22px;"><a href="javascript:history.back()" onfocus="blur()" style="display:block; font-size:13px; text-align:center; color:#fff;">返回</a></div>
+                </div>
+              </div>
+          </div>
+           <if condition="$data1[11] eq ''">
+
+           <div class="prev_next">
+              <ul>
+                <li>上一个： 
+                 <if condition="$newprev[0]['title'] eq ''">
+                  暂无内容
+                 <else/>
+                  <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">{$newprev[0]['title']}</a>
+                 </if>
+                </li>
+                <li>下一个： 
+                  <if condition="$newnext[0]['title'] eq ''">
+                  暂无内容
+                 <else/>
+                  <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">{$newnext[0]['title']}</a>
+                 </if>
+                </li>
+              </ul>
+          </div>
+               </if>
+          <include file="ZERO:relationinfo" />
+          <include file="ZERO:relationnew" />
+          <include file="ZERO:relationcase" />
+          <div style="clear:both"></div>
+       </div>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+</div>
+</block>

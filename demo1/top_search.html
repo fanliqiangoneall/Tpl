@@ -1,0 +1,66 @@
+<style>
+.index_products_Searchbg{ width:100%;margin:auto;min-width:1190px; max-width:1920px; height:31px; padding:11px 0; border-bottom:1px solid #e8e7e7; overflow:hidden;}
+.index_products_KSearch{ width:1190px; margin:0 auto; height:31px;}
+.index_products_Search{ width:1190px; margin:auto; text-align:left}
+.index_products_Search ul{ display:inline-block}
+.index_products_Search ul li{ float:left; font-size:13px;}
+.index_products_Search ul li a{font-size:13px; color:#595757; line-height:31px;}
+.index_products_Search ul li input[type=text]{ width:180px; height:16px; line-height:16px; color:#b1b1b1; font-size:12px; border:0; background:none}
+.index_products_searchbtn{width:45px; float:right; height:16px; text-align:left; color:#595757; line-height:16px; background:none;}
+</style>
+<div class="index_products_Searchbg">
+  <div class="index_products_KSearch">
+    <div class="index_products_Search">
+    <script>
+	function CheckForm1(theForm)
+    {
+        if (theForm.keywords.value=="请输入关键词...")
+        {
+            alert('请输入产品关键词!');
+            theForm.keywords.focus();
+            return false;
+        }
+        return true; 
+    }
+    function OnFocusFun1(element,elementvalue)
+                {
+                    if(element.value==elementvalue)
+                    {
+                        element.value="";
+                        element.style.color="#b1b1b1";
+                    }else{
+                        element.style.color="#000";					
+					}
+                }
+                //离开输入框时触发事件
+                function OnBlurFun1(element,elementvalue)
+                {
+                    if(element.value==""||element.value.replace(/\s/g,"")=="")
+                    {
+                        element.value=elementvalue;    
+                        element.style.color="#b1b1b1";
+                    }else{
+						console.log(1);
+						element.style.color="#000";					
+					}
+                }
+    </script>
+    <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm1(this);">
+      <ul>
+        <li style="width:930px;"><if condition="$friend_linktop neq ''">
+           <div style="float:left; color:#595757; line-height:31px;">热门关键词：</div>
+        <volist name="friend_linktop" id="friend_link_top">
+          <if condition="$friend_link_top['link_title'] neq ''" >
+            <div style="float:left; margin-right:10px;"><a target="_new" href="{$friend_link_top['link_url']}">{$friend_link_top['link_title']}</a></div>
+          </if>
+        </volist></if>
+        </li>
+        <li style="width:241px; height:29px; border:1px solid #dedcdb; float:right;">
+        <div style="width:180px; height:16px; float:left; margin-left:9px; border-right:1px solid #dedcdb; margin-top:6px; line-height:16px;"><input type="text" name="keywords" value="请输入关键词..."  onfocus="OnFocusFun1(this,'请输入关键词...')" onblur="OnBlurFun1(this,'请输入关键词...')" style="color:#b1b1b1"/></div>
+        <div style="margin-top:5px;"><input type="submit" value="搜索" class="index_products_searchbtn" style="border:0"/></div>
+        </li>
+      </ul>
+     </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<!--{$pagename}-->
+<php>
+    if($data262[34]){      
+        $other_27_bg=getindeximgurl($data262[34]);        
+    }else{
+        $other_27_bg='';
+    }
+</php> 
+<style>
+    .hjzf_other_27_wrapper_r li:hover p{
+        color: #{$data262[0]};
+    }
+    .hjzf_other_27{
+            background: url({$other_27_bg}) no-repeat center/cover;
+        }
+        .hjzf_other_27_wrapper li a{
+            color: #{$data262[36]};
+        }
+</style>
+
+
+<section class="hjzf_other_27 index_pd">
+    <div class="container">
+        <div class="row">
+            <!-- left -->
+            <div class="col-xs-12 col-md-6">
+                <div class="hjzf_other_27_wrapper">
+                    <div class="index_title pb40">
+                        {$data262[1]}
+                    </div>
+                    <div class="index_text pb40">
+                        {:HtmlEncode($data262[2])}
+                    </div>
+                    <ul class="clearfix row-little">
+                        <php>
+                        for($i=3;$i<15;$i=$i+3){
+                        </php>
+                        <if condition="$data262[$i]">
+                        <li class="col-xs-6"><a href="{$data262[$i+1]}" style="background:#{$data262[35]} url({:getindeximgurl($data262[$i+2])}) no-repeat 10px 10px/ 22px 22px" >{$data262[$i]}</a></li>
+                        </if>
+                        <php>}</php>
+                    </ul>
+                </div>
+            </div>
+            <!-- right -->
+            <div class="col-xs-12 col-md-6 parallax">
+                <div class="hjzf_other_27_wrapper_r">
+                    <div class="index_title pb40">
+                        {$data262[15]}
+                    </div>
+                    <ul class="clearfix row-little">
+                        <php>
+                        for($i=16;$i<=33;$i=$i+3){
+                        </php>
+                        <if condition="$data262[$i]">
+                        <li class="col-xs-6 pb20 index_text">
+                            <a href="{$data262[$i+2]}"><img src="{:getindeximgurl($data262[$i])}" class="img-full" alt="{$data262[$i+1]}"><p>{$data262[$i+1]}</p></a>
+                        </li>
+                        </if>
+                        <php>}</php>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

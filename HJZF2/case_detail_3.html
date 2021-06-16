@@ -1,0 +1,114 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <if condition="$inner_data[2]">
+        <style>
+            .InsidePage--3__contentNavbg{
+                background:url({:getindeximgurl($inner_data[2])}) center no-repeat
+            }
+
+        </style>
+    </if>
+    <if condition="$inner_data[3]">
+        <style>
+            .InsidePage--3__contentNav.left,.InsidePage--3__contentBox.left{float: left;}
+            .InsidePage--3__contentBox.left{padding-left: 60px;padding-right: 0;}
+            .InsidePage--3__contentNav.left .InsidePage--3__contentNavWrap--list li a{text-align: left;}
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <style>
+        .InsidePage--3__contentBoxMain--news .detail_wrap{width: 100%;margin-left: 0;}
+        .InsidePage--3__breadcrumbs span.current{
+            color: #{$inner_data[1]};
+        }
+    </style>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+            </if>
+
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><a href="{:U('/cases')}">{:__('cases')}</a><i class="fa fa-angle-right"></i><span class="current">{$newclass['class_name']}</span></div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap InsidePage--3__contentWrap--bg" id="main-content-wrapper">
+            <div class="container">
+                <section class="InsidePage--3__contentNav left">
+                    <if condition="$inner_data[4] eq '1'">
+                        <Include file="./Tpl/HJZF2/caseleft_3.html" />
+                        <elseif condition="$inner_data[4] eq '2'"/>
+                        <style>
+                            .InsidePage--3__contentWrap--bg{background: #fff;}.InsidePage--3__contentBoxMain--news .detail_wrap{margin-left: 0;width: auto;}.InsidePage--3__contentBoxMain--news .detail_wrap .InsidePage--3__detailTitle{padding-top: 15px;}.InsidePage--3__contentNav{width: 300px}.InsidePage--3__contentBox{width: 840px;} .InsidePage--3__contentWrap{padding-top: 60px;}.InsidePage--3__contentNav{top: -125px;}.InsidePage--3__contentWrap:before{display: none}.InsidePage--3__title{line-height: 50px;height: 50px;color: #333333;font-size: 24px;}.InsidePage--3__contentBoxMain{margin-top: 30px;}
+                            .InsidePage--3__contentCaseBox>ul>li.main_caseitem{width: 265px;}
+                        </style>
+                        <Include file="./Tpl/HJZF2/caseleft_3--2.html" />
+                        <elseif condition="$inner_data[4] eq '3'"/>
+                        <style>
+                            .InsidePage--3__contentNav{width: 100%;top: 0;}.main-content_inner_news{margin-top: 30px;}
+                            .main-content_inner_news>ul>li.yijion_news h3,.main-content_inner_news>ul>li:hover h3{color: #fff}
+                            .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li:hover{
+                                background: #{$inner_data[1]};color: #fff
+                            }
+                            .InsidePage--3__contentBox.left,.InsidePage--3__contentBox{padding-left: 0;padding-right: 0;width: 100%}
+                            .InsidePage--3__title{display: none}
+                        </style>
+                        <Include file="./Tpl/HJZF2/caseleft.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2/caseleft_3.html" />
+                    </if>
+                </section>
+                <section class="InsidePage--3__contentBox left">
+                    <div class="InsidePage--3__contentBoxWrap">
+                        <div class="InsidePage--3__title">{$news['title']}</div>
+                        <div class="InsidePage--3__contentBoxMain box-sizing InsidePage--3__contentBoxMain--news">
+                            <div class="detail_wrap">
+
+                                <div class="InsidePage--3__detailView">
+                                    <span class="time"><if condition="C('Language') eq 'en'">{:date('M d, Y',$news['created'])}<elseif condition="C('Language') eq 'rus'"/>{:date('M d, Y',$news['created'])} <else/>{:date('Y年m月d日 ',$news['created'])}</if></span>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="InsidePage--3__detailContent">{:htmlspecialchars_decode($news['body'])}</div>
+                                <div class="InsidePage--3__detailContent--bottom">
+                                    <div class="InsidePage--3__detailContentPrev">
+                                        <ul>
+                                            <if condition="$newprev[0]['title'] eq ''">
+
+                                                <else/>
+                                                <li class="news_prev">
+                                                    <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                        <p>Prev</p>
+                                                    </a>
+                                                </li>
+                                            </if>
+                                            <if condition="$newnext[0]['title'] eq ''">
+
+                                                <else/>
+                                                <li class="news_next">
+                                                    <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                        <p>Next</p>
+                                                    </a>
+                                                </li>
+                                            </if>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="clear"></div>
+            </div>
+            <div class="Xtext-right"></div>
+        </div>
+    </div>
+</block>

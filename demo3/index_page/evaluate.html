@@ -1,0 +1,98 @@
+<!--{$pagename}-->
+<style>
+.process .owl-dot {
+	width: 70px;
+	height: 70px;
+	opacity: 0.5;
+	border: #fff 4px solid;
+	position:static;
+}
+.process .owl-dot span {
+	height: 70px;
+	display:block;
+	position: absolute;
+	width:100%;
+	left:0px;
+	text-align:center;
+	top:90px;
+	font-size: 14px;
+	color: #2980B9;
+	font-weight:bold;
+	opacity:0;
+    font-size: 14px;
+    color: #2980B9;
+	z-index:8;
+}
+.process .owl-dots .active span {
+	display:block !important;
+	opacity:1;
+	z-index:9;
+}
+.process .owl-dots {
+	height: 70px;
+	margin-bottom:60px;
+}
+
+.process .owl-dot:nth-child(1) {
+	background:
+		url("{:getimgurl($data[4])}")
+		no-repeat center center/100%;
+	z-index: 1;
+}
+
+.process .owl-dot:nth-child(2) {
+	background:
+		url("{:getimgurl($data[7])}")
+		no-repeat center center/100%;
+	z-index: 1;
+}
+
+.process .owl-dot:nth-child(3) {
+	background:
+		url("{:getimgurl($data[10])}")
+		no-repeat center center/100%;
+	z-index: 1;
+}
+
+.process .owl-dots {
+	margin-top: 0px;
+}
+
+.process .owl-dots .active {
+	opacity: 1;
+	z-index: 2;
+}
+.process{color: #333333; margin-top:10px;}
+</style>
+<script>
+
+    var a="{$data['5']}";
+	var b="{$data['8']}";
+	var c="{$data['11']}";
+
+
+</script>
+<style>
+.yinhao{ background:url(__TMPL__demo3/images/yinhao.png); background-repeat:no-repeat;background-size:62px 59px}
+</style>
+<div class="content">
+	<h3 class="bolder center-text">
+		{$data[0]} <span class="color-highlight">{$data[1]}</span>
+	</h3>
+	<p class="center-text boxed-text-large bottom-30">{$data[2]}</p>
+	<div class="decoration bottom-10"></div>
+	<div class="cover-walkthrough-slider-process owl-carousel process">
+		<div class="bottom-30">
+			<h1 class="font-18 center-text process yinhao">{$data[3]}</h1>
+		</div>
+		<div class="bottom-30">
+			<h1 class="font-18 center-text process yinhao" >{$data[6]}</h1>
+		</div>
+		<div class="bottom-30 ">
+			<h1 class="font-18 center-text process yinhao">{$data[9]}</h1>
+		</div>
+	</div>
+
+	<div class="clear"></div>
+</div>
+<div class="decoration decoration-margins"></div>

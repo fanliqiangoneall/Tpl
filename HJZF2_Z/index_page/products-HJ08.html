@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+<style>
+  .products_HJ08_right_title a.more {
+    background-color: #{$data267[26]};
+    color: #{$data267[30]};
+  }
+  .products_HJ08_right_title a.more:hover{
+    color: #{$data267[26]};
+  }
+
+  .products_HJ08_right_title {
+    color: #{$data267[22]};
+    background-color: #{$data267[21]};
+  }
+  .products_HJ08_right_text:hover a {
+    color: #{$data267[0]};
+  }
+</style>
+<section class="products_HJ08 index_text">
+  <div class="products_HJ08_wrapper">
+
+    <!-- left start -->
+    <div class="products_HJ08_left products_HJ08_item">
+
+      <div class="swiper-container products_HJ08_swiper">
+        <div class="swiper-wrapper">
+          <php>
+            for($i=1;$i
+            <21;$i=$i+4){ </php>
+              <if condition="$data267[$i]">
+                <div class="swiper-slide products_HJ08_swiper_slide">
+                  <img src="{:getindeximgurl($data267[$i])}" alt="{$data267[$i+2]}" class="img-responsive">
+                  <div class="products_HJ08_swiper_slide_con">
+                    <div class="products_HJ08_container fr">
+                      <div class="first index_text ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">{$data267[$i+1]}</div>
+                      <div class="second index_title ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">{$data267[$i+2]}</div>
+                      <div class="third index_text ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.4s">{$data267[$i+3]}</div>
+                    </div>
+                  </div>
+                </div>
+              </if>
+              <php>}</php>
+        </div>
+        <div class="products_HJ08_swiper_next">
+          <img src="{:getindeximgurl($data267[29])}" alt="next">
+        </div>
+        <div class="products_HJ08_swiper_prev">
+          <img src="{:getindeximgurl($data267[28])}" alt="prev">
+        </div>
+      </div>
+
+    </div>
+    <!-- left end -->
+
+    <!-- right start -->
+    <div class="products_HJ08_right products_HJ08_item">
+      <div class="products_HJ08_right_wrapper products_HJ08_container fl">
+        <div class="products_HJ08_right_title">
+          <div class="index_title pb20">
+            {$data267[23]}
+          </div>
+          <a href="{$data267[24]}" class="more index_btn transition-ease">{$data267[25]}</a>
+        </div>
+        <div class="products_HJ08_right_products">
+          <ul class="clearfix">
+            <volist empty="" name="indexpro" id="indexpro5" key="k" offset="0" length="$data267[27]">
+              <li class="col-xs-6 products_HJ08_right_text">
+                <div class="products_HJ08_right_text_bd">
+                  <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+                    <div class="products_HJ08_right_img transform-scale oh">
+                      <img src="{:getmainimgurl($indexpro5['main_img'])}" class="img-responsive transition-ease" alt="{$indexpro5['pro_name']}">
+                    </div>
+                    <span class="transition-ease">{$indexpro5['pro_name']}</span>
+                  </a>
+                  <p class="transition-ease index_text">{:subtxt($indexpro5['pro_description'],200)}</p>
+                </div>
+              </li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- right end -->
+    <div class="clearfix"></div>
+  </div>
+</section>

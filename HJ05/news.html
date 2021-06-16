@@ -1,0 +1,82 @@
+<extend name="HJ05:basein" />
+<block name="content">
+    <style>
+        .main_newslist li:hover .main_news_title a h5{
+            color: #{$data47[9]};
+        }
+        .main_news_dowm span a:hover{
+            color: #{$data47[9]};
+        }
+        .Breadcrumbs span.current{
+            color: #{$data47[9]};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[10])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner flex">
+                <div class="container">
+                    <div class="Breadcrumbs">
+                        <div class="Breadcrumbs_top_title">News</div>
+                        <div class="Breadcrumbs_down">
+                            <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">News</span>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left2">
+                <Include file="./Tpl/HJ05/newleft.html" />
+            </section>
+            <section class="main-content-right2">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                            <div class="HJ01_main_news">
+                                    <ul class="main_newslist ul_li_list">
+                                        <volist name="allnews" id="allnews">
+                                            <li id="new_list{$key}">
+                                                <div class="main_newsimg">
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"<else/>src="{:getindeximgurl($data47[13])}"</if> border="0" /></a>
+                                                </div>
+                                                <div class="main_news_right">
+                                                    <div class="main_news_right_content lf">
+                                                        <div class="main_news_title margin-20px-bottom"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><h5>{$allnews['title']}</h5></a></div>
+                                                        <div class="main_news_desc">{:subtxt($allnews['news_description'],200)}</div>
+                                                    </div>
+                                                    <div class="main_news_right_date rt">
+                                                        <p>{:date('d M ',$allnews['created'])}</p>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                    <div class="main_news_dowm"><span><img src="__TMPL__HJ02/img/view.png" alt=""/>{$allnews['click_num']}</span><span style="line-height: 30px;">|</span><span><img src="__TMPL__HJ02/img/view_right.png" alt=""/><a
+                                                            href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">Read More</a></span></div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </li>
+
+                                        </volist>
+
+                                    </ul>
+                            </div>
+                        <div class="clearfix"></div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".main_left_news .main-content_inner_news>ul li:first-child").addClass("yijion_news")
+        })
+    </script>
+
+</block>

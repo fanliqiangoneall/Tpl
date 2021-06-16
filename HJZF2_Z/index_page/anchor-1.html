@@ -1,0 +1,122 @@
+<!--{$pagename}-->
+
+<if condition="$is_index eq '1'">
+    <style>
+        @media(min-width: 1200px) {
+            body {
+                overflow: hidden;
+            }
+
+            .hjzf2_z_fullpage{
+                width: 100vw;
+                height: 100vh;
+            }
+            .hjzf2_z_fullpage_child>.swiper-slide:last-child{
+                height: auto;
+            }
+
+            .hjzf2_z_fullpage .hjzf2_z_fullpage_pagination {
+                left: 15px;
+                width: 40px;
+            }
+
+            .hjzf2_z_fullpage .hjzf2_z_fullpage_pagination span {
+                margin: 15px 0 !important;
+                width: 10px;
+                height: 10px;
+                display: block;
+                background-color: transparent;
+                border: 1px solid #fff;
+                opacity: 1;
+            }
+
+            .hjzf2_z_fullpage_pagination span.swiper-pagination-bullet-active {
+                background-color: #fff;
+            }
+
+            .side {
+                display: block !important;
+            }
+        }
+    </style>
+</if>
+
+<script>
+    var Fullpage = {};
+    require(['jquery', 'swiper'], function ($, Swiper) {
+        $(function () {
+            var is_index = '<?php echo $is_index;?>';
+            var anchor = `<?php echo $data244[0];?>`;
+            var speedData = `<?php echo $data244[1];?>` || 300;
+            $('.wow').removeClass('wow');
+            var hjzf2_z_fullpage_swiper = null;
+            if (is_index == 1) {
+                pcShow();
+                $(window).resize(function () {
+                    pcShow();
+                });
+            };
+            /* dom元素添加到swiper-container中 */
+            function pcShow() {
+                flag = true;
+                if ($(window).width() > 1200) {
+                    var arr = anchor.split('\n');
+                    var asd = $('.hjzf2_z_fullpage .hjzf2_z_fullpage_child');
+                    arr.forEach(function (ele, i) {
+                        var id = $('#' + ele).addClass('swiper-slide');
+                        asd.append(id);
+                    });
+                } else {
+                    var d = $('.hjzf2_z_fullpage .hjzf2_z_fullpage_child').find('.swiper-slide');
+                    var pa = $('.hjzf2_z_fullpage').next('div');
+                };
+                $('.side li:last-child').click(function () {
+                    hjzf2_z_fullpage_swiper.slideTo(0, 300, false);
+                })
+                createSwiper();
+            };
+            /* 创建swiper */
+            function createSwiper() {
+                var w = $(window).width();
+                if (w > 1200) {
+                    hjzf2_z_fullpage_swiper = new Swiper('.hjzf2_z_fullpage', {
+                        observer: true,
+                        observeParents: true ,
+                        speed: +speedData,
+                        direction: 'vertical',
+                        slidesPerView: 'auto',
+                        mousewheel: true,
+                        pagination: {
+                            el: '.hjzf2_z_fullpage_pagination',
+                            clickable: true,
+                        },
+                        on: {
+                           
+                            init: function () {
+                                swiperAnimateCache(this); //隐藏动画元素 
+                                swiperAnimate(this); //初始化完成开始动画
+                            },
+                            slideChange: function () {
+                                /* 孙润舒浪涛导航要求 */
+                                if (this.activeIndex > 0) {
+                                    $('.HJZF2__head-8').hide();
+                                } else {
+                                    $('.HJZF2__head-8').show();
+                                }
+                            },
+                            slideChangeTransitionEnd: function (swiper) {
+                                swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                                this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');  //动画只展现一次，去除ani类名
+                            },
+                        }
+                    });
+                    $('.banner-hj03-btn img').click(function () {
+                        hjzf2_z_fullpage_swiper.slideTo(1, 300, false)
+                    });
+                };
+            };
+        });
+        
+    });
+
+</script>

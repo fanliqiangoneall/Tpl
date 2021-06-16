@@ -1,0 +1,121 @@
+<!--{$pagename}-->
+<!--news start-->
+<div id="news">
+    <div class="news_cont" style="margin-bottom: 30px;">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01_DE/img/protitle_bg.png" alt="protitle_bg.png"><span>{$data8[0]}</span><img src="__TMPL__WH01_DE/img/protitle_bg2.png">
+        </div>
+        <!--2019.3.11 孙要改的-->
+        <div class="clear" style="height: 00px;"></div>
+        
+        
+        <if condition="$data8[1] eq ''">
+        <div class="news_text">
+            <div id="List1_1">
+                <div class="news_1">
+                    <volist name="indexnews" id="indexnews" offset="0" length="4" key="h">
+                        <div id="news_item">
+                            <div class="hynews_pic">
+                                <if condition="$indexnews['new_pro'] neq ''"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews['new_pro'])}" border="0" /></a><else/><img src="__TMPL__ZERO/img/yz/new_pic.png" border="0" /></if>
+                            </div>
+                            <div class="hynews_list">
+                                <ul>
+                                    <li style="margin-bottom: 14px;">
+                                        <p><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}"  style="font-size:16px; color:#333333;">{:subtxt($indexnews['title'],50)}</a></p>
+                                        <span style="color: #7e7e7e;font-size: 14px;margin-top: 5px;display: block">{:date('Y-m-d ',$indexnews['created'])}</span></li>
+                                    <li style="color: #999999;font-size: 14px; ">{:subtxt($indexnews['news_description'],100)}</li>
+                                    <li style="margin-top: 28px;margin-left: 253px;" id="four"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}"  style="color:#333333;font-size:16px;">Read More >></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <if condition="$h%2 neq 0">
+                            <div style="width:30px; height:50px; float:left;list-style: none"></div>
+                            <else/>
+                            <div class="clear" style="height: 28px;"></div>
+                        </if>
+                    </volist>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <else/>
+
+            <style>
+            .new_news_show{display: block;}
+            .new_news_hide{display: none;}
+            </style>
+        <php>
+        $arr_str=$data8[1];
+        $arr=explode(',',$arr_str);
+
+        foreach($arr as $k=>$a){
+        	$list[$k]['name']=get_wap_news_class_name($a);
+            $list[$k]['data']=get_index_news_category($a,4);
+        }
+
+        </php>
+        
+
+        <div class="page_class page_classsss"  style="text-align:center; width:1190px; padding-left:0px;">
+            <ul style="display:inline-block;">
+             <volist name="list" id="li" >
+                <li class="class_name1" onMouseOver="javascript:shownew({$key});"><a href="{:U('/new_category/classid','','')}/{$arr[$key]}">{$li['name']}</a></li>
+             </volist>
+             <div class="clear"></div>
+            </ul>
+        </div> 
+ <div class="clear" style="height:15px; width:100%;"></div>
+            <div class="new_news_box" style="height: 430px;">
+                <volist name="list" id="li" >
+
+
+                    <div alt="{$li['name']}" class=" new_news new_news_hide" >
+                        <div id="">
+                            <div class="">
+                                <volist name="li['data']" id="indexnews" offset="0" length="4" key="h">
+                                    <div id="news_item">
+                                        <div class="hynews_pic">
+                                            <if condition="$indexnews['new_pro'] neq ''"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews['new_pro'])}" border="0" /></a><else/><img src="__TMPL__ZERO/img/yz/new_pic.png" border="0" /></if>
+                                        </div>
+                                        <div class="hynews_list">
+                                            <ul>
+                                                <li style="margin-bottom: 14px;">
+                                                    <p><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" style="font-size:16px; color:#333333;">{:subtxt($indexnews['title'],50)}</a></p>
+                                                    <span style="color: #7e7e7e;font-size: 14px;margin-top: 5px;display: block">{:date('Y-m-d ',$indexnews['created'])}</span></li>
+                                                <li style="color: #999999;font-size: 14px; ">{:subtxt($indexnews['news_description'],100)}</li>
+                                                <li style="margin-top: 28px;margin-left: 253px;" id="four"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onfocus="blue()" style="color:#333333;font-size:16px;">Read More >></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <if condition="$h%2 neq 0">
+                                        <div style="width:30px; height:50px; float:left;list-style: none"></div>
+                                        <else/>
+                                        <div class="clear" style="height: 28px;"></div>
+                                    </if>
+                                </volist>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                </volist>
+            </div>
+
+            <script>
+                $(".page_classsss li:first-child").addClass("class_nameon");
+                $(".new_news_box .new_news:first-child").removeClass("new_news_hide").addClass("new_news_show");
+                function shownew(k){
+                    $(".new_news").eq(k).removeClass("new_news_hide").addClass("new_news_show").siblings('div').removeClass('new_news_show').addClass("new_news_hide");
+                    $(".page_classsss li").addClass("class_name1").removeClass("class_nameon");
+                    $(".page_classsss li").eq(k).removeClass("class_name1").addClass("class_nameon");
+                }
+
+
+
+            </script>
+
+        </if>
+    </div>
+</div>
+<!--news end-->
+

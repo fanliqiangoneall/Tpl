@@ -1,0 +1,75 @@
+<style>
+    .HJZF2_advantage17__wrap__liCenter{
+        background: url({:getindeximgurl($data148[31])}) no-repeat top center;
+    }
+</style>
+<if condition="$data148[0]">
+    <style>
+        .HJZF2_advantage17{
+            background: url({:getindeximgurl($data148[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF2_advantage17">
+    <div class="container">
+
+        <div class="HJZF2_advantage17__title">
+            <div class="HJZF2_advantage17__title_wai">
+            <span>{$data148[2]}</span>
+            </div>
+        </div>
+        <if condition="$data148[3]">
+            <p class="HJZF2_advantage17__subtitle"><span>{$data148[3]}</span></p>
+        </if>
+        <div class="HJZF2_advantage17__content">
+            <ul class="HJZF2_advantage17__wrap flex">
+                <li class="HJZF2_advantage17__wrap__li wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+                    <ul>
+                        <php>
+                            for($i=4;$i<15;$i=$i+3){
+                        </php>
+                        <if condition="$data148[$i]">
+                        <li class="flex">
+                            <div class="HJZF2_advantage17__wrap__liImg"><img src="{:getindeximgurl($data148[$i+2])}" alt=""/></div>
+                            <div class="HJZF2_advantage17__wrap__liText">
+                                <h3 class="HJZF2_advantage17__wrap__name">{$data148[$i]}</h3>
+                                <h3 class="HJZF2_advantage17__wrap__desc">{$data148[$i+1]}</h3>
+                            </div>
+                        </li>
+                        </if>
+                        <php>
+                            }
+                        </php>
+                    </ul>
+                </li>
+                <li class="HJZF2_advantage17__wrap__li HJZF2_advantage17__wrap__liCenter">
+                     <p>{$data148[28]}</p>
+                    <div><a href="{$data148[29]}">{:__('Read More')} <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+                    <if condition="$data148[30]">
+                        <img src="{:getindeximgurl($data148[30])}" alt=""/>
+                    </if>
+
+                </li>
+                <li class="HJZF2_advantage17__wrap__li wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+                    <ul>
+                        <php>
+                            for($i=16;$i<27;$i=$i+3){
+                        </php>
+                        <if condition="$data148[$i]">
+                        <li class="flex">
+                            <div class="HJZF2_advantage17__wrap__liImg"><img src="{:getindeximgurl($data148[$i+2])}" alt=""/></div>
+                            <div class="HJZF2_advantage17__wrap__liText">
+                                <h3 class="HJZF2_advantage17__wrap__name">{$data148[$i]}</h3>
+                                <h3 class="HJZF2_advantage17__wrap__desc">{$data148[$i+1]}</h3>
+                            </div>
+                        </li>
+                         </if>
+                        <php>
+                            }
+                        </php>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

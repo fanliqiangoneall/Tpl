@@ -1,0 +1,293 @@
+<!--{$pagename}-->
+<style>
+	.head-7__bar__box,.head-7__bar__box--mobile{
+		background: #{$data133[1]};
+	}
+	.head-7__bar__navigation{
+		background: #{$data133[2]};
+	}
+    .head__top-bar-bg,.mobile-navigation .dt-mobile-menu-icon,.mobile-menu-Sidebar-close span{
+        background: #{$color};
+    }
+	.hj_navbar_nav > li > a > h2,.head-7_lan a,.head-7_search a{
+		color:#{$data133[12]};
+	}
+    .head-7__bar__text span:first-child,.mobile-header-scrollbar-wrap > ul > li:hover >a >i,.mobile-header-scrollbar-wrap > ul > li:hover >a >h2,.hj_navbar_nav > li > ul > li:hover > a h3,.head-7_lan a:hover,.head-7_search a:hover{
+        color: #{$data133[0]};
+    }
+    .hj_navbar_nav > li:hover:before,.hj_navbar_nav > li.menu_on > a > h2:before{
+        width:100%;
+		background: #{$data133[0]};
+    }
+    .head_langauge #lang_ul li:hover a{
+        color: #{$data133[0]};
+    }
+	.new_hjzf_head-7 .nav-btn{
+		background: #{$data133[0]};
+	}
+</style>
+<php>
+    $lan = HtmlEncode($data133[2]);
+    $language = HtmlEncode($data133[3]);
+    if($data133[3]){
+        $shejiao1=getindeximgurl($data133[3]);
+    }
+    if($data133[5]){
+        $shejiao2=getindeximgurl($data133[5]);
+    }
+    if($data133[7]){
+        $shejiao3=getindeximgurl($data133[7]);
+    }
+</php>
+<script>
+    var icon_str = "<?php echo $lan;?>";
+    var lan_str = "<?php echo $language;?>";
+
+</script>
+<header>
+    <div class="hidden-xs hidden-sm head-7__bar__box">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="head-7__bar">
+                        <div class="head-7__bar__branding flex">
+                            <div class="head-7__bar__branding-logo"><a href="{:U('/')}">{$logo}</a></div>
+                            <div class="hidden-xs hidden-sm head-7__bar__text">
+                            	<if condition="$shejiao1">
+                                    <a class="head-7_weixin">
+                                    <img src="{$shejiao1}"/>
+                                    <img class="head-7_weixin_img" src="{:getindeximgurl($data133[4])}" />
+                                    </a>
+                                </if>
+                                <if condition="$shejiao2">
+                                    <a class="head-7_weixin">
+                                    <img src="{$shejiao2}"/>
+                                    <img class="head-7_weixin_img" src="{:getindeximgurl($data133[6])}" />
+                                    </a>
+                                </if>
+                                <if condition="$shejiao3">
+                                    <a class="head-7_weixin">
+                                    <img src="{$shejiao3}"/>
+                                    <img class="head-7_weixin_img" src="{:getindeximgurl($data133[8])}" />
+                                    </a>
+                                </if>
+                            </div>
+                            <if condition="$data133[9]">
+                            <div class="head-7__biaoyu"><img src="{:getindeximgurl($data133[9])}" border="0" /></div>
+                            </if>
+                            <if condition="$data133[11]">
+                            <div class="head-7__login">
+                                <a href="{$data133[10]}" onFocus="blur()">
+                                <div class="nav-btn">{$data133[11]}</div>
+                                </a>
+                            </div>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-xs hidden-sm head-7__bar__navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12" style="display: flex">
+                    <nav class="head_menu_navbar hj_navbar">
+                        <ul class="hj_navbar_nav menu">
+                            <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                                <li id="menu{$vo['id']}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()"><i></i>{$vo['title']}</a>
+                                <if condition="$vo[child] neq '' ">
+                                    <ul class="hj_navbar_nav_dropdown-menu">
+
+                                        <volist name="vo['child']" id="v" offset="0"  key="key">
+                                            <li>
+                                                <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                            </li>
+                                        </volist>
+                                    </ul>
+
+                                    <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'"/>
+                                    <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+                                        <volist empty="no" name="allcaseclass" id="allclass_head"  offset="0" length="8" >
+                                            <li>
+                                                <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">{$allclass_head['class_name']}</a>
+                                            </li>
+                                        </volist>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'"/>
+                                    <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+
+                                        <volist empty="no" name="allnewclass" id="allclass_head"  offset="0" length="8" >
+                                            <li>
+                                                <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}">{$allclass_head['class_name']}</a>
+                                            </li>
+                                        </volist>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <else/>
+                                    <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                        <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+                                            <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                                <li>
+                                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                                </li>
+                                            </volist>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </if>
+                                </if>
+                                </li>
+                            </volist>
+                        </ul>
+                    </nav>
+                    <if condition="$data133[13]">
+                    <div class="head-7_search"><a href="javascript:void(0);"><i class="fa fa-search"></i><span>{:__('search ')}</span></a>
+                        <div class="head-7_search_wrap">
+                            <if condition="C('language') eq 'cn'">
+                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                    <li class="search_first"><input type="text" value="{:__('Product Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                                    <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                                    <div class="clear"></div>
+                                </form>
+                                <else/>
+                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                    <li class="search_first"><input type="text" value="keyword" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)"></li>
+                                    <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                                    <div class="clear"></div>
+                                </form>
+                            </if>
+                        </div>
+                    </div>
+                    </if>
+                    <if condition="$data133[14]">
+                    <div class="head-7_lan"><a href="{$data133[15]}" onFocus="blur()" target="_blank">中文</a>&nbsp;/&nbsp;<a href="{$data133[16]}" onFocus="blur()" target="_blank">EN</a></div>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <if condition="$data133[13]">
+    <div class="mobile_search_content hidden-lg hidden-xl">
+        <div class="mobile_search">
+            <div class="mobile_search_box">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                   <if condition="C(Language) eq 'cn' or C(Language) eq 'zh'">
+                        <div class="mobile_search_input"><input type="text" value="{:__('Product Search')}" name="keywords" id="keyword_mcn" onfocus="OnFocusFun_m(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun_m(this,&#39;{:__('Product Search')}&#39;)"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></div>
+                        <else/>
+                        <div class="mobile_search_input"><input type="text" value="{:__('Product Search')}" name="keywords" id="keyword_m" onfocus="OnFocusFun_m(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun_m(this,&#39;{:__('Product Search')}&#39;)"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></div>
+                    </if> 
+                    <div class="mobile_search_close"><img src="__TMPL__HJZF2_Z/img/mobile_close.svg" alt=""/></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </if>
+    <div class="hidden-md hidden-lg hidden-xl head-7__bar__box--mobile">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="head-7__bar">
+                        <div class="head-7__bar__branding flex">
+                            <div class="head-7__bar__branding-logo"><a href="{:U('/')}">{$logo}</a></div>
+                            <div class="flex">
+                            	<if condition="$data133[13]">
+                                <div class="mobile_searchbutton">
+                                    <a href="javascript:void(0);"><img src="__TMPL__HJZF2_Z/img/mobile_search.svg" alt=""/></a>
+                                </div>
+                                </if>
+                                <div class="mobile-navigation"><a href="#" class="dt-mobile-menu-icon" aria-label="Mobile menu icon"><span class="lines"></span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="mobile-sticky-header-overlay" id="mobile-sticky-header-overlay">
+    <div class="mobile-menu-Sidebar" id="mobile-menu-Sidebar">
+        <div class="mobile-menutop">
+            <div class="mobile-menutop-box">
+                <if condition="$data133[14]">
+                    <div class="mobile_languagebutton">
+                        <div class="head-7_lan"><a href="{$data133[15]}" onFocus="blur()" target="_blank">中文</a>&nbsp;/&nbsp;<a href="{$data133[16]}" onFocus="blur()" target="_blank">EN</a></div>
+                    </div>
+                </if>
+                
+                <div>
+                    <div class="mobile-menu-Sidebar-close">
+                        <span></span>
+                    </div>
+                    <if condition="$data133[13]">
+                    <div class="mobile_searchbutton">
+                        <a href="javascript:void(0);"><img src="__TMPL__HJZF2_Z/img/mobile_search.svg"/></a>
+                    </div>
+                    </if>
+                </div>
+                
+            </div>
+            <div class="mobile_languagelist">
+                <ul id="lang_ul_mobile" class="language_ul"></ul>
+            </div>
+        </div>
+        <div class="mobile-header-scrollbar-wrap" id="mobile-header-scrollbar-wrap">
+            <ul class="hj_navbar_nav--mobile">
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()"><i></i>{$vo['title']}</a>
+                    <if condition="$vo[child] neq '' ">
+                        <span class="next-level-button"><img src="__TMPL__HJZF2_Z/img/plus.svg"/></span>
+                        <ul class="hj_navbar_nav_dropdown-menu">
+
+                            <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                <li>
+                                    <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                </li>
+                            </volist>
+                        </ul>
+                        <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'"/>
+                        <span class="next-level-button"><img src="__TMPL__HJZF2_Z/img/plus.svg"/></span>
+                        <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+
+                            <volist empty="no" name="allcaseclass" id="allclass_head"  offset="0" length="8" >
+                                <li>
+                                    <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">
+                                        <img src="{:getimgurl($allclass_head['fid'])}" alt="{$allclass_head['class_name']}" width="40px" height="40px" <if condition="$allclass_head['fid']">style="margin-right: 10px;display:block" </if>/>{$allclass_head['class_name']}</a>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                        <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'"/>
+                        <span class="next-level-button"><img src="__TMPL__HJZF2_Z/img/plus.svg" /></span>
+                        <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+
+                            <volist empty="no" name="allnewclass" id="allclass_head"  offset="0" length="8" >
+                                <li>
+                                    <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}">
+                                        <img src="{:getimgurl($allclass_head['fid'])}" alt="{$allclass_head['class_name']}" width="40px" height="40px" <if condition="$allclass_head['fid']">style="margin-right: 10px;display:block" </if>/>{$allclass_head['class_name']}</a>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                        <else/>
+
+                        <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                            <span class="next-level-button"><img src="__TMPL__HJZF2_Z/img/plus.svg"/></span>
+                            <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+                                <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                    <li>
+                                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">
+                                            <img src="{:getimgurl($allclass_head['fid'])}" alt="{$allclass_head['class_name']}" width="40px" height="40px" <if condition="$allclass_head['fid']">style="margin-right: 10px;display:block" </if>/>
+                                            {$allclass_head['class_name']}</a>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </if>
+                    </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</div>

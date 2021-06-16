@@ -1,0 +1,87 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_procate_9_pagination .hjzf_procate_9_text_text.swiper-pagination-bullet-active {
+        background-color: #{$data395[2]};
+        color: #fff;
+    }
+
+    .hjzf_procate_9_title .index_text {
+        color: #777;
+        ;
+    }
+</style>
+
+<section class="hjzf_procate_9 index_pd">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 text-center hjzf_procate_9_title">
+                <div class="index_title pb20">
+                    {$data395[0]}
+                </div>
+                <div class="index_text pb40">
+                    {$data395[1]}
+                </div>
+            </div>
+            <!-- content -->
+            <php>
+                $arr_str=$data395[3];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $k=>$a){
+                $list[$k]=get_index_products_categoryname($a);
+                }
+            </php>
+            <div class="hjzf_procate_9_text hidden">
+                <volist empty="" name="list" id="li" key="keya">
+                    <span>{$li['class_name']}</span>
+                </volist>
+            </div>
+            <div class="col-xs-12">
+                <div class="swiper-container hjzf_procate_9_container">
+                    <div class="hjzf_procate_9_pagination"></div>
+
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="list" id="li" key="keya">
+                            <php>
+                                $lista = get_index_products_category($li[pcid],7);
+                                $listb = get_index_products_categoryname($li[pcid]);
+                            </php>
+                            <div class="swiper-slide hjzf_procate_9_wrapper">
+                                <div class="left">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($listb['pcid'])}">
+                                        <img src="{:getmainimgurl($listb['fid'])}" alt="{$listb['class_name']}"
+                                            class="img-fluid" data-id="{$listb['pcid']}">
+                                        <div class="hjzf_procate_9_desc">
+                                            <div class="index_sub_title pb20">{$listb['class_name']}</div>
+                                            <div class="hjzf_procate_9_readme ellipsis_four">{:HtmlEncode($listb['readme'])}</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="right">
+
+                                    <volist empty="" name="lista" id="lib" key="keya" offset="0" length="6">
+                                        <li>
+                                            <a href="{:U('/Product','','')}/{:getproname($lib['pid'])}">
+                                                <img src="{:getmainimgurl($lib['main_img'])}" alt="{$lib['pro_name']}"
+                                                    class="img-fluid">
+                                                <span>
+                                                    {$lib['pro_name']}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </div>
+
+                            </div>
+                        </volist>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</section>

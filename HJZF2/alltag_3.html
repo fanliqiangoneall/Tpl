@@ -1,0 +1,60 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+	<style>
+		.taglabel:hover{
+			background: #{$inner_data[1]};color: #fff;
+		}
+	</style>
+	<if condition="$inner_data[2]">
+		<style>
+			.InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+		</style>
+	</if>
+	<div id="InsidePage--3__wrap">
+		<div class="InsidePage--3__bannerWrap">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+			</if>
+		</div>
+		<div class="InsidePage--3__breadcrumbsWrap flex">
+			<div class="container">
+				<div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><span class="current">{:__('All tags')}</span></div>
+			</div>
+		</div>
+		<div class="InsidePage--3__contentWrap ">
+			<div class="container">
+				<section  class="InsidePage--3__contentBox--100">
+					<div class="InsidePage--3__contentBoxWrap">
+						<div class="InsidePage--3__title">{:__('All tags')}</div>
+						<div class="InsidePage--3__contentBoxMain box-sizing" id="payment">
+							<volist name="labels" id="label">
+								<a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+							</volist>
+						</div>
+						<div class="page_nei_space"></div>
+					</div>
+				</section>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

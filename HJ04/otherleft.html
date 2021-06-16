@@ -1,0 +1,17 @@
+<!--left style-->
+<style>
+    .otherLeftContent li{
+        background: #{$color};
+        margin-right: 10px;
+    }
+</style>
+<div class="container otherLeftContainer">
+    <ul class="otherLeftContent">
+        <volist empty="" name="navrs" id="nav">
+            <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="otherParent"<else/>class="otherParent2"</if>>
+            <a href="{$nav['url']}" >{$nav['title']}</a>
+            </li>
+        </volist>
+    </ul>
+    <div class="clear"></div>
+</div>

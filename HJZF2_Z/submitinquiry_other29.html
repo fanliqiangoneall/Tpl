@@ -1,0 +1,269 @@
+<style>
+	.other-29_form{margin: auto;}
+	.form_left,.form_right{width: 47.5%;}	
+	.form_wrap{justify-content: space-between;padding-bottom: 190px;}
+	.form_item{width: 100%;margin-bottom: 20px;border-bottom: 1px solid #867a77;position: relative;}
+	.form_item img{position: absolute;right: 0;top:-5px;}
+	.form_item span{float: left;color:#fff;font-size: 16px;line-height: 30px;}
+	.form_item input,.form_item textarea{width: 80%;border:none;padding-left: 10px;line-height: 30px;background: transparent;color: #fff;float: left;}
+	.form_item textarea{min-height: 64px;}	
+	.form_right .form_item{height: 100%;}
+	.form_right .form_item span{display: block;width: 100%;}
+	.form_right .form_item textarea{width: 100%;height: calc(100% - 30px);background-color: rgba(255,255,255,0.2);border-color: rgba(255,255,255,0.2);resize:none}
+	.form_wrap .yz_alert{ -webkit-transform: translate(0,-12px);
+       -ms-transform: translate(0,-12px);
+		   transform: translate(0,-12px);}
+		   #code_char_alert{
+			-webkit-transform: translate(0,6px);
+       -ms-transform: translate(0,6px);
+		   transform: translate(0,6px);
+		   }
+
+	.other_29_submitbox{
+		position: absolute;
+    bottom: 0;
+    left: 50%;
+    color: #fff;
+    letter-spacing: 6px;
+    transform: translateX(-50%);
+    z-index: 1;
+	}
+	.other_29_submitbox input[type="submit"]{
+		display: block;
+		outline: none;
+		border: none;
+		color: #fff;
+		text-transform: uppercase;
+		background: #ffffff;
+        background: -moz-linear-gradient(45deg,#{$color[0]} 0%, #{$color[1]} 100%);
+        background: -webkit-linear-gradient(45deg, #{$color[0]} 0%,#{$color[1]} 100%);
+        background: linear-gradient(45deg, #{$color[0]} 0%,#{$color[1]} 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$color[0]}', endColorstr='{$color[1]}',GradientType=1 );
+
+	}
+	
+
+
+	
+	@media (max-width: 991px) {
+		.bottom_form_alert{position: relative;top: 0;transform: translate3d(0,0,0);-moz-transform: translate3d(0,0,0);-webkit-transform: translate3d(0,0,0);}
+		.bottom_form_alert span.active{background: inherit;box-shadow: none;text-align: left}
+	}
+	@media (max-width: 576px) {
+		.form_wrap{flex-direction: column;padding-bottom: 100px;}
+		.form_left, .form_right{
+			width:100%;margin-bottom: 20px;
+		}
+		.other-29_title{
+			margin-bottom: 0.5rem;
+		}
+		
+	}
+</style>
+
+<php>
+	$lan_submit = C('Language');
+</php>
+<script>
+	jQuery(function(){
+
+		jQuery("#message").focus(function(){
+			jQuery("#message_alert").html("").removeClass("active");
+		});
+		jQuery("#linkname").focus(function(){
+			jQuery("#linkname_alert").html("").removeClass("active");
+		});
+		jQuery("#phone").focus(function(){
+			jQuery("#phone_alert").html("").removeClass("active");
+		});
+		jQuery("#email").focus(function(){
+			jQuery("#email_alert").html("").removeClass("active");
+		});
+		jQuery("#code_char").focus(function(){
+			jQuery("#code_char_alert").html("").removeClass("active");
+		});
+
+
+		jQuery("#getcode_char").click(function(){
+			jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+	})
+
+
+
+
+	function yz_submit(){
+		var language = '<?php echo $lan_submit;?>';
+		var count=0;
+		var message=Trims(jQuery("#message").val());
+		var linkname=Trims(jQuery("#linkname").val());
+		var phone=Trims(jQuery("#phone").val());
+		var email=Trims(jQuery("#email").val());
+
+
+		if(linkname.length<=0){
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#linkname_alert").html("名称不能为空！").addClass("active");
+			}else{
+				jQuery("#linkname_alert").html("The name cannot be empty!").addClass("active");
+			}
+			count++;
+		}
+		else{
+			jQuery("#linkname_alert").html("").removeClass("active");
+		}
+
+
+
+		if(language == 'cn' || language == 'zh'){
+			if(phone.length<=0){
+				jQuery("#phone_alert").html("电话不能为空！").addClass("active");
+				count++;
+			}else{
+				if(is_phone(jQuery('#phone').val())){
+					jQuery("#phone_alert").html("电话格式有误！").addClass("active");
+				}
+			}
+		}else{
+			if(phone.length>0 && is_phone(jQuery('#phone').val()))
+			{
+			jQuery("#phone_alert").html("Telephone information is wrong!").addClass("active");
+				count++;
+			}else{
+				jQuery("#phone_alert").html("").removeClass("active");
+			}
+		}
+
+
+		if(language == 'cn' || language == 'zh'){
+			if(email.length>0 &&!is_email(email)){
+				jQuery("#email_alert").html("*邮箱格式有误！").addClass("active");
+				count++;
+			}
+			else {
+				jQuery("#email_alert").html("").removeClass("active");
+			}
+		}else{
+			if(email.length<=0){
+				if(language == 'cn' || language == 'zh'){
+					jQuery("#email_alert").html("电子邮件不能为空！").addClass("active");
+				}else{
+					jQuery("#email_alert").html("The email can not be empty!").addClass("active");
+				}
+
+				count++;
+			}
+			else{
+				if(!is_email(email)){
+					jQuery("#email_alert").html("Email format error!").addClass("active");
+					count++;
+				}
+				else {
+					jQuery("#email_alert").html("").removeClass("active");
+				}
+			}
+		}
+
+
+
+
+
+		if(message.length<=0){
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#message_alert").html("咨询内容不能为空！").addClass("active");
+			}else{
+				jQuery("#message_alert").html("Consulting content cannot be empty!").addClass("active");
+			}
+			count++;
+		}
+		else{
+			jQuery("#message_alert").html("");
+		}
+
+		var code_char = jQuery("#code_char").val();
+		jQuery.ajax({
+			type: "POST",
+			url: "/verification",
+			async:false,
+			data: {code:code_char},
+			success: function(data){
+
+				if(data==1){
+					jQuery("#code_char_alert").html("");
+				}else{
+					count++;
+					if(language == 'cn' || language == 'zh'){
+						jQuery("#code_char_alert").html("验证码错误").addClass("active");
+					}else{
+						jQuery("#code_char_alert").html("Verification code error").addClass("active");
+					}
+
+				}
+			}
+		});
+
+		$(".bottom_form_alert").addClass("active");
+		if(count>0){
+			return false;
+		}
+		else{
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#inbut").html('<h5 style="color:#F00;">请稍等</h5>');
+			}else{
+				jQuery("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+			}
+			return true;
+		}
+
+	}
+
+
+</script>
+
+<div>
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();" class="bottom_form">
+		<div class="flex form_wrap">
+			<div class="form_left">
+				<div class="form_item">
+					<span>{:__('Name: ')}</span>
+					<input type="text" name="linkname" id="linkname">					
+					<div class="clear"></div>					
+				</div>
+				<span class="yz_alert" id="linkname_alert"></span>
+				<div class="form_item">
+					<span>{:__('Mobile: ')}</span>
+					<input type="text" name="phone" id="phone">
+					<span class="yz_alert" id="phone_alert"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="form_item">
+					<span>{:__('E-mail: ')}</span>
+					<input type="text" name="email" id="email">					
+					<div class="clear"></div>
+				</div>
+				<span class="yz_alert" id="email_alert"></span>			
+				<div class="form_item" style="margin-bottom: 0;">
+					<span>{:__('Verification code: ')}</span>
+					<input type="text" class="input" id="form_itemcode" name="code" maxlength="3" style="width: 50%;"/>&nbsp;
+						<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" id="getcode_char" height="32" title="Generate a new captcha" align="absmiddle">
+						
+						<div class="clear"></div>
+				</div>
+				<span class="yz_alert" id="code_char_alert"></span>	
+			</div>
+			<div class="form_right ">
+				<div class="form_item">
+					<span>{:__('Message: ')}</span>
+					<textarea name="message" id="message"></textarea>					
+					<div class="clear"></div>
+				</div>
+				<span class="yz_alert" id="message_alert"></span>
+			</div>
+		</div>	
+		<div class="other_29_submitbox">
+			<input type="hidden" name="prodid" value="{$product['pid']}"/>
+			<div id="form_submit"><input type="submit" value="{:__('Submit')}" name="submit" class="index_btn" /></div>
+		</div>
+		<div class="clear"></div>
+	</form>
+</div>

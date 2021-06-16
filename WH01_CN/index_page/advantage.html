@@ -1,0 +1,99 @@
+<!--{$pagename}-->
+<style>
+    /*choice start*/
+    #rs1 .respic{
+        background: url({:getindeximgurl($data6[1])}) no-repeat
+    }
+    #rs1:hover  .respic{
+        background: url({:getindeximgurl($data6[2])}) no-repeat
+    }
+    #rs2 .respic{
+        background: url({:getindeximgurl($data6[5])}) no-repeat
+    }
+    #rs2:hover  .respic{
+        background: url({:getindeximgurl($data6[6])}) no-repeat
+    }
+    #rs3 .respic{
+        background: url({:getindeximgurl($data6[9])}) no-repeat
+    }
+    #rs3:hover  .respic{
+        background: url({:getindeximgurl($data6[10])}) no-repeat
+    }
+    #rs4 .respic{
+        background: url({:getindeximgurl($data6[13])}) no-repeat
+    }
+    #rs4:hover  .respic{
+        background: url({:getindeximgurl($data6[14])}) no-repeat
+    }
+    #rs5 .respic{
+        background: url({:getindeximgurl($data6[17])}) no-repeat
+    }
+    #rs5:hover  .respic{
+        background: url({:getindeximgurl($data6[18])}) no-repeat
+    }
+    #rs6 .respic{
+        background: url({:getindeximgurl($data6[21])}) no-repeat
+    }
+    #rs6:hover  .respic{
+        background: url({:getindeximgurl($data6[22])}) no-repeat
+    }
+    /*choice end*/
+
+</style>
+<!--choice start-->
+<div class="clear" style="height: 66px;"></div>
+<div id="choise">
+    <div class="choise_cont">
+        <div class="cho_title">{$data6[0]}</div>
+
+        <div id="cho_inquiry">
+            <div class="cho_inquiry"><a href="{:U('/contactus#zixun')}" onclick="turn_sta(1,5)">立即咨询</a></div>
+        </div>
+        <div style="width: 100%;height: 28px;"></div>
+        <ul class="cho_result">
+
+
+            <php>
+
+                for($i=1;$i<24;$i=$i+4){
+            </php>
+            <if condition="$data6[$i] neq ''">
+                <li id="rs{$i}">
+                    <style>
+                        #rs{$i} .respic{
+                                    background: url({:getindeximgurl($data6[$i])}) no-repeat
+                        }
+                        #rs{$i}:hover  .respic{
+                                   background: url({:getindeximgurl($data6[$i+1])}) no-repeat
+                        }
+                    </style>
+                        <div class="respic"></div>
+                        <div class="res_item">
+                            <p class="item_name">{$data6[$i+2]}：</p>
+                            <div style="background: url(__TMPL__WH01_CN/img/cho_titl_line.png);width: 212px;height: 2px; margin: 10px 0"></div>
+                            <p class="item_content">{$data6[$i+3]}</p>
+                        </div>
+
+                </li>
+            </if>
+
+            <php>
+            }
+            </php>
+        </ul>
+    </div>
+</div>
+<div class="clear"style="height: 10px;"></div>
+<!--choice end-->
+<script>
+        if($(".cho_result li").length==4){
+            $(".cho_result li").css({"width":"500px"});
+            $(".cho_result li .res_item").css({"width":"399px"});
+        }else if($(".cho_result li").length==6){
+            $(".cho_result li").css({"margin-right":"86px"});
+            $(".cho_result li:nth-child(3n)").css({"margin-right":"0"})
+        }
+
+</script>
+
+

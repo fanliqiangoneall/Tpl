@@ -1,0 +1,33 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_37 {
+        background: #{$data289[0]};
+        border-top: 1px solid #ccc;
+    }
+    .hjzf2_other_37 i,
+    .hjzf2_other_37 a:hover {
+        color: #{$data289[1]};
+    }
+</style>
+<section class="hjzf2_other_37 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="tac pb40">
+                <span class="index_title">{$data289[2]}
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </div>
+            <php>
+                $bottom_nav_str2=explode("\\r\\n",$data289[3]); foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2) { $bottom_navs2=explode(":",$bottom_nav_arr2);
+                $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+            </php>
+            <div class="other_37_wrapper index_text">
+                <if condition="$bottom_nav2">
+                    <volist name="bottom_nav2" id="nav">
+                        <a href="{$nav['href']}"><i class="fa fa-angle-right"></i> {$nav['name']} </a>
+                    </volist>
+                </if>
+
+            </div>
+        </div>
+</section>

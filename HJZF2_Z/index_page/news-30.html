@@ -1,0 +1,106 @@
+<!--{$pagename}-->
+<php>
+    if($data533[0]){
+    $color = $data533[0];
+    }
+</php>
+<style>
+    .HJZF2_Z__news_30_title_more .more {
+        border: 3px solid #{$color};
+        color: #{$color};
+    }
+    .HJZF2_Z__news_30_title_more .more:before,
+    .HJZF2_Z__news_30_title_more .more:after {
+        background-color: #{$color};
+    }
+    .HJZF2_Z__news_30_title_more ul li:hover a{
+        color: #{$color};
+        border-color:#{$color};
+    }
+    .HJZF2_Z__news_30_right_con a:hover,.HJZF2_Z__news_30_mid_text a:hover,.HJZF2_Z__news_30_left .mb-30:hover{
+        color: #{$color};
+    }
+</style>
+<php>
+    $classids=explode(',',$data533[4]);
+</php>
+<div class="HJZF2_Z__news_30 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 mb-40">
+                <div class="HJZF2_Z__news_30_title">
+                    <div class="guanwang_title wow fadeInDown">
+                        <i><img src="{:getindeximgurl($data533[1])}"></i>
+                        <span></span>
+                        <h2>{$data533[2]}</h2>
+                        <em></em>
+                        <h4>{$data533[3]}</h4>
+                    </div>
+                    <div class="HJZF2_Z__news_30_title_more">
+                        <ul>
+                            <volist id="classid" name="classids">
+                                <php>
+                                    $list = get_news_info($classid);
+                                </php>
+                                    <li><a href="{:U('/new_category',array('classid'=>$list['classid']))}">{$list['class_name']}</a></li>
+                            </volist>
+                        </ul>
+                        <a href="{:U('/news')}" class="more">More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- bottom -->
+            <div class="HJZF2_Z__news_30_wrapper">
+                <div class="col-xs-12 col-md-6 col-lg-3 ">
+                    <div class="HJZF2_Z__news_30_left">
+                    <volist name="indexnews" id="new" offset="0" length="1">
+                        <a href="{:U('/new_detail',array('nid'=>$new["nid"]))}">
+                            <div class="mb-30">{$new['title']}</div>
+                            <span class="mb-10 d-flex">{:date('Y.m.d',$new['created'])}</span>
+                            <div class="HJZF2_Z__news_30_left_img">
+                                <img src="{:getimgurl($new['new_pro'])}" alt="{$new['title']}" class="img-fluid">
+                            </div>
+                        </a>
+                    </volist>
+                </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <ul class="d-flex flex-column justify-content-between HJZF2_Z__news_30_mid">
+                        <volist name="indexnews" id="new_mid" offset="1" length="2">
+                            <li>
+                                <div class="HJZF2_Z__news_30_mid_date mb-15">
+                                    <span class="news_30_date">
+                                        <b>{:date('d',$new_mid['created'])}</b>
+                                        <em>{:date('Y-m',$new_mid['created'])}</em>
+                                    </span>
+                                    <span class="news_30_jt"></span>
+                                </div>   
+                                <div class="HJZF2_Z__news_30_mid_text">
+                                    <h4 class="mb-10"><a href="{:U('/new_detail',array('nid'=>$new_mid["nid"]))}">{:subtxt($new_mid['title'],30)}</a></h4>
+                                    <p>{:subtxt($new_mid['news_description'],200)}</p>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-lg-6 mt-20">
+                    <ul class="d-flex flex-column HJZF2_Z__news_30_right">
+                        <volist name="indexnews" id="new_r" offset="3" length="4">
+                            <li class="HJZF2_Z__news_30_right_con">
+                                <div class="d-flex align-items-center">
+                                    <span class="news_30_date">
+                                        <b>{:date('d',$new_r['created'])}</b>
+                                        <em>{:date('Y-m',$new_r['created'])}</em>
+                                    </span>
+                                    <h3><a href="{:U('/new_detail',array('nid'=>$new_r["nid"]))}">{:subtxt($new_r['title'],30)}</a></h3>
+                                </div>
+                            <span class="news_30_jt"></span>
+                        </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!--{$pagename}-->
+<php>
+
+</php>
+
+<style>
+	<if condition="$data691[0]">.hjzf_other_112 {
+		background: url({:getindeximgurl($data691[0])
+	}
+
+	) no-repeat center / cover;
+	}
+
+	</if>.hjzf_other_112 img {
+		max-width: 100%;
+	}
+</style>
+
+<section class="hjzf_other_112 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<if condition="$data691[2]">
+					<a href="{$data691[2]}">
+						<else />
+						<a>
+				</if>
+				<img src="{:getindeximgurl($data691[1])}" class="img-fluid">
+				</a>
+
+			</div>
+		</div>
+	</div>
+</section>

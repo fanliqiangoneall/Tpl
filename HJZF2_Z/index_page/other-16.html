@@ -1,0 +1,39 @@
+<!--{$pagename}-->
+<if condition="$data202[0]">
+    <style>
+        .hjzf2_z_other-16{
+            background: url({:getindeximgurl($data202[0])}) no-repeat center/cover fixed;
+        }
+    </style>
+</if>
+<style>
+    .hjzf2_z_other-16_a{
+        background: #{$data202[9]};
+    }
+	.hjzf2_z_other-16_a:hover{ 
+		color:#{$data202[9]};
+	}
+</style>
+<section class="hjzf2_z_other-16 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf2_z_other-16_content">
+            	<div class="hjzf2_z_other-16_text wow fadeInLeft index_title" data-wow-duration="0.5s" data-wow-delay="0.5s">{:HtmlEncode($data202[1])}</div>
+                <div class="hjzf2_z_other-16_list wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.8s">
+                	<php>
+                        for($i=2;$i<8;$i=$i+2){
+                    </php>
+                    <if condition="$data202[$i]">
+                    <div class="col-xs-4 col-lg-4 hjzf2_z_other-16_item index_sub_title"><img src="{:getindeximgurl($data202[$i])}" alt="{$data202[$i+1]}">{$data202[$i+1]}</div>
+                    </if>
+                    <php>
+                        }
+                    </php>
+                    <div class="clear"></div>
+                </div>
+                <div class="hjzf2_z_other-16_ms wow fadeInLeft index_sub_title" data-wow-duration="1.1s" data-wow-delay="1.1s">{:HtmlEncode($data202[8])}</div>
+                <div class="wow fadeInLeft" data-wow-duration="1.4s" data-wow-delay="1.4s"><a href="{$data202[11]}" class="hjzf2_z_other-16_a index_text"><span>{$data202[10]}</span></a></div>
+            </div>
+        </div>
+    </div>
+</section>

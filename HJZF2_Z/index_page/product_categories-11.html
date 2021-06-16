@@ -1,0 +1,93 @@
+<!--{$pagename}-->
+<php>
+    if($data415[3]){
+    $color = $data415[3];
+    }
+</php>
+<style>
+    .hjzf_procate_11_con_bd {
+        border-color: #{$color};
+    }
+    .hjzf_procate_11_con_bd a{
+        color: #{$data415[2]};
+    }
+    .hjzf_procate_11_con_bd a:hover{
+        color: #{$color};
+    }
+    .hjzf_procate_11_wrapper li:nth-of-type(2n-1),.hjzf_procate_11_wrapper li:nth-of-type(2n-1), .hjzf_procate_11_wrapper li:nth-of-type(2n-1) .hjzf_procate_11_con_bd .index_title a {
+        background-color: #{$data415[0]};
+    }
+
+    .hjzf_procate_11_wrapper li:nth-of-type(2n) ,.hjzf_procate_11_wrapper li:nth-of-type(2n), .hjzf_procate_11_wrapper li:nth-of-type(2n) .hjzf_procate_11_con_bd .index_title a{
+        background-color: #{$data415[1]};
+    }
+    .hjzf_procate_11_con_bd a.more{
+        background-color: #{$color};
+    }
+    .hjzf_procate_11_con_bd a.more:before{
+        border: 10px solid #{$color};
+    }
+</style>
+
+<section class="hjzf_procate_11">
+    <php>
+        $arr_str=$data415[5];
+        $arr=explode(',',$arr_str);
+        foreach($arr as $k=>$a){
+        $list[$k]=get_index_products_categoryname($a);
+        }
+        if($data415[6]){
+            $len = $data415[6];
+        }else{
+            $len = 4;
+        }
+    </php>
+    <ul class="hjzf_procate_11_wrapper">
+        <volist empty="" name="list" id="li" key="keya">
+            <php>
+                $lista = get_index_products_category($li[pcid],7);
+                $listb = get_index_products_categoryname($li[pcid]);
+                $listc = get_children($li[pcid]);
+            </php>
+            <if condition="$li">
+            <li class="wow">
+                <div class="container">
+                    <div class="row hjzf_procate_11_con">
+                        <div class="col-md-6 col-xs-12">
+                            <img src="{:getmainimgurl($listb['fid'])}" alt="{$listb['class_name']}" class="img-fluid"
+                                data-id="{$listb['pcid']}">
+                        </div>
+                        <div class="col-md-6 col-xs-12 fx-center">
+                            <div class="hjzf_procate_11_con_bd">
+
+                                <div class="index_title">
+                                    <a
+                                        href="{:U('/product_category','','')}/{:getprocatename($listb['pcid'])}">{$listb['class_name']}</a>
+                                </div>
+                                <div class="hjzf_procate_11_con_list index_text">
+                                    <volist empty="" name="listc" id="lia" key="keyb" offset="0" length="$len">
+                                        <p>
+                                            <a
+                                                href="{:U('/product_category','','')}/{:getprocatename($lia['pcid'])}">{$lia[class_name]}</a>
+                                        </p>
+                                    </volist>
+                                    <if condition="$len gt 3">
+                                        <span>...</span>
+                                        </if>
+                                </div>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($listb['pcid'])}"
+                                    class="more">{$data415[4]}</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            </if>
+        </volist>
+
+    </ul>
+
+
+    </div>
+</section>

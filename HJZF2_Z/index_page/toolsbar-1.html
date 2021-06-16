@@ -1,0 +1,43 @@
+<!--{$pagename}-->
+<style>
+    .side{
+        display: none !important;
+    }
+    .side_toolbar ul li,.sidetop,.side_toolbar ul li .sidebox,.side_toolbar ul li .sidebox2,.side_toolbar ul li .sidebox3{
+        background: #{$color};text-align: center;line-height: 48px;
+    }
+    .side_toolbar .sidebox_content_toolbar{text-align: center;}
+    .side_toolbar .sidebox_content_toolbar span{color: #666;font-size: 14px;line-height: 20px;}
+    </style>
+    
+<div class="side_toolbar">
+    <ul>
+
+        <volist name="toolsbar_data['pc']" id="data">
+            
+            <li >
+                <div class="sidebox">
+                    <if condition="$data['info']['fid']">
+                        <img src="{:getmainimgurl($data['info']['fid'])}" border="0" alt="{$data['info']['name']}" style="position: relative;">
+                    </if>
+                </div>           
+                <if condition="$data['info']['type'] eq 8">
+                <div class="sidebox_content sidebox_content_toolbar">
+                        <img src="{:getmainimgurl($data['info']['qr_code'])}" alt=""><br/><span>{$data['info']['name']}</span>                        
+                </div>
+                <else/>
+                <div class="sidebox_content">
+                    <span>
+                            <b>
+                                <a href="{$data['href']}" <if condition="$data['info']['type']"> onclick="turn_sta(1,{$data['info']['type']})"</if>>
+                                    <if condition="$data['istongbu'] eq 0">{$data['info']['content']}<else/>{$data['content']}</if>
+                                    </a>
+                            </b>
+                        </span>    
+                </div>
+            </if>
+                </li>
+            </volist>
+            <li><div class="sidebox"><a href="javascript:goTop();"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0" alt="Top" style="position: relative;left:0;"></a></div></li>
+    </ul>
+</div>

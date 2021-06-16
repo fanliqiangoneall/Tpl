@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_Z__bottom_2{
+        background: #{$data31[1]};
+		color: #{$data31[2]};
+    }
+	.HJZF2_Z__bottom_2 a,.HJZF2_Z__bottom_2__link a{
+		color: #{$data31[2]};
+	}
+</style>
+<footer class="HJZF2_Z__bottom_2">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__bottom_2__copyrightContent">
+                <div class="col-xs-12 col-md-12 col-xl-3 HJZF2_Z__bottom_2__copyright--left">
+                    <img src="{:getindeximgurl($data31[0])}" alt="foot logo">
+                </div>
+                <div class="col-xs-12 col-md-12 col-xl-9 HJZF2_Z__bottom_2__copyright--right">
+                    <php>
+                        $nowtime=date("Y",time());
+                        if(!$data31[3]){
+                        $currtime=2020;
+                        }else{
+                        $currtime=$data31[3];
+                        }
+                    </php>
+                    <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>&nbsp;&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                        中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        <elseif condition="C('language') eq 'pt'"/>
+                        Projetado por <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                        <else/>
+                        Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                    </if>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <if condition="$friend_link neq ''">
+            <div class="HJZF2_Z__bottom_2__friendlink">
+                <div class="HJZF2_Z__bottom_2__link"><span style="float:left; margin-right:5px;">{:__('FriendLink: ')}</span>
+                      <volist name="friend_link" id="friend_link">
+                      <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                      <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                      </if>
+                      </volist>     
+                      <div style="clear:both"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            </if>
+        </div>
+    </div>
+</footer>

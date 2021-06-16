@@ -1,0 +1,110 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2__news-HJ04_leftImg {
+        background: url({:getindeximgurl($data100[0])
+    }
+
+    ) no-repeat center/cover;
+    }
+    .HJZF2__news-HJ04 {
+        background: url({:getindeximgurl($data100[1])
+    }
+
+    ) no-repeat right/contain;
+    overflow: hidden;
+    }
+    .HJZF2__news-HJ04_leftImg a{
+        color: #fff;
+    }
+    .HJZF2__news-HJ04__newsItem:hover {
+        background: #{$data100[2]};
+    }
+    .HJZF2__news-HJ04_leftImg a.index_btn{
+        position: relative;
+        z-index: 99;
+        color: #fff;
+        padding: 10px 25px;
+        transition: all .5s;
+    }
+    .HJZF2__news-HJ04_leftImg a i{
+        margin-left: 15px;
+    }
+    .HJZF2__news-HJ04_leftImg a.index_btn:after{
+        position: absolute;
+        display: block;
+        background-color: #{$color};
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        content:'';
+        z-index: -2;
+    }
+    .HJZF2__news-HJ04_leftImg a.index_btn:before{
+        background-color: #fff;
+    }
+    .HJZF2__news-HJ04_leftImg a.index_btn:hover{
+        color: #{$color};
+    }
+    <if condition="$webid eq '1678'">
+    .HJZF2__news-HJ04_leftImg a.index_btn span{
+        position: absolute;
+        left: -5px;
+        top: -5px;
+        border: 1px solid #{$color};
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        transition: all .5s;
+    }
+    .HJZF2__news-HJ04_leftImg a.index_btn:hover span{
+        border: 1px solid #fff;
+    }
+    </if>
+</style>
+<section class="HJZF2__news-HJ04">
+    <if condition="$data100[4]"><a href="{$data100[4]}">
+            <else /><a href="javascript:;"></if>
+    <div class="HJZF2__news-HJ04_leftImg text-center">
+    <if condition="$data100[5]">
+            <div class="index_sub_title pb20">
+                {$data100[5]}
+            </div>
+        </if>
+        <if condition="$data100[6]">
+            <div class="index_title pb40">
+                {$data100[6]}
+            </div>
+        </if>
+        <if condition="$data100[7]">
+            <a href="{$data100[8]}" class="my-mask-l index_btn">{$data100[7]} <i class="fa fa-chevron-circle-right"></i><span></span></a>
+            
+        </if>
+        
+    </div>
+    </a>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6"></div>
+            <div class="col-xs-12 col-md-6 HJZF2__news__main">
+                <div class="HJZF2__news-HJ04__title index_title">{$data100[3]}</div>
+                <div class="HJZF2__news-HJ04__list">
+                    <volist name="indexnews" id="indexnews1" offset="0" length="4">
+                        <a href="{:U('/new_detail',array('nid'=>$indexnews1['nid']))}" onFocus="blur()">
+                            <div class="HJZF2__news-HJ04__newsItem">
+                                <div class="HJZF2__news-HJ04__date">
+                                    <div class="day">{:date('d ',$indexnews1['created'])}</div>
+                                    <div class="year">{:date('Y-m ',$indexnews1['created'])}</div>
+                                </div>
+                                <div class="HJZF2__news-HJ04__newsInfo">
+                                    <div class="HJZF2__news-HJ04__newsName index_sub_title">{$indexnews1['title']}</div>
+                                    <div class="HJZF2__news-HJ04__newsDesc index_text">
+                                        {:subtxt($indexnews1['news_description'],30)}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,79 @@
+<!--{$pagename}-->
+<php>
+    if($data4[7] ==''){
+    $data4[7] =70;
+    }
+    if($data4[8] ==''){
+    $data4[8] =70;
+    }
+</php>
+<style>
+    .HJ05-aboutus-box{
+        padding-top: {$data4[7]}px;padding-bottom:{$data4[8]}px;
+    }
+    .hj05-abus-title1{
+        color: #{$data47[9]};
+    }
+    .index_abus_more,#tip ul li.current{
+        background: #{$data47[9]};
+    }
+</style>
+<if condition="$data4[5]">
+    <style>
+        .HJ05-aboutus-box{
+            background: url({:getindeximgurl($data4[5])}) no-repeat center;
+        }
+    </style>
+</if>
+
+
+<!--about us start-->
+<div class="hj-aboutus HJ05-aboutus-box">
+    <div class="container">
+        <div class="HJ05-aboutus-box-left lf">
+            <h4 class="hj05-abus-title1">{$data4[0]}</h4>
+            <h3 class="hj05-abus-title2">{$data4[1]}</h3>
+            <div class="hj05_abus_left_content">
+                {:HtmlEncode(subtxt($company_info['description'],400))}
+            </div>
+            <a <if condition="$data4[3]">href="{$data4[3]}"<else/>href="{:U('/aboutus')}"</if> class="index_abus_more"><if condition="$data4[2]">{$data4[2]}<else/>Contact Us <i class="fa fa-angle-right"></i></if></a>
+        </div>
+        <div class="HJ05-aboutus-box-right rt wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+            <div class="hj05_abus_right_content">
+
+
+
+                    <div id="ab_picbox" >
+                        <div id="pic" class="page_indexpic">
+                            <ul>
+                                <php>
+                                    $imgs=aboutusimg();
+                                    if(!$data4[6]){
+                                    $data4[6]=3;
+                                    }
+                                </php>
+                                <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[6]">
+                                    <if condition="$banerimg['imgurl'] neq ''">
+                                        <li ><a href="javascript:void(0);" <if condition="$data4[4]">id="adv_video{$k1}" data-video="{$data4[4]}"</if>    ><img src="{$banerimg['imgurl']}" border="0" /></a></li>
+                                    </if>
+                                </volist>
+                            </ul>
+
+                        </div>
+                        <div id="tip">
+                            <ul>
+                                <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[6]">
+                                    <if condition="$banerimg['imgurl'] neq ''">
+                                        <li id="smallimg_{$k1}" onMouseOver="change({$k1})"></li>
+                                    </if>
+                                </volist>
+                            </ul>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--about us end-->

@@ -1,0 +1,40 @@
+<extend name="demo2:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu3').removeClass().addClass("menuon");	
+});
+</script>
+<div id="animate6">
+<div class="in_banner_bg">
+	<div class="in_banner"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="page_Main">
+  <Include file="./Tpl/demo2/left.html" />
+  <div class="page_right">
+    <div class="page_RightTitle"><span><a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<a href="{:U('/product')}">产品世界</a>&nbsp;>&nbsp;{$type}</span>{$type}</div>
+    <div class="page_RightMain">
+      <volist empty="" name="pro" id="pro">
+          <div class="asd_list">
+              <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><h3>{$pro['pro_name']}</h3></a>
+              <div class="img_list"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getpcimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+              <div class="proname_list">
+                <ul>
+                  <li style="height:72px;">{:subtxt($pro['pro_description'],80)}</li>
+                  <li><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}" class="view_product"></a></li>
+                </ul>
+              </div>
+          </div>
+       </volist>
+       <div class="clear"></div>
+       <div class="main_page">{$page}</div>
+       <div class="clear"></div>
+    </div>
+  </div>
+  <div style="clear:both"></div>
+</div>
+</div>
+</block>

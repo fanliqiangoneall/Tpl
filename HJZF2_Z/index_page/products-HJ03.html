@@ -1,0 +1,121 @@
+<!--{$pagename}-->
+<php>
+    $bg1= getindeximgurl($data77[0]) or $bg1='';
+    $bg2= getindeximgurl($data77[6]) or $bg2='';
+    $bg3= getindeximgurl($data77[12]) or $bg3='';
+</php>
+<style>
+    <if condition="$data77[0]">
+    .products-Hj03-item-num1{
+         background: url({$bg1}) no-repeat center/cover;
+    }
+    </if>
+    <if condition="$data77[6]">
+    .products-Hj03-item-num2{
+        background: url({$bg2}) no-repeat center/cover;
+    }
+    </if>
+    <if condition="$data77[12]">
+    .products-Hj03-item-num3{
+        background: url({$bg3}) no-repeat center/cover;
+    }
+    </if>
+</style>
+<section class="products-Hj03">
+    <div class="products-Hj03-item products-Hj03-item-num1 index_pd">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-6 wow fadeInLeft">
+                    <div class="products-Hj03-itemTitle index_title">
+                        {$data77[2]}
+                    </div>
+                    <div class="products-Hj03-itemText index_text">
+                        {:HtmlEncode($data77[3])}
+                    </div>
+                    <a href="{$data77[5]}" class="products-Hj03-itemButton"><span>{$data77[4]}</span></a>
+                </div>
+                <div class="col-xs-12 col-lg-6 wow fadeInRight">
+                    <if condition="$data77[1]">
+                    <a href="{$data77[5]}"><img class="lazy" src="__TMPL__HJZF2_Z/img/loader.gif" alt="{$data77[2]}" data-original="{:getindeximgurl($data77[1])}"/></a>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="products-Hj03-item products-Hj03-item-num2 index_pd">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-6 wow fadeInRight fr">
+                    <div class="products-Hj03-itemTitle index_title">
+                        {$data77[8]}
+                    </div>
+                    <div class="products-Hj03-itemText index_text">
+                        {:HtmlEncode($data77[9])}
+                    </div>
+                    <a href="{$data77[11]}" class="products-Hj03-itemButton"><span>{$data77[10]}</span></a>
+                </div>
+                <div class="col-xs-12 col-lg-6 wow fadeInLeft fl">
+                    <if condition="$data77[7]">
+                        <a href="{$data77[11]}"><img class="lazy" src="__TMPL__HJZF2_Z/img/loader.gif" alt="{$data77[8]}" data-original="{:getindeximgurl($data77[7])}"/></a>
+                    </if>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <if condition="$data77[14]">
+        <div class="products-Hj03-item products-Hj03-item-num3 index_pd">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-6 wow fadeInLeft">
+                        <div class="products-Hj03-itemTitle index_title">
+                            {$data77[14]}
+                        </div>
+                        <div class="products-Hj03-itemText index_text">
+                            {:HtmlEncode($data77[15])}
+                        </div>
+                        <a href="{$data77[17]}" class="products-Hj03-itemButton"><span>{$data77[16]}</span></a>
+                    </div>
+                    <div class="col-xs-12 col-lg-6 wow fadeInRight">
+                    <if condition="$data77[13]">
+                        <a href="{$data77[17]}"><img class="lazy" src="__TMPL__HJZF2_Z/img/loader.gif" alt="{$data77[14]}" data-original="{:getindeximgurl($data77[13])}"/></a>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </if>
+    <if condition="$data77[18]">
+		<php>
+			$arr = get_list_val($data77[18]);
+		</php>
+		<if condition="$arr[0]['bg']">
+			<style>
+				.products-Hj03-item-num4{
+					background: url({$arr[0]['bg']}) no-repeat center/cover;
+				}
+			</style>
+		</if>
+	<div class="products-Hj03-item products-Hj03-item-num4 index_pd">
+        <div class="container">
+            <div class="row">
+				<div class="col-xs-12 col-lg-6 wow fadeInLeft">
+                    <if condition="$arr[0]['big']">
+                    <a href="{$arr[0]['turl']}"><img class="lazy" src="__TMPL__HJZF2_Z/img/loader.gif" alt="{$arr[0]['title']}" data-original="{$arr[0]['big']}"/></a>
+                    </if>
+                </div>
+                <div class="col-xs-12 col-lg-6 wow fadeInRight">
+                    <div class="products-Hj03-itemTitle index_title">
+						{$arr[0]['title']}
+                    </div>
+                    <div class="products-Hj03-itemText index_text">
+						{$arr[0]['info']}
+                    </div>
+                    <a href="{$arr[0]['turl']}" class="products-Hj03-itemButton"><span>{$arr[0]['tname']}</span></a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+	</if>
+</section>

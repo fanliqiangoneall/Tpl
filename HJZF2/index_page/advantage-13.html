@@ -1,0 +1,51 @@
+<style>
+    .HJZF2_advantage13__content__tab li:hover,.HJZF2_advantage13__content__tab li.active{
+        background: #{$data142[1]};
+    }
+
+</style>
+<if condition="$data142[0]">
+    <style>
+        .HJZF2_advantage13{
+            background: url({:getindeximgurl($data142[0])})!important no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF2_advantage13">
+    <div class="container">
+        <div class="HJZF2_advantage13__title">{$data142[2]}</div>
+        <if condition="$data142[3]">
+            <p class="HJZF2_advantage13__subtitle">{$data142[3]}</p>
+        </if>
+        <div class="HJZF2_advantage13__content">
+            <ul class="HJZF2_advantage13__content__tab flex">
+                <php>
+                    for($i=4;$i<23;$i=$i+4){
+                </php>
+                <if condition="$data142[$i]">
+                    <li>
+                        <div class="HJZF2_advantage13__tab__name">{$data142[$i]}</div>
+                        <p style="background: url({:getindeximgurl($data142[$i+1])}) no-repeat center;" class="first"></p>
+                        <p style="background: url({:getindeximgurl($data142[$i+3])}) no-repeat center;" class="second"></p>
+                    </li>
+                </if>
+                <php>
+                    }
+                </php>
+            </ul>
+        </div>
+    </div>
+    <div class="HJZF2_advantage13__bigImgWrap">
+        <ul>
+            <php>
+                for($i=4;$i<23;$i=$i+4){
+            </php>
+            <if condition="$data142[$i]">
+                <li style="background: url({:getindeximgurl($data142[$i+2])}) no-repeat center;"></li>
+            </if>
+            <php>
+                }
+            </php>
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+<extend name="HJ03:basein" />
+<block name="content">
+	<div id="wrapper">
+		<div id="inbanner_box">
+				<div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+		</div>
+		<div class="page-title-inner" style="margin-bottom: 40px;">
+			<div class="container">
+				<div class="Breadcrumbs">Your location: <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">All tags</span>
+					<div class="back_tolast"><a href="javascript:history.go(-1)" onfocus="blur()"><img src="__TMPL__HJ03/img/back_to2.png" alt="" style="margin-right: 10px;"/><img src="__TMPL__HJ03/img/back_to.png" alt="" style="margin-right: 10px;"/>Back to list</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="page_nei_main" id="main-content-wrapper">
+			<section class="main-content-right2">
+				<div class="page_nei_main">
+					<div class="page_RightMain">
+						<div class="page_Main">
+							<h3 class="nosecrch_title margin-40px-bottom">All tags</h3>
+							<volist name="labels" id="label">
+								<a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+							</volist></div>
+						<div style="clear:both;height: 50px;"></div>
+					</div>
+				</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

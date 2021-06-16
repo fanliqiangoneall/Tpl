@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data42[13]">
+        .HJZF3_advantage3__inner .HJZF3_advantage3_list{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .HJZF3_advantage3__inner .HJZF3_advantage3_list li{
+            flex: 0 0 45%;
+            display: flex;
+            align-items: center;
+        }
+        .HJZF3_advantage3__inner .HJZF3_advantage3_list li .advantage3_left_img{
+            margin-right: 10px;
+        }
+</if>
+    .HJZF3_advantage3__container--right .HJZF3_advantage3__inner{
+        background: url({:getindeximgurl($data42[12])}) no-repeat center /cover;height:100%
+    }
+    .HJZF3_advantage3_line_with_icon:before, .HJZF3_advantage3_line_with_icon:after{
+        background: #{$data42[0]};
+    }
+    .HJZF3_advantage3_line_with_icon i{
+        color: #{$data42[0]};
+    }
+ 
+</style>
+<section class="HJZF3_advantage3 flex">
+    <div class="col-xs-12 col-lg-6 HJZF3_advantage3__container">
+        <div class="HJZF3_advantage3__inner  col-lg-offset-2 col-lg-8">
+            <div class="HJZF3_advantage3_titleBox">
+                <h1 class="wow fadeInUp index_title">{$data42[1]}</h1>
+                <div class="HJZF3_advantage3_line_with_icon">
+                    <div class="aio-icon"><i class="fa fa-chevron-down"></i></div>
+                </div>
+            </div>
+            <div class="HJZF3_advantage3_content index_text">
+                {:HtmlEncode($data42[2])}
+            </div>
+            <ul class="HJZF3_advantage3_list">
+                <if condition="$data42[13]">
+                    <php>
+                        $arr = get_list_val($data42[14]);
+                    </php>
+                        <volist name="arr" id="a">
+                            <li>
+                                <div class="advantage3_left_img">
+                                    <if condition="$a[ico]">
+                                    <img src="{$a[ico]}" alt="{$a[title]}">
+                                    </if>
+                                </div>
+                                <div class="advantage3_left_text">
+                                    <h3 class="index_sub_title">{$a[title]}</h3>
+                                </div>
+                            </li>
+                        </volist>
+                    <else/>
+                <php>
+                    for($adv=3,$d=0.3;$adv<=11,$d<=1.1;$adv=$adv+3,$d=$d+0.3){
+                </php>
+                    <li class="HJZF3_advantage3_item flex wow fadeInLeft" data-wow-duration="1s" data-wow-delay="{$d}s">
+                        <div class="HJZF3_advantage3_item--left">
+                            <img src="{:getindeximgurl($data42[$adv])}" alt="{$data42[$adv+1]}"/>
+                        </div>
+                        <div class="HJZF3_advantage3_item--right">
+                            <div class="HJZF3_advantage3_item_header">
+                                <h3 class="index_sub_title">{$data42[$adv+1]}</h3>
+                            </div>
+                            <div class="HJZF3_advantage3_item_desc index_text">
+                                {:HtmlEncode($data42[$adv+2])}
+                            </div>
+                        </div>
+                    </li>
+                <php>
+                    }
+                </php>
+            </if>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-12 col-lg-6 HJZF3_advantage3__container HJZF3_advantage3__container--right">
+        <div class="HJZF3_advantage3__inner"></div>
+    </div>
+</section>

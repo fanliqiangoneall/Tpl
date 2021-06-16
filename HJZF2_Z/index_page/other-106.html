@@ -1,0 +1,58 @@
+<style>
+<if condition="$data538[0]">
+    .HJZF2_Z_other_106 {
+        background-image: url({:getindeximgurl($data538[0])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+.HJZF2_Z_other_106 .bottom_form_box #other_106_form input#phone_mb{
+    color:#{$data538[1]};
+}
+#form_submit_other_106 input{
+    color:#{$color}
+}
+</style>
+
+<section class="HJZF2_Z_other_106">
+    <div class="container">
+        <div class="row">
+            <div class="bottom_form_box">
+                <form action="__APP__/saveinquiry" method="post" class="bottom_form" id="other_106_form">
+                    <div class="form_item hidden">
+                        <input type="text" name="linkname" id="linknamea_mb" placeholder="{:__('Name: ')}"
+                            value="Email submit">
+                        <span class="yz_alert" id="linknamea_mb_alert"></span>
+                    </div>
+                    <div class="form_item">
+                        <input type="text" name="phone" id="phone_mb" placeholder="{:__('Phone: ')}">
+                        <span class="yz_alert" id="phone_mb_alert"></span>
+                    </div>
+                    <div class="form_item hidden">
+                        <textarea name="message" id="messagea_mb"
+                            placeholder="{:__('Message: ')}">You have a new email subscription</textarea>
+                        <span class="yz_alert" id="messagea_alert"></span>
+                    </div>
+                    <div class="form_item hidden">
+                        <input type="text" name="email" id="emaila_mb" placeholder="{:__('Enter your email address')}"
+                            value="test@one-all.com">
+                        <span class="yz_alert" id="emaila_mb_alert"></span>
+                    </div>
+                    <div class="form_item">
+                        <input type="hidden" name="prodid" value="{$product['pid']}" />
+                        <div id="form_submit_other_106"><input type="button" <if condition="$data538[2]">
+                            value="{$data538[2]}"
+                            <else />
+                            value="{:__('Submit')}"
+                            </if>
+                            />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</section>

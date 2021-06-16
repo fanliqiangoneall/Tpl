@@ -1,0 +1,43 @@
+<Include file="./Tpl/HJ01CN/sidebar.html" />
+<script src="__TMPL__public/js/layer/layer.js"></script>
+<if condition="$data3[21]">
+
+  <script type="text/javascript" src="__TMPL__HJ01CN/js/jquery.themepunch.tools.min.js"></script>
+  <!--jquery.themepunch.revolution.min.js-->
+  <script type="text/javascript" src="__TMPL__HJ01CN/js/jquery.themepunch.revolution.min.js"></script>
+</if>
+
+<!--jquery.themepunch.revolution.min.js-->
+<script type="text/javascript" src="__TMPL__HJ01CN/js/superfish.js"></script>
+<!--多级导航菜单插件-->
+<script type="text/javascript" src="__TMPL__HJ01CN/js/imagesloaded.min.js"></script>
+<!--Jquery图片延迟加载插件imagesLoaded-->
+<script type="text/javascript" src="__TMPL__HJ01CN/js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ01CN/js/jquery.countup.min.js"></script>
+<!--jquery.countup.js是一款轻量级jquery数字动画插件-->
+<script type="text/javascript" src="__TMPL__HJ01CN/js/slick.min.js"></script>
+<!--jQuery幻灯片插件slick-->
+<script type="text/javascript" src="__TMPL__HJ01CN/js/jquery.lightbox-0.5.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ01CN/js/inPage_js.js"></script>
+<script type="text/javascript" src="__TMPL__HJ01CN/js/proDetail.js"></script>
+<script type="text/javascript" src="__TMPL__HJ01CN/js/swiper.min.js"></script>
+
+<script type="text/javascript" src="__TMPL__HJ01CN/js/muban.js"></script>
+<script>
+
+  $('#pro_video').on('click', function(){
+    var data=$('#pro_video').attr("alt");
+    layer.open({
+      type: 2,
+      title: ['video', 'font-size:18px;'],
+      area: ['80%', '80%'],
+      shadeClose: true, //点击遮罩关闭
+      maxmin: true,
+      //content: '__TMPL__ZERO/video/a/demo.htm'
+      content: $('#pro_video').attr("alt")
+    });
+  });
+</script>
+  </body>
+</html>
+

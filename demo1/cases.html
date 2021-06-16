@@ -1,0 +1,57 @@
+<extend name="demo1:base" />
+<block name="content">
+   <script type="text/javascript">
+        jQuery(function() {
+            $('#menu4').removeClass().addClass("nav_active");
+        });
+    </script>
+
+    <if condition="$banner neq ''">
+        <volist name="banner" id="banner" offset="0" length="1">
+            <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+        </volist>
+        <else/>
+        <div class="in_banner" style="background:url(__TMPL__demo1/img/inbanner1.jpg) center no-repeat"></div>
+    </if>
+
+    <div class="r_topbg">
+        <div class="container">
+            <div class="r_top">&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;Project</div>
+        </div>
+    </div>
+
+    <div class="page_Main">
+        <Include file="./Tpl/demo1/left.html" />
+        <div class="page_Right">
+            <div class="article_top">
+                <div class="shu"></div>
+                <div class="title">PROJECT</div>
+
+            </div>
+            <div class="clear"></div>
+            <div class="page_RightMain">
+                <div class="news">
+                    <div class="body">
+
+                        <div class="show_product_list" style="margin-top: 23px;">
+                            <ul>
+                                <volist empty="" name="allnews" id="allnews" offset="0">
+                                    <li>
+                                        <div class="product_image">
+                                            <a href="{:U('/case_detail',array('nid'=>$allnews['nid']))} "><img src="{:getpcimgurl($allnews['new_pro'])}" alt="{$allnews['title']}" /></a>
+                                        </div>
+                                        <div class="title"><a class="float_left" href="{:U('/case_detail',array('nid'=>$allnews['nid']))}">{$allnews['title']}</a><span class="float_right"><a  class="float_left" href="{:U('/case_detail',array('nid'=>$allnews['nid']))}"></a></span></div>
+
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="main_page">{$page}</div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</block>

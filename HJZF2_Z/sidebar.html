@@ -1,0 +1,182 @@
+<style>
+    .side ul li,
+    .sidetop,
+    .side ul li .sidebox,
+    .side ul li .sidebox2,
+    .side ul li .sidebox3,
+    .sidea ul li {
+        background: #{$color};
+    }
+</style>
+<div class="side sideSelect">
+    <ul>
+        <li <if condition="chaifen($about['msn'],0) eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"
+            </if>>
+            <div class="sidebox"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0"
+                    style="position: relative;left: -48px;top: 0"></div>
+            <div class="sidebox_content"><span><b><a
+                            href="https://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes"
+                            onclick="turn_sta(5,4)" target="_blank">{:chaifen($about['msn'],0)}</a></b></span></div>
+        </li>
+        <li <if condition="chaifen($about['phone'],0) eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"
+            </if>>
+            <div class="sidebox"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0"
+                    style="position: relative;left: 0;top: -144px;"></div>
+            <div class="sidebox_content">
+                <span><b>{:chaifen($about['phone'],0)}</b></span><br /><span><b>{:chaifen($about['phone'],1)}</b></span>
+            </div>
+        </li>
+        <li <if condition="chaifen($about['email'],0) eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"
+            </if>>
+            <div class="sidebox"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0"
+                    style="position: relative;left: 0;top: -96px;"></div>
+            <div class="sidebox_content"><span><b><a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()"
+                            onclick="turn_sta(3,4)">{:chaifen($about['email'],0)}</a></b></span></div>
+        </li>
+        <li <if condition="$data50[1] eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"</if>>
+            <div class="sidebox"><a href="javascript:void(0)"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png"
+                        border="0" alt="Top" style="position: relative;left:-48px;top: -142px"></a></div>
+            <if condition="$data50[1]">
+                <div class="sidebox_content" style="text-align: center"><img src="{:getindeximgurl($data50[1])}"
+                        border="0"><br /><span><b><a href="javascript:void(0)">{$data50[2]}</a></b></span></div>
+            </if>
+        </li>
+        <li>
+            <if condition="$webid eq '200'">
+                <div class="sidebox"><a href="{:U('/contactus')}" onclick="turn_sta(1,4)"><img
+                            src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0" alt="Top"
+                            style="position: relative;left:-48px;top: -96px"></a></div>
+                <else />
+                <div class="sidebox"><a href="{:U('/contactus#zixun')}" onclick="turn_sta(1,4)"><img src="__TMPL__HJZF2_Z/img/svg/inquiry.svg"
+                        border="0" alt="inquiry" width="48" style=" padding:11px;"></a></div>
+            </if>
+        </li>
+        <li <if condition="$data50[7] eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"</if>>
+            <div class="sidebox"><a href="javascript:void(0)"><img src="__TMPL__HJZF2_Z/img/r_ewm.png" border="0"
+                        alt="ewm"></a></div>
+            <if condition="$data50[7] ">
+                <div class="sidebox_content" style="text-align: center"><img src="{:getindeximgurl($data50[7])}"
+                        border="0"></div>
+            </if>
+        </li>
+        <if condition="$data50[10]">
+            <li>
+                <div class="sideboxa"><a href="{$data50[10]}" target="_blank"><img src="{:getindeximgurl($data50[12])}"
+                            border="0" alt="alibaba" style="max-width: 48px;"></a></div>
+            </li>
+        </if>
+        <if condition="$data50[11]">
+            <li>
+                <div class="sideboxa"><a href="{$data50[11]}" target="_blank"><img src="{:getindeximgurl($data50[13])}"
+                            border="0" alt="mic" style="max-width: 48px;"></a></div>
+            </li>
+        </if>
+		
+        <li>
+            <div class="sidebox"><a href="javascript:goTop();"><if condition="$webid eq '1730'"><img src="__TMPL__HJZF2_Z/img/svg/top.svg"
+                        border="0" alt="Top" width="48" style=" padding:13px;"><else/><img src="__TMPL__HJZF2_Z/img/side-sprites2.png"
+                        border="0" alt="Top" style="position: relative;left:0;"></if></a></div>
+        </li>
+    </ul>
+</div>
+
+
+<if condition="$data50[17]">
+    <style>
+        .sideSelect {
+            display: none !important;
+        }
+
+        .sidea {
+            position: fixed;
+            width: 48px;
+            right: 0;
+            top: 250px;
+            z-index: 999;
+            color: #fff;
+            display: none;
+        }
+
+        .sidea ul li {
+            width: 48px;
+            height: 48px;
+            float: left;
+            position: relative;
+            list-style: none;
+            margin-bottom: 2px;
+        }
+
+        .sidea ul li .sidebox {
+            position: absolute;
+            width: 48px;
+            text-align: left;
+            height: 48px;
+            top: 0;
+            right: 0;
+            transition: all 0.3s;
+            color: #333333;
+            font: 14px "Arial";
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .sidea ul li:not(:last-child) .sidebox img {
+            max-width: 45px;
+        }
+
+        .sidea ul li:hover .sidebox_content {
+            -webkit-transform: translateX(-20px);
+            transform: translateX(-20px)
+        }
+    </style>
+    <div class="sidea">
+        <ul>
+            <php>
+                $arr = get_list_val($data50[17]);
+            </php>
+            <volist name="arr" id="a">
+                <li>
+                    <div class="sidebox">
+                        <if condition="$a[link]">
+                            <a href="{$a[link]}" target="_blank">
+                        </if>
+                        <img src="{$a[ico]}" border="0">
+                        <if condition="$a[link]">
+                            </a>
+                        </if>
+                    </div>
+                    <div class="sidebox_content">
+                        <span>
+                            <b> <a href="{$a[link]}" onfocus="blur()">{$a[txt]}</a></b>
+                        </span>
+                    </div>
+                </li>
+            </volist>
+            <li>
+                <div class="sidebox"><a href="javascript:goTop();"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png"
+                            border="0" alt="Top" style="position: absolute;left:0;top:0;"></a></div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            var h = $(window).width()
+            if (h < 1200) {
+                $('.sidea').hide();
+            }else{
+                $(window).scroll(function () {
+                    var t = $(this).scrollTop();
+                    if (t > 400) {
+                        $('.sidea').fadeIn();
+                    } else {
+                        $('.sidea').fadeOut();
+                    }
+                });
+            }
+            
+        });
+    </script>
+</if>

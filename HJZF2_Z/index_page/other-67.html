@@ -1,0 +1,33 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_67_container .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #{$data400[1]};
+    }
+</style>
+<section class="hjzf2_other_67 index_pd">
+
+    <div class="text-center index_title pb40">
+        {$data400[0]}
+    </div>
+    <php>
+        $arra = get_list_val($data400[2]);
+    </php>
+    <div class="swiper-container hjzf2_other_67_container">
+        <div class="swiper-wrapper">
+            <volist name="arra" id="a">
+                <div class="swiper-slide">
+                    <if condition="$a[link]">
+                        <a href="{$a[link]}">
+                    </if>
+                    <img src="{$a[img]}" class="img-fluid" alt="{$a[title]}">
+                    <if condition="$a[link]">
+                        </a>
+                    </if>
+                </div>
+            </volist>
+
+        </div>
+        <div class="hjzf2_other_67_pagination"></div>
+    </div>
+
+</section>

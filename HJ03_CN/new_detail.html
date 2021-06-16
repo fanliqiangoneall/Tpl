@@ -1,0 +1,114 @@
+<extend name="HJ03_CN:basein" />
+<block name="content">
+    <style>
+        .news_item:hover .news_item_date .more-button{
+            background: #{$color};color: #fff;text-indent: 0;transition: all .36s ease;
+        }
+        .news_item:hover .news_item-title a{
+            color: #{$color}
+        }
+        .Breadcrumbs{width: 50%;float: right;}
+        .main_news_prev_next ul li.news_next:hover{
+            background: #A9A9A9;;
+        }
+        .main_news_prev_next ul li.news_prev:hover{
+            background: #A9A9A9;;
+        }
+        .main_news_prev_next ul li.news_next:hover img{opacity: 1}
+        .main_news_prev_next ul li.news_prev:hover img{opacity: 1}
+        .main_news_prev_next ul li.news_next:hover p{
+            color:#fff
+        }
+        .main_news_prev_next ul li.news_prev:hover p{
+            color:#fff
+        }
+        .main_news_prev_next ul li.news_next:hover p:after{
+            content: '';display: table;width: 20px;height: 11px;background: #DADADA;position: absolute;;right: -45px;top: 50%;transform: translateY(-6px);background: url(__TMPL__HJ03_CN/img/newsnext_2.png);
+        }
+        .main_news_prev_next ul li.news_prev:hover p:after{
+            content: '';display: table;width: 20px;height: 11px;background: #DADADA;position: absolute;;left: -45px;top: 50%;transform: translateY(-6px);background: url(__TMPL__HJ03_CN/img/newsprev_2.png);
+        }
+        .inquiry_Title h5{
+            color: #333;
+        }
+    </style>
+    <div id="wrapper" style="background: #fff">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 40px;">
+            <div class="container">
+                <div class="Breadcrumbs ">您的位置：<a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                        href="{:U('/news')}"><if condition="$data47[4] neq ''">{$data47[4]} <else/>新闻中心</if></a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newclass['class_name']}</span>
+                </div>
+                <section class="main-content-top">
+                    <Include file="./Tpl/HJ03_CN/newleft_2.html" />
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-right2">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                        <div class="news">
+                            <div id="news_detail">
+                                <div class="body">
+                                    <h5 class="HJ01_main_newdetail_title">{$news['title']}</h5>
+                                    <div class="news_view padding-20px-bottom padding-10px-top">
+                                        <span class="time"><i><img src="__TMPL__HJ02/img/shijian.png" alt=""/></i>&nbsp;{:date('Y年m月d日',$news['created'])}</span><span>|</span><span class="red"><i><img
+                                            src="__TMPL__HJ02/img/view.png" alt=""/></i>浏览次数：{$news['click_num']}</span>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                                    <div class="main_news_prev_next">
+                                        <ul>
+                                            <if condition="$newprev[0]['title'] eq ''">
+
+                                                <else/>
+                                            <li class="news_prev">
+                                                    <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                        <p>{$newprev[0]['title']}</p>
+                                                        <img src="{:getimgurl($newprev[0]['new_pro'])}" alt=""/>
+                                                       </a>
+
+                                            </li>
+                                            </if>
+                                            <if condition="$newnext[0]['title'] eq ''">
+                                                <else/>
+                                            <li class="news_next">
+                                                    <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                        <img src="{:getimgurl($newnext[0]['new_pro'])}" alt=""/>
+                                                        <p>{$newnext[0]['title']}</p>
+                                                        </a>
+
+                                            </li>
+                                            </if>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <if condition="newscomment_show() eq 1">
+                            <include file="HJ03_CN:newscomment" />
+                        </if>
+                        <include file="HJ03_CN:relationinfo" />
+                        <include file="HJ03_CN:relationnew" />
+                        <div style="clear:both; height:20px;"></div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div style="clear:both"></div>
+
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

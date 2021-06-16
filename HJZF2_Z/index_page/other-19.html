@@ -1,0 +1,27 @@
+<!--{$pagename}-->
+<style>
+.new_hjzf_other-19 .shenqing_ruxue{ background:url("{:getindeximgurl($data205[8])}"); background-size: 100% 100%;line-height: 260px;
+    height: 260px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.new_hjzf_other-19 .shenqing_ruxue_link{ font-size:0.18rem; color:#fff;}
+.new_hjzf_other-19 .link_ruxue_btn{    
+	vertical-align: middle; display:inline-block; font-size:18px;width:1.80rem;background:#{$data205[4]}; height:40px;line-height:40px;
+}
+
+.new_hjzf_other-19 .shenqing_ruxue_btn{
+	display:inline-block;font-size:18px;width:1.80rem; height:40px; position:relative; top:2px;
+ border:1px solid #{$data205[5]};  line-height:40px; color:#fff; 
+ }
+
+</style>
+<div class="container-fluid shenqing_ruxue hidden-xs hidden-sm hidden-md">
+    <div class="zq-row">
+    <div class="container">
+    <div class="shenqing_ruxue_container row">
+    	<div class="col-lg-2 shenqing_ruxue_title"><img src="{:getindeximgurl($data205[0])}" alt="{$data205[1]}"/></div>
+        <div class="col-lg-6 shenqing_ruxue_des">{$data205[1]}</div>
+        <a <if condition="$data205[6]">href="{$data205[6]}"<else/>href="javascript:void(0)"</if> ><div class="col-lg-2 shenqing_ruxue_more"><div class="shenqing_ruxue_btn">{$data205[2]}</div></div></a>
+        <a <if condition="$data205[7]">href="{$data205[7]}"<else/>href="javascript:void(0)"</if> ><div class="col-lg-2 shenqing_ruxue_link"><div class="link_ruxue_btn">{$data205[3]}</div></div></a>
+    </div>    
+    </div>
+    </div>
+</div>

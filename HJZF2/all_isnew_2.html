@@ -1,0 +1,64 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .inner_module2_page .current {
+            padding: 6px 10px;background: #{$inner_data[0]};color: #fff;border: 1px solid #{$inner_data[0]};border-radius: 3px;
+        }
+        .inner_module2__inPage-title .inner_module2__inPage-more:hover{
+            color: #{$inner_data[0]};
+        }
+    </style>
+    <div id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$type}</span></div>
+            </div>
+        </div>
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+
+            <section class="inner_module2__inPage-left">
+                <Include file="./Tpl/HJZF2/left_2.html" />
+            </section>
+            <section class="inner_module2__inPage-right">
+                <div class="inner_module2__inPageRight-content">
+                    <div class="inner_module2__inPageRight-content-box">
+                        <h5 class="inner_module2__inPage-title">{$type}</h5>
+                        <div class="inner_module2__inPage-list">
+                            <volist empty="" name="pro" id="pro" key="k" offset="0">
+                                <div class="inner_module2__inPage-proitem">
+                                    <div class="inner_module2__inPage-proitem-in">
+                                        <div class="inner_module2__inPage-proitemImg"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+                                        <div class="inner_module2__inPage-proitemText">
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <div class="inner_module2__inPage-proitemName ">{$pro['pro_name']}</div>
+                                                <if condition="$pro['pro_description']"></if><div class="inner_module2__inPage-proitemDes">{:subtxt($pro['pro_description'],50)}</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <if condition="($k)%3 neq 0">
+                                    <div class="inner_module2__inPage-jiange"></div>
+                                    <else/>
+                                    <div style="clear: both"></div>
+                                </if>
+                            </volist>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div class="inner_module2_page">{$page}</div>
+                    </div>
+                </div>
+
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

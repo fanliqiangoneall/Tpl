@@ -1,0 +1,172 @@
+<extend name="HJ04:basein" />
+<block name="content">
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#listBox").css("height",Math.ceil($("#listBox>ul>li").height()+2))
+        })
+    </script>
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .caseList:hover .caseTitle{
+            color: #{$color};
+        }
+        .page_body_container{
+            background: {$data47[21]};
+        }
+        .page01Inquiry{
+            background-color: #{$color};
+            background-image: url({:getindeximgurl($data47[27])});
+            background-repeat: no-repeat;
+            background-position:30px 10px;
+        }
+        .page01DownLoad{
+            background-color: #F6F6F6;
+            background-image: url({:getindeximgurl($data47[28])});
+            background-repeat: no-repeat;
+            background-position:30px 10px;
+        }
+        .page01RightTitle{
+            color: #{$color};
+        }
+        .cf li.hover,.cf li.on{
+            border: 1px solid #{$color};
+        }
+        #prev{
+            background: url({:getindeximgurl($data47[29])});
+        }
+        #next{
+            background: url({:getindeximgurl($data47[30])});
+        }
+        #gx1{
+            padding: 24px;
+        }
+    </style>
+    <div class="productContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                Your location: &nbsp;
+                <a href="{:U('/')}">Home</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    Product Detail
+                </span>
+            </div>
+        </div>
+        <div class="pageBannerContainer">
+            <div class="pageBannerImg">
+                <if condition="$banner neq ''">
+                    <volist name="banner" id="banner" offset="0" length="1">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </volist>
+                    <else/>
+                    <img src="{:getindeximgurl($data47[7])}" alt=""/>
+                </if>
+            </div>
+        </div>
+        <div class="page_body_container">
+            <div class="pageMainContainer container">
+                <div class="page01Container">
+                    <div class="page01LeftContainer lf">
+                        <div class="big_pic" id="gallery">
+                            <a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}">
+                                <img src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if> class="jqzoom">
+                            </a>
+                            <a href="#" title="{$product['pro_name']}"></a>
+                        </div>
+                        <div class="page01LeftBottom">
+                            <div class="lf page01Inquiry"><a href="{:U('/contactus')}">Immediately Consult</a></div>
+                            <if  condition="$product['pro_file'] neq ''and $product['pro_file'] neq 0">
+                                <div class="rt page01DownLoad"><a href="{:getimgurl($product['pro_file'])}" target="_blank">Data Download</a></div>
+                            </if>
+                        </div>
+                    </div>
+                    <div class="page01RightContainer lf">
+                        <div class="page01RightTitle">{$product['pro_name']}</div>
+                        <div class="pro_info_desc">{:HtmlEncode(subtxt($product['pro_description'],600))}</div>
+                        <div class="pic_list smallImgList">
+                            <div class="mod18">
+                                <span id="prev" class="btn prev"></span>
+                                <span id="next" class="btn next"></span>
+                                <div id="listBox" class="listBox">
+                                    <ul class="cf">
+                                        <li class="hover">
+                                            <a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}">
+                                                <img src="{:getmainimgurl($product['main_img'])}" <if condition="$product['proalt'] neq ''">alt="{$product['proalt']}" title="{$product['proalt']}"<else/>alt="{$product['pro_name']}" title="{$product['pro_name']}"</if> class="jqzoom">
+                                            </a>
+                                        </li>
+                                        <volist name="proimg" id="proimg">
+                                            <if condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                                <li>
+                                                    <a href="{:getfimgurl($proimg['field_auxiliary_fid'])}" >
+                                                        <img src="{:getfimgurl($proimg['field_auxiliary_fid'])}" class="jqzoom"  <if condition="$proimg['field_auxiliary_title'] eq ''">alt="{$product['pro_name']}"<else/>alt="{$proimg['field_auxiliary_title']}"</if>/>
+                                                    </a>
+                                                </li>
+                                            </if>
+                                        </volist>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <if condition="$editor_count eq 1">
+                    <div class="pro_detail" id="gx1" style="display:block;">{:str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile']))}</div>
+                    <else/>
+                    <style>
+                        .mainDetail-tabs {
+                            width: 100%;
+                            position: relative;
+                            margin-top: 20px;
+                        }
+                        .tabsTitle {
+                            display: inline-block;
+                            width: 160px;
+                            height: 50px;
+                            line-height: 50px;
+                            text-align: center;
+                            font-weight: 500;
+                            font-size: 18px;
+                            cursor: pointer;
+                            color: #333;
+                            background: #dfdfdf;
+                            margin-right: 2px;
+                            -webkit-transition: background .2s ease-in-out,color .2s ease-in-out;
+                            -o-transition: background .2s ease-in-out,color .2s ease-in-out;
+                            transition: background .2s ease-in-out,color .2s ease-in-out;
+                        }
+                        .tabsTitle.active {
+                            background: #{$color};
+                            color: #fff;
+                        }
+                    </style>
+                    <ul class="mainDetail-tabs">
+                        <for start="1" end="$editor_count+1">
+                            <li index="{$i}" class="tabsTitle  <if condition="$i eq 1"> active </if>">{$data47[$i+30]}</li>
+                        </for>
+                    </ul>
+                    <for start="1" end="$editor_count+1">
+                        <php>
+                            if($i==1){
+                            $edit_name="pro_profile";
+                            }else{
+                            $edit_name="pro_profile".$i;
+                            }
+                        </php>
+                        <div index="{$i}" class="pro_detail"  <if condition="$i neq 1">style="display:none"</if>>
+                            {:str_replace('&nbsp;',' ',htmlspecialchars_decode($producteditors[$edit_name]))}
+                        </div>
+                    </for>
+                </if>
+                <div class="inquiryContainer">
+                    <p class="inquiryTitle">Immediately Consult</p>
+                    <Include file="./Tpl/HJ04/submitinquiry.html" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__TMPL__HJ04/js/hj04_prodetail.js"></script>
+</block>

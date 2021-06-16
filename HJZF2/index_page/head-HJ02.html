@@ -1,0 +1,175 @@
+<!--{$pagename}-->
+<php>
+    if(!$data83[10]){
+    $data83[10] = 80;
+    }
+</php>
+<if condition="$data83[11] neq ''">
+    <style>
+        .new_hjzf_head-HJ02 .HJ02_head_menu{
+            background: #{$data83[11]};
+        }
+    </style>
+    <else/>
+    <style>
+        .new_hjzf_head-HJ02 .HJ02_head_menu{
+            background: #{$color};
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_head-HJ02 .head_menu{
+    height: {$data83[10]}px;
+    }
+    .new_hjzf_head-HJ02 .head_mail i{
+        color: #{$color};
+    }
+    .new_hjzf_head-HJ02 .head_language span,.new_hjzf_head-HJ02 .head_language i{
+        color: #{$color};
+    }
+    .new_hjzf_head-HJ02 .head_language ul li:hover a{
+        color:#{$color}
+    }
+
+    .new_hjzf_head-HJ02 .hj02-menu{
+        background: #fff;
+    }
+    .new_hjzf_head-HJ02 .menu_on{}
+    .new_hjzf_head-HJ02 .HJ02_head_menu>div>ul>li.menu_on{
+        background: #{$data83[12]};
+    }
+    .new_hjzf_head-HJ02 .HJ02_head_menu>div>ul>li:hover{
+        background: #{$data83[12]};
+    }
+    .new_hjzf_head-HJ02 .hj02-menu li:hover{
+        background: #ebebeb;
+    }
+    .new_hjzf_head-HJ02 .hj02-menu li:hover h3{
+        color: #333;
+    }
+
+</style>
+
+<if condition="$data83[9]">
+    <style>
+        .new_hjzf_head-HJ02{
+    transition: all 0.36s ease 0s;
+}
+
+    </style>
+ </if>
+
+<header id="header">
+    <!--head_middle-->
+    <div class="head_menu">
+        <div class="container">
+            <div class="page_Logo">
+                <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            </div>
+            <if condition="$data83['2']">
+                <div class="head_language right">
+                    <span>EN <i class="fa fa-angle-down"></i><img src="__TMPL__HJ02/img/en.png" alt="" width="24" height="24"/></span>
+                    <ul>
+                        <if condition="$data83['2']"><li><a href="{$data83[2]}" target="_blank"><span>{$data83[1]}</span><img src="{:getindeximgurl($data83[0])}" alt="" width="24" height="24"/></a></li></if>
+                        <if condition="$data83['3']"><li><a href="{$data83[5]}" target="_blank"><span>{$data83[4]}</span><img src="{:getindeximgurl($data83[3])}" alt="" width="24" height="24"/></a></li></if>
+                        <if condition="$data83['6']"><li><a href="{$data83[8]}" target="_blank"><span>{$data83[7]}</span><img src="{:getindeximgurl($data83[6])}" alt="" width="24" height="24"/></a></li></if>
+                    </ul>
+                </div>
+            </if>
+            <if condition="C('language') eq 'en'">
+                <div class="head_mail right">
+                    Email: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a>
+                </div>
+                <elseif condition="C('language') eq 'rus'"/>
+                <div class="head_mail right">
+                    <i class="fa fa-phone" style="margin: 0 8px 0 8px; font-size: 18px;"></i><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1)">{:chaifen($about['email'],0)}</a>
+                </div>
+                <else/>
+                <div class="head_mail right">
+                    <i class="fa fa-phone" style="margin: 5px 8px 0 8px; font-size: 18px;"></i><a href="javascript:void(0);" onFocus="blur()" onClick="turn_sta(3,1)">{:chaifen($about['phone'],0)}
+                    <br/><if condition="chaifen($about['mobile'],0)">{:chaifen($about['mobile'],0)}</if></a>
+                </div>
+            </if>
+            <div class="head_seach right">
+                <i class="head_search_icon"><img src="__TMPL__HJ02/img/head_search.png" alt="" width="30px" height="30px"/></i>
+                <i class="head_search_close"><img src="__TMPL__HJ02/img/head_search_close.png" alt="" width="30px" height="30px"/></i>
+            </div>
+            <div class="ins-header-search right" id="ins-header-search">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <li style="float: left;width: 215px;height: 32px;"><input style="height: 32px;width:205px;border-width:0px;padding-left: 10px;color:#888888;outline: none;" type="text" value="{:__('Product Search')}" name="keywords" <if condition="C('language') eq 'cn'">id="keyword2"<else/>id="keyword"</if> onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                    <li style="float: left;width:30px;height: 32px;"><button type="submit" id="search-submit" style="padding-top:0;outline: none"><img
+                            src="__TMPL__HJ02/img/head_search.png" alt=""  width="30px" height="30px"/></button></li>
+                    <div class="clear"></div>
+                </form>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <section style="height: 50px;width: 100%;margin: auto;">
+        <nav class="HJ02_head_menu">
+            <div class="container">
+                <ul>
+                    <volist name="web_navigation" id="vo" offset="0" length='10' key="key">
+                        <li id="menu{$key}" <if condition="$vo['child'] neq '' ">class="nav_more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo['child'] neq '' ">
+                            <ul class="hj02-menu">
+
+                                <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                    <li>
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+
+                                    </li>
+                                </volist>
+
+                            </ul>
+                            <else/>
+
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="hj02-menu hj02-pro-menu">
+                                    <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="14" >
+                                        <li>
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <div class="clear"></div>
+
+                                </ul>
+                            </if>
+
+                        </if>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <if condition="$data83[9]">
+        <script>
+            ;(function($){
+                    //获取nav距离顶部的距离
+                var navtop=$(".new_hjzf_head-HJ02 .HJ02_head_menu").offset().top;
+                $(document).scroll(function(){
+                    //获取滚动条滚动的高度
+                    var scroltop=$(document).scrollTop();
+                    if (scroltop > navtop){
+                        $(".new_hjzf_head-HJ02 .HJ02_head_menu").css({
+                            "position":"fixed",
+                            "left":"0px",
+                            "top":"0px",
+                            "width":"100%",
+                        })
+
+                    }else {
+                        $(".new_hjzf_head-HJ02 .HJ02_head_menu").css({
+                            "position":"relative",
+                            "left":"0",
+                            "top":"0",
+                            "width":"100%"
+                        })
+                    }
+                })
+            })(jQuery);
+        </script>
+    </if>
+</header>

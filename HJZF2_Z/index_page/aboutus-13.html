@@ -1,0 +1,73 @@
+<!--{$pagename}-->
+<php>
+    $color=explode("\\n",$data194[0]);
+    if($data194[5]){
+    $rt_bg=getindeximgurl($data194[5]);
+    }else{
+    $rt_bg='';
+    }
+</php>
+<style>
+    .aboutus-12_itembox.left {
+        background: #ffffff;
+        background: -moz-linear-gradient(45deg, #{$color[0]} 0%, #{$color[1]} 100%);
+        background: -webkit-linear-gradient(45deg, #{$color[0]} 0%, #{$color[1]} 100%);
+        background: linear-gradient(45deg, #{$color[0]} 0%, #{$color[1]} 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='{$color[0]}', endColorstr='{$color[1]}', GradientType=1);
+    }
+
+    .itembox_bg {
+        background: url('{$rt_bg}') no-repeat center/cover;
+    }
+
+    .itembox_bg_a.itembox_bg {
+        background: url({:getindeximgurl($data194[11])
+    }
+
+    ) no-repeat center/cover;
+    }
+
+    <if condition="$data194[10]">.hjzf_aboutus-13 {
+        background: url({:getindeximgurl($data194[10])
+    }
+
+    ) no-repeat center/cover;
+    }
+
+    </if>
+</style>
+
+<section class="hjzf_aboutus-13 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 flex aboutus-12_box">
+                <div class="aboutus-12_itembox left wow fadeInLeft" data-wow-duration="1S" data-wow-delay="0">
+                    <if condition="$data194[11]">
+                        <div class="itembox_bg_a itembox_bg"></div>
+                    </if>
+                    <a href="{$data194[4]}">
+                        <div class="about-13_smtitle index_sub_title pb40">{$data194[1]}</div>
+                        <div class="about-13_title index_title pb20">{$data194[2]}</div>
+                        <div class="about-13_desc index_text">{$data194[3]}</div>
+                        <span class="main-banner-more-btn"></span>
+                    </a>
+                </div>
+                <if condition="$data194[12] eq ''">
+                <div class="aboutus-12_itembox right wow fadeInRight" data-wow-duration="1S" data-wow-delay="0">
+                    <div class="itembox_bg"></div>
+                    <a href="{$data194[9]}">
+                        <div class="about-13_smtitle index_sub_title pb40">{$data194[6]}</div>
+                        <div class="about-13_title index_title pb20">{$data194[7]}</div>
+                        <div class="about-13_desc index_text">{$data194[8]}</div>
+                        <span class="main-banner-more-btn"></span>
+                    </a>
+                </div>
+                <else/>
+                    <div class="aboutus-12_itembox right wow fadeInRight" data-wow-duration="1S" data-wow-delay="0">
+                        <video src="{$data194[13]}" controls autoplay muted width="100%" height="100%" style="display: block;object-fit: cover;"></video>
+                    </div>
+                </if>
+            </div>
+        </div>
+    </div>
+</section>

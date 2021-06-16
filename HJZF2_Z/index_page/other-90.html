@@ -1,0 +1,183 @@
+<!--{$pagename}-->
+<php>
+	if($data480[0]){
+	$color = $data480[0];
+	}
+</php>
+<style>
+	<if condition="$data480[1]">.HJZF2_Z_other_90 {
+		background: url({:getindeximgurl($data480[1])
+	}
+
+	) no-repeat center/cover;
+	}
+
+	</if> 
+	.HJZF2_Z_other_90_t .swiper-pagination span.swiper-pagination-bullet-active{
+		background-color: #{$color};
+	}
+</style>
+<script>
+	var other_90_is_mobile = '<?php echo $data480[5];?>';
+</script>
+
+
+<if condition="$data480[5]">
+
+
+	<section class="HJZF2_Z_other_90 index_pd">
+		<div class="container">
+			<div class="row">
+				<div class="index_title text-center pb40 wow">
+					{$data480[2]}
+				</div>
+				<if condition="$data480[6]">
+					<!-- 电脑端切换 -->
+					<div class="nav-hidden-mobile">
+						<if condition="$data480[4]">
+							<a href="{$data480[4]}">
+						</if>
+						<div class="HJZF2_Z_other_90_t swiper-container">
+							<php>
+								$arra = get_list_val($data480[3]);
+							</php>
+							<ul class="swiper-wrapper">
+								<volist name="arra" id="a">
+									<li class="swiper-slide">
+										<img src="{$a[img]}" alt="" class="img-fluid">
+									</li>
+								</volist>
+							</ul>
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+					<!-- 电脑端切换 -->
+					<else />
+					<!-- 电脑端不切换 -->
+					<div class="nav-hidden-mobile">
+						<if condition="$data480[4]">
+							<a href="{$data480[4]}">
+						</if>
+						<ul class="HJZF2_Z_other_90_wrapper hoverimg col-xs-12 wow fadeInDown">
+							<php>
+								$arr = get_list_val($data480[3]);
+							</php>
+							<volist name="arr" id="a">
+								<li>
+									<img src="{$a[img]}" class="img-fluid">
+									<if condition="$a[imgh]">
+										<style>
+											.hoverimg li {
+												position: relative;
+											}
+											.hoverimg li img.imgh {
+												position: absolute;
+												left: 50%;
+												top: 50%;
+												transform: translate(-50%, -50%);
+												opacity: 0;
+												visibility: hidden;
+												transition: all .5s;
+											}
+											.HJZF2_Z_other_90_wrapper li:hover img.imgh {
+												opacity: 1;
+												visibility: visible;
+											}
+										</style>
+										<img src="{$a[imgh]}" class="img-fluid imgh">
+									</if>
+								</li>
+							</volist>
+						</ul>
+						<if condition="$data480[4]">
+							</a>
+						</if>
+					</div>
+					<!-- 电脑端不切换 -->
+				</if>
+				<div class="nav-hidden-pc HJZF2_Z_other_90_container hoverimg swiper-container">
+					<div class="swiper-wrapper">
+						<volist name="arr" id="b">
+							<div class="swiper-slide">
+								<img src="{$b[img]}" class="img-fluid">
+								<if condition="$b[imgh]">
+									<style>
+										.hoverimg li {
+											position: relative;
+										}
+
+										.hoverimg li img.imgh {
+											position: absolute;
+											left: 50%;
+											top: 50%;
+											transform: translate(-50%, -50%);
+											opacity: 0;
+											visibility: hidden;
+											transition: all .5s;
+										}
+
+										.HJZF2_Z_other_90_wrapper li:hover img.imgh {
+											opacity: 1;
+											visibility: visible;
+										}
+									</style>
+									<img src="{$b[imgh]}" class="img-fluid imgh">
+								</if>
+							</div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<else />
+	<section class="HJZF2_Z_other_90 index_pd">
+		<div class="container">
+			<div class="row">
+				<div class="index_title text-center pb40 wow">
+					{$data480[2]}
+				</div>
+				<if condition="$data480[4]">
+					<a href="{$data480[4]}">
+				</if>
+				<ul class="HJZF2_Z_other_90_wrapper hoverimg col-xs-12">
+					<php>
+						$arr = get_list_val($data480[3]);
+					</php>
+					<volist name="arr" id="a">
+						<li>
+							<img src="{$a[img]}" class="img-fluid">
+							<if condition="$a[imgh]">
+								<style>
+									.hoverimg li {
+										position: relative;
+									}
+
+									.hoverimg li img.imgh {
+										position: absolute;
+										left: 50%;
+										top: 50%;
+										transform: translate(-50%, -50%);
+										opacity: 0;
+										visibility: hidden;
+										transition: all .5s;
+									}
+
+									.HJZF2_Z_other_90_wrapper li:hover img.imgh {
+										opacity: 1;
+										visibility: visible;
+									}
+								</style>
+								<img src="{$a[imgh]}" class="img-fluid imgh">
+							</if>
+						</li>
+					</volist>
+				</ul>
+				<if condition="$data480[4]">
+					</a>
+				</if>
+			</div>
+		</div>
+	</section>
+</if>

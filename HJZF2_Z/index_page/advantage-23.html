@@ -1,0 +1,67 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_advantage_23 {
+        background-color: #{$data374[0]};
+        color: #{$data374[1]};
+    }
+
+    .hjzf_advantage_23_wrapper_list li span img, .hjzf_advantage_23_container li span img {
+        background-color: #{$data374[6]};
+    }
+
+    .hjzf_advantage_23_wrapper:after,
+    .hjzf_advantage_23_wrapper:before,
+    .hjzf_advantage_23_container li:before {
+        background-color: #{$data374[2]};
+    }
+    .hjzf_advantage_23_wrapper_list li span:before{
+        background-color: #{$data374[7]};
+    }
+    .hjzf_advantage_23_wrapper_list li span:after,.hjzf_advantage_23_container li span:after {
+        border-color: #{$data374[3]};
+    }
+
+    .hjzf_advantage_23_wrapper_list li:hover span img {
+        background-color: #{$data374[2]};
+    }
+</style>
+<div class="hjzf_advantage_23 index_pd">
+    <div class="hjzf_advantage_23_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="index_title text-center pb40">{$data374[5]}</div>
+
+                <ul class="col-xs-12 hjzf_advantage_23_wrapper_list hidden-xs hidden-sm">
+                    <php>
+                        $arr = get_list_val($data374[4]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li>
+                            <span>
+                                <img src="{$a[img]}" class="normal" alt="{$a[title]}">
+                            </span>
+                            <p>{$a[title]}</p>
+                        </li>
+                    </volist>
+                </ul>
+
+                <div class="hjzf_advantage_23_container swiper-container col-xs-12 hidden-md hidden-lg hidden-xl">
+                    <div class="swiper-wrapper">
+                        <volist name="arr" id="b">
+                            <ul class="swiper-slide">
+                                <li>
+                                    <span>
+                                        <img src="{$b[img]}" class="normal" alt="{$b[title]}">
+                                    </span>
+                                    <p>{$b[title]}</p>
+                                </li>
+                            </ul>
+                        </volist>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

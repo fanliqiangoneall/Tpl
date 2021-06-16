@@ -1,0 +1,133 @@
+<!--{$pagename}-->
+<style>
+    .hj04_cn_index_products3{width: 100%;padding-top: 30px;margin: auto;padding-bottom: 30px;}
+    .hj04_cn_index_products3 .index_prolist{background:url(../img/prolist.jpg) no-repeat;text-align: center;float: left;width: 237px;height: 31px;}
+    .hj04_cn_index_products3 .index_prolist a {color: #fff;line-height: 31px;font-size: 14px;font-weight: normal;}
+    .hj04_cn_index_products3 .index_prolist:hover {background:url(../img/prolist2.jpg) no-repeat;}
+    .hj04_cn_index_products3 .index_prolist:hover a {text-decoration: unset;}
+    .hj04_cn_index_products3 .index_products_zwbg{width:1190px; margin:auto;padding-top:30px; overflow:hidden; position:relative;}
+    .hj04_cn_index_products3 .index_proleft{width: 305px;float: left;}
+    .hj04_cn_index_products3 .asd2{width:255px; float:left; overflow:hidden; position:relative;border:1px solid #d2d2d2;}
+    .hj04_cn_index_products3 .img2{width:255px; overflow:hidden; position:relative;}
+    .hj04_cn_index_products3 .img2 img{width:255px;height: auto; display:block;cursor: pointer;transition: all 0.6s;}
+    .hj04_cn_index_products3 .asd2:hover .img2 img{transform: scale(1.2);}
+    .hj04_cn_index_products3 .in_proname2 {width:235px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding:10px;background:rgba(0,0,0,0.7);text-align: center;}
+    .hj04_cn_index_products3 .in_proname2 a{ display:block;color:#fff; white-space:nowrap; font-size:18px; line-height:24px; font-weight:normal;width:235px; overflow:hidden; text-overflow:ellipsis; }
+</style>
+<if condition="$data39[1]">
+    <style>
+        .hj04_cn_index_products3 .index_proleft{
+            width: 265px;height: auto;padding: 20px;
+            background: url({:getindeximgurl($data39[1])}) no-repeat center;
+        }
+        .hj04_cn_index_products3 .index_proleft_title{
+            width: 100%;height: 90px;margin-top:20px;line-height: 90px;color: #{$data39[2]};font-size:24px;font-weight:normnal;padding-left:30px;
+            background: url({:getindeximgurl($data39[3])}) no-repeat left;
+        }
+        .hj04_cn_index_products3 .index_proleft_list{margin-top: 30px;margin-bottom: 20px;}
+        .hj04_cn_index_products3 .index_proleft_list li{
+			margin-bottom: 10px;
+			width: 100%; 
+			border-radius:3px;
+			background:#{$color};
+		}
+        .hj04_cn_index_products3 .index_proleft_list li a h3{
+            font-weight:bold;padding:9px 10px;line-height:20px;font-size: 14px;color: #ffffff;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;
+        }
+        .hj04_cn_index_products3 .index_proleft>a{
+        font-size:14px;line-height:20px;padding-left:10px;font-weight:bold;color: #{$data39[2]};
+        }
+        .hj04_cn_index_products3 .index_proleft>a:hover{text-decoration: underline;}
+    </style>
+</if>
+<div class="hj04_cn_index_products3">
+    <div class="container">
+        <div class="serviceTopContainer">
+            <div class="serviceLeft lf">
+                <div class="serviceTopTitle">{$data39[0]}</div>
+                <div class="serviceTopTips">Product Dispaly</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="index_products_zwbg" id="pic">
+                <div class="index_proleft">
+                    <h3 class="index_proleft_title">{$data39[4]}</h3>
+                    <ul class="index_proleft_list">
+                        <volist name="allclass" id="allclass_three" offset="0" length="16">
+                            <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_three['pcid'])}">{$allclass_three['class_name']}</a></li>
+                        </volist>
+                    </ul>
+                    <a href="{:U('/Product')}">查看更多 ></a>
+                </div>
+
+
+
+            <div style="width: 843px;float: right; height:auto; overflow:hidden; position:relative;">
+                <div id="wrapper_product2">
+                    <ul>
+                        <volist empty="" name="indexpro" id="pro" offset="0" length='12'>
+                            <div class="asd2" >
+                                <div class="img2" ><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a>
+                                </div>
+
+                                <div class="in_proname2">
+                                    <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a>
+                                </div>
+
+                            </div>
+                            <if condition="($key+1)%3 eq 0">
+                                <div style="clear:both; width: 100%; height:30px;"></div>
+                                <else/>
+                                <div style="width:32px; height:10px; background:none; float:left;"></div>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+      </div>
+     </div>
+</div>
+<!--<if condition="$data37[2] gt 6">
+    <style>
+        .hj04_cn_index_products3 #wrapper_product2 {
+            overflow: hidden;
+            width: 843px;
+            height: 480px;
+            position: relative;
+            margin: auto;
+        }
+        .hj04_cn_index_products3 #wrapper_product2 ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3372px;
+        }
+        .hj04_cn_index_products3 #wrapper_product2 li {
+            float: left;
+            width: 843px;
+            list-style: none;
+            padding-right: 0;
+        }
+        .hj04_cn_index_products3 .product_three_icon{width: 100%;text-align: center;}
+        .hj04_cn_index_products3 #pro_left_icon,.hj04_cn_index_products3 #pro_right_icon{
+            display: block;
+            margin-top: 20px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            border: none;
+        }
+        .hj04_cn_index_products3 #pro_left_icon:hover,.v #pro_right_icon:hover{cursor: pointer}
+        .hj04_cn_index_products3 #pro_left_icon{
+            background: url({:getindeximgurl($data37[3])}) no-repeat center;
+        }
+        .hj04_cn_index_products3 #pro_right_icon{
+            background: url({:getindeximgurl($data37[4])}) no-repeat center;
+        }
+    </style>
+</if>-->
+
+   
+
+   

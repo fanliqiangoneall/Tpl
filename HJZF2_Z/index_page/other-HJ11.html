@@ -1,0 +1,63 @@
+<!--{$pagename}-->
+<style>
+
+    .HJZF_Z_other_HJ11 {
+        background: url({:getindeximgurl($data254[0])}) no-repeat center top/100%;
+        max-height:100vh;
+    }
+    .HJZF_Z_other_HJ11,
+    .HJZF_Z_other_HJ11 a {
+        color: #{$data254[1]};
+    }
+    .HJZF_Z_other_HJ11_cont a,.HJZF_Z_other_HJ11_cont{
+        color: #{$data254[2]};
+    }
+    @media(min-width: 1500px){
+        .HJZF_Z_other_HJ11_cont li{
+            background-size: cover !important;
+        }
+    }
+    @media(max-width: 768px) {
+        .HJZF_Z_other_HJ11 {
+            max-height: 65vh; 
+            background: #{$data254[21]};
+            background-size: 100% 40% !important;
+        }
+        .HJZF_Z_other_HJ11_cont{
+            color: #{$data254[1]};
+        }
+    }
+</style>
+<section class="HJZF_Z_other_HJ11 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+           <div class="text-center pb40">
+               <div class="index_title">
+                    {$data254[3]}
+               </div>
+               <div class="sub_title pb20">
+                    {$data254[4]}
+               </div>
+           </div>
+           <ul class="HJZF_Z_other_HJ11_cont">
+                <php>
+                for($i=5,$j=17;$i<16,$j<21;$i=$i+3,$j=$j+1){
+                </php>
+                <if condition="$data254[$i]">
+                    <li style="background: url({:getindeximgurl($data254[$i+2])}) no-repeat center" class="wow fadeInRight" data-wow-delay=".{$i-5}s">
+                        <a href="{$data254[$j]}">
+                        <img src="{:getindeximgurl($data254[$i+2])}" class="img-fluid hidden-pc" alt="{$data254[$i]}">
+                        <div class="other_HJ11_info">
+                            <span>{$data254[$i]}</span>
+                            <p>{$data254[$i+1]}</p>
+                        </div>
+                    </a>
+                    </li>
+                </if>
+               <php>}</php>
+           </ul>
+        </div>
+    </div>
+</div>
+</section>

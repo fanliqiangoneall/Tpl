@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<if condition="$data721[0]">
+    <style>
+        .new_hjzf_product38{
+            background: url({:getindeximgurl($data721[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+.new_hjzf_product38_pagination .swiper-pagination-bullet-active,.new_hjzf_product38__proMask{
+	background:#{$color};
+}
+.new_hjzf_product38__classname h3{
+	color:#{$color};
+}
+</style>
+<php>
+    $time = $data721[3] ? $data721[3]:3000;
+    $num = $data721[5] ? $data721[5]:4;
+</php>
+<script>
+    var protime_38 = '<?php echo $time ?>';
+    var pro_num_38 = '<?php echo $num ?>';
+</script>
+<section class="new_hjzf_product38 index_pd">
+    <div class="new_hjzf_product38_title">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                <div class="new_hjzf_product38_title--main index_title pb20 wow fadeInDown" data-wow-delay=".1s">{$data721[1]}</div>
+                <div class="new_hjzf_product38_title--desc index_sub_title pb40 wow fadeInDown" data-wow-delay=".2s">{:HtmlEncode($data721[2])}</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <if condition="$data721[4]">
+        <div class="container">
+            <div class="row">
+        </if>
+    <div class="col-xs-12 new_hjzf_product38_Content wow fadeInUp" data-wow-delay=".3s">
+        <div class="new_hjzf_product38_productWrap">
+            <div class="new_hjzf_product38_product swiper-container">
+                <div class="swiper-wrapper">
+                    <php>
+                        if($data721[6]){
+                            $pro_list = $indexhotpro;
+                        }else{
+                            $pro_list = $indexpro;
+                        }
+                    </php>
+                    
+                    <volist empty="" name="pro_list" id="indexprohjzf_products_HJ01" key="k" offset="0" length="12">
+                    <div class="swiper-slide new_hjzf_product38_productItem">
+                        <div class="new_hjzf_product38_productItemBox">
+                            <div class="new_hjzf_product38_productItemBox_img"><a href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}"><img src="{:getmainimgurl($indexprohjzf_products_HJ01['main_img'])}" <if condition="$indexprohjzf_products_HJ01['proalt'] neq ''">alt="{$indexprohjzf_products_HJ01['proalt']}"<else/>alt="{$indexprohjzf_products_HJ01['pro_name']}"</if> /></a></div>
+                            <div class="new_hjzf_product38_productItemBox_name">
+                                <a href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}"><h3 class="index_sub_title">{$indexprohjzf_products_HJ01['pro_name']}</h3></a>
+                            </div>
+                            <php>
+                                $class_id = $indexprohjzf_products_HJ01['class_id'];
+                                $class_name = get_index_products_categoryname($class_id)['class_name'];
+                            </php>
+                            <div class="new_hjzf_product38__classname"><h3 class="index_text">{$class_name}</h3></div>
+                            <a href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}">
+                            <div class="new_hjzf_product38__proMask">
+                                 <div class="new_hjzf_product38__proMask__name new_hjzf_product38__proMask__font index_sub_title">{$indexprohjzf_products_HJ01['pro_name']}</div>
+                                 <div class="new_hjzf_product38__proMask__desc new_hjzf_product38__proMask__font index_text">{:subtxt($indexprohjzf_products_HJ01['pro_description'],200)}</div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    </volist>
+                </div>
+            </div>
+            <div class="swiper-pagination new_hjzf_product38_pagination"></div>
+        </div>
+    </div>
+    <if condition="$data721[5]">
+        </div>
+        </div>
+    </if>
+    <div class="clear"></div>
+</section>

@@ -1,0 +1,140 @@
+<style>
+    .left_img,
+    .right_info {
+        width: 100%;
+    }
+
+    @media(min-width:1200px) {
+
+        .left_img,
+        .right_info {
+            width: 50%;
+        }
+
+    }
+
+    .right_info {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+
+    .right_info span {
+        font-size: 18px;
+        font-weight: bold;
+        font-size: 30px;
+        color: #999999;
+    }
+
+    .right_info a.name {
+        line-height: 45px;
+        margin-top: 23px;
+        padding-bottom: 25px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #eaeaea;
+        font-size: 30px;
+        color: #020202;
+        overflow: hidden;
+        font-weight: 500;
+    }
+
+    .right_info p {
+        min-height: 90px;
+        margin-top: 34px;
+        font-size: 14px;
+        color: #020202;
+        line-height: 24px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .right_info a.more {
+        text-align: left;
+        line-height: 25px;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    .news_list_wrapper {
+        padding-bottom: 50px;
+        margin-top: 30px;
+    }
+
+    .news_list_wrapper .swiper-slide {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .news_list_wrapper .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+    }
+
+    .news_list_wrapper .swiper-pagination-bullet-active {
+        background: #{$inner_data[1]};
+    }
+
+    @media (max-width: 768px) {
+        .right_info span{
+            font-size: 14px;
+        }
+        .right_info a.name{
+            font-size: 18px;
+            line-height: 36px;
+            height: 53px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        .right_info p {
+            margin-bottom: 15px;
+            margin-top: 15px;
+            min-height: 50px;
+        }
+    }
+</style>
+<if condition="$inner_data[2]">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="swiper-container news_list_wrapper">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arr_stra=$inner_data[2]; $arra=explode(',',$arr_stra); foreach($arra as $ka=>$as){
+                            $lista[$ka]=get_news_byid($as); }
+                        </php>
+                        <volist name="lista" id="indexnewb">
+                            <div class="swiper-slide">
+                                <div class="left_img">
+                                    <img src="{:getimgurl($indexnewb[0]['new_pro'])}" width="100%"
+                                        class="transition-ease">
+                                </div>
+                                <div class="right_info">
+                                    <span>{:date('y-m-d',$indexnewb[0]['created'])}</span>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnewb[0]["nid"]))}"
+                                        class="ellipsis_two name">{$indexnewb[0]['title']}</a>
+                                    <p>{$indexnewb[0]['news_description']}</p>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnewb[0]["nid"]))}" class="more"> <img src="__TMPL__HJZF2_Z/img/in_news_sj.svg" border="0" style="vertical-align:top; margin-top:7px; margin-right:8px;"> {:__('Read More')}</a>
+                                </div>
+
+                            </div>
+                        </volist>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination news_list_pagination"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</if>
+<block name="footer_js">
+    <script>
+        require(['jquery', 'swiper'], function ($, Swiper) {
+            var swiper = new Swiper('.news_list_wrapper', {
+                pagination: {
+                    el: '.news_list_pagination',
+                    clickable: true
+                }
+            });
+        });
+    </script>
+</block>

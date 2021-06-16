@@ -1,0 +1,77 @@
+<!--{$pagename}-->
+
+<style>
+    .new_hjzf_aboutus3 .hj05-abus-title1{
+        
+        color: #{$data48[6]};
+    }
+    .new_hjzf_aboutus3 .index_abus_more,.new_hjzf_aboutus3 .new_hjzf_aboutus3_pagination .swiper-pagination-bullet-active{
+        background: #{$data48[6]};
+    }
+	.new_hjzf_aboutus3_pic li:hover img{
+		transform: scale(1.05);
+	}
+	.new_hjzf_aboutus3_pic li img{
+		transition: all .5s;
+	}
+</style>
+<if condition="$data48[7]">
+    <style>
+        .new_hjzf_aboutus3 .HJ05-aboutus-box{
+            background: url({:getindeximgurl($data48[7])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+
+<!--about us start-->
+<div class="hj-aboutus HJ05-aboutus-box index_pd">
+    <div class="container">
+        <div class="row">
+        	<div class="new_hjzf_aboutus3_body clearfix">
+                <div class="col-xs-12 col-lg-6 aboutus3-left wow fadeInLeft">
+                    <div class="HJ05-aboutus-box-left">
+                        <if condition="$data48[1]"><h4 class="hj05-abus-title1 index_text pb20 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0">{$data48[1]}</h4></if>
+                        <h3 class="hj05-abus-title2 index_title pb20 wow fadeInLeft index_title" data-wow-duration="1s" data-wow-delay="0">{$data48[0]}</h3>
+                        <div class="hj05_abus_left_content index_text pb40 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <div>{:HtmlEncode($company_info['description'])}</div>
+                        </div>
+                        <a <if condition="$data48[3]">href="{$data48[3]}"<else/>href="{:U('/aboutus')}"</if> class="index_abus_more wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s" ><if condition="$data48[2]">{$data48[2]}<else/>Contact Us</if><i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-offset-1 col-lg-5 aboutus3-right wow fadeInRight">
+                    <div class="HJ05-aboutus-box-right wow fadeInRight" data-wow-duration="1s" data-wow-delay="0">
+                        <div class="hj05_abus_right_content">
+                            <div class="swiper-container new_hjzf_aboutus3_pic">
+                                <div class="swiper-wrapper">
+                                    <php>
+                                        $imgs=aboutusimg();
+                                        if(!$data48[5]){
+                                        $data48[5]=3;
+                                        }
+                                        $arr = get_list_val($data48[8]);
+                                       
+                                    </php>
+                                    <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data48[5]">
+                                        <if condition="$arr">
+                                            <if condition="$banerimg['imgurl'] neq ''">
+                                                <li  class="swiper-slide"><a href="javascript:void(0);" id="adv_video{$k1}" data-video="{$arr[$k1-1]['src']}"><img src="{$banerimg['imgurl']}" alt="{$data48[1]}" border="0" width="100%" height="auto"/></a></li>
+                                            </if>
+                                        <else/>
+                                            <if condition="$banerimg['imgurl'] neq ''">
+                                                <li  class="swiper-slide"><a href="javascript:void(0);" <if condition="$data48[4]">id="adv_video{$k1}" data-video="{$data48[4]}"</if>    ><img src="{$banerimg['imgurl']}" alt="{$data48[1]}" border="0" width="100%" height="auto"/></a></li>
+                                            </if>
+                                        </if>
+                                        
+                                    </volist>
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination new_hjzf_aboutus3_pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--about us end-->

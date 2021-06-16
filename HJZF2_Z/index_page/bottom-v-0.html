@@ -1,0 +1,268 @@
+<!--{$pagename}-->
+<php>
+    if($data723[12]){
+        $text_color = $data723[12];
+    }
+</php>
+<style>
+    <if condition="$data723[3]">
+.HJZF2_Z__bottom{
+    background: url({:getindeximgurl($data723[3])}) no-repeat center;background-size: cover;
+}
+</if>
+.bottomInfo__more{
+    background: #{$data723[2]};
+}
+.bottomInfo__context,.classInfo__list li a h2,.contctInfo ul li span,.contctInfo ul li span:nth-of-type(2n),.contctInfo ul li a,.productInfo__list li a,.productInfo__list li a h3,.HJZF2_Z__bottom__copyright--left, .HJZF2_Z__bottom__copyright--right, .HJZF2_Z__bottom__copyright--left a, .HJZF2_Z__bottom__copyright--right a,.HJZF2_Z__bottomItem__title{
+    color: #{$text_color};
+}
+</style>
+<if condition="C('Language') neq 'cn' and C('Language') neq 'zh'">
+    <style>
+    .contctInfo ul li span:first-child{margin-right: 5px;}
+</style>
+</if>
+<footer class="HJZF2_Z__bottom">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__bottom_content">
+                <div class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF2_Z__bottomItem bottomInfo">
+                    <div class="bottomInfo__logo">
+                        <img src="{:getindeximgurl($data723[0])}" alt="foot logo"/>
+                    </div>
+                    <if condition="$data723[1]">
+                        <div class="bottomInfo__context">
+                            {:HtmlEncode($data723[1])}
+                        </div>
+                    </if>
+                    <if condition="$data723[9]">
+                        <div class="bottomInfo__logo"><img src="{:getindeximgurl($data723[9])}" alt="foot logo"/></div>
+                    </if>
+                    <if condition="$data723[8]">
+                        <a href="{$data723[8]}" class="bottomInfo__more">{:__('Read More')}</a>
+                        <else/>
+                        <a href="{:U('/aboutus')}" class="bottomInfo__more">{:__('Read More')}</a>
+                    </if>
+
+                </div>
+				<div class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF2_Z__bottomItem productInfo">
+					<div class="HJZF2_Z__bottomItem__title index_title">{$data723[4]}</div>
+					<ul class="productInfo__list">
+						<php>
+							if(!$data723[7]){
+							$bot_leng=6;
+						}else{
+						$bot_leng=$data723[7];
+					}
+				</php>
+				<volist empty="" name="allclass" id="allclassDown" offset="0" length="$bot_leng">
+					<li>
+						<a href="{:U('/product_category','','')}/{:getprocatename($allclassDown['pcid'])}">{$allclassDown['class_name']}</a>
+					</li>
+				</volist>
+			</ul>
+		</div>
+                <div class="hidden-xs hidden-sm  hidden-md col-lg-3 HJZF2_Z__bottomItem classInfo">
+                    <div class="HJZF2_Z__bottomItem__title index_title">{$data723[5]}</div>
+                    <ul class="classInfo__list lzy_xq">
+						<php>
+							$arr = get_list_val($data723[22]);
+							</php>
+							<volist name="arr" id="a">
+								<li>
+									<img src="{$a[ico]}" alt="">
+								</li>
+							</volist>
+                    </ul>
+                </div>
+                <div class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF2_Z__bottomItem contctInfo">
+                    <div class="HJZF2_Z__bottomItem__title index_title">{$data723[6]}</div>
+                    <ul>
+                        <if condition="$about['contact']">
+                            <li>
+                                <if condition="$data723[14]">
+                                    <img src="{:getindeximgurl($data723[14])}" alt="{:__('Contact: ')}" >
+                                </if>
+                                <span>{:__('Contact: ')}</span>
+                                <span>
+                                    {:chaifen($about['contact'],0)}&nbsp;&nbsp;{:chaifen($about['contact'],1)}&nbsp;&nbsp;{:chaifen($about['contact'],2)}
+                                </span>
+                            </li>
+                        </if>
+                        <if condition="$about['email']">
+                            <li>
+                                <if condition="$data723[15]">
+                                    <img src="{:getindeximgurl($data723[15])}" alt="{:__('Email: ')}">
+                                </if>
+                                <span>{:__('Email: ')}</span>
+                                <span>
+                                    <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],0)}</a>
+                                </span>
+                            </li>
+                        </if>
+                        <if condition="$about['mobile']">
+                            <li>
+                                <if condition="$data723[16]">
+                                    <img src="{:getindeximgurl($data723[16])}" alt="{:__('Mobile: ')}">
+                                </if>
+                                <span>{:__('Mobile: ')}</span>
+                                <span>
+                                    {:chaifen($about['mobile'],0)}
+                                </span>
+                            </li>
+                        </if>
+                        <if condition="$about['phone']">
+                            <li>
+                                <if condition="$data723[17]">
+                                    <img src="{:getindeximgurl($data723[17])}" alt="{:__('Tel: ')}">
+                                </if>
+                                <span>{:__('Tel: ')}</span>
+                                <span>
+                                    {:chaifen($about['phone'],0)} &nbsp; {:chaifen($about['phone'],1)}
+                                </span>
+                            </li>
+                        </if>
+                        <if condition="$about['whatsapp']">
+                            <li>
+                                <if condition="$data723[18]">
+                                    <img src="{:getindeximgurl($data723[18])}"  alt="{:__('WhatsApp: ')}">
+                                </if>
+								<if condition="$webid eq '1829'">
+									<span>WhatsApp / Wechat: </span>
+									<else/>
+									<span>{:__('WhatsApp: ')}</span>
+								</if>
+                                <span>
+                                    <a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" target="_blank" onclick="turn_sta(8,2);">
+                                        +86-{:chaifen($about['whatsapp'],0)}</a>
+                                </span>
+                            </li>
+                        </if>
+                        <if condition="$about['fax']">
+                            <li>
+                                 <if condition="$data723[19]">
+                                    <img src="{:getindeximgurl($data723[19])}" alt="{:__('Fax: ')}">
+                                </if>
+                                <span>{:__('Fax: ')}</span>
+                                <span>
+                                    {:chaifen($about['fax'],0)}
+                                </span>
+                            </li>
+                        </if>
+                        <if condition="$about['address']">
+                            <li>
+                                <if condition="$data723[20]">
+                                    <img src="{:getindeximgurl($data723[20])}" alt="{:__('Add: ')}">
+                                </if>
+                                <span>{:__('Add: ')}</span>
+                                <span>
+                                    {$about['address']}
+                                </span>
+                            </li>
+                        </if>
+                    </ul>
+
+                    <div class="contctInfo__social">
+                        <if condition="$data723[11]">
+                            <php>
+                                $arr = get_list_val($data723[11]);
+                            </php>
+                            <volist name="arr" id="a">
+                                <a href="{$a[link]}" target="_blank">
+                                 <img src="{$a[ico]}"/>
+                             </a>
+                         </volist>
+                     </if>
+                 </div>
+
+             </div>
+            
+    <div class="clear"></div>
+</div>
+</div>
+</div>
+<div class="HJZF2_Z__bottom__copyrightContent">
+    <div class="container">
+        <div class="row">
+            <!-- pc -->
+            <div class="col-xs-12 col-lg-6 HJZF2_Z__bottom__copyright--left nav-hidden-mobile">
+                <php>
+                    $nowtime=date("Y",time());
+                    if(!$data723[10]){
+                    $currtime=2019;
+                }else{
+                $currtime=$data723[10];
+            }
+        </php>
+        <if condition="C('webid') eq '1580'">CopyRight&nbsp;©<elseif condition="$nowtime gt $currtime" />CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+        &nbsp; {$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>        <if condition="$data723[13]">
+			<a  style="white-space:nowrap;" href="http://beian.miit.gov.cn/" title="备案号" target="_blank">{$data723[13]}</a>
+		</if>
+    </div>
+    
+    <div class="col-xs-12 col-lg-6 HJZF2_Z__bottom__copyright--right nav-hidden-mobile">
+        <a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;<if condition="$data723[21] eq ''"><if condition="C('language') eq 'cn'">
+		<if condition="$data50[15] eq ''">
+            <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+        </if>
+		<else/>
+		<if condition="$data50[15] eq ''">
+				<a href="https://www.one-all.com" title="Zhonghuan Internet"  target="_blank" data="{$data50[15]}">{:__('Designed by Zhonghuan Internet')}</a>
+		</if>
+		</if>
+        </if>
+    </div>
+            <!-- pc -->
+<!-- 移动端 -->
+    <div class="col-xs-12 nav-hidden-pc bottom_mobile">
+        <php>
+            $nowtime=date("Y",time());
+            if(!$data723[10]){
+            $currtime=2019;
+        }else{
+        $currtime=$data723[10];
+    }
+</php>
+<if condition="C('webid') eq '1580'">CopyRight&nbsp;©<elseif condition="$nowtime gt $currtime" />CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+&nbsp; {$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>        <if condition="$data723[13]">
+    <a  style="white-space:nowrap;" href="http://beian.miit.gov.cn/" title="备案号" target="_blank">{$data723[13]}</a>
+</if>
+<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;<if condition="$data723[21] eq ''"><if condition="C('language') eq 'cn'">
+    <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+		<if condition="$data50[15] eq ''">
+		中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+		</if>
+    <else/>
+	<if condition="$data50[15] eq ''">
+   	 <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by Zhonghuan Internet</a>
+	</if>
+</if>
+</if>
+
+    </div>
+<!-- 移动端 -->
+
+    <div class="clear"></div>
+    
+</div>
+</div>
+</div>
+<if condition="$friend_link neq ''">
+    <div class="HJZF2_Z__bottom__friendlink">
+    	<div class="container">
+            <div class="row">
+                <div class="HJZF2_Z__bottom__link"><span style="float:left; margin-right:5px;">{:__('FriendLink: ')}</span>
+                  <volist name="friend_link" id="friend_link">
+                      <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                          <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                      </if>
+                  </volist>     
+                  <div style="clear:both"></div>
+              </div>
+              <div class="clear"></div>
+          </div>
+      </div>
+  </div>
+</if>
+
+</footer>

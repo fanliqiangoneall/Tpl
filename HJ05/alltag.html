@@ -1,0 +1,61 @@
+<extend name="HJ05:basein" />
+<block name="content">
+	<style>
+		.Breadcrumbs span.current{
+			color: #{$data47[9]};
+		}
+	</style>
+	<div id="wrapper" style="background: #fff">
+		<div id="inbanner_box">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="in_banner" style="background:url({:getindeximgurl($data47[10])}) center no-repeat"></div>
+			</if>
+			<div class="page-title-inner flex">
+				<div class="container">
+					<div class="Breadcrumbs">
+						<div class="Breadcrumbs_top_title">All tags</div>
+						<div class="Breadcrumbs_down">
+							<a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">All tags</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page_nei_main" id="main-content-wrapper">
+
+			<section class="main-content-right2">
+				<div class="page_nei_main">
+					<div class="page_RightMain">
+						<div class="page_Main">
+							<h3 class="nosecrch_title margin-40px-bottom">KEY WORDS</h3>
+							<volist name="labels" id="label">
+								<a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+							</volist></div>
+						<div style="clear:both;height: 50px;"></div>
+					</div>
+				</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

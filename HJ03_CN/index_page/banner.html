@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<php>
+    if(!$data3[0]){
+    $data3[0]=574;
+    }
+</php>
+<style>
+
+    .hj03-banner1-box{
+        height: {$data3[0]}px;
+    }
+    .hj03-banner1-prev:hover,.hj03-banner1-next:hover{
+        background: #{$color};
+    }
+    #HJ02-banner1 .slick-dots li.slick-active button:before{
+        background: #{$color};opacity: 1;
+    }
+    .HJ02-banner1-box_other ul li:hover h4 a:before{
+       content: '';width: 100%;height: 2px;display: table;position: absolute;;bottom: -2px;left: 0;background: #{$color};transition: .6s;
+    }
+</style>
+<if condition="$data3[1] neq ''">
+    <style>
+        .hj03-banner1-box{
+            margin-bottom: 0;
+        }
+    </style>
+</if>
+
+
+
+
+
+
+
+<section class="hj03-banner1-box">
+    <if condition="count($banner) gt 1">
+        <div class="swiper-container hj03-banner" id="hj03-banner">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k">
+                    <div class="swiper-slide hj03-banner1-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="display: block;width: 100%;height: 100%"></a>
+                    </div>
+                </volist>
+            </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination hj03-banner1-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next hj03-banner1-next"><i class="fa fa-angle-right"></i></div>
+        <div class="swiper-button-prev hj03-banner1-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+    <else/>
+    <div style="height: 100%">
+        <volist name="banner" id="banner_pic" key="k">
+            <div class="hj03-banner1-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;height:100%">
+                <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="display: block;width: 100%;height: 100%"></a>
+            </div>
+        </volist>
+    </div>
+
+    </if>
+
+
+    <div class="HJ03-banner1-box_other"<if condition="$data3[1] eq ' '">style="display:block"<else/>style="display:none"</if>>
+        <div class="container">
+            <ul>
+                <php>
+                    for($ban=2;$ban<13;$ban=$ban+3){
+                </php>
+                <if condition="$data3[$ban] neq ''">
+                    <li class="hj03_shuzi" id="count{$ban}">
+                        <p>
+                            <span class="count_shuzi" data-counter-time="2000" >{$data3[$ban]}</span>
+                            <span class="count_shuzi_unit">{$data3[$ban+1]}</span>
+                        </p>
+                        <p class="count_shuzi_desc">{$data3[$ban+2]}</p>
+                    </li>
+
+                </if>
+
+                <php>}</php>
+            </ul>
+        </div>
+    </div>
+</section>

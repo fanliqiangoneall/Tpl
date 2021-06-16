@@ -1,0 +1,76 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_service-9{
+        width: 100%;
+        background-color: rgba(0,67,134,.85);
+        position: relative;
+		overflow:hidden;
+    }
+    .service-9_hovercolor{
+        color: #{$data238[6]};
+    }
+</style>
+<php>
+    $arr = get_list_val($data238[34]);
+</php>
+<section class="hjzf2_service-9">
+    <div class="servise">
+        <php>
+            for($t=0;$t<5;$t=$t+1){
+        </php>
+        <if condition="$data238[$t]"><img src="{:getindeximgurl($data238[$t])}" alt="{$data238[7]}"/></if>
+        <php>}</php>
+        <div class="service-9_head">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-3 head_left ">
+                        <div class="index_title pb20 service-9_hovercolor">{$data238[7]}</div>
+                        <div class="index_sub_title service-9_color">{$data238[8]}</div>
+                    </div>
+                    <div class="col-xs-12 col-lg-3 head_right pull-right">
+                        <div class="right_text service-9_color_an">{:HtmlEncode($data238[9])}</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="service-9_body">
+                    <div class="swiper-container service-9_swiper">
+                        <div class="swiper-wrapper">
+                            <php>
+                                $time=0;
+                                for($s=10,$n=0;$s<33;$s=$s+4){
+                                $n = $n+1;
+                                $time = $time+0.2;
+                            </php>
+                            <if condition="$data238[$s]">
+                                <div class="swiper-slide service-9_slide wow fadeInUpBig" data-wow-delay="{$time}s">
+                                    <div class="serviseItemItem">
+                                        <div class="serviseItemTop">
+                                            <if condition="$arr[$n][img]">
+                                            <div class="server_img">
+                                                <img src="{$arr[$n][img]}" alt="{$data238[$s]}">
+                                            </div>
+                                            </if>
+                                            <div class="serviseBodyMaintit service-9_color ellipsis_one">{$data238[$s]}</div>
+                                            <div class="serviseBodySubtit service-9_color ellipsis_one">{$data238[$s+1]}</div>
+                                            <div class="serviseBodyFt ellipsis_three">{:HtmlEncode($data238[$s+2])}</div>
+                                            <div class="serviseNum">0{$n}</div>
+                                            <div class="serviseMask"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </if>
+                            <php>}</php>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

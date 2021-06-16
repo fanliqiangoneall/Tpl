@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+<style>
+    #hj01_news{
+        background: url({:getindeximgurl($data8[2])}) no-repeat center;background-size: cover;
+    }
+    #index_product_title_left3 h3{
+        font-size: 30px;
+    }
+    /*#index_product_title_left3 h3{
+        color: #{$color};
+    }*/
+    #index_newslist .slick-dots li.slick-active button:before{
+    color: {$data1[0]}}
+    #index_newslist .slick-dots li:hover button:before{
+    color: {$data1[0]}
+    }
+    #index_newslist .slick-prev:hover:before,  #index_newslist .slick-next:hover:before{
+        color: {$data1[0]};
+    }
+</style>
+<!--news start-->
+<div id="hj01_news">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left">
+                <div id="index_product_title_left3"><h3>{$data8[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right3">
+                    <a href="{:U('/news')}" class="index_product_more font-weight-700">{$data8[1]}</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section class="index_newslist_wai">
+            <div id="index_newslist">
+                <volist name="indexnews" id="indexnews" offset="0" length="6" key="h">
+                    <div class="index_newsitem">
+                        <div class="index_newsitem_box">
+                            <div class="index_newsitem_img">
+                                <if condition="$indexnews['new_pro'] neq ''"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" >
+                                    <img src="{:getimgurl($indexnews['new_pro'])}" border="0" /></a>
+
+                                <else/>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" > <img src="{:getindeximgurl($data1[11])}" border="0" /></a>
+                                </if>
+                            </div>
+                            <div class="index_newsitem_down">
+                                <div class="index_newsdate margin-5px-bottom"><span>{:date('Y-m-d ',$indexnews['created'])}</span></div>
+                                <div class="index_newsitem_title margin-10px-bottom"><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" >{:subtxt($indexnews['title'],14)}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!--news end-->
+

@@ -1,0 +1,68 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,.InsidePages_content-right_content_title{
+            color: #{$color};
+        }
+        .InsidePages_content2_commontitle span{
+            border-bottom: 3px solid #{$color};
+        }
+        .InsidePages_content2_commontitle{
+            color:#{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/news')}">{:__('News')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Comment lists')}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <section class="col-xs-12 InsidePages_content-right2">
+                        <h2 class="InsidePages_content2_commontitle"><span>{:__('Comment lists')}</span></h2>
+                        <div class="InsidePages_content-right_content">
+                                <div class="InsidePages_content-right_content-main">
+                                    <volist name="list" id="list" key="k">
+                                        <div style="width:100%;padding:10px 0;border-bottom: 1px solid #e2e2e2">
+                                            <div style="float:left;padding-right: 5px;">{$k}. </div>
+                                            <div style="float:left;width:98%;">{$list["content"]}</div>
+                                            <div style="clear:both"></div>
+                                            <div style="text-align:right;padding-top: 15px;">{:date("Y/m/d H:i:s",$list["adddate"])}</div>
+
+                                        </div>
+                                    </volist>
+                                    <div class="main_page">{$page}</div>
+                                </div>
+                                <div style="clear:both"></div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+         </div>
+    </div>
+
+</block>

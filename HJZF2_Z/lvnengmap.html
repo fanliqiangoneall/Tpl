@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      max-height: 100vmin;
+      max-width: 100vmin;
+      margin: 0 auto;
+    }
+
+    .globe {
+      height: 100vmin;
+      width: auto;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+
+    .globe--dragging {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <canvas class="globe" width="1800" height="1600"></canvas>
+  </div>
+
+  <script src="./js/_map/script.js"></script>
+
+
+</body>
+
+</html>

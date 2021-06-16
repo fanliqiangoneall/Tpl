@@ -1,0 +1,71 @@
+<Include file="./Tpl/HJ03/sidebar.html" />
+<script src="__TMPL__HJ03/js/layer/layer.js"></script>
+
+<script type="text/javascript" src="__TMPL__HJ03/js/imagesloaded.min.js"></script>
+<!--Jquery图片延迟加载插件imagesLoaded-->
+<script type="text/javascript" src="__TMPL__HJ03/js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ03/js/jquery.countup.min.js"></script>
+<!--jquery.countup.js是一款轻量级jquery数字动画插件-->
+<script type="text/javascript" src="__TMPL__HJ03/js/slick.min.js"></script>
+<!--jQuery幻灯片插件slick-->
+<script type="text/javascript" src="__TMPL__HJ03/js/jquery.lightbox-0.5.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ03/js/inPage_js.js"></script>
+<script type="text/javascript" src="__TMPL__HJ03/js/proDetail.js"></script>
+<script type="text/javascript" src="__TMPL__HJ03/js/swiper.min.js"></script>
+<script type="text/javascript" src="__TMPL__HJ03/js/imgSwitch.min.js"></script>
+<script type="text/javascript" src="__TMPL__public/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script type="text/javascript" src="__TMPL__HJ03/js/muban.js"></script>
+<script type="text/javascript" src="__TMPL__HJ03/js/jquery_mouse_numgd.js"></script>
+<script>
+
+
+  $('#hj02_video').on('click', function(){
+    var data=$('#hj02_video').attr("data-video");
+    layer.open({
+      type: 2,
+      title: ['video', 'font-size:18px;'],
+      area: ['80%', '80%'],
+      shadeClose: true, //点击遮罩关闭
+      maxmin: true,
+      //content: '__TMPL__ZERO/video/a/demo.htm'
+      content: $('#hj02_video').attr("data-video")
+    });
+  });
+
+
+    $('#payment img').on('click', function(){
+        console.log($(this).parent().attr("href"));
+        var mp4 = $(this).parent().attr("href");
+        if(mp4){
+            if(mp4.indexOf('.mp4')>0){
+                layer.open({
+                    type: 2,
+                    title: ['video', 'font-size:18px;'],
+                    area: ['80%', '80%'],
+                    shadeClose: true, //点击遮罩关闭
+                    maxmin: true,
+                    //content: '__TMPL__ZERO/video/a/demo.htm'
+                    content: data
+                });
+                return false;
+            }else if(mp4.indexOf('.img')>0 || mp4.indexOf('.png')>0){
+                $('#payment a').has('img').not(".pdf").lightBox();
+            }
+            else
+            {
+               return true;
+            }
+        }
+
+    });
+
+
+</script>
+<script type="text/javascript" src="https://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+  </body>
+</html>
+

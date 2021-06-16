@@ -1,0 +1,76 @@
+<extend name="HJZF2:basein"/>
+<block name="content">
+    <style>
+        .main_newslist li:hover .in_news_name{
+            color: #{$inner_data[0]};
+        }
+        .main_newslist li:hover .in_news_more{
+            color: white;
+            border: none;
+            background: #{$inner_data[0]}
+        }
+    </style>
+    <div class="inner_module2_news_page" id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+            <if condition="$newscate['banner'] neq '0'">
+                <div class="inner_module2__in_banner" style="background:url({:getimgurl($newscate['banner'])}) center no-repeat"></div>
+                <elseif condition="$banner neq ''"/>
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+                <div class="inner_module2__bread">
+                    <div class="container">
+                        <div class="Breadcrumbs">
+                            <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                                href="{:U('/news')}">{:__('News')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+            <section class="inner_module2__inPage-left">
+                <Include file="./Tpl/HJZF2/newsleft_2.html" />
+            </section>
+            <section class="inner_module2__inPage-right">
+                    <div class="inner_module2__inPageRight-content">
+                        <div class="inner_module2__inPageRight-content-box">
+                            <div class="inner_module2__inPage-list">
+                                <if condition="$newscatelist neq ''">
+                                    <ul class="main_newslist ul_li_list" data-myli="1">
+                                        <else/>
+                                        <ul class="main_newslist ul_li_list" data-myli="0">
+                                </if>
+                                        <volist name="newscatelist" id="newscatelist">
+                                            <li id="new_list{$key}">
+                                                <div class="main_newsimg">
+                                                    <a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}" onFocus="blur()" ><img <if condition="$newscatelist['new_pro']">src="{:getimgurl($newscatelist['new_pro'])}"<else/>src="{:getindeximgurl($inner_data[2])}"</if> border="0" /></a>
+                                                </div>
+                                                <div class="main_news_right" style="height: 131px">
+                                                    <a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}">
+                                                    <div class="in_news_name">{:subtxt($newscatelist['title'],40)}</div>
+                                                    <div class="in_news_jj">{:HtmlEncode(subtxt($newscatelist['news_description'],120))}</div>
+                                                    <div class="in_news_more">{:__('Read More')}</div>
+                                                    </a>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+
+            </section>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</block>

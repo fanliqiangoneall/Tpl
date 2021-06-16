@@ -1,0 +1,88 @@
+.hjzf2_other_66_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.hjzf2_other_66_wrapper li span{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 70px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #666666;
+}
+.hjzf2_other_66_pagination{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+     
+}
+.hjzf2_other_66_pagination div.hjzf2_other_66_pa_gin{
+    position: relative;
+}
+.hjzf2_other_66_pagination div.hjzf2_other_66_pa_gin:after{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    content:'';
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+}
+.hjzf2_other_66_container{
+    padding-bottom: 20px;
+}
+
+.hjzf2_other_66_container .hjzf2_other_66_pagination > .swiper-pagination-bullet,.hjzf2_other_66_pa_gin{
+    opacity: 1;
+    border-radius: 0;
+    margin: 0;
+    flex: 0 0 24.5%;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,.1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    line-height: 40px;  
+    height:auto;
+    width: auto;
+    cursor: pointer;
+}
+
+@media(max-width: 1200px) {
+    .hjzf2_other_66_container .hjzf2_other_66_pagination > .swiper-pagination-bullet{
+        flex: 0 0 100%;
+        display: none;
+    }
+    .hjzf2_other_66_container .hjzf2_other_66_pagination > .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        display: block;
+    }
+    .hjzf2_other_66_wrapper{
+        justify-content: flex-start;
+    }
+    .hjzf2_other_66_wrapper li{
+        width: 50%;
+        text-align: center;
+    }
+}
+
+@media(max-width: 768px) {
+    .hjzf2_other_66_wrapper li{
+        width: 100%;
+    }
+    .hjzf2_other_66_container{
+        display: flex;
+        flex-direction: column;
+    }
+    .hjzf2_other_66_container .swiper-wrapper{
+        order: 1;
+    }
+    .hjzf2_other_66_pagination {
+        margin-bottom: 20px;
+    }
+}

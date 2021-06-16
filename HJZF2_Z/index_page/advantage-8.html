@@ -1,0 +1,105 @@
+<!--{$pagename}-->
+<if condition="$data126[0]">
+    <style>
+        .hjzf_z__advantage-8{
+            background: url({:getindeximgurl($data126[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<if condition="$data126[1]">
+    <style>
+        .hjzf_z__advantage-8{
+            background-color: #{$data126[1]};
+        }
+    </style>
+</if>
+<style>
+    .advantage-8_pagination .swiper-pagination-bullet-active{
+        background: #{$data126[2]};
+    }
+	.advantage-8__btn a{
+		background:#{$data126[2]};
+    }
+    .advantage-8__swiper .swiper-button-white{
+        opacity: 0;
+        visibility: hidden;
+        transition: all .5s;
+        background-size: 50%;
+        background-color: rgba(0,0,0,.6);
+    }
+    .advantage-8_prev{
+        left: 20px;
+    }
+    .advantage-8_next{
+        right: 20px;
+    }
+    .advantage-8__swiper .swiper-button-prev{
+        transform: translateX(-20px);
+    }
+    .advantage-8__swiper .swiper-button-next{
+        transform: translateX(20px);
+    }
+    .advantage-8__swiper:hover .swiper-button-next,.advantage-8__swiper:hover .swiper-button-prev{
+        transform: translateX(0px);
+    }
+    .advantage-8__swiper:hover .swiper-button-white{
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+<script>
+	var $advantage_8_len = '<?php echo $data126[43];?>'
+</script>
+<section class="hjzf_z__advantage-8 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="advantage-8__title text-center wow fadeInLeftBig index_title pb20">{$data126[3]}<if condition="$data126[39]"><span class="index_text">{$data126[39]}</span></if></div>
+                <if condition="$data126[42]">
+                <div class="index_sub_title text-center pb40 wow fadeInLeftBig">
+                    {$data126[42]}
+                </div>
+                </if>
+                <div class="advantage-8__box wow fadeInRightBig">
+                    <!-- Swiper -->
+                    <div class="swiper-container advantage-8__swiper">
+                        <div class="swiper-wrapper">
+                            <php>
+                                for($a=4;$a<38;$a=$a+5){
+                            </php>
+                                <if condition="$data126[$a]">
+                                    <div class="swiper-slide">
+                                        <div class="advantage-8__ke">
+                                            <div class="advantage-8__item text-center">
+                                                <div class="advantage-8imgbox">
+                                                    <a href="{$data126[$a+4]}">
+                                                    <img src="{:getindeximgurl($data126[$a])}" alt="{$data126[$a+2]}" data-hover="{:getindeximgurl($data126[$a+1])}"/>
+													</a>
+                                                </div>
+                                                <article class="text-center">
+                                                    <a href="{$data126[$a+4]}">
+                                                        <h3 class="advantage-8__name index_sub_title">{$data126[$a+2]}</h3>
+                                                        <p class="advantage-8__desc ellipsis_four index_text">
+															{:HtmlEncode($data126[$a+3])}
+															</p>
+                                                    </a>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </if>
+                            <php>}</php>
+                        </div>
+                        <div class="swiper-button-prev advantage-8_prev swiper-button-white"></div>
+                        <div class="swiper-button-next advantage-8_next swiper-button-white"></div>
+                    </div>
+                    <div class="swiper-pagination advantage-8_pagination"></div>
+                    
+                </div>
+                <if condition="$data126[40]">
+                	<div class="advantage-8__btn"><a href="{$data126[41]}" onFocus="blur()"><span class="index_text">{$data126[40]}</span></a></div>
+                </if>
+            </div>
+        </div>
+    </div>
+</section>

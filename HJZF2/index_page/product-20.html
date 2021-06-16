@@ -1,0 +1,75 @@
+<!--{$pagename}-->
+<php>
+    if(!$data200[3]){
+        $data200[3] = 160;
+    }
+    if(!$data200[4]){
+    $data200[4] = 50;
+    }
+</php>
+<style>
+    
+    .new_hjzf_product-20 .HJ05-product-box2{
+        padding-top: {$data200[3]}px; padding-bottom:{$data[4]}px;
+    }
+    .new_hjzf_product-20 .HJ05-advan-title .ttwrap,.product-20_pageation .swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+    .new_hjzf_product-20 .HJ05-advan-title .ttwrap:before {background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$color} 52%,#{$color} 100%);}
+    .new_hjzf_product-20 .HJ05-advan-title .ttwrap:after {background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$color} 52%,#{$color} 100%);}
+    .hj05-product2 .indexhotpro-slide .in_proname_a a:hover,.index_product_categroy li:hover a h3{
+        color: #{$data200[5]};
+    }
+    .HJ05-advan-title .ttwrap:before{
+        background: linear-gradient(to bottom right, transparent 0%,transparent 47%,#{$data200[5]} 52%,#{$data200[5]} 100%);
+    }
+    .HJ05-advan-title .ttwrap:after{
+        background: linear-gradient(to top left, transparent 0%,transparent 47%,#{$data200[5]} 52%,#{$data200[5]} 100%);
+    }
+    .new_hjzf_product-20 .hj05-index-more a{
+        background: #{$data200[5]};
+    }
+    .new_hjzf_product-20 .index-more2 a:hover{
+        background: #{$color};
+    }
+</style>
+<div style="background: #f2f2f2">
+    
+    <div class="hj-product HJ05-product-box2">
+        <div class="container">
+            <h3 class="HJ05-advan-title  wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data200[0]}</span></h3>
+            <div class="index_product_categroy wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <ul>
+                    <li><a href=""><h3 style="font-weight: bold">{:__('All products')}</h3></a></li>
+                    <volist empty="" name="allclass" id="allclass_index" key="k" offset="0" length="6">
+                        <li class="index_proClass_name">
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}">{:subtxt($allclass_index['class_name'],40)}</a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div>
+                <div class="container">
+                    <div class="HJ05-product-list">
+                        <div class="swiper-container hj05-product20">
+                            <div class="swiper-wrapper">
+                                <volist empty="" name="indexpro" id="indexpro" key="k" >
+                                    <div class="swiper-slide indexhotpro-slide wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                                        <div class="img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                        <div class="in_proname_a box-sizing ellipsis_two"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                        <div class="hj05-index-more"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{:__('Read More')}</a></div>
+                                    </div>
+                                </volist>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="swiper-pagination product-20_pageation"></div>
+                        </div>
+                    </div>
+                    <div class="index-more2"><a href="{:U('/product')}">{:__('Read More')}</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

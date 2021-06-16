@@ -1,0 +1,35 @@
+<!--{$pagename}-->
+<style>
+    .service-12_color{
+        color: #fff;
+    }
+    .service-12_btn a:hover{
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf2_service-12">
+    <div class="service-12_wrap">
+        <div class="service-12_bg nav-hidden-mobile" style="background: url({:getindeximgurl($data246[0])}) no-repeat center/cover"></div>
+        <div class="nav-hidden-pc">
+            <img src="{:getindeximgurl($data246[0])}" class="img-fluid">
+        </div>
+        <div class="service-12_content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-5 service-12_textbox">
+                        <div class="service-12_text1 service-12_color index_title ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">{$data246[1]}</div>
+                        <div class="service-12_text1 service-12_color index_title ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">{$data246[2]}</div>
+                        <div class="service-12_text2 service-12_color index_sub_title wow fadeInUp ani" data-wow-duration="1s" data-wow-delay="0s" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.7s">{$data246[3]}</div>
+                        <div class="service-12_line wow fadeInDown ani" data-wow-duration="1s" data-wow-delay="0.5s" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.9s"></div>
+                        <div class="service-12_text3 service-12_color index_text wow fadeInDown pb20 ani" data-wow-duration="1s" data-wow-delay="1s" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.9s" swiper-animate-delay="1.1s">{$data246[4]}</div>
+                        <if condition="$data246[5]">
+                            <div class="service-12_btn wow fadeInDown ani" data-wow-duration="1s" data-wow-delay="1.5s" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="1.2s">
+                                <a href="{$data246[6]}" class="index_btn">{$data246[5]}</a>
+                            </div>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

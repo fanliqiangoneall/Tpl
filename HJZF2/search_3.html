@@ -1,0 +1,93 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .main_page .current{
+            background: #{$inner_data[1]};border-color: #{$inner_data[1]};
+        }
+        .InsidePage--3__breadcrumbs span.current,#switch_btn .switch_btn_icon.select i{
+            color: #{$inner_data[1]};
+        }
+        .InsidePage--3__contentNavWrap--product__title{
+            background: #{$inner_data[1]};
+        }
+    </style>
+    <if condition="$inner_data[3]">
+        <style>
+            .InsidePage--3__contentNav.left,.InsidePage--3__contentBox.left{float: left;}
+            .InsidePage--3__contentBox.left{padding-left: 60px;padding-right: 0;}
+            .InsidePage--3__contentNav.left .InsidePage--3__contentNavWrap--list li a{text-align: left;}
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <if condition="$prolist['banner'] neq '' and $prolist['banner'] neq 0">
+                <div class="InsidePage--3__banner" style="background:url({:getimgurl($prolist['banner'])}) center no-repeat;"></div>
+                <elseif condition="$banner neq ''"/>
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex left">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex">
+                    <a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><a href="{:U('/product')}">{:__('Products')}</a><i class="fa fa-angle-right"></i>
+                    <span class="current">{:__('Search result')}</span>
+                </div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap InsidePage--3__contentWrap--product">
+            <div class="container">
+                <section class="InsidePage--3__contentNav InsidePage--3__contentNav--product left">
+                    <if condition="$inner_data[4] eq '1'">
+                        <Include file="./Tpl/HJZF2/left_productNav1.html" />
+                        <elseif condition="$inner_data[4] eq '2'"/>
+                        <Include file="./Tpl/HJZF2/left_productNav2.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2/left_productNav3.html" />
+                    </if>
+                </section>
+                <section class="InsidePage--3__contentBox InsidePage--3__contentBox--product left">
+                    <div class="InsidePage--3__contentBoxWrap">
+                        <div class="InsidePage--3__contentBoxWrap--main">
+                            <div class="InsidePage--3__Protitle">{:__('Search result')}
+                                <div id="switch_btn">
+                                    <div class="switch_btn_icon " id="in_list"><a href="javascript:void(0);"><i class="fa fa-list"></i></a></div>
+                                    <div class="switch_btn_icon select" id="in_grid"><a href="javascript:void(0);"><i class="fa fa-th"></i></a></div>
+                                </div>
+                            </div>
+                            <ul class="InsidePage--3__prolist grid">
+                                <volist empty="" name="searchpro" id="pro" key="k" offset="0">
+                                    <li class="InsidePage--3__prolistItem flex wow fadeInUp">
+                                        <div class="InsidePage--3__prolist--pic">
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <if condition="$pro['main_img']">
+                                                    <img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> />
+                                                    <else/>
+                                                    <img src="{:getindeximgurl($inner_data[4])}" alt=""/>
+                                                </if>
+                                            </a>
+                                        </div>
+                                        <div class="InsidePage--3__prolist--content">
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <div class="InsidePage--3__prolist--contentTitle" title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],60)}</div>
+                                            </a>
+                                            <div class="InsidePage--3__prolist--contentDesac">{:htmlspecialchars_decode($pro['pro_description'])}</div>
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}#inquiry" class="InsidePage--3__prolist--contentButton"><i class="togetherClass fa fa-envelope-o"></i>{:__('Inquiry')}</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

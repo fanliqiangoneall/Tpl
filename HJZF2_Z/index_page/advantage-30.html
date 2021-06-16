@@ -1,0 +1,32 @@
+<!--{$pagename}-->
+<php>
+    $col = explode(",",$data442[6]);
+</php>
+<style>
+    <if condition="$data442[0]">
+    .hjzf_advantage_30{
+        background: url({:getindeximgurl($data442[0])}) no-repeat center/cover;
+    }
+    </if>
+    .hjzf_advantage_30_con a:before{
+        background: linear-gradient(to right, #{$col[0]}, #{$col[1]});
+    }
+</style>
+<section class="hjzf_advantage_30 index_pd">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-xs-12 col-lg-6 wow slideInLeft pb40">
+                <img src="{:getindeximgurl($data442[1])}" alt="{$data442[2]}" class="img-fluid">
+            </div>
+            <div class="col-xs-12 col-lg-5 col-lg-offset-1 hjzf_advantage_30_con wow slideInRight">
+                <div class="index_title">
+                    {$data442[2]}
+                </div>
+                <div class="index_text">
+                    {$data442[3]}
+                </div>
+                <a href="{$data442[5]}" class="my-mask-l index_btn">{$data442[4]} <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>

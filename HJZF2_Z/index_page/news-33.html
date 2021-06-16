@@ -1,0 +1,48 @@
+<!--{$pagename}-->
+<style>
+	<if condition="$data649[1]">.hjzf2_news_33 {
+		background-image: url({:getindeximgurl($data649[1])
+	}
+
+	);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	}
+
+	</if>
+	.hjzf2_news_33_wrapper li:hover span {
+		background-color: #{$color};
+	}
+</style>
+<section class="hjzf2_news_33 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center index_title pb40 wow fadeInDown">
+				{$data649[2]}
+			</div>
+		</div>
+		<php>
+			if($data649[3]){
+			$len = $data649[3];
+			}else{
+			$len = 4;
+			}
+		</php>
+		<div class="row">
+			<ul class="hjzf2_news_33_wrapper col-xs-12 wow fadeInUp">
+				<volist name="indexnews" id="new" offset="0" length="$len" key="h">
+					<li>
+						<h3 class="index_sub_title"><a
+								href="{:U('/new_detail',array('nid'=>$new['nid']))}">{$new['title']}</a></h3>
+						<p>{:subtxt($new['news_description'],200)}</p>
+						<span>
+							<em>{:date('m',$new['created'])}/{:date('d',$new['created'])}</em>
+							<i>{:date('Y',$new['created'])}</i>
+						</span>
+					</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+</section>

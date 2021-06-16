@@ -1,0 +1,78 @@
+<!--菜单-->
+    <div class="absoluteModuleWrap" id="absolute_module_wrap" data-attr="l:80,h:0,c:0">
+        <div class="absoluteModuleInner" id="absolute_module_inner">
+            
+                                                <div class="absolute-module logo" id="logo" data-fixed="0" data-fixedx="-1" style="  left:0px;  top:0px;  width:171px;  height:102px;  ">
+                        <div class="logo-inner">
+                                                        <p style="text-align: left;"><a href="{$company_info['logo_href']}"><img src="{:getindeximgurl($data1[0])}" title="{$company_info['logo_title']}" alt="{$company_info['logo_title']}"></a></p>
+                        </div>
+                    </div>
+                                                    <div data-tishi="请填写关键词！" data-search-type="0" class="absolute-module search" id="search" data-fixed="0" data-fixedx="-1" style="  left:1008px;  top:19px;  ">
+        <div class="search-inner">
+            <form name="search_tag_form" action="{:U('/search','','')}" method="post" id="search_tag_form" class="search-form">
+        <div class="keyWord">
+                <input class="input" type="text" id="keyWord" name="keyWord" data-isdefaultsearch="0" data-defaultv="" value="">
+            <input type="text" style="display:none">
+        </div>
+
+        <a class="keyBtn button" href="javascript:;">
+            <b class="btxt">搜索</b>
+        </a>
+    </form>
+	</div>
+</div>
+                
+                
+                                                            <div class="webNav" id="web_nav" data-l="p:3,l:293,t:0,w:1200,wt:0" style="  left: 293px; top: 0px; position:absolute; " data-fixed="0" data-fixedx="-1">
+<div class="navInner">
+    <div class="nav" id="nav" style="width:auto;">
+        <i class="NLeft"></i>
+        <i class="NRight"></i>
+        <div class="NMainBg"></div>
+        <div class="NCenter">
+          <dl class="NMain">
+
+            <volist name="web_navigation" id="vo"  key="key">
+            <if condition="$key eq 1">
+                <dd class="NItem NFirst NItemCur">
+                <table class="NItemTable">
+                    <tbody>
+                        <tr>
+                            <td class="NItemL"></td>
+                            <td class="NItemM">
+                            <a title="{$vo['title']}" href="{$vo['url']}"><span>{$vo['title']}</span></a>
+                            </td><td class="NItemR"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </dd>
+            </if>
+            <if condition="$key gt 1">
+        	<dd class="NLine"></dd>
+            
+                                    <dd class="NItem ">
+                <table class="NItemTable"><tbody><tr>
+                    <td class="NItemL"></td>
+                    <td class="NItemM"><a <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> href="{$vo['url']}" title="{$vo['title']}">
+                        <span>{$vo['title']}</span>
+                    </a></td>
+                    <td class="NItemR"></td>
+                </tr></tbody></table>
+
+                
+            </dd>
+            </if>
+            </volist> 
+
+
+
+
+                                    
+                    </dl>
+      </div>
+    </div>
+</div>
+</div>                                                        </div>
+    </div>
+                <div class="nav-wrap" id="navWrap">
+                    </div>

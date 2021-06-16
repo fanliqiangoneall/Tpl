@@ -1,0 +1,69 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .productbutton:hover,.productbutton{
+            background: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/jobs')}">{:__('Jobs')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$job['jobname']}</span>
+                    </div>
+                </div>
+             </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <section class="col-xs-12">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <h2 class="InsidePages_content2_commontitle"><span>{:__('Job details')}</span></h2>
+                                <div class="product_detail_editor_content">{:htmlspecialchars_decode($job['content'])}</div>
+
+                                <div class="product_detail_editor_content">
+                                    <if condition="LANGUAGE eq 'en'">
+                                        <include file="./Tpl/HJZF2_Z/submitjob_en.html" />
+                                        <else/>
+                                        <include file="./Tpl/HJZF2_Z/submitjob.html" />
+                                    </if>
+                                </div>
+                            </div>
+                            <div class="page_nei_space"></div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

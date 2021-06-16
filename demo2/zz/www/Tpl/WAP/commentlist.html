@@ -1,0 +1,22 @@
+<extend name="WAP:base" />
+<block name="content">
+<!--面包屑代码块开始-->
+<div class="context">首页 > 评论列表</div>
+ 	
+
+		
+	<div class="context" style="font-weight:bold;margin-top:10px;">产品&nbsp;“{$pro_name}”&nbsp;的评论列表</div>
+		<volist name="list" id="list" key="k">
+		  <div style="padding:5px;">
+		      <div style="float:left;width:5%;">{$k}</div>
+			  <div style="float:left;margin-left:5px;">{$list["content"]}</div>
+			  <div style="float:left;margin-left:15px;">{:date("Y-m-d",$list["adddate"])}</div>
+		  <div class="clear" style="text-align:right;">{$page}</div>
+		  </div>
+		</volist>
+    </div>
+
+
+	
+<!--代码块结束-->
+</block>

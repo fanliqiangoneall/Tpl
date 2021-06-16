@@ -1,0 +1,202 @@
+<!--{$pagename}-->
+<php>
+$navstr=$data45[1];
+
+$navs=explode("\\r\\n",$data45[1]);
+foreach($navs as $k=>$v){
+	$mains=explode(",",$v);
+    $i=0;
+       //dump($mains);
+    foreach($mains as $j=>$main){
+    	$info=explode(':',$main);
+        if($i==0){
+         //dump($info);
+        	$nav['name']=$info[0];
+            $nav['url']=$info[1];
+    		$new_navs[$k]=$nav;
+        }else{
+            $nav['name']=$info[0];
+            $nav['url']=$info[1];
+    		$new_navs[$k]['child'][]=$nav;   		
+        }
+        $i=$i+1;	
+    }
+}
+
+if($data45[3]){
+$sectionbg=$data45[3];
+}else{
+$sectionbg="#fff";
+}
+
+if($data45[6]){
+$nav_title_companyname_color=$data45[6];
+}else{
+$nav_title_companyname_color="#fff";
+}
+
+
+if($data45[4]){
+$new_hjzf_head_nav_bg=$data45[4];
+}else{
+$new_hjzf_head_nav_bg="#000";
+}
+
+if($data45[8]){
+$nav_title_des=$data45[8];
+}else{
+$nav_title_des="#888";
+}
+
+if($data45[9]){
+$jiantou=getindeximgurl($data45[9]);
+}else{
+$jiantou="__TMPL__Wap2/img/xiala.png";
+}
+if($data45[10]){
+$hengdaohang_switch=1;
+}else{
+$hengdaohang_switch=0;
+}
+
+if($data45[11]){
+$hengdaohang_bj=$data45[11];
+}else{
+$hengdaohang_bj="#fff";
+}
+
+if($data45[12]){
+$hengdaohang_color=$data45[12];
+}else{
+$hengdaohang_color="#000";
+}
+
+if($data45[13]){
+$hengdaohang_navs=explode("\\r\\n",$data45[13]);
+foreach($hengdaohang_navs as $k=>$hengdaohang_nav){
+	$rs=explode(":",$hengdaohang_nav);
+	$hengdaohang[$k]['name']=$rs[0];
+    $hengdaohang[$k]['url']=$rs[1];
+}
+
+}
+
+if($data45[14]){
+$hengdaohang_padding=$data45[14];
+}else{
+$hengdaohang_padding="5px";
+}
+</php>
+
+<style>
+.new_hjzf_head-1 section
+{ 
+background:
+{$sectionbg};
+}
+
+.new_hjzf_head-1__nav{ position:fixed; height:100%; width:00%; right:0px; background:{$new_hjzf_head_nav_bg}; z-index:100;
+transition: width 1s;
+-moz-transition: width 1s;	/* Firefox 4 */
+-webkit-transition: width 1s;	/* Safari 和 Chrome */
+-o-transition: width 1s;	/* Opera */}
+
+.new_hjzf_head-1__nav a{ display:block; color:{$nav_title_companyname_color}; min-width:100px; height:50px; line-height:50px; text-decoration:none;}
+
+.new_hjzf_head-1 .nav_title_companyname{
+	height: 25px;
+    line-height: 25px;
+    font-size: 25px;
+    color: {$nav_title_companyname_color};
+    width: 100%;
+	min-width:100px;
+    font-weight: bold;
+	text-align:center;
+    margin-top: 25px;
+}
+.new_hjzf_head-1 .nav_title_des{
+	line-height: 16px;
+    font-size: 14px;
+    color: {$nav_title_des};
+    width: 100%;
+    margin-top: 10px;
+	min-width:100px;
+	text-align:center;
+	}
+
+.new_hjzf_head-1__nav_more{ 
+position:absolute; right:0px;
+top:50%; margin:-10px;
+width:20px; 
+height:20px; 
+background:url({$jiantou});  
+background-size:100% 100%;
+transition: all 0.5s;
+-moz-transition: all 0.5s;	/* Firefox 4 */
+-webkit-transition: all 0.5s;	/* Safari 和 Chrome */
+-o-transition: all 0.5s;	/* Opera */
+}
+.hengdaohang_nav{ 
+background:{$hengdaohang_bj};
+}
+.hengdaohang_nav a{ 
+padding:{$hengdaohang_padding}; text-decoration:none; display:inline-block; float:left; color:{$hengdaohang_color};
+} 
+</style>
+<div class="new_hjzf_head-1__nav">
+<div class="nav_title">
+    <div class="nav_title_companyname">{$data45[5]}</div>
+    <div class="nav_title_des">{$data45[7]}<div class="clear"></div></div>
+    <div class="clear"></div>
+</div>
+<nav>
+<ul>
+<volist name="new_navs" id="n">
+    <li class="new_hjzf_head-1__main_nav">
+    	<a href="{$n['url']}">{$n['name']}</a>
+        <if condition="count($n['child']) neq 0"> <div class="new_hjzf_head-1__nav_more"></div></if>
+    </li>
+    <if condition="count($n['child']) gt 0"> 
+        <ul class="new_hjzf_head-1__nav_child">
+        
+        <volist name="n['child']" id="child">
+            <li>
+                <a href="{$child['url']}">{$child['name']}</a>
+            </li>
+        </volist>    
+        </ul> 
+           
+    </if>
+</volist>
+</ul>
+
+
+
+</nav>
+</div>
+<header>
+
+<section>
+<a href="{:U('/')}">
+<img class="new_hjzf_head-1__logo" src="{:getindeximgurl($data45[0])}">
+</a>
+<img class="new_hjzf_head-1__more" src="{:getindeximgurl($data45[2])}">
+    <div style="clear: both"></div>
+</section>
+<!--导航-->
+<if condition="$hengdaohang_switch eq 1">
+    <section>
+    <nav class="hengdaohang_nav">
+    <ul>
+    <volist name="hengdaohang" id="nav">
+        <li><a href="{$nav['url']}">{$nav['name']}</a></li>
+    </volist>
+    <div class="clear"></div>
+    </ul>
+    </nav>
+    </section>
+</if>
+
+<!--导航-->
+
+</header>

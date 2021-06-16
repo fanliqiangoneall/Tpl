@@ -1,0 +1,221 @@
+<!--{$pagename}-->
+<php>
+	if($data551[0]){
+		$color = $data551[0];
+	};
+	
+    if($data551[3]){
+		$length = $data551[3];
+		}else{
+		$length =6;
+    }
+    $arr_str=$data551[2];
+    $arr=explode(',',$arr_str);
+    foreach($arr as $k=>$a){
+    $list[$k]['data']=get_index_products_category($a,$length);
+    }
+    foreach($arr as $k=>$a) { $category[$k]=get_index_products_categoryname($a); };
+</php>
+
+<style>
+    .new_hjzf_products-42 .hj02_proclasslist li:hover {
+        background: #{$data85[14]};
+    }
+
+    .new_hjzf_products-42 .hj02_proclasslist li:hover a {
+        color: #fff;
+    }
+
+    .new_hjzf_products-42 .index_proitem_name h6 {
+        color: #333
+    }
+
+    .new_hjzf_products-42 .index_proitem_box:after {
+        background: #{$color};
+    }
+
+    .new_hjzf_products-42 .proClass_on {
+        background: #{$data551[1]};
+    }
+
+    .new_hjzf_products-42 .hj02_proclasslist li.proClass_on a {
+        color: #fff;
+    }
+
+    .new_hjzf_products-42 .index_product_more:hover {
+        background: {
+            $data551[1]
+        }
+
+        ;
+        color:#fff;
+    }
+
+    .new_hjzf_products-42 .index_proitem_img a:before {
+        background: {
+            $data551[1]
+        }
+
+        ;
+    }
+
+    .new_hjzf_products-42 .index_proitem_more {
+        color: {
+            $data551[1]
+        }
+
+        ;
+    }
+
+    .new_hjzf_products-42 .index_proitem_more:hover:after {
+        background: {
+            $data551[1]
+        }
+
+        ;
+        width:100%;
+        transition: 0.6s;
+        -moz-transition: 0.6s;
+        -webkit-transition: 0.6s;
+    }
+    .new_hjzf_products-42 .product42_waibox .product42_waiprev:hover:before,
+    .new_hjzf_products-42 .product42_waibox .product42_wainext:hover:before {
+        color: {$data551[1]};
+    }
+    .product42_waibox:hover .product42_waiprev {
+        background: #{$color};
+        display: block;
+        left: 1px;
+        transition: .6s;
+        opacity: 1;
+    }
+    .product42_waibox:hover .product42_wainext {
+        background: #{$color};
+        display: block;
+        right: 1px;
+        transition: .6s;
+        opacity: 1;
+    }
+    .new_hjzf_products-42 .hj02_pro_more {
+        background: #{$color};
+        color: white;
+    }
+    .product42_waibox .product42_neibox .swiper-pagination-bullet-active,
+	.new_hjzf_products-42 .hj02_proclasslist li:hover, .new_hjzf_products-42 .hj02_proclasslist li.proClass_on,
+	#index_product_title_left1 h3:before {
+        background-color: #{$color};
+    }
+</style>
+
+<if condition="$data551[1]">
+    <style>
+        .new_hjzf_products-42 .page_probg {
+            background: url({:getindeximgurl($data551[1])}) no-repeat center;
+        }
+    </style>
+</if>
+<div class="page_probg index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <section class="index_product_title pb40">
+                    <div class="index_product_title_left">
+                        <div id="index_product_title_left1">
+                            <h3 class="index_title">{$data551[4]}</h3>
+                        </div>
+                    </div>
+                    <div class="index_product_title_right">
+                        <div id="index_product_title_right1">
+							<ul class="hj02_proclasslist hj02_proclasslist1">
+								<volist empty="" name="category" id="li" key="k">
+									<li><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a>
+									</li>
+								</volist>
+							</ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </section>
+
+                <div class="products-42_down product42_waibox">
+                    <div class="swiper-container product42_neibox">
+                        <div class="swiper-wrapper">
+                            <volist empty="" name="list" id="li" key="k">
+                                <volist empty="" name="li['data']" id="indexpro" key="k" offset="0">
+                                    <div class="swiper-slide product42_nei" data="{:dump($list)}">
+                                        <div class="index_proitem_box">
+                                            <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                                                <div class="index_proitem_img">
+                                                    <img src="{:getmainimgurl($indexpro['main_img'])}"
+                                                        alt="{$indexpro['pro_name']}" />
+                                                </div>
+                                                <div class="index_proitem_second">
+                                                    <div class="index_proitem_name index_sub_title">
+                                                        <h6 title="{:subtxt($indexpro['pro_name'],80)}"
+                                                            class="index_text">{:subtxt($indexpro['pro_name'],60)}</h6>
+                                                    </div>
+                                                    <if condition="$indexpro['pro_description']">
+                                                        <div class="index_proitem_desc index_text">
+                                                            {:subtxt($indexpro['pro_description'],60)}</div>
+                                                    </if>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </volist>
+                            </volist>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next product42_wainext"></div>
+                        <div class="swiper-button-prev product42_waiprev"></div>
+                        <div class="swiper-pagination product42_nei_page"></div>
+                    </div>
+                </div>
+                <if condition="$data551[6]">
+                    <style>
+                        @media(max-width: 767px) {
+                            .product42_waibox {
+                                display: none;
+                            }
+                        }
+
+                        @media(min-width: 768px) {
+                            .product42_waibox_mb {
+                                display: none;
+                            }
+                        }
+                    </style>
+                    <div class="product42_waibox_mb">
+                        <volist empty="" name="list" id="lia" key="k">
+                            <volist empty="" name="lia['data']" id="indexproa" key="k" offset="0">
+                                <div class="col-xs-6 mb-20">
+                                    <div class="index_proitem_box">
+                                        <a href="{:U('/Product','','')}/{:getproname($indexproa['pid'])}">
+                                            <div class="index_proitem_img">
+                                                <img src="{:getmainimgurl($indexproa['main_img'])}"
+                                                    alt="{$indexproa['pro_name']}" />
+                                            </div>
+                                            <div class="index_proitem_second">
+                                                <div class="index_proitem_name index_sub_title">
+                                                    <h6 title="{:subtxt($indexproa['pro_name'],80)}" class="index_text">
+                                                        {:subtxt($indexproa['pro_name'],60)}</h6>
+                                                </div>
+                                                <if condition="$indexproa['pro_description']">
+                                                    <div class="index_proitem_desc index_text">
+                                                        {:subtxt($indexproa['pro_description'],60)}</div>
+                                                </if>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </volist>
+                        </volist>
+                    </div>
+
+                </if>
+            </div>
+        </div>
+    </div>
+</div>

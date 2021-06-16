@@ -1,0 +1,42 @@
+<if condition="$data185[0]">
+    <style>
+        .HJZF2__product_categroy{
+            background: url({:getindeximgurl($data185[0])}) no-repeat top center;
+        }
+    </style>
+</if>
+<style>
+.HJZF2__product_categroy__more a{ 
+	background:#{$data185[1]};
+}
+</style>
+<section class="HJZF2__product_categroy">
+    <div class="container">
+    	<div class="HJZF2__product_categroy__title">
+        	<h3>{$data185[2]}</h3>
+            <span>{$data185[3]}</span>
+        </div>
+        <div class="HJZF2__product_categroy__itemWrap">
+            <php>
+                for($i=4;$i<20;$i=$i+4){
+            </php>
+            <if condition="$data185[$i]">
+                <li class="HJZF2__product_categroy__item">
+                    <div class="HJZF2__product_categroy__itempic"><img src="{:getindeximgurl($data185[$i])}" border="0" /></div>
+                    <div class="HJZF2__product_categroy__itemmask">
+                    <a href="{$data185[$i+3]}">
+                    	<div class="HJZF2__product_categroy__itemName">{$data185[$i+1]}</div>
+                        <div class="HJZF2__product_categroy__itemjs">{$data185[$i+2]}</div>
+                    </a>
+                    </div>
+                </li>
+            </if>
+
+            <php>
+                }
+            </php>
+            <div class="clear"></div>
+            <div class="HJZF2__product_categroy__more"><a href="{$data185[20]}"><span><i class="fa fa-long-arrow-right"></i></span></a></div>
+        </div>
+    </div>
+</section>

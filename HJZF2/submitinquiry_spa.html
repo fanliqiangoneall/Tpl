@@ -1,0 +1,184 @@
+<style>
+	.productbutton{
+		background: #{$color};
+	}
+	.productbutton:hover {
+		background: #{$inner_data[0]};
+	}
+</style>
+<script>
+	jQuery(function(){
+		jQuery("#message").focus(function(){
+			jQuery("#message_alert").html("");
+		});
+		jQuery("#linkname").focus(function(){
+			jQuery("#linkname_alert").html("");
+		});
+		jQuery("#phone").focus(function(){
+			jQuery("#phone_alert").html("");
+		});
+		jQuery("#email").focus(function(){
+			jQuery("#email_alert").html("");
+		});
+		jQuery("#code_char").focus(function(){
+			jQuery("#code_char_alert").html("");
+		});
+
+
+		jQuery("#getcode_char").click(function(){
+			jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char1").click(function(){
+			jQuery("#getcode_char").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+
+	})
+
+	function Trims(str)
+	{
+		return str.replace(/^\s\s*/, '').replace(/\\s\\s*$/, '');
+	}
+
+	function is_email(str)
+	{
+		var reg = /^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$/;
+		return (reg.test(str));
+	}
+
+
+	function yz_submit(){
+		var count=0;
+		var message=Trims(jQuery("#message").val());
+		var linkname=Trims(jQuery("#linkname").val());
+		var phone=Trims(jQuery("#phone").val());
+		var email=Trims(jQuery("#email").val());
+
+
+		if(linkname.length<=0){
+			jQuery("#linkname_alert").html("¡El nombre no puede estar vacío!");
+			count++;
+		}
+		else{
+			jQuery("#linkname_alert").html("");
+		}
+
+
+		var str=/[\\u4E00-\\u9FA5a-zA-Z]/;
+		if(phone.length>0 && str.test(jQuery('#phone').val()))
+		{
+			jQuery("#phone_alert").html("¡La información del teléfono está mal!");
+			count++;
+		}else{
+			jQuery("#phone_alert").html("");
+		}
+
+
+
+		if(email.length<=0){
+			jQuery("#email_alert").html("¡El correo electrónico no puede estar vacío!");
+			count++;
+		}
+		else{
+			console.log(email);
+			console.log(is_email(email));
+			if(!is_email(email)){
+				jQuery("#email_alert").html("Error de formato de correo electrónico");
+				count++;
+			}
+			else {
+				jQuery("#email_alert").html("");
+			}
+		}
+
+
+		if(message.length<=0){
+			jQuery("#message_alert").html("¡El contenido de consulta no puede estar vacío!");
+			count++;
+		}
+		else{
+			jQuery("#message_alert").html("");
+		}
+
+		var code_char = jQuery("#code_char").val();
+		jQuery.ajax({
+			type: "POST",
+			url: "/verification",
+			async:false,
+			data: {code:code_char},
+			success: function(data){
+
+				if(data==1){
+					jQuery("#code_char_alert").html("");
+				}else{
+					count++;
+					jQuery("#code_char_alert").html("Error de código de verificación");
+				}
+			}
+		});
+
+
+		if(count>0){
+			return false;
+		}
+		else{
+			jQuery("#inbut").html('<h5 style="color:#F00;">por favor espera</h5>');
+
+			return true;
+		}
+
+	}
+
+
+</script>
+<div class="inquiry" id="zixun">
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+		<div style="width:49%; float:left;">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">Nombre <span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname"><span class="yz_alert" id="linkname_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div style="width:49%; float:left; margin-left:2%;">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">Teléfono móvil</div>
+				<div class="inquiryright"><input type="text" name="phone" id="phone"><span class="yz_alert" id="phone_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div style="width:100%; ">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">Email <span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="email" id="email"><span class="yz_alert" id="email_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+
+		<div class="inquiryinfo">
+			<div class="inquiryleft">Mensaje <span style="color:#f00">*</span></div>
+			<div class="inquiryright"><textarea name="message" id="message" style="padding:5px; height:210px;">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+		<div class="inquiryinfo inquiryinfo--70">
+			<div class="inquiryleft">Código de verificación<span style="color:#f00">*</span></div>
+			<div class="inquiryright"><input type="text" class="input" id="code_char" name="code" maxlength="6" style="width:250px" />&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1"><img
+					src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -4px;top: -1px;height: 32px;"/></a><span class="yz_alert" id="code_char_alert" style="right: 0;"></span></div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="inquiryinfo inquiryinfo--30">
+			<input type="hidden" name="prodid" value="{$product['pid']}"/>
+			<div id="inbut" style="padding-top: 20px;text-align: right"><input  class="productbutton" type="submit" value="Enviar"  name="submit" /></div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>

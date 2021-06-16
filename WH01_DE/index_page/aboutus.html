@@ -1,0 +1,115 @@
+<!--{$pagename}-->
+<php>
+    if(!$data4[6]){
+        $data4[6] =60;
+    }
+    if(!$data4[8]){
+    $data4[8] =0;
+    }
+    if(!$data4[9]){
+    $data4[9] =0;
+    }
+    if(!$data4[10]){
+    $data4[10] =0;
+    }
+</php>
+<if condition="$data4[7]">
+    <style>
+        #aboutus{
+            background: url({:getindeximgurl($data4[7])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    #aboutus{
+    padding-bottom: {$data4[6]}px;padding-top:{$data4[8]}px;margin-top:{$data4[9]}px;margin-bottom:{$data4[10]}px;
+    }
+    .abus_more{
+        width: 138px;height: 40px;text-align: center;line-height: 40px;background-color: #{$color};border-radius: 5px;margin-top: 26px;margin-left: 39px;float: left
+    }
+    .abus_more a{font-size: 16px;color: #ffffff;font-family: Arial;font-weight: normal;}
+    .abus_more a:hover { text-decoration:underline;}
+    .ab_pic{
+        width: 522px;height: 354px;float: left;background: url({:getindeximgurl($data4[3])}) no-repeat 19px 10px;display:none;
+    }
+
+    #tip ul li.current{
+        background: #{$color};
+    }
+</style>
+
+
+
+<!--about us start-->
+<div id="aboutus">
+    <div class="ab_cont">
+        <div class="ab_title"><span>{$data4[0]}</span></div>
+        <div class="title_bg"><img src="{:getindeximgurl($data4[1])}" alt=""/></div>
+        <div class="ab_text">
+            <div class="text_title">
+                <img src="__TMPL__WH01_DE/img/ab_icon1.png" ><span>{$data4[2]}</span>
+            </div>
+            <div id="ab_text">
+                {:HtmlEncode(subtxt($company_info['description'],700))}
+            </div>
+            <div class="abus_more"><a href="{:U('/aboutus')}">Weiterlesen</a></div><img src="__TMPL__WH01_DE/img/ab_icon2.png" class="ab_icon2">
+            <div class="clear"></div>
+        </div>
+
+        <div class="ab_pic">
+            <div id="ab_picbox" >
+                    <div id="pic" class="page_indexpic">
+                            <ul>
+                                <php>
+                                    $imgs=aboutusimg();
+                                    if(!$data4[5]){
+                                    $data4[5]=3;
+                                    }
+                                </php>
+                                <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[5]">
+                                    <if condition="$banerimg['imgurl'] neq ''">
+                                    <li ><a href="javascript:void(0);" <if condition="$data4[4]">id="adv_video{$k1}"</if>    ><img src="{$banerimg['imgurl']}" border="0" /></a></li>
+                                    </if>
+                                </volist>
+                            </ul>
+
+                    </div>
+
+                    <div id="tip">
+                        <ul>
+                            <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[5]">
+                                <if condition="$banerimg['imgurl'] neq ''">
+                               <li id="smallimg_{$k1}" onMouseOver="change({$k1})"></li>
+                                </if>
+                            </volist>
+                        </ul>
+
+                    </div>
+
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        if($("#tip ul li").length==1){
+            $("#tip").hide();
+        }
+    })
+
+
+    $('#adv_video1').on('click', function(){
+        layer.open({
+            type: 2,
+            title: ['Video', 'font-size:18px;'],
+            area: ['80%', '80%'],
+            shadeClose: true,
+            maxmin: true,
+            content: '{$data4[4]}'
+        });
+    });
+</script>
+<!--about us end-->

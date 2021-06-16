@@ -1,0 +1,17 @@
+<extend name="YP01_CN:base" />
+<block name="content"> 
+<Include
+	file="./Tpl/YP01_CN/index_page/head.html" />
+<div class="single-slider owl-carousel owl-no-dots">
+<volist name="banners" id="banner">
+<if condition="$banner['url'] neq ''">
+    <div {$banner['url']}>
+        <img src="{$banner['url']}" />
+    </div>
+</if>
+</volist>
+</div>
+<div class="" style="border: 1px solid #E7E7E7; padding:0 15px;margin-bottom:20px;"></div>
+<div class="baiducss" style="padding:0 15px;">{:echo_html($otherpage['readme'])}</div>
+<Include file="./Tpl/YP01_CN/index_page/bottom.html" /> </block>
+</block>

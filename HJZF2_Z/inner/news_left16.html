@@ -1,0 +1,48 @@
+
+<style>
+    .inner_news_16_wrapper{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .inner_news_16_wrapper:after{
+        position: absolute;
+        display: block;
+        content:'';
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        border-bottom: 1px solid #f5f5f5;
+    }
+    .inner_news_16{
+        font-size: 22px;
+    }
+    .inner_news_16_list{
+        display: flex;
+    }
+    .inner_news_16_list li a{
+        display: block;
+        padding: 20px 30px;
+        transition: all .5s;
+    }
+    .inner_news_16_list li:hover a,.inner_news_16_list li.yijion_news a{
+        background-color: #{$color};
+        color: #fff;
+    }
+    .inner_news_16_list li a h3{
+        font-size: 16px;
+    }
+</style>
+<div class="InsidePages_content-left_content inner_news_16_wrapper inner_hidden" id="nav">
+    <div class="inner_news_16">
+        {:__('News Categories')}
+    </div>
+    <ul class="inner_news_16_list">
+        <volist empty="" name="allnewclass" id="nav">
+            <li <if condition="$newscate['classid'] eq $nav['classid'] or $newclass['classid'] eq $nav['classid']">class="yijion_news"
+                <else />class="yiji_news"</if> data-class="{$nav['classid']}"><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$nav["classid"]))}<if condition="$webid eq '1767'">#nav</if>">{$nav['class_name']}</a></li>
+        </volist>
+    </ul>
+</div>

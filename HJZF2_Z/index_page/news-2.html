@@ -1,0 +1,129 @@
+<!--{$pagename}-->
+<if condition="$data33[1] neq ''">
+    <style>
+        .new_hjzf_news-2 #hj02_news{
+            background: url({:getindeximgurl($data33[1])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_news-2 .news_item:hover .news_item-title a{
+        color: #{$color};
+    }
+    .new_hjzf_news-2 .news_item_right:hover .news_item-title2 a{
+        color: #{$color};
+    }
+    .new_hjzf_news-2 .news_item_right:hover .news_item_right_right p span:before{
+        left: 30px;transition: .6s;
+    }
+    .new_hjzf_news-2 .active{
+        background: #{$data33[2]};
+    }
+    .new_hjzf_news-2 .hj02_proclasslist li.active a{color: #fff}
+    .new_hjzf_news-2 .news_item_more{
+        background: #{$data33[2]};
+    }
+    .new_hjzf_news-2 .hj02_newclasslist li.class_name1_on{
+        background: #{$data33[2]};
+    }
+    .new_hjzf_news-2 .hj02_pro_more:hover,.new_hjzf_news-2 #index_product_title_right1>div a{
+        color:#{$data33[2]};
+    }
+</style>
+
+<!--news start-->
+<section id="hj02_news" class="index_pd">
+    <div class="container">
+        <div class="row">
+            <section class="index_product_title">
+                <div class="col-xs-12 col-lg-4">
+                    <div class="index_product_title_left">
+                        <div id="index_product_title_left1"><h3 class="index_title">{$data33[0]}</h3></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-8">
+                    <div class="index_product_title_right">
+                        <div id="index_product_title_right1">
+                            <div><a href="{:U('/news')}">{:__('Read More')}</a></div>
+                            <ul class="hj02_proclasslist hj02_newclasslist">
+
+                                    <php>
+                                        $arr_str=$data33[3];
+                                        $arr=explode(',',$arr_str);
+                                        foreach($arr as $k=>$a){
+                                            $list[$k]['name']=get_wap_news_class_name($a);
+                                            $list[$k]['data']=get_index_news_category($a,4);
+                                        }
+                                    </php>
+                                    <volist name="list" id="li" >
+                                        <li class="class_name1"><a>{$li['name']}</a></li>
+                                    </volist>                           
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </section>
+
+
+                <div class="hj02-news-box swiper-container">
+                    <div class="hj02-news_wai swiper-wrapper">
+                        <volist name="list" id="li" >
+                            <div alt="{$li['name']}" class="hj02-news_item swiper-slide">
+                                <volist name="li['data']" id="indexnews" offset="0" length="1" key="h">
+                                    <div class="hidden-xs hidden-sm hidden-md col-lg-5">
+                                        <div class="news_item" id="news_item">
+                                            <p class="news_item_date"><span>{:date('m-d ',$indexnews['created'])}</span></p>
+                                            <div class="news_item-title margin-20px-top"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" class="index_sub_title">{:subtxt($indexnews['title'],40)}</a></div>
+                                            <div class="news_item-desc-wai margin-20px-top"><div class="news_item-desc index_text">{:subtxt($indexnews['news_description'],100)}</div></div>
+                                            <div class="hynews_pic margin-30px-top">
+                                                <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}"/></a>
+                                            </div>
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" class="news_item_more"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 hidden-lg hidden-xl">
+                                        <div class="news_item_right">
+                                            <div class="news_item_right_left">
+                                                <div class="news_item-title2 margin-20px-bottom"><a class="index_sub_title" href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],40)}</a></div>
+                                                <div class="news_item-desc2 index_text">{:subtxt($indexnews['news_description'],100)}</div>
+                                            </div>
+                                            <div class="news_item_right_right">
+                                                <p style="margin-bottom: 20px;"><span>{:date('m-d ',$indexnews['created'])}</span></p>
+                                                <p><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" class="details"></a></p>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                </volist>
+                                <div class="col-xs-12 col-lg-7">
+                                    <div class="news_item_right_box" id="news_item_right_box">
+                                        <volist name="li['data']" id="indexnews" offset="1" length="3" key="h">
+                                            <div class="news_item_right">
+                                                <div class="news_item_right_left">
+                                                    <div class="news_item-title2 margin-20px-bottom"><a class="index_sub_title" href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],40)}</a></div>
+                                                    <div class="news_item-desc2 index_text">{:subtxt($indexnews['news_description'],100)}</div>
+                                                </div>
+                                                <div class="news_item_right_right">
+                                                    <p style="margin-bottom: 20px;"><span>{:date('m-d ',$indexnews['created'])}</span></p>
+                                                    <p><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" class="details"></a></p>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </volist>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </volist>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</section>
+
+<!--news end-->
+

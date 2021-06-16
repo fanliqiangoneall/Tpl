@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<!--index-product start-->
+<style>
+    .HJ05-product-box{height: 570px;}
+    .hj05-product{padding-bottom: 50px;}
+    .HJ05-product-box{
+        padding-top:80px;background: url({:getindeximgurl($data[2])}) no-repeat center fixed;
+    }
+    .hj05-index-more a,.hj05-pro-next:hover,.hj05-pro-prev:hover{
+        background: #{$data47[9]};
+    }
+    .hj05-product .swiper-slide .in_proname_a a:hover{
+        color: #{$data47[9]};
+    }
+    .hj05-index-more a:hover{
+        background: #{$color};
+    }
+    .hj05-pro-next{width: 36px;height: 36px;background: #fff;top: 95%;text-align: center;right: calc(50% - 40px);}
+    .hj05-pro-prev{width: 36px;height: 36px;background: #fff;top: 95%;text-align: center;left: calc(50% - 40px);}
+    .hj05-pro-next i,.hj05-pro-prev i{font-size: 24px;line-height: 36px;text-align: center;font-weight: normal}
+    .hj05-pro-next:hover i,.hj05-pro-prev:hover i{color: #fff;}
+
+</style>
+<div style="background: #f2f2f2">
+    <div class="hj-product HJ05-product-box">
+        <div class="container">
+            <h3 class="HJ05-advan-title wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data[0]}</span></h3>
+            <p class="HJ05-advan-title_2 wow fadeInUp" style="color: #fff" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{$data[1]}</p>
+
+        </div>
+    </div>
+    <div class="HJ05-product-content">
+        <div class="container">
+            <div class="HJ05-product-list">
+                <div class="swiper-container  hj05-product">
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="indexnewpro" id="indexnewpro" key="k" offset="0" length="8">
+                            <div class="swiper-slide">
+                                <div class="img"><img src="{:getmainimgurl($indexnewpro['main_img'])}" <if condition="$indexnewpro['proalt'] neq ''">alt="{$indexnewpro['proalt']}"<else/>alt="{$indexnewpro['pro_name']}"</if> /></div>
+                                <div class="in_proname_a box-sizing ellipsis_two"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">{$indexnewpro['pro_name']}</a></div>
+                                <div class="hj05-index-more"><a href="{:U('/Product','','')}/{:getproname($indexnewpro['pid'])}">Read More</a></div>
+                            </div>
+                        </volist>
+                    </div>
+                    <!-- Add Pagination -->
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next hj05-pro-next"><i class="fa fa-angle-right"></i></div>
+                    <div class="swiper-button-prev hj05-pro-prev"><i class="fa fa-angle-left"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+</script>
+<!--index-product end-->

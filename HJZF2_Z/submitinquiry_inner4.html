@@ -1,0 +1,261 @@
+<style>
+	.inner-4__cateprofile__part4{width: 100%;margin: auto;}
+	.inner-4__inquirycontent{position: relative;}
+	.inner-4__inquirycontent .yz_alert{position: absolute;top: 4px;right: 5px;}
+	.inner-4__inquirycontent input,.inner-4__inquirycontent textarea{background: none;border: 1px solid #fff;width: 100%;padding: 5px 10px;color: #fff;margin-bottom: 20px;font-size: 16px;line-height: 28px; box-sizing: border-box;}
+	.inner-4__inquirycontent textarea{height: 110px;resize: none;}
+	#inner-4__submit{
+		display: inline-block;position: relative;overflow: hidden;
+	}
+	#inner-4__submit input{
+    	border: 1px solid #fff;
+		line-height: 28px;
+		font-size: 16px;
+		position: relative;
+		background: transparent;
+		display: inline-block;
+		z-index: 2;
+		padding: 8px 56px;
+		color: rgba(255,255,255,.8);
+	}
+	#inner-4__submit:before{
+		content: '';
+		display: block;
+		width: 320px;
+		height: 200px;
+		background: transparent;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		transform: scale(0);
+		-moz-transform: scale(0);
+		-webkit-transform: scale(0);
+		transition: 0.6s;
+		background: #{$color};
+	}
+	#inner-4__submit:hover:before{transform: scale(1.4);
+		-moz-transform: scale(1.4);
+		-webkit-transform: scale(1.4);
+		transition: 0.6s;}
+	.inner-4__inquirycontent input#code_char{width: 30%;}
+	::-webkit-input-placeholder { /* WebKit browsers */
+	  color: rgba(255,255,255,.8);
+	  font-size: 16px;
+	}
+	
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	  color: rgba(255,255,255,.8);
+	  font-size: 16px;
+	}
+	
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+	  color: rgba(255,255,255,.8);
+	  font-size: 16px;
+	}  
+	@media(max-width:768px){
+	.inner-4__inquirycontent input#code_char{ 
+		width:50%;
+	}
+	.inner-4__inquirycontent input, .inner-4__inquirycontent textarea{
+		font-size:14px;
+	}
+	}
+</style>
+<php>
+	$lan_submit = C('Language');
+</php>
+<script>
+	jQuery(function(){
+
+		jQuery("#message").focus(function(){
+			jQuery("#message_alert").html("");
+		});
+		jQuery("#linkname").focus(function(){
+			jQuery("#linkname_alert").html("");
+		});
+		jQuery("#phone").focus(function(){
+			jQuery("#phone_alert").html("");
+		});
+		jQuery("#email").focus(function(){
+			jQuery("#email_alert").html("");
+		});
+		jQuery("#code_char").focus(function(){
+			jQuery("#code_char_alert").html("");
+		});
+
+
+		jQuery("#getcode_char").click(function(){
+			jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char1").click(function(){
+			jQuery("#getcode_char").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+
+	})
+
+
+
+
+	function yz_submit(){
+		var language = '<?php echo $lan_submit;?>';
+		var count=0;
+		var message=Trims(jQuery("#message").val());
+		var linkname=Trims(jQuery("#linkname").val());
+		var phone=Trims(jQuery("#phone").val());
+		var email=Trims(jQuery("#email").val());
+
+
+		if(linkname.length<=0){
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#linkname_alert").html("名称不能为空！");
+			}else{
+				jQuery("#linkname_alert").html("The name cannot be empty!");
+			}
+			count++;
+		}
+		else{
+			jQuery("#linkname_alert").html("");
+		}
+
+
+		var str=/[\u4E00-\u9FA5a-zA-Z]/;
+		if(language == 'cn' || language == 'zh'){
+			if(phone.length<=0){
+				jQuery("#phone_alert").html("电话不能为空！");
+				count++;
+			}else{
+				if(is_phone(jQuery('#phone').val())){
+					jQuery("#phone_alert").html("电话格式有误！");
+				}
+			}
+		}else{
+			if(phone.length>0 && is_phone(jQuery('#phone').val()))
+			{
+			jQuery("#phone_alert").html("Telephone information is wrong!");
+				count++;
+			}else{
+				jQuery("#phone_alert").html("");
+			}
+		}
+
+		console.log(is_email(email));
+		if(language == 'cn' || language == 'zh'){
+			if(email.length>0 &&!is_email(email)){
+				jQuery("#email_alert").html("*邮箱格式有误！");
+				count++;
+			}
+			else {
+				jQuery("#email_alert").html("");
+			}
+		}else{
+			if(email.length<=0){
+				if(language == 'cn' || language == 'zh'){
+					jQuery("#email_alert").html("电子邮件不能为空！");
+				}else{
+					jQuery("#email_alert").html("The email can not be empty!");
+				}
+
+				count++;
+			}
+			else{
+				if(!is_email(email)){
+					jQuery("#email_alert").html("Email format error!");
+					count++;
+				}
+				else {
+					jQuery("#email_alert").html("");
+				}
+			}
+		}
+
+
+
+
+		if(message.length<=0){
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#message_alert").html("咨询内容不能为空！");
+			}else{
+				jQuery("#message_alert").html("Consulting content cannot be empty!");
+			}
+			count++;
+		}
+		else{
+			jQuery("#message_alert").html("");
+		}
+		
+		
+		var code_char = jQuery("#code_char").val();
+		console.log(code_char);
+		jQuery.ajax({
+			type: "POST",
+			url: "/verification",
+			async:false,
+			data: {code:code_char},
+			success: function(data){
+
+				if(data==1){
+					jQuery("#code_char_alert").html("");
+				}else{
+					count++;
+					if(language == 'cn' || language == 'zh'){
+						jQuery("#code_char_alert").html("验证码错误");
+					}else{
+						jQuery("#code_char_alert").html("Verification code error");
+					}
+
+				}
+			}
+		});
+
+
+		if(count>0){
+			return false;
+		}
+		else{
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#inbut").html('<h5 style="color:#F00;">请稍等</h5>');
+			}else{
+				jQuery("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+			}
+			return true;
+		}
+	}
+
+
+</script>
+<div class="inner-4__cateprofile__part4" id="inquiry">
+      <div class="inner-4__inquiry" id="inner-4__inquiry">
+          <form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();" class="inner-4__part4form">
+              <div class="inner-4__inquirybox wow fadeInRight" data-wow-delay="0.2s" data-wow-duration="1s">
+                  <div class="inner-4__inquirycontent"><input type="text" name="linkname" id="linkname" placeholder="{:__('Name: ')} *"><span class="yz_alert" id="linkname_alert"></span></div>
+                  <div class="clear"></div>
+              </div>
+              <div class="inner-4__inquirybox wow fadeInRight" data-wow-delay="0.4s" data-wow-duration="1s">
+                  <div class="inner-4__inquirycontent"><if condition="C('Language') eq 'cn' or C('Language') eq 'zh'"><input type="text" name="phone" id="phone" placeholder="{:__('Mobile: ')} *"><else/><input type="text" name="phone" id="phone" placeholder="{:__('Mobile: ')}"></if><span class="yz_alert" id="phone_alert"></span></div>
+                  <div class="clear"></div>
+              </div>
+              <div class="inner-4__inquirybox wow fadeInRight" data-wow-delay="0.6s" data-wow-duration="1s">
+                  <div class="inner-4__inquirycontent"><if condition="C('Language') neq 'cn' && C('Language') neq 'zh'"><input type="text" name="email" id="email" placeholder="{:__('E-mail: ')} *"><else/><input type="text" name="email" id="email" placeholder="{:__('E-mail: ')}"></if><span class="yz_alert" id="email_alert"></span></div>
+                  <div class="clear"></div>
+              </div>
+              <div class="inner-4__inquirybox wow fadeInRight" data-wow-delay="0.8s" data-wow-duration="1s">
+                  <div class="inner-4__inquirycontent"><textarea name="message" id="message" placeholder="{:__('Message: ')} *">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+                      <div class="clear"></div>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+              <div class="inner-4__inquirybox wow fadeInRight" data-wow-delay="0.9s" data-wow-duration="1s">
+                  <div class="inner-4__inquirycontent"><input type="text" class="input" id="code_char" name="code" maxlength="3" width="40%" placeholder="{:__('Verification code: ')} *"/>&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1"><img src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -4px;top: -1px;height: 32px;"/></a><span class="yz_alert" id="code_char_alert"></span></div>
+                  <div class="clear"></div>
+              </div>
+              <div class="inner-4__inquirybox wow fadeInRight" data-wow-delay="0.9s" data-wow-duration="1s">
+                  <input type="hidden" name="prodid" value="{$product['pid']}"/>
+                  <div id="inner-4__submit"><input  type="submit" value="{:__('Submit')}"  name="submit" /></div>
+              </div>
+          </form>
+          <div class="clear"></div>
+      </div>
+</div>

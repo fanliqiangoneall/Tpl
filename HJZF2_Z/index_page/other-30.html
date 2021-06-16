@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+<php>
+    if($data269[1]){
+    $imgs=[];
+    $matches=getimages(htmlspecialchars_decode($data269[1]));
+    if(isset($matches[1])){
+    $imgs=$matches[1];
+    }
+    }
+    foreach($imgs as $k=>$img){
+    $other[$k]['img']=$img;
+    }
+    if($data269[3]){
+        $hang =$data269[3]; 
+    }else{
+        $hang = 2;
+    }
+    if($data269[4]){
+        $lie =$data269[4]; 
+    }else{
+        $lie = 5;
+    }
+</php>
+<script>   
+    var other_30_hang = "<?php echo $hang;?>";
+    var other_30_lie = "<?php echo $lie;?>";
+</script>
+<style>
+    .hjzf_other-30 {
+        background: #{$data269[0]};
+    }
+    .other-30-pagination .swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+</style>
+<section class="hjzf_other-30 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <if condition="$data269[2]">
+                    <div class="text-center index_title pb40">
+                        {$data269[2]}
+                    </div>
+                </if>
+                <div class="swiper-container other-30_swiper">
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="other" id="li" key="k">
+                            <if condition="$li['img']">
+                                <div class="swiper-slide other-30_slide"><a href="javascript:;"><img src="{$li['img']}"
+                                            alt="{$data269[2]}"></a></div>
+                            </if>
+                        </volist>
+                    </div>
+                    <div class="text-center other-30-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

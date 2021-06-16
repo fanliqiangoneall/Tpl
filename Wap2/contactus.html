@@ -1,0 +1,51 @@
+<extend name="Wap2:base" />
+<block name="content">
+<php>
+$contactus__current=$inner_data[1] or $contactus__current=$intro_class['class_name'];
+if($inner_data[2]){
+	$contactus__title_bj=getindeximgurl($inner_data[2]);
+}else{
+	$contactus__title_bj="";	
+}
+    $othercate__title_color=$inner_data[3] or $othercate__title_color="#333";
+</php>
+<style>
+.contactus__content{
+    padding:10px 0;
+}
+.contactus__banner{ width:100%;}
+.contactus__Breadcrumbs{padding: 0 10px 10px;}
+.contactus__Breadcrumbs, .contactus__Breadcrumbs a{ text-decoration:none; color:#3d3d3d; font-size:13px;}
+.contactus__title{
+    color:{$othercate__title_color};font-size:18px; font-weight:200; padding:5px 10px; background:url({$contactus__title_bj}) no-repeat;
+}
+.contactus__content img{ max-width:100%;}
+.contactus__content article{ padding:10px 0px;}
+.new_detail__submit_title{width: auto;height: auto;text-align: left;color: #333;font-size: 24px;line-height: 27px;}
+</style>
+    <div>
+        <if condition="$inner_data[0] neq ''">
+            <img class="contactus__banner" src="{:getindeximgurl($inner_data[0])}">
+        </if>
+    </div>
+    <section class="contactus__content">
+        <div class="contactus__Breadcrumbs">
+            <div class="contactus__Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span class="contactus__current">{$contactus__current}</span>
+            </div>
+        </div>
+        <div class="contactus__title">
+            <div class="inpage__title_main">{$contactus__current}</div>
+        </div>
+        <div style="padding: 0 10px;">
+            <article>
+                <if condition=" $intro_class['hasmobile'] eq 0">{:htmlspecialchars_decode($intro_class['readme'])}</if>
+                <if condition=" $intro_class['hasmobile'] eq 1">{:htmlspecialchars_decode($intro_class['wapreadme'])}</if>
+            </article>
+            <div><span class="new_detail__submit_title">{:__('Immediately consult')}</span></div>
+            <Include file="./Tpl/Wap2/submit.html" />
+        </div>
+
+    </section>
+</block>
+

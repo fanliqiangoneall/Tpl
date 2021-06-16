@@ -1,0 +1,141 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background: #{$color};
+            border: 1px solid #{$color};
+        }
+        .hjzf2_z_products_right{
+            border-bottom: 1px solid #666;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            padding-bottom: 10px;
+            position: relative;
+            line-height: 50px;
+            height: 50px;
+        }
+        .hjzf2_z_products_right:before{
+            position: absolute;
+            display: block;
+            content:'';
+            left: 0;
+            top: 5px;
+            height: 25px;
+            width: 4px;
+            background-color: #{$color};
+        }
+        .hjzf2_z_products_right h2{
+            font-size: 22px;
+        }
+        .hjzf2_z_products_right_list{
+            margin-left: -15px;
+            margin-right: -15px;            
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .hjzf2_z_products_right_list li{
+            margin-bottom: 20px;
+        }
+        .hjzf2_z_products_right_list li a{
+            display: block;
+            box-shadow: 0 0 15px 5px rgba(124,124,124,.1);
+            padding-bottom: 10px;
+        }
+        .hjzf2_z_products_right_list li:hover .hjzf2_z_products_right_list_txt{
+            color: #{$color};
+        }
+        .hjzf2_z_products_right_list_img{
+            overflow: hidden;
+        }
+        .hjzf2_z_products_right_list_img img{
+            transition: all .5s;
+        }
+        .hjzf2_z_products_right_list li:hover .hjzf2_z_products_right_list_img img{
+            transform: rotate(5deg) scale(1.05);
+        }
+        .hjzf2_z_products_right_list li .hjzf2_z_products_right_list_txt{
+            padding-top: 5px;
+            margin-left: 15px;
+            margin-right: 15px;
+            border-top: 1px solid #f1f1f1;
+        }
+    </style>
+    <div class="HJZF_Z__wrapper inner_4__innerwrapper" id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt="" />
+                    </div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="HJZF_Z__innerContent hjzf2_z_products">
+            <div class="container">
+                <div class="row">
+                    <!-- left -->
+                    <div class="col-md-3 hidden-xs hidden-sm hidden-md">
+                        <Include file="./Tpl/HJZF2_Z/inner/product_left20.html" />
+                    </div>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+                    </section>
+                    <!-- right -->
+                    <div class="col-xs-12 col-md-9">
+                        <php>
+                            $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                        </php>
+                        <div class="hjzf2_z_products_right">
+                            <h2>{$prolist['class_name']}</h2>
+                        </div>
+                        <if condition="$prolist['readme']">
+                            <div class="cate_20_des mb-20">{$prolist['readme']}</div>
+                        </if>
+                        <ul class="hjzf2_z_products_right_list">
+                            <volist empty="$no_empty" name="pro" id="allproa" key="k_class">
+                              <li class="col-xs-6 col-md-4 text-center">
+                                  <a href="{:U('/Product','','')}/{:getproname($allproa['pid'])}">
+                                      <div class="hjzf2_z_products_right_list_img">
+                                          <img src="{:getmainimgurl($allproa['main_img'])}" alt="{$allproa['pro_name']}" class="img-fluid">
+                                      </div>
+                                      <div class="hjzf2_z_products_right_list_txt">
+                                        {$allproa['pro_name']}
+                                      </div>
+                                  </a>
+                              </li>  
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</block>
+<block name="footer_js">
+    
+</block>

@@ -1,0 +1,198 @@
+<style>
+.inquiry{width:100%;padding:0px 0 20px 0; text-align:left;}
+.inquiry_Title{ width:100%;float:left; font-size:16px; color:#333333; font-weight:bold}
+.inquiry h2{border-bottom:1px solid #ccc;padding-bottom:5px; color:#333333;}
+.inquiryinfo{width:100%; padding-bottom:5px;}
+.inquiryinfo input[type=text]{line-height:28px;padding:5px; border:1px solid #bfbfbf;width:95%; background:#ffffff; font-size:14px; color:#333333;}
+.inquiryinfo textarea{padding:5px; border:1px solid #bfbfbf; background:#ffffff; width:98.5%; max-width:99%; font-size:14px; color:#333333;}
+
+.inquiryleft{float:left;width:100%; font-size:14px; color:#333333; line-height:25px;}
+.inquiryright{float:left;width:100%; position:relative;}
+.productbutton{
+background: #{$color};
+color: #fff;
+border: 0 !important;
+cursor: pointer;
+font-size:13px;
+height: 32px !important;
+padding: 0 10px 0 10px !important;
+width:100px !important;
+text-align:center;
+	border-radius: 5px;
+}
+.productbutton:hover {
+background: #{$color};
+}
+.yz_alert{color:#ff0000; position:absolute; top:4px; right:10px; z-index:99;}
+.clear{clear:both;}
+</style>
+<script>
+jQuery(function(){
+jQuery("#message").focus(function(){
+jQuery("#message_alert").html("");
+});
+jQuery("#linkname").focus(function(){
+jQuery("#linkname_alert").html("");
+});
+jQuery("#phone").focus(function(){
+jQuery("#phone_alert").html("");
+});
+jQuery("#email").focus(function(){
+jQuery("#email_alert").html("");
+});
+jQuery("#code_char").focus(function(){
+jQuery("#code_char_alert").html("");
+});
+
+
+jQuery("#getcode_char").click(function(){
+		jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+	});
+
+jQuery("#getcode_char1").click(function(){
+		jQuery("#getcode_char").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+	});
+
+
+})
+
+
+function yz_submit(){
+var count=0;
+var message=Trims(jQuery("#message").val());
+var linkname=Trims(jQuery("#linkname").val());
+var phone=Trims(jQuery("#phone").val());
+var email=Trims(jQuery("#email").val());
+
+
+if(linkname.length<=0){
+jQuery("#linkname_alert").html("Der Name darf nicht leer sein!");
+count++;
+}
+else{
+jQuery("#linkname_alert").html("");
+}
+
+
+ var str=/[\u4E00-\u9FA5a-zA-Z]/;   
+if(phone.length>0 && str.test(jQuery('#phone').val()))   
+{
+jQuery("#phone_alert").html("Telefoninformationen sind falsch!");
+count++;
+}else{
+jQuery("#phone_alert").html("");
+}
+
+if(email.length<=0){
+  jQuery("#email_alert").html("Die E-Mail darf nicht leer sein!");
+  count++;
+}
+else{
+		  if(!is_email(email)){
+			jQuery("#email_alert").html("E-Mail-Formatfehler");
+		  	count++;
+		  }
+		else {
+			  jQuery("#email_alert").html("");
+			  }
+}
+
+if(message.length<=0){
+jQuery("#message_alert").html("Beratungsinhalte dürfen nicht leer sein!");
+count++;
+}
+else{
+jQuery("#message_alert").html("");
+}
+
+var code_char = jQuery("#code_char").val();
+jQuery.ajax({
+   type: "POST",
+   url: "/verification",
+   async:false,
+   data: {code:code_char},
+   success: function(data){
+   
+  if(data==1){
+	jQuery("#code_char_alert").html("");
+  }else{
+   count++;
+   jQuery("#code_char_alert").html("Bestätigungscodefehler");
+  }
+  }            
+});
+
+
+if(count>0){
+return false;
+}
+else{
+jQuery("#inbut").html('<h5 style="color:#F00;">Warten Sie mal</h5>');
+
+return true;
+}
+
+}
+
+function Trims(str)
+{
+return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+} 
+
+function is_email(str)
+{
+return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(str));
+}
+
+</script>
+<div class="inquiry" id="zixun" style="margin-top:20px;">
+
+<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+<div style="width:32%; float:left;">
+<div class="inquiryinfo">
+    <div class="inquiryleft">Name <span style="color:#f00">*</span></div>
+	<div class="inquiryright"><input type="text" name="linkname" id="linkname"><span class="yz_alert" id="linkname_alert"></span></div>
+	<div class="clear"></div>
+</div>
+</div>
+
+<div style="width:32%; float:left; margin-left:2%;">
+<div class="inquiryinfo">
+    <div class="inquiryleft">Telefon </div>
+	<div class="inquiryright"><input type="text" name="phone" id="phone"><span class="yz_alert" id="phone_alert"></span></div>
+	<div class="clear"></div>
+</div>
+</div>
+
+<div style="width:32%; float:left; margin-left:2%;">
+<div class="inquiryinfo">
+    <div class="inquiryleft">Email <span style="color:#f00">*</span></div>
+	<div class="inquiryright"><input type="text" name="email" id="email"><span class="yz_alert" id="email_alert"></span></div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">Botschaft <span style="color:#f00">*</span></div>
+	<div class="inquiryright"><textarea name="message" id="message" style="padding:5px; height:210px;">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+	<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">Verifizierungs-Schlüssel <span style="color:#f00">*</span></div>
+	<div class="inquiryright"><input type="text" class="input" id="code_char" name="code" maxlength="3" style="width:30%" />&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char" height="40" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1">erfrischen</a><span class="yz_alert" id="code_char_alert"></span></div>
+	<div class="clear"></div>
+</div>
+
+<div class="inquiryinfo" style="padding-top:15px;">
+<input type="hidden" name="prodid" value="{$product['pid']}"/>
+<div id="inbut"><input  class="productbutton" type="submit" value="Einreichen"  name="submit" /></div>
+</div>
+</form>
+
+<div class="clear"></div>
+</div>

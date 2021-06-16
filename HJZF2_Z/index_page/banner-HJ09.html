@@ -1,0 +1,37 @@
+<!--{$pagename}-->
+<style>
+    .hj09_banner_pagination .swiper-pagination-bullet-active {
+        background: #{$color};
+    }
+</style>
+<section class="hjzf_banner_hj09">
+    <div class="swiper-container hj09_banner_top">
+        <div class="swiper-wrapper">
+            <volist name="banner" id="banner_pic" key="keya" offset="0" length="10">
+
+                <div class="swiper-slide">
+                    <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%" />
+                    <div class="hj09_banner_wrapper">
+                        <div class="texta ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" swiper-animate-delay="0.2s">
+                            {:HtmlEncode($data280[$keya*2-2])}
+                        </div>
+                        <div class="textb ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" swiper-animate-delay="0.4s">
+                            {:HtmlEncode($data280[$keya*2-1])}
+                        </div>
+                    </div>
+                </div>
+            </volist>
+        </div>
+        <div class="hj09_banner_navigation">
+            <div class="hj09_banner_navigation_btn">
+                <div class="swiper-button-next swiper-button-white hj09_banner_next"></div>
+                <div class="swiper-button-prev swiper-button-white hj09_banner_prev"></div>
+            </div>
+            <div class="hj09_banner_top_pagination hidden-xs hidden-sm"></div>
+            <div class="hj09_banner_top_btn hidden-xs hidden-sm">
+                <i class="start" style="background: url(__TMPL__HJZF2_Z/img/stop.png) no-repeat center/ 100% 100%"></i>
+                <i class="stop" style="background: url(__TMPL__HJZF2_Z/img/start.png) no-repeat center/ 100% 100%"></i>
+            </div>
+        </div>
+    </div>
+</section>

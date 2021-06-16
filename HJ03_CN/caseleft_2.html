@@ -1,0 +1,27 @@
+
+<style type="text/css">
+    .inner_t2d_nav>ul>li:hover{
+        background: #{$color};
+    }
+    .inner_t2d_nav>ul>li:hover >a>h3{
+        color: #fff;
+    }
+    .inner_t2d_nav>ul>li.class_t2don{
+        background: #{$color};
+    }
+    .inner_t2d_nav>ul>li.class_t2don >a>h3{
+        color: #fff;
+    }
+</style>
+
+<div class="main_left">
+    <div class="inner_t2d_nav">
+        <ul>
+            <li class="class_t2d_all"><a href="{:U('/cases')}"><h3>全部</h3></a></li>
+            <volist empty="no" name="allnewclass" id="new"  offset="0">
+                <li <if condition="$newscate['classid'] eq $new['classid']">class="class_t2don"<else/>class="class_t2d"</if>><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>

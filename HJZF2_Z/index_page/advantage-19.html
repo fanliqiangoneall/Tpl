@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+
+<style>
+    .advantage-19 .index_top_title {
+        color: #{$data313[3]};
+    }
+    .flex-boxa .itema:hover a .boxa {
+        color: #fff;
+    }
+</style>
+<section class="advantage-19 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="clearfix">
+                <div class="col-xs-12 col-md-6">
+                    <div class="pb40">
+                        <div class="index_top_title pb20 index_text">{$data313[0]}</div>
+                        <div class="index_title pb20">{:HtmlEncode($data313[1])}</div>
+                        <div class="index_sub_title">{:HtmlEncode($data313[2])}</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <img src="{:getindeximgurl($data313[4])}" class="img-responsive" alt="{$data313[0]}">
+                </div>
+            </div>
+                
+            <div class="col-xs-12">
+
+                <ul class="flex-boxa">
+                    <php>
+                        $arr = get_list_val($data313[5]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li class="itema">
+                            <if condition="$a[link]">
+                                <a href="{$a[link]}">
+                            </if>
+                            <div class="img">
+                                <img src="{$a[img]}" alt="{$a[title]}" class="img-full">
+                            </div>
+                            <div class="boxa">
+                                <div class="index_sub_title">
+                                    {$a[title]}
+                                </div>
+                                <div class="ico">
+                                    <img src="{$a[ico]}" alt="{$a[title]}">
+                                </div>
+                            </div>
+                            <if condition="$a[link]">
+                                </a>
+                            </if>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

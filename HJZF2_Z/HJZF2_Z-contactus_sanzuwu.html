@@ -1,0 +1,119 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current {
+			color: #{$color};
+		}
+		.InsidePages_content-right_content_title:before {
+			background: #{$color};
+		}
+		.productbutton{
+			background-color: #{$color};
+		}
+		
+	</style>
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_aboutus.html" />
+		</div>
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+							class="fa fa-angle-right"></i>&nbsp;<span
+							class="current">{$intro_class['class_name']}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="HJZF_contact_inquiry">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="text-center HJZF_contact_inquiry_title">
+								<div class="index_title pb20">
+									{$inner_data[3]}
+								</div>
+								<div class="index_sub_title pb40">
+									{:HtmlEncode($inner_data[4])}
+								</div>
+							</div>
+							<if condition="C('language') eq 'cn'">
+								<div class="page_Main">
+									<Include file="./Tpl/HJZF2_Z/submitinquiry_cn_sanzuwu.html" />
+								</div>
+								<else />
+								<div class="page_Main">
+									<Include file="./Tpl/HJZF2_Z/submitinquiry_sanzuwu.html" />
+								</div>
+							</if>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<section <if condition="count($navrs) gt 0">class="InsidePages_content-right"
+							<else /> class="InsidePages_content-right2" </if>>
+							<div class="InsidePages_content-right__wrap">
+								<div class="InsidePages_content-right_content-main">
+									<div class="HJZF_contact_editor">
+										<div class="nav-hidden-mobile col-lg-12">
+											{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+										</div>
+										<div class="col-xs-12 nav-hidden-pc">
+											<if condition="$intro_class['wapreadme']">
+												{:htmlspecialchars_decode($intro_class['wapreadme'])}
+												<else />{:htmlspecialchars_decode($intro_class['readme'])}</if>
+											{:htmlspecialchars_decode(get_contactus_code())}
+										</div>
+										<div class="clear"></div>
+									</div>
+									
+									<div style="clear:both"></div>
+								</div>
+							</div>
+						</section>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<if condition="$inner_data[2]">
+				<php>
+					$arra=explode(',', $inner_data[5]);
+				</php>
+				<style>
+					.HJZF_contact_inquiry{
+						background: url({:getindeximgurl($inner_data[2])}) no-repeat center;
+					}
+					.HJZF_contact_inquiry{
+						padding-top: 40px;
+						padding-bottom: 40px;
+					}
+					.HJZF_contact_inquiry .inquiry .col-xs-12{
+						width: 100% !important;
+					}
+					.sanzuwu_contact{
+						border: none;
+						background: linear-gradient(to bottom,#{$arra[0]},#{$arra[1]},#{$arra[2]});
+					}
+					.HJZF_contact_inquiry_title{
+						color: #{$inner_data[6]};
+					}
+				</style>
+			</if>
+		
+			
+			
+		</div>
+	</div>
+</block>

@@ -1,0 +1,35 @@
+<!--{$pagename}-->
+<php>
+    if($data427[5]){
+        $color = $data427[5];
+    };
+</php>
+<style>
+    .hjzf_aboutus_22_left,.hjzf_aboutus_22_left:after{
+        background-color: #{$color};
+    }
+    .hjzf_aboutus_22_right a {
+        color: #{$color};
+    }
+</style>
+
+<section class="hjzf_aboutus_22">
+
+    <img src="{:getindeximgurl($data427[0])}" alt="{$data427[3]}" class="img-fluid">
+    
+    <div class="container">
+        <div class="row hjzf_aboutus_22_wrapper">
+            <div class="hjzf_aboutus_22_left">
+                <span>{$data427[1]}</span>
+                <b>{$data427[2]}</b>
+            </div>
+            <div class="col-xs-11 hjzf_aboutus_22_right">
+                <span class="index_sub_title">{$data427[3]}</span>
+                <div>{$data427[4]}</div>
+                <a href="{$data427[6]}">{:__('Read More')} ></a>
+            </div>
+            
+        </div>
+    </div>
+    
+</section>

@@ -1,0 +1,78 @@
+<!--{$pagename}-->
+<style>
+.my-mask.cases_33_more:before{
+	background-color: #{$color};
+}
+</style>
+<section class="cases_33 index_pd">
+	<div class="text-center pb40 case_33_title clearfix">
+		<div class="col-xs-12">
+			<div class="index_title pb20 wow">
+				{$data648[0]}
+			</div>
+			<div class="index_sub_title wow">
+				{:HtmlEncode($data648[1])}
+			</div>
+			<div class="index_sub_title wow">
+				{:HtmlEncode($data648[2])}
+			</div>
+		</div>
+	</div>
+	<php>
+		if($data648[3]){
+		$len = $data648[3];
+		}else{
+		$len = 8;
+		};
+	</php>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="cases_33_wrapper">
+					<ul>
+						<if condition="$data648[5]">
+							<php>
+								$arr = get_list_val($data648[5]);
+							</php>
+							<volist name="arr" id="a">
+								<li>
+								<a href="{$a[link]}">
+									<div class="cases_33_con">
+										<img src="{$a[img]}" class="img-fluid"
+											alt="{$a[title]}" />
+										<div class="cases_33_bottom">
+											<h3 class="index_sub_title">{$a[title]}</h3>
+											<h5>{$a[title]}</h5>
+										</div>
+									</div>
+								</a>
+							</li>
+							</volist>
+							<else/>
+							<volist name="indexcases" id="indexcase" offset="0" length="$len">
+								<php>
+									$caseName = get_wap_case_class_name($indexcase['cates_class']);
+								</php>
+								<li>
+									<a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">
+										<div class="cases_33_con">
+											<img src="{:getimgurl($indexcase['new_pro'])}" class="img-fluid"
+												alt="{$indexcase['title']}" />
+											<div class="cases_33_bottom">
+												<h3 class="index_sub_title">{$indexcase['title']}</h3>
+												<h5>{$caseName}</h5>
+											</div>
+										</div>
+									</a>
+								</li>
+							</volist>
+						</if>
+					</ul>
+				</div>
+				<div class="text-center">
+					<a href="{$data648[4]}" class="index_btn cases_33_more my-mask-l">{:__('Read More')}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

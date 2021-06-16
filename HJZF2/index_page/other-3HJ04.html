@@ -1,0 +1,66 @@
+<!--{$pagename}-->
+<style>
+	.new_hjzf_other-3HJ04 .other03Pre,.other03Next{
+		width: 64px;
+		height: 64px;
+		line-height: 64px;
+		text-align: center;
+		cursor: pointer;
+		position: absolute;
+		background: #{$color};
+	}
+	.new_hjzf_other-3HJ04 .other03mainContent:hover .other03Title{
+		color: #{$color};
+	}
+	.new_hjzf_other-3HJ04 .other03Container{
+		background-image: url({:getindeximgurl($data106[17])});
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	}
+</style>
+<div class="other03Container">
+	<div class="other03Content container">
+		<div class="serviceTopContainer">
+			<div class="serviceLeft">
+				<div class="serviceTopTitle">{$data106[0]}</div>
+				<div class="serviceTopTips">{$data106[1]}</div>
+			</div>
+		</div>
+		<div class="other03mainContainer">
+			<ul class="other03mainContent">
+				<php>
+					for($i=2;$i<16;$i=$i+5){
+				</php>
+				<if condition="$data106[$i] neq ''">
+					<li class="other03mainList lf">
+						<div class="other03ImgLeft lf  wow slideInUp" data-wow-duration="0.8s" data-wow-delay="0s" data-wow-offset="5"  data-wow-iteration="1">
+							<a href="{$data106[$i+4]}">
+								<img src="{:getindeximgurl($data106[$i])}" alt=""/>
+							</a>
+						</div>
+						<div class="other03TextRight lf wow slideInUp" data-wow-duration="1.2s" data-wow-delay="0s" data-wow-offset="8"  data-wow-iteration="1">
+							<div class="other03Title">{$data106[$i+1]}</div>
+							<div class="other03Tips">{$data106[$i+2]}</div>
+							<div class="other03Text">{$data106[$i+3]}</div>
+							<a href="{$data106[$i+4]}" class="serviceMore other03More">{:__('More')}</a>
+						</div>
+						<div class="clear"></div>
+					</li>
+				</if>
+				<php>
+					}
+				</php>
+				<div class="clear"></div>
+			</ul>
+		</div>
+		<div class="other03Pre">
+			<i class="fa fa-caret-right coF" aria-hidden="true"></i>
+		</div>
+		<div class="other03Next disable">
+			<i class="fa fa-caret-left coF" aria-hidden="true"></i>
+		</div>
+	</div>
+</div>
+
+

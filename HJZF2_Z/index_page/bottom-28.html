@@ -1,0 +1,150 @@
+<!--{$pagename}-->
+<php>
+	$arra = get_list_val($data711[4]);
+	$arrb = get_list_val($data711[5]);
+	$arrc = get_list_val($data711[6]);
+	$arr = get_list_val($data711[7]);
+</php>
+<style>
+	<if condition="$data711[0]">.hjzf2_z_bottom_28 {
+		background-image: url({:getindeximgurl($data711[0])
+	}
+
+	);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	}
+	</if> 
+	.bottom_28_inquiry #form_submit input{
+		background: url({:getindeximgurl($data711[2])}) no-repeat center;
+	}
+</style>
+<section class="hjzf2_z_bottom_28">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- top -->
+				<div class="hjzf2_z_bottom_28_wrapper">
+					<div class="bottom_28_first">
+						<div class="bottom_28_first_logo">
+							<img src="{:getindeximgurl($data711[1])}" alt="">
+						</div>
+						<div class="bottom_28_inquiry">
+							<Include file="./Tpl/HJZF2_Z/email_bottom_28.html" />
+						</div>
+					</div>
+					<div class="bottom_28_list">
+						<ul>
+							<volist name="arra" id="a" key="k">
+								<li>
+									<if condition="$k eq '1'">
+										<span>
+											<a href="{$a[link]}">{$a[title]}</a>
+										</span>
+										<else />
+										<a href="{$a[link]}">{$a[title]}</a>
+									</if>
+								</li>
+							</volist>
+						</ul>
+					</div>
+					<div class="bottom_28_list">
+						<ul>
+							<volist name="arrb" id="a" key="k">
+								<li>
+									<if condition="$k eq '1'">
+										<span>
+											<a href="{$a[link]}">{$a[title]}</a>
+										</span>
+										<else />
+										<a href="{$a[link]}">{$a[title]}</a>
+									</if>
+								</li>
+							</volist>
+						</ul>
+					</div>
+					<div class="bottom_28_list">
+						<ul>
+							<volist name="arrc" id="a" key="k">
+								<li>
+									<if condition="$k eq '1'">
+										<span>
+											<a href="{$a[link]}">{$a[title]}</a>
+										</span>
+										<else />
+										<a href="{$a[link]}">{$a[title]}</a>
+									</if>
+								</li>
+							</volist>
+						</ul>
+					</div>
+					<div class="bottom_28_contact bottom_28_list">
+						<ul>
+							<li>
+								<span><a>{$data711[8]}</a></span>
+							</li>
+							<li>
+								<if condition="chaifen($about['phone'],0)">
+									<p>{:__('Tel: ')} {:chaifen($about['phone'],0)}</p>
+								</if>
+								<if condition="chaifen($about['email'],0)">
+									<p>{:__('E-mail: ')} {:chaifen($about['email'],0)}</p>
+								</if>
+								<if condition="chaifen($about['fax'],0)">
+									<p>{:__('Fax: ')} {:chaifen($about['fax'],0)}</p>
+								</if>
+								<if condition="$about['address']">
+									<p>{:__('Add: ')} {$about['address']}</p>
+								</if>
+							
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+				<!-- bottom -->
+				<div class="text-center">
+					<if condition="$data711[7]">
+						<div class="bottom_28_share">
+							<ul>
+
+								<volist name="arr" id="a">
+									<li>
+										<a href="{$a[link]}">
+											<img src="{$a[ico]}">
+										</a>
+									</li>
+								</volist>
+							</ul>
+						</div>
+					</if>
+					<div class="copy_right">
+						<php>
+							$nowtime=date("Y",time());
+						</php>
+						CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights
+						reserved')}&nbsp;
+						<if condition="get_txtBeiAn()">
+							<a href="http://beian.miit.gov.cn/"
+								target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+							</a>&nbsp;
+						</if>
+						<a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+						<a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+						<if condition="C('language') eq 'cn'">
+							免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a href="https://www.one-all.com" title="常州网站建设"
+								target="_blank">常州网站建设</a>
+							<else />
+							<a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+								Zhonghuan Internet</a>
+						</if>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</section>

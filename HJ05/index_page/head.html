@@ -1,0 +1,200 @@
+<!--{$pagename}-->
+<style>
+    .header-language>ul>li>ul>li:hover,.HJ02_head_menu.hj-navbar>ul.hj-nav>li>.hj-dropdown-menu>li:hover,.head_menu_second{
+        background: #{$data47[9]};
+    }
+    .header-language>ul>li:hover >a,.header-language>ul>li:hover >a:after,.HJ02_head_menu.hj-navbar>ul.hj-nav>li:hover >a>h2,.catelist-first>li:hover>a>h3,.catelist-first>li:hover>i.icon,.catelist-first>li.has_second:hover:after,
+    .catelist-first>li>ul.catelist-second>li:hover a h3,.HJ02_head_menu.hj-navbar>ul.hj-nav>li.menu_on>a>h2{
+        color: #{$data47[9]};
+    }
+    .product-catelist{
+        border: 1px solid #{$data47[9]}
+    }
+</style>
+<header id="header">
+<!--head_middle-->
+<div class="head_menu">
+    <div class="container">
+        <div class="lf page_Logo_box">
+            <div class="page_Logo">
+                <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            </div>
+        </div>
+        <nav class="HJ02_head_menu hj-navbar">
+                <ul class="hj-nav">
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav_more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <ul class="hj02-menu hj-dropdown-menu">
+
+                                <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                    <li>
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <else/>
+
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="hj-dropdown-menu hj02-menu hj02-pro-menu">
+                                    <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                        <li>
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                            </if>
+                        </if>
+                        </li>
+                    </volist>
+                </ul>
+        </nav>
+        <div class="header-language hj05-header-language rt" <if condition="$data47[0]">style="display:blcok" <else/>style="display:none"</if>>
+            <ul>
+                <li>
+                    <a href="#">EN</a>
+                    <ul>
+                        <if condition="$data47[0]"><li><a href="{$data47[1]}" target="_blank"><img src="{:getindeximgurl($data47[2])}" alt=""/>{$data47[0]}</a></li></if>
+                        <if condition="$data47[3]"><li><a href="{$data47[4]}" target="_blank"><img src="{:getindeximgurl($data47[5])}" alt=""/>{$data47[3]}</a></li></if>
+                        <if condition="$data47[6]"><li><a href="{$data47[7]}" target="_blank"><img src="{:getindeximgurl($data47[8])}" alt=""/>{$data47[6]}</a></li></if>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+    <style>
+        .head_menu2{background: #fff;height: 65px;box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);opacity: 0;visibility: hidden;position: absolute;top: -100px;transition: .6s;}
+        .head_menu2 .page_Logo{height: 65px;}
+        .head_menu2 .page_Logo img{height: 100%}
+        .head_menu2 .HJ02_head_menu.hj-navbar>ul.hj-nav>li>a>h2{padding: 8px 20px;}
+        .head_menu2 .header-language>ul>li{margin-top: 10px;}
+        .head_menu2 .HJ02_head_menu.hj-navbar>ul.hj-nav>li.nav_more:after{top: 23px;}
+    </style>
+    <div class="head_menu2">
+        <div class="container">
+            <div class="lf page_Logo_box">
+                <div class="page_Logo">
+                    <a href="{:U('/')}" style="float: left;">{$logo}</a>
+                </div>
+            </div>
+            <nav class="HJ02_head_menu hj-navbar">
+                <ul class="hj-nav">
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav_more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <ul class="hj02-menu hj-dropdown-menu">
+
+                                <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                    <li>
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <else/>
+
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="hj-dropdown-menu hj02-menu hj02-pro-menu">
+                                    <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                        <li>
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                            </if>
+                        </if>
+                        </li>
+                    </volist>
+                </ul>
+            </nav>
+            <div class="header-language hj05-header-language rt" <if condition="$data47[0]">style="display:blcok" <else/>style="display:none"</if>>
+                <ul>
+                    <li>
+                        <a href="#">EN</a>
+                        <ul>
+                            <if condition="$data47[0]"><li><a href="{$data47[1]}" target="_blank"><img src="{:getindeximgurl($data47[2])}" alt=""/>{$data47[0]}</a></li></if>
+                            <if condition="$data47[3]"><li><a href="{$data47[4]}" target="_blank"><img src="{:getindeximgurl($data47[5])}" alt=""/>{$data47[3]}</a></li></if>
+                            <if condition="$data47[6]"><li><a href="{$data47[7]}" target="_blank"><img src="{:getindeximgurl($data47[8])}" alt=""/>{$data47[6]}</a></li></if>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="head_menu_second">
+        <div class="container">
+            <div class="head_product_cate lf">
+                <div class="cate-list-menu "><a href="#" class="heading-title">PRODUCT CATEGROY</a></div>
+                <div class="product-catelist">
+                    <ul class="catelist-first">
+                        <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                            <li <if condition="$allclass_head['childs'] neq ''">class="has_second"</if>>
+                                <i class="icon"></i><a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                <if condition="$allclass_head['childs'] neq ''">
+                                    <ul class="catelist-second">
+                                        <volist empty="no" name="allclass_head['childs']" id="allclass_head"  offset="0" length="8" >
+                                            <li>
+                                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <div class="ins-header-search lf" id="ins-header-search">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <li class="search_first"><input type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                    <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                    <div class="clear"></div>
+                </form>
+            </div>
+            <div class="head_mail rt">
+                Email: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a>
+            </div>
+        </div>
+<!--head_middle-->
+    <script>
+        $(".catelist-second").css("height",$(".product-catelist").outerHeight());
+    </script>
+
+        <script>
+            //获取nav距离顶部的距离
+            var navtop=$(".head_menu").offset().top;
+            $(document).scroll(function(){
+                //获取滚动条滚动的高度
+                var scroltop=$(document).scrollTop();
+                if (scroltop > navtop){
+                    $(".head_menu2").css({
+                        "position":"fixed",
+                        "left":"0px",
+                        "top":"0px",
+                        "width":"100%",
+                        "z-index":"99",
+                        "opacity":"1",
+                        "visibility":"visible"
+                    });
+
+                }else {
+                    $(".head_menu2").css({
+                        "position":"absolute",
+                        "opacity":"0",
+                        "left":"0",
+                        "top":"-100px",
+                        "width":"100%",
+                        "visibility":"hidden"
+
+                    });
+
+                }
+            })
+        </script>
+
+</header>

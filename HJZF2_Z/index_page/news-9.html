@@ -1,0 +1,143 @@
+<!--{$pagename}-->
+<if condition="$data161[0]">
+    <style>
+        .hjzf2_news-9{
+            background: url({:getindeximgurl($data161[0])}) no-repeat center/cover;
+        }
+
+    </style>
+</if>
+<if condition="$data161[7]">
+    <style>
+        .hjzf2_news-9__mainTitle:before{
+            background: url({:getindeximgurl($data161[7])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .hjzf2_news-9{
+        background: #{$data161[6]};
+    }
+    .HJZF2_Z__news-9__imgDown,.news_item a > div .news_item_date .date{
+        color: #{$data161[1]};
+    }
+    .hjzf2_news-9-down .left .class_item{
+      background-color: #{$data161[4]};
+    }
+    .hjzf2_news-9-down .left .class_item.active{
+      background-color: #{$data161[5]};
+    }
+    .hjzf2_news-9-down .left .class_item.active .box::after{
+      border-color: transparent transparent transparent #{$data161[5]};;
+    }
+</style>
+
+<section class="hjzf2_news-9 index_pd">
+<div class="container">
+   <div class="row">
+            <div class="col-xs-12">
+                    <div class="hjzf2_news-9__mainTitle index_title pb40">{$data161[2]}</div>
+            </div>
+           <div class="hjzf2_news-9-top">
+               <php>
+                   $arr_stra = $data161[6];
+                   $arra = explode(',',$arr_stra);
+                   foreach($arra as $k=>$a){
+                    $lista[$k]=get_news_byid($a);
+                  }
+               </php>
+               <volist name="lista" id="indexnew2" offset="0" length="3" key="k2">
+                   <div class="col-xs-12 col-md-4">
+                       <div class="hjzf2_news-9-topItem">
+                           <div class="hjzf2_news-9-topItemImg">
+                               <a href="{:U('/new_detail',array('nid'=>$indexnew2[0]['nid']))}" onFocus="blur()"><img class="lazy" src="{:getimgurl($indexnew2[0]['new_pro'])}" data-original="{:getimgurl($indexnew2[0]['new_pro'])}" border="0" alt="{$indexnew2[0]['title']}"/></a>
+                           </div>
+                           <div class="hjzf2_news-9-topItemName">
+                               <a href="{:U('/new_detail',array('nid'=>$indexnew2[0]['nid']))}" onFocus="blur()" class="text-center  index_sub_title">{$indexnew2[0]['title']}</a>
+                           </div>
+                       </div>
+                   </div>
+               </volist>
+           </div>
+           <div class="col-xs-12">
+               <div class="hidden-xs hidden-sm hidden-md hjzf2_news-9-down">
+                    <div class="left">
+                        <php>
+                            $arr_str=$data161[3];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                            $list[$k]['name']=get_wap_news_class_name($a);
+                            $list[$k]['data']=get_index_news_category($a,4);
+                            }
+                        </php>
+                        <volist name="list" id="li" >
+                            <div class="class_item"><div class="box index_sub_title">{$li['name']}</div></div>
+                        </volist>
+                    </div>
+                    <div class="right">
+                        <volist name="list" id="li" >
+                            <div data-name="{$li['name']}" class="right_wrap">
+                                <div class="swiper-container swiper-container{$key}">
+                                    <div class="swiper-wrapper">
+                                        <volist name="li['data']" id="indexnews" offset="0" key="h">                                          
+                                                <div class="swiper-slide news_item" id="news_item">
+                                                    <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}">
+                                                        <div class="news_itemBox">
+                                                            <div class="news_item_date"><div class="date index_title"><span class="day">{:date('d ',$indexnews['created'])}</span><span class="news-9_line">/</span><span class="month">{:date('m',$indexnews['created'])}</span></div>
+                                                                <php>
+                                                                    $news_calss = get_wap_news_class_name($indexnews['news_class']);
+                                                                </php>
+                                                                <div class="text index_text">{:date('Y',$indexnews['created'])}</div>
+                                                            </div>
+                                                            <div class="news_item-title index_sub_title ellipsis_two">{$indexnews['title']}</div>
+                                                            <div class="news_item-desc index_text ellipsis_two">{$indexnews['news_description']}</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                        </volist>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </volist>
+                    </div>
+               </div>
+               <div class="hidden-lg hidden-xl hjzf2_news-9_mobile">
+                    <ul class="news-9_mobileTitle">
+                        <volist name="list" id="li" >
+                            <li class="class_item index_sub_title">{$li['name']}</li>
+                        </volist>
+                    </ul>
+                   <ul class="news-9_mobileWrap">
+                       <volist name="list" id="li" >
+                           <li data-name="{$li['name']}" class="right_wrap">
+                               <ul class="news-9_mobileUl">
+                                       <volist name="li['data']" id="indexnews" offset="0" key="h">
+                                           <li class="news-9_mobileBoxItem">
+                                               <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}">
+                                                   <div class="news-9_mobileBox">
+                                                        <div class="news_item-img"><img src="{:getimgurl($indexnews['new_pro'])}" alt="{$indexnews['title']}" border="0"/></div>
+                                                       <div class="news-9_mobileIntro">
+                                                           <div class="news_item-title index_sub_title ellipsis_two">{$indexnews['title']}</div>
+                                                           <div class="news_item_date index_text">
+                                                               <php>
+                                                                   $news_calss = get_wap_news_class_name($indexnews['news_class']);
+                                                               </php>
+                                                               <span class="text">{$news_calss}</span><span class="date">{:date('m-d ',$indexnews['created'])}</span>
+                                                           </div>
+                                                       </div>
+                                                       <div class="clear"></div>
+                                                   </div>
+                                               </a>
+                                           </li>
+                                       </volist>
+                               </ul>
+                           </li>
+                       </volist>
+                   </ul>
+               </div>
+           </div>
+            <div class="clear"></div>
+   </div>
+</div>
+</section>

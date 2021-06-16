@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<style>
+#index_advantage {
+    width: 100%;
+    height: 603px;
+    max-width: 1920px;
+    min-width: 1190px !important;
+    background: url({:getindeximgurl($data6[11])}) center center no-repeat !important;
+}
+
+</style>
+<link href="__TMPL__YP01_CN/css/advantage.css" rel="stylesheet">
+<div id="index_advantage">
+  <div style="width: 1190px;margin: auto;height: 603px;position: relative;">
+   <div id="index_advantage_animate">
+    <div class="index_ad_left">
+       <div class="index_ad_title">
+           {$data[0]}
+       </div>
+       <div class="ad_left1" style="margin-right:50px;">
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[1])}) center left no-repeat;">{$data[2]}</div>
+          <div class="ad_left_con">{$data[3]} </div>
+       </div>
+        <div class="ad_left2" style="margin-right:50px;">
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[4])}) center left no-repeat;">{$data[5]}</div>
+          <div class="ad_left_con">{$data[6]}</div>
+       </div>
+        <div class="ad_left3" style="margin-right:50px;">
+          <div class="ad_left_title" style="background: url({:getindeximgurl($data[7])}) center left no-repeat;">{$data[8]}</div>
+          <div class="ad_left_con">{$data[9]}</div>
+       </div>
+    </div>
+   </div>
+   <div id="index_advantage_animate_1">
+    <div class="index_advantage_adv_cont">
+          <div class="index_advantage_adv_ad_1">
+             <img src="{:getindeximgurl($data[10])}">
+          </div>
+
+
+        <div style="clear: both;"></div>
+
+    </div>
+   </div>
+  </div>
+</div>
+<script>
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+
+	if(scrollTop>1700){
+		$('#index_advantage_animate').show();
+		$('#index_advantage_animate').removeClass().addClass('fadeInDown');
+		$("#index_advantage_animate_1").show();
+		$("#index_advantage_animate_1").addClass("fadeInUpBig");
+		$(".ad_left1").show();
+		$(".ad_left1").addClass("fadeInRightBig");
+		$(".ad_left2").show();
+		$(".ad_left2").addClass("fadeInRightBig1");
+		$(".ad_left3").show();
+		$(".ad_left3").addClass("fadeInRightBig2");
+	}
+});
+</script>

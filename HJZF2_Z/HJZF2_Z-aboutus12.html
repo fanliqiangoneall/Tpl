@@ -1,0 +1,145 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .InsidePages_list li.yijion>a>h3:before,
+        .InsidePages_list li.yiji:hover>a>h3:before,
+        .InsidePages_list li.yijion>a>h3,
+        .InsidePages_list li.yiji:hover>a>h3,
+        .HJZF_Z__Breadcrumbs span.current,
+        .InsidePages_left_content-main {
+            border-color: #{$color};
+            color: #{$color};
+        }
+
+        .HJZF_Z__Breadcrumbs {
+            background-color: #{$inner_data[3]};
+            padding-bottom: 10px;
+            margin-bottom: 30px !important;
+        }
+
+        .HJZF_Z__Breadcrumbs .row {
+            text-align: left;
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" /></div>
+                </volist>
+
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="inBanner" /></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span
+                            class="current">{$intro_class['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_othercatemobile.html" />
+                    </section>
+                    <if condition="count($navrs) gt 0">
+                            <Include file="./Tpl/HJZF2_Z/left_othercate11.html" />
+                            <section class="col-xs-12 col-lg-9 InsidePages_content">
+                            <else />
+                        <section class="col-xs-12 InsidePages_content">
+                    </if>
+
+                    <div class="InsidePages_content-right__wrap">
+                        <div class="InsidePages_content-right_content-main">
+                            <div class="hidden-xs hidden-sm hidden-md col-xs-12 InsidePages_content-right_editor"
+                                id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                            <div class="col-xs-12 hidden-lg hidden-xl InsidePages_content-right_editor">
+                                <if condition="$intro_class['wapreadme']">
+                                    {:htmlspecialchars_decode($intro_class['wapreadme'])}
+                                    <else />{:htmlspecialchars_decode($intro_class['readme'])}</if>
+                            </div>
+                            <div class="page_nei_space"></div>
+                        </div>
+                    </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <if condition="WEBID eq 295">  
+        <style>
+            .layui-layer-page .layui-layer-content{
+                text-align: center;
+            }
+            .layui-layer-content img{
+                position: relative;top: 50%;transform: translateY(-50%);
+            }
+        </style>      
+        <script>
+            $("#area1").click(function(event){
+                event.preventDefault();
+                layer.open({
+                type: 1,
+                shadeClose: true,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['60%','80%'], //宽高
+                content: '<img src="http://yun.one-all.com/uploadfiles/211.149.195.244/webid295/uploadimage/202012/1761608702079797.png" _src="/uploadfiles/211.149.195.244/webid295/uploadimage/202012/1761608702079797.png" style="" title="1761608702079797.png"/>'
+                });
+            });
+            $("#area2").click(function(event){
+                event.preventDefault();
+                layer.open({
+                type: 1,
+                shadeClose: true,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['60%','80%'], //宽高
+                content: '<img src="http://yun.one-all.com/uploadfiles/211.149.195.244/webid295/uploadimage/202012/8111608702079891.png" _src="/uploadfiles/211.149.195.244/webid295/uploadimage/202012/8111608702079891.png" style="" title="8111608702079891.png"/>'
+                });
+            });
+            $("#area3").click(function(event){
+                event.preventDefault();
+                layer.open({
+                type: 1,
+                shadeClose: true,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['60%','80%'], //宽高
+                content: '<img src="http://yun.one-all.com/uploadfiles/211.149.195.244/webid295/uploadimage/202012/2561608945619165.jpg" _src="/uploadfiles/211.149.195.244/webid295/uploadimage/202012/2561608945619165.jpg" style="" title="2561608945619165.jpg"/>'
+                });
+            });
+            $("#area4").click(function(event){
+                event.preventDefault();
+                layer.open({
+                type: 1,
+                shadeClose: true,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['60%','80%'], //宽高
+                content: '<img src="http://yun.one-all.com/uploadfiles/211.149.195.244/webid295/uploadimage/202012/4541608945619908.jpg" _src="uploadfiles/211.149.195.244/webid295/uploadimage/202012/4541608945619908.jpg" style="" title="4541608945619908.jpg"/>'
+                });
+            });
+			$("#area5").click(function(event){
+                event.preventDefault();
+                layer.open({
+                type: 1,
+                shadeClose: true,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['60%','80%'], //宽高
+                content: '<img src="http://yun.one-all.com/uploadfiles/211.149.195.244/webid295/uploadimage/202103/1011616461105162.jpg" _src="uploadfiles/211.149.195.244/webid295/uploadimage/202103/1011616461105162.jpg" style="" title="1011616461105162.jpg"/>'
+                });
+            });
+        </script>
+    </if>
+</block>

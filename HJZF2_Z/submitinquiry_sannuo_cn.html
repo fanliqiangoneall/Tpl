@@ -1,0 +1,247 @@
+<style>
+	.productbutton {
+		background: #{$color};
+	}
+
+	.productbutton:hover {
+		background: #{$data47[9]};
+	}
+</style>
+<if condition="$webid eq '1654' or $webid eq '1083' or $webid eq '1711'">
+	{:session("tncode_check","ok")}
+</if>
+<script>
+	jQuery(function () {
+		jQuery("#message").focus(function () {
+			jQuery("#message_alert").html("");
+		});
+		jQuery("#linkname").focus(function () {
+			jQuery("#linkname_alert").html("");
+		});
+		jQuery("#phone").focus(function () {
+			jQuery("#phone_alert").html("");
+		});
+		jQuery("#email").focus(function () {
+			jQuery("#email_alert").html("");
+		});
+		jQuery("#code_char").focus(function () {
+			jQuery("#code_char_alert").html("");
+		});
+
+
+		jQuery("#getcode_char").click(function () {
+			jQuery(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char1").click(function () {
+			jQuery("#getcode_char").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+	})
+
+
+	function yz_submit() {
+		var count = 0;
+		var message = Trims(jQuery("#message").val());
+		var linkname = Trims(jQuery("#linkname").val());
+		var phone = Trims(jQuery("#phone").val());
+		var email = Trims(jQuery("#email").val());
+		if (linkname.length <= 0) {
+			jQuery("#linkname_alert").html("姓名不能为空！");
+			count++;
+		}
+		else {
+			jQuery("#linkname_alert").html("");
+		}
+		var str = undefined;
+
+		if ({$webid} == 1083) {
+			str = /^1(3|4|5|7|8)\\d{9}$/;
+			if (phone.length <= 0) {
+				jQuery("#phone_alert").html("*电话不能为空！");
+				count++;
+			} else if (!str.test(phone)) {
+				
+				jQuery("#phone_alert").html("*手机号码有误！");
+				count++;
+			} else {
+				jQuery("#phone_alert").html("");
+			}
+
+		} else {
+			
+			if (phone.length <= 0) {
+				jQuery("#phone_alert").html("*电话不能为空！");
+				count++;
+			} else if (is_phone(phone)) {
+				jQuery("#phone_alert").html("*电话号码有误！");
+				count++;
+			} else {
+				jQuery("#phone_alert").html("");
+			}
+		}
+
+		if (email.length > 0 && !is_email(email)) {
+			jQuery("#email_alert").html("*邮箱格式有误！");
+			count++;
+		}
+		else {
+			jQuery("#email_alert").html("");
+		}
+		if (message.length <= 0) {
+			jQuery("#message_alert").html("咨询内容不能为空！");
+			count++;
+		}
+		else {
+			jQuery("#message_alert").html("");
+		}
+		var h = $('#message').html();
+
+		
+		if ({$webid} !== 1654 && {$webid} !== 1083 && {$webid} !== 1711) {
+			var code_char = jQuery("#code_char").val();
+			jQuery.ajax({
+				type: "POST",
+				url: "/verification",
+				async: false,
+				data: { code: code_char },
+				success: function (data) {
+
+					if (data == 1) {
+						jQuery("#code_char_alert").html("");
+					} else {
+						count++;
+						jQuery("#code_char_alert").html("验证码错误");
+					}
+				}
+			});
+		}
+
+		if (count > 0) {
+			return false;
+		}
+		else {
+			jQuery("#inbut").html('<h5 style="color:#F00;">请稍候</h5>');
+
+			return true;
+		}
+
+	}
+
+
+
+</script>
+<div class="inquiry" id="zixun">
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">姓名<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname"><span class="yz_alert"
+						id="linkname_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">
+					<if condition="$webid eq '1083'">
+						手机
+						<else/>
+						电话
+					</if>
+					
+					<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="phone" id="phone"><span class="yz_alert"
+						id="phone_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<if condition="$webid eq '1559'">
+			<div class="col-xs-12">
+				<div class="inquiryinfo">
+					<div class="inquiryleft">公司名称</div>
+					<div class="inquiryright"><input type="text" name="companyname" id="company"><span class="yz_alert"
+							id="company_name"></span></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</if>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">邮箱</div>
+				<div class="inquiryright"><input type="text" name="email" id="email"><span class="yz_alert"
+						id="email_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+
+		<!-- 三诺 -->
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Design Pressure: ')}</div>
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname"><span class="yz_alert"
+						id="linkname_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Design temperature: ')}</div>
+				<div class="inquiryright"><input type="text" name="phone" id="phone"><span class="yz_alert"
+						id="phone_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Working diameter: ')}</div>
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname"><span class="yz_alert"
+						id="linkname_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Working length: ')}</div>
+				<div class="inquiryright"><input type="text" name="phone" id="phone"><span class="yz_alert"
+						id="phone_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- 三诺 -->
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">留言内容<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><textarea name="message" id="message"
+						style="padding:5px; height:210px;">{$product["pro_name"]}</textarea><span class="yz_alert"
+						id="message_alert"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12" data='aaaa'>
+			<if condition="$webid neq '1654' and $webid neq '1083' and $webid neq '1711'">
+				<div class="inquiryinfo">
+					<div class="inquiryleft">验证码<span style="color:#f00">*</span></div>
+					<div class="inquiryright"><input type="text" class="input" id="code_char" name="code"
+							maxlength="6" />&nbsp;<img alt=""
+							src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};"
+							style="position:relative; top:-1px;" id="getcode_char" height="32"
+							title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);"
+							id="getcode_char1"><img src="__TMPL__HJ02/img/click_resh.jpg" alt=""
+								style="position: relative;left: -4px;top: -1px;height: 32px;" /></a><span
+							class="yz_alert" id="code_char_alert"></span></div>
+					<div class="clear"></div>
+				</div>
+			</if>
+
+			<div class="inquiryinfo">
+				<input type="hidden" name="prodid" value="{$product['pid']}" />
+				<div id="inbut"><input class="productbutton" type="submit" value="提交" name="submit" /></div>
+			</div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>

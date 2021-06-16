@@ -1,0 +1,34 @@
+<div class="HJZF_Z_product_categroy8_mwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" id="fenlei_menu">
+                <volist empty="" name="allclass" id="allclass_fenlei">
+                    <if condition="inthiscate($classid,$allclass_fenlei['pcid'],$product)">
+                    <div class="HJZF_Z_product_categroy8_tit">{$allclass_fenlei['class_name']}</div>
+                    <div class="HJZF_Z_product_categroy8_fenlei">
+                        <ul>
+                            <volist empty="" name="allclass_fenlei['childs']" id="allclass_index1" key="k_class">
+                                <li data-id="{$allclass_index1['pcid']}" <if condition="inthiscate($classid,$allclass_index1['pcid'],$product)">class="cur"</if>><i class="fa fa-circle-o"></i><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index1['pcid'])}">{$allclass_index1['class_name']}</a></li>
+                            </volist>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <volist empty="" name="allclass_fenlei['childs']" id="allclass_index2" key="k_class">
+                      <if condition="$classid eq $allclass_index2['pcid'] or $prolist['parent_id'] eq $allclass_index2['pcid']">
+                      <div class="HJZF_Z_product_categroy8_fenlei HJZF_Z_product_categroy8_erfenlei">
+                          <if condition="$allclass_index2['childs'] neq ''"><div class="erji_tit index_sub_title">{:__('Secondary category')}</div></if>
+                          <ul>
+                              <volist empty="" name="allclass_index2['childs']" id="allclass_leftthird">
+                                  <li <if condition="inthiscate($classid,$allclass_leftthird['pcid'],$product)">class="cur"</if>><i class="fa fa-circle-o"></i><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftthird['pcid'])}">{$allclass_leftthird['class_name']}</a>
+                                  </li>
+                              </volist>                        
+                          </ul> 
+                      </div>
+                      </if>
+                    </volist>  
+                    </if>
+                </volist>
+            </div>
+        </div>
+    </div>
+</div>

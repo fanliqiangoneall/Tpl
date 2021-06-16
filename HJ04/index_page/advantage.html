@@ -1,0 +1,69 @@
+<!--{$pagename}-->
+<style>
+    /*advantage start*/
+    #hj01_advantage{
+        background:url({:getindeximgurl($data6[21])}) no-repeat center;
+    }
+    .adv_icon{width: 20px;height: 20px;position: relative}
+    .adv_icon:before{
+        content: '';display: table;position:absolute;left:-35px;top:2px;width: 20px;height: 20px;background:url({:getindeximgurl($data6[20])}) no-repeat center;
+    }
+    .hj01_adv_right_title{
+        color: #{$color}
+    }
+    .hj01_adv_right_title2 h5{
+        color: #{$color}
+    }
+    .advantage_more a{
+        background: {$data1[0]};
+    }
+    .advantage_more a:hover{
+    background: #{$color};
+    }
+    /*advantage end*/
+
+</style>
+<!--choice start-->
+<div class="clear"></div>
+<div id="hj01_advantage">
+    <div class="container">
+            <div class="hj01_adv_left" id="hj01_adv_left">
+                <if condition="$data6[0]">
+                    <img src="{:getindeximgurl($data6[0])}" alt="picture"/>
+                </if>
+            </div>
+        <div class="hj01_adv_right">
+            <h3 class="hj01_adv_right_title" id="hj01_adv_right_title">{$data6[1]}</h3>
+            <div class="advantage_text">
+                <p >{$data6[2]}</p>
+            </div>
+            <div class="hj01_adv_right_title2"><h5>{$data6[3]}</h5></div>
+            <ul class="hj01_advlist " id="hj01_advlist">
+                <php>
+
+                    for($i=4;$i<18;$i=$i+2){
+                </php>
+                <if condition="$data6[$i] neq ''">
+                    <li id="rs{$i}" class="margin-15px-bottom">
+                        <i class="adv_icon"></i>
+
+                        <a <if condition="$data6[$i+1]">href="{$data6[$i+1]}"<else/>href="javascript:void(0);"</if>>{$data6[$i]}</a>
+                    </li>
+                </if>
+
+                <php>
+                    }
+                </php>
+                <div class="clear"></div>
+            </ul>
+            <div class="advantage_more margin-20px-bottom margin-20px-top">
+                <a href="{$data6[22]}">查看更多</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!--choice end-->
+
+
+

@@ -1,0 +1,152 @@
+<!--{$pagename}-->
+<php>
+    if($data498[0]){
+    $color = $data498[0];
+    };
+    $arr = get_list_val($data498[3]);
+    $arra = get_list_val($data498[4]);
+    $arrb = get_list_val($data498[5]);
+    $arrc = get_list_val($data498[6]);
+    $arrd = get_list_val($data498[7]);
+    $arre = get_list_val($data498[8]);
+    $arrf = get_list_val($data498[9]);
+</php>
+<style>
+    <if condition="$data498[1]">.HJZF2_Z_other_98 {
+        background-image: url({:getindeximgurl($data498[1])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    </if>
+    
+    .HJZF2_Z_other_98_title_list li:hover a,.HJZF2_Z_other_98_title_list li.on a{
+        text-decoration: underline;
+        color: #{$color};
+    }
+    .HJZF2_Z_other_98_wrapper ul li:hover span{
+        background-color: #{$color};
+    }
+</style>
+
+<section class="HJZF2_Z_other_98 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center index_title pb40">
+                    {$data498[2]}
+                </div>
+                <div class="HJZF2_Z_other_98_title_list">
+                    <ul class="d-flex justify-center align-center">
+                        <volist name="arr" id="a">
+                            <li><a href="{$a[link]}" class="index_sub_title">{$a[title]}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <if condition="$arra">
+                    <div class="HJZF2_Z_other_98_wrapper on">
+                        <ul>
+                            <volist name="arra" id="a">
+                                <li>
+                                    <a href="{$a[link]}">
+                                        <img src="{$a[img]}" alt="{$a[title]}">
+                                        <span>
+                                            <div class="index_sub_title">{$a[title]}</div>
+                                            <p>{$a[info]}</p>
+                                        </span>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </if>
+                <if condition="$arrb">
+                    <div class="HJZF2_Z_other_98_wrapper active">
+                        <ul>
+                            <volist name="arrb" id="a">
+                                <li>
+                                    <a href="{$a[link]}">
+                                        <img src="{$a[img]}" alt="{$a[title]}">
+                                        <span>
+                                            <div class="index_sub_title">{$a[title]}</div>
+                                            <p>{$a[info]}</p>
+                                        </span>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </if>
+                <if condition="$arrc">
+                    <div class="HJZF2_Z_other_98_wrapper active">
+                        <ul>
+                            <volist name="arrc" id="a">
+                                <li>
+                                    <a href="{$a[link]}">
+                                        <img src="{$a[img]}" alt="{$a[title]}">
+                                        <span>
+                                            <div class="index_sub_title">{$a[title]}</div>
+                                            <p>{$a[info]}</p>
+                                        </span>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </if>
+                <if condition="$arrd">
+                    <div class="HJZF2_Z_other_98_wrapper active">
+                        <ul>
+                            <volist name="arrd" id="a">
+                                <li>
+                                    <a href="{$a[link]}">
+                                        <img src="{$a[img]}" alt="{$a[title]}">
+                                        <span>
+                                            <div class="index_sub_title">{$a[title]}</div>
+                                            <p>{$a[info]}</p>
+                                        </span>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </if>
+                <if condition="$arre">
+                    <div class="HJZF2_Z_other_98_wrapper active">
+                        <ul>
+                            <volist name="arre" id="a">
+                                <li>
+                                    <a href="{$a[link]}">
+                                        <img src="{$a[img]}" alt="{$a[title]}">
+                                        <span>
+                                            <div class="index_sub_title">{$a[title]}</div>
+                                            <p>{$a[info]}</p>
+                                        </span>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </if>
+                <if condition="$arrf">
+                    <div class="HJZF2_Z_other_98_wrapper active">
+                        <ul>
+                            <volist name="arrf" id="a">
+                                <li>
+                                    <a href="{$a[link]}">
+                                        <img src="{$a[img]}" alt="{$a[title]}">
+                                        <span>
+                                            <div class="index_sub_title">{$a[title]}</div>
+                                            <p>{$a[info]}</p>
+                                        </span>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </if>
+
+            </div>
+        </div>
+    </div>
+</section>

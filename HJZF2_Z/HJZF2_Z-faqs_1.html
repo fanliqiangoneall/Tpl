@@ -1,0 +1,197 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z_faq__banner {
+            position: relative;
+        }
+
+        .HJZF_Z_news6__con {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 6vw;
+            color: #fff;
+            text-align: center;
+        }
+
+        .HJZF_Z_news6__con a {
+            color: #fff;
+            transition: all .5s;
+        }
+
+        .news6_inner__maincontent {
+            margin-top: 60px;
+        }
+
+        .HJZF_Z__Breadcrumbs span.current,
+        .main_newslist2 li:hover .main_news_title a h5,
+        .InsidePages_left_content-main {
+            border-color: #{$color};
+            color: #{$color};
+        }
+
+        .main_news_date {
+            margin-bottom: 15px;
+        }
+
+        .main_news_date span {
+            margin-right: 20px;
+            color: #666666;
+        }
+
+        .main_news_date span img {
+            vertical-align: top;
+        }
+
+        .news6_inner__maincontent .main_newslist2 li {
+            border-bottom: none;
+        }
+
+        .news6_inner__maincontent .news6_inner_more {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .news6_inner__maincontent .news6_inner_more span {
+            color: #{$color};
+        }
+
+        .faq_list li {
+            border: 2px solid #{$inner_data[9]};
+            margin-bottom: 15px;
+        }
+
+        .faq_class_more {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .faq_class_more a i{display: inline-block;width: 12px;height: 16px;position: relative;top: 3px;}
+        .faq_class_more a i.demo-plus::before{
+            content: '';width: 12px;height: 2px;background: #868686;position: absolute;top: 7px;
+        }
+        .faq_class_more a i.demo-plus::after{
+            content: '';width: 2px;height: 12px;background: #868686;position: absolute;left: 5px;top: 2px;
+        }
+        .faq_class_more a.on i.demo-plus::after{
+            display: none;
+        }
+        .faq_class_more a.on span {
+            color:#{$color};
+        }
+
+        .faq_dropdown {
+            display: none;
+            border-top: 2px solid #{$inner_data[9]};
+            padding: 10px;
+        }
+
+        .faq_dropdown:empty {
+            padding: 0;
+        }
+		@media (max-width: 1441px){
+#news6_fenlei_menu .HJZF_Z_news6__tit a {
+    padding: 0 40px 0 60px;
+}		
+		}
+		
+		@media (max-width: 1440px) and (min-width: 1200px){
+#news6_fenlei_menu .HJZF_Z_news6__tit a {
+	
+    padding: 0 20px 0 10px !important;
+}	
+#news6_fenlei_menu .HJZF_Z_news6__tit a:before{ display:none !important;}	
+		}		
+		@media (max-width: 1199px) and (min-width: 768px){
+			#news6_fenlei_menu .HJZF_Z_news6__tit a:before{ display:none !important;}
+#news6_fenlei_menu .HJZF_Z_news6__tit a {
+    padding: 0 20px 0 10px;
+}		
+		}
+		@media min-width: 767px{
+			
+		}
+		.fa-minus{ transform: scaley(0.8);}
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner" class="HJZF_Z_faq__banner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+            <!-- bread start -->
+            <div class="HJZF_Z_news6__con" navcrumbs>
+                <div class="index_title">{:__('Faq')}</div>
+                <div class="index_text">
+                    <a href="{:U('/')}">{:__('Home')}</a>&nbsp;|&nbsp;<a
+                        href="/landpage_freight-forwarding-office.html">{:__('Support')}</a>&nbsp;|&nbsp;<span class="current">{:__('Faq')}</span>
+                </div>
+            </div>
+            <!-- bread end -->
+        </div>
+
+        <div class="HJZF_Z__innerContent news6_inner__maincontent">
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-3 HJZF_Z__inner--left HJZF_Z__inner7--left">
+                        <!-- side start -->
+                        <Include file="./Tpl/HJZF2_Z/inner/faq1.html" />
+                        <Include file="./Tpl/HJZF2_Z/inner/faq1_left.html" />
+                        <!-- side end -->
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/inner/faq1_left_mobile.html" />
+                    </section>
+                    <!-- right -->
+                    <section class="col-xs-12 col-lg-9 HJZF_Z__inner--right">
+                        <ul class="faq_list">
+                            <volist empty="" name="allnewclass" id="new" offset="0">
+                                <php>
+                                    $all = get_faq_byid($new['classid']);
+                                </php>
+                                <volist name="all" id="vo">
+                                    <li>
+                                        <div class="faq_class_more">
+                                            <a class="top_more"><i class="fa demo-plus fr"></i><span>{$vo['title']}</span></a>
+                                        </div>
+                                        <div class="faq_dropdown">
+                                            {:htmlspecialchars_decode($vo['body'])}
+                                        </div>
+                                    </li>
+                                </volist>
+                            </volist>
+                        </ul>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+
+<block name="footer_js">
+    <script>
+        $(function () {
+            $('.faq_class_more').click(function (e) {
+                var self = $(this);
+                var dropdown = self.next('.faq_dropdown');
+                var par = self.parent();
+                self.find('.top_more').toggleClass('on').find('i').toggleClass('fa-plus').toggleClass('fa-minus');
+                dropdown.slideToggle(300);
+                // 其他收起来
+                par.siblings().find('.top_more').removeClass('on').find('i').addClass('fa-plus').removeClass('fa-minus');
+                par.siblings().find('.faq_dropdown').slideUp(300);
+
+            })
+        })
+    </script>
+
+</block>

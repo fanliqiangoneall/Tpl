@@ -1,0 +1,131 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_Z__bottom_3{
+        background: url({:getindeximgurl($data38[0])}) no-repeat center;background-size: cover;
+    }
+	.HJZF2_Z__bottom_3 a:hover,.HJZF2_Z__bottom_3__menu ul li a:hover h2{ 
+		color:#{$color};
+    }
+    <if condition="$data38[15]">
+    @media(max-width:768px) {
+        .HJZF2_Z__bottom_3{
+            background: #{$data38[15]};
+        }
+    }
+    </if>
+	{}
+</style>
+<footer class="HJZF2_Z__bottom_3">
+    <div class="HJZF2_Z__bottom_3__contctInfo">
+        <div class="container">
+            <div class="row">
+                <div class="new_flex">
+                    <div class="col-xs-12 col-md-4 HJZF2_Z__bottom_3__contctInfo--left">
+                        <div class="HJZF2_Z__bottom_3__contctInfo__title index_title">{$data38[1]}</div>
+                        <ul>
+                            <if condition="$about['address']">
+                                <li>
+                                    <span>{:__('Add: ')}</span>{$about['address']}
+                                </li>
+                            </if>
+                            <if condition="$about['phone']">
+                            <li>
+                                <span>{:__('Phone: ')}</span>{:chaifen($about['phone'],0)}&nbsp;&nbsp;{:chaifen($about['phone'],1)}
+                            </li>
+                            </if>
+                            <if condition="$about['email']">
+                            <li>
+                                <span>{:__('Email: ')}</span><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],0)}</a>
+                            </li>
+                             </if>
+							 <if condition="$data38[16]">
+								<php>
+									$arr = get_list_val($data38[16]);
+								</php>
+								<volist name="arr" id="a">
+									<li>
+										<span>{$a[title]}</span>{$a[text]}
+									</li>
+								</volist>
+							</if>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-md-4 HJZF2_Z__bottom_3__contctInfo--middle">
+                        <img src="{:getindeximgurl($data38[2])}" alt="">
+                    </div>
+                    <div class="col-xs-12 col-md-4 HJZF2_Z__bottom_3__contctInfo--right">
+                        <ul>
+                            <if condition="$data38[3]">
+                            <li><a href="{$data38[4]}" target="_blank"><img src="{:getindeximgurl($data38[3])}" alt=""></a></li>
+                            </if>
+                            <if condition="$data38[5]">
+                            <li><a href="{$data38[6]}" target="_blank"><img src="{:getindeximgurl($data38[5])}" alt=""></a></li>
+                            </if>
+                            <if condition="$data38[7]">
+                            <li><a href="{$data38[8]}" target="_blank"><img src="{:getindeximgurl($data38[7])}" alt=""></a></li>
+                            </if>
+                            <if condition="$data38[9]">
+                            <li><a href="{$data38[10]}" target="_blank"><img src="{:getindeximgurl($data38[9])}" alt=""></a></li>
+                            </if>
+                            <if condition="$data38[11]">
+                            <li><a href="{$data38[12]}" target="_blank"><img src="{:getindeximgurl($data38[11])}" alt=""></a></li>
+                            </if>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__bottom_3__menu">
+                <ul>
+                   <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                      <if condition="$key neq 1"><li><span>|</span></li></if>
+                      <li><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,2)"</if>onFocus="blur()">{$vo['title']}</a></li>
+                  </volist>
+                </ul>
+            </div>
+            <div class="HJZF2_Z__bottom_3__copyrightContent">
+                <div class="HJZF2_Z__bottom_3__copyright">
+                    <php>
+                        $nowtime=date("Y",time());
+                        if(!$data38[13]){
+                        $currtime=2020;
+                        }else{
+                        $currtime=$data38[13];
+                        }
+                    </php>
+                    <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>&nbsp;&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+					<if condition="$data50[15] eq ''">
+                    <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                        中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        <else/>
+                        Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+                    </if>
+					</if>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <if condition="$friend_link neq ''">
+    <div class="HJZF2_Z__bottom_3__friendlink">
+     	<div class="container">
+            <div class="row">
+            <div class="HJZF2_Z__bottom_3__link"><span style="float:left; margin-right:5px;">{:__('FriendLink: ')}</span>
+                  <volist name="friend_link" id="friend_link">
+                  <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                  <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                  </if>
+                  </volist>     
+                  <div style="clear:both"></div>
+            </div>
+            <div class="clear"></div>
+            </div>
+      	 </div>
+    </div>
+    </if>
+</footer>

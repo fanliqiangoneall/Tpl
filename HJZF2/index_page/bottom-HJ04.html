@@ -1,0 +1,78 @@
+<if condition="$data103[1]">
+    <style>
+        .new_hjzf_bottom-HJ04 .bottomTopContainer{
+        background: {$data103[1]};
+        }
+    </style>
+</if>
+<if condition="$data103[3]">
+    <style>
+        .new_hjzf_bottom-HJ04 .bottomTopContainer{
+            background: url({:getindeximgurl($data103[3])}) no-repeat center;
+        }
+    </style>
+</if>
+<div class="bottomContainer">
+    <div class="bottomTopContainer">
+        <div class="bottomTopContent container">
+            <if condition="$data103[2]">
+                <div class="new_hjzf_bottom-HJ04__nav">
+                    <ul class="hj_navbar_nav">
+                        <volist name="web_navigation" id="vo" offset="0" length='10' key="key">
+                            <li><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </if>
+            <ul class="bottomTopList lf">
+                <li>{:__('Tel: ')}{:chaifen($about['phone'],0)}</li>
+                <li>{:__('Email: ')}<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></li>
+            </ul>
+            <ul class="bottomTopList lf">
+                <li>{:__('Zip: ')}{:chaifen($about['zip'],0)}</li>
+                <li>{:__('Fax: ')}{:chaifen($about['fax'],0)}</li>
+            </ul>
+            <ul class="bottomTopList lf" style="width: 300px;">
+                <li><p class="lf">{:__('Add: ')}</p><div style="width: 240px;margin-left: 3px;" class="lf">{$about['address']}</div></li>
+                <li><p class="lf">{:__('Phone: ')}</p><div style="width: 250px;margin-left: 3px;" class="lf">{:chaifen($about['mobile'],0)}/{:chaifen($about['mobile'],1)}</div></li>
+            </ul>
+            <div class="codeContainer rt">
+                <div class="codeContent">
+                    <img src="{:getindeximgurl($data103[0])}" alt=""/>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="bottomFootContainer container">
+        <div class="bottomFootContent">
+            <php>
+                $nowtime=date("Y",time());
+                $currtime=2019;
+            </php>
+            <div class="lf bottomFootLeft">
+                <if condition="$nowtime gt $currtime">
+                    CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}
+                    <else/>
+                    CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-
+                </if>
+                &nbsp;{$about['company_name']}&nbsp;&nbsp;{:__('All Rights Reserved')}&nbsp;&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>
+            </div>
+            <div class="rt bottomFootRight">
+                <if condition="C('language') eq 'cn'">
+                    <a id="mianze" title="常州网络公司中环互联网" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                    <a href="https://www.one-all.com" title="常州网络公司" target="_blank">中环互联网设计制作</a>
+                    <else/>
+                    Designed by <a href="https://www.one-all.com" title="Zhinghuan Internet" target="_blank">Zhonghuan Internet</a>
+                </if>
+                &nbsp;&nbsp;
+                <a href="{:U('/sitemap')}" onfocus="blur()" style="color: #666;">{:__('Sitemap')}</a>&nbsp;&nbsp;
+                <a href="{:U('/alltag')}" style="color: #666;">{:__('All tags')}</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+

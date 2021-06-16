@@ -1,0 +1,52 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+	<div id="inner_module2__wrapper">
+		<div id="inner_module2__inbanner_box">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+				</volist>
+				<else/>
+				<div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+			</if>
+		</div>
+		<div class="inner_module2__bread">
+			<div class="container">
+				<div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('All tags')}</span></div>
+			</div>
+		</div>
+
+		<div class="inner_module2__inPage" id="main-content-wrapper">
+
+			<section  class="inner_module2__inPage-100">
+			<div class="inner_module2__inPageRight-content">
+				<if condition="count($navrs) gt 0">
+					<h5 class="inner_module2__inPage-title">{:__('All tags')}</h5>
+				</if>
+				<div class="inner_module2__inPageRight-content-box" id="payment">\
+					<volist name="labels" id="label">
+						<a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+					</volist>
+				</div>
+				<div class="page_nei_space"></div>
+			</div>
+			</section>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

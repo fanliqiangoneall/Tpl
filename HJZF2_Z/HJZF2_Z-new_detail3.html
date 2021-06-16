@@ -1,0 +1,145 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+<style>
+	.HJZF_Z__Breadcrumbs span.current,
+	.news_detail2_prev ul li a:hover,
+	.news_detail2_prev ul li {
+		color: #{$color};
+	}
+</style>
+<if condition="$inner_data['2']">
+<style>
+.HJZF_Z__inner--left{ border-right:1px solid #e5e5e5; padding-right:48px; margin-top:30px;}
+.HJZF_Z__inner--left .HJZF_Z__wrapper_detail3_title{ padding-top:0;}
+.HJZF_Z__inner3--right{ padding-left:48px;}
+.news_detail2_prev ul{ width:70%; float:left;}
+.news_detail2_prev .inner_news3__more{ width:30%; float:right; text-align:right;}
+.news_detail2_prev .inner_news3__more a{
+	display: inline-block;
+    width: 152px;
+    height: 52px;
+    background-color: #E5E5E5;
+    position: relative;
+    line-height: 52px;
+    text-align: center;
+	
+}
+.news_detail2_prev .inner_news3__more a span{
+	color:#333;
+	position:relative;
+	z-index:91;
+}
+.news_detail2_prev .inner_news3__more a:after{
+    content: "";
+	position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    z-index: 1;
+    transition: all .6s ease;
+    background-color: #{$color};
+}
+.news_detail2_prev .inner_news3__more a:hover:after{
+    width: 100%;
+}
+.news_detail2_prev .inner_news3__more a:hover span{
+	color:#FFFFFF;
+}
+@media(max-width:991px){
+.HJZF_Z__inner--left{ border-right:none; padding-right:15px; margin-top:0;}
+.HJZF_Z__inner3--right{ padding-left:15px;}
+.news_detail2_prev ul{ width:100%; float:none;}
+.news_detail2_prev .inner_news3__more{ width:100%; float:none; margin:auto; margin-top:20px; text-align:center;}
+}
+</style>
+</if>
+<div id="HJZF_Z__wrapper_detail3">
+    <Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_detail_news.html" />
+    
+	<Include file="./Tpl/HJZF2_Z/inner/new_bread_detail3.html" />
+	
+	<div class="HJZF_Z__innerContent news_detail3_maincontent" id="main-content-wrapper">
+		<div class="container">
+            <div class="row">
+                <if condition="$inner_data['2']">      
+                <div class="col-xs-12 col-lg-9 HJZF_Z__inner--left">  
+                <else/>
+                <div class="col-xs-12">
+                </if>
+                    <!-- title start -->
+                    <div class="HJZF_Z__wrapper_detail3_title">
+                        <h1 class="news_detail2_title text-center fz28">{$news['title']}</h1>
+                        <div class="news_view">
+                            <span class="time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{:date('Y-m-d ',$news['created'])}</span>
+                            <span>|</span>
+                            <span class="red">
+                                <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;{:__('View:')}{$news['click_num']}</span>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <!-- title end -->
+                    <!-- body start -->
+                    <section class="InsidePages_content-right2">
+                        <div class="InsidePages_content-right_wrap">
+                            <div class="InsidePages_content-right_content-body">
+                                <div class="news">
+                                    <div id="news_detail">
+                                        <div class="body">
+                                            <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                                            <div class="news_detail2_prev">
+                                                <ul>
+                                                    <if condition="$newprev[0]['title'] eq ''">
+                                                        <else/>
+                                                        <li class="news_prev">
+                                                            {:__('Prev: ')}
+                                                            <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                {$newprev[0]['title']}
+                                                            </a>
+                                                        </li>
+                                                    </if>
+                                                    <if condition="$newnext[0]['title'] eq ''">
+    
+                                                        <else/>
+                                                        <li class="news_next">
+                                                            {:__('Next: ')}
+                                                            <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                {$newnext[0]['title']}
+                                                            </a>
+                                                        </li>
+                                                    </if>
+                                                    <div class="clear"></div>
+                                                </ul>
+                                                <div class="inner_news3__more"><a href="{:U('/new_category',array('classid'=>$newclass["classid"]))}" ondragstart="return false"><span class="index_text">{:__('Back to list')}</span></a></div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                                 <if condition="newscomment_show() eq 1">
+                                      <include file="HJZF2_Z:newscomment" />
+                                 </if>
+                                 <div style="clear:both"></div>
+                               </div>
+                            </div>
+                        </section>
+                       <div class="clear"></div>
+                       </div>
+                       <if condition="$inner_data['2']">                 
+                       <section class="col-xs-12 col-lg-3 HJZF_Z__inner3--right">
+                             <Include file="./Tpl/HJZF2_Z/inner/news_relation_3.html" />
+                       </section>
+                       </if>
+                </div>
+                <!-- body end -->
+            </div>
+        </div>
+    </div>
+</div>  
+</block>

@@ -1,0 +1,147 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-26 10:30:24
+ * @LastEditTime: 2021-01-07 10:12:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \undefined\\wenjian\www\Pc\Tpl\HJZF2_Z\HJZF2_Z-order_list.html
+-->
+<extend name="HJZF2_Z:basein"/>
+<block name="content">
+	<link href="__TMPL__HJZF2_Z/css/member.css" rel="stylesheet">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,ul.InsidePages_left_navlist>li > a > h3:hover,ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+        .mobile_down{
+			background:#{$inner_data[1]};
+		}
+        @media(min-width: 1200px) {
+            #lightbox-container-image{
+                min-height: 400px;
+            }
+        }
+        @media(max-width: 1199px) {
+            #lightbox-container-image{
+                min-height: 80px;
+            }
+            #lightbox-container-image-box,#lightbox-container-image-data-box{
+                width: 80% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">			
+				<if condition="$inner_data[0]">
+					<div class="in_banner" date="inner"><img src="{:getindeximgurl($inner_data[0])}" alt=""  class="img-fluid"/></div>
+				</if>			
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Order list')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container" id="payment">
+                <div class="row">          
+                    
+                    <section class="col-xs-12">
+                        <div class="InsidePages_content-right__wrap">		
+                        <div class="member_page_left">
+                            <div class="index_sub_title pb20">{:__('Account management')}</div>
+                            <dl class="main_tab">										
+								<dd class="active"><a href="{:U('/member')}"><span>{:__('Basic information')}</span></a></dd>
+								<dd class=""><a href="{:U('/order_list')}"><span>{:__('订单管理')}</span></a></dd>
+							</dl>
+                        </div>
+                        <div class="member_page_right">
+                            <div class="InsidePages_content_main clearfix">								
+                                    <div class="main_tabcontent order_list_table">
+                                        <table class="table" width="100%" layoutH="50">
+
+                                            <thead>
+            
+                                            <tr  class="tabtitle">
+            
+                                                <th width="10%" orderField="sort">编号</th>
+            
+                                                <th width="20%" >支付账号</th>
+            
+                                                <th width="15%" >支付金额</th>
+            
+                                            
+            
+                                                <th width="20%" >支付结果</th>
+            
+                                                <th width="15%" >支付时间</th>      
+                                                    
+            
+                                                <th width="20%" >会员名称</th>                                    
+            
+                                            </tr>
+            
+                                            </thead>
+            
+                                            <tbody>
+            
+                                            <volist id="vo" name="orders"  key="k">
+            
+                                                <tr>
+            
+                                                    <td>{$k}</td>
+            
+                                                    <td>{$vo['payaccount']|default="--/--"}</td>
+            
+                                                    <td>{$vo['money']}</td>
+            
+                                                    
+            
+                                                    <td><if condition="$vo['status'] eq '1'">支付成功</if><if condition="$vo['status'] eq '0'">支付失败</if></td>
+            
+                                                    <td><if condition="$vo['paytime']">{:date('Y-m-d',$vo['paytime'])}<else/>--/--</if></td>        
+                                                        
+            
+                                                    <td>{$vo['member_name']|default="--/--"}</td>                                 
+            
+                                                    <!--<td class="childqx"><a class="delete" href="__URL__/foreverdelete/id/{$vo['id']}" onClick=" return deletealert()" >删除</a>丨<a class="edit" href="__URL__/edit/id/{$vo['id']}">编辑</a></td>-->
+            
+                                                
+            
+                                                </tr>
+            
+                                            </volist>
+            
+                                            </tbody>
+            
+                                        </table>
+                                        <div class="main_page">{$page}</div>
+                                    </div>
+                                </div>
+                            </div>						
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+	
+</block>

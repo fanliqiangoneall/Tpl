@@ -1,0 +1,149 @@
+<!--{$pagename}-->
+<php>
+    if($data49[0]){
+    $procat_bg = getindeximgurl($data49[0]);
+    }
+    if($data49[1]) {
+    $procat_bgcolor = $data49[1];
+    }
+</php>
+<style>
+    .HJZF2_Z__bottom-5{
+        background: url({$procat_bg}) no-repeat center;
+        background-size: cover;
+        padding-top: 80px;
+    }
+    @media(max-width:1200px) {
+        .HJZF2_Z__bottom-5{
+            padding-top: 40px;
+        }
+    }
+    .HJZF2_Z__bottom-5{
+        background-color: #{$procat_bgcolor};
+    }
+    .bottomimg_img1 span,.HJZF2_Z__bottom-5Item__title,.contctInfo ul li span,.contctInfo ul li a,.HJZF2_Z__bottom-5__copyright--left, .HJZF2_Z__bottom-5__copyright--right, .HJZF2_Z__bottom-5__copyright--left a, .HJZF2_Z__bottom-5__copyright--right a{
+        color: #{$data49[12]};
+    }
+</style>
+<footer class="HJZF2_Z__bottom-5">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__bottom-5_content">
+                <div class="hidden-xs hidden-sm col-md-3 HJZF2_Z__bottom-5Item bottomInfo">
+                    <div class="bottomInfo__logo">
+                        <img src="{:getindeximgurl($data49[3])}" alt="{:HtmlEncode($data49[4])}"/>
+                    </div>
+                    <div class="bottomInfo__context">
+                        {:HtmlEncode($data49[4])}
+                    </div>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-6 HJZF2_Z__bottom-5Item bottomimg">
+                    <if condition="$data49[5]">
+                        <div class="bottomimg_img1">
+                            <img src="{:getindeximgurl($data49[5])}" alt="{$data49[6]}"/><br/><span>{$data49[6]}</span>
+                        </div>
+                    </if>
+                    <if condition="$data49[7]">
+                        <div class="bottomimg_img1">
+                            <img src="{:getindeximgurl($data49[7])}" alt="{$data49[8]}"/><br/><span>{$data49[8]}</span>
+                        </div>
+                    </if>
+                    <if condition="$data49[9]">
+                        <div class="bottomimg_img1">
+                            <img src="{:getindeximgurl($data49[9])}" alt="{$data49[10]}"/><br/><span>{$data49[10]}</span>
+                        </div>
+                    </if>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-3 HJZF2_Z__bottom-5Item contctInfo">
+                    <div class="HJZF2_Z__bottom-5Item__title index_title">{$data49[11]}</div>
+                    <ul>
+                        <if condition="$about['contact']">
+                            <li>
+                                <span>{:__('Contact: ')}</span><br/>
+                                {:chaifen($about['contact'],0)}&nbsp;&nbsp;{:chaifen($about['contact'],1)}&nbsp;&nbsp;{:chaifen($about['contact'],2)}
+                            </li>
+                        </if>
+                        <if condition="$about['email']">
+                        <li>
+                            <span>{:__('Email: ')}</span><br/>
+                            <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],0)}</a>
+                            <eq name="webid" value='1819'><br /><a href="mailto:{:chaifen($about[email],1)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],1)}</a></eq>
+                        </li>
+                         </if>
+                        <if condition="$about['mobile']">
+                        <li>
+                            <span>{:__('Mobile: ')}</span><br/>
+                            {:chaifen($about['mobile'],0)}&nbsp;&nbsp;{:chaifen($about['mobile'],1)}
+                        </li>
+                            </if>
+                        <if condition="$about['phone']">
+                        <li>
+                            <span>{:__('Phone: ')}</span><br/>
+                            {:chaifen($about['phone'],0)}
+                        </li>
+                            </if>
+                        <if condition="$about['address']">
+                            <li>
+                                <span>{:__('Add: ')}</span><br/>
+                                {$about['address']}
+                            </li>
+                        </if>
+						<if condition="$data49[14]">
+                            <li>
+								<span>{$data49[14]}</span><br/>
+                                {$data49[15]}
+                            </li>
+						</if>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="HJZF2_Z__bottom-5__copyrightContent">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 HJZF2_Z__bottom-5__copyright--left">
+                    <php>
+                        $nowtime=date("Y",time());
+                        if(!$data49[13]){
+                        $currtime=2019;
+                        }else{
+                        $currtime=$data49[13];
+                        }
+                    </php>
+                    <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+                    &nbsp; {$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>
+                </div>
+                <div class="col-xs-12 col-md-6 HJZF2_Z__bottom-5__copyright--right">
+                    <a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+                    <if condition="$data50[15] eq ''">
+                    <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                        中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>   
+                        <else/>
+                        <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by Zhonghuan Internet</a>
+                    </if>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <if condition="$friend_link neq ''">
+    <div class="HJZF2_Z__bottom-5__friendlink">
+    	<div class="container">
+            <div class="row">
+                <div class="HJZF2_Z__bottom-5__link"><span style="float:left; margin-right:5px;">{:__('FriendLink: ')}</span>
+                      <volist name="friend_link" id="friend_link">
+                      <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                      <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                      </if>
+                      </volist>     
+                      <div style="clear:both"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    </if>
+</footer>

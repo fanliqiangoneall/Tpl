@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+<SCRIPT src="__TMPL__demo1/js/jquery-1.8.3.min.js" type="text/javascript"></SCRIPT>
+<script type="text/javascript" src="__TMPL__demo1/js/banner.js"></script>
+<link href="__TMPL__demo1/css/banner.css" rel="stylesheet">
+<div class="page_Banner">
+    <div class="DB_tab25">
+
+        <ul class="DB_bgSet">
+            <volist name="banner" id="banner" key="kk">
+            	<a href="{:($banner['ad_link'])}"><li style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat; height:568px; display:block;<if condition='$kk eq 1'>z-index:2<else/>z-index:1</if>"></li></a>
+            </volist>
+        </ul>
+
+        <ul class="DB_imgSet">
+            <a href="{:U('/')}">
+            <li>
+                <img class="DB_1_1" src="{:getindeximgurl($data[0])}" alt=""/>
+            </li>
+            </a>
+            <a href="{:U('/')}">
+            <li>
+                <img class="DB_2_1" src="{:getindeximgurl($data[1])}" alt=""/>
+            </li>
+            </a>
+            <a href="{:U('/')}">
+            <li>
+                <img class="DB_3_1" src="{:getindeximgurl($data[2])}" alt=""/>
+            </li>
+            </a>
+        </ul>
+
+        <div class="DB_menuWrap">
+            <div class="DB_next"></div>
+            <div class="DB_prev"></div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $('.DB_tab25').DB_tabMotionBanner({
+        key:'b28551',
+        autoRollingTime:5000,
+        bgSpeed:500,
+        motion:{
+            DB_1_1:{top:100,opacity:0,speed:1000,delay:500},
+            DB_2_1:{left:-50,opacity:0,speed:1000,delay:500},
+			DB_2_2:{left:-50,opacity:0,speed:1000,delay:500},
+			DB_2_3:{top:50,opacity:0,speed:1000,delay:1000},
+            DB_3_1:{top:-50,opacity:0,speed:1000,delay:500},
+			DB_3_2:{top:50,opacity:0,speed:1000,delay:1000},
+            end:null
+        }
+    })
+</script>

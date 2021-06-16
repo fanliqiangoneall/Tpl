@@ -1,0 +1,30 @@
+<div class="sidebar">
+  <ul>
+    <li style="height:61px"><div class="sidebox"><img src="__TMPL__demo1/img/r_qq.png" border="0"><span style="line-height:60px; color:#fff"><b><a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" target="_blank" onclick="turn_sta(5,4)" style="color:#fff">{:chaifen($about['msn'],0)}</a></b></span></div></li>
+    <li style="height:61px"><div class="sidebox3"><img src="__TMPL__demo1/img/r_tel.png" border="0"><span style="line-height:60px; color:#fff"><b>{:chaifen($about['phone'],0)}</b></span></div></li>
+    <li style="height:61px"><div class="sidebox2"><img src="__TMPL__demo1/img/r_email.png" border="0"><span style="line-height:60px; color:#fff"><b><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4)" style="color:#fff">{:chaifen($about['email'],0)}</a></b></span></div></li>
+    <li style="height:61px"><div class="sidebox1"><a href="{:U('/contactus#inquiry')}"><img src="__TMPL__demo1/img/r_xp.png" border="0"></a></div></li>
+    <li style="height:60px; background:#{$color}; width:60px; height:60px;" ><a href="javascript:goTop();" class="sidetop"><img src="__TMPL__demo1/img/r_top.png" width="60" height="60" alt="top" border="0"/></a></li>
+  </ul>
+</div>
+<style>
+/*右侧二维码*/
+.sidebar{ width:60px; position:fixed;top:250px; right:0px; z-index:99999}
+.sidebar ul li{ position:relative; list-style:none; height:61px;}
+.sidebar ul li img{ float:left;}
+.sidebar ul li .sidebox{
+	position:absolute;width:60px; height:60px;top:0;right:0;transition:all 0.3s;background:{$data13[12]};overflow:hidden;color:#fff; font-size:14px;
+}
+.sidebar ul li .sidebox1{
+	position:absolute;width:60px; height:60px;top:0;right:0;transition:all 0.3s;background:{$data13[12]};overflow:hidden;color:#fff; font-size:14px;
+}
+.sidebar ul li .sidebox1:hover{ 
+background:#{$color};
+}
+.sidebar ul li .sidebox2{
+	position:absolute;width:60px; height:60px;top:0;right:0;transition:all 0.3s;background:{$data13[12]};overflow:hidden;color:#fff; font-size:14px;
+}
+.sidebar ul li .sidebox3{
+	position:absolute;width:60px; height:60px;top:0;right:0;transition:all 0.3s;background:{$data13[12]};overflow:hidden;color:#fff; font-size:14px;
+}
+</style>

@@ -1,0 +1,250 @@
+<!--{$pagename}-->
+<php>
+    if($data210[0]){
+    $foot_logo=getindeximgurl($data210[0]);
+    }
+    if($data210[2]){
+    $foot_ico1=getindeximgurl($data210[2]);
+    }
+    if($data210[3]){
+    $foot_ico2=getindeximgurl($data210[3]);
+    }
+    if($data210[4]){
+    $foot_ico3=getindeximgurl($data210[4]);
+    }
+    if($data210[5]){
+    $foot_ico4=getindeximgurl($data210[5]);
+    }
+    if($data210[6]){
+    $foot_ico5=getindeximgurl($data210[6]);
+    }
+    if($data210[20]){
+    $foot_ico6=getindeximgurl($data210[20]);
+    }
+
+    $bottom_nav_str=explode("\\n",$data210[12]);
+
+    foreach($bottom_nav_str as $k=>$bottom_nav_arr){
+    $bottom_navs=explode(":",$bottom_nav_arr);
+    $bottom_nav[$k]['name']=$bottom_navs[0];
+    $bottom_nav[$k]['href']=$bottom_navs[1];
+    }
+
+    $bottom_nav_str1=explode("\\n",$data210[13]);
+
+    foreach($bottom_nav_str1 as $k=>$bottom_nav_arr1){
+    $bottom_navs1=explode(":",$bottom_nav_arr1);
+    $bottom_nav1[$k]['name']=$bottom_navs1[0];
+    $bottom_nav1[$k]['href']=$bottom_navs1[1];
+    }
+
+    $bottom_nav_str2=explode("\\n",$data210[14]);
+
+    foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2){
+    $bottom_navs2=explode(":",$bottom_nav_arr2);
+    $bottom_nav2[$k]['name']=$bottom_navs2[0];
+    $bottom_nav2[$k]['href']=$bottom_navs2[1];
+    }
+
+    $bottom_nav_str3=explode("\\n",$data210[19]);
+
+    foreach($bottom_nav_str3 as $k=>$bottom_nav_arr3){
+    $bottom_navs3=explode(":",$bottom_nav_arr3);
+    $bottom_nav3[$k]['name']=$bottom_navs3[0];
+    $bottom_nav3[$k]['href']=$bottom_navs3[1];
+    }
+</php>
+
+<style>
+	
+	<if condition="$data210[26]">
+		.HJZF2_Z__bottom_hj05 {
+			background-image: url({:getindeximgurl($data210[26])});
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+	</if>
+	
+	
+    .foot_top_link a:hover {
+        color: #{$data210[16]};
+    }
+
+    .HJZF2_Z__bottom_hj05 {
+        background-color: #{$data210[17]};
+        color: #{$data210[18]};
+    }
+
+    .HJZF2_Z__bottom_hj05 a,
+    .foot_top_left p,
+    .foot_bottom {
+        color: #{$data210[18]};
+    }
+
+    <if condition="$data210[22]">@media(min-width: 768px) {
+        .foot_top .foot_top_normal {
+            width: 18.75%;
+        }
+    }
+    </if>
+	<if condition="$data210[25]">
+		.foot_top .row:before,.foot_top .row:after{
+			display: none;
+		}
+		.foot_top ul{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		.foot_top ul li ul{
+			flex-direction: column;
+		}
+		.foot_top ul li{
+			flex: none;
+			width: auto;
+		}
+		.foot_top ul li.foot_top_left{
+			flex: 0 0 25%;
+			width: 25%;
+		}
+	</if>
+</style>
+<footer class="HJZF2_Z__bottom_hj05">
+    <div class="foot_box">
+        <div class="container foot_top">
+            <ul class="row">
+                <li class="col-md-3 col-xs-12 foot_top_left">
+                    <img src="{$foot_logo}" alt="foot logo" class="img-responsive hidden-xs hidden-sm hidden-md">
+                    <p class="hidden-xs hidden-sm hidden-md">{$data210[1]}</p>
+                    <dl class="foot_top_ico">
+                        <dd><a href="{$data210[7]}" target="_bank"><img src="{$foot_ico1}"></a></dd>
+                        <dd><a href="{$data210[8]}" target="_bank"><img src="{$foot_ico2}"></a></dd>
+                        <dd><a href="{$data210[9]}" target="_bank"><img src="{$foot_ico3}"></a></dd>
+                        <dd><a href="{$data210[10]}" target="_bank"><img src="{$foot_ico4}"></a></dd>
+                        <dd><a href="{$data210[11]}" target="_bank"><img src="{$foot_ico5}"></a></dd>
+                        <if condition="$data210[21]" target="_bank">
+                            <dd><a href="{$data210[21]}"><img src="{$foot_ico6}"></a></dd>
+                        </if>
+                    </dl>
+                </li>
+                <if condition="$bottom_nav">
+                    <li class="col-md-3 col-xs-12 foot_top_link hidden-xs hidden-sm hidden-md foot_top_normal">
+                        <h3 class="index_title"> <a href="{$bottom_nav[0]['href']}">{$bottom_nav[0]['name']}</a></h3>
+                        <ul>
+                            <volist name="bottom_nav" id="nav" offset="1">
+                                <a href="{$nav['href']}">
+                                    <li class="bottom_nav_li">{$nav['name']}</li>
+                                </a>
+                            </volist>
+                        </ul>
+                    </li>
+                </if>
+
+                <if condition="$data210[22]">
+                    <li class="col-md-2 col-xs-12 foot_top_link foot_top_mid hidden-xs hidden-sm hidden-md foot_top_normal">
+                        <h3 class="index_title"> <a href="{$data210[23]}">{$data210[22]}</a></h3>
+                        <ul>
+                            <php>
+                                $arra = get_list_val($data210[24]);
+                            </php>
+                            <volist name="arra" id="a" offset="1">
+                                <a href="{$a[link]}">
+                                    <li class="bottom_nav_li">{$a[title]}</li>
+                                </a>
+                            </volist>
+                        </ul>
+                    </li>
+                </if>
+                <if condition="$bottom_nav1">
+                    <li class="col-md-3 col-xs-12 foot_top_link hidden-xs hidden-sm hidden-md foot_top_normal">
+                        <h3 class="index_title"> <a href="{$bottom_nav1[0]['href']}">{$bottom_nav1[0]['name']}</a></h3>
+                        <ul>
+                            <volist name="bottom_nav1" id="nava" offset="1">
+                                <a href="{$nava['href']}">
+                                    <li class="bottom_nav_li">{$nava['name']}</li>
+                                </a>
+                            </volist>
+                        </ul>
+                    </li>
+                </if>
+                <if condition="$data210[19]">
+                    <li class="col-md-3 col-xs-12 foot_top_link hidden-xs hidden-sm hidden-md foot_top_normal">
+                        <h3 class="index_title"> <a href="{$bottom_nav1[0]['href']}">{$bottom_nav3[0]['name']}</a></h3>
+                        <ul>
+                            <volist name="bottom_nav3" id="nava" offset="1">
+                                <a href="{$nava['href']}">
+                                    <li class="bottom_nav_li">{$nava['name']}</li>
+                                </a>
+                            </volist>
+                        </ul>
+                    </li>
+                </if>
+
+                <if condition="$bottom_nav2[0]['name']">
+                    <li class="col-md-3 col-xs-12 foot_top_link hidden-xs hidden-sm hidden-md foot_top_normal">
+                        <h3> <a href="{$bottom_nav2[0]['href']}">{$bottom_nav2[0]['name']}</a></h3>
+                        <ul>
+                            <li class="bottom_nav_li">
+                                {:__('Email: ')} <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);"
+                                    style="text-decoration: underline;">{:chaifen($about['email'],0)}</a>
+                            </li>
+                            <if condition="$webid eq '1766'">
+                                <li>
+                                    {:__('Mobile: ')} {:chaifen($about['mobile'],0)}
+                                </li>
+                            </if>
+                            <li>
+                                {:__('Phone: ')} {:chaifen($about['phone'],0)}
+                            </li>
+                           
+                            <li>
+                                {:__('Add: ')} {$about['address']}
+                            </li>
+                           
+                        </ul>
+                    </li>
+                </if>
+
+            </ul>
+        </div>
+        <if condition="$friend_link neq ''">
+        <div class="HJZF2_Z__bottom_hj05__friendlink">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 HJZF2_Z__bottom_hj05__link">
+                        <span style="float:left; margin-right:5px;">{:__('FriendLink: ')}</span>
+                        <volist name="friend_link" id="friend_link">
+                        <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                        </if>
+                        </volist>     
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </if>
+        <php>
+            $nowtime=date("Y",time());
+        </php>
+    </div>
+    <div class="foot_bottom text-center">
+        Copyright © {$nowtime}&nbsp;{$about['company_name']} &nbsp; {:__('All rights reserved')} &nbsp;&nbsp;<if
+            condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/"
+                target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>
+        <a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;
+        <a href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;&nbsp;
+        <if condition="C('language') eq 'cn'">
+            <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+            <if condition="$data210[15] eq ''">
+                中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+            </if>
+            <else />
+            <if condition="$data210[15] eq ''">
+                Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan
+                    Internet</a>
+            </if>
+        </if>
+    </div>
+</footer>

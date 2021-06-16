@@ -1,0 +1,53 @@
+<link href="__TMPL__demo2/css/navigation.css" rel="stylesheet">
+<script type="text/javascript" language="javascript" src="__TMPL__demo2/js/nav.js"></script>
+<script type="text/javascript" src="__TMPL__demo2/js/navcontrol.js"></script>
+
+ <div class="index_top">
+    <div class="index_topcon">
+      <div id="index_navigation_animate_3">
+       <div class="index_top1">Hello,welcome to HY Phoenix</div>
+       <div class="index_top2">{:chaifen($about['mobile'],0)}</div>
+       <div class="index_top3"><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);gtag_report_conversion_email();" style="color:#333">{:chaifen($about['email'],0)}</a></div>
+
+       <div style="float: right;">
+          <span style="float: left;font-size: 14px;line-height: 40px;color: #333">Share:</span>
+          <div style="float:left; margin-left:5px; margin-top:12px;">
+          <!--[if gt IE 8]>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <div class="addthis_sharing_toolbox"></div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+  <![endif]--></div>
+       </div>
+      </div> 
+    </div>
+ </div>
+
+<div  class="page_Top">
+  <div class="page_Top2">
+   <div class="page_Logo">
+     <div id="animate2">
+      <ul>
+         <li id="index_navigation_animate_1"><a href="{:U('/')}">{$logo}</a></li>
+      </ul>
+     </div>
+   </div>
+    <div class="index_navigation_page_Menu" id="smoothmenu1">
+      <ul id="index_navigation_animate_2">
+        <volist name="web_navigation" id="vo" offset="0" length='9' key="key">
+          <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a>
+          </li>
+        </volist>
+      </ul>
+      <div class="clear"></div>
+</div>
+   <div class="clear"></div>
+  </div> 
+</div>
+
+
+<script>
+jQuery('#index_navigation_animate_3').removeClass().addClass('fadeInDown');
+jQuery('#index_navigation_animate_1').removeClass().addClass('fadeInLeft');
+jQuery('#index_navigation_animate_2').removeClass().addClass('fadeInRight');
+jQuery('#index_navigation_animate').removeClass().addClass('fadeIn');
+</script>

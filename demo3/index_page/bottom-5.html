@@ -1,0 +1,222 @@
+<!--{$pagename}-->
+<if condition="has_mould('bottom-5') eq false">
+    <style>
+        .foot{ display:none}
+    </style>
+</if>
+<if condition="$data49[10]">
+    <style>
+        .foot{
+            background: url({:getindeximgurl($data49[10])}) center center no-repeat !important;
+        }
+    </style>
+</if>
+<style>
+    .foot{
+        width: 100%;
+        padding-bottom: 10px;
+        min-height: 255px;
+        clear: both;position: relative;
+    }
+    .foot_mian{width: 1190px;margin: 0 auto;}
+
+    .foot_nav{width: 240px;height: auto;overflow: hidden;text-align: center;float: left;margin-right:78px;}
+    .foot_title{font-size: 22px;color: #ffffff;font-family: 微软雅黑;font-weight: bold;text-align: left;margin-top:42px;margin-bottom:16px;}
+
+    .foot_nav  li{float: left;float: left;width: 50%;text-align: left}
+    .foot_nav li a h2{font-size: 14px;color: #fff;font-weight: normal;line-height: 31px;padding: 0 0 0 10px;}
+    .foot_nav div:last-child{display: none;}
+    .foot_hot{width:229px;float: left;height: auto; margin-right:116px;}
+    .foot_proclass{width: 229px;height: auto;}
+    .foot_proclass li{float: left;}
+
+    .ft_cla_name{width: 100%;float: left;}
+    .ft_cla_name a h3{font-size: 14px;color: #fff;font-weight: normal;line-height: 31px;}
+    .ft_ewm{width: 111px;float: left;}
+    .ft_cont{float: left;width: 300px;margin-right:116px;}
+    .ft_cont ul li{font-size: 14px;color: #ffffff;font-weight: normal;font-family: 微软雅黑;padding-left: 28px;line-height:23px;margin-bottom: 10px;}
+
+    .fc-left{font-size: 14px;color: #ffffff;width: 812px;height: 143px;float: left;}
+    .lef_1,.lef_2{float: left;}
+    .lef_1{width: 419px;}
+    .lef_2{width: 382px;}
+    .lef_1 li,.lef_2 li{padding-left: 22px;font-size: 14px;color: #ffffff;line-height: 36px;}
+    .foot-cont{width: 1190px;height: 143px;margin: 0 auto;}
+    .fc_title{font-size: 18px;color: #ffffff;font-weight: bold;}
+    .fc_add{list-style: none;height: 74px;width: 886px;}
+    .fc_add li{float: left;margin-right: 20px;line-height: 30px;padding-left: 28px;}
+    .fc-right{width: 378px;height:143px;float: right;}
+    .fr_2{float: right;width: 264px;margin-right:12px; }
+    .foot1{width: 792px;height: 75px;margin-top: 25px;float: left;}
+    .foot2{width: 97px;height: 117px;float: left;    text-align: center;
+        margin-top: -17px;}
+    .foot3{width: 110px;height: 77px;float: right;text-align: center;}
+    .search_list{ position:absolute; background:url(../img/topewmbg.png);top:22px; width:250px; height:59px; font-size:15px; text-align:center; z-index:55}
+    .footnav_bg{width: 5px;height: 5px;background: #fff;float: left;margin-top: 12px;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;}
+    .foot_nav li:hover .footnav_bg{
+        background: #{$color};
+    }
+    .foot_nav li:hover a h2{
+        color: #{$color};
+    }
+    .ft_cla_name:hover h3{
+        color: #{$color};
+    }
+</style>
+<if condition="$data49[1] eq ''">
+    <style>
+        .foot_nav{margin-right: 140px;}
+        .ft_cont {width: 450px;margin-right: 240px;}
+    </style>
+</if>
+<!--foot start-->
+<div class="foot">
+    <div class="foot_mian">
+        <div class="foot_nav">
+            <p class="foot_title">{$data49[0]}</p>
+            <volist name="web_navigation" id="vo" offset="0" length='9' key="key">
+                <li id="menu{$key}"><div class="footnav_bg"></div><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+            </volist>
+        </div>
+        <if condition="$data13[1]">
+            <div class="foot_hot">
+                <p class="foot_title">{$data49[1]}</p>
+                <volist empty="" name="allclass" id="allclass_index" offset="0" length='6'>
+                    <li class="ft_cla_name"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}">{$allclass_index['class_name']}</a></li>
+                </volist>
+                <div class="clear"></div>
+            </div>
+        </if>
+        <div class="ft_cont">
+            <p class="foot_title">{$data49[3]}</p>
+            <ul>
+                <if condition="chaifen($about['contact'],0) neq '' ">
+                    <li <if condition="$data49[5]">style="background: url({:getindeximgurl($data49[5])}) no-repeat 0 3px;;"</if>>联系人：{:chaifen($about['contact'],0)}</li>
+                </if>
+                <if condition="chaifen($about['phone'],0) neq '' ">
+                    <li <if condition="$data49[6]">style="background: url({:getindeximgurl($data49[6])}) no-repeat 0 3px;"</if>>手机：{:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="chaifen($about['email'],0) neq '' ">
+                    <li <if condition="$data49[7]">style="background: url({:getindeximgurl($data49[7])}) no-repeat 0 3px;"</if>>邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2)" style="color: #ffffff"> {:chaifen($about['email'],0)}</a></li>
+                </if>
+                <if condition="chaifen($about['address'],0) neq '' ">
+                    <li <if condition="$data49[8]">style="background: url({:getindeximgurl($data49[8])}) no-repeat 0 0;"</if>>地址：{$about['address']}</li>
+                </if>
+
+            </ul>
+        </div>
+        <div class="ft_ewm">
+            <p class="foot_title">{$data49[2]}</p>
+            <if condition="$data49[4] eq '' or $data49[4] eq 0">
+                <else/>
+                <img src="{:getindeximgurl($data49[4])}" style="width: 111px;height: 111px;" >
+            </if>
+        </div>
+        <div class="clear"></div>
+        <div style="color: #b1b1b1;text-align: center;width: 100%;font-size: 16px;clear: both;margin: auto;margin-top: 28px;">
+            <php>
+                $nowtime=date("Y",time());
+                $currtime=$data49[9];
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} 版权所有&nbsp;&nbsp;
+        &nbsp;<a target="new" href="https://www.one-all.com/mianze.html" title="中环免责声明" style="color: #b1b1b1;cursor: pointer;">免责声明</a><a href="https://beian.miit.gov.cn" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()" style="color: #b1b1b1;cursor: pointer;">&nbsp;网站地图&nbsp;</a>&nbsp;&nbsp;<a href="{:U('/alltag','','')}" style="color: #b1b1b1;cursor: pointer;">所有标签</a>&nbsp;&nbsp;
+            <a href="https://www.one-all.com" title="中环互联网" target="_blank" style="color: #b1b1b1;cursor: pointer;">常州网络公司</a>中环互联网网站设计
+
+            &nbsp;&nbsp;&nbsp;&nbsp;{:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}
+        </div>
+
+
+        <!--foot-text end-->
+    </div>
+</div>
+<!--foot end-->
+
+<if condition="$friend_link neq ''">
+    <div class="friendlink" style="margin-top: 0px;">
+        <div style="width: 1190px;margin: auto">
+            <div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">Friend Link：</span>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; text-align:center;color: #fff;line-height: 30px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                    </if>
+                </volist>
+                <!--<div style="clear:both"></div>-->
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+</if>
+
+<!--浮窗-->
+<if condition="$data31[10]">
+    <style>
+        .floadAd { position: absolute;z-index: 999900; }
+        .floadAd .item { display: block; }
+        .floadAd .item img { vertical-align: bottom; }/* a img 的组合浏览器默认下边会有几个像素的空白，这里可以消除空白*/
+    </style>
+    <div id="floadAD" class="floadAd">
+        <a class="close" href="javascript:void(0);" style="color: red;position: absolute;right: 0;top: 0"><img src="__TMPL__WH01_CN/img/close.jpg" alt=""/></a>
+        <a class="item" title='' href="{$data31[12]}" target="_blank">
+            <img src="{:getindeximgurl($data31[11])}" alt="" /></a>
+    </div>
+    <script>
+        FloatAd("#floadAD");//调用
+
+        //广告漂浮窗口
+        function FloatAd(selector) {
+            var obj = $(selector);
+            if (obj.find(".item").length == 0) return;
+            var windowHeight = $(window).height();
+            var windowWidth = $(window).width();
+            var dirX = -1.5;
+            var dirY = -1;
+
+            var delay = 30;
+            obj.css({left: windowWidth / 2 - obj.width() / 2 + "px", top: windowHeight / 2 - obj.height() / 2 + "px"});
+            obj.show();
+            var handler = setInterval(move, delay);
+
+            obj.hover(function () {
+                clearInterval(handler);
+            }, function () {
+                handler = setInterval(move, delay);
+            });
+
+            obj.find(".close").click(function () {
+                close();
+            });
+            $(window).resize(function () {
+                windowHeight = $(window).height();
+                windowWidth = $(window).width();
+            });
+            function move() {
+                var currentPos = obj.position();
+                var nextPosX = currentPos.left + dirX;
+                var nextPosY = currentPos.top + dirY;
+
+                /* if (nextPosX >= windowWidth - obj.width()) {
+                 close();
+                 }*/
+
+                if (nextPosX <= 0 || nextPosX >= windowWidth - obj.width()) {
+                    dirX = dirX * -1;
+                    nextPosX = currentPos.left + dirX;
+                }
+                if (nextPosY <= 0 || nextPosY >= windowHeight - obj.height() - 5) {
+                    dirY = dirY * -1;
+                    nextPosY = currentPos.top + dirY;
+                }
+                obj.css({left: nextPosX + "px", top: nextPosY + "px"});
+            }
+
+            function close() {
+                clearInterval(handler);
+                obj.remove();
+            }
+        }
+
+    </script>
+</if>
+
+<!--浮窗-->

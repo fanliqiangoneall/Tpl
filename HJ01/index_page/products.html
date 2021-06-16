@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+
+<style>
+    .page_probg{
+        height: auto;
+    }
+    #index_product_title_left1 h3{
+        color: #{$color};
+    }
+    .index_product_more{
+        color: {$data1[0]};
+    }
+    .index_product_more:hover{
+    background: {$data1[0]};color:#fff;
+    }
+    .index_proitem_img a:before{
+    background: #000;
+    }
+    .index_proitem_name h6{
+        color: #{$color}
+    }
+    .index_proitem_more{
+        color:{$data1[0]};
+    }
+    .index_proitem_more:hover:after{
+    background: #000
+        width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+    }
+    .slick-prev:before, .slick-next:before{
+        color: #{$color};
+    }
+    #index_prolist .slick-prev:hover:before,  #index_prolist .slick-next:hover:before{
+    color: {$data1[0]};
+    }
+</style>
+
+<!--index-product start-->
+<div class="page_probg">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left" >
+                <div id="index_product_title_left1"><h3>{$data9[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right1">
+                    <a <if condition="$data9[9]">href="{$data9[9]}" <else/>href="{:U('/Product')}"</if> class="index_product_more font-weight-700">{$data9[1]}</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <div class="index_prolist_wai">
+            <div  id="index_prolist">
+                <volist empty="" name="indexpro" id="indexpro" key="k" offset="0" length="9">
+                    <div class="index_proitem">
+                        <div class="index_proitem_box">
+                            <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                            <div class="index_proitem_second">
+                                <div class="index_proitem_name margin-10px-bottom"><h6>{$indexpro['pro_name']}</h6></div>
+                                <div class="index_proitem_desc">{:subtxt($indexpro['pro_description'],100)}</div>
+                                <div class="margin-15px-top index_proitem_more_parent">
+                                    <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}" class="index_proitem_more">read more </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div style="clear: both;"></div>
+<if condition="$data1[14] neq ''">
+    <script>
+        $(document).ready(function(){
+            $(".index_proitem_more_parent").hide();
+            $(".index_proitem_img a").click(function () {
+                return false;
+            }).css("cursor",'default');
+        })
+    </script>
+</if>
+<!--index-product end-->

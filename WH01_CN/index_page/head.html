@@ -1,0 +1,160 @@
+<!--{$pagename}-->
+<php>
+    if(!$data1[2]){
+    $data1[2]=267;
+    }
+    if(!$data1[15]){
+    $data1[15]=333;
+    }
+</php>
+<style>
+/*head*/
+.logo_em span{
+    font-size: 20px;color: #{$color};font-family: Arial;font-weight:bold;display: block;float: left;margin-right: 10px;
+}
+.index_nav2 ul li:hover{
+    background-color:#{$color};height: 44px;
+}
+.menu_on{
+    background-color: #{$color};float: left;height: 44px;
+}
+.ba_on{
+    background-color: #{$color};float: left;height: 44px;
+}
+.index_nav2 ul li.ba_on h2 {
+    color: #fff;
+}
+.logo_wenzi{
+    width: {$data1[2]}px;
+}
+.top{
+    background: #{$data1[15]};
+}
+.top_language{float: right;color: #fff;line-height: 40px;font-weight: normal;margin-right: 10px;}
+.top_language a{color: #fff;line-height: 40px;font-weight: normal;}
+/*head*/
+</style>
+
+<if condition="$data1[3] neq ''">
+    <style>
+        .page_Logo img{
+            width: {$data1[3]}px;
+        }
+    </style>
+    <else/>
+    <style>
+        .page_Logo img{
+        width: auto;
+        }
+    </style>
+</if>
+
+<!--top-share start-->
+<div class="top">
+    <div class="top1">
+        <span class="top2">欢迎来到{$about['company_name']}</span>
+        <div class="top4">
+            <div class="bdsharebuttonbox">
+                <a href="#" class="bds_more" data-cmd="more"></a>
+                <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+                <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+                <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+                <a href="#" class="bds_renren" data-cmd="renren"></a>
+                <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+            </div>
+
+        </div>
+        <div class="top5">分享：&nbsp;</div>
+        <div class="top_language"><if condition="$data1[4]"><a href="{$data1[4]}" target="_blank">中文</a>&nbsp;/&nbsp;<a href="{$data1[5]}" target="_blank">English</a></if></div>
+    </div>
+</div>
+<!--top-share end-->
+
+<!--head_middle-->
+<div class="banner_top">
+    <div class="banner_top2">
+        <div class="page_Logo">
+            <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            <if condition="$data1[0]">
+                <div style="height: 58px;width: 2px;background: url(__TMPL__WH01_CN/img/logo_line.jpg) no-repeat center;float: left;margin:0 13px;display:inline-block;position: relative;top: 50%;-webkit-transform: translateY(-50%);-moz-transform: translateY(-50%);transform: translateY(-50%))"></div>
+                <div class="logo_wenzi">
+                    <p style="font-size: 19px;color: #333333;font-family:Arial;font-weight: normal;position: relative;line-height: 26px;">{$data1['0']}</p>
+                </div>
+            </if>
+        </div>
+        <div class="logo_em" style="background: url({:getindeximgurl($data1[1])}) no-repeat left;">
+            <p>销售热线：</p>
+            <if condition="$data1[6] eq 1">
+                <if condition="chaifen($about['phone'],0) neq ''"> <span>{:chaifen($about['phone'],0)}</span></if>
+                <else/>
+                <if condition="chaifen($about['mobile'],0) neq ''"><span>{:chaifen($about['mobile'],0)}</span></if>
+                <if condition="chaifen($about['phone'],0) neq ''"> <span>{:chaifen($about['phone'],0)}</span></if>
+
+            </if>
+
+        </div>
+    </div>
+</div>
+<!--head_middle-->
+
+<!--head_dowm-->
+<div class="banner_title">
+    <div class="banner_title2">
+        <div class="index_nav">
+            <div class="index_nav2">
+                <ul id="index_navigation_animate_2">
+                    <volist name="web_navigation" id="vo" offset="0" length='9' key="key">
+                        <li id="menu{$key}" class="menu_li"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a>
+                                <if condition="$vo['child'] neq ''">
+                                    <ul style="display: none">
+                                        <volist name="vo['child']" id="navchild">
+                                            <li><a href="{$navchild['url']}" <if condition=" $navchild['nav_way'] eq 1">target="_new"</if>>
+                                                <h3>{$navchild['title']}</h3></a></li>
+                                        </volist>
+                                    </ul>
+                                </if>
+                        </li>
+
+                    </volist>
+                </ul>
+
+                <div class="search_box" >
+                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL" style="width: 200px;height:30px;float: right;background: #f2f2f2;margin-top: 7px;overflow: hidden; ">
+                        <li style="float: left;width: 150px;height: 24px;margin-top: 3px;"><input style="height: 23px;width:140px;BORDER-WIDTH:0px;padding-left: 10px;color:#cdcdcd;outline: none;background: #f2f2f2;" type="text" value="输入关键词" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;输入关键词&#39;)" onblur="OnBlurFun(this,&#39;输入关键词&#39;)"></li>
+                        <li style="float: left;height: 23px;margin-top: 4px;margin-left: 13px;"><input type="image" src="__TMPL__WH01_CN/img/search_pic.png" style="background: #f2f2f2"></li>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<if condition="$data1[14]">
+    <php>
+        $arr_str=$data1[14];
+    </php>
+    <script>
+        $(document).ready(function(){
+            var arry_ph = "<?php echo $arr_str ?>";
+            var nav_array = arry_ph.split(',');
+            $.each(nav_array,function(ke,val){
+                $(".index_nav2>ul>li").eq(ke).attr("nav-id",val);
+            })
+        })
+
+    </script>
+
+
+</if>
+<script>
+    $(document).ready(function(){
+        if($(".index_nav2>ul>li").length==7){
+            $(".index_nav2>ul>li>a>h2").css("margin",'11px 30px 12px 30px');
+        }else if($(".index_nav2>ul>li").length==8){
+            $(".index_nav2>ul>li>a>h2").css("margin",'11px 20px 12px 20px');
+        }else if($(".index_nav2>ul>li").length==9){
+            $(".index_nav2>ul>li>a>h2").css("margin",'11px 20px 12px 20px');
+        }
+
+    })
+</script>
+<!--head_dowm-->

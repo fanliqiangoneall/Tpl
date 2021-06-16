@@ -1,0 +1,88 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .selInfo dl dd button{
+            background: #{$inner_data[1]};
+        }
+        .InsidePage--3__breadcrumbs span.current{
+            color: #{$inner_data[1]};
+        }
+    </style>
+    <if condition="$inner_data[2]">
+        <style>
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+            </if>
+
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><span class="current">{:__('Jobs')}</span></div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap">
+            <div class="container">
+                <section  class="InsidePage--3__contentBox--100" >
+                    <div class="InsidePage--3__contentBoxWrap">
+                            <h5 class="InsidePage--3__title">{:__('Jobs')}</h5>
+                            <div class="selInfo InsidePage--3_selInfo">
+                                <dl class="selInfo_title">
+                                    <dt class="w200 pl20">{:__('Position Name')}</dt>
+                                    <dd class="w50">{:__('Gender')}</dd>
+                                    <dd class="w70">{:__('Age')}</dd>
+                                    <dd class="w90">{:__('Education')}</dd>
+                                    <dd class="w90">{:__('Number')}</dd>
+                                    <dd class="w370">{:__('Remarks')}</dd>
+                                    <dd class="w90">{:__('operating')}</dd>
+                                    <div style="clear: both"></div>
+                                </dl>
+                                <volist name="jobs" id="jobs" key="k">
+                                    <php>
+                                        if(LANGUAGE =='cn'){
+                                        if($jobs['sex'] == 1){
+                                        $jobs['sex'] ='男';
+                                        }else{
+                                        $jobs['sex'] ='女';
+                                        }
+                                        }else{
+                                        if($jobs['sex'] == 1){
+                                        $jobs['sex'] ='man';
+                                        }else{
+                                        $jobs['sex'] ='women';
+                                        }
+                                        }
+
+                                    </php>
+                                    <dl class="selInfo_content">
+                                        <dt class="w200 pl20">{$jobs['jobname']}</dt>
+                                        <dd class="w50">{$jobs['sex']}</dd>
+                                        <dd class="w70">{$jobs['age']}</dd>
+                                        <dd class="w90">{$jobs['edu']}</dd>
+                                        <dd class="w90">{$jobs['people']}</dd>
+                                        <dd class="w370">{$jobs['beizhu']}</dd>
+                                        <dd class="w90"><a href="{:U('/job',array('jobid'=>$jobs['jobid']))}"><button>{:__('Read More')}</button></a></dd>
+                                        <div style="clear: both"></div>
+                                    </dl>
+                                </volist>
+
+                            </div>
+
+                        <div class="page_nei_space"></div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>
+
+

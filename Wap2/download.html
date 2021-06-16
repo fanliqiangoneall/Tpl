@@ -1,0 +1,92 @@
+<extend name="Wap2:base" />
+<block name="content">
+<php>
+$news__current=$inner_data[0] or $news__current="NEWS";
+if($inner_data[1]){
+	$news__title_bj=getindeximgurl($inner_data[1]);
+}else{
+	$news__title_bj="none";	
+}
+if($inner_data[2]){
+	$news__content_bj=getindeximgurl($inner_data[2]);
+}else{
+	$news__content_bj="";	
+}
+    $news__title_color=$inner_data[4] or $news__title_color="#333";
+</php>
+<style>
+.news__content{
+	padding:10px 0;
+}
+.news__banner{ width:100%;}
+.news__Breadcrumbs{padding: 0 10px 10px;}
+.news__Breadcrumbs,.news__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+.news__title{
+    color:{$news__title_color};font-size:24px; font-weight:200; padding:5px 10px; background:url({$news__title_bj}) no-repeat;
+}
+.news__content img{ max-width:100%;}
+.news__content article{ padding:10px 0px;}
+.news__content li{ display:block; border-bottom:1px solid #d0d0d0;}
+.news__content li h3{ height:44px; line-height:44px; overflow:hidden; text-overflow:ellipsis; width:100%; color:#333; text-decoration:none; font-weight:normal; font-size:13px;}
+.news__content li a{text-decoration:none;}
+.news__content li{
+	padding:5px 0px;
+	line-height:25px;
+	font-size:16px;
+	color:#010101;
+	padding-left:20px;
+background:url({$news__content_bj}) no-repeat left center;
+}
+.news__content li h5{font-weight: normal;width: 70%;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: keep-all;color: #333;font-size: 16px;}
+.news__content li span{font-weight: normal;width: 30%;display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: keep-all;color: #333;font-size: 16px; text-align:right}
+.news__content li a{color:#010101;display: block;height: 25px;}
+.news_main_page{ margin-top:5px;}
+.news_main_page,.news_main_page a{ 
+text-align:center; padding:10px; 
+}
+.news_main_page a{ 
+border-radius:5px;
+color:#fff;
+text-decoration:none;
+background:#{$color}
+}
+.news_main_page .current{padding:10px;}
+    .news__list{padding: 0 10px;}
+</style>
+    <div>
+        <if condition="$inner_data[3] neq ''">
+            <img class="othercate__banner" src="{:getindeximgurl($inner_data[3])}" width="100%">
+        </if>
+    </div>
+    <section class="news__content">
+
+
+        <div class="news__Breadcrumbs">
+            <div class="news__Breadcrumbs_down">
+            	<a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span>{:__('Download')}</span>
+            </div>
+        </div>
+        <div class="news__title">
+            <div class="inpage__title_main">{:__('Download')}</div>
+        </div>
+        <ul class="news__list">
+              <volist name="download" id="download" key="k">
+                <li>
+                <div class="">
+                    <div class="">
+                    <a href="{:getimgurl($download['linkurl'])}">
+                    <h5>{$download['title']}</h5><span>{:__('Download')}</span>
+                    </a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                </li>
+            </volist>
+        </ul>
+        <div class="clearfix"></div>
+        <div class="news_main_page">{$page}</div>
+</section>
+
+
+</block>

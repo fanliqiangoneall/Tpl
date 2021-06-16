@@ -1,0 +1,118 @@
+.hjzf_case_22 {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    padding-bottom: 120px;
+}
+
+.case_22_main {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+}
+
+.case_22_left {
+    width: 54%;
+    float: left;
+    overflow: hidden;
+}
+
+.case_22_left img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.case_22_title_icon {
+    width: 48px;
+    height: 87px;
+    text-align: center;
+    margin-right: 20px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    background: #f76819;
+    color: #fff;
+    font-size: 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 40px;
+
+}
+
+.case_22_title_icon span {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.case_22_title {
+    text-align: center;
+}
+
+.case_22_right {
+    width: 52%;
+    background: #fff;
+    padding: 40px 30px 60px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+}
+
+.case_22_right_title {
+    position: relative;
+}
+
+.case_22_right_title::before {
+    content: '';
+    display: block;
+    width: 34px;
+    height: 3px;
+    background: #f76819;
+    position: absolute;
+    top: 34px;
+}
+
+.case_22_btn {
+    padding: 10px 60px;
+    border: 1px solid #333333;
+    display: inline-block;
+    color: #333;
+}
+
+@media(max-width:1200px) {
+    .hjzf_case_22 {
+        padding-bottom: 80px;
+    }
+
+    .case_22_main {
+        flex-wrap: wrap;
+    }
+
+    .case_22_left {
+        width: 100%;
+    }
+
+    .case_22_right {
+        position: relative;
+        top: 0;
+        transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+        padding: 30px 15px 30px;
+        width: 100%;
+    }
+}
+
+@media (max-width:767px) {
+    .hjzf_case_22 {
+        padding-bottom: 40px;
+    }
+    .case_22_title_icon{display: none;}
+}

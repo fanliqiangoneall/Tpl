@@ -1,0 +1,46 @@
+<!--left style-->
+<style>
+    .hj02_left_title{
+        background: #{$color};
+    }
+    .main-content_inner >ul{
+        border:1px solid #{$color};
+    }
+    .main-content_inner > ul > li > ul>li:hover a h3{
+        color: #{$color};text-decoration: underline;
+    }
+    .main-content_inner > ul > li.yijion>a{
+        background:#f0f0f0;
+    }
+    .main-content_inner > ul > li.yijion>a>h3{
+        color: #{$color};
+    }
+    .main-content_inner > ul > li:hover >a{
+        background: #f0f0f0;
+    }
+    .main-content_inner > ul > li:hover >a>h3{
+        color: #{$color};
+    }
+    .main-content_inner > ul > li.yijion > ul>li.childon >a>h3{
+        color:#{$color};
+    }
+</style>
+<php>
+    $nav_parent = $navrs[0]['nav_belong'];
+    $nav_parent_name = getNav_parent($nav_parent);
+    $nav_parent_name[0]['title']
+</php>
+<!--left style-->
+<div class="main_left">
+    <div class="main-content_inner">
+        <div class="hj02_left_title"><if condition="$data47[26]">{$nav_parent_name[0]['title']}<elseif condition="$data47[14]"/>{$data47[14]}<else/>关于我们</if></div>
+        <ul class="margin-20px-bottom">
+
+            <volist empty="No data" name="navrs" id="nav">
+
+                <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

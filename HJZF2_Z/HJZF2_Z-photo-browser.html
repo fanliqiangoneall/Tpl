@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+    <link rel="stylesheet" href="./css/photo-brower/weui.min.css">
+    <link rel="stylesheet" href="./css/photo-brower/jquery-weui.css">
+    <link rel="stylesheet" href="./css/photo-brower/demos.css">
+    <script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-weui.js"></script>
+    <script type="text/javascript" src="./js/swiper.js"></script>
+
+<script>
+    var array = window.parent.img_array;
+    var new_index = window.parent.index;
+    // console.log(array, new_index);
+    // console.log(new_index);
+    var pb1 = $.photoBrowser({
+        items: array,
+        initIndex:0,
+        onSlideChange: function(index) {
+          // console.log(this, index);
+        },
+
+        onOpen: function() {
+          // console.log("onOpen", this);
+        },
+        onClose: function() {
+          // console.log("onClose", this);
+          window.parent.document.getElementById('parent-iframe').remove();
+        }
+      });
+      
+        pb1.open(new_index);
+</script>
+</body>
+</html>

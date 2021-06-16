@@ -1,0 +1,67 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_59 .right {
+        background: url({:getindeximgurl($data351[0])
+    }
+
+    ) no-repeat center /cover;
+    }
+
+    .hjzf2_other_59 .left {
+        background: url({:getindeximgurl($data351[2])
+    }
+
+    ) no-repeat center /cover;
+    }
+
+    .hjzf2_other_59 .left a {
+        background-color: #{$data351[12]};
+        color: #{$data351[13]};
+        transition: all .5s;
+    }
+
+    .hjzf2_other_59 .left a:hover {
+        background-color: #{$data351[14]};
+    }
+
+    .hjzf2_other_59 .info .index_sub_title {
+        color: #{$data351[9]};
+    }
+
+    .hjzf2_other_59 .info .index_title {
+        color: #{$data351[10]};
+    }
+
+    .hjzf2_other_59 .info .des {
+        color: #{$data351[11]};
+    }
+    .hjzf2_other_59 .right a{
+        background-color: #{$data351[12]};
+        color: #{$data351[13]};
+    }
+    .hjzf2_other_59 .right a:hover{
+        background-color: #{$data351[14]};
+    }
+</style>
+<section class="hjzf2_other_59">
+    <div class="right fx-center">
+        <div class="info">
+            <div class="index_sub_title wow fadeInUp pb20" data-wow-delay=".3s">
+                {:HtmlEncode($data351[3])}
+            </div>
+            <div class="index_title wow fadeInUp pb20" data-wow-delay=".4s">
+                {:HtmlEncode($data351[4])}
+            </div>
+            <div class="index_text wow fadeInUp pb40 des" data-wow-delay=".5s">
+                {:HtmlEncode($data351[5])}
+            </div>
+            <a href="{$data351[8]}" class="index_btn index_text wow fadeInUp" data-wow-delay=".6s">{$data348[6]} <img
+                    src="{:getindeximgurl($data348[7])}" alt="{$data348[6]}"></a>
+        </div>
+    </div>
+    <div class="left">
+        <div class="hjzf2_other_59_l_img">
+            <img src="{:getindeximgurl($data351[1])}" alt="{:HtmlEncode($data351[4])}" class="img-fluid">
+        </div>
+    </div>
+</section>

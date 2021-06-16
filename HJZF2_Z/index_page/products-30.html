@@ -1,0 +1,53 @@
+<!--{$pagename}-->
+<php>
+
+</php>
+<style>
+
+</style>
+<php>
+
+</php>
+<section class="hjzf_z_products_30">
+    <div class="container">
+        <div class="row">
+            <!-- left -->
+            <div class="dean_left hjzf_z_products_30_left">
+                <div class="hjzf_z_products_30_left_title text-center">
+                    {$data474[0]}
+                </div>
+                <div class="hjzf_z_products_30_left_info">
+                    {:HtmlEncode($data474[1])}
+                </div>
+                <ul class="kejs_ul">
+                    <php>
+                        $arr = get_list_val($data474[2]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li>
+                            <a href="{$a[link]}">
+                                <b>
+                                    <img src="{$a[img]}" alt="{$a[title]}">
+                                    <em>
+                                        <img src="{$a[ico]}" alt="{$a[sub]}">
+                                    </em>
+                                </b>
+                                <div>
+                                    <p>
+                                        <span>{$a[title]}</span>
+                                        <small>{$a[sub]}</small>
+                                    </p>
+                                    <i></i>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <!-- right -->
+            <div class="dean_right">
+                <Include file="./Tpl/HJZF2_Z/inner/left_dean.html" />
+            </div>
+        </div>
+    </div>
+</section>

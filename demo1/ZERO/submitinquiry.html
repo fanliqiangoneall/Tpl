@@ -1,0 +1,187 @@
+<style>
+body{font-size:12px;}
+.inquiry{width:100%;padding:0px 0 20px 0;}
+.inquiry h2{border-bottom:1px solid #ccc;padding-bottom:5px; font-family:'Microsoft YaHei';color:#333333;}
+.inquiryinfo{width:100%; padding-bottom:5px;}
+.inquiryinfo input{height:20px;line-height:20px;padding:2px;border:1px solid #999;width:250px; font-family:'Microsoft YaHei';}
+.inquiryinfo textarea{padding:2px;border:1px solid #999; width:912px; max-width:912px; font-family:'Microsoft YaHei'}
+
+.inquiryleft{float:left;width:100%;}
+.inquiryright{float:left;width:100%; position:relative;}
+.productbutton{
+background: #4699db;
+color: #ffffff;
+border: 0 !important;
+cursor: pointer;
+height: 25px !important;
+font-size:13px;
+text-transform:none !important;
+padding: 0 !important;
+width:80px !important;
+}
+.yz_alert{color:#ff0000; position:absolute; top:3px; right:10px; z-index:99;}
+.clear{clear:both; overflow:hidden; height:1px;}
+</style>
+<script>
+jQuery(function(){
+jQuery("#message").focus(function(){
+jQuery("#message_alert").html("");
+});
+jQuery("#linkname").focus(function(){
+jQuery("#linkname_alert").html("");
+});
+jQuery("#phone").focus(function(){
+jQuery("#phone_alert").html("");
+});
+jQuery("#email").focus(function(){
+jQuery("#email_alert").html("");
+});
+jQuery("#code_char").focus(function(){
+jQuery("#code_char_alert").html("");
+});
+
+
+jQuery("#getcode_char").click(function(){
+		jQuery(this).attr("src",'__APP__/code_char.php?' + Math.random());
+	});
+
+jQuery("#getcode_char1").click(function(){
+		jQuery("#getcode_char").attr("src",'__APP__/code_char.php?' + Math.random());
+	});
+
+})
+
+
+function yz_submit(){
+var count=0;
+var message=Trims(jQuery("#message").val());
+var linkname=Trims(jQuery("#linkname").val());
+var phone=Trims(jQuery("#phone").val());
+var email=Trims(jQuery("#email").val());
+if(message.length<=0){
+jQuery("#message_alert").html("*咨询内容不能为空");
+count++;
+}
+else{
+jQuery("#message_alert").html("");
+}
+
+if(linkname.length<=0){
+jQuery("#linkname_alert").html("*姓名不能为空");
+count++;
+}
+else{
+jQuery("#linkname_alert").html("");
+}
+
+
+
+var str=/[\u4E00-\u9FA5a-zA-Z]/;   
+if(phone.length<=0){
+jQuery("#phone_alert").html("电话不能为空");
+count++;
+}else if(str.test(jQuery('#phone').val()))   
+{
+jQuery("#phone_alert").html("电话号码错误");
+count++;
+}else{
+jQuery("#phone_alert").html("");
+}
+
+
+
+if(email.length>0 &&!is_email(email)){
+  jQuery("#email_alert").html("*邮箱格式有误!");
+  count++;
+}
+else {
+	jQuery("#email_alert").html("");
+	}
+
+
+
+
+
+var code_char = jQuery("#code_char").val();
+jQuery.ajax({
+   type: "POST",
+   url: "__APP__/chk_code.php?act=char",
+   async:false,
+   data: {code:code_char},
+   success: function(data){
+   
+  if(data==1){
+	jQuery("#code_char_alert").html("");
+  }else{
+   count++;
+   jQuery("#code_char_alert").html("验证码输入有误");
+  }
+  }            
+});
+
+
+if(count>0){
+return false;
+}
+else{
+jQuery("#inbut").html('<h5 style="color:#F00;">请稍等</h5>');
+
+return true;
+}
+
+}
+
+
+function Trims(str)
+{
+return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+} 
+
+function is_email(str)
+{
+return (/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/.test(str));
+}
+
+</script>
+<div class="inquiry" id="zixun">
+<form action="__APP__/saveinquiry.html" method="post" onsubmit="return yz_submit();">
+<div class="inquiryinfo">
+    <div class="inquiryleft">您要咨询的详细内容 *</div>
+    <div class="inquiryright"><textarea name="message" id="message" style="padding:5px; width:98%; height:100px;">{$product["pro_name"]}</textarea><div class="clear"></div><span class="yz_alert" id="message_alert"></span>
+    <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">请留下您的姓名 *</div>
+    <div class="inquiryright"><input  name="linkname" id="linkname"><div class="clear"></div><span class="yz_alert" id="linkname_alert"></span></div>
+    <div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">请留下您的电话 *</div>
+    <div class="inquiryright"><input  name="phone" id="phone"><div class="clear"></div><span class="yz_alert" id="phone_alert"></span></div>
+    <div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">您的常用联系信箱</div>
+    <div class="inquiryright"><input  name="email" id="email"><div class="clear"></div><span class="yz_alert" id="email_alert"></span></div>
+    <div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">验证码 *</div>
+	<div class="inquiryright"><input type="text" class="input" id="code_char" name="code" maxlength="6" style="width:250px;" />&nbsp;<img src="__APP__/code_char.php" id="getcode_char" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1">点击刷新</a><span class="yz_alert" id="code_char_alert"></span></div>
+	<div class="clear"></div>
+</div>
+
+<div class="inquiryinfo" style="padding-top:15px;">
+<input type="hidden" name="prodid" value="{$product['pid']}"/>
+<div id="inbut"><input  class="productbutton" type="submit" value="提&nbsp;交"  name="submit" /></div>
+</div>
+</form>
+
+<div class="clear"></div>
+</div>

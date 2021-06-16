@@ -1,0 +1,50 @@
+<if condition="$data165[0]">
+    <style>
+        .HJZF2__case14Down {
+            background: url({:getindeximgurl($data165[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__case14--pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #{$data165[1]};
+    }
+    .HJZF2__case14--next,.HJZF2__case14--prev{
+        background: #{$data165[1]};
+    }
+</style>
+<section class="HJZF2__case14">
+    <div class="HJZF2__case14TopBg" style="background: url({:getindeximgurl($data165[2])}) no-repeat center;">
+        <div class="container">
+            <div class="HJZF2__case14TopTitle">{$data165[3]}</div>
+            <div class="HJZF2__case14TopsubTitle">{$data165[4]}</div>
+        </div>
+    </div>
+    <div class="HJZF2__case14Down">
+        <div class="container">
+            <div class="HJZF2__case14DownLeft wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <img src="{:getindeximgurl($data165[5])}" alt=""/>
+            </div>
+            <div class="HJZF2__case14DownRight wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <div class="swiper-container HJZF2__case14--wiper">
+                    <div class="swiper-wrapper">
+                        <volist name="indexcases" id="indexcase1" offset="0" length="6" key="h">
+                            <div class="swiper-slide">
+                                <a href="{:U('/new_detail',array('nid'=>$indexcase1["nid"]))}" onFocus="blur()" >
+                                <div class="HJZF2__case14--rightName"><img src="{:getindeximgurl($data165[6])}" alt=""/>{$indexcase1['title']}</div>
+                                <div class="HJZF2__case14--rightDesc">{$indexcase1['news_description']}</div>
+                                </a>
+                            </div>
+                        </volist>
+
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-pagination HJZF2__case14--pagination"></div>
+                <div class="swiper-button-next HJZF2__case14--next"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+                <div class="swiper-button-prev HJZF2__case14--prev"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>

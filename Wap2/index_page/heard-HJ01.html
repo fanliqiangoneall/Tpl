@@ -1,0 +1,120 @@
+<php>
+    $icon = HtmlEncode($data51[5]);
+</php>
+
+<script>
+    var icon_str = "<?php echo $icon;?>";
+</script>
+<header class="wap2_header-HJ01">
+    <div class="wap2_header-HJ01_header">
+        <div class="wap2_header-HJ01__menu">
+            <a href="#" class="wap2_header-HJ01__menuLine"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="wap2_header-HJ01-logo">
+            <a href="{:U('/')}">
+                <php>
+                    $logo = getindeximgurl($data51[0]);
+                </php>
+                <div class="wap2_header-HJ01-logoBox" style="background: url({$logo}) no-repeat center/cover;"></div></a>
+        </div>
+        <div class="wap2_header-HJ01-contact">
+            <if condition="C('Language') eq 'cn' or C('Language') eq 'zh' ">
+                <a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['phone'],0)}"><i class="fa fa-phone"></i></a>
+                <else/>
+                <a onclick="turn_sta(3,2)"  href="mailto:{:chaifen($about['email'],0)}"><i class="fa fa-envelope"></i></a>
+            </if>
+        </div>
+    </div>
+</header>
+<div class="wap2_header-HJ01_zhezhao">
+    <div class="wap2_header-HJ01_sideMenu">
+    
+
+    
+        <div class="wap2_header-HJ01_sideMenu_top">
+                <if condition="$data51[4]">
+        <php>
+            $lan = HtmlEncode($data51[4]);
+        </php>
+        
+        <div id="lan_str" style="display:none;"><?php echo $lan;?></div>
+        <div class="head-6__Language">
+            <ul>
+                <li><p>Language</p>
+                    <ul id="lang_ul">
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </if>
+            <span class="wap2_header-HJ01_sideMenu_close"><i class="fa fa-times"></i></span>
+        </div>
+        <div class="wap2_header-HJ01_sideMenu_middle">
+            <div class="wap2_header-HJ01_sideMenu_company">{$data51[1]}</div>
+            <div class="wap2_header-HJ01_sideMenu_companyjiesao">{$data51[2]}</div>
+            <div class="wap2_header-HJ01_sideMenu_search">
+                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                        <li class="search_first"><input data-language="{:C('Language')}" type="text" value="{:__('Product Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                        <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                        <div class="clear"></div>
+                    </form>
+            </div>
+        </div>
+        <div class="wap2_header-HJ01_sideMenu_down">
+            <ul class="hj_navbar_nav--mobile">
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()"><i></i>{$vo['title']}</a>
+                    <if condition="$vo[child] neq '' ">
+                        <span class="next-level-button"><i class="fa fa-angle-down"></i></span>
+                        <ul class="hj_navbar_nav_dropdown-menu">
+
+                            <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                <li>
+                                    <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                </li>
+                            </volist>
+                        </ul>
+                        <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'"/>
+                        <span class="next-level-button"><i class="fa fa-angle-down"></i></span>
+                        <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+
+                            <volist empty="no" name="allcaseclass" id="allclass_head"  offset="0" length="8" >
+                                <li>
+                                    <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">{$allclass_head['class_name']}</a>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                        <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'"/>
+                        <span class="next-level-button"><i class="fa fa-angle-down"></i></span>
+                        <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+
+                            <volist empty="no" name="allnewclass" id="allclass_head"  offset="0" length="8" >
+                                <li>
+                                    <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}">{$allclass_head['class_name']}</a>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                        <else/>
+
+                        <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                            <span class="next-level-button"><i class="fa fa-angle-down"></i></span>
+                            <ul class="hj_navbar_nav_dropdown-menu  hj02-pro-menu">
+                                <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                    <li>
+                                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </if>
+                    </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+
+    </div>
+</div>

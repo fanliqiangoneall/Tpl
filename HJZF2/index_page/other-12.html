@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+<if condition="$data159[0]">
+    <style>
+        .HJZF2_other--12{
+            background: url({:getindeximgurl($data159[0])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2_other--12__more:hover{
+        background: #{$data159[1]};
+    }
+</style>
+<if condition="$data159[9]">
+    <style>
+        .HJZF2_other--12Left__name,.HJZF2_other--12Left__desc{
+            color: #{$data159[9]};
+        }
+    </style>
+</if>
+
+<section class="HJZF2_other--12">
+    <div class="container">
+        <hgroup>
+            <h3 class="HJZF2_other--12__title">{$data159[2]}</h3>
+            <h4 class="HJZF2_other--12__subtitle">{$data159[3]}</h4>
+        </hgroup>
+        <div class="HJZF2_other--12__content flex">
+            <div class="HJZF2_other--12Left wow fadeInLeftBig" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <p class="HJZF2_other--12Left__name">{$data159[4]}</p>
+                <div class="HJZF2_other--12Left__desc">{:HtmlEncode(subtxt($data159[5],400))}</div>
+                <if condition="$data159[6]">
+                    <a href="{$data159[6]}" class="HJZF2_other--12__more">{:__('Read More')}</a>
+                    <else/>
+                    <a href="{:U('/aboutus')}" class="HJZF2_other--12__more">{:__('Read More')}</a>
+                </if>
+            </div>
+            <div class="HJZF2_other--12right wow fadeInRightBig" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <a <if condition="$data159[8]">href="javascript:void(0)" data-video="{$data159[8]}" id="HJZF2_other12video"<else/>href="javascript:void(0)"</if>>
+                <img src="{:getindeximgurl($data159[7])}" alt=""/>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

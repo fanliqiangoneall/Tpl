@@ -1,0 +1,32 @@
+<!--{$pagename}-->
+<style>
+</style>
+<section class="hjzf2_Z_case_18 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="hjzf2_Z_case_18_wrapper">
+                    <volist name="allcaseclass" id="lia" offset="0" length="10" key="k">
+                        <div class="index_sub_title text-center" id="cas{$k}">
+                            <a href="javascript:void(0);">{$lia['class_name']}</a>
+                        </div>
+                        <php>
+                            $classid = $lia['classid']; $caseitem = get_index_cases_category($classid,60);
+                        </php>
+                        <ul class="pb40">
+                            <volist name="caseitem" id="caseitem" offset="0" length="60">
+                                <li class="col-xs-6 col-lg-4">
+                                    <if condition="$caseitem['addurl']"><a href="{$caseitem['addurl']}"><else/><a href="javascript:void(0);" class="no_url"></if>
+                                        <em><img src="{:getimgurl($caseitem['new_pro'])}"
+                                                alt="{$caseitem['title']}"></em>
+                                        <span>{$caseitem['title']}</span>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

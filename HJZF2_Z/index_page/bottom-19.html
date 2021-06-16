@@ -1,0 +1,291 @@
+<!--{$pagename}-->
+<php>
+    if($data490[0]){
+    $color = $data490[0];
+    }
+</php>
+<style>
+    .hjzf_Z_bottom_19_bottom {
+        background-color: #{$data490[10]};
+        color:#{$data490[11]};
+    }
+    .hjzf_Z_bottom_19_bottom a {
+        color: #{$data490[11]};
+    }
+    .hjzf_Z_bottom_19_bottom a:hover,.hjzf_Z_bottom_19_mid a:hover {
+        color: #{color};
+    }
+    .hjzf_Z_bottom_19_mid,.hjzf_Z_bottom_19_mid a{
+        color:#{$data490[9]};
+    }
+    .hjzf_Z_bottom_19_mid{
+        background-color: #{$data490[8]};
+    }
+	.hjzf_Z_bottom_19_top_submit .bottom_form_box form .form_item input.bottom_email_submit{
+        background-color: #{$color};
+    }
+    .hjzf_Z_bottom_19_mid_wrapper_list a:hover{
+        color: #{$color};
+    }
+	.hjzf_Z_bottom_19_mid_wrapper_first_list li{
+		position: relative;
+	}
+	.hjzf_Z_bottom_19_mid_wrapper_first_list li:hover .bottom_19_ewm{
+		opacity: 1;
+		visibility: visible;
+	}
+	.bottom_19_ewm{
+		position: absolute;
+		left: 0;
+		padding-top: 15px;
+		width: 80px;
+		transition: all .5s;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 9;
+	}
+	.bottom_19_ewm img{
+		width: auto !important;
+		max-width: 100%;
+	}
+</style>
+
+<if condition="$data490[13]">
+	<style>
+		.HJZF2_Z_bottom_19_add{
+            background: url({:getindeximgurl($data490[16])}) no-repeat center/cover;
+        }
+		.HJZF2_Z_bottom_19_add_inquiry .inquiry_box #inquiry_box6{
+			background-color: #{$color};
+		}
+		.HJZF2_Z_bottom_19_add_line span{
+			border-color: #{$color};
+		}
+	</style>
+<!-- 新增询盘 -->
+	<div class="HJZF2_Z_bottom_19_add index_pd">
+		<div class="container">
+			<div class="row">
+				<div class="HJZF2_Z_bottom_19_add_body clearfix">
+
+					<div class="col-xs-12 col-lg-6">
+						<div class="HJZF2_Z_bottom_19_add_left">
+							<div class="HJZF2_Z_bottom_19_add_title index_title"><span>{$data490[14]}</span></div>
+							<div class="HJZF2_Z_bottom_19_add_line"><span></span></div>
+							<div class="clear"></div>
+							<div class="HJZF2_Z_bottom_19_add_ms1">
+								<span class="index_sub_title">{$data490[15]}</span></div>
+						</div>
+					</div>
+					
+					<div class="col-sm-12 col-lg-6 col-xl-6">
+						<div class="HJZF2_Z_bottom_19_add_inquiry">
+							<if condition="C('language') eq 'cn'">
+							<Include file="./Tpl/HJZF2_Z/submitinquiry_index.html" />
+							<else/>
+							<Include file="./Tpl/HJZF2_Z/submitinquiry_index_en.html" />
+							</if>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+		</div>
+	</div>
+<!-- 新增询盘 -->
+</if>
+
+
+<if condition="$data490[1]">
+    <php>
+        $arr = get_list_val($data490[1]);
+    </php>
+    <volist name="arr" id="a">
+        <style>
+            .hjzf_Z_bottom_19_top_submit_button {
+                background-color: #{$color};
+                color: #fff;
+            }
+
+            .hjzf_Z_bottom_19_top {
+                background: url({$a[bg]}) no-repeat center/cover;
+                color: #{$a[txtcol]};
+            }
+        </style>
+        <section class="hjzf_Z_bottom_19_top index_pd">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="index_title pb20">
+                            {$a[title]}
+                        </div>
+                        <div class="index_sub_title pb40">
+                            {$a[sub]}
+                        </div>
+                        <div class="hjzf_Z_bottom_19_top_submit">
+                        	<Include file="./Tpl/HJZF2_Z/email_address.html" />
+                            <!--<form action="">
+                                <input type="text" class="hjzf_Z_bottom_19_top_submit_input"
+                                    placeholder="{:__('Enter your email address')}">
+                                <button class="hjzf_Z_bottom_19_top_submit_button">{$a[tijiao]}</button>
+                            </form>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </volist>
+</if>
+
+<php>
+    $arr = get_list_val($data490[5]);
+    $arra = get_list_val($data490[6]);
+    $arrb = get_list_val($data490[4]);
+    $arr_icon = get_list_val($data490[12]);
+    
+</php>
+<style>
+    <volist name="arr_icon" id="a" key="k">
+        .hjzf_Z_bottom_19_mid_wrapper_last p:nth-child({$k+1})::before{
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            left: -30px;
+            top: 3px;
+            background: url({$a['img']}) no-repeat center/cover;
+        }
+    </volist>
+</style>
+<section class="hjzf_Z_bottom_19_mid index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 hjzf_Z_bottom_19_mid_wrapper">
+                <ul class="hjzf_Z_bottom_19_mid_wrapper_first">
+                    <if condition="$data490[2]">
+                    <img src="{:getindeximgurl($data490[2])}" class="img-responsive pb20">
+                    </if>
+                    <p class="pb20">{$data490[3]}</p>
+                <ul class="hjzf_Z_bottom_19_mid_wrapper_first_list d-flex">
+                        <volist name="arrb" id="a" key="k">
+                            <li>
+                                <a href="{$a[link]}" class="img-par" target="_blank">
+                                    <img src="{$a[ico]}" class="noraml">
+                                    <if condition="$a[icoh]">
+                                    <img src="{$a[icoh]}" class="hover">
+                                    </if>
+                                </a>
+								<if condition="$a[ewm]">
+									<div class="bottom_19_ewm">
+										<img src="{$a[ewm]}">
+									</div>
+								</if>
+                            </li>
+                        </volist>
+                    </ul>
+                </ul>
+                
+                <ul class="hjzf_Z_bottom_19_mid_wrapper_list">
+                    <li>
+                        <volist name="arr" id="a" key="k">
+                            <if condition="$k eq 1">
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                <h3 class="pb40">{$a[title]}</h3>
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                                <else />
+                                <span>
+                                    <a href="{$a[link]}">{$a[title]}</a>
+                                </span>
+                            </if>
+                        </volist>
+                    </li>
+                </ul>
+                <ul class="hjzf_Z_bottom_19_mid_wrapper_list">
+                    <li>
+                        <volist name="arra" id="a" key="k">
+                            <if condition="$k eq 1">
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                <h3 class="pb40">{$a[title]}</h3>
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                                <else />
+                                <span>
+                                    <a href="{$a[link]}">{$a[title]}</a>
+                                </span>
+                            </if>
+                        </volist>
+                    </li>
+                </ul>
+                <ul class="hjzf_Z_bottom_19_mid_wrapper_last">
+                    <h3 class="pb40">{$data490[7]}</h3>
+                    <if condition="$about['email']">
+                        <p><span>{:__('E-mail: ')}</span> <a
+                                href="mailto:{:chaifen($about['email'],0)}">{:chaifen($about['email'],0)}</a></p>
+                    </if>
+                    <if condition="chaifen($about['mobile'],0)">
+                        <p><span>{:__('Phone: ')}</span>{:chaifen($about['mobile'],0)}</p>
+                    </if>
+                    <if condition="chaifen($about['phone'],0)">
+                        <p><span>{:__('Tel: ')}</span><span>{:chaifen($about['phone'],0)}</span></p>
+                    </if>
+                    <if condition="chaifen($about['fax'],0)">
+                        <p><span>{:__('Fax: ')}</span><span>{:chaifen($about['fax'],0)}</span></p>
+                    </if>
+                    <if condition="$about['address']">
+                        <p><span>{:__('Add: ')}</span> {$about['address']}</p>
+                    </if>
+					<if condition="$webid eq '1826'">
+						<p>
+							<a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>
+						</p>
+					</if>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hjzf_Z_bottom_19_bottom">
+    <div class="container">
+        <div class="row">
+            <php>
+                $nowtime=date("Y",time());
+                </php>
+            <div class="col-xs-12 text-center">
+				<if condition="$webid eq '1820'">
+					<style>
+						.bottom_19_none{
+							display: none;
+						}
+					</style>
+				</if>
+                CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;<span class="bottom_19_none">{:__('All rights reserved')}&nbsp;<if condition="get_txtBeiAn()">
+                    <a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+                    </a>&nbsp;
+                </if>
+                <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                <a href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;
+                <if condition="C('language') eq 'cn'">
+                    <if condition="$data50[15] eq ''"><a id="mianze" title="免责声明" target="_blank"
+                            style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a
+                            href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                    </if>
+                    <else />
+                    <if condition="$data50[15] eq ''">
+                        <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+                            Zhonghuan Internet</a>
+                    </if>
+					
+                </if>
+			</span>
+            </div>
+        </div>
+    </div>
+</section>

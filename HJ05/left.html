@@ -1,0 +1,79 @@
+<!--left style-->
+<style>
+    .HJ05-left-class >ul > li:hover >a>h3{
+        color: #{$data47[9]};
+    }
+    .yijion > ul > li:hover > a > h3{
+        color: #{$data47[9]};
+    }
+    .main-content_inner > ul > li.yijion > ul>li.childon:hover a h3{
+        color: #{$data47[9]};
+    }
+    .HJ05-left-class >ul > li.yijion >a>h3{
+        color: #{$data47[9]};
+    }
+    .yijion > ul > li.childon > a > h3{
+        color: #{$data47[9]};
+    }
+
+</style>
+<!--left style-->
+<div class="main_left">
+    <if condition="$data9[7]">
+        <php>
+            $arr_str=$data9[7];
+        </php>
+        <script>
+            $(document).ready(function(){
+                var arry_ph = "<?php echo $arr_str ?>";
+                var pro_array = arry_ph.split(',');
+                $.each(pro_array,function(ke,val){
+                    $(".yijion[pro-class-id='"+val+"']").attr('xian',"1")
+                })
+            })
+        </script>
+    </if>
+    <script>
+        $(document).ready(function(){
+            $(".class_button").on("click",function(){
+                if( $(this).next('ul').css("display")=="none"){
+                    $(this).next('ul').css("display","block");
+                    $(this).parent().addClass("yijion");
+                }else{
+                    $(this).next('ul').css("display","none");
+                    $(this).parent().removeClass("yijion").addClass("yiji");
+                }
+            })
+        })
+    </script>
+    <div class="main-content_inner">
+        <div class="HJ05-left-search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="HJ05-left-class">
+            <p>CATEGORIES</p>
+            <ul>
+                <volist empty="" name="allclass" id="allclass_left">
+
+                    <li pro-class-id="{$allclass_left['pcid']}" <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yijion"<else/>class="yiji"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                    <span  <if condition="count($allclass_left['childs']) gt 0">class="class_button"<else/>class="class_button_none"</if>></span>
+
+                    <if condition='$allclass_left["childs"] neq ""'>
+                        <ul>
+                            <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                                <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="childon"<else/>class="child"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}#pro_head">{$allclass_leftchild['class_name']}</a></li>
+                            </volist>
+                        </ul>
+                    </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+</div>

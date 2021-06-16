@@ -1,0 +1,106 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+    .HJZF_Z__innerContent_product_box_a:before{
+        background-color: #{$color};
+    }
+    .HJZF_Z__innerContent_product_box_a .main_page .current{
+        background-color: #{$color};
+        border-color: #{$color};
+    }
+    .product6_leftnav_cont_side li span.left_second a:hover,
+    .product6_leftnav_cont_side li span.left_second a.on{
+        background-color: #{$color};
+        color: #fff;
+    }  
+    .onerji_list li:hover span,.onerji_list li:hover,.onerji_list li.on,.onerji_list li.on span{
+        background-color: #{$color};
+        color: #fff;
+    }      
+    
+</style>
+
+<!-- banner start -->
+<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+    <div class="in_banner">
+        <img src="{:getindeximgurl($inner_data[0])}" alt="inner" />
+    </div>
+</div>
+<!-- banner end -->
+<!-- bread start -->
+<style>
+.HJZF_Z_product_categroy6_breadcrumbs,.HJZF_Z_product_categroy6_breadcrumbs a{
+    color: #{$inner_data[5]};
+}
+</style>
+<div class="HJZF_Z_product_categroy6_breadcrumbs" style="margin-bottom: 30px; background: url({:getindeximgurl($inner_data[3])}) no-repeat center bottom;" navcrumbs>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 tal">
+             <img src="{:getindeximgurl($inner_data[2])}">
+             <span>{$inner_data[4]}<i class="fa fa-angle-right"></i></span>
+         </div>
+         <div class="col-xs-6 tar">
+            <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a> &nbsp; <i class="fa fa-angle-right"></i>
+            <a href="{:U('/product')}">{:__('Products')}</a> &nbsp; <i class="fa fa-angle-right"></i>
+            <span class="current">{$prolist['class_name']}</span>
+        </div>
+    </div>
+</div>
+</div>
+<!-- bread end -->
+<!-- side start -->
+<div class="HJZF_Z__innerContent">
+    <div class="container">
+        <div class="row">
+            <section class="hidden-xs hidden-sm hidden-md col-xs-12">
+                <Include file="./Tpl/HJZF2_Z/inner/product_left_categroy6.html" />
+            </section>
+            <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+            </section>
+        </div>
+    </div>
+</div>
+<!-- side end -->
+
+<!-- pro list start-->
+<div class="HJZF_Z__innerContent">
+    <div class="container">
+        <ul class="row HJZF_Z__innerContent_product_categroy6 clearfix">
+            <div class="row_little">
+                <php>
+                    $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                </php>
+                <volist empty="$no_empty" name="pro" id="pro" key="k">
+                    <li class="col-xs-6 col-md-3 ">
+                        <a class="HJZF_Z__innerContent_product_categroy6_box" href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                            <div class="HJZF_Z__innerContent_product_box_a">
+                                <div class="HJZF_Z__innerContent_product_categroy6_box_img">
+                                    <if condition="$pro['main_img']">
+                                        <img src="{:getmainimgurl($pro['main_img'])}" class="img-responsive" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"
+                                            <else/>alt="{$pro['pro_name']}"</if> />
+                                            <else/>
+                                            <img src="{:getindeximgurl($inner_data[3])}" class="img-responsive" />
+                                        </if>
+                                    </div>
+                                    <div class="HJZF_Z__innerContent_product_categroy6_box_text">
+                                        <p class="ellipsis_two">{$pro['pro_name']}</p>
+                                        <span>{$inner_data[4]}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </div>
+            </ul>
+            <div class="main_page">{$page}</div>
+        </div>
+    </div>
+    <!-- pro list end -->
+</block>

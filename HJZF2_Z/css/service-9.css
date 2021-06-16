@@ -1,0 +1,244 @@
+.hjzf2_service-9 {
+    width: 100%;
+    margin: auto;
+    height: auto;
+}
+
+.hjzf2_service-9 .servise {
+    position: relative;
+}
+
+.hjzf2_service-9 .servise > img {   
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .3s ease-out, opacity .3s ease-out;
+}
+
+.hjzf2_service-9 .servise > img.on {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hjzf2_service-9 .service-9_head {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.hjzf2_service-9 .service-9_head .head_right {
+    text-align: right;
+}
+
+.hjzf2_service-9 .service-9_body {
+    margin: 0 -2.6%;
+    padding: 0 15px;
+}
+
+.hjzf2_service-9 .service-9_color {
+    color: #fff;
+}
+
+.hjzf2_service-9 .service-9_color_an {
+    color: #a1b1c6;
+}
+
+.hjzf2_service-9 .service-9_slide {
+    width: 379px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+    overflow: hidden
+}
+
+.hjzf2_service-9 .serviseItemItem {
+    padding: 130px 10% 0;
+    transition: all .6s cubic-bezier(.215, .61, .355, 1) 0s;
+    overflow: hidden
+}
+
+.hjzf2_service-9 .serviseBodyMaintit {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .serviseBodySubtit {
+    font-size: 15px;
+    line-height: 15px;
+    padding-bottom: 40px;
+    position: relative;
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .serviseBodySubtit:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: rgba(0, 255, 234, .2);
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .serviseBodyFt {
+    height: 78px;
+    font-size: 14px;
+    line-height: 26px;
+    color: rgba(255, 255, 255, .5);
+    margin-bottom: 320px;
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .service-9_slide .serviseNum {
+    position: inherit;
+    bottom: 136px;
+    right: 76px;
+    font-size: 72px;
+    line-height: 50px;
+    color: #fff;
+    font-family: BureauEagleBook, auto;
+    text-align: right;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .serviseMask {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, rgba(0, 255, 234, 0) 0, rgba(0, 255, 234, 0) 50%, #00ffea 50%, #00ffea 100%);
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: -1;
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .service-9_slide:hover .serviseBodyFt {
+    transform: translate(0,10px);-webkit-transform: translate(0,10px);-moz-transform: translate(0,10px);
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .service-9_slide:hover .serviseBodySubtit:after {
+    width: 100%;
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .service-9_slide:hover .serviseBodyMaintit {
+    transform: translate3d(0, -20px, 0);
+    -moz-transform: translate3d(0, -20px, 0);
+    -webkit-transform: translate3d(0, -20px, 0);
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .service-9_slide:hover .serviseBodySubtit {
+    transform: translate3d(0, -20px, 0);
+    -moz-transform: translate3d(0, -20px, 0);
+    -webkit-transform: translate3d(0, -20px, 0);
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .service-9_slide:hover .serviseMask {
+    -webkit-transform: rotate(17deg);
+    transform: rotate(17deg);
+    transition: all .3s ease-out 0s;
+}
+
+.hjzf2_service-9 .service-9_slide:hover .serviseNum {
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
+    color: #00ffea;
+    font-size: 90px;
+    transition: all .3s ease-out 0s;
+}
+
+.serviseItemTop{
+    position: relative;
+}
+.serviseItemTop .server_img{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    transition: all .5s;
+}
+.serviseItemItem:hover .server_img{
+    transform: translateY(-15px);
+}
+
+@media (max-width: 576px) {
+    .hjzf2_service-9 .service-9_slide:hover .serviseBodyFt {
+        transform: translate(0,0);-webkit-transform: translate(0,0);-moz-transform: translate(0,0);
+        transition: all .3s ease-out 0s;
+    }
+    .hjzf2_service-9 .service-9_slide:hover .serviseBodyMaintit {
+        transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        transition: all .3s ease-out 0s;
+    }
+    .hjzf2_service-9 .service-9_slide:hover .serviseBodySubtit {
+        transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        transition: all .3s ease-out 0s;
+    }
+    .hjzf2_service-9 .serviseBodySubtit {
+        padding-bottom: 20px;
+    }
+    .hjzf2_service-9 .service-9_head{padding-bottom: 0}
+    .hjzf2_service-9 .service-9_head .head_left {
+        margin-bottom: 20px;
+    }
+
+    .hjzf2_service-9 .service-9_head .head_right {
+        text-align: left;
+        margin-bottom: 30px;
+    }
+
+    .hjzf2_service-9 .service-9_slide {
+        border: none
+    }
+
+    .hjzf2_service-9 .service-9_body {
+        margin: 0 auto;padding-bottom: 40px;
+    }
+
+    .hjzf2_service-9 .serviseItemItem {
+        padding: 0;
+    }
+
+    .hjzf2_service-9 .service-9_slide:first-child .serviseItemItem {
+        padding-top: 40px;
+    }
+
+    .hjzf2_service-9 .serviseBodyFt {
+        padding-bottom: 30px;margin-bottom: 0;
+    }
+
+    .hjzf2_service-9 .serviseNum, .serviseMask {
+        display: none
+    }
+    .hjzf2_service-9 .servise img{opacity: 0;visibility: hidden}
+    .hjzf2_service-9 .servise .server_img img{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media(max-width: 768px) {
+    .hjzf2_service-9 .servise > img{
+        max-width: none;
+    }
+}

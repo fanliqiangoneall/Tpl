@@ -1,0 +1,112 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data407[0]">.hjzf_procate_10 {
+        background: url({:getindeximgurl($data407[0])
+    }
+
+    ) no-repeat center / cover;
+    }
+
+    </if>
+                <if condition="$data407[20]">
+        .hjzf_procate_10 .index_title{
+            position: relative;
+            z-index: 9;
+        }
+        .hjzf_procate_10 .index_title:before{
+            position: absolute;
+            display: block;
+            left: 50%;
+            top: 0;
+            transform: translateY(-30px) translateX(-52%);
+            font-size: 100px;
+            font-weight: bold;
+            color: #f8f8f8;
+            white-space: nowrap;
+            z-index: -1;
+            content:'{$data407[20]}';
+        }
+        @media(max-width: 1200px) {
+            .hjzf_procate_10 .index_title:before{
+                font-size: 24px;
+                left: 0;
+                transform: translateY(-20px) translateX(0);
+            }
+        }
+        </if>
+        
+</style>
+
+<section class="hjzf_procate_10 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title text-center pb20">
+                    {$data407[1]}
+                </div>
+                <if condition="$data407[21]">
+                    <div class="index_text text-center pb40">
+                        {$data407[21]}
+                    </div>
+                </if>
+                <ul class="hjzf_procate_10_wrapper">
+                    <li class="left hjzf_procate_10_con">
+                        <img src="{:getindeximgurl($data407[2])}" class="img-fluid" alt=" {$data407[8]}">
+                        <span class="index_sub_title">
+                            <a href="{$data407[14]}">
+                                {$data407[8]}
+                            </a>
+                        </span>
+                    </li>
+                    <li class="right">
+                        <div class="right_top">
+                            <div class="right_top_left hjzf_procate_10_con">
+                                <img src="{:getindeximgurl($data407[3])}" class="img-fluid" alt="{$data407[9]}">
+                                <span class="index_sub_title">
+                                    <a href="{$data407[15]}">
+                                        {$data407[9]}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="right_top_right hjzf_procate_10_con">
+                                <img src="{:getindeximgurl($data407[4])}" class="img-fluid" alt="{$data407[10]}">
+                                <span class="index_sub_title">
+                                    <a href="{$data407[16]}">
+                                        {$data407[10]}
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="right_bottom">
+                            <div class="right_bottom_con hjzf_procate_10_con">
+                                <img src="{:getindeximgurl($data407[5])}" class="img-fluid" alt="{$data407[11]}">
+                                <span class="index_sub_title">
+                                    <a href="{$data407[17]}">
+                                        {$data407[11]}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="right_bottom_con hjzf_procate_10_con">
+                                <img src="{:getindeximgurl($data407[6])}" class="img-fluid" alt="{$data407[12]}">
+                                <span class="index_sub_title">
+                                    <a href="{$data407[18]}">
+                                        {$data407[12]}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="right_bottom_con hjzf_procate_10_con">
+                                <img src="{:getindeximgurl($data407[7])}" class="img-fluid" alt="{$data407[13]}">
+                                <span class="index_sub_title">
+                                    <a href="{$data407[19]}">
+                                        {$data407[13]}
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

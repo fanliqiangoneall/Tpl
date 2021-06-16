@@ -1,0 +1,242 @@
+.head_hj24_fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 30px;
+    width: 100%;
+    z-index: 9999;
+    transition: top .5s;
+}
+
+.head_hj24_fixed.on {
+    top: 0;
+	background:rgba(0,0,0,.5)
+}
+.head_hj24_fixed.on .logo_bg:after, .head_hj24_fixed.on .menu_bg:after, .head_hj24_fixed.on .head_hj24_drop_fixed:after {
+    background-color: transparent;
+}
+
+.logo_bg:after,
+.menu_bg:after {
+    position: absolute;
+    display: block;
+    top: 0;
+    content: '';
+    height: 100%;
+    width: 200%;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.logo_bg:after {
+    right: 0;
+}
+
+.menu_bg:after {
+    left: 0;
+    ;
+}
+
+.head_hj24_menu .logo_bg {
+    padding: 10px;
+    margin-right: 5vw;
+    position: relative;
+}
+
+.menu_bg {
+    position: relative;
+    flex: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1vw;
+}
+
+.menu_bg .menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.menu_bg .menu > ul{
+    height: 100%;
+}
+
+.menu_bg .menu li h2 {
+    padding: 0 30px;
+    color: #fff;
+    font-size: 20px;
+    transition: all .5s;
+    white-space: nowrap;
+}
+.nav_li a{
+    display: block;
+}
+/* sousuolaxia */
+.head_hj24_drop_fixed_search {
+    position: fixed;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9998;
+    padding-top: 150px;
+    transition: all .5s;
+    transform: translateY(-100%);
+}
+.head_hj24_drop_fixed_search.on{
+    transform: translateY(0);
+}
+.head_hj24_drop_fixed_search:after {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    content: '';
+    z-index: -1;
+}
+/* laxia */
+.head_hj24_drop_fixed {
+    position: fixed;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9998;
+    padding-top: 150px;
+    transition: all .5s;
+    transform: translateY(-100%);
+}
+.head_hj24_drop_fixed.on{
+    transform: translateY(0);
+}
+
+.head_hj24_drop_fixed:after {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    content: '';
+    z-index: -1;
+}
+/* seach */
+.hj24_search {
+    position: relative;
+}
+.hj24_search span {
+    cursor: pointer;
+}
+.hj24_search .hj24_search_list {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    display: none;
+}
+.hj24_search_list form {
+    display: flex;
+}
+.hj24_search_list form input {
+    color: #333;
+    min-width: 200px;
+    padding-left: 10px;
+}
+.hj24_search_list form input,
+.hj24_search_list form button {
+    height: 40px;
+    line-height: 40px;
+    border: 0;
+}
+.hj24_click_menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 20px;
+    height: 25px;
+    cursor: pointer;
+}
+.hj24_click_menu span {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    transition: all .5s;
+}
+.hj24_click_menu.on span:nth-child(2) {
+    display: none;
+}
+.hj24_click_menu.on span:first-child {
+    transform: rotate(-45deg) translate(-8px, 10px);
+}
+.hj24_click_menu.on span:last-child {
+    transform: rotate(45deg) translate(-6px, -7px);
+}
+
+/* drop */
+.menu_bg .menu li{
+    position: relative;
+}
+.nav_li > a{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav_drop{
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 100%;
+    min-width: 100%;
+    background-color: rgba(0,0,0,.5);
+    padding: 5px 0;
+    transition: all .5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.nav_drop li span,.nav_drop li h3{
+    display: block;
+    color: #fff;
+    line-height: 2;
+    font-size: 16px;
+    text-align: center;
+    transition: all .5s;
+    white-space: nowrap;
+    padding: 0 5px;
+}
+.nav_li:hover .nav_drop{
+    opacity: 1;
+    visibility: visible;
+}
+.nav_drop > li{
+    position: relative;
+}
+.nav_drop > li:hover .nav_dropa{
+    opacity: 1;
+    visibility: visible;
+}
+.nav_drop .nav_dropa{
+    position: absolute;
+    right: 0%;
+    top: 0;
+    background-color: rgba(0,0,0,.5);
+    min-width: 100%;
+    transition: all .5s;
+    padding: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+    transform: translateX(100%);
+}

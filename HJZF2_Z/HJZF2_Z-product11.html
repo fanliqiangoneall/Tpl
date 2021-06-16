@@ -1,0 +1,327 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $inner_color = $inner_data[1];
+        }else{
+        $inner_color = '333';
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background: #{$color};
+            border: 1px solid #{$color};
+        }
+
+        #HJZF_Z__wrapper {
+            background-color: #{$inner_data[0]};
+            margin-bottom: 0;
+        }
+
+        .HJZF_Z__innerContent {
+            color: #{$inner_color};
+        }
+
+        .inner_4__innerwrapper {
+            padding: 40px 0;
+        }
+
+        .pro_home_11 .index_title h3 {
+            font-size: 40px;
+            line-height: 48px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .pro_home_11 .index_title a {
+            color: #333;
+        }
+
+        .pro_home_11 .index_title h3:before,
+        .pro_home_11 .index_title h3:after {
+            display: block;
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            content: '';
+            background-color: #{$inner_color};
+            opacity: 0.2;
+            top: 50%;
+            margin-top: -1px;
+        }
+
+        .pro_home_11 .index_title h3:before {
+            left: -70px;
+        }
+
+        .pro_home_11 .index_title h3:after {
+            right: -70px;
+        }
+
+        .pro_home_11 span {
+            display: block;
+            margin: 10px auto;
+            width: 40px;
+            height: 4px;
+            background-color: #{$inner_color};
+            opacity: .2;
+        }
+
+        .pro_home_11 .index_text {
+            color: #{$inner_color};
+            opacity: 0.7;
+            max-width: 60%;
+            margin: 0 auto;
+        }
+
+
+        .inner-10__productWrap {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .pro_11_inner {
+            margin-bottom: 80px;
+        }
+
+        div[class*='gallery-top'] {
+            margin-bottom: 20px;
+        }
+
+        div[class*='gallery-thumbs'] .swiper-slide {
+            cursor: pointer;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        div[class*='gallery-thumbs'] .swiper-slide p {
+            padding: 10px;
+        }
+
+        div[class*='gallery-thumbs'] .swiper-wrapper {
+            align-items: stretch;
+        }
+
+        div[class*='detail-pagination'] {
+            margin-top: 15px;
+        }
+
+        div[class*='detail-pagination'] span {
+            width: 12px;
+            height: 12px;
+        }
+
+        div[class*='detail-pagination'] span.swiper-pagination-bullet-active {
+            background-color: #{$color};
+        }
+
+        .por {
+            position: relative;
+        }
+
+        .allPro_list {
+            position: absolute;
+            left: 0;
+            top: 120px;
+            z-index: 99;
+            width: 280px;
+        }
+
+        .allPro_list li h3 {
+            color: #333;
+            font-size: 16px;
+            line-height: 2;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: #fff;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        li[class^='allP'].on a h3 {
+            background-color: #{$color};
+            color: #fff;
+        }
+
+        @media(max-width 1365px) {
+            .pro_home_11 .index_title h3 {
+                font-size: 30px;
+                line-height: 42px;
+            }
+        }
+
+        @media(max-width: 767px) {
+            .pro_home_11 .index_title h3 {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+    </style>
+    <div class="HJZF_Z__wrapper inner_4__innerwrapper" id="HJZF_Z__wrapper">
+
+        <!-- <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 ">
+                        <div class="por">
+                            <div class="allPro_list nav-hidden-mobile">
+                                <ul>
+                                    <volist empty="" name="allclass" id="allclass_left" offset="0" key="ke">
+                                        <li class="allP{$ke}"><a>{$allclass_left['class_name']}</a></li>
+                                    </volist>
+                                </ul>
+                            </div>
+                            <php>
+                                $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                            </php>
+                            <volist empty="$no_empty" name="allclass" id="allclass_left" offset="0" key="k">
+                                <div class="pro_11_inner" data-key="{$k}" id="all{$k}">
+                                    <div class="pro_home_11 text-center pb40">
+                                        <div class="index_title">
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                                                {$allclass_left['class_name']}
+                                            </a>
+                                        </div>
+                                        <span></span>
+                                        <div class="index_text">
+                                            {$allclass_left['readme']}
+                                        </div>
+                                    </div>
+                                    <php>
+                                        $list = get_allproducts_category($allclass_left['pcid'], 100);
+                                    </php>
+                                    <div class="swiper-container gallery-top{$k}">
+                                        <div class="swiper-wrapper">
+                                            <volist empty="" name="list" id="proList">
+                                                <div class="swiper-slide">
+                                                    <img src="{:getmainimgurl($proList['main_img'])}"
+                                                        alt="{$proList[pro_name]}" class="img-fluid">
+                                                </div>
+                                            </volist>
+                                        </div>
+                                        <!-- Add Arrows -->
+                                        <div class="swiper-button-next detail-next{$k} swiper-button-black"></div>
+                                        <div class="swiper-button-prev detail-prev{$k} swiper-button-black"></div>
+                                        <div class="detail-pagination{$k} text-center"></div>
+                                    </div>
+                                    <div class="swiper-container gallery-thumbs{$k}">
+                                        <div class="swiper-wrapper">
+                                            <volist empty="" name="list" id="proLista">
+                                                <div class="swiper-slide">
+                                                    <img src="{:getmainimgurl($proLista['main_img'])}"
+                                                        alt="{$proLista[pro_name]}" class="img-fluid">
+                                                    <p class="index_text">{$proLista[pro_name]}</p>
+                                                </div>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                </div>
+                            </volist>
+
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</block>
+<block name="footer_js">
+
+    <script>
+        require(['jquery', 'swiper'], function ($, Swiper) {
+            $(function () {
+                $('.allP1').addClass('on');
+                var l = $('.allPro_list').offset().left;
+                var t = $('.allPro_list').offset().top;
+                if (t > 400) {
+                    t = 400;
+                };
+                console.log(l, t)
+                $(window).scroll(function () {
+                    var sTop = $(window).scrollTop();
+                    if (sTop > 200) {
+                        $('.allPro_list').css({
+                            position: 'fixed',
+                            left: l,
+                            top: t
+                        });
+                    }
+                })
+
+                var len = $('.pro_11_inner').length;
+                var arr = [];
+                for (var i = 1; i <= len; i++) {
+                    /* 锚点带动画 */
+                    $('.allP' + i).click(function () {
+                        var index = $(this).index();
+                        $(this).addClass('on').siblings('li').removeClass('on');
+                        var allTop = $('#all' + (index + 1)).offset().top;
+                        $('html,body').animate({
+                            scrollTop: allTop
+                        }, 500);
+                    });
+
+                    arr[i] = new Swiper('.gallery-thumbs' + i, {
+                        spaceBetween: 20,
+                        slidesPerView: 5,
+                        loopedSlides: 5, //looped slides should be the same
+                        watchSlidesVisibility: true,
+                        watchSlidesProgress: true,
+                        observer: true,
+                        observeParents: true,
+
+                    });
+                    new Swiper('.gallery-top' + i, {
+
+                        slidesPerView: 1,
+                        loopedSlides: 5, //looped slides should be the same
+                        navigation: {
+                            nextEl: '.detail-next' + i,
+                            prevEl: '.detail-prev' + i,
+                        },
+                        pagination: {
+                            el: '.detail-pagination' + i,
+                            clickable: true
+                        },
+                        thumbs: {
+                            swiper: arr[i]
+                        },
+                        observer: true,
+                        observeParents: true,
+
+                    });
+                    var lena = arr[i].slides.length;
+                    if (lena === 0) {
+                        $('.gallery-top' + i).hide();
+                        $('.gallery-thumbs' + i).hide();
+                    }
+                    if ($(window).width() > 1200) {
+                        $('.detail-pagination' + i).hide();
+                    } else {
+                        $('.gallery-thumbs' + i).hide();
+                    }
+                }
+
+            });
+        });
+    </script>
+    <style></style>
+</block>

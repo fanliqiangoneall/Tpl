@@ -1,0 +1,87 @@
+.hjzf_other_32_wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.hjzf_other_32_wrapper a{
+    display: block;
+    height: 26vw;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.hjzf_other_32_wrapper a img{
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 2;
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: -webkit-transform .5s ease;
+    -o-transition: transform .5s ease;
+    transition: transform .5s ease;
+    transition: transform .5s ease, -webkit-transform .5s ease;
+}
+.hjzf_other_32_wrapper a:hover img{
+    -webkit-transform: translate(-48%, -50%);
+        -ms-transform: translate(-48%, -50%);
+            transform: translate(-48%, -50%);
+}
+.hjzf_other_32_wrapper a span{
+    position: absolute;
+    display: block;
+    left: 40px;
+    right: 40px;
+    top: 36%;
+    z-index: 3;
+    color: #fff;
+}
+.hjzf_other_32_wrapper a .index_title{
+    margin-top: .5vw;
+}
+.hjzf_other_32_wrapper a:hover .index_title{
+    margin-top: 0;
+}
+.hjzf_other_32_wrapper a .index_text{
+    margin-top: 3vw;
+    opacity: 0;
+}
+.hjzf_other_32_wrapper a:hover .index_text{
+    margin-top: 2vw;
+    opacity: 1;
+}
+@media (max-width: 1200px) {
+    .hjzf_other_32_wrapper a span{
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+        left: 15px;
+        right: 15px;
+    }
+    .hjzf_other_32_wrapper a:hover img{
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+    }
+    .hjzf_other_32_wrapper a:hover .index_title{
+        margin-top: 0.5vw;
+    }
+    .hjzf_other_32_wrapper a .index_text{
+        margin-top: 2vw;
+        opacity: 10;
+    }
+    .hjzf_other_32_wrapper a{
+        min-height: 56vw;
+    }
+}

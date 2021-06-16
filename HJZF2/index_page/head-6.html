@@ -1,0 +1,115 @@
+<if condition="$data116[0]">
+    <style>
+        .head-6__navbar__phone:before{
+            background: url({:getindeximgurl($data116[0])}) no-repeat center;
+        }
+        .head-6__navbar__mail:before{
+            content:'';background: url({:getindeximgurl($data116[0])}) no-repeat center;top:1px;
+        }
+    </style>
+</if>
+<style>
+
+    .head-6__nav__ul>li.menu_on>a>h2{
+        color:#{$color};font-weight: bold;position: relative;
+    }
+    .head-6__nav__ul>li.menu_on>a>h2:before{
+        content: '';display: table;width: 100%;height: 1px;position:absolute;bottom: -10px;left: 0;background: #{$color};
+    }
+</style>
+<php>
+    $lan = HtmlEncode($data116[10]);
+</php>
+<script>
+    var lan_str = "<?php echo $lan;?>";
+</script>
+<header id="head-6">
+    <div class="container">
+        <div class="head-6__content flex">
+            <div class="head-6__Logo">
+                <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            </div>
+            <div class="head-6__navbar">
+                <ul class="head-6__nav__ul">
+                    <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                        <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <ul class="head-6__nav__dropdown-menu">
+
+                                <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                    <li>
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <else/>
+
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="head-6__nav__dropdown-menu  hj02-pro-menu">
+                                    <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                        <li>
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                        </li>
+                                    </volist>
+                                    <div class="clear"></div>
+                                </ul>
+                            </if>
+                        </if>
+                        </li>
+                    </volist>
+                </ul>
+                <if condition="C('language') eq 'en'">
+                    <div class="head-6__navbar__mail">
+                        <a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1);">{:chaifen($about['email'],0)}</a>
+                    </div>
+                    <else/>
+                    <div class="head-6__navbar__phone">
+                        {:chaifen($about['phone'],0)}
+                    </div>
+                </if>
+                <div class="header-language hjzf-header6-language" <if condition="$data116[1]">style="display:block" <else/>style="display:none"</if>>
+                <ul>
+                    <li>
+                        <a href="#">EN</a>
+                        <ul>
+                            <if condition="$data116[3]"><li><a href="{$data116[2]}" target="_blank"><img src="{:getindeximgurl($data116[3])}" alt=""/>{$data116[1]}</a></li></if>
+                            <if condition="$data116[4]"><li><a href="{$data116[5]}" target="_blank"><img src="{:getindeximgurl($data116[6])}" alt=""/>{$data116[4]}</a></li></if>
+                            <if condition="$data116[7]"><li><a href="{$data116[8]}" target="_blank"><img src="{:getindeximgurl($data116[9])}" alt=""/>{$data116[7]}</a></li></if>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <if condition="$data116[10]">
+                <div class="head-6__Language">
+                    <ul>
+                        <li><p data-count="English">English</p>
+                            <ul id="lang_ul">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </if>
+            <div class="hjzf-header6-searchBut"><i class="fa fa-search"></i></div>
+
+            <div class="hjzf-header6-search">
+                <if condition="C('language') eq 'en'">
+                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                        <li class="search_first"><input type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                        <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                        <div class="clear"></div>
+                    </form>
+                    <else/>
+                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                        <li class="search_first"><input type="text" value="{:__('Product Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                        <li class="search_second"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                        <div class="clear"></div>
+                    </form>
+                </if>
+
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="down_bg"></div>
+</header>

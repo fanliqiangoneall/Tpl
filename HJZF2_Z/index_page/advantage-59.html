@@ -1,0 +1,88 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data515[1]">.hjzf_advantage_59 {
+        background-color: #{$data515[1]};
+    }
+    </if><if condition="$data515[2]">.hjzf_advantage_59 {
+        background-image: url({:getindeximgurl($data515[2])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    </if>
+    .hjzf_advantage_59_list_bottom_con a{
+        color: #{$color};
+        border: 1px solid #{$color};
+        align-self: flex-start;
+        overflow: hidden;
+    }
+    .hjzf_advantage_59_list_top li:hover,
+    .hjzf_advantage_59_list_top li.on,
+    .hjzf_advantage_59_list_bottom_img:after,
+    .hjzf_advantage_59_list_bottom_con a.my-mask:before{
+        background-color: #{$color};
+    }
+    .hjzf_advantage_59_list_bottom_a .hjzf_advantage_59_left em{
+        color: #{$color};
+    }
+</style>
+<script>
+    var isClick = '<?php echo $data515[6];?>';
+</script>
+<section class="hjzf_advantage_59 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    <div class="index_title pb20 wow fadeInLeftBig">
+                        {$data515[3]}
+                    </div>
+                    <div class="index_sub_title pb40 wow fadeInRightBig" data-wow-duration="0.6s" data-wow-delay="0.2s">
+                        {$data515[4]}
+                    </div>
+                </div>
+                <php>
+                    $arr = get_list_val($data515[5]);
+                </php>
+                <div class="hjzf_advantage_59_list">
+                    <ul class="hjzf_advantage_59_list_top wow fadeInUpBig" data-wow-duration="0.6s" data-wow-delay="0.2s">
+                        <volist name="arr" id="a">
+                            <li>
+                                <span><img src="{$a[ico]}"></span>
+                                <div class="index_sub_title mt-20">{$a[icot]}</div>
+                            </li>
+                        </volist>
+                    </ul>
+                    <volist name="arr" id="b">
+                        <div class="hjzf_advantage_59_list_bottom">
+                            <div class="hjzf_advantage_59_list_bottom_img">
+                                <img src="{$b[img]}" alt="{$b[titlel]}" class="img-fluid">
+                            </div>
+                            <div class="hjzf_advantage_59_list_bottom_con">
+                                <div class="hjzf_advantage_59_list_bottom_title por">
+                                    <span class="index_title">{$b[titlel]}</span>
+                                    <div>{$b[titler]}</div>
+                                </div>
+                                <div class="hjzf_advantage_59_list_bottom_text index_text">
+                                    {$b[info]}
+                                </div>
+                                <div class="hjzf_advantage_59_list_bottom_a">
+                                    <div class="hjzf_advantage_59_left">
+                                        <em>{$b[numa]}</em>
+                                        <span>{$b[texta]}</span>
+                                    </div>
+                                    <div class="hjzf_advantage_59_left">
+                                        <em>{$b[numb]}</em>
+                                        <span>{$b[textb]}</span>
+                                    </div>
+                                </div>
+                                <a href="{$b[link]}" class="my-mask index_btn index_text">{:__('Read More')}</a>
+                            </div>
+                        </div>
+                    </volist>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,47 @@
+<extend name="WH01_CN:basein" />
+<block name="content">
+
+    <if condition="$banner neq ''">
+        <volist name="banner" id="banner" offset="0" length="1">
+            <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat">
+            </div>
+        </volist>
+        <else/>
+        <Include file="./Tpl/WH01_CN/in_banner.html" />
+    </if>
+<!--面包屑代码块开始-->
+    <div class="r_mbx"><Include file="./Tpl/WH01_CN/bread.html" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;下载&nbsp;>&nbsp;{$download['title']}</div>
+    <div class="clear"></div>
+<!--代码块结束-->
+
+
+<!--代码块开始-->
+
+
+    <div class="page_nei_main">
+        <Include file="./Tpl/WH01_CN/leftdownload.html" />
+            <div class="page_RightMain">
+                <div class="page_class_head_1">
+                    <div class="indpro_title">
+                        <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>{$downcate['class_name']}</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+                    </div>
+                </div>
+                        <div class="download">
+                            <div class="body">
+                                <ul class="donload_list">
+                                    <volist name="download" id="download" key="k">
+                                        <li><span class="right_time"><a href="{:getimgurl($download['linkurl'])}" target="_blank">Download</a></span><a href="{:U('/download_detail',array('id'=>$download["id"]))}" >{$download['title']}</a></li>
+                                    </volist>
+                                </ul>
+                            </div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+
+
+                <div style="clear:both"></div>
+            </div>
+        <div style="clear:both"></div>
+    </div>
+
+<!--代码块结束-->
+</block>

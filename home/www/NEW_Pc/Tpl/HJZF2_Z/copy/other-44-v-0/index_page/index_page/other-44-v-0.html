@@ -1,0 +1,90 @@
+<!--{$pagename}-->
+<php>
+    if($data710[1]){
+        $high_color = $data710[1];
+    }else{
+        $high_color = $color;
+    };
+</php>
+<style>
+.hjzf2_other_44{
+    background: url({:getindeximgurl($data710[0])}) no-repeat top center/cover;
+}
+.hjzf2_other_44_wrapper li.on{
+    background-color: #{$data710[5]};
+    color: #{$data710[4]};
+}
+.hjzf2_other_44_wrapper li,
+.hjzf2_other_44_wrapper li a{
+    color: #{$data710[3]};
+}
+.hjzf2_other_44_wrapper li i{
+    border-color: #{$data710[3]};
+}
+.hjzf2_other_44_wrapper li i:after,
+.hjzf2_other_44_wrapper li i:before{
+    background-color: #{$data710[3]};
+}
+.hjzf2_other_44_wrapper li.on a{
+    color: #{$data710[4]};
+}
+.hjzf2_other_44_wrapper li.on i{
+    border-color: #{$data710[1]};
+}
+.hjzf2_other_44_wrapper li.on i:after,.hjzf2_other_44_wrapper li.on i:before{
+    background-color: #{$data710[1]};
+}
+
+.hjzf2_other_44_wrapper li p a{
+    color: #{$high_color};
+    margin-top: 5px;
+}
+</style>
+<section class="hjzf2_other_44 index_pd">
+    <div class="container">
+        <div class="row index_text">
+            <div class="index_title text-center pb40 wow fadeInUp">
+                {$data710[2]}
+            </div>
+            <div class="col-xs-12">
+                <ul class="hjzf2_other_44_wrapper index_text">
+                    <php>
+                        $arr = get_list_val($data710[6]);
+                        $leng = $data710[7];
+                    </php>
+                    <div class="wow fadeInLeft">
+                        <volist name="arr" id="a" offset="0" length="$leng">
+                            <li>
+                                <i></i>
+                                <span>
+                                    <a href="{$a['link']}" class="index_sub_title">{$a['title']}</a>
+                                    <p>
+                                        <em class="ellipsis_three">{$a['des']}</em>
+                                        <a href="{$a['link']}">{:__('Read More')}+</a>
+                                        </p>
+                                    
+                                </span>
+                            </li>
+                        </volist>
+                    </div>
+                    <div class="wow fadeInRight">
+                        <volist name="arr" id="b" offset="$leng" length="$leng">
+                            <li>
+                                <i></i>
+                                <span>
+                                    <a href="{$b['link']}" class="index_sub_title">{$b['title']}</a>
+                                    <p>
+                                        <em class="ellipsis_three">{$a['des']}</em>
+                                        <a href="{$a['link']}">{:__('Read More')}+</a>
+                                        </p>
+                                    
+                                </span>
+                            </li>
+                        </volist>
+                    </div>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>

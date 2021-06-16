@@ -1,0 +1,19 @@
+<if condition="$labelcaselists neq ''">
+    <div class="mainpage_probox">
+        <volist empty="" name="labelcaselists" id="labecases" offset="0" length="3" key="k">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem">
+                <div class="main_proitem_box">
+                    <div class="main_proitem_img"><a href="{:U('/case_detail',array('nid'=>$labecases["nid"]))}">
+                            <img src="{:getimgurl($labecases['new_pro'])}" alt="{$labecases['title']}" />
+                        </a></div>
+                    <div class="main_proitem_second">
+                        <a href="{:U('/case_detail',array('nid'=>$labecases["nid"]))}">
+                            <div class="main_proitem_name margin-10px-bottom"><h6 title="{$labecases['title']}">{:subtxt($labecases['title'],60)}</h6></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </volist>
+    </div>
+    <div style="clear:both;"></div>
+</if>

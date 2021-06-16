@@ -1,0 +1,28 @@
+<extend name="YP01_CN:base" />
+<block name="content">
+<Include file="./Tpl/YP01_CN/index_page/head.html" />
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="r_mbx"><img src="__TMPL__YP01_CN/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$intro_class['class_name']}</div>
+
+<div class="page_LeftClass2">
+<div class="page_Main">
+   <div class="page_RightTitle" style="width: 100%">{$intro_class['class_name']}</div>
+   <div class="page_RightMain" style="width: 100%">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+
+   </div>
+   <div class="page_RightTitle" id="inquiry">立即咨询</div>  
+   <div class="page_RightMain" style="margin-top:5px;width: 100%"><Include file="./Tpl/YP01_CN/submitinquiry.html" /></div>
+   <div style="clear:both"></div>
+  </div> 
+</div>
+<Include file="./Tpl/YP01_CN/index_page/bottom.html" />
+</block>

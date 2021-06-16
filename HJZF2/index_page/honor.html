@@ -1,0 +1,62 @@
+<!--{$pagename}-->
+<if condition="$data34[10]">
+    <style>
+        .new_hjzf_honor .hj01_index_honor{
+            background: url({:getindeximgurl($data34[10])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_honor .honr_title h3{
+        color: #{$color};
+    }
+    .new_hjzf_honor .honr_title2 h6{
+        color: #{$color};
+    }
+    .new_hjzf_honor .new_hjzf_honor_swiper-next,.new_hjzf_honor .new_hjzf_honor_swiper-prev{
+        background: #{$color};
+    }
+    .new_hjzf_honor .new_hjzf_honor_swiper-next:hover,.new_hjzf_honor .new_hjzf_honor_swiper-prev:hover{
+        background: #{$data34[11]};
+    }
+</style>
+<php>
+    if($data34[12]){
+    $num = $data34[12];
+    }else{
+    $num =4;
+    }
+
+
+
+</php>
+<script>
+    var honor_num = "<?php echo $num;?>";
+</script>
+
+<div class="hj01_index_honor">
+    <div class="container">
+        <div class="honr_title" id="honor_title"><h3>{$data34[0]}</h3></div>
+        <div class="honr_title2" id="honor_title2"><h6>{$data34[1]}</h6></div>
+        <div class="index_honlist_wai">
+            <div class="swiper-container new_hjzf_honor_swiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        for($ho=2;$ho<10;$ho=$ho+1){
+
+                    </php>
+                    <if condition="$data34[$ho] neq ''">
+                        <div class="swiper-slide">
+                            <img src="{:getindeximgurl($data34[$ho])}" alt=""/>
+                        </div>
+                    </if>
+                    <php>
+                        }
+                    </php>
+                </div>
+            </div>
+            <div class="swiper-button-next new_hjzf_honor_swiper-next"></div>
+            <div class="swiper-button-prev new_hjzf_honor_swiper-prev"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<link href="__TMPL__f-Phoenix-productcategories/productcategories.css" rel="stylesheet">
+
+  <div class="index_fl">
+    <div id="index_productslist_animate">
+     <div class="index_fl_title">
+        Product Categories
+     </div>
+     <div class="index_fl_title2">Glass Bottles, Jars & Containers Manufacturer</div>
+    </div>
+    <div id="index_productslist_animate_1">
+     <div class="index_flcon">
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:U('/product_category/GLASS-BOTTLE')}"><img src="__TMPL__demo2/img/fl1.png"></a></div>
+           <div class="index_flcon2"><a href="{:U('/product_category/GLASS-BOTTLE')}">GLASS BOTTLE</a></div>
+        </li>
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:U('/product_category/CERAMIC%20BOTTLE')}"><img src="__TMPL__demo2/img/fl2.png"></a></div>
+           <div class="index_flcon2"><a href="{:U('/product_category/CERAMIC%20BOTTLE')}">CERAMICS  BOTTLE</a></div>
+        </li>
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:U('/product_category/PLASTIC')}"><img src="__TMPL__demo2/img/fl3.png"></a></div>
+           <div class="index_flcon2"><a href="{:U('/product_category/PLASTIC')}">PET  BOTTLE</a></div>
+        </li>
+     </div>
+    </div> 
+  </div>
+
+<script>
+jQuery('#index_productslist_animate').removeClass().addClass('fadeInRight');
+$(window).scroll( function() {
+  scrollTop=$(document).scrollTop();
+  //alert(scrollTop);
+  
+  if(scrollTop>100){  
+  $('#index_productslist_animate_1').show();
+  $('#index_productslist_animate_1').removeClass().addClass('fadeInLeft');
+  }
+
+});
+</script>

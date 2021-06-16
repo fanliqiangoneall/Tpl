@@ -1,0 +1,65 @@
+<extend name="HJ03_CN:basein" />
+<block name="content">
+    <if condition="$data47[2] neq ''">
+        <style>
+            .Breadcrumbs{width: 50%;float: right;}
+        </style>
+    </if>
+    <if condition="$data47[2] eq ''">
+        <style>
+            .main-content-right {
+                width: 880px;
+                float: right;
+            }
+            .page-title-inner{margin-top: 20px;}
+
+        </style>
+    </if>
+
+    <div id="wrapper">
+        <link rel="stylesheet" type="text/css" href="__TMPL__HJ03_CN/css/jquery.lightbox-0.5.css"/>
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+            </if>
+
+
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 40px;">
+            <div class="container">
+                <div class="Breadcrumbs">您的位置：<a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$intro_class['class_name']}</span></div>
+                <if condition="$data47[2] neq ''">
+                    <section class="main-content-top" <if condition="count($navrs) gt 0">style="display:block"<else/> style="display:none"</if>>
+                        <Include file="./Tpl/HJ03_CN/otherleft_2.html" />
+                    </section>
+                </if>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <if condition="$data47[2] eq ''">
+            <section class="main-content-left"  <if condition="count($navrs) gt 0">style="display:block"<else/> style="display:none"</if>>
+                    <Include file="./Tpl/HJ03_CN/otherleft.html" />
+            </section>
+            </if>
+            <if condition="$data47[2] neq ''">
+                <section <if condition="count($navrs) gt 0">class="main-content-right main-content-dowm" <else/> class="main-content-right2" </if>>
+                <else/>
+                <section <if condition="count($navrs) gt 0">class="main-content-right" <else/> class="main-content-right2" </if>>
+            </if>
+
+                <div class="page_RightMain">
+                    <h5 class="main-cases-detail-title" <if condition="$data47[30]">style="display:none"<else/>style="display:block"</if>>{$intro_class['class_name']}</h5>
+                    <div class="page_Main" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                    <div style="clear:both;height: 30px;"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>

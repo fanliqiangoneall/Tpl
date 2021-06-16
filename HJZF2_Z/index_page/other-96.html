@@ -1,0 +1,71 @@
+<!--{$pagename}-->
+<style>
+   
+        /* .HJZF2_Z_other_96{
+            background: url({:getindeximgurl($data496[0])}) no-repeat center/cover;
+        }   */ 
+    
+    .other_96_listwrapper li:hover a{
+        text-decoration: underline;
+        color: #{$data496[0]};
+    }
+    .right_show_row .img_box{
+        float: right;
+    }
+</style>
+<section class="HJZF2_Z_other_96">
+    <php>
+        $arr = get_list_val($data496[1]);
+    </php>
+    <volist name="arr" id="list" key="key">
+        <div style="background:url({$list['bg']}) no-repeat center/cover" class="index_pd">
+            <if condition="$key % 2 eq 0">
+                <div class="container left_show_row ">
+                    <else/>
+               <div class="container right_show_row">
+            </if>
+            
+                <div class="row">
+                    <div class="col-xs-12 col-lg-7 img_box">
+                        <div class="other_96_imgwrapper">
+                            <img src="{$list['bigimg']}" alt="{$list['title']}"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-5">
+                        <div class="index_title other_96_maintitle pb40">{$list['title']}</div>
+                        <div class="index_text other_96_text pb40">{$list['content']}</div>
+                        <p class="other_96_listtitle index_text pb20">{$list['class_title']}</p>
+                        <php>
+                            $arr = get_list_val($data496[2]);
+                           
+                            foreach ($arr as $k => $value){
+                               if($key == ($k+1)){
+                                   $class_list = $value;
+                               }
+                            }
+                            
+                            $list_item_names= explode(';',$class_list['names']);
+                            $list_item_srcs= explode(';',$class_list['srcs']);
+                            $class_list =array();
+                             foreach($list_item_names as $k=>$n){
+                                $class_list[$k]['name'] = $n;
+                             }
+                             foreach($list_item_srcs as $k=>$s){
+                                $class_list[$k]['src'] = $s;
+                             }                         
+                        </php>
+                        <ul class="other_96_listwrapper">
+                            <volist name="class_list" id="a">
+                                <li>
+                                    <a href="{$a[src]}" class="other_96_listitem">
+                                        {$a[name]}
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </volist>    
+</section>

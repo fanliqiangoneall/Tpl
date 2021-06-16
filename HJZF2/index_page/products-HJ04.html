@@ -1,0 +1,63 @@
+<!--{$pagename}-->
+<style type="text/css">
+    .new_hjzf_products-HJ04 .mainServiceContainer li:hover .indexProText{
+        color: #{$color};
+    }
+
+    .new_hjzf_products-HJ04 .serviceRight>li:hover>a>h3{
+        color: #{$color};
+    }
+    .new_hjzf_products-HJ04 .serviceRight>li.serviceActive>a>h3{
+        color: #{$color};
+    }
+
+</style>
+<if condition="$data101[2]">
+    <style>
+        .new_hjzf_products-HJ04 .hj01_cases{
+            background: url({:getindeximgurl($data101[2])}) no-repeat center;
+        }
+    </style>
+</if>
+<php>
+    $num=$data101[3] or $num=8;
+</php>
+<div class="hj01_cases">
+    <div class="container">
+        <div class="serviceTopContainer">
+            <div class="serviceLeft lf">
+                <div class="serviceTopTitle">{$data101[0]}</div>
+                <div class="serviceTopTips">{$data101[1]}</div>
+            </div>
+
+            <ul class="serviceRight rt">
+                <li class="serviceActive"><a href="{:U('/case_category')}"><h3>{:__('All products')}</h3></a></li>
+                <volist empty="no" name="allclass" id="allclasspro"  offset="0" length="$num" >
+                    <li>
+                        <a href="{:U('/product_category','','')}/{:getprocatename($allclasspro['pcid'])}">{$allclasspro['class_name']}</a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <ul class="mainServiceContainer">
+
+            <volist empty="no" name="indexpro" id="indexpro" offset="0" length="12">
+                <li class="mainProList lf wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="5"  data-wow-iteration="1">
+                    <php>
+                        $class_id = $indexpro['class_id'];
+                        $class_name = get_index_products_categoryname($class_id)['class_name'];
+                    </php>
+                    <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                        <div class="serviceImg">
+                            <img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> />
+                        </div>
+                        <div class="indexProText ellipsis_one">{$indexpro['pro_name']}</div>
+                        <div>{$class_name}</div>
+                    </a>
+                </li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>

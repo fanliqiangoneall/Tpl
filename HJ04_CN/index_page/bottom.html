@@ -1,0 +1,90 @@
+<!--{$pagename}-->
+<style>
+    #bottomContainer,#bottomContainer li,#bottomContainer li a,#bottomContainer .bottomFootLeft,#bottomContainer .bottomFootLeft a{
+        color: {$data13[2]};
+    }
+	.friendlink .link,.friendlink .link a{
+		font-size: 14px;line-height: 20px;color: {$data13[2]}
+    }
+</style>
+<div class="bottomContainerContent" <if condition="has_mould('bottom') eq true">style="display:block;background: {$data13[1]};" id="bottomContainer"<else/>style="display:none"</if>>
+    <div class="bottomContainer" <if condition="$data13[3] neq ''">style="margin-top: -75px;"</if>>
+        <div class="bottomTopContainer" <if condition="$data47[40] neq ''">style="padding-top: 90px;"</if>>
+            <div class="bottomTopContent container">
+                <ul class="bottomTopList lf">
+                    <if condition="$about['phone'] neq ''">
+                        <li>电话：{:chaifen($about['phone'],0)}</li>
+                    </if>
+                    <if condition="$about['email'] neq ''">
+                        <li>邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></li>
+                    </if>
+                </ul>
+                <ul class="bottomTopList lf">
+                    <if condition="$about['zip'] neq ''">
+                        <li>邮编：{:chaifen($about['zip'],0)}</li>
+                    </if>
+                    <if condition="$about['fax'] neq ''">
+                        <li>传真：{:chaifen($about['fax'],0)}</li>
+                    </if>
+                </ul>
+                <ul class="bottomTopList lf">
+                    <li><p class="lf">地址：</p><div style="width: 215px;" class="lf">{$about['address']}</div></li>
+                    <if condition="$about['mobile'] neq ''">
+                        <li>
+                            <p class="lf">手机：</p>
+                            <div style="width: 215px;" class="lf">
+                                {:chaifen($about['mobile'],0)}
+                                <if condition="$about['mobile'][12] neq ''">
+                                    / {:chaifen($about['mobile'],1)}
+                                </if>
+                            </div>
+                        </li>
+                    </if>
+                </ul>
+                <div class="codeContainer rt">
+                    <div class="codeContent">
+                        <img src="{:getindeximgurl($data13[0])}" alt=""/>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="bottomFootContainer container">
+            <div class="bottomFootContent">
+            <php>
+                $nowtime=date("Y",time());
+                $currtime=2019;
+            </php>
+            <div class="lf bottomFootLeft">
+                <if condition="$nowtime gt $currtime">
+                    CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}
+                    <else/>
+                    CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-
+                </if>
+                &nbsp;{$about['company_name']} 版权所有&nbsp;&nbsp;<a href="https://beian.miit.gov.cn" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>
+            </div>
+            <div class="rt bottomFootRight">
+                <a href="https://www.one-all.com" title="常州网络公司" target="_blank" style="color: #666;">常州网络公司</a>中环互联网设计制作&nbsp;&nbsp;
+                <a href="{:U('/sitemap')}" onfocus="blur()" style="color: #666;">网站地图</a>&nbsp;&nbsp;
+                <a href="{:U('/alltag')}" style="color: #666;">所有标签</a>&nbsp;&nbsp;
+                <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;color: #666;">免责声明</a>
+                {:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}
+            </div>
+            <div class="clear"></div>
+        </div>
+        </div>
+        <if condition="$friend_link neq ''">
+            <div class="friendlink container" style="padding: 10px 0;">
+                <div class="link"><span>友情链接：</span>
+                    <volist name="friend_link" id="friend_link">
+                        <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                           <a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a>
+                        </if>
+                    </volist>
+                    <!--<div style="clear:both"></div>-->
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </if>
+    </div>
+</div>

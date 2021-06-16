@@ -1,0 +1,97 @@
+<!--{$pagename}-->
+<php>
+    $bottomnav_length=$data177[2] or $bottomnav_length=4;
+    if($data177[0]){
+    $bottom_10_bj=getindeximgurl($data177[0]);
+    }
+</php>
+<if condition="$data177[0]">
+    <style>
+        .HJZF2__bottom-10{
+            background: url({$bottom_10_bj}) center/cover no-repeat;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__bottom-10__share li{
+        border-color:#{$color}
+    }
+    .HJZF2__bottom-10__share li:hover{
+        background: #{$color};color: #fff;
+    }
+</style>
+<div class="HJZF2__bottom-10">
+    <div class="container">
+        <ul class="HJZF2__bottom-10_nav">
+            <volist name="web_navigation" id="vo" offset="1" length="$bottomnav_length" key="key">
+                <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                <if condition="$vo[child] neq '' ">
+                    <ul class="HJZF2__bottom-10__dropdown-menu">
+
+                        <volist name="vo['child']" id="v" offset="0"  key="key" >
+                            <li>
+                                <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                            </li>
+                        </volist>
+
+                    </ul>
+                    <else/>
+
+                    <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                        <ul class="HJZF2__bottom-10__dropdown-menu  hj02-pro-menu">
+
+                            <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                <li>
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                </li>
+                            </volist>
+
+
+                        </ul>
+                    </if>
+                </if>
+                </li>
+            </volist>
+            <li class="bottom-10__contact">
+                <a href="{:U('/contactus')}"><h2>{:__('Contact Us')}</h2></a>
+                <ul>
+                    <li><i class="fa fa-phone" style="font-size: 16px;"></i><span>{:__('Phone: ')}</span>{:chaifen($about['phone'],0)}</li>
+                    <if condition="$about['mobile']"><li><i class="fa fa-mobile"></i><span>{:__('Mobile: ')}</span>{:chaifen($about['mobile'],0)}</li></if>
+                    <if condition="$about['email']">
+                        <li class="bottom-10__contact__mail"><i class="fa fa-envelope" style="font-size: 13px"></i><span>{:__('E-mail: ')}</span><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                    </if>
+                    <if condition="$data177[4]">
+                        <li class="bottom-12__add"><i class="fa fa-map-marker" style="font-size: 16px;left: -13px;"></i>{:HtmlEncode($data177[4])}</li>
+                        <else/>
+                        <li><i class="fa fa-map-marker" style="font-size: 16px;left: -13px;"></i><span>{:__('Add: ')}</span>{$about['address']}</li>
+                    </if>
+                </ul>
+            </li>
+            <li style="margin-right: 0"><a href="javascript:void(0)"><h2>{:__('Mobile ')}</h2></a>
+                <div><img src="{:getindeximgurl($data177[1])}" alt=""/></div>
+            </li>
+            <div class="clear"></div>
+        </ul>
+
+    </div>
+    <div class="HJZF2__bottom-10__copyright">
+        <div class="container">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data177[3]){
+                $currtime=2019;
+                }else{
+                $currtime=$data177[3];
+                }
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp;{$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>
+            <if condition="C('language') eq 'cn'">
+                <a id="mianze" title="常州网络公司中环互联网" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                <a href="https://www.one-all.com" title="常州网络公司" target="_blank">中环互联网设计制作</a>
+                <else/>
+                Designed by <a href="https://www.one-all.com" title="Zhinghuan Internet" target="_blank">Zhonghuan Internet</a>
+            </if>
+        </div>
+    </div>
+</div>

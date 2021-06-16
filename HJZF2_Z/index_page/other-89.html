@@ -1,0 +1,85 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data479[8]">
+    .HJZF2_Z_other_89 {
+        background: url({:getindeximgurl($data479[8])}) no-repeat center/cover;
+    }
+    </if>
+    .HJZF2_Z_other_89_right_text {
+        background-color: #{$color};
+    }
+    .HJZF2_Z_other_89_left a.index_btn{
+        background-color: #{$color};
+    }
+</style>
+<section class="HJZF2_Z_other_89 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z_other_89_wrapper">
+                <div class="col-xs-12 col-md-5">
+                    <div class="HJZF2_Z_other_89_left">
+                        <div class="index_title pb20">
+                            {$data479[1]}
+                        </div>
+                        <div class="index_sub_title pb20 nav-hidden-mobile">
+                            {:HtmlEncode($data479[2])}
+                        </div>
+                        <div class="index_text pb40">
+                            {:HtmlEncode($data479[3])}
+                        </div>
+                        <if condition="$data479[4]">
+                            <php>
+                                $arr = get_list_val($data479[4]);
+                                if($arr[0][col]){
+                                $col = $arr[0][col];
+                                }else{
+                                $col = $color;
+                                }
+                                if($arr[0][txtc]){
+                                $cla = $arr[0][txtc];
+                                }else{
+                                $cla = '333';
+                                }
+                            </php>
+                            <style>
+                                .HJZF2_Z_other_89_left a.index_btn:hover {
+                                    background-color: #{$arr[0][hcol]} !important;
+                                    color: #{$arr[0][htxtc]} !important;
+                                }
+                            </style>
+                            <volist name="arr" id="a" length="1" offset="0">
+                                <a href="{$a[link]}" class="index_btn"
+                                    style="background-color: #{$col}; color: #{$cla}">
+                                    {$a[txt]}
+                                    <span>
+                                        <if condition="$a[ico]">
+                                            <em class="normal"><img src="{$a[ico]}" alt="{$a[txt]}"></em>
+                                        </if>
+                                        <if condition="$a[hico]">
+                                            <em class="hover"><img src="{$a[hico]}" alt="{$a[txt]}"></em>
+                                        </if>
+                                    </span>
+                                </a>
+                            </volist>
+                        </if>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div class="HJZF2_Z_other_89_right">
+                        <img src="{:getindeximgurl($data479[5])}" alt="{$data479[1]}" class="img-fluid">
+                        <div class="HJZF2_Z_other_89_right_text font-i">
+                            <div class="index_text">
+                                {$data479[6]}
+                            </div>
+                            <div>
+                                {$data479[7]}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

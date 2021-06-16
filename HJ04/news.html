@@ -1,0 +1,62 @@
+<extend name="HJ04:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .newsList:hover .newsTitle{
+            color: #{$color};
+        }
+        .newsBorder{
+            background: #{$color};
+        }
+        .newsList:hover .newsBorder{
+            width: 100%;
+        }
+    </style>
+    <div class="newsContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                Your location: &nbsp;
+                <a href="{:U('/')}">Home</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    <if condition="$data47[1] eq ''">
+                        News
+                        <else/>
+                        {$data47[1]}
+                    </if>
+                </span>
+            </div>
+        </div>
+        <div class="pageBannerContainer">
+            <div class="pageBannerImg">
+                <if condition="$banner neq ''">
+                    <volist name="banner" id="banner" offset="0" length="1">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </volist>
+                    <else/>
+                    <img src="{:getindeximgurl($data47[7])}" alt=""/>
+                </if>
+            </div>
+            <Include file="./Tpl/HJ04/newleft.html" />
+        </div>
+        <div class="newsMainContainer">
+            <div class="newsContainer container">
+                <ul class="newsContent">
+                    <volist name="allnews" id="allnews" empty="no content">
+                        <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                            <li class="newsList lf">
+                                <p class="newsTime">{:date('m-d',$allnews['created'])}</p>
+                                <p class="newsTitle ellipsis_two">{$allnews['title']}</p>
+                                <p class="newsDes ellipsis_three">{$allnews['news_description']}</p>
+                                <div class="newsBorder"></div>
+                            </li>
+                        </a>
+                    </volist>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</block>

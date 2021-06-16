@@ -1,0 +1,30 @@
+<extend name="HJ02_JP:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+
+
+        </div>
+        <div class="page-title-inner"  style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs"><a href="{:U('/')}">ホーム</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">404</span></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-right2">
+                <div class="page_RightMain">
+                    <div class="page_Main" style="text-align:center;"><a href="{:U('/')}"><img src="__TMPL__HJ02_JP/img/404.png" border="0" alt="404" /></a></div>
+                    <div style="clear:both;height: 50px;"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

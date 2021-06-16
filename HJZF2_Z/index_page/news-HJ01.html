@@ -1,0 +1,117 @@
+<!--{$pagename}-->
+<if condition="$data56[0]">
+    <style>
+        .HJZF2__news-10{
+            background: url({:getindeximgurl($data56[0])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__news-10--leftContent ul li.active .HJZF2__news-10__itemName,.HJZF2__news-10__title:before,.HJZF2__news-10__rightTitle:before{
+        background: #{$color};
+    }
+    .HJZF2__news-10--leftContent ul li:hover .HJZF2__news-10__itemName{
+        background: #{$color} !important;
+    }
+    .HJZF2__news-10__rightTitle{
+        color: #{$color};
+        visibility: hidden;
+    }
+    .swiper-slide:not(.swiper-slide-active){
+        
+    }
+
+</style>
+<script>
+    var _news_hj01 = '<?php  echo $data56[0] ?>';
+    var _right_num = '<?php  echo $data56[16] ?>';
+	var _right_px = '<?php  echo $data56[17] ?>';
+</script>
+<section class="HJZF2__news-10 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6">
+                <div class="HJZF2__news-10left wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0">
+                    <h3 class="HJZF2__news-10__title index_title">{$data56[2]}</h3>
+                    <div class="swiper-container HJZF2__news-10left">
+                        <php>
+                            $arr_str=$data56[4];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                            $list[$k]['data']=get_index_news_category($a,4);
+                            }
+                        </php>
+                        <div class="HJZF2__news-10--leftContent">
+                            <volist name="list" id="li" >
+                                <ul alt="{$li['name']}" class="HJZF2__news-7--leftWrap">
+                                    <volist name="li['data']" id="indexnews" offset="0" length="4" key="k">
+                                        <li class="HJZF2__news-10__item">
+                                            <div class="HJZF2__news-10__itemName index_text">{$indexnews['title']}</div>
+                                            <ul class="HJZF2__news-10_wrap">
+                                                <div class="HJZF2__news-10__itemContent flex">
+                                                    <div class="HJZF2__news-7__itemLeft__img">
+                                                        <div>
+                                                            <if condition="$indexnews['new_pro']">
+                                                                <img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}" />
+                                                                <else/>
+                                                                <img src="{:getindeximgurl($data56[15])}" border="0" alt="{$indexnews['title']}" />
+                                                            </if>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="HJZF2__news-7__itemLeft__desc">
+                                                        <p><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" class="index_text">{:subtxt($indexnews['news_description'],100)}</a></p>
+                                                        <div><if condition="$data56[5]"><img src="{:getindeximgurl($data56[5])}" alt="{$indexnews['title']}"/></if><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" class="index_text">{:__('Read More')}</a></div>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-6">
+                <div class="HJZF2__news-10right wow fadeInRight" data-wow-duration="2s" data-wow-delay="0">
+                    <h3 class="HJZF2__news-10__title index_title">{$data56[3]}</h3>
+                    <div class="HJZF2__news-10rightDesc index_text">{:HtmlEncode($data56[12])}
+                        <if condition="$data56[13]">
+                            <br>
+                        <p style="margin-top:20px"><a href="{$data56[13]}" >{:__('Read More')}</a></p>
+                        </if>
+                    </div>
+                    <p class="HJZF2__news-10__rightTitle index_text">{$data56[6]}</p>
+                    <div style="position: relative">
+                        <div class="swiper-container HJZF2__news-10right__swiper">
+                            <div class="swiper-wrapper">
+                                <php>
+                                    for($i=7;$i<12;$i=$i+1){
+                                </php>
+                                <if condition="$data56[$i]">
+                                    <div class="swiper-slide"><img src="{:getindeximgurl($data56[$i])}" alt="{$data56[3]}"/></div>
+                                </if>
+                                <php>
+                                    }
+                                </php>
+                            </div>
+
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next HJZF2__news-10right-next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                        <div class="swiper-button-prev HJZF2__news-10right-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+    

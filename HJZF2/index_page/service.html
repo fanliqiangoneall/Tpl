@@ -1,0 +1,53 @@
+<if condition="$data5[0]">
+    <style>
+        .HJZF2__service{
+            background: url({:getindeximgurl($data5[0])}) no-repeat top center;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2__service__itemWrap li.active,.HJZF2__service__itemWrap li:hover{
+        background: #{$data5[1]};
+    }
+</style>
+<section class="HJZF2__service">
+    <div class="container">
+        <ul class="HJZF2__service__itemWrap">
+            <php>
+                for($i=2;$i<19;$i=$i+5){
+            </php>
+            <if condition="$data5[$i]">
+                <li class="HJZF2__service__item">
+                    <div class="HJZF2__service__itemName"><img src="{:getindeximgurl($data5[$i])}" border="0" />{$data5[$i+1]}</div>
+                </li>
+            </if>
+
+            <php>
+                }
+            </php>
+        </ul>
+        <div class="HJZF2__service__down">
+            <ul class="HJZF2__service__boxWrap">
+                <php>
+                    for($i=3;$i<22;$i=$i+5){
+                </php>
+                <if condition="$data5[$i]">
+                    <li class="HJZF2__service__box">
+                        <div class="HJZF2__service__boxpic">
+                            <img src="{:getindeximgurl($data5[$i+1])}" alt=""/>
+                        </div>
+                        <div class="HJZF2__service__boxLeft">
+                            <p class="HJZF2__service__boxLeftName">{$data5[$i]}</p>
+                            <div class="HJZF2__service__boxLeftDesc"> {:HtmlEncode(subtxt($data5[$i+2],400))}</div>
+                            <div class="HJZF2__service__boxmore"><a href="{$data5[$i+3]}">{:__('Read More')}>></a></div>
+                        </div>
+                    </li>
+                </if>
+
+                <php>
+                    }
+                </php>
+            </ul>
+        </div>
+    </div>
+</section>

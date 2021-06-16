@@ -1,0 +1,124 @@
+<script>
+jQuery(function(){
+jQuery("#content").focus(function(){
+jQuery("#content_alert").html("");
+});
+
+jQuery("#code_char2").focus(function(){
+jQuery("#code_char2_alert").html("");
+});
+
+
+})
+$(function(){
+    $("#content").focus(function(){
+        $("#content_alert").html("");
+    });
+
+    $("#code_char2").focus(function(){
+        $("#code_char2_alert").html("");
+    });
+    jQuery("#getcode_char2").click(function(){
+        jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+    });
+    jQuery("#getcode_char12").click(function(){
+        jQuery("#getcode_char2").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+    });
+
+})
+
+function yz_comment(){
+var count=0;
+var content =Trims(jQuery("#content ").val());
+
+if(content .length<=0){
+jQuery("#content_alert").html("*{:__('Comments can not be empty')}");
+count++;
+}
+else{
+jQuery("#content_alert").html("");
+}
+
+if($("#dragEle").attr("validate")){
+	   
+	jQuery("#code_char2_alert").html("");
+  }else{
+	
+   count++;
+   jQuery("#code_char2_alert").html("*{:__('Verification code error')}");
+  }
+if(count>0){
+return false;
+}
+else{
+jQuery("#commentsubmit").attr("disabled","true");
+return true;
+}
+
+}
+function Trims(str)
+{
+return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+} 
+</script>
+<style type="text/css">
+.commentTitle{ width:100%;border-top:1px solid #dedede; padding-top:10px;}
+.commentTitle h5{ font-size:16px; color:#333333}
+.commentlist{ width:100%;padding:10px 0}
+.inquiry_Title{ width:100%;border-top:1px solid #dedede; padding:10px 0;}
+.inquiry_Title h5{font-size:16px; color:#333333}
+</style>
+<div class="inquiry" style="margin-bottom:10px;">
+ <div style="position:relative;" class="commentTitle"><h5>{:__('Comment lists')}</h5> <div style="position:absolute;right:10px;top:27px;"><a href="{:U('/commentlist',array('pid'=>$product['pid']))}" target="_blank"><if condition="C('LANGUAGE') eq 'cn'">
+     查看更多（共{:commentlistcount($product['pid'])}条）<elseif condition="C('LANGUAGE') eq 'de'"/>Mehr anzeigen(Total{:commentlistcount($product['pid'])})
+     <elseif condition="C('LANGUAGE') eq 'spa'"/>Ver más(Total{:commentlistcount($product['pid'])})
+     <elseif condition="C('LANGUAGE') eq 'fra'"/>Voir plus(Total{:commentlistcount($product['pid'])})
+     <else/>View More(Total{:commentlistcount($product['pid'])})
+ </if></a></div></div>
+ <div class="commentlist">
+ <if condition="commentlistcount($product['pid']) eq 0">
+  <font style="color:#999999;">{:__('No Comment')}</font>
+ <else />
+   <volist empty="No Content" name="commentlist" id="commentlist" key="k">
+    <div style="float:left;width:50px;padding-top:5px;padding-bottom:5px;">{$k}</div>
+	<div style="float:left;width:550px;padding-top:5px;padding-bottom:5px;">{$commentlist["content"]}</div>
+	<div  style="float:left;width:100px;padding-top:5px;padding-bottom:5px;">{:date("Y-m-d",$commentlist["adddate"])}</div>
+   </volist>
+  </if>
+   <div class="clear"></div>
+ </div>
+</div>
+
+<div class="inquiry" style="margin-bottom:30px;">
+<div class="inquiry_Title"><h5>{:__('I want to comment')}</h5></div>
+<form action="__APP__/savecontent" method="post" onsubmit="return yz_comment();">
+<div class="inquiryinfo">
+    <div class="inquiryleft">{:__('Content')} *</div>
+	<div class="inquiryright"><textarea rows="5" cols="50" name="content" id="content"></textarea><span class="yz_alert" id="content_alert"></span>
+	<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+    <div class="inquiryinfo">
+        <div class="inquiryleft">{:__('Verification code: ')}<span style="color:#f00">*</span></div>
+
+        <div class="inquiryright">
+            <input type="text" class="input" id="code_char2"  name="code2" maxlength="3" style="width: 250px"/>&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char2" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;
+            <a href="javascript:void(0);" id="getcode_char12">
+                <img src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -8px;top: -1px;height: 32px;"/>
+            </a>
+            <br/>
+            <span class="yz_alert" id="code_char2_alert" style="color: #f00"></span>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="inquiryinfo">
+        <input type="hidden" name="productid" value="{$product['pid']}" />
+        <input class="productbutton" id="commentsubmit" type="submit" value="{:__('Submit')}"  name="submit"/>
+    </div>
+
+
+</form>
+
+<div class="clear"></div>
+</div>

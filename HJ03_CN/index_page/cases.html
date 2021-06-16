@@ -1,0 +1,84 @@
+<!--{$pagename}-->
+<php>
+    if($data10[5]==''){
+        $data10[5] = 90;
+    }
+    if($data10[6]==''){
+    $data10[6] = 90;
+    }
+</php>
+<style type="text/css">
+    .hj02_cases{
+        background: url({:getindeximgurl($data10[1])}) no-repeat center;padding-top:{$data10[5]}px;padding-bottom:{$data10[6]}px;
+    }
+</style>
+
+<section class="hj03_cases module">
+    <php>
+        $case = get_wap_case_class_name(627);
+
+    </php>
+
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <div id="index_product_title_left1"><p>{$data10[0]}</p><span>{$data10[1]}</span></div>
+            </div>
+            <div class="index_product_title_right wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.3s" data-wow-offset="200">
+                <ul class="hj02_proclasslist">
+                    <php>
+                        $arr_str=$data10[2];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_wap_case_class_name($a);
+                        }
+                    </php>
+                    <li class="hj02_proclasslist_on" <if condition="$data10[3] neq ''">style="display:none"</if>><a href="{:U('/cases')}">全部</a></li>
+                    <volist empty="" name="list" id="li" key="k">
+                        <if condition="$li">
+                            <li><a data-ajax='false' href="{:U('/new_category',array('classid'=>$a))}">{$li}</a></li>
+                        </if>
+                    </volist>
+                    <li><a <if condition="$data10[3] neq ''">href="{$data10[3]}" <else/>href="{:U('/cases')}"</if>>更多</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <div class="index_prolist_wai2">
+            <div  id="index_caselist">
+                    <volist name="indexcases" id="indexcase" offset="0" length="3">
+                        <php>
+                            $case_name=get_wap_case_class_name($indexcase['cates_class']);
+                        </php>
+                        <div class="index_caseitem wow fadeInUp"  data-wow-delay="0" data-wow-offset="150">
+                            <div class="index_caseitem_box">
+                                <div class="index_caseitem_img"> <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><if condition="$indexcase['new_pro'] eq 0 or $indexcase['new_pro'] eq ''"><img src="__TMPL__ZL01/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" /></if></a></div>
+                               <div class="index_caseitem_down_wai">
+                                   <div class="index_caseitem_down">
+                                       <div class="index_case_title "><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><h4>{:subtxt($indexcase['title'],17)}</h4></a></div>
+                                       <div class="index_case_class "><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><h6>{$case_name}</h6></a></div>
+                                       <if condition="$indexcase['news_description']">
+                                           <div class="index_case_title2">{:subtxt($indexcase['news_description'],150)}</div>
+                                       </if>
+                                   </div>
+                               </div>
+                            </div>
+
+                        </div>
+                    </volist>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <if condition="$data10[4] neq ''">
+        <script>
+            $(document).ready(function(){
+                $(".index_caseitem_box a").click(function(){
+                    event.preventDefault();
+                });
+            })
+        </script>
+    </if>
+</section>
+
+

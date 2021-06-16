@@ -1,0 +1,31 @@
+<extend name="WAP:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu2').removeClass().addClass("menuon1");
+});
+</script>
+<style>
+.class_re img{ max-width:100%;}
+</style>
+<div><img src="__TMPL__WAP/img/banner1.jpg" border="0" width="100%" /></div>
+<div data-role="content" style="padding-top:15px;">
+    <div class="main_top"><a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/product')}">Products</a>&nbsp;>&nbsp;{$prolist['class_name']}</div>
+  <div class="lmtitle2">{$prolist['class_name']}</span></div>
+  <if condition="$prolist['cate_profile'] neq ''"><div class="class_re" style="width:94%; margin:auto; margin-top:25px; line-height:25px; font-size:14px;">{:htmlspecialchars_decode($prolist['cate_profile'])}</div></if>
+    <div style="width:96%; padding:3% 2%; height:auto;margin-top: 2%;">
+    <volist name="pro" id="pro" empty="" key="k">
+       <div class="page_pro"><a data-ajax="false" href="{:U('/product','','')}/{:getproname($pro['pid'])}">
+       <div class="page_proimg"><img src="{:getpcimgurl($pro['main_img'])}" width='100%' height='100%'></div>
+       <div class="page_proname">{$pro['pro_name']}</div></a></div>
+       <if condition="$k%3 eq 0">
+         <div style='width:100%; clear:both;'></div>
+       <else/>
+        <div style="width:2%; height:50px; float:left;"></div>
+       </if>
+     </volist>
+    <div style="clear:both;"></div>
+    </div>
+    <div class="item-list">{$page}</div>
+</div>
+</block>

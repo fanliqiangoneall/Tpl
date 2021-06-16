@@ -1,0 +1,78 @@
+<style>
+   .Page_inBanner_changcheng{
+      width: 100%;
+      margin: auto;
+      padding: 120px 0 120px;
+      background: #212121;
+   }
+   @media(max-width:768px){
+      .Page_inBanner_changcheng{
+         padding: 40px 0 40px;
+      }
+   }
+</style>
+
+<if condition="$banner neq ''">
+   <volist name="banner" id="bannerg" offset="0" length="1">
+       <style>
+          .Page_inBanner_changcheng{
+             background: url("{:getimgurl($bannerg['ad_pic'])}") no-repeat center/cover;
+          }
+       </style>
+   </volist>
+   <else/>
+   <style>
+      .Page_inBanner_changcheng{
+         background: url('{:getindeximgurl($inner_data[1])}') no-repeat center/cover;
+      }
+   </style>   
+</if>
+<div class="Page_inBanner_changcheng">
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12">
+            <div style="margin:auto; overflow:hidden;" id="a">
+               <table border=0 cellPadding=0 width="95%" align=center cellspace="0">
+                  <tbody>
+                     <tr>
+                        <td id=b vAlign=top>
+                           <table border=0 cellSpacing=0 cellPadding=0>
+                              <tbody>
+                              <tr>
+                                
+                                 <volist empty="" name="allpro" id="val" key="k">
+                                    <td style="padding-left:40px; text-align:center; color:#FFFFFF">
+                                       <a href="{:U('/Product','','')}/{:getproname($val['pid'])}">
+                                          <img src="{:getmainimgurl($val['main_img'])}" width="248" height="200" border="0" <if condition="$val['proalt'] neq ''">alt="{$val['proalt']}"<else/>alt="{$val['pro_name']}"</if>/>
+                                          <br /><span style="color:#FFFFFF;display:inline-block;width: 90%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{$val['pro_name']}</span>
+                                       </a>
+                                    </td>
+                                 </volist>
+                              </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td id=c vAlign=top></td>
+                     </tr>
+                  </tbody>
+               </table>
+               </div>
+         </div>
+      </div>
+   </div>
+   
+<script>  
+   var speed1=22;//速度数值越大速度越慢   
+   c.innerHTML=b.innerHTML;
+   function Marquee1(){  
+      if(b.offsetWidth-a.scrollLeft<=0){
+         a.scrollLeft-=b.offsetWidth;     
+      }else{
+         a.scrollLeft++   
+      }
+   }
+   var MyMar1=setInterval(Marquee1,speed1);
+   a.onmouseover=function() {clearInterval(MyMar1)}  
+   a.onmouseout=function() {MyMar1=setInterval(Marquee1,speed1)}  
+   </script>
+</div>

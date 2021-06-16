@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'webid', 2 => 'createtime', 3 => 'labelname', 4 => 'isdeleted', 5 => 'sync', '_autoinc' => true, '_pk' => 'id', '_type' => array ( 'id' => 'int(11)', 'webid' => 'int(11)', 'createtime' => 'int(20)', 'labelname' => 'varchar(255)', 'isdeleted' => 'int(11)', 'sync' => 'int(2)', ), );?>

@@ -1,0 +1,66 @@
+<!--{$pagename}-->
+
+<!--quility start-->
+<if condition="$data5[2] neq ''">
+	<style>
+		#hj03-service{
+			background: url({:getindeximgurl($data5[2])}) no-repeat fixed;overflow: hidden;
+		}
+	</style>
+</if>
+
+<style>
+	.shj03-service-left{
+		background: url({:getindeximgurl($data5[3])}) no-repeat;overflow: hidden;
+	}
+	.shj03-service-right ul li:hover .hj03-service-item-text{
+		background: #{$data5[18]};
+	}
+</style>
+<div id="hj03-service">
+	<div class="container">
+			<div class="service-content">
+				<div class="shj03-service-left lf wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+					<p class="shj03-service-title">{$data5[0]}</p>
+					<p class="shj03-service-subtitle">{$data5[1]}</p>
+					<a href="{$data5[4]}" target="_blank" class="hj03-service-more"><i class="fa fa-angle-right"></i></a>
+				</div>
+				<div class="shj03-service-right rt wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+					<ul>
+						<li>
+							<div class="hj03-service-item-text">
+								<div class="box">
+									<p>{$data5[6]}</p>
+									<p>{$data5[7]}</p>
+									<a href="{$data5[8]}">More<i class="fa fa-angle-right"></i></a>
+								</div>
+							</div>
+							<div class="hj03-service-item-img"><img src="{:getindeximgurl($data5[9])}" alt=""/></div>
+						</li>
+						<li>
+							<div class="hj03-service-item-img"><img src="{:getindeximgurl($data5[13])}" alt=""/></div>
+							<div class="hj03-service-item-text">
+								<div class="box">
+									<p>{$data5[6]}</p>
+									<p>{$data5[7]}</p>
+									<a href="{$data5[8]}">More<i class="fa fa-angle-right"></i></a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="hj03-service-item-text">
+								<div class="box">
+									<p>{$data5[6]}</p>
+									<p>{$data5[7]}</p>
+									<a href="{$data5[8]}">More<i class="fa fa-angle-right"></i></a>
+								</div>
+							</div>
+							<div class="hj03-service-item-img"><img src="{:getindeximgurl($data5[17])}" alt=""/></div>
+						</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+	</div>
+</div>
+<!--quility end-->

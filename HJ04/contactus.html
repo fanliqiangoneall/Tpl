@@ -1,0 +1,35 @@
+<extend name="HJ04:basein" />
+<block name="content">
+	<div class="aboutUsContainer">
+		<if condition="$banner neq ''">
+			<volist name="banner" id="banner" offset="0" length="1">
+				<img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+			</volist>
+			<else/>
+			<img src="{:getindeximgurl($data47[7])}" alt=""/>
+		</if>
+		<div class="container">
+			<div class="cateContainer">
+				<p class="cateTitle">
+					<if condition="$data47[4] eq ''">
+						Contact Us
+						<else/>
+						{$data47[4]}
+					</if>
+				</p>
+			</div>
+			<if condition="$data47[9] neq ''">
+				<iframe class="ueditor_baidumap" src="http://yun.one-all.com/Public/ueditor/dialogs/gmap/show.html#center={$data47[9]}&zoom=11&width=1188&height=498&markerStyles=l,A" frameborder="0" width="100%" height="500"></iframe>
+			</if>
+			<div class="page_Main">
+				<div class="HJ04_contact_editor">{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}</div>
+				<div style="clear:both;height: 40px;"></div>
+				<div id="inquiry" class="HJ04_product_detail_title">
+					<span>Immediately Consult</span>
+				</div>
+				<div class="page_Main"><Include file="./Tpl/HJ04/submitinquiry.html" /></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+</block>

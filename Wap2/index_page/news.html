@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<section>
+<php>
+if($data8[4]){
+	$new_hjzf_news__title__bj=getindeximgurl($data8[4]);
+}else{
+	$new_hjzf_news__title__bj="";
+}
+$new_hjzf_news__titlename=$data8[0] or $new_hjzf_news__titlename="NEWS";
+$new_hjzf_news__titlemore=$data8[1] or $new_hjzf_news__titlemore="+ More";
+$new_hjzf_news_color=$data8[2] or $new_hjzf_news_color="#adc537";
+$new_hjzf_news__titlename_color=$data8[7] or $new_hjzf_news__titlename_color="#33";
+$new_hjzf_news__More_href=$data8[3] or $new_hjzf_news__More_href="javascript:;";
+$new_hjzf_news__news_bj=$data8[6] or $new_hjzf_news__news_bj="#fffcf1";
+if($data8[5]){
+	$new_hjzf_news__news__li__bj=getindeximgurl($data8[5]);
+}else{
+	$new_hjzf_news__news__li__bj="";
+}
+</php>
+<style>
+.new_hjzf_news__titlemore{
+	color:{$new_hjzf_news_color}
+}
+.new_hjzf_news__title{ 
+	background:url(
+	{$new_hjzf_news__title__bj}
+	) center/100% no-repeat;
+}
+.new_hjzf_news__news{ 
+background:{$new_hjzf_news__news_bj}
+}
+.new_hjzf_news__news__li{
+	padding:0 10px 0 28px;
+	list-style:none;
+	background:url({$new_hjzf_news__news__li__bj})  no-repeat left center ;
+}
+    .new_hjzf_news__titlename{
+        color:{$new_hjzf_news__titlename_color};
+    }
+</style>
+<div class="new_hjzf_news__news">
+	<div class="new_hjzf_news__title">
+        <a href="{$new_hjzf_news__More_href}"><div class="new_hjzf_news__titlemore">{$new_hjzf_news__titlemore}</div></a>
+        <div class="new_hjzf_news__titlename">{$new_hjzf_news__titlename}</div>
+        <div class="clear"></div>
+    </div>
+    <ul class="new_hjzf_news__news__ul">
+    <volist name="indexnews" id="new" offset="0" length="4" key="k">
+        <li class="new_hjzf_news__news__li">
+            <a href="{:U('/new_detail','','')}/nid/{$new['nid']}">
+                {$new['title']}
+            </a>
+            <span>{:date('m-d',$new['created'])}</span>
+        </li>
+    </volist> 
+    </ul>  
+
+</div>
+</section>

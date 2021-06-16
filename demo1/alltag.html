@@ -1,0 +1,52 @@
+
+
+<extend name="demo1:base" />
+<block name="content">
+<Include file="./Tpl/demo1/index_page/head.html" />
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data1[4])}) center no-repeat"></div>
+</if>
+</div>
+<style>
+.taglabel{ display:inline-block; padding:3px 15px; background:#fff; color:#666; border:1px solid #ccc; border-radius:20px; margin:5px;text-decoration:none;}
+.taglabel :hover{
+	background:#rgb(39, 92, 188);
+} 
+</style> 
+<Include file="./Tpl/demo1/top_search.html" />
+<div class="page_Main">
+   <Include file="./Tpl/demo1/left.html" />
+   <div class="in_right">
+        <div class="page_RightTitle"><span class="r_mbx"><img src="__TMPL__demo1/img/in_home.jpg" style="vertical-align:middle; border:none;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;关键词</span>关键词</div>
+
+<volist name="labels" id="label">
+<a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+</volist>
+
+
+
+    </div>
+    <div style="clear:both"></div>
+</div>
+<Include file="./Tpl/demo1/index_page/bottom.html" />
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .selInfo dl dd button{
+            background: #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row"><div class="col-xs-12"><a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Jobs')}</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section class="HJZF_Z__innerContent">
+                            <div class="InsidePages_content-right__wrap">
+                                <div class="InsidePages_content-right_content-main">
+                                	<if condition="$jobs">
+                                    <div class="selInfo">
+                                        <dl class="selInfo_title">
+                                            <dt class="w220 pl20">{:__('Position Name')}</dt>
+                                            <dd class="w110">{:__('Gender')}</dd>
+                                            <dd class="w90">{:__('Age')}</dd>
+                                            <dd class="w140">{:__('Education')}</dd>
+                                            <dd class="w110">{:__('Number')}</dd>
+                                            <dd class="w370"><if condition="$inner_data[2]">{$inner_data[2]}<else/>{:__('Remarks')}</if></dd>
+                                            <dd class="w170">{:__('operating')}</dd>
+                                            <div style="clear: both"></div>
+                                        </dl>
+                                        <volist name="jobs" id="jobs" key="k">
+
+                                            <php>
+                                                if(LANGUAGE =='en'){
+
+                                                if($jobs['sex'] == 1){
+                                                $jobs['sex'] ='man';
+                                                }else if($jobs['sex'] == 2){
+                                                $jobs['sex'] ='women';
+                                                }else{
+                                                $jobs['sex'] ='unlimited';
+                                                }
+
+                                                }else{
+                                                if($jobs['sex'] == 1){
+                                                $jobs['sex'] ='男';
+                                                }else if($jobs['sex'] == 2){
+                                                $jobs['sex'] ='女';
+                                                }else{
+                                                $jobs['sex'] ='不限';
+                                                }
+                                                }
+
+                                            </php>
+                                            <dl class="selInfo_content">
+                                                <dt class="w220 pl20">{$jobs['jobname']}</dt>
+                                                <dd class="w110">{$jobs['sex']}</dd>
+                                                <dd class="w90">{$jobs['age']}</dd>
+                                                <dd class="w140">{$jobs['edu']}</dd>
+                                                <dd class="w110">{$jobs['people']}</dd>
+                                                <dd class="w370">{$jobs['beizhu']}</dd>
+                                                <dd class="w170"><a href="{:U('/job',array('jobid'=>$jobs['jobid']))}"><button>{:__('Read More')}</button></a></dd>
+                                                <div style="clear: both"></div>
+                                            </dl>
+                                        </volist>
+
+                                    </div>
+                                    </if>
+                                    <ul>
+
+                                    </ul>
+
+                                </div>
+                                <div class="page_nei_space"></div>
+                            </div>
+                        </section>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+

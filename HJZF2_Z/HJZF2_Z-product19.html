@@ -1,0 +1,124 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background: #{$color};
+            border: 1px solid #{$color};
+        }
+		.inner-19__productItem{
+			margin-bottom:40px;
+		}
+		.inner-19__product_nr{ margin-top:30px;}
+		.main_class_name h3{
+			font-size: 36px;
+			line-height: 40px;
+			overflow: hidden;
+			text-align: left;
+			font-weight: 500;
+			color: #333;
+			text-overflow: ellipsis;
+			margin-bottom:15px;
+			white-space: nowrap;
+			transition: all .5s ease-in;
+		}
+		.main_class_js{width:100%; font-size:16px; line-height:24px; text-align:left;}
+		.main_class_line{width:150px; margin-top:30px; height:0; border-bottom:1px solid #d3d3d3; transition: all .5s ease-in;}
+    </style>
+    <div class="HJZF_Z__wrapper inner_4__innerwrapper" id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt="" />
+                    </div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" alt="" /></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <section class="inner-10__productWrap flex">
+                        <php>
+                            $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                        </php>
+                        <volist empty="$no_empty" name="allclass" id="allclass_left" key="k_class">
+                            <div class="inner-19__productItem pb40">
+                            <if condition="$k_class%2 eq 1">
+                            <div class="col-xs-12 col-lg-6 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+                                <div class="inner-10__product_pic">
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                                    <if condition="$allclass_left['fid']">
+                                        <img src="{:getimgurl($allclass_left['fid'])}" alt="{$allclass_left['class_name']}" />
+                                        <else/>
+                                        <img src="{:getindeximgurl($inner_data[2])}" alt="{$allclass_left['class_name']}" />
+                                    </if>
+                                </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-lg-6 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+                                <div class="inner-19__product_nr">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                                        <div class="main_class_name">{$allclass_left['class_name']}</div>
+                                        <div class="main_class_js">{:htmlspecialchars_decode($allclass_left['readme'])}</div>
+                                        <div class="main_class_line"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <else/>
+                            <div class="col-xs-12 col-lg-6 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+                                <div class="inner-19__product_nr">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                                        <div class="main_class_name">{$allclass_left['class_name']}</div>
+                                        <div class="main_class_js">{:htmlspecialchars_decode($allclass_left['readme'])}</div>
+                                        <div class="main_class_line"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-lg-6 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+                                <div class="inner-10__product_pic">
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                                    <if condition="$allclass_left['fid']">
+                                        <img src="{:getimgurl($allclass_left['fid'])}" alt="{$allclass_left['class_name']}" />
+                                        <else/>
+                                        <img src="{:getindeximgurl($inner_data[2])}" alt="{$allclass_left['class_name']}" />
+                                    </if>
+                                </a>
+                                </div>
+                            </div>
+                            </if>
+                            <div class="clear"></div>
+                            </div>
+                        </volist>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</block>
+<block name="footer_js">
+
+</block>

@@ -1,0 +1,57 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_aboutus_20_left ul li a {
+        border-color: #{$data381[0]};
+        color: #{$data381[0]};
+    }
+
+    .hjzf_aboutus_20_left ul li:first-child a {
+        background-color: #{$data381[0]};
+        border-color: #{$data381[0]};
+        color: #fff;
+    }
+</style>
+<script>
+    var hjzf_aboutus_20_video = '<?php echo $data381[6];?>';
+</script>
+<section class="hjzf_aboutus_20 index_pd">
+    <div class="container">
+        <div class="row hjzf_aboutus_20_wrapper">
+            <div class="col-xs-12 col-xl-7 hjzf_aboutus_20_left">
+                <if condition="$data381[1]">
+                    <div class="index_title pb40">
+                        {$data381[1]}
+                    </div>
+                </if>
+                <if condition="$data381[2]">
+                    <div class="index_sub_title pb20">
+                        {$data381[2]}
+                    </div>
+                </if>
+                <if condition="$data381[3]">
+                    <div class="index_text pb40 hjzf_aboutus_20_text">
+                        {$data381[3]}
+                    </div>
+                </if>
+                <ul>
+                    <php>
+                        $arr = get_list_val($data381[4]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li><a href="{$a[link]}" class="index_btn index_text">{$a[name]}</a></li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-xl-5 hjzf_aboutus_20_right">
+                <if condition="$data381[6]">
+                    <a class="layui-btn layui-btn-primary layer-demolist video">
+                </if>
+                <img src="{:getindeximgurl($data381[5])}" alt="{$data381[1]}" class="img-fluid">
+                <if condition="$data381[6]">
+                    </a>
+                </if>
+            </div>
+
+        </div>
+    </div>
+</section>

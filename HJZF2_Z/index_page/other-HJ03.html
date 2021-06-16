@@ -1,0 +1,101 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_hj03{
+        background: #{$data229[0]};
+    }
+    .other_hj03_color{
+        color: #fff;
+    }
+    .right_swiper
+    .swiper-button-next.hj03_next:hover,.swiper-button-prev.hj03_prev:hover{
+        background: #{$data229[1]};
+    }
+</style>
+<php>
+    if($data229[8]){
+    $imgs=[];
+    $matches=getimages(htmlspecialchars_decode($data229[8]));
+    if(isset($matches[1])){
+    $imgs=$matches[1];
+    }
+    }
+    foreach($imgs as $k=>$img){
+    $bottom_nav[$k]['img']=$img;
+    }
+
+    $hj03_num=explode("\\r\\n",$data229[9]);
+    $hj03_name=explode("\\r\\n",$data229[10]);
+
+    foreach($hj03_num as $k=>$num){
+    $bottom_nav[$k]['number']=$num;
+    }
+    foreach($hj03_name as $k=>$name){
+    $bottom_nav[$k]['name']=$name;
+    }
+
+</php>
+<section class="hjzf2_other_hj03 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="other_hj03_titlebox text-center other_hj03_color">
+                    <div class="index_title pb20">{$data229[2]}</div>
+                    <div class="index_sub_title pb40">{$data229[3]}</div>
+                </div>
+                <div class="other_hj03_swiperbox">
+                    <div class="left_swiper">
+                        <div class="swiper-container hj03_imgswiper">
+                            <div class="swiper-wrapper">
+                                <php>
+                                    for($o=4;$o<7;$o=$o+1){
+                                </php>
+                                <if condition="$data229[$o]">
+                                    <div class="swiper-slide"><img src="{:getindeximgurl($data229[$o])}" alt="{$data229[2]}" width="100%"/></div>
+                                </if>
+                                <php>
+                                    }
+                                </php>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right_swiper">
+                        <div class="swiper-container hj03_textswiper">
+                            <div class="swiper-wrapper rentList">
+                                <div class="swiper-slide hj03_textswiperslide">
+                                    <volist empty="" name="bottom_nav" id="li" key="k" offset="0" length="6">
+                                        <div class="rentItem other_hj03_color text-center">
+                                            <div class="rentItemW">
+                                                <div class="icoBox">
+                                                    <img src="{$li['img']}" alt="{$li['name']}"/>
+                                                </div>
+                                                <div class="rentCount">{$li['number']}</div>
+                                                <div class="rentName">{$li['name']}</div>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                </div>
+                                <div class="swiper-slide hj03_textswiperslide">
+                                    <volist empty="" name="bottom_nav" id="li" key="k" offset="6" length="6">
+                                        <div class="rentItem other_hj03_color text-center">
+                                            <div class="rentItemW">
+                                                <div class="icoBox">
+                                                    <img src="{$li['img']}" alt="{$li['name']}"/>
+                                                </div>
+                                                <div class="rentCount">{$li['number']}</div>
+                                                <div class="rentName">{$li['name']}</div>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page_box">
+                            <div class="swiper-button-next hj03_next"><i class="fa fa-long-arrow-right other_hj03_color"></i></div>
+                            <div class="swiper-button-prev hj03_prev"><i class="fa fa-long-arrow-left other_hj03_color"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

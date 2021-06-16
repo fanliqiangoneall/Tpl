@@ -1,0 +1,27 @@
+<style type="text/css">
+    .main_left_news .main-content_inner_news>ul li:hover{
+        background: #{$color};
+    }
+    .main_left_news .main-content_inner_news>ul li:hover a h3{
+        color: #fff;
+    }
+    .yijion_news{
+        background: #{$color};
+    }
+    .main_left_news .main-content_inner_news>ul li.yijion_news a h3{
+        color:#fff;
+    }
+</style>
+
+<div class="main_left_news">
+    <div class="main-content_inner_news">
+        <ul class="margin-30px-bottom">
+            <li ><a href="{:U('/news')}"><h3>所有新闻</h3></a></li>
+            <volist empty="暂无内容" name="allnewclass" id="new"  offset="0">
+                <li <if condition="$newscate['classid'] eq $new['classid']">class="yijion_news"<else/>class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,165 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[1]){
+		$color = $inner_data[1];
+		}
+	</php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current,
+		.InsidePages2_contact_item strong,
+		.HJZF_Z__Breadcrumbs span.current,
+		.InsidePages2_contact_item strong {
+			color: #{$color};
+		}
+
+		.InsidePages_content-right_content_title:before,
+		.InsidePages2_contact_item a.button,
+		.productbutton {
+			background: #{$color};
+		}
+
+		.InsidePages_content2_commontitle span {
+			border-color: #{$color};
+			color: #{$color};
+		}
+		.InsidePages_left_content-main{
+			border-top-color: #{$color};
+		}
+		.slide_mobile .InsidePages_left_navlist{
+			display: none;
+		}
+	</style>
+	<div id="HJZF_Z__wrapper" style="margin-bottom: 0">
+		<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2" >
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" class="img-fluid" /></div>
+				</volist>
+				<else />
+				<div class="in_banner" date="inner"><img src="{:getindeximgurl($inner_data[0])}" class="img-fluid" />
+				</div>
+			</if>
+		</div>
+		<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+							class="fa fa-angle-right"></i>&nbsp;<span
+							class="current">{$intro_class['class_name']}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="HJZF_Z__innerContent inner2_Content" id="main-content-wrapper">
+			<div class="container">
+				<div class="row">
+					<!-- 自定义二级 -->
+					<if condition="$inner_data[2]">
+						<section class="hidden-xs nav-hidden-mobile col-lg-3 HJZF_Z__inner--left">
+							<Include file="./Tpl/HJZF2_Z/left_othercate.html" />
+						</section>
+						<div class="HJZF_Z__inner--left__content slide_mobile mb-20 nav-hidden-pc">
+							<div class="InsidePages_left_content-main">
+								<p>{$inner_data[4]}<span class="mobile--left_showButton"><i></i></span></p>
+								<php>
+									$arr = get_list_val($inner_data[3]);
+								</php>
+								<ul class="InsidePages_left_navlist">
+									<volist empty="" name="arr" id="blikn" key="k">
+										<li <if condition="$k eq '1'">
+											class="yijion"
+											<else />
+											class="yiji"
+					</if>
+					><a href="{$blikn['link']}">
+						<h3>{$blikn['title']}</h3>
+					</a>
+					</li>
+					</volist>
+					</ul>
+				</div>
+			</div>
+			<script>
+				$(document).ready(function () {
+					$('.mobile--left_showButton').click(function () {
+						$(this).parents('.InsidePages_left_content-main').find('.InsidePages_left_navlist').slideToggle();
+					})
+				});
+			</script>
+			<section class="col-xs-12 col-lg-9  InsidePages_content2_contact">
+				<else />
+				<section class="col-xs-12 InsidePages_content2 InsidePages_content2_contact">
+					</if>
+					<!-- 自定义二级 -->
+
+					<div class="InsidePages_content-right__wrap">
+						<div class="InsidePages_content-right_content-main">
+							<div class="HJZF_contact_editor">
+								<div class="hidden-xs hidden-sm hidden-md col-lg-12">
+									{:htmlspecialchars_decode($intro_class['readme'])}{:htmlspecialchars_decode(get_contactus_code())}
+								</div>
+								<div class="col-xs-12 hidden-lg hidden-xl">
+									<if condition="$intro_class['wapreadme']">
+										{:htmlspecialchars_decode($intro_class['wapreadme'])}
+										<else />{:htmlspecialchars_decode($intro_class['readme'])}
+									</if>
+									{:htmlspecialchars_decode(get_contactus_code())}
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="HJZF_contact_inquiry">
+								<h5 id="inquiry" class="InsidePages_content-right_content_title"
+									style="margin-bottom: 10px;">{:__('Inquiry Now')}</h5>
+								<if condition="C('language') eq 'cn'">
+									<div class="page_Main">
+										<Include file="./Tpl/HJZF2_Z/submitinquiry_cn.html" />
+									</div>
+									<else />
+									<div class="page_Main">
+										<Include file="./Tpl/HJZF2_Z/submitinquiry.html" />
+									</div>
+								</if>
+							</div>
+							<div style="clear:both"></div>
+						</div>
+					</div>
+				</section>
+				<div class="clear"></div>
+		</div>
+	</div>
+	<div class="InsidePages2_contact_down">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-4 col-lg-4 InsidePages2_contact_item">
+					<img src="./Tpl/HJZF2_Z/img/add_img.png" alt="address" />
+					<h4>{:__('Visit US')}</h4>
+					<p>{$about['address']}</p>
+				</div>
+				<div class="col-xs-12 col-md-4 col-lg-4 InsidePages2_contact_item">
+					<img src="./Tpl/HJZF2_Z/img/call_img.png" alt="address" />
+					<h4>{:__('Call US')}</h4>
+					<p>{:__('For general inquiry,call us at')}</p>
+					<strong> {:chaifen($about['phone'],0)}</strong><br />
+					<strong> {:chaifen($about['phone'],1)}</strong>
+				</div>
+				<div class="col-xs-12 col-md-4 col-lg-4 InsidePages2_contact_item">
+					<img src="./Tpl/HJZF2_Z/img/chat_img.png" alt="address" />
+					<h4>{:__('Online Chat')}</h4>
+					<p>{:__('Contact our customer support team')}<strong> 7×24 {:__('hours')}</strong></p>
+					<if condition="$about['msn'] and C('Language') neq 'cn'">
+						<a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,5)"
+							class="button">{:__('Chat Online Live')}</a>
+						<elseif condition="$about['msn']" />
+						<a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes"
+							onclick="turn_sta(5,5)" class="button">{:__('Chat Online Live')}</a>
+					</if>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</block>

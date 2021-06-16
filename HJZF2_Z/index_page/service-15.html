@@ -1,0 +1,98 @@
+<!--{$pagename}-->
+<php>
+    $icon15=explode("\\n",$data255[24]);
+    foreach($icon15 as $k=>$ic){
+    $nav_icon[$k]['name']=$ic;
+    }
+</php>
+<style>
+    .service-15_page span.swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+    .ind_src4_lb_tab>div.on{
+        color: #{$color};
+    }
+    .ind_src4_left .down_hint span,.ind_src4_lb_tab>div.on span,.ind_src4_lb_tab::before{
+        background-color: #{$color};
+    }
+    .ind_src4_lb_tab::before{
+        opacity: .3;
+    }
+</style>
+<section class="hjzf2_service-15">
+    <div class="service-15_wrap">
+        <div class="ind_src4_case">
+            <div class="ind_src4_left">
+                <div class="ind_src4_title  animated fadeInUp index_title">{$data255[0]}</div>
+                <div class="ind_src4_info  animated fadeInUp index_text">{$data255[1]}</div>
+                <div class="ind_src4_con_text_m">
+                    <div class="ind_member_text on">
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[7])}" alt="{$data255[5]}"/></span>{$data255[5]}</div>
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[8])}" alt="{$data255[6]}"/></span>{$data255[6]}</div>
+                    </div>
+                    <div class="ind_member_text ">
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[12])}" alt="{$data255[10]}"/></span>{$data255[10]}</div>
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[13])}" alt="{$data255[11]}"/></span>{$data255[11]}</div>
+                    </div>
+                    <div class="ind_member_text ">
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[17])}" alt="{$data255[15]}"/></span>{$data255[15]}</div>
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[18])}" alt="{$data255[16]}"/></span>{$data255[16]}</div>
+                    </div>
+                    <div class="ind_member_text ">
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[22])}" alt="{$data255[20]}"/></span>{$data255[20]}</div>
+                        <div class="ind_mem_tex_box  animated fadeInUp index_text"><span><img src="{:getindeximgurl($data255[23])}" alt="{$data255[21]}"/></span>{$data255[21]}</div>
+                    </div>
+                </div>
+                <a class="down_hint  animated fadeInUp" href="javascript:void(0);">
+                    <if condition="$data255[25]">
+                        <img src="{:getindeximgurl($data255[25])}" alt="{$data255[2]}" class="normal"/>
+                    </if>
+                    <if condition="$data255[3]">
+                        <img src="{:getindeximgurl($data255[3])}" alt="{$data255[2]}" class="hover"/>
+                        </if>
+                    <!-- <span><i class="fa fa-qrcode"></i></span> -->
+                    <em>{$data255[2]}</em>
+                </a>
+            </div>
+            <div class="ind_src4_right">
+                <div class="swiper-container service-15_swiper">
+                    <div class="swiper-wrapper service-15_wapper">
+                        <php>
+                            for($s=4;$s<23;$s=$s+5){
+                        </php>
+                        <div class="swiper-slide service-15_slide">
+                            <div class="ind_member_con">
+                                <img src="{:getindeximgurl($data255[$s])}" alt="{$data255[$s+1]}"/>
+                                <div class="ind_mem_tex_pc">
+                                    <div class="">
+                                        <div class="ind_mem_tex_box ind_mem_tex_box_left animated fadeInUpSmall"><span>
+                                        <if condition="$data255[$s+3]">
+                                            <img src="{:getindeximgurl($data255[$s+3])}" alt="{$data255[$s+1]}"/>
+                                        </if>
+                                    </span><div>{$data255[$s+1]}</div></div>
+                                           
+                                        <div class="ind_mem_tex_box ind_mem_tex_box_right animated fadeInUpSmall"><span>
+                                        <if condition="$data255[$s+4]">
+                                            <img src="{:getindeximgurl($data255[$s+4])}" alt="{$data255[$s+2]}"/>
+                                        </if>
+                                            </span><div>{$data255[$s+2]}</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <php>}</php>
+                    </div>
+                </div>
+                <div class="ind_src4_lb_tab">
+                    <volist empty="" name="nav_icon" id="li" key="k">
+                        <div <if condition="$k eq '1'">class="on"</if>><span></span>{$li['name']}</div>
+                    </volist>
+
+                </div>
+            </div>
+            <div class="service-15_pagebox">
+                <div class="swiper-pagination service-15_page"></div>
+            </div>
+        </div>
+    </div>
+</section>

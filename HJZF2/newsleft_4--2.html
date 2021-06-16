@@ -1,0 +1,52 @@
+<style>
+    .InsidePage--3__contentNav--product{transform: translateY(-125px);}
+    .InsidePage--3__contentNavWrap--product2{width: 100%;}
+    .InsidePage--3__contentNavWrap--product2__title{
+        box-sizing: border-box; padding: 40px 30px;background-size: 100% 100%;color: white;font-size: 24px;font-weight: bold;background: #{$color};
+    }
+    .InsidePage--3__contentNavWrap--listProduct2{width: 100%}
+    .InsidePage--3__contentNavWrap--listProduct2>li{margin-top: 10px;position: relative;}
+    .InsidePage--3__contentNavWrap--listProduct2>li>a>h3{padding: 17px 30px;box-sizing: border-box;font-size: 15px;line-height: 24px;word-break: break-word;font-weight: normal;background: #f4f3f3;color: #333;}
+    .InsidePage--3__contentNavWrap--listProduct2>li span{position: absolute;right: 10px;top: 13px;font-size: 24px;line-height: 30px;transform: translateX(20px);transition: 0.6s;}
+    .InsidePage--3__contentNavWrap--listProduct2>li>ul>li{margin-top: 5px;line-height: 45px;}
+    .InsidePage--3__contentNavWrap--listProduct2>li>ul>li>a>h3{color: #333;display: block;box-sizing: border-box;padding-left: 55px;font-weight: normal;background: #f4f3f3;}
+    .InsidePage--3__contentNavWrap--listProduct2>li:hover >a>h3, .InsidePage--3__contentNavWrap--listProduct2>li>ul>li:hover >a>h3,.InsidePage--3__contentNavWrap--listProduct2>li.yijion >a>h3, .InsidePage--3__contentNavWrap--listProduct2>li>ul>li.childon:hover>a>h3{
+        background: #{$color};color: #fff;
+    }
+    .InsidePage--3__contentNavWrap--listProduct2>li:hover span,.InsidePage--3__contentNavWrap--listProduct2>li.yijion span{
+        color: #fff;transform: translateX(0);transition: 0.6s;
+    }
+    .InsidePage--3__contentNavWrap--listProduct2>li>ul>li.childon a h3{
+        color: #{$color};
+    }
+</style>
+
+    <script>
+        $(document).ready(function(){
+            $(".InsidePage--3__contentNavWrap--listProduct>li.yijion>ul").show();
+            $(".class_button").on("click",function(){
+                if( $(this).next('ul').css("display")=="none"){
+                    $(this).parent().addClass("yijion");
+                    $(this).prev().css("borderBottom",'1px dashed #e7e7e7');
+                    $(this).next('ul').slideDown().parent().siblings("li").find("ul").slideUp();
+                }else{
+                    $(this).parent().removeClass("yijion").addClass("yiji");
+                    $(this).prev().css("borderBottom",'none');
+                    $(this).next('ul').slideUp().parent().siblings("li").find("ul").slideDown();
+                }
+
+
+            });
+            $(".childon").parent().parent().addClass("yijion");
+        })
+    </script>
+
+    <div class="InsidePage--3__contentNavWrap--product2">
+        <div class="InsidePage--3__contentNavWrap--product2__title">{:__('News Categories')}</div>
+        <ul class="InsidePage--3__contentNavWrap--listProduct2">
+            <volist empty="" name="allnewclass" id="news_left">
+                <li <if condition="$newscate['classid'] eq $news_left['classid'] or $newclass['classid'] eq $news_left['classid']">class="InsidePage--3_yijion"<else/>class="InsidePage--3_yiji"</if>><a href="{:U('/new_category',array('classid'=>$news_left["classid"]))}">{$news_left['class_name']}</a></li>
+            </volist>
+        </ul>
+    </div>
+

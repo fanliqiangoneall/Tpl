@@ -1,0 +1,104 @@
+<style>
+	.bottom_28_inquiry .bottom_form_box_28{
+		margin-top: 30px;
+	}
+    .bottom_28_inquiry .bottom_form_box_28 form {
+        display: flex;
+		flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+    .bottom_28_inquiry .bottom_form_box_28 form .form_item input {
+        width: 100%;
+        padding: 5px 10px;
+		color: #fff;
+		border: none;
+		border-radius: 3px;
+		background-color: transparent;
+		border: 1px solid #ccc;
+		max-width: 80%;
+    }
+    .bottom_28_inquiry .bottom_email_submit {
+        border: none;
+        color: #fff;
+    }
+    .bottom_28_inquiry #form_submit,
+    .bottom_28_inquiry .bottom_email_submit {
+        height: 100%;
+    }
+	.bottom_28_inquiry form .form_item:first-child{
+		flex: 0 0 24%;
+	}
+    .bottom_28_inquiry .form_item{
+		margin-bottom: 15px;
+        position: relative;
+    }
+    .bottom_28_inquiry .yz_alert{
+        position: absolute;
+        bottom: -15px;
+        left: 60px;
+        font-size: 12px;
+    }
+    .bottom_28_inquiry #emaila_20 {
+        color: #fff;
+    }
+	.bottom_28_inquiry #form_submit{
+		margin-top: 30px;
+	}
+	.bottom_28_inquiry #form_submit input{
+		border-radius: 2px;
+		border: none;
+		color: #fff;
+		width: 150px;
+		line-height: 45px;
+		height: 45px;
+		padding: 0;
+	}
+	.bottom_28_inquiry input::-webkit-input-placeholder{
+		color: #fff;
+	}
+	.form_span{
+		flex: 0 0 60px;
+		width: 60px;
+		color: #fff;
+	}
+</style>
+{:session("tncode_check","ok")}
+<script>
+	var language = '<?php echo C('Language');?>';
+</script>
+
+<div class="bottom_form_box_28">
+    <form action="__APP__/saveinquiry" method="post" onsubmit="return yzsubmitb20()" class="bottom_form">
+        <div class="form_item">
+            <div class="d-flex fx-center">
+				<div class="form_span">{:__('Name: ')}</div> <input type="text" name="linkname" id="linkname28" >
+			</div>
+            <span class="yz_alert" id="linknamea_20_alert"></span>
+        </div>
+        <div class="form_item">
+            <div class="d-flex fx-center">
+				<div class="form_span">{:__('Mobile: ')}</div><input type="text" name="phone" id="phone_28">
+			</div>
+            <span class="yz_alert" id="phone_28_alert"></span>
+        </div>
+        <div class="form_item hidden">
+            <textarea name="message" id="messagea_20" placeholder="{:__('Message: ')}">You have a new email subscription</textarea>
+            <span class="yz_alert" id="messagea_alert"></span>
+        </div>        
+        <div class="form_item">
+            <div class="d-flex fx-center">
+				<div class="form_span">{:__('Email: ')}</div>
+				<input type="text" name="email" id="emaila_20">
+			</div>
+            <span class="yz_alert" id="emaila_20_alert"></span>
+        </div>
+        <div class="form_item">
+            <input type="hidden" name="prodid" value="{$product['pid']}" />
+            <div id="form_submit"><input type="submit" value="{:__('Submit')}" name="submit" class="bottom_email_submit" id="bottom_20_submit" /></div>
+        </div>
+    </form>
+</div>
+
+<script src="__TMPL__HJZF2_Z/js/email_bottom_28.js"></script>

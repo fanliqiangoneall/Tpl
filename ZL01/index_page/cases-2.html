@@ -1,0 +1,34 @@
+<!--{$pagename}-->
+<if condition="$data32[0]">
+    <style>
+        .Page_class3{height: 250px;}
+        .index_case{width: 216px;height: 250px;position: relative}
+        .case_pic{width: 216px;height: 250px;}
+        .case_name{position: absolute;bottom: 0;width: 100%;background: rgba(0,0,0,0.5)}
+        .index_case:hover .case_name{
+        background: #{$color};
+        }
+    </style>
+</if>
+<if condition="count($indexcases) neq 0 ">
+    <div class="gcal" id="index_case_animate">
+        <div class="cases_title"><span><a href="{:U('/cases')}">了解更多 ></a></span>{$data32[0]}
+        </div>
+        <div class="Page_class3">
+            <volist name="indexcases" id="indexcase" offset="0" length="5">
+                <div class="index_case">
+                    <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">
+                    <div class="case_pic"><if condition="$indexcase['new_pro'] eq 0 or $indexcase['new_pro'] eq ''"><img src="__TMPL__ZL01/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" /></if></div>
+                    <div class="case_name">{$indexcase['title']}</div>
+                    </a>
+                </div>
+                <if condition="($key+1)%5 neq ''">
+                    <div style="width:27px; float:left; height:10px; background:none;"></div>
+                    <else/>
+                    <div class="clear"></div>
+                </if>
+            </volist>
+        </div>
+    </div>
+    <div class="clear"></div>
+</if>

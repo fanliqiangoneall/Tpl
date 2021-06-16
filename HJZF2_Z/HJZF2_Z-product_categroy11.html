@@ -1,0 +1,131 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,
+        .inner_10__innerContent .inner-10_title,
+        .inner-10__pro:hover .inner-10__proname {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background: #{$color};
+            border: 1px solid #{$color};
+        }
+
+        .pro_cata_11 li span {
+            display: block;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 5px 2px rgba(0, 0, 0, .1);
+            transform: translateY(-50%);
+        }
+
+        .product_category_11_proname {
+            padding: 10px;
+        }
+
+        @media(max-width: 768px) {
+            .pro_cata_11 li span {
+                width: 70%;
+            }
+        }
+    </style>
+    <div id="HJZF_Z__wrapper" class="inner_3__innerwrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+            <if condition="$prolist['banner']">
+                <div class="in_banner"><img src="{:getimgurl($prolist['banner'])}" alt="" /></div>
+                <elseif condition="$banner neq '' " />
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+                            class="fa fa-angle-right"></i>&nbsp;
+                        <a href="{:U('/product')}">{:__('Products')}</a>
+                        <volist name="path" id="path">&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                                href="{:U('/product_category','','')}/{:getprocatename($path['pcid'])}">{$path['class_name']}</a>
+                        </volist>
+                        <i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent inner_10__innerContent">
+            <div class="inner-10__maincontent">
+                <div class="container">
+                    <div class="row">
+                        <!-- 侧边 start -->
+                        <section class="hidden-xs hidden-sm hidden-md col-xs-3">
+                            <Include file="./Tpl/HJZF2_Z/left.html" />
+                        </section>
+                        <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                            <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+                        </section>
+                        <!-- 侧边 end -->
+                        <!-- 右边内容 start-->
+                        <div class="col-md-9 col-xs-12">
+                            <ul class="pro_cata_11 clearfix row">
+                                <if condition="$proschild">
+                                    <volist empty="" name="proschild" id="allpro">
+                                    
+                                        <li class="col-xs-6 col-md-4">
+                                            <a
+                                                href="{:U('/product_category','','')}/{:getprocatename($allpro['pcid'])}">
+                                                <img src="{:getmainimgurl($allpro['fid'])}" class="img-fluid"  <if
+                                                    condition="$pro['proalt'] neq ''">alt="{$allpro['class_name']}"
+                                                <else />alt="{$allpro['class_name']}"
+                                </if>>
+                                <div class="product_category_11_proname text-center index_text">{$allpro['class_name']}</div>
+                                            </a>
+                                        </li>
+                                    </volist>
+                                    <else />
+                                    <php>
+                        $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="pro" id="pro" key="k">
+                                        <li class="col-xs-6 col-md-4">
+
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <img src="{:getmainimgurl($pro['main_img'])}" <if
+                                                    condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"
+                                                <else />alt="{$pro['pro_name']}"
+                                </if> class="img-fluid"/>
+                                <div class="product_category_11_proname text-center index_text">{$pro['pro_name']}</div>
+                                </a>
+
+                                </li>
+                                </volist>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+
+                                </if>
+                            </ul>
+
+                        </div>
+                        <!-- 右边内容 end-->
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>
+<block name="footer_js"></block>

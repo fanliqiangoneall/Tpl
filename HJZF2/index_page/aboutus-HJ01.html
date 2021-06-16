@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+
+<style>
+    .new_hjzf_aboutus-HJ01{
+        background: url({:getindeximgurl($data54[9])}) no-repeat center;background-size: cover;
+    }
+    .new_hjzf_aboutus-HJ01__ab_title h3{
+        color:#{$data54[10]}
+    }
+    .new_hjzf_aboutus-HJ01__ab_text{
+    color:#{$data54[11]}
+    }
+
+    .new_hjzf_aboutus-HJ01__count_shuzi{
+        color:#{$data54[12]} ;position: relative;
+    }
+    .new_hjzf_aboutus-HJ01__count_shuzi_desc{
+        color:#{$data54[12]} ;
+    }
+    #count1 .new_hjzf_aboutus-HJ01__count_shuzi:before{
+        content: '{$data54[13]}';font-size: 70px;line-height: 75px;position: absolute;right: -55px;top: 18px;
+    }
+    #count3 .new_hjzf_aboutus-HJ01__count_shuzi:before{
+        content: '{$data54[14]}';font-size: 70px;line-height: 75px;position: absolute;right: -55px;top: 18px;
+    }
+    #count5 .new_hjzf_aboutus-HJ01__count_shuzi:before{
+        content: '{$data54[15]}';font-size: 70px;line-height: 75px;position: absolute;right: -55px;top: 18px;
+    }
+    #count7 .new_hjzf_aboutus-HJ01__count_shuzi:before{
+        content: '{$data54[16]}';font-size: 70px;line-height: 75px;position: absolute;right: -55px;top: 18px;
+    }
+</style>
+
+<!--about us start-->
+<div class="digital">
+    <div class="new_hjzf_aboutus-HJ01__container">
+        <div class="new_hjzf_aboutus-HJ01__ab_title"><h3>{$data54[0]}</h3></div>
+        <div class="new_hjzf_aboutus-HJ01__ab_text">
+            <p class="new_hjzf_aboutus-HJ01__ab_text">
+                {:HtmlEncode(subtxt($company_info['description'],300))}
+            </p>
+        </div>
+        <ul class="new_hjzf_aboutus-HJ01__shuzi_box">
+            <php>for($i=1;$i<8;$i=$i+2){</php>
+
+            <if condition="$data54[$i] neq ''">
+                <li class="new_hjzf_aboutus-HJ01__abus_shuzi" id="count{$i}">
+                    <div class="new_hjzf_aboutus-HJ01__abus_shuzibox">
+                        <span class="new_hjzf_aboutus-HJ01__count_shuzi  count_shuzi timer" data-to="{$data54[$i]}" data-speed="1500" id="data{$i}">{$data54[$i]}</span>
+                        <p class="new_hjzf_aboutus-HJ01__count_shuzi_desc margin-15px-bottom letter-spacing-1 font-weight-500">{$data54[$i+1]}</p>
+                    </div>
+                </li>
+            </if>
+            <php>}</php>
+
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--about us end-->

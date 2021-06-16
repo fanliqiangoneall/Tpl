@@ -1,0 +1,39 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_banner2 .hj-banner-next:hover{
+        background: #{$data3[0]}
+    }
+    .new_hjzf_banner2 .hj-banner-prev:hover{
+        background: #{$data3[0]}
+    }
+    .new_hjzf_banner2 .HJ05-banner1-box .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #{$data3[0]};opacity: 1;
+    }
+</style>
+<section class="hj-banner HJ05-banner1-box">
+    <div id="HJ05-banner2">
+        <div class="swiper-container banner2_swiper">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k" offset="0">
+                    <div class="swiper-slide HJ-banner-item">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <if condition="$banner_pic['ad_pic']">
+                            <div <if condition="$banner_pic['use_wap']"> class="has_wapbanner" <else/> class="has_nowapbanner"</if>>
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_wap']">
+                            <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                                <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%"/>
+                            </div>
+                        </if>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-pagination hj-banner-pagination"></div>
+            <div class="swiper-button-next hj-banner-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hj-banner-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+    </div>
+</section>

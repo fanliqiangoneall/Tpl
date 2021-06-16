@@ -1,0 +1,252 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+	#news_inner5__wrapper{
+		background:#e5e5e5;
+	}
+	.news_inner5__active{
+		animation: newsxqDown 1.2s ease both;
+		width: 100%;
+		overflow: hidden;
+		margin-top: -120px;
+	}
+	.InsidePages_content5{
+		width:100%;
+		max-width:1000px;
+		margin:auto;
+	}
+	.InsidePages_content5 .HJZF_Z__Breadcrumbs a,.InsidePages_content5 .HJZF_Z__Breadcrumbs a:first-child:before,.InsidePages_content5 .HJZF_Z__Breadcrumbs i{
+		color:#FFFFFF;
+	}
+	.HJZF_Z__Breadcrumbs span.current{
+		font-weight:bold;
+		color:#FFFFFF;		
+	}
+	.InsidePages_content5 .InsidePages_content-right_content-main{
+		width:100%; position:relative;
+		background:#FFFFFF;
+	}
+	.news_inner5__Breadcrumbs{
+		margin-bottom:0;
+		text-align:right;
+	}
+	.inner5_newsxq__title{
+		padding: 36px 40px 20px 40px;
+    	border-bottom: 2px solid #e5e5e5;
+		text-align:center;
+	}
+	.inner5_newsxq__title .news_view{
+		border-bottom:none;
+		padding-bottom:10px;
+	}
+	.news_inner5__share span{
+		color:#999999;
+	}
+	.news_inner5__share .bdsharebuttonbox,.news_inner5__share .addthis_sharing_toolbox{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.news_inner5__share .bdsharebuttonbox a {
+		margin: 0 5px;
+		width: 25px;
+		height: 20px;
+		padding: 0;
+		line-height: normal;
+		background-position: 0 0 !important;
+		background-image:none;
+	}
+	.news_inner5__share .bdsharebuttonbox .bds_weixin:before{
+		content:'\\f1d7';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.news_inner5__share .bdsharebuttonbox .bds_sqq:before{
+		content:'\\f1d6';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.news_inner5__share .bdsharebuttonbox .bds_tsina:before{
+		content:'\\f18a';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.news_inner5__share .bdsharebuttonbox .bds_tqq:before{
+		content:'\\f1d5';
+		color:#999999;
+		font-size:20px;
+		font-family:'FontAwesome';
+	}
+	.news_inner5__share .bdsharebuttonbox .bds_weixin:hover:before,.news_inner5__share .bdsharebuttonbox .bds_sqq:hover:before,.news_inner5__share .bdsharebuttonbox .bds_tsina:hover:before,.news_inner5__share .bdsharebuttonbox .bds_tqq:hover:before{
+		color:#{$color};
+	}
+	.news_inner5__share .at-share-tbx-element .at-icon-wrapper{
+		border-radius:50% !important;
+		width:20px !important;
+		height:20px !important;
+		line-height:20px !important;
+	}
+	.news_inner5__share .at-share-tbx-element .at-icon-wrapper svg{
+		width:20px !important;
+		height:20px !important;
+	}
+	.inner5_newsxq__words{
+		padding: 0 40px 60px 40px;
+	}
+	.inner5_news__btn{
+		border-top: 1px solid #e5e5e5;
+		padding-top:40px;
+		margin-top:40px;
+	}
+	.newsxq-updown{
+		width:100%;
+		margin:auto;
+		border-top: 1px solid #e5e5e5;
+	}
+	.newsxq-updown a{height: 44px;line-height: 44px;position: relative;transition: all .4s ease;color: #666;}
+	.newsxq-updown a span{ display:inline-block;}
+	.newsxq-prev, .newsxq-next{width: 38%;}
+	.newsxq-prev i, .newsxq-next i{display: inline-block;width: 44px;height: 1px;background: #b3b3b3;vertical-align: top;transition: all .4s ease;}
+	.newsxq-prev i{margin: 21px 12px 0 0;}
+	.newsxq-prev i.fa:before{
+		position:absolute;
+		left:0;
+		top:15px;
+		color:#b3b3b3;
+	}
+	.newsxq-next i{margin: 21px 0 0 12px;}
+	.newsxq-more{width: 24%;text-align: center;float: left;}
+	.newsxq-prev{padding-left: 5px;text-align: left;float: left;}
+	.newsxq-next{padding-right: 5px;text-align: right;float: right;}
+	.newsxq-prev:after, .newsxq-next:after{content: "";position: absolute;height: 100%;width: 5px;transition: all .4s ease;}
+	.newsxq-next i.fa:before{
+		position:absolute;
+		right:0;
+		top:15px;
+		color:#b3b3b3;
+	}
+	.newsxq-updown a:hover,.newsxq-prev:hover i.fa:before,.newsxq-next:hover i.fa:before{
+		color: #{$color};
+	}
+	.newsxq-prev:hover i, .newsxq-next:hover i{
+		background: #{$color};
+		width: 88px;
+	}
+	.newsxq-more i{display: inline-block;background: url('__TMPL__HJZF2_Z/img/newsxqMore.png') no-repeat;width: 16px;height: 16px;vertical-align: middle;margin: -4px 10px 0 0;transition: all .4s ease;}
+    .productbutton{
+        background: #{$color};
+    }
+	@keyframes newsxqDown{
+		0%{opacity: 0;transform: translateY(320px);}
+		100%{opacity: 1;transform: translateY(0px);}
+	}
+	@media(max-width:991px){
+		.news_inner5__active{
+			margin-top: -60px;
+		}
+		.inner5_newsxq__title,.inner5_newsxq__words{
+			padding:20px;
+		}
+	}
+	@media(max-width:768px){
+		.InsidePages_content5{
+			padding:0;
+			box-shadow:none;
+		}
+		.newsxq-more{width: 100%;border-top: 1px solid #e5e5e5;}
+		.newsxq-prev, .newsxq-next{width: 50%;}
+	}
+</style>
+<div id="news_inner5__wrapper">
+    <div id="HJZF_Z__innerBanner">
+        <if condition="$newclass['banner']">
+			<div class="in_banner"><img src="{:getimgurl($newclass['banner'])}" /></div>
+            <elseif condition="$banner neq ''"/>
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" /></div>
+            </volist>
+            <else/>
+            <div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" /></div>
+        </if>
+    </div>
+	
+    <div class="news_inner5__active">
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section class="InsidePages_content5">
+                        	<div class="HJZF_Z__Breadcrumbs news_inner5__Breadcrumbs" navcrumbs>
+                                 <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/news')}">{:__('News')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newclass['class_name']}</span>
+                            </div>
+                            <div class="InsidePages_content-right_content-main">
+                                <div id="news_detail">
+                                    <div class="inner5_newsxq__title">
+                                        <h5 class="inner5_newsdetail__title index_sub_title">{$news['title']}</h5>
+                                        <div class="news_view inner5_date">
+                                            <span class="time"><i><img src="__TMPL__HJZF2_Z/img/shijian.png" /></i>&nbsp;<if condition="C('Language') eq 'cn'">{:date('Y年m月d日 ',$news['created'])}<else/>{:date('M d, Y',$news['created'])}</if></span><span>|</span><span class="red"><i><img src="__TMPL__HJZF2_Z/img/view.png" /></i>{:__('View:')}{$news['click_num']}</span>
+                                                <div class="clear"></div>
+                                        </div>
+                                        <div class="news_inner5__share">
+                                        <if condition="C('Language') eq 'cn'">
+                                        <span class="index_text">分享到：</span><div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1596683573692"><a class="bds_weixin" data-cmd="weixin" title="分享到微信" ondragstart="return false"></a><a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友" ondragstart="return false"></a><a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" ondragstart="return false"></a><a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" ondragstart="return false"></a></div>
+                                        <script>
+										window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+										</script>
+                                        <else/>
+                                        <span class="index_text">Share to: </span><!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>
+<script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+                                        </if>
+                                        </div>
+                                    </div>
+                                    <div class="inner5_newsxq__words">
+                                        <div class="news_body InsidePages_content-right_content-main">{:htmlspecialchars_decode($news['body'])}</div>
+                                        <div class="newsxq-updown inner5_news__qhbtn clearFix">
+                                            <if condition="$newprev[0]['title'] eq ''"><a href="javascript:;" class="newsxq-prev" title="{:__('No more')}" ondragstart="return false"><i class="fa fa-caret-left"></i><span class="index_text">{:__('Prev')}</span></a><else/><a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()" class="newsxq-prev" title="{$newprev[0]['title']}" ondragstart="return false"><i class="fa fa-caret-left"></i><span class="index_text">{:__('Prev')}</span></a></if>
+                                            <if condition="$newnext[0]['title'] eq ''"><a href="javascript:;" class="newsxq-next" title="{:__('No more')}" ondragstart="return false"><span class="index_text">{:__('Next')}</span><i class="fa fa-caret-right"></i></a><else/><a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" class="newsxq-next" title="{$newnext[0]['title']}" ondragstart="return false"><span class="index_text">{:__('Next')}</span><i class="fa fa-caret-right"></i></a></if>
+                                            <a href="{:U('/new_category',array('classid'=>$newclass["classid"]))}" class="newsxq-more index_text" ondragstart="return false"><i></i>{:__('Back to list')}</a>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <if condition="newscomment_show() eq 1">
+                                            <include file="HJZF2_Z:newscomment" />
+                                        </if>
+                                        <div style="clear:both"></div>
+                                    </div>
+                                </div>
+                            </div>
+                     	</section>
+                        <div class="clear"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>
+
+<if condition="$webid eq '1670'">
+<script>
+		if($(window).width()<576){
+			var _iframe ='<iframe src="__TMPL__HJZF2_Z/HJZF2_Z-photo-browser.html" frameborder="0" style="width:100%;height:100vh;position:fixed;z-index:999999;top:0;left:0" id="parent-iframe"></iframe>';
+		var img_array = [];
+		var index = 0;
+		
+			$(".news_body img").each(function(index){				
+				$(this).attr('data-index', index);
+				img_array.push($(this).attr("src"));
+			});
+			$(".news_body img").click(function(){				
+				index = $(this).attr('data-index');				
+				$("#news_inner5__wrapper").append(_iframe);
+			});
+		}
+</script>
+</if>
+</block>

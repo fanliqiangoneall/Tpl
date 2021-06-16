@@ -1,0 +1,149 @@
+<extend name="ZERO:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu1').removeClass().addClass("menuon");	
+});
+</script>
+<div class="main_out">
+<div id="animate7-1">
+   <div class="index_toppro">
+        <div class="top_pic" style="padding-left:22px;">
+            <volist empty="" name="allclass" id="allclass_list">
+              <if condition="$allclass_list['pcid'] eq 22022">
+              <volist empty="" name="allclass_list['childs']" id="allclass_index" key="k">
+                  <div class="top_pic1" <if condition="$k eq 3">style="width:290px;"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}"><img class="qiehuantu{$k}" src="__TMPL__ZERO/img/pc{$k}_1.jpg" data="{$k}"/></a></div>
+              </volist>
+              </if>
+            </volist>
+            <script>
+                function qiehuan1(){
+                        var order=jQuery(".qiehuantu1").attr("data")*1+1;
+                        if (order>=3){
+                            order=1;
+                            }
+                        jQuery(".qiehuantu1").hide();
+                        jQuery(".qiehuantu1").attr("src","__TMPL__ZERO/img/pc1_"+order+".jpg").fadeIn(3000,function(){
+                            qiehuan2();
+                            });
+                        //jQuery(".qiehuantu").fadeIn();
+                        jQuery(".qiehuantu1").attr("data",order);
+                    //	qiehuan2();
+                
+                    }
+                    
+                    function qiehuan2(){
+                        var order=jQuery(".qiehuantu2").attr("data")*1+1;
+                        if (order>=4){
+                            order=1;
+                            }
+                        jQuery(".qiehuantu2").hide();
+                        jQuery(".qiehuantu2").attr("src","__TMPL__ZERO/img/pc2_"+order+".jpg").fadeIn(3000,function(){
+                            qiehuan3();
+                            });
+                        //jQuery(".qiehuantu").fadeIn();
+                        jQuery(".qiehuantu2").attr("data",order);
+                    //	qiehuan3();
+                    }
+                
+                    function qiehuan3(){
+                        var order=jQuery(".qiehuantu3").attr("data")*1+1;
+                        if (order>=4){
+                            order=1;
+                            }
+                        jQuery(".qiehuantu3").hide();
+                        jQuery(".qiehuantu3").attr("src","__TMPL__ZERO/img/pc3_"+order+".jpg").fadeIn(3000,function(){
+                            qiehuan1();
+                            });
+                        //jQuery(".qiehuantu").fadeIn();
+                        jQuery(".qiehuantu3").attr("data",order);
+                        //qiehuan1();
+                    }
+                    jQuery(document).ready(function(){
+                            jQuery(".qiehuantu1").hide();
+                            jQuery(".qiehuantu2").hide();
+                            jQuery(".qiehuantu1").fadeIn(3000);
+                            jQuery(".qiehuantu2").fadeIn(3000);
+                            qiehuan3();
+                    });
+                
+            </script>
+            <div class="clear"></div>
+        </div>
+        <div class="pc_desc">
+          <volist empty="" name="allclass" id="allclass_list">
+              <if condition="$allclass_list['pcid'] eq 22022">
+              <volist empty="" name="allclass_list['childs']" id="allclass_left" key="k1">
+              <ul>
+                <li>
+                  <div class="pc_con" style=" text-indent:2em;">{:subtxt($allclass_left['readme'],88)}</div>
+                  <div class="pc_link"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">查看该系列产品 &gt;&gt;</a></div>
+                </li>
+              </ul>
+              </volist>
+              </if>
+          </volist>
+          <div class="clear"></div>
+        </div>
+   </div>
+   <div class="index_div"></div>
+</div>
+<div id="animate7-2">
+   <div class="banner"><img src="__TMPL__ZERO/img/banner.jpg" border="0" /></div>
+</div>
+<div id="animate8">
+   <div class="index_body">
+        <div class="index_bodyleft">
+            <div class="index_news_title">
+            <a href="{:U('/new_category/classid/2765')}">更多></a>
+            </div>
+            <div class="index_news_list">
+                <volist name="news[2765]" id="indexnews" offset="0" length="5">
+                    <div class="xinwen">
+                        <div class="news_biaoti"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],17)}</a></div>
+                        <div class="news_date">{:date('Y-m-d',$indexnews['created'])}</div>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <div class="index_bodyright">
+            <div class="about_title"><a href="{:U('/aboutus')}" onFocus="blur()">更多></a></div>
+            <div class="about_body">
+               <p>{:HtmlEncode(htmlspecialchars_decode(subtxt($company_info['description'],300)))}</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="animate9">
+    <div class="index_pc">
+        <volist empty="" name="allclass" id="allclass_bottom">
+        <if condition="$allclass_bottom['pcid'] eq 22023">
+        <volist empty="" name="allclass_bottom['childs']" id="allclass_three" key="kk">
+    	<div class="index_pc{$kk}">
+        	<div class="index_pc_body">
+            	<ul>
+                    <php>
+                    $classid=$allclass_three['pcid'];
+                    </php>
+                    <mylist sql=" and isdeleted=0 and class_id=$classid" table="get_prodtablename()" order="sort asc,created desc">
+                         <li class="index_pc_li">→ <a href="{:U('/Product','','')}/{:getproname($val['pid'])}">{$val['pro_name']}</a></li>
+                    </mylist>
+                </ul>
+            </div>
+        </div>
+        </volist>
+        </if>
+        </volist>
+        <div class="clear"></div>
+    </div>
+</div>
+</div>
+<script>
+jQuery('#animate7-1').removeClass().addClass('fadeInUp');
+jQuery('#animate7-2').removeClass().addClass('fadeInUp');
+jQuery('#animate8').removeClass().addClass('fadeInUp');
+jQuery('#animate9').removeClass().addClass('fadeInUp');
+</script>
+</block>

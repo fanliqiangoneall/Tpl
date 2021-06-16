@@ -1,0 +1,150 @@
+<style>
+    .products13_left {
+        padding-top: 40px;
+        padding-bottom: 30px;
+        background-color: #333;
+        color: #fff;
+    }
+    .products13_left_yiji{
+        display: flex;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+    .products13_left_yiji i{
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    .products13_left .products13_left_yiji> a{
+        width: 100%;
+    }
+    .products13_left .products13_left_yiji> a> h3{
+        color: #fff;
+        font-size: 20px;
+        padding-bottom: 15px;
+    }
+    .products13_left_list{
+        margin-bottom: 20px;
+    }
+    .products13_left_list h3 {
+        line-height: 2.5;
+        font-size: 16px;
+        color: #fff;
+        padding-left: 20px;
+        transition: all .5s;
+    }
+
+    .products13_left_list>li {
+        position: relative;
+        border-left: 4px solid transparent;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        transition: all .5s;
+    }
+
+    .products13_left_list>li i {
+        position: absolute;
+        display: block;
+        width: 40px;
+        right: 10%;
+        top: 10px;
+        font-size: 18px;
+        z-index: 9;
+        cursor: pointer;
+    }
+
+    .products13_left_list>li:hover>a h3,
+    .products13_left_list>li.childon>a h3 {
+        color: #{$color};
+    }
+
+    .products13_left_list>li:hover i, .products13_left_list .erji li.thirdon i,
+    .products13_left_list>li.childon i {
+        color: #{$color};
+    }
+
+    .products13_left_list>li:hover,
+    .products13_left_list>li.childon {
+        border-left-color: #{$color};
+        background-color: #eee;
+    }
+
+    .products13_left_list .erji li {
+        padding-left: 20px;
+    }
+
+    .products13_left_list .erji li:hover h3,
+    .products13_left_list .erji li.childon h3,.products13_left_list .erji li.thirdon  h3{
+        color: #{$color};
+    }
+    .products13_left_list .erji li h3 {
+        color: #333;
+    }
+    .erji {
+        display: none;
+    }
+    .products13_left_yiji.on,.products13_left_yiji.on > a > h3{
+        color:#{$color};
+    }
+    .products13_left_yiji.on i{
+        color: #333;
+    }
+</style>
+
+<div class="col-lg-3 products13_left hidden-xs hidden-sm hidden-md">
+    <volist empty="" name="allclass" id="allclass_left">
+        <div class="products13_left_yiji <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">on
+        </if>" pro-class-id="{$allclass_left['pcid']}"    ><i class="fa fa-angle-right"></i>
+            <a
+                href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                <if condition='$allclass_left["childs"] neq ""'><span class="jia_a active"><i class="fa fa-plus"></i></span></if>
+        </div>
+        <!-- 二级开始 -->
+        <if condition='$allclass_left["childs"] neq ""'>
+            <ul class="products13_left_list">
+                <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                    <li <if
+                        condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">
+                        class="childon"
+                        <else />class="child"
+        </if> ><a
+            href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a>
+        <if condition="count($allclass_leftchild['childs']) gt 0">
+            <i class="fa fa-angle-left"></i>
+            <else />
+        </if>
+        <!-- 三级开始 -->
+        <if condition='$allclass_leftchild["childs"] neq ""'>
+            <ul class="erji">
+                <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftthird">
+                    <li empty="" name="allclass_leftchild['childs']" id="allclass_leftthird">
+                        <li <if
+                            condition="$classid eq $allclass_leftthird['pcid'] or $prolist['parent_id'] eq $allclass_leftthird['pcid'] or $product['class_id'] eq $allclass_leftthird['pcid'] or $procate['parent_id'] eq $allclass_leftthird['pcid']">
+                            class="thirdon"
+                            <else />class="third"
+            </if> ><a
+                href="{:U('/product_category','','')}/{:getprocatename($allclass_leftthird['pcid'])}">{$allclass_leftthird['class_name']}</a></li>
+                </volist>
+            </ul>
+        </if>
+        <!-- 三级结束 -->
+        </li>
+    </volist>
+    </ul>
+    </if>
+    <!-- 二级结束 -->
+    </volist>
+</div>
+<script>
+    
+   $(".jia_a").click(function(){    
+      var _this = $(this);
+      if(_this.hasClass('active')){
+          _this.removeClass('active');
+        _this.parent().next('.products13_left_list').css({"height":"0","overflow":"hidden","marginBottom":"0"})
+      }else{
+        _this.addClass('active');
+        _this.parent().next('.products13_left_list').css({"height":"auto","overflow":"hidden","marginBottom":"20px"})
+      }
+      
+   })
+</script>

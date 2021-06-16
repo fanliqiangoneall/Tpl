@@ -1,0 +1,177 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .main_proitem_img a:before,
+        .main_proitem_img a:after{
+            display: none;
+        }
+        .main_proitem{
+            background: none;
+        }
+        .con_bg{
+            background-color: #f2f2f2;
+            padding-top: 40px;
+        }
+        .HJZF_Z__Breadcrumbs {
+            background-color: #eee;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-bottom: 0px !important;
+        }
+
+        .HJZF_Z__Breadcrumbs .row {
+            text-align: left;
+        }
+
+        .main_page a {
+            transition: all .5s;
+        }
+
+        .main_page .current,
+        .main_page a:hover {
+            background-color: #{$color};
+            border: 1px solid #{$color};
+        }
+        .main_proitem{
+            margin-bottom: 60px !important;
+        }
+        .main_proitem_box{
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 10px;
+            box-shadow: 0px 20px 20px 0px rgb(0 0 0 / 15%);
+            background-color: #fff;
+            margin-bottom: 0;
+            padding: 15px;
+            overflow: hidden;
+            justify-content: space-between;
+        }
+        .main_proitem_img_22{
+            flex: 0 0 40%;
+        }
+        .main_proitem_img_22 a,
+        .main_proitem_img_22 img{
+            display: block;
+            width: 100%;
+        }
+        .main_proitem_second{
+            flex: 0 0 58%;
+            display: flex;
+            align-items: center;
+        }
+        .main_proitem_img_22_con{
+            color: #333;
+        }
+        .main_proitem_img_22_con h4{
+            margin-bottom: 30px;
+            margin-top: 15px;
+        }
+        .main_proitem_img_22_des{
+            margin: 30px 0;
+            margin-bottom: 50px;
+        }
+        .main_proitem_img_22_con span{
+            padding: 10px 40px;
+            border-radius: 40px;
+            margin-top: 30px;
+            color: #fff;
+            transition: all .5s;
+            border: 1px solid #{$color};
+            background-color: #{$color};
+        }
+        .main_proitem_img_22_con span:hover{
+            background-color: #fff;
+            color: #{$color};
+        }
+        .main_proitem_box_data{
+            position: absolute;
+            right: 25px;
+            bottom: 25px;
+            font-size: 18px;
+        }
+        .main_proitem_second:before{
+            display: none;
+        }
+        @media(max-width: 1200px) {
+            .main_proitem_img_22,.main_proitem_second{
+                flex: 0 0 100%;
+            }
+            .pro_cate_22{
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+
+
+    <div class="HJZF_Z__wrapper inner_4__innerwrapper" id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/banner_news.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/products_cate_bread.html" />
+        <div class="con_bg">
+        <div class="container ">
+            <div class="row">
+                <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                    <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+                </section>
+               
+                <div class="InsidePages_content-right_proWrap col-xs-12 pro_cate_22">
+                    <if condition="$prolist['cate_profile']"><div class="pb40 col-xs-12 cate_16_des">{:htmlspecialchars_decode($prolist['cate_profile'])}</div></if>
+                    <php>
+                        $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                    </php>
+                    <volist empty="$no_empty" name="pro" id="allpro" key="k">
+                        <div class="col-xs-12 main_proitem">
+                            <div class="main_proitem_box">
+                                <div class="main_proitem_img_22">
+                                    <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                        <if condition="$allpro['main_img']">
+                                            <img src="{:getmainimgurl($allpro['main_img'])}" <if
+                                                condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"
+                                            <else />alt="{$allpro['pro_name']}"</if> />
+                                        <else />
+                                        <img src="{:getindeximgurl($inner_data[4])}" alt="" />
+                                        </if>
+                                    </a>
+                                </div>
+                                <div class="main_proitem_second">
+                                    <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                        <div class="main_proitem_img_22_con margin-10px-bottom">
+                                            <h2 title="{$allpro['pro_name']}"  class="index_title">
+                                                    {$allpro['pro_name']}
+                                            </h2>
+                                            <if condition="$allpro['pro_model']">
+                                                <h4 class="index_sub_title">
+                                                    {$allpro['pro_model']}
+                                                </h4>
+                                            </if>
+                                            <div class="main_proitem_img_22_des">
+                                                {$allpro['pro_description']}
+                                            </div>
+                                            <span>{:__('Read More')}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="main_page">{$page}</div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+</block>
+<block name="footer_js">
+    <script>
+
+    </script>
+</block>

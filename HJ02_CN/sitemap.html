@@ -1,0 +1,64 @@
+<extend name="HJ02_CN:basein" />
+<block name="content">
+    <style>
+        #sitemap>ul>li>a>h2:before{
+            content: '';display: table;width: 4px;height: 16px;background: #{$color};position: absolute;left: -13px;top: 15px;
+        }
+        #sitemap ul li ul li:hover h3{
+            color: #{$color};
+        }
+
+    </style>
+    <div id="wrapper" style="background: #fff">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner"  style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs">当前位置: <a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">网站地图</span>
+                    <div class="back_tolast"><a href="javascript:history.go(-1)" onfocus="blur()"><img src="__TMPL__HJ02_CN/img/back_to2.png" alt="" style="margin-right: 10px;"/><img src="__TMPL__HJ02_CN/img/back_to.png" alt="" style="margin-right: 10px;"/>返回</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-right2">
+                <div class="page_RightMain">
+                    <div class="page_Main" id="sitemap">
+                        <ul>
+                            <volist name="web_navigation" id="vo_map" offset="0" length='8' key="key">
+                                <li><a href="{$vo_map['url']}" <if condition="strstr($vo_map['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,5)"</if>>{$vo_map['title']}</a>
+                                    <if condition="strstr($vo_map['url'],'/product.html') eq '/product.html'">
+                                        <ul style="margin-bottom:10px;">
+                                            <volist empty="" name="allclass" id="allclass_map">
+                                                <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_map['pcid'])}">{$allclass_map['class_name']}</a>
+                                                </li>
+                                            </volist>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </if>
+                                    <if condition="$vo_map['child'] neq ''">
+                                        <ul style="margin-bottom:10px;">
+                                            <volist name="vo_map['child']" id="navchild">
+                                                <li><a href="{$navchild['url']}"><h3>{$navchild['title']}</h3></a></li>
+                                            </volist>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </if>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

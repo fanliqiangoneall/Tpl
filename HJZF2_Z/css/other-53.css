@@ -1,0 +1,41 @@
+.hjzf2_other_53 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.hjzf2_other_53_mid {
+    min-width: 30vw;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hjzf2_other_53_right{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+}
+.moving .hjzf2_other_53_right{
+    animation: slideInRight 1s ease .2s;
+    visibility: visible !important;
+}
+@media (min-width: 768px) {
+    .hjzf2_other_53_mid .index_title{
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 1;
+    }
+}
+@media (min-width: 1200px) {
+    .hjzf2_other_53_mid .index_title{
+        font-size: 60px;
+        font-weight: bold;
+        line-height: 1;
+    }
+}

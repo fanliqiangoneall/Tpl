@@ -1,0 +1,25 @@
+<!--{$pagename}-->
+<style>
+	 <if condition="$data702[7]">
+    .aboutus_31 {
+        background-image: url({:getindeximgurl($data702[7])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+</style>
+<section class="aboutus_31 index_pd">
+	<div class="left" style="background: url({:getindeximgurl($data702[0])}) no-repeat center/cover;">
+		<div class="index_title mb-40">
+			{$data702[2]}
+		</div>
+		<div class="index_text mb-60">
+			{:HtmlEncode($data702[3])}
+		</div>
+		<a href="{$data702[4]}"><img src="{:getindeximgurl($data702[6])}" class="img-fluid">{$data702[5]}</a>
+	</div>
+	<div class="right">
+		<img src="{:getindeximgurl($data702[1])}" class="img-fluid">
+	</div>
+</section>

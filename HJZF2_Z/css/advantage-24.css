@@ -1,0 +1,52 @@
+.hjzf_advantage_24_wrapper .swiper-pagination{
+    position: static;
+}
+.hjzf_advantage_24_wrapper .swiper-pagination span{
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    opacity: 1;
+}
+.hjzf_advantage_24_shipin a{
+    position: relative;
+    display: flex;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    color: #fff;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.hjzf_advantage_24_shipin a:before,.hjzf_advantage_24_shipin a:after{
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    left: 50%;
+    top: 50%;
+    content:'';
+    transform: translateX(-50%, -50%);
+    opacity: 0;
+}
+.hjzf_advantage_24_shipin a:before{
+    animation: pulse-border 1.5s ease-out infinite;
+    animation-delay: 1s;
+}
+.hjzf_advantage_24_shipin a:after{
+    animation: pulse-border 1.5s ease-out infinite;
+    animation-delay: 2s;
+}
+
+@keyframes pulse-border{
+    from{
+        transform: translate(-50%,-50%) scale(1);
+        opacity: 1;
+    }
+    to{
+        transform: translate(-50%,-50%) scale(1.5);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,561 @@
+<extend name="demo3:base" />
+<block name="content">
+<Include file="./Tpl/demo3/in_head.html" />
+<SCRIPT src="__TMPL__demo3/js/jquery-1.8.3.min.js" type="text/javascript"></SCRIPT>
+<script type="text/javascript" src="__TMPL__demo3/js/proDetail.js"></script>
+<script type="text/javascript" src="__TMPL__demo3/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__demo3/css/jquery.lightbox-0.5.css"/>
+
+<style type="text/css">
+  .s{overflow: auto }
+.mod18 .prev{
+	top:0px;background:url({:getindeximgurl($data1[5])}) no-repeat;left:0px;
+	}
+
+.mod18 .next{
+	top:0px;background:url({:getindeximgurl($data1[6])}) no-repeat;right:0px;
+	}  
+
+.mod18 .prev:hover{
+	top:0px;background:url({:getindeximgurl($data1[7])}) no-repeat;left:0px;
+	}
+
+.mod18 .next:hover{
+	top:0px;background:url({:getindeximgurl($data1[8])}) no-repeat;right:0px;
+	}  
+</style>
+    <if condition="$data1[27] neq ''">
+        <style>
+            .asd2{height: auto}
+            .in_proname2 {
+                width: 235px;
+                padding: 10px;
+                background: rgba(0,0,0,0.7);
+                text-align: center;
+                position: relative;
+                bottom: inherit;
+                left: inherit;
+            }
+            .in_proname2 a{font-size: 16px;}
+        </style>
+    </if>
+    <if condition="$data1[28] neq ''">
+        <style>
+            .asd2{height: auto;border:none;}
+            .asd2 .img2{border: 1px solid #d2d2d2;width: 253px;transition: .6s;-moz-transition: .6s;-webkit-transition: .6s;}
+            .in_proname2 {
+                width: 235px;
+                padding: 10px;
+                background: rgba(0,0,0,0.7);
+                text-align: center;
+                position: relative;
+                bottom: inherit;
+                left: inherit;
+            }
+            .in_proname2{background: transparent;}
+            .in_proname2 a{font-size: 16px;color: #333;}
+            .asd2:hover .img2 img{transform: scale(1.1);-moz-transform: scale(1.1);-webkit-transform: scale(1.1);transition: .6s;-moz-transition: .6s;-webkit-transition: .6s;}
+        </style>
+    </if>
+<script type="text/javascript">
+$(function(){
+  $('#gx1 > table').addClass('s');
+});
+</script>
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+
+
+<div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<a href="{:U('/product')}">产品中心</a><volist empty="" name="path" id="path">&nbsp;>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($path['pcid'])}">{$path['class_name']}</a></volist>&nbsp;>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a></div>
+
+<div style="width: 1190px;margin:0 auto">
+    <if condition="$data1[14] neq ''">
+        <Include file="./Tpl/demo3/left2.html" />
+        <else/>
+        <Include file="./Tpl/demo3/left.html" />
+    </if>
+<div class="page_Main">
+    <if condition="$data1[14] neq ''">
+        <div class="page_RightTitle_2">{$product['pro_name']}</div>
+        <else/>
+        <div class="page_RightTitle"><span>{$product['pro_name']}</span></div>
+    </if>
+
+
+    <div id="product_detail">
+ <notdefined name="PRODIMGFLAG">
+
+          <div class="left" style=" border:1px solid #d2d2d2">
+            <div class="big_pic" id="gallery"><a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if> class="jqzoom"></a> <a href="#" title="{$product['pro_name']}"></a></div>
+          </div>
+          <div class="left product_info">
+            <div class="pro_info_box">
+              <ul>
+              	<if condition="$product['pro_description']"><li>{:subtxt($product['pro_description'],50)}</li></if>
+                <li style="background:url({:getindeximgurl($data1[2])}) left no-repeat; padding-left:44px; line-height:34px;font-size: 18px;color: #4c4c4c">电话：<span style="font-size: 18px!important;
+    color: #333333;font-weight: bold">{:chaifen($about['phone'],0)}</span></li>
+
+
+                <li <if condition="$data1[26]">style="display:none"<else/>style="background:url({:getindeximgurl($data1[3])}) left no-repeat; padding-left:44px; line-height:58px;"</if>><span style="float:left;font-size: 18px;color: #4c4c4c">分享到</span><div style="float:left; margin-left:5px; margin-top:12px;">
+  <div class="addthis_sharing_toolbox">
+       <div style="float: right;">
+          <div style="float:left; margin-left:5px; height:40px; line-height:40px; margin-top:3px; ">
+                                            
+                                            <div>
+                                                <div class="bdsharebuttonbox detail-share-box" data-tag="share_2">
+                                                    <a href="#" class="bds_more" data-cmd="more"></a>
+                                                    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+                                                    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+                                                    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+                                                    <a href="#" class="bds_renren" data-cmd="renren"></a>
+                                                    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+       </div>  
+  </div>
+
+  </div><div class="clear"></div></li>
+                  
+                
+                <li style="padding-top:15px;"><a onClick="javascript:jumpto();" style="width:120px; display:block; font-size:18px; text-align:center; line-height:40px; cursor:pointer; height:40px; background:#{$color}; color:#FFFFFF;">立即咨询</a></li>
+              </ul>
+            </div>
+            <ul class="pic_list smallImgList">
+                <div class="mod18"><span id="prev" class="btn prev"></span> <span id="next" class="btn next"></span>
+                  <div id="listBox" class="listBox">
+                    <ul class="cf">
+                       <li class="hover"><a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}"  <if condition="$pro['proalt'] neq ''">alt="{$product['proalt']}"<else/>alt="{$product['pro_name']}"</if> class="jqzoom"></a></li>
+                      <volist name="proimg" id="proimg">
+                        <if condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                          <li><a href="{:getfimgurl($proimg['field_auxiliary_fid'])}" ><img src="{:getfimgurl($proimg['field_auxiliary_fid'])}" class="jqzoom" <if condition="$pro['proalt'] neq ''">alt="{$product['proalt']}"<else/>alt="{$product['pro_name']}"</if>/></a></li>
+                        </if>
+                      </volist>
+                    </ul>
+                  </div>
+                </div>
+                <script type="text/javascript">
+        (function(){
+            
+            function G(s){
+                return document.getElementById(s);
+            }
+            
+            function getStyle(obj, attr){
+                if(obj.currentStyle){
+                    return obj.currentStyle[attr];
+                }else{
+                    return getComputedStyle(obj, false)[attr];
+                }
+            }
+            
+            function Animate(obj, json){
+                if(obj.timer){
+                    clearInterval(obj.timer);
+                }
+                obj.timer = setInterval(function(){
+                    for(var attr in json){
+                        var iCur = parseInt(getStyle(obj, attr));
+                        iCur = iCur ? iCur : 0;
+                        var iSpeed = (json[attr] - iCur) / 5;
+                        iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                        obj.style[attr] = iCur + iSpeed + 'px';
+                        if(iCur == json[attr]){
+                            clearInterval(obj.timer);
+                        }
+                    }
+                }, 30);
+            }
+            var oList = G("listBox");
+            var oPrev = G("prev");
+            var oNext = G("next");
+        
+            var oListLi = oList.getElementsByTagName("li");
+            var len2 = oListLi.length;
+            
+            var oListUl = oList.getElementsByTagName("ul")[0];
+            var w2 = oListLi[0].offsetWidth;
+        
+            oListUl.style.width = w2 * len2 + "px";
+        
+            var index = 0;
+            
+            var num = 2;
+            var num2 = Math.ceil(num / 2);
+        
+            function Change(){
+                if(index < num2){
+                    Animate(oListUl, {left: 0});
+                }else if(index + num2 <= len2){
+                    Animate(oListUl, {left: - (index - num2 + 1) * w2});
+                }else{
+                    Animate(oListUl, {left: - (len2 - num) * w2});
+                }
+        
+                for (var i = 0; i < len2; i++) {
+                    oListLi[i].className = "";
+                    if(i == index){
+                        oListLi[i].className = "on";
+                    }
+                }
+            }
+            
+            oNext.onclick = function(){
+                index ++;
+                index = index == len2 ? 0 : index;
+                Change();
+            }
+        
+            oPrev.onclick = function(){
+                index --;
+                index = index == -1 ? len2 -1 : index;
+                Change();
+            }
+        
+            for (var i = 0; i < len2; i++) {
+                oListLi[i].index = i;
+                oListLi[i].onclick = function(){
+                    index = this.index;
+                    Change();
+                }
+            }
+            
+        })()
+        function jumpto() {
+            $('html,body').animate({scrollTop: $('#inquiry').offset().top}, 1000);
+            return false;
+        };
+          function show(i)
+    { 
+      switch(i)
+      {
+      case 1:
+       document.getElementById("gx1").style.display="block";
+       document.getElementById("gx2").style.display="none"; 
+       document.getElementById("pro1").className="d_1";
+       document.getElementById("pro2").className="d_2";
+      break;
+    
+      case 2:
+       document.getElementById("gx1").style.display="none";
+       document.getElementById("gx2").style.display="block";  
+       document.getElementById("pro1").className="d_2";
+       document.getElementById("pro2").className="d_1";
+      break;
+      
+      }
+    }
+        $(document).ready(function () {
+            $("#gx1 img").click(function(){
+                console.log($(this).parent().attr("href"));
+                var mp4=$(this).parent().attr('href');
+                if(mp4){
+                    if(mp4.indexOf(".mp4")>0){
+                        openvideo(mp4);
+                        return false;
+                    }else{
+                        $('#gx1 a').has('img').not(".pdf").lightBox();
+                    }
+                }
+            });
+            function openvideo(url){
+//iframe窗
+                layer.open({
+                    type: 2,
+                    title: 'Video',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['800px', '600px'],
+                    maxmin: true,
+                    content: url //iframe的url
+                });
+            }
+        });
+        </script>
+              </ul>
+          </div>
+</notdefined>
+
+
+
+          <div class="clear" style="height:28px;"></div>
+
+
+        <div class="page_RightTitle2">产品详情</div>
+        <if condition="$editor_count eq 1">
+        	<div class="pro_detail" id="gx1" style="display:block;">{:str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile']))}</div>
+        <else/>
+<style>
+.tabsTitle {
+    display: inline-block;
+    line-height: 36px;
+    height: 36px;
+    vertical-align: top;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", 黑体, sans-serif;
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    margin-left: -8px;
+    font-size: 14px;
+    padding: 0px 15px;
+    border-right: 1px solid rgb(221, 221, 221);
+	
+}
+ .mainDetail-tabs {
+    height: 36px;
+    background-color: #eeeeee;
+    border: 1px solid #ddd;
+    position: relative;
+    height: 100%;
+    padding-left: 8px;
+	margin-top:5px;
+}
+.tabsTitle.active {
+    height: 36px;
+    border-top: 2px solid #{$color};
+    color: #{$color};
+    font-weight: bold;
+    background-color: #fff;
+}
+
+</style>        
+            <ul class="mainDetail-tabs">
+                <for start="1" end="$editor_count+1">
+                    <li index="{$i}" class="tabsTitle  <if condition="$i eq 1"> active </if>">{$data9[$i+1]}</li>
+                </for>  
+            </ul>   
+
+
+                <for start="1" end="$editor_count+1">
+                <php>
+                if($i==1){
+                $edit_name="pro_profile";
+                }else{
+                $edit_name="pro_profile".$i;
+                }
+                </php>
+
+                    <div index="{$i}" class="pro_detail"  <if condition="$i neq 1"> style="display:none" </if>  >{:str_replace('&nbsp;',' ',htmlspecialchars_decode($producteditors[$edit_name]))}</div>
+                </for>  
+            
+            <script>
+            $(".tabsTitle").on('click',function(){
+				$(".tabsTitle").removeClass("active");
+				$(this).addClass("active");
+				var index=$(this).attr("index");
+				$(".pro_detail").hide();
+				$(".pro_detail").eq(index-1).show();
+			})
+			
+            </script> 
+		</if>
+
+
+
+
+
+
+          <div class="clear" style="clear:both; height:0;"></div>
+          <div class="bt" style="margin-top:22px;"><a href="javascript:history.go(-1)" onfocus="blur()" style="display:block; font-size:14px; text-align:center; line-height:35px; color:#fff;">返回</a></div>
+    </div>
+    <div class="page_RightTitle2" id="inquiry" style="margin-top:50px;">立即咨询</div>
+    <div class="proinquiry"> <Include file="./Tpl/demo3/submitinquiry.html" /></div>
+    <div style="clear:both;"></div>
+    <if condition="$data1[23]">
+        <style>
+            .other_pro_open{display: none}
+        </style>
+        <else/>
+        <style>
+            .other_pro_open{display: block}
+        </style>
+    </if>
+    <if condition="$otherpro neq ''">
+        <div class="other_pro_open">
+            <div class="page_RightTitle">其他产品</div>
+            <div class="page_RightMain" style="padding-bottom:0;">
+                <volist empty="" name="otherpro" id="otherpro" offset="0" length="3">
+
+
+
+                    <defined name="PRODIMGFLAG">
+
+
+                        <script>
+                            function changeprod(type,pid){
+                                //console.log(type)
+                                if(type==1){
+                                    $("#cpordlist2_"+pid).show();
+                                    $("#cpordlist1_"+pid).hide();
+                                }
+                                else{
+                                    $("#cpordlist1_"+pid).show();
+                                    $("#cpordlist2_"+pid).hide();
+                                }
+                            }
+                        </script>
+
+                        <div class="asd2" style="border:0;border-radius:2px;box-shadow: 0 0 20px #ccc;"  onmouseover="changeprod(1,{$otherpro['pid']})" onmouseout="changeprod(2,{$otherpro['pid']})">
+
+
+                            <div style="border-radius:2px;border:0;background:#f2f2f2;position:relative;height:221px;" id="cpordlist1_{$otherpro['pid']}">
+                                <div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+                                    <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}" style="color:#333;font-size:16px;">{$otherpro['pro_name']}</a>
+                                </div>
+                                <div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+                                    <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}"style="color:#666;font-size:14px;">{$otherpro['pro_description']}</a>
+                                </div>
+                                <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+                                    <div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+                                    <div style="width:80%;margin:0 auto;padding-top:14px;"><img src="__TMPL__demo3/img/hui.png" ></div>
+                                </a>
+                            </div>
+
+
+                            <div style="border-radius:2px;border:0;background:#{$color};position:relative;height:221px;display:none;" id="cpordlist2_{$otherpro['pid']}">
+                                <div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+                                    <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}" style="color:#fff;font-size:16px;">{$otherpro['pro_name']}</a>
+                                </div>
+                                <div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+                                    <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}"style="color:#dddddd;font-size:14px;">{$otherpro['pro_description']}</a>
+                                </div>
+                                <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+                                    <div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+                                    <div style="width:80%;margin:0 auto;padding-top:14px;"><img src="__TMPL__demo3/img/lan.png" ></div>
+                                </a>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <else />
+
+                        <div class="asd2" >
+                            <div class="img2" ><a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}"><img src="{:getmainimgurl($otherpro['main_img'])}" <if condition="$otherpro['proalt'] neq ''">alt="{$otherpro['proalt']}"<else/>alt="{$otherpro['pro_name']}"</if> /></a>
+                            </div>
+
+                            <div class="in_proname2">
+                                <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">{$otherpro['pro_name']}</a>
+                            </div>
+
+                        </div>
+
+                    </defined>
+
+
+                    <if condition="($key+1)%3 eq 0">
+                        <div style="clear:both; width: 100%; height:26px;"></div>
+                        <else/>
+                        <div style="width:32px; height:10px; background:none; float:left;"></div>
+                    </if>
+                </volist>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </if>
+    <if condition="$newpro neq ''">
+        <div class="other_pro_open">
+    <div class="page_RightTitle">新品展示</div>
+    <div class="page_RightMain" style="padding-bottom:0;">
+     <volist empty="" name="newpro" id="newpro" offset="0" length="3">
+
+
+ <defined name="PRODIMGFLAG">
+                  
+				  
+				  <script>
+				    function changeprod(type,pid){
+					  //console.log(type)
+                      if(type==1){
+					    $("#cpordlist2_"+pid).show();
+						$("#cpordlist1_"+pid).hide();
+					  }
+					  else{
+					    $("#cpordlist1_"+pid).show();
+						$("#cpordlist2_"+pid).hide();
+					  }
+					}
+				  </script>
+
+              <div class="asd2" style="border:0;border-radius:2px;box-shadow: 0 0 20px #ccc;"  onmouseover="changeprod(1,{$newpro['pid']})" onmouseout="changeprod(2,{$newpro['pid']})">
+                
+
+				<div style="border-radius:2px;border:0;background:#f2f2f2;position:relative;height:221px;" id="cpordlist1_{$newpro['pid']}">
+					<div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+					    <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" style="color:#333;font-size:16px;">{$newpro['pro_name']}</a>
+					</div>
+					<div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+					    <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}"style="color:#666;font-size:14px;">{$newpro['pro_description']}</a>
+					</div>
+					<a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+						<div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+						<div style="width:80%;margin:0 auto;padding-top:14px;"><img src="__TMPL__demo3/img/hui.png" ></div>
+					</a>
+				</div>
+
+
+				<div style="border-radius:2px;border:0;background:#{$color};position:relative;height:221px;display:none;" id="cpordlist2_{$newpro['pid']}">
+					<div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+					    <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" style="color:#fff;font-size:16px;">{$newpro['pro_name']}</a>
+					</div>
+					<div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+					    <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}"style="color:#dddddd;font-size:14px;">{$newpro['pro_description']}</a>
+					</div>
+					<a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+						<div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+						<div style="width:80%;margin:0 auto;padding-top:14px;"><img src="__TMPL__demo3/img/lan.png" ></div>
+					</a>
+                </div>
+
+                
+              </div>
+
+
+
+			  <else />
+
+			  <div class="asd2" >
+                <div class="img2" ><a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}"><img src="{:getmainimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> /></a>
+                </div>
+                
+                <div class="in_proname2">
+                   <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">{$newpro['pro_name']}</a>
+                </div>
+
+              </div>
+
+			  </defined>
+
+
+               <if condition="($key+1)%3 eq 0">
+                 <div style="clear:both; width: 100%; height:26px;"></div>
+               <else/>
+                 <div style="width:32px; height:10px; background:none; float:left;"></div>
+               </if>
+            </volist>
+    </div>
+        </div>
+    </if>
+    <div style="clear:both"></div>
+                <if condition="comment_show() eq 1">
+                    <include file="demo3:comment" />
+                </if>
+                <include file="demo3:relationinfo" />
+                <include file="demo3:relationnew" />
+     <div style="clear:both; height:30px;"></div>
+</div>
+</div>
+<Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-5.html" />
+</block>

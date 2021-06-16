@@ -1,0 +1,112 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,
+        .cases_detail2_prev ul li a:hover,
+        .cases_detail2_prev ul li {
+            color: #{$color};
+        }
+
+        .productbutton,
+        .HJZF_Z_cases2_title {
+            background: #{$color};
+            color: #fff;
+        }
+
+        .HJZF_Z_cases2_title .cases_view span,
+        .HJZF_Z_cases2_title .cases_view span i {
+            color: #{$color};
+        }
+
+        .HJZF_Z__inner9--text .index_title {
+            color: #333;
+            font-size: 30px;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .cases_view {
+            border-bottom: 0;
+        }
+
+        .HJZF_Z__inner9--text {
+            padding-bottom: 30px;
+            padding-top: 15px;
+        }
+
+        .cases_bread_11 {
+            padding-top: 15px;
+            display: block !important;
+        }
+
+        .cases_11_wrapper {
+            background-color: rgba(241, 241, 241, 1);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-radius: 10px;
+        }
+    </style>
+    <div class="inner9__wrapper" id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/cases_banner_detail_10.html" />
+        <div class="index_inner container">
+            <div class="row">
+                <Include file="./Tpl/HJZF2_Z/inner/cases_right_10.html" />
+                <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                    <Include file="./Tpl/HJZF2_Z/leftcases_mobile.html" />
+                </section>
+                <div class="col-xs-12 col-lg-8 pull-left">
+                    <div class="HJZF_Z__inner9--text wow bounceIn">
+                        <div class="index_title">{$news['title']}</div>
+                        <div class="news_view">
+                            <span class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{:date('Y/m/d',$news['created'])}</span><span>|</span><span class="red"><i class="fa fa-eye"
+                                    aria-hidden="true"></i>&nbsp;{:__('View:')}{$news['click_num']}</span>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <section class="InsidePages_content-right2">
+                        <div class="InsidePages_content-right_wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="cases">
+                                    <div id="cases_detail">
+                                        <div class="body">
+                                            <div class="cases_body">{:htmlspecialchars_decode($news['body'])}</div>
+                                            <div class="cases_detail2_prev">
+                                                <ul>
+                                                    <if condition="$newprev[0]['title'] eq ''">
+
+                                                        <else/>
+                                                        <li class="news_prev">
+                                                            {:__('Prev: ')}
+                                                            <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                {$newprev[0]['title']}
+                                                            </a>
+                                                        </li>
+                                                    </if>
+                                                    <if condition="$newnext[0]['title'] eq ''">
+
+                                                        <else/>
+                                                        <li class="news_next">
+                                                            {:__('Next: ')}
+                                                            <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                {$newnext[0]['title']}
+                                                            </a>
+                                                        </li>
+                                                    </if>
+                                                    <div class="clear"></div>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div style="clear:both"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</block>

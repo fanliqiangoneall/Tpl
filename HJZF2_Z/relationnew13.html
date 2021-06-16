@@ -1,0 +1,175 @@
+<if condition="$labelnewlists neq ''">
+    <style>
+        .inner_news13_newslist {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .inner_news13_newslist li {
+            margin-bottom: 35px;
+        }
+
+        .inner_news13_newslist li article {
+            border: 1px solid #89cddf;transition: .4s;
+        }
+        .inner_news13_newslist li:hover article{
+            border-color: #b5ad8f;transition: .4s;
+        }
+        .inner_news13_newslist li .inner_news13_newsimg img {
+            max-width: 100%;
+        }
+
+        .inner_news13_details {
+            padding: 20px;
+        }
+
+        .entry-meta_news {
+            display: flex;
+            justify-content: space-between;
+            color: #b5ad8f;
+            line-height: 28px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .entry-meta_news>div.num i{margin-right: 5px;}
+        .entry_title {
+            margin-bottom: 10px;
+        }
+
+        .entry_title a h5 {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: bold;
+            color: #{$inner_data[1]};
+        }
+
+        .entry_body p {
+            line-height: 28px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .entry-meta_data p {
+            display: inline-block;
+        }
+
+        .entry_more a {
+            font-size: 15px;
+            text-transform: inherit;
+            padding: 13px 20px 14px;
+            line-height: normal;
+            display: inline-block;
+            margin: 0 0 35px;
+            cursor: pointer;
+            outline: none;
+            z-index: 1;
+            background: #{$inner_data[1]};
+            color: #fff;
+            position: relative;
+            letter-spacing: .5px;
+            overflow: hidden;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .entry_more a:after {
+            content: '';
+            position: absolute;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+            width: 54px;
+            height: 100%;
+            z-index: 1;
+            right: 0;
+            top: 0;
+            margin: 0;
+            z-index: -1;
+            background: rgba(0, 0, 0, .1);
+        }
+
+        .entry_more a:hover:after {
+            width: 100%;
+        }
+
+        .entry_more a span {
+            margin-left: 35px;
+        }
+
+        .entry_tags {
+            margin: 10px 0 20px;
+        }
+
+        .entry_tags a,
+        .entry_tags i {
+            color: #b5ad8f;
+        }
+
+        .entry_tags i {
+            transform: rotate(90deg);
+            margin-right: 10px;
+        }
+    </style>
+    <div class="page_Main">
+        <ul class="inner_news13_newslist">
+            <volist empty="" id="labelnewlists" name="labelnewlists" key="k" offset="0" length="3">
+               
+                <li id="new_list{$key}" class="col-xs-12 col-md-6 col-lg-4">
+
+                    <article>
+                        <div class=" inner_news13_newsimg">
+                            <a href="{:U('/new_detail',array('nid'=>$labelnewlists['nid']))}"
+                                onFocus="blur()"><img <if
+                                    condition="$labelnewlists['new_pro']">src="{:getimgurl($labelnewlists['new_pro'])}"
+                                <else />src="{:getindeximgurl($inner_data[2])}"</if> border="0"
+                                /></a>
+                        </div>
+                        <div class="inner_news13_details">
+                            <div class="entry-meta_news">
+                                <div class="date">
+                                    <if condition="C('Language') eq 'cn'">
+                                        {:date('m月d ',$labelnewlists['created'])}
+                                        <else />
+                                        Posted on {:date('d M ',$labelnewlists['created'])}
+                                    </if>
+                                </div>
+                                <div class="num">
+                                    <i class="fa fa-eye"></i>{:__('click times:
+                                    ')}{$labelnewlists['click_num']}
+                                </div>
+                            </div>
+                            <div class="entry_title text-center">
+                                <a href="{:U('/new_detail',array('nid'=>$labelnewlists['nid']))}">
+                                    <h5>{$labelnewlists['title']}</h5>
+                                </a>
+                            </div>
+                            <div class="entry_body text-center ellipsis_two">
+                                <p>{:subtxt($labelnewlists['news_description'],200)}</p>
+                            </div>
+                            <div class="entry-meta_data text-center">
+                                <php>
+                                    $class = get_news_info($labelnewlists['news_class']);
+                                </php>
+                                <div class="entry_tags">
+                                    <p class="tags"><i class="fa fa-tag"></i><a
+                                            href="{:U('/new_category',array('classid'=>$labelnewlists['news_class']))}">{$class['class_name']}</a>
+                                    </p>
+                                </div>
+                                <div class="entry_more">
+                                    <a href="{:U('/new_detail',array('nid'=>$labelnewlists['nid']))}">{:__('Read More')} <span
+                                            class="fa fa-long-arrow-right"></span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+
+                </li>
+            </volist>
+        </ul>
+
+    </div>
+</if>
+
+<div class="clear"></div>

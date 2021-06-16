@@ -1,0 +1,96 @@
+<!--{$pagename}-->
+<php>
+    if(!$data3[12]){
+        $data3[12] = 800;
+    }
+</php>
+<style>
+    .HJ05-banner1-box{
+        height: {$data3[12]}px;
+    }
+    .swiper-slide .b_item1{
+        transform:translateY(-200px);
+        opacity:0;
+        transition:all .4s;
+    }
+    .swiper-slide .b_item2{
+        transform:translateX(-200px);
+        opacity:0;
+        transition:all .4s;
+    }
+    .ani-slide .b_item1{
+        transform:translateY(0);
+        opacity:1;
+    }
+    .ani-slide .b_item2{
+        transform:translateX(0);
+        opacity:1;
+    }
+    .hj05-banner.swiper-container-vertical>.swiper-pagination-bullets{
+        right: inherit;
+        top: 92%;
+        left: 50%;
+         -webkit-transform: translate3d(-50%,0,0);
+        transform: translate3d(-50%,0,0);
+    }
+    .hj05-banner.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet{
+        display: inline-block;margin: 6px 3px;width: 20px;height: 3px;background: #acacac;border-radius: 0;opacity: 1;
+    }
+    .hj05-banner.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active{
+       background: #fff;opacity: 1;
+    }
+    .hj05-banner .hj-banner-next,.hj05-banner .hj-banner-prev{background: rgba(113, 114, 115, 0.3);}
+    .hj05-banner .hj-banner-next i,.hj05-banner .hj-banner-prev i{font-size: 24px;line-height: 70px;text-align: center;font-weight: normal;color: #fff;}
+    .hj05-banner:hover .hj-banner-next{right: 40px;}
+    .hj05-banner:hover .hj-banner-prev{left: 40px;}
+</style>
+<section class="hj-banner HJ05-banner1-box">
+    <div id="HJ05-banner1">
+        <div class="swiper-container hj05-banner">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k" offset="0" length="1">
+                    <div class="swiper-slide HJ-banner-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <div class="banner_wrap flex">
+                            <if condition="$data[0]"><div class="b_item1"><img src="{:getindeximgurl($data[0])}" alt=""/></div></if>
+                            <if condition="$data[1]"><div class="b_item1"><img src="{:getindeximgurl($data[1])}" alt=""/></div></if>
+                            <if condition="$data[2]"><div class="b_item2"><img src="{:getindeximgurl($data[2])}" alt=""/></div></if>
+                            <if condition="$data[3]"><div class="b_item1"><img src="{:getindeximgurl($data[3])}" alt=""/></div></if>
+                        </div>
+
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="1" length="1">
+                    <div class="swiper-slide HJ-banner-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <div class="banner_wrap flex">
+                            <if condition="$data[4]"><div class="b_item1"><img src="{:getindeximgurl($data[4])}" alt=""/></div></if>
+                            <if condition="$data[5]"><div class="b_item1"><img src="{:getindeximgurl($data[5])}" alt=""/></div></if>
+                            <if condition="$data[6]"><div class="b_item2"><img src="{:getindeximgurl($data[6])}" alt=""/></div></if>
+                            <if condition="$data[7]"><div class="b_item1"><img src="{:getindeximgurl($data[7])}" alt=""/></div></if>
+                        </div>
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="2" length="1">
+                    <div class="swiper-slide HJ-banner-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <div class="banner_wrap flex">
+                            <if condition="$data[8]"><div class="b_item1"><img src="{:getindeximgurl($data[8])}" alt=""/></div></if>
+                            <if condition="$data[9]"><div class="b_item1"><img src="{:getindeximgurl($data[9])}" alt=""/></div></if>
+                            <if condition="$data[10]"><div class="b_item2"><img src="{:getindeximgurl($data[10])}" alt=""/></div></if>
+                            <if condition="$data[11]"><div class="b_item1"><img src="{:getindeximgurl($data[11])}" alt=""/></div></if>
+                        </div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-pagination hj-banner-pagination"></div>
+            <div class="swiper-button-next hj-banner-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hj-banner-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+
+    </div>
+
+</section>

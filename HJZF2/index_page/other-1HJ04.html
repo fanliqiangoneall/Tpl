@@ -1,0 +1,30 @@
+<style>
+    .new_hjzf_other-1HJ04 .videoContainer{
+        background: url({:getindeximgurl($data104[0])}) no-repeat center;
+    }
+    .new_hjzf_other-1HJ04 .videoOpen02{
+        background: #{$color};
+    }
+</style>
+<div class="videoContent">
+    <div class="videoContainer"></div>
+    <div class="videoOpenContainer">
+        <div style="width: 100%;width: 100%;position: relative;">
+            <div class="videoOpen"></div>
+            <div class="videoOpen02"></div>
+            <div class="videoOpen03"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".videoOpenContainer").click(function() {
+        var index = layer.open({
+            type: 1,
+            title: ['{$data104[1]}', 'font-size:18px;'],
+            area: ['320px', '195px'],
+            maxmin: true,
+            content: '<video width="100%" height="100%" autoplay="autoplay"><source src="{$data104[2]}" type="video/mp4"></video>',
+        });
+        layer.full(index);
+    })
+</script>

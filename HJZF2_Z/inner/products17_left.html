@@ -1,0 +1,374 @@
+<style>
+    .pro-class-box {
+        padding-top: 30px;
+        margin-bottom: 80px;
+    }
+
+    .pro-class-box dl {
+        overflow: hidden;
+        border-bottom: 1px solid #e4e4e4;
+        line-height: 30px;
+        padding: 20px 0;
+        flex-wrap: wrap;
+        display: none;
+    }
+
+    .pro-class-box .pro_17_list_left:first-child dl,
+    .pro-class-box dl.on {
+        display: flex;
+    }
+
+    .pro-class-box dl dt {
+        flex: 0 0 10%;
+        text-align: right;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .pro-class-box dl dd {
+        flex: 0 0 88%;
+        margin-left: 2%;
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .pro-class-box dl dd>a {
+        flex: 0 0 10%;
+        text-align: center;
+    }
+
+    .pro-class-box dl dd .txt {
+        flex: 0 0 90%;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .pro-class-box dl dd .txt a {
+        margin-bottom: 7.5px;
+        display: flex;
+        padding-right: 15px;
+        padding-left: 15px;
+        align-items: center;
+    }
+
+    .pro-class-box dl dd .txt a em {
+        font-style: normal;
+        color: #{$color};
+    }
+
+    .pro-class-box dl dd .txt a.on h3,
+    .pro-class-box dl dd .txt a:hover h3,
+    .pro-class-box dl dd .txt a:hover em,
+    .pro-class-box dl dd .txt a.on em {
+        color: #{$color};
+    }
+
+    .pro-class-box dl dd .txt h3 {
+        font-style: normal;
+        font-size: 14px;
+        color: #333;
+        white-space: nowrap;
+        transition: all .5s;
+    }
+</style>
+<script>
+
+</script>
+<php>
+    if(!$inner_data[3]){
+    $inner_data[3] = '一级';
+    };
+    if(!$inner_data[4]){
+    $inner_data[4] = '二级';
+    };
+    if(!$inner_data[5]){
+    $inner_data[5] = '三级';
+    };
+    if(!$inner_data[6]){
+    $inner_data[6] = '四级';
+    };
+    if(!$inner_data[7]){
+    $inner_data[7] = '五级';
+    };
+    if(!$inner_data[8]){
+    $inner_data[8] = '六级';
+    };
+</php>
+<div class="col-lg-12 pro-class-box hidden-xs hidden-sm hidden-md">
+    <div class="pro_17_list_left">
+        <!-- 一级 -->
+        <dl class="yiji">
+            <dt>{$inner_data[3]}</dt>
+            <dd>
+                <a href="{:U('/product')}">{:__('Unlimited')}</a>
+                <div class="txt">
+                    <volist empty="" name="allclass" id="allclass_left">
+						<if condition="$allclass_left['pcid'] eq '41428'">
+							<a href="/landpage_Wheeled-tractor.html"  class="pro_sx_id" data-id="{$allclass_left['pcid']}" data-path='{$rs[parent_path]}'
+                            data-name='{$allclass_left[readme]}' data-pro="{$classid}"
+                            data-par="{$prolist['parent_id']}">{$allclass_left['class_name']}</a>
+								<else/>
+                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}"
+                            class="pro_sx_id" data-id="{$allclass_left['pcid']}" data-path='{$rs[parent_path]}'
+
+                            data-name='{$allclass_left[readme]}' data-pro="{$classid}"
+                            data-par="{$prolist['parent_id']}">{$allclass_left['class_name']}
+                        </a>
+					</if>
+                    </volist>
+                </div>
+            </dd>
+        </dl>
+        <!-- 一级 -->
+    </div>
+
+    <div class="pro_17_list_left">
+        <!-- 二级 start-->
+        <volist empty="" name="allclass" id="allclass_lefta">
+            <if condition='$allclass_lefta["childs"] neq ""'>
+                <dl data-path='{$rs[parent_path]}' data-id="{$allclass_lefta['pcid']}" data-path='{$rs[parent_path]}'
+                    data-pro="{$classid}" data-par="{$prolist['parent_id']}" class="pro_sx_id"
+                    data-topid="{$allclass_lefta['pcid']}">
+                    <dt>{$inner_data[4]}</dt>
+                    <dd>
+                        <a
+                            href="{:U('/product_category','','')}/{:getprocatename($allclass_lefta['pcid'])}">{:__('Unlimited')}</a>
+                        <div class="txt">
+                            <volist empty="" name="allclass_lefta['childs']" id="allclass_leftchild">
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}"
+                                    data-name='{$allclass_leftchild[readme]}' data-id="{$allclass_leftchild['pcid']}"
+                                    data-path='{$rs[parent_path]}' data-pro="{$classid}"
+                                    data-par="{$prolist['parent_id']}"
+                                    class="pro_sx_id">{$allclass_leftchild['class_name']}
+                                </a>
+                            </volist>
+                        </div>
+                    </dd>
+                </dl>
+            </if>
+        </volist>
+        <!-- 二级 end-->
+    </div>
+
+    <div class="pro_17_list_left">
+        <!-- 三级 -->
+        <volist empty="" name="allclass" id="allclass_leftb">
+            <volist empty="" name="allclass_leftb['childs']" id="allclass_leftsanji">
+                <if condition='$allclass_leftsanji["childs"] neq ""'>
+                    <dl data-id="{$allclass_leftsanji['pcid']}" data-path='{$rs[parent_path]}' data-pro="{$classid}"
+                        data-par="{$prolist['parent_id']}" data-topid="{$allclass_lefta['pcid']}" class="pro_sx_id">
+                        <dt>{$inner_data[5]}</dt>
+                        <dd> <a
+                                href="{:U('/product_category','','')}/{:getprocatename($allclass_leftsanji['pcid'])}">{:__('Unlimited')}</a>
+                            <div class="txt">
+                                <volist empty="" name="allclass_leftsanji['childs']" id="allclass_leftthird">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftthird['pcid'])}"
+                                        data-id="{$allclass_leftthird['pcid']}" data-path='{$rs[parent_path]}'
+                                        data-name='{$allclass_leftthird[readme]}' data-pro="{$classid}"
+                                        data-par="{$prolist['parent_id']}"
+                                        class="pro_sx_id">{$allclass_leftthird['class_name']}
+                                    </a>
+                                </volist>
+                            </div>
+                        </dd>
+                    </dl>
+                </if>
+            </volist>
+        </volist>
+        <!-- 三级 -->
+    </div>
+
+
+    <div class="pro_17_list_left">
+        <!-- 四级 -->
+        <volist empty="" name="allclass" id="allclass_leftc">
+            <volist empty="" name="allclass_leftc['childs']" id="allclass_leftsj">
+                <volist empty="" name="allclass_leftsj['childs']" id="allclass_leftfor">
+                    <if condition='$allclass_leftsj["childs"] neq ""'>
+                        <dl data-id="{$allclass_leftfor['pcid']}" data-path='{$rs[parent_path]}' data-pro="{$classid}"
+                            data-par="{$prolist['parent_id']}" data-topid="{$allclass_lefta['pcid']}" class="pro_sx_id">
+                            <dt>{$inner_data[6]}</dt>
+                            <dd> <a
+                                    href="{:U('/product_category','','')}/{:getprocatename($allclass_leftsj['pcid'])}">{:__('Unlimited')}</a>
+                                <div class="txt">
+                                    <foreach name="allclass_leftfor['childs']" item="vo">
+                                        <a href="{:U('/product_category','','')}/{:getprocatename($vo['pcid'])}"
+                                            data-id="{$vo['pcid']}" data-path='{$rs[parent_path]}' data-pro="{$classid}"
+                                            data-name='{$vo[readme]}' data-par="{$prolist['parent_id']}"
+                                            class="pro_sx_id">{$vo['class_name']}
+                                        </a>
+                                    </foreach>
+
+                                </div>
+                            </dd>
+                        </dl>
+                    </if>
+                </volist>
+            </volist>
+        </volist>
+        <!-- 四级 -->
+    </div>
+
+    <div class="pro_17_list_left">
+        <!-- 五级 -->
+        <volist empty="" name="allclass" id="allclass_leftd">
+            <volist empty="" name="allclass_leftd['childs']" id="allclass_leftwj">
+                <volist empty="" name="allclass_leftwj['childs']" id="allclass_leftwa">
+                    <foreach name="allclass_leftwa['childs']" item="co">
+                        <if condition='$co["childs"] neq ""'>
+                            <dl data-id="{$co['pcid']}" data-path='{$rs[parent_path]}' data-pro="{$classid}"
+                                data-par="{$prolist['parent_id']}" data-topid="{$allclass_lefta['pcid']}"
+                                class="pro_sx_id">
+                                <dt>{$inner_data[7]}</dt>
+                                <dd> <a
+                                        href="{:U('/product_category','','')}/{:getprocatename($co['pcid'])}">{:__('Unlimited')}</a>
+                                    <div class="txt">
+                                        <foreach name="co['childs']" item="forco">
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($forco['pcid'])}"
+                                                data-id="{$forco['pcid']}" data-path='{$rs[parent_path]}'
+                                                data-pro="{$classid}" data-name='{$forco[readme]}'
+                                                data-par="{$prolist['parent_id']}"
+                                                class="pro_sx_id">{$forco['class_name']}
+                                            </a>
+                                        </foreach>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </if>
+                    </foreach>
+                </volist>
+            </volist>
+        </volist>
+        <!-- 五级 -->
+    </div>
+
+    <div class="pro_17_list_left">
+        <!-- 六级 -->
+        <volist empty="" name="allclass" id="allclass_lefte">
+            <volist empty="" name="allclass_lefte['childs']" id="allclass_leftlj">
+                <volist empty="" name="allclass_leftlj['childs']" id="allclass_leftwalj">
+                    <foreach name="allclass_leftwalj['childs']" item="cwjo">
+                        <foreach name="cwjo['childs']" item="cljo">
+                            <if condition='$cljo["childs"] neq ""'>
+                                <dl data-id="{$cljo['pcid']}" data-path='{$rs[parent_path]}' data-pro="{$classid}"
+                                    data-par="{$prolist['parent_id']}" data-topid="{$allclass_lefta['pcid']}"
+                                    class="pro_sx_id">
+                                    <dt>{$inner_data[8]}</dt>
+                                    <dd> <a
+                                            href="{:U('/product_category','','')}/{:getprocatename($cljo['pcid'])}">{:__('Unlimited')}</a>
+                                        <div class="txt">
+                                            <foreach name="cljo['childs']" item="forcolj">
+                                                <a href="{:U('/product_category','','')}/{:getprocatename($forcolj['pcid'])}"
+                                                    data-id="{$forcolj['pcid']}" data-path='{$rs[parent_path]}'
+                                                    data-pro="{$classid}" data-name='{$forcolj[readme]}'
+                                                    data-par="{$prolist['parent_id']}"
+                                                    class="pro_sx_id">{$forcolj['class_name']}
+                                                </a>
+                                            </foreach>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </if>
+                        </foreach>
+                    </foreach>
+                </volist>
+            </volist>
+        </volist>
+        <!-- 六级 -->
+    </div>
+
+</div>
+<script>
+    $(function () {
+        $('.pro_sx_id').each(function (i, ele) {
+            var self = $(ele);
+            var dataPath = self.attr('data-path');
+            var dataId = self.attr('data-id');
+            var dataPro = self.attr('data-pro');
+            var dataPar = self.attr('data-par');
+            var dataTop = self.attr('data-topid');
+            if (dataPath != '') {
+                var dadaPathArr = dataPath.split(',');
+                var indeOf = dadaPathArr.indexOf(dataId);
+                if (indeOf >= 0 || dataPro == dataId || dataPro == dataPar) {
+                    self.addClass('on');
+                }
+            } else {
+                if (dataPro == dataId || dataPar == dataId) {
+                    self.addClass('on');
+                }
+            };
+
+        })
+        function recursion(dom) {
+            var l = $(dom).parent;
+            var lastDomPar = $(dom).eq(l.length).parent('.pro_17_list_left');
+            var next = lastDomPar.next('.pro_17_list_left');
+            if (next.length > 0) {
+                next.find('dl').addClass('on').find('.txt').find('a').eq(1).addClass('on');
+            }
+            if (l.length > 0) {
+                console.log(l.length, $(dom).eq(l.length).addClass('woshi'));
+            }
+        }
+        recursion('.pro_sx_id.on');
+
+        // 群哥写的
+        //        var path="";
+        //        path=$('.yiji .pro_sx_id on,.on').eq(0).attr('data-id');
+        //        alert(path);
+        //        path=","+path+",";
+        //        $(".pro_17_list_left dl").css("display","none");
+        //        $("dl[data-path='"+path+"']").css("display","flex")
+
+        //找到最后被选中的
+        var len = $('.txt .on').length;
+        console.log("len", len);
+        var cur_classid = $('.txt .on').eq(len - 1).attr("data-id");
+        console.log("cur_classid", cur_classid);
+        $("dl[data-id='" + cur_classid + "']").css("display", "flex");
+        cur_classid = $("dl[data-id='" + cur_classid + "'] .txt a").eq(0).attr("data-id");
+        console.log("cur_classid1", cur_classid);
+        $("dl[data-id='" + cur_classid + "']").css("display", "flex");
+        cur_classid = $("dl[data-id='" + cur_classid + "'] .txt a").eq(0).attr("data-id");
+        console.log("cur_classid2", cur_classid);
+        $("dl[data-id='" + cur_classid + "']").css("display", "flex");
+        cur_classid = $("dl[data-id='" + cur_classid + "'] .txt a").eq(0).attr("data-id");
+        console.log("cur_classid2", cur_classid);
+        $("dl[data-id='" + cur_classid + "']").css("display", "flex");
+        cur_classid = $("dl[data-id='" + cur_classid + "'] .txt a").eq(0).attr("data-id");
+        console.log("cur_classid2", cur_classid);
+        $("dl[data-id='" + cur_classid + "']").css("display", "flex");
+
+
+    });
+
+
+
+
+
+    $('.txt').each(function () {
+        var self = $(this).html().trim();
+        if (self == '') {
+            $(this).parents('dl').hide();
+        };
+    });
+    var prev_dom = [];
+    $(document).ready(function (e) {
+        $("a.pro_sx_id.on").each(function (index, element) {
+            var name = $(this).data("name");
+            if (name) {
+                prev_dom.push(name);
+            }
+        });
+        // console.log("prev_dom", prev_dom);
+        $("dl.pro_sx_id.on").each(function (index, element) {
+            $(this).find("dt").html(prev_dom[index]);
+        });
+
+    });
+
+
+
+</script>

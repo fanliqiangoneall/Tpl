@@ -1,0 +1,89 @@
+<!--{$pagename}-->
+<!--{:dump(has_mould('bottom-2'))}-->
+<if condition="has_mould('bottom-4') eq false">
+<style>
+#bottom4{ display:none;}
+</style>
+<else/>
+<link href="__TMPL__demo2/css/bottom4.css" rel="stylesheet">
+</if>
+<div id="bottom4" style="min-height: 240px;">
+
+<style>
+    .bottom4_item>h2:after{
+        content:'';display: table;width: 50px;height: 4px;position: absolute;bottom: -6px;left: 0;background: #{$color};
+    }
+    .bottom4_item_contact li a:hover{
+        color: #{$color};
+    }
+</style>
+
+<div class="bottom_f">
+    <div class="container" style="width: 1190px;margin: auto">
+        <ul>
+            <li class="bottom4_item" style="width: 270px">
+                <h2>{$data43[0]}</h2>
+                <ul class="bottom4_item_ul">
+                    <php>
+                        for($a=1;$a<9;$a=$a+2){
+                    </php>
+                        <if condition="$data43[$a] neq ''">
+                            <li><a href="{$data43[$a+1]}"><h3>{$data43[$a]}</h3></a></li>
+                        </if>
+                    <php>
+                        }
+                    </php>
+                </ul>
+            </li>
+            <li class="bottom4_item" style="width: 300px">
+                <h2>{$data43[9]}</h2>
+                <ul class="bottom4_item_ul">
+                    <volist empty="No data" name="allclass" id="allclass_bottom">
+                        <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_bottom['pcid'])}">{$allclass_bottom['class_name']}</a></li>
+                    </volist>
+                </ul>
+            </li>
+            <li class="bottom4_item" style="width: 364px">
+                <h2>{$data43[10]}</h2>
+                <ul class="bottom4_item_contact">
+                   <if condition="chaifen($about['contact'],0)"><li>Manager:{:chaifen($about['contact'],0)}</li></if>
+                   <if condition="chaifen($about['mobile'],0)"><li>Phone:{:chaifen($about['mobile'],0)}</li></if>
+                    <if condition="chaifen($about['email'],0)"><li>Email:<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></li></if>
+                    <if condition="$about['address']"><li>Add:{$about['address']}</li></if>
+                </ul>
+            </li>
+            <if condition="$data43[12]">
+            <li class="bottom4_item bottom4_item_four" style="float: right">
+                <h2 style="text-align: center">{$data43[11]}</h2>
+                <div><img src="{:getindeximgurl($data43[12])}" alt="手机站"/></div>
+            </li>
+            </if>
+            <div class="clear"></div>
+        </ul>
+        <div class="index_bottom_bottom4">
+            <php>
+                $nowtime=date("Y",time());
+                $currtime=$data43[13];
+            </php><div class="" style="margin-top:20px;">
+            <div style="width:50%; float:left;color:#fff;font-size:15px;">
+                <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} all rights reserved.&nbsp;
+            </div>
+
+            <div style="width:50%; float:right;color:#fff;font-size:15px; text-align:right;">
+                &nbsp;&nbsp;
+                <a href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;
+                <span style="font-size:16px;  color:#ffff;"><a href="{:U('/alltag','','')}">All tags</a></span>&nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="zhonghuan Internet" target="_blank">zhonghuan Internet</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+            <div class="clear"></div>
+            </div>
+    </div>
+    <div class="clear" style="width:100%; height:10px;"></div>
+</div>
+    <div class="clear"></div>
+    </div>
+
+
+
+
+
+</div>
+

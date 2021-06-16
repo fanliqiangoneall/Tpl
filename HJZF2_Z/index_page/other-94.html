@@ -1,0 +1,196 @@
+<!--{$pagename}-->
+<php>
+    if($data492[0]){
+    $color = $data492[0];
+    }
+    if($data492[6]){
+    $mbbg = $data492[6];
+    }else{
+    $mbbg = '000';
+    }
+</php>
+<style>
+    <if condition="$data493[13]">
+        .HJZF2_Z_other_94{
+            background: url({:getindeximgurl($data493[13])}) no-repeat center/cover fixed;
+        }
+        <else/>
+        .HJZF2_Z_other_94 {
+        background-color: #{$data493[1]};
+    }
+
+    .HJZF2_Z_other_94_midbg {
+        background-color: #{$data493[2]};
+    }
+     </if>
+    
+    .HJZF2_Z_other_94_wrapper_pagination span.swiper-pagination-bullet-active{
+    background-color: #{$color};
+    border-color: #{$color};
+}
+.HJZF2_Z_other_94_title{
+    color:#{$data493[14]};
+}
+</style>
+<section class="HJZF2_Z_other_94">
+    <div class="container">
+        <div class="row HJZF2_Z_other_94_midbg index_pd">
+            <div class="col-xs-12 text-center HJZF2_Z_other_94_title">
+                <if condition="$data493[11]">
+                    <div class="index_title pb20">
+                        {$data493[11]}
+                    </div>
+                </if>
+                <if condition="$data493[12]">
+                    <div class="index_sub_title pb40">
+                        {$data493[12]}
+                    </div>
+                </if>
+            </div>
+            <php>
+                $arr = get_list_val($data493[3]);
+                $arra = get_list_val($data493[4]);
+                $arrb = get_list_val($data493[5]);
+                $arrc = get_list_val($data493[6]);
+                $arrd = get_list_val($data493[7]);
+                $arre = get_list_val($data493[8]);
+                $arrf = get_list_val($data493[9]);
+                $arrg = get_list_val($data493[10]);
+            </php>
+            <ul class="col-xs-12 HJZF2_Z_other_94_wrapper">
+                <volist name="arr" id="a">
+                    <li class="odd">
+                        <if condition="$a[ico]">
+                            <a href="{$a[link]}">
+                        </if>
+                        <div class="HJZF2_Z_other_94_wrapper_odd" style="background-image: url({$a[bg]});">
+                            <if condition="$a[ico]">
+                                <img src="{$a[ico]}" alt="{$a[title]}">
+                            </if>
+                            <div class="index_title">
+                                {$a[title]}
+                            </div>
+                            <div class="index_text">
+                                {$a[sub]}
+                            </div>
+                        </div>
+                        <if condition="$a[ico]">
+                            </a>
+                        </if>
+                    </li>
+                </volist>
+                <li class="even">
+                    <div class="HJZF2_Z_other_94_wrapper_even swiper-container">
+                        <div class="swiper-wrapper">
+                            <volist name="arra" id="a">
+                                <div class="swiper-slide">
+                                    <img src="{$a[img]}" class="img-fluid">
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="HJZF2_Z_other_94_wrapper_pagination"></div>
+                    </div>
+                </li>
+                <volist name="arrb" id="a">
+                    <li class="odd">
+                        <if condition="$a[ico]">
+                            <a href="{$a[link]}">
+                        </if>
+                        <div class="HJZF2_Z_other_94_wrapper_odd" style="background-image: url({$a[bg]});">
+                            <if condition="$a[ico]">
+                                <img src="{$a[ico]}" alt="{$a[title]}">
+                            </if>
+                            <div class="index_title">
+                                {$a[title]}
+                            </div>
+                            <div class="index_text">
+                                {$a[sub]}
+                            </div>
+                        </div>
+                        <if condition="$a[ico]">
+                            </a>
+                        </if>
+                    </li>
+                </volist>
+                <li class="even">
+                    <div class="HJZF2_Z_other_94_wrapper_evena swiper-container">
+                        <div class="swiper-wrapper">
+                            <volist name="arrc" id="a">
+                                <div class="swiper-slide">
+                                    <img src="{$a[img]}" class="img-fluid">
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="HJZF2_Z_other_94_wrapper_pagination"></div>
+                    </div>
+                </li>
+                <li class="even">
+                    <div class="HJZF2_Z_other_94_wrapper_evenb swiper-container">
+                        <div class="swiper-wrapper">
+                            <volist name="arrd" id="a">
+                                <div class="swiper-slide">
+                                    <img src="{$a[img]}" class="img-fluid">
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="HJZF2_Z_other_94_wrapper_pagination"></div>
+                    </div>
+                </li>
+                <volist name="arre" id="a">
+                    <li class="odd">
+                        <if condition="$a[ico]">
+                            <a href="{$a[link]}">
+                        </if>
+                        <div class="HJZF2_Z_other_94_wrapper_odd" style="background-image: url({$a[bg]});">
+                            <if condition="$a[ico]">
+                                <img src="{$a[ico]}" alt="{$a[title]}">
+                            </if>
+                            <div class="index_title">
+                                {$a[title]}
+                            </div>
+                            <div class="index_text">
+                                {$a[sub]}
+                            </div>
+                        </div>
+                        <if condition="$a[ico]">
+                            </a>
+                        </if>
+                    </li>
+                </volist>
+                <li class="even">
+                    <div class="HJZF2_Z_other_94_wrapper_evenc swiper-container">
+                        <div class="swiper-wrapper">
+                            <volist name="arrf" id="a">
+                                <div class="swiper-slide">
+                                    <img src="{$a[img]}" class="img-fluid">
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="HJZF2_Z_other_94_wrapper_pagination"></div>
+                    </div>
+                </li>
+                <volist name="arrg" id="a">
+                    <li class="odd">
+                        <if condition="$a[ico]">
+                            <a href="{$a[link]}">
+                        </if>
+                        <div class="HJZF2_Z_other_94_wrapper_odd" style="background-image: url({$a[bg]});">
+                            <if condition="$a[ico]">
+                                <img src="{$a[ico]}" alt="{$a[title]}">
+                            </if>
+                            <div class="index_title">
+                                {$a[title]}
+                            </div>
+                            <div class="index_text">
+                                {$a[sub]}
+                            </div>
+                        </div>
+                        <if condition="$a[ico]">
+                            </a>
+                        </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</section>

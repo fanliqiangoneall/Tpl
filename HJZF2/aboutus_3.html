@@ -1,0 +1,84 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <if condition="$inner_data[4]">
+        <style>
+            .InsidePage--3__contentNavbg{
+                background:url({:getindeximgurl($inner_data[4])}) center no-repeat
+            }
+        </style>
+    </if>
+    <if condition="$inner_data[3]">
+        <style>
+            .InsidePage--3__contentNav.left,.InsidePage--3__contentBox.left{float: left;}
+            .InsidePage--3__contentBox.left{padding-left: 60px;padding-right: 0;}
+            .InsidePage--3__contentNav.left .InsidePage--3__contentNavWrap--list li a{text-align: left;}
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <style>
+        .InsidePage--3__breadcrumbs span.current,.InsidePage--3__breadcrumbs_100 span.current{
+            color: #{$inner_data[1]};
+        }
+    </style>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}">
+                                        <div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                                        </a>
+                </volist>
+                <else/>
+                <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+            </if>
+
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><span class="current">{$intro_class['class_name']}</span></div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap">
+            <div class="container">
+                <section <if condition="count($navrs) gt 0">class="InsidePage--3__contentNav left"<else/> class="InsidePage--3__contentNav hidden"</if> id="aboutusnav">
+                <if condition="$inner_data[5] eq '1'">
+                    <Include file="./Tpl/HJZF2/otherleft_3.html" />
+                    <elseif condition="$inner_data[5] eq '2'"/>
+                    <style>
+                        .InsidePage--3__contentNav{width: 300px}.InsidePage--3__contentBox{width: 840px;}.InsidePage--3__contentWrap{padding-top: 60px;}.InsidePage--3__contentNav{top: -125px;}.InsidePage--3__contentWrap:before{display: none}.InsidePage--3__title{line-height: 50px;height: 50px;border-bottom: 1px solid #bfbfbf;color: #333333;font-size: 24px;}.InsidePage--3__contentBoxMain{margin-top: 0px;}
+                    </style>
+                    <Include file="./Tpl/HJZF2/otherleft_3--2.html" />
+                    <elseif condition="$inner_data[5] eq '3'"/>
+                    <style>.InsidePage--3__breadcrumbsWrap{display: none}.InsidePage--3__contentNav,.InsidePage--3__contentBox{width: 100%;padding-right: 0;}.InsidePage--3__contentNav{top: -45px;overflow: inherit;}.InsidePage--3__title{display: none;}.InsidePage--3__breadcrumbsWrap__100{display: block;}</style>
+                    <if condition="count($navrs) eq 0">
+                        <style>.InsidePage--3__breadcrumbsWrap,.InsidePage--3__title{display: block}</style>
+                    </if>
+                    <Include file="./Tpl/HJZF2/otherleft_3--3.html" />
+                    <else/>
+                    <Include file="./Tpl/HJZF2/otherleft_3.html" />
+                </if>
+                </section>
+                <section <if condition="count($navrs) gt 0">class="InsidePage--3__contentBox left" <else/> class="InsidePage--3__contentBox--100" </if> id="othercatecontent">
+                <div class="InsidePage--3__contentBoxWrap">
+                    <div class="InsidePage--3__breadcrumbsWrap__100 flex">
+                        <div class="container">
+                            <div class="InsidePage--3__breadcrumbs_100 flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><span class="current">{$intro_class['class_name']}</span></div>
+                        </div>
+                    </div>
+
+                    <div class="InsidePage--3__contentBoxMain box-sizing payment" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                    <div class="page_nei_space"></div>
+                </div>
+                <if condition="$webid eq '1488'">
+                	<div class="wow fadeInUp">
+                        <h5 id="inquiry" class="InsidePages_content-right_content_title" style="padding-left: 0;margin-bottom: 10px;">{:__('Inquiry Now')}</h5>
+                        <div class="page_Main"><Include file="./Tpl/HJZF2/submitinquiry.html" /></div>
+                        <div class="clear" style="height:30px;"></div>
+                    </div>
+                </if>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

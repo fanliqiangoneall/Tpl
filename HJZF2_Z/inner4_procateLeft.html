@@ -1,0 +1,38 @@
+<style>
+  
+</style>
+<if condition="$inner_data[1]">
+    <style>
+        .inner4_topLeft{
+            background: url(
+            {:getindeximgurl($inner_data[1])}
+            ) left top repeat-x;
+        }
+    </style>
+</if>
+<div class="inner4_topLeft">
+    <div class="container">
+        <div class="row">
+            <div class="inner4_procatelist">
+                <div class="swiper-container inner4_procateswiper">
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="allclass" id="allclass_left">
+                            <div procateid="{$allclass_left['pcid']}" class="swiper-slide inner4_procateitem">
+                                <div class="inner4_procateitembox">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                                        <div class="inner4_procateitemimg">
+                                            <img src="{:getmainimgurl($allclass_left['fid'])}" alt=""/>
+                                        </div>
+                                        <div class="inner4_procateitemname">{$allclass_left['class_name']}</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+                <div class="swiper-button-next inner4_procatenext"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-button-prev inner4_procateprev"><i class="fa fa-angle-left"></i></div>
+            </div>
+        </div>
+    </div>
+</div>

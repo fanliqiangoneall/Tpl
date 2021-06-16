@@ -1,0 +1,110 @@
+<!--{$pagename}-->
+<if condition="$data362[7]">
+<style>
+.new_hjzf_products-23{
+	background: url({:getindeximgurl($data362[7])}) no-repeat center/cover;
+}
+</style>
+</if>
+<style>
+    .products_23_title .index_sub_title,
+    .products_23_wrapper_title span {
+        color: #{$color};
+    }
+
+    .products_23_wrapper_sale,
+    .products_23_wrapper_boxa_pagination span.swiper-pagination-bullet-active,
+    .products_23_wrapper_img_con:before {
+        background-color: #{$color};
+    }
+</style>
+
+<section class="products_23 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="pb40 products_23_title">
+                <span class="index_title wow slideInLeft">
+                    {:HtmlEncode($data362[0])}
+                </span>
+                <span class="index_sub_title wow slideInRight">
+                    {$data362[1]}
+                </span>
+            </div>
+            <ul class="clearfix products_23_wrapper_box hidden-xs hidden-sm hidden-md">
+                <php>
+                    if($data362[4]){ $lena = $data362[4]; }else{ $lena = 8; }
+                </php>
+                <volist name="indexpro" id="indexpro5" offset="0" length="$lena">
+                    <li class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}" class="products_23_wrapper">
+                            <div class="products_23_wrapper_img">
+                                <img src="{:getmainimgurl($indexpro5['main_img'])}" alt="{$data362[5]}" class="img-fluid">
+                                <if condition="$indexpro5['is_hot']">
+                                    <div class="products_23_wrapper_sale">
+                                        {$data362[5]}
+                                    </div>
+                                </if>
+                                <if condition="$indexpro5['is_new']">
+                                    <div class="products_23_wrapper_new">
+                                        {$data362[6]}
+                                    </div>
+                                </if>
+                                <div class="products_23_wrapper_img_con hidden-xs hidden-sm">
+                                    <div class="procate_more">
+                                        <span>{$data362[3]}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="products_23_wrapper_title">
+                                <span>{$indexpro5['pro_name']}</span>
+                                <p class="index_text ellipsis_two">
+                                    {:subtxt($indexpro5['pro_description'],80)}
+                                    </p>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+
+            <div class="products_23_wrapper_box products_23_wrapper_boxa hidden-lg hidden-xl swiper-container">
+                <div class="swiper-wrapper">
+                    <volist name="indexpro" id="indexpro6" offset="0" length="$lena">
+                        <li class="swiper-slide">
+                            <a href="{:U('/Product','','')}/{:getproname($indexpro6['pid'])}"
+                                class="products_23_wrapper">
+                                <div class="products_23_wrapper_img">
+                                    <img src="{:getmainimgurl($indexpro6['main_img'])}" class="img-fluid">
+                                    <if condition="$indexpro6['is_hot']">
+                                        <div class="products_23_wrapper_sale">
+                                            {$data362[5]}
+                                        </div>
+                                    </if>
+                                    <if condition="$indexpro6['is_new']">
+                                        <div class="products_23_wrapper_new">
+                                            {$data362[6]}
+                                        </div>
+                                    </if>
+                                    <div class="products_23_wrapper_img_con hidden-xs hidden-sm">
+                                        <div class="procate_more">
+                                            <span>{$data362[3]}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="products_23_wrapper_title">
+                                    <span>{$indexpro6['pro_name']}</span>
+                                    <p>{$indexpro6['pro_description']}</p>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </div>
+                <div class="products_23_wrapper_boxa_pagination"></div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</section>

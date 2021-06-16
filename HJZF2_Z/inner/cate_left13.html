@@ -1,0 +1,143 @@
+<style>
+    .cate_13_title span {
+        display: block;
+        margin: 10px auto;
+        width: 40px;
+        height: 4px;
+        background-color: #333;
+        opacity: .2;
+    }
+
+    .cate_13_title .index_text {
+        color: #333;
+        opacity: 0.7;
+        max-width: 60%;
+        margin: 0 auto;
+    }
+
+    .cate_13_title_list {
+        border: 1px solid #eee;
+        padding: 10px 20px;
+    }
+
+    .cate_13_title_list li {
+        display: flex;
+    }
+
+    .cate_13_title_list li span {
+        font-size: 16px;
+        line-height: 2;
+        flex: 0 0 15%;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 15px;
+    }
+
+    .cate_13_title_list li h3,
+    .cate_13_title_list li span em {
+        color: #333;
+        line-height: 2;
+        font-style: normal;
+        font-size: 16px;
+    }
+
+    .cate_13_title_list li div {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .cate_13_title_list li div h3,.cate_13_title_list li a h3 {
+        padding: 0 10px;
+        padding-left: 20px;
+        position: relative;
+        transition: all .5s;
+    }
+
+    .cate_13_title_list li div h3:before,.cate_13_title_list li a h3:before {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        background-color: #{$color};
+        transform: translateY(-50%);
+        content: '';
+        opacity: 0;
+        transition: all .5s;
+    }
+
+    .cate_13_title_list li div a.on h3,
+    .cate_13_title_list li div a:hover h3,
+    .cate_13_title_list li a.on h3,
+    .cate_13_title_list li a:hover h3 {
+        color: #{$color};
+    }
+
+    .cate_13_title_list li div a.on h3:before,
+    .cate_13_title_list li div a:hover h3:before,
+    .cate_13_title_list li a.on h3:before,
+    .cate_13_title_list li a:hover h3:before {
+        opacity: 1;
+    }
+</style>
+<div class="text-center cate_13_title pb40">
+    <div class="index_title">
+        {$prolist['class_name']}
+    </div>
+    <span></span>
+    <div class="index_text">
+        {$prolist['readme']}
+    </div>
+</div>
+<div class="cate_13_title_list">
+    <ul>
+        <php>
+            $has_son="0";
+            foreach($allclass as $class){
+            IF($class['childs']){
+            $has_son++;
+            }
+            }
+        </php>
+        <if condition="$has_son eq '0'">
+            <!-- 没有二级的样式 -->
+            <li>
+                <span>{:__('Product category')} <em> : </em> </span>
+                <div>
+
+                <volist empty="" name="allclass" id="allclass_left">
+
+                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}" <if
+                        condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="on"
+        </if>>{$allclass_left['class_name']}</a>
+        </volist>
+        </div>
+        </li>
+        <else />
+        <!--有二级的样式 -->
+        <volist empty="" name="allclass" id="allclass_lefta">
+            <li>
+                <span>{$allclass_lefta['class_name']} <em> : </em> </span>
+                <p>
+                <if condition='$allclass_lefta["childs"] neq ""'>
+                    <div>
+                        <volist empty="" name="allclass_lefta['childs']" id="allclass_leftchild">
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}" <if
+                                condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="on"
+                </if>>{$allclass_leftchild['class_name']}
+                </a>
+        </volist>
+</div>
+</if>
+</li>
+</volist>
+</if>
+</ul>
+</div>
+<script>
+    $(function () {
+        $('.InsidePages_content-right_proWrap').append($('.InsidePages_content-right_proClassDesc'))
+    })
+</script>

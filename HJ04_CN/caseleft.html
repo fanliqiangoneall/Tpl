@@ -1,0 +1,21 @@
+<style>
+    .pageClassify  a.parent h3{
+        color: #{$color};
+    }
+    .pageClassify a:hover h3{
+        color: #{$color};
+    }
+</style>
+<div class="pageClassify container wow fadeInLeft" <if condition="$data47[41] neq ''">style="padding-bottom:{$data47[41]}px;"</if> data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+    <a <if condition="$newscate['classid'] eq ''">class="parent"<else/>class="parent2"</if> href="{:U('/cases')}"><h3>全部</h3></a>
+    <volist empty="没有案例" name="allnewclass" id="allnewclassleft">
+        <a <if condition="$newscate['classid'] eq $allnewclassleft['classid'] or $news['cates_class'] eq $allnewclassleft['classid']">
+            class="parent"
+        <else/>
+        class="parent2"
+        </if>
+        href="{:U('/case_category',array('classid'=>$allnewclassleft['classid']))}">{$allnewclassleft['class_name']}
+        </a>
+    </volist>
+    <div class="clear"></div>
+</div>

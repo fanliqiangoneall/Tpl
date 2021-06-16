@@ -1,0 +1,42 @@
+<style>
+    .aboutus-8__more{
+        border: 1px solid #{$data121[12]};color: #{$data121[12]};
+    }
+    .aboutus-8__more:hover:before{
+        background: #{$data121[12]};
+    }
+</style>
+<if condition="$data121[13]">
+    <style>
+        #aboutus-8{
+            background: url({:getindeximgurl($data121[13])}) no-repeat center;
+        }
+    </style>
+</if>
+<section id="aboutus-8">
+    <div class="aboutus-8__container">
+        <div class="aboutus-8--left">
+            <h3 class="aboutus-8--left__title wow fadeInLeft" data-wow-duration="0.6s"  data-wow-offset="200">{$data121[0]}</h3>
+            <div class="aboutus-8--left__subtitle wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="200">{$data121[1]}</div>
+            <div class="aboutus-8--left__content wow fadeInLeft" data-wow-duration="1.4s" data-wow-delay="0.8s" data-wow-offset="200">{:HtmlEncode(subtxt($data121[2],400))}</div>
+        </div>
+        <div class="aboutus-8--right">
+            <ul class="aboutus-8__shuzi_box flex">
+                <php>for($i=3;$i<8;$i=$i+2){</php>
+
+                <if condition="$data121[$i] neq ''">
+                    <li class="aboutus-8__shuzi__item" id="count{$i}">
+                            <span class="count_shuzi timer" data-to="{$data121[$i]}" data-speed="1500">{$data121[$i]}</span>
+                            <p class="count_shuzi_desc">{$data121[$i+1]}</p>
+                    </li>
+                </if>
+                <php>}</php>
+            </ul>
+            <div class="aboutus-8--right__img wow pulse" data-wow-duration="2s"  data-wow-offset="200">
+                <img src="{:getindeximgurl($data121[9])}" alt=""/>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <a class="aboutus-8__more" <if condition="$data121[11]">href="{$data121[11]}"<else/>href="{:U('/aboutus')}"</if>><span><if condition="$data121[10]">{$data121[10]}<else/>{:__('Read More')}</if></span></a>
+    </div>
+</section>

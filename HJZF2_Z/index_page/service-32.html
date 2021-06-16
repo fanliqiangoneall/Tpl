@@ -1,0 +1,88 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_service_32_wrapper_content {
+        border: 2px solid #{$data388[1]};
+    }
+    .hjzf_service_32_wrapper_info .color, .hjzf_service_32_wrapper_info a:hover{
+        color: #{$data388[0]};
+    }
+    
+</style>
+<section class="hjzf_service_32 index_pd">
+    <div class="container">
+        <div class="row">
+            <ul class="hjzf_service_32_wrapper">
+                <php>
+                    $arr = get_list_val($data388[2]);
+                </php>
+                <volist name="arr" id="a">
+                    <li class="col-xs-12 col-lg-6 index_text">
+                        <div class="hjzf_service_32_wrapper_content">
+                            <div class="hjzf_service_32_wrapper_bg">
+                                <img src="{$a[bg]}" alt="{$a[title]}" class="img-full">
+                            </div>
+                            <div class="hjzf_service_32_wrapper_info">
+                                <div class="color">{$a[sub]}</div>
+                                <if condition="$a[title_url]"><a href="{$a[title_url]}"></if>
+                                <div class="index_sub_title pb40">
+                                    {$a[title]}
+                                </div>
+                                <if condition="$a[title_url]"></a></if>
+                                <p>
+                                    <if condition="$a[link1]">
+                                        <a href="{$a[link1]}">
+                                    </if>
+                                    <if condition="$a[ico1]">
+                                        <img src="{$a[ico1]}" alt="{$a[text1]}">
+                                    </if>
+                                    <if condition="$a[text1]">
+                                        <span>{$a[text1]}</span>
+                                    </if>
+                                    <if condition="$a[link1]">
+                                        </a>
+                                    </if>
+                                </p>
+                                <p class="p_mail">
+                                    <if condition="$a[link2]">
+                                        <a href="{$a[link2]}">
+                                    </if>
+                                    <if condition="$a[ico2]">
+                                        <img src="{$a[ico2]}" alt="{$a[text2]}">
+                                    </if>
+                                    <if condition="$a[text2]">
+                                        <span>{$a[text2]}</span>
+                                    </if>
+                                    <if condition="$a[link2]">
+                                        </a>
+                                    </if>
+                                </p>
+                                <p>
+                                    <if condition="$a[link3]">
+                                        <a href="{$a[link3]}">
+                                    </if>
+                                    <if condition="$a[ico3]">
+                                        <img src="{$a[ico3]}" alt="{$a[text3]}">
+                                    </if>
+                                    <if condition="$a[text3]">
+                                        <span>{$a[text3]}</span>
+                                    </if>
+                                    <if condition="$a[link3]">
+                                        </a>
+                                    </if>
+                                </p>
+                                <p>
+                                    <if condition="$a[ico4]">
+                                        <img src="{$a[ico4]}" alt="{$a[text4]}">
+                                    </if>
+                                    <if condition="$a[text4]">
+                                        <span>{$a[text4]}</span>
+                                    </if>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</section>

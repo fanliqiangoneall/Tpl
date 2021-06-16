@@ -1,0 +1,149 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .main_newslist16 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .main_newslist16 li:hover h5{
+            color: #{$color};
+        }
+        .main_newslist16 h5 {
+            font-size: 18px;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        .main_newslist16 .p15{
+            padding: 0 15px;
+        }
+        
+        .main_newslist16 p {
+            margin-bottom: 20px;
+        }
+
+        .main_newslist16 li a {
+            background-color: #fff;
+            display: block;
+            border: 1px solid #eee;
+            height: 100%;
+        }
+        .main_newslist16 li{
+            margin-bottom: 30px;
+        }
+
+        .main_newslist16 .info {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        @media(min-width: 1200px) {
+            .main_newslist3 .newslist_left {
+                min-height: 120px;
+            }
+        }
+
+        .HJZF_Z__Breadcrumbs span.current,
+        ul.InsidePages_left_navlist>li>a>h3:hover,
+        ul.InsidePages_left_navlist>li.yijion>a>h3 {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+
+        .InsidePages_content-right_content_title:before {
+            background: #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+
+        .main_newslist3 li:hover a.more {
+            background-color: #{$color};
+            height: 35px;
+        }
+        .video_wrap{width: 100%;position: relative;height: 0;
+    padding-bottom: 75%;}
+        .video_wrap img{width: 100%;}
+        .video_wrap .video_iframe{position: absolute;left: 0;top: 0;}
+        .video_name{padding:10px 0;font-size: 16px; line-height: 24px;}
+        @media(min-width: 1200px) {
+            #lightbox-container-image {
+                min-height: 400px;
+            }
+        }
+
+        @media(max-width: 1199px) {
+            #lightbox-container-image {
+                min-height: 80px;
+            }
+
+            #lightbox-container-image-box,
+            #lightbox-container-image-data-box {
+                width: 80% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper" style="margin-top:30px;">
+            <div class="container" id="payment">
+                <div class="row">
+                   
+                    <section class="col-xs-12 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="main_newslist16 ul_li_list clearfix">
+                                    <!-- loop start -->
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allnews" id="newscatelist" key="k">                                        
+                                        <li class="col-xs-12 col-md-6 col-lg-4">
+                                            <div class="video_wrap">                                               
+                                                <iframe height=100% width=100% src='{$newscatelist["addurl"]}' frameborder=0 'allowfullscreen' class="video_iframe" id="video_iframe{$k}"></iframe>
+                                            </div>
+                                            <div>
+                                                <div class="video_name">{:zq_date($newscatelist['created'])} {$newscatelist['title']}</div>
+                                            </div>
+                                            
+                                            <!-- <a href="{$newscatelist['addurl']}"
+                                                onFocus="blur()">
+                                                <img <if
+                                                    condition="$allnews['new_pro']">src="{:getimgurl($newscatelist['new_pro'])}"
+                                                <else />src="{:getindeximgurl($inner_data[2])}"</if> border="0"
+                                                class="img-responsive" />
+                                                <div class="p15">
+                                                    <h5 class="fz16">{$newscatelist['title']}</h5>
+                                                </div>
+                                            </a> -->
+                                        </li>
+                                    </volist>
+                                    <!-- loop end -->
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</block>

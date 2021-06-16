@@ -1,0 +1,102 @@
+
+<!--{$pagename}-->
+<style>
+	.HJ01_bottom{
+		background: url({:getindeximgurl($data15[4])}) center  no-repeat;
+	}
+
+
+
+
+	.index_bottom_footer {
+		width: 100%;
+		clear: both;
+		margin: auto;
+		min-width: 1190px;
+		max-width: 1920px !important;
+
+		height: 305px;
+	}
+	.footnav_bg{width: 5px;height: 5px;background: #fff;float: left;margin-top: 12px;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;}
+	.foot_nav li:hover .footnav_bg{
+		background: #{$color};
+	}
+	.foot_nav li:hover a h2{
+		color: #{$color};
+	}
+	.ft_cla_name:hover h3{
+		color: #{$color};
+	}
+</style>
+
+<!--foot start-->
+<div class="HJ01_bottom">
+	<div class="container">
+		<div class="foot_mian">
+			<div class="foot_nav">
+				<p class="foot_title">{$data15[0]}</p>
+				<volist name="web_navigation" id="vo" offset="0" length='5' key="key">
+					<li id="menu{$key}"><div class="footnav_bg"></div><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+				</volist>
+			</div>
+			<div class="foot_hot">
+				<p class="foot_title">Hot Products</p>
+				<volist empty="" name="allclass" id="allclass_index" offset="0" length='6'>
+					<li class="ft_cla_name"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}">{$allclass_index['class_name']}</a></li>
+				</volist>
+				<div class="clear"></div>
+			</div>
+			<div class="ft_ewm">
+
+				<p class="foot_title">Mobile</p>
+				<if condition="$data15[4] eq '' or $data15[4] eq 0">
+					<else/>
+					<img src="{:getindeximgurl($data15[4])}" style="width: 111px;height: 111px;" >
+				</if>
+
+
+			</div>
+			<div class="ft_cont">
+				<p class="foot_title">Contact Us</p>
+				<ul>
+					<li style="background: url({:getindeximgurl($data15[5])}) no-repeat 0 3px;;">Contact person: {:chaifen($about['contact'],0)}</li>
+					<li style="background: url({:getindeximgurl($data15[6])}) no-repeat 0 3px;">Tel: {:chaifen($about['mobile'],0)}</li>
+					<li style="background: url({:getindeximgurl($data15[7])}) no-repeat 0 4px;;">E-mail:<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2)" style="color: #ffffff"> {:chaifen($about['email'],0)}</a></li>
+					<li style="background: url({:getindeximgurl($data15[8])}) no-repeat 3px 0px;;">Add: {$about['address']}</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div style="color: #b1b1b1;text-align: center;width: 100%;font-size: 16px;clear: both;margin: auto;margin-top: 28px;">
+				<php>
+					$nowtime=date("Y",time());
+					$currtime=$data15[9];
+				</php>
+				<if condition="$nowtime gt $currtime">CopyRight&nbsp;?&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;?&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} All Rights Reserved.&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()" style="color: #b1b1b1;cursor: pointer;">&nbsp;Sitemap&nbsp;</a>&nbsp;&nbsp;<a href="{:U('/alltag','','')}" style="color: #b1b1b1;cursor: pointer;">All tags</a>
+
+				&nbsp;&nbsp;&nbsp;&nbsp;{:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}
+			</div>
+
+
+			<!--foot-text end-->
+		</div>
+	</div>
+
+</div>
+<!--foot end-->
+
+<if condition="$friend_link neq ''">
+	<div class="friendlink" style="margin-top: 0px;">
+		<div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">FriendLink: </span>
+			<volist name="friend_link" id="friend_link">
+				<if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+					<div style="float:left; text-align:center;color: #fff;line-height: 20px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+				</if>
+			</volist>
+			<!--<div style="clear:both"></div>-->
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</if>
+
+

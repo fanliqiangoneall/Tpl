@@ -1,0 +1,103 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-08-06 11:21:37
+ * @LastEditTime: 2020-12-03 11:18:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \undefined\\wenjian\www\Pc\Tpl\HJZF2\index_page\banner-6.html
+-->
+<div style="height:0px; overflow:hidden"><volist name="banner" id="banner_pic" key="k"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""></volist></div>
+<section id="banner-6">
+    <div class="swiper-container banner-6__container">
+        <div class="swiper-wrapper">
+            <if condition="$data117[28]">
+                <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[30]}">
+                    <video class="video" muted autoplay  poster="{:getindeximgurl($data117[29])}" id="video">
+                        <source src="{$data117[28]}" type="video/mp4">
+                    </video>
+                    <div class="video_cutton"></div>
+                    <if condition="$data117[31]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[31])}" alt=""/></div></if>
+                </div>
+            </if>
+            <if condition="$data117[0]">
+            <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[2]}">
+                <video class="video" muted autoplay  poster="{:getindeximgurl($data117[1])}" id="video">
+                    <source src="{$data117[0]}" type="video/mp4">
+                </video>
+                <div class="video_cutton"></div>
+                <if condition="$data117[9]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[9])}" alt=""/></div></if>
+            </div>
+            </if>
+            <if condition="$data117[3]">
+            <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[5]}">
+                <video class="video" muted   poster="{:getindeximgurl($data117[4])}" id="video">
+                    <source src="{$data117[3]}" type="video/mp4">
+                </video>
+                <div class="video_cutton"></div>
+                <if condition="$data117[10]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[10])}" alt=""/></div></if>
+            </div>
+             </if>
+            <if condition="$data117[6]">
+            <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[8]}">
+                <video class="video" muted   poster="{:getindeximgurl($data117[7])}" id="video">
+                    <source src="{$data117[6]}" type="video/mp4">
+                </video>
+                <div class="video_cutton"></div>
+                <if condition="$data117[11]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[11])}" alt=""/></div></if>
+            </div>
+            </if>
+            <if condition="$data117[12]">
+                <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[14]}">
+                    <video class="video" muted   poster="{:getindeximgurl($data117[13])}" id="video">
+                        <source src="{$data117[12]}" type="video/mp4">
+                    </video>
+                    <div class="video_cutton"></div>
+                    <if condition="$data117[15]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[15])}" alt=""/></div></if>
+                </div>
+            </if>
+            <if condition="$data117[16]">
+                <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[18]}">
+                    <video class="video" muted   poster="{:getindeximgurl($data117[17])}" id="video">
+                        <source src="{$data117[16]}" type="video/mp4">
+                    </video>
+                    <div class="video_cutton"></div>
+                    <if condition="$data117[19]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[19])}" alt=""/></div></if>
+                </div>
+            </if>
+            <if condition="$data117[20]">
+                <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[22]}">
+                    <video class="video" muted   poster="{:getindeximgurl($data117[21])}" id="video">
+                        <source src="{$data117[20]}" type="video/mp4">
+                    </video>
+                    <div class="video_cutton"></div>
+                    <if condition="$data117[23]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[23])}" alt=""/></div></if>
+                </div>
+            </if>
+            <if condition="$data117[24]">
+                <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);" data-video="{$data117[26]}">
+                    <video class="video" muted poster="{:getindeximgurl($data117[25])}" id="video">
+                        <source src="{$data117[24]}" type="video/mp4">
+                    </video>
+                    <div class="video_cutton"></div>
+                    <if condition="$data117[27]"><div class="banner-6_desc_img"><img src="{:getindeximgurl($data117[27])}" alt=""/></div></if>
+                </div>
+            </if>
+            <volist name="banner" id="banner_pic" key="k">
+                <if condition="$banner_pic['ad_pic']">
+                    <div class="swiper-slide banner-6__slide" style="transform: translate3d(0px, 0px, 0px);">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])} <else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="display: block;width: 100%;height: 100%">
+                            <if condition="$data117[32]">
+                                <div  class="banner-6__slide__img swiper-lazy"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""></div>
+                                <else/>
+                                <div  class="banner-6__slide__img swiper-lazy" style="background:url({:getimgurl($banner_pic['ad_pic'])})"   data-background="{:getimgurl($banner_pic['ad_pic'])}"></div>
+                            </if>
+                       
+                        </a>
+                    </div>
+                </if>
+            </volist>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination banner-6__pagination"></div>
+    </div>
+</section>

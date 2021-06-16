@@ -1,0 +1,53 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data298[0]">
+    .HJZF2_Z_service_hj04{
+        background: url({:getindeximgurl($data298[0])}) no-repeat center/cover;
+    }
+    </if>
+    .HJZF2_Z_service_hj04 .index_title{
+        color: #{$data298[6]};
+    }
+    .service_hj04_wrapper p, .service_hj04_wrapper i,.HJZF2_Z_service_hj04 .index_sub_title{
+        color: #{$data298[1]};
+    }
+    .service_hj04_pagination span[class*='active']{
+        background: #{$data298[6]};
+    }
+</style>
+<section class="HJZF2_Z_service_hj04 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="pb40 tac">
+                <div class="index_sub_title">
+                    {$data298[3]}
+                </div>
+                <div class="index_title">
+                    {$data298[4]}
+                </div>
+            </div>
+            <div class="swiper-container service_hj04_container">
+                <div class="swiper-wrapper">
+                    <php>
+                        $arr = get_list_val($data298[5]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <div class="swiper-slide clearfix service_hj04_wrapper">
+                            <if condition='$data298[2]'>
+                            <img src="{:getindeximgurl($data298[2])}">
+                            </if>
+                            <div class="info index_text" alt="{$a[title]}">
+                                <p>{$a[con]}</p>
+                                <strong>{$a[title]}</strong>
+                                <i>{$a[data]}</i>
+                                </div>
+                        </div>
+                    </volist>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination service_hj04_pagination"></div>
+            </div>
+
+        </div>
+    </div>
+</section>

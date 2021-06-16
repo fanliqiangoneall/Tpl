@@ -1,0 +1,89 @@
+<style>
+    .products-13__classList ul li.products-13__classItem:hover .fa-chevron-circle-right,.products-13__classList ul li.products-13__classItem.proClass_on .fa-chevron-circle-right{
+        color: #{$data118[17]};
+    }
+
+    .products-13__pagination.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #{$data118[17]};
+    }
+</style>
+
+<section id="products-13">
+    <div class="products-13__container">
+        <hgroup class="products-13__title">
+            <h3 class="products-13__title--miantitle">{$data118[0]}</h3>
+            <h5 class="products-13__title--subtitle">{$data118[1]}</h5>
+        </hgroup>
+        <div class="products-13__classList">
+            <ul>
+                <php>
+                    for($i=2;$i<16;$i=$i+3){
+                </php>
+                <if condition="$data118[$i]">
+                    <li class="products-13__classItem">
+                        <a href="{$data118[$i+1]}" class="flex">
+                            <img src="{:getindeximgurl($data118[$i+2])}" alt=""/>
+                            <span>{$data118[$i]}</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                    </li>
+                </if>
+
+                <php>
+                    }
+                </php>
+            </ul>
+        </div>
+        <if condition="$data118[18]">
+            <php>
+                $arr_str=$data118[19];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $c=>$b){
+                $class[$c]['data']=get_index_products_category($b,$all_pro);
+                }
+            </php>
+            <div class="products-13_swiperbox_wrap">
+                <div class="products-13_swiperbox_content">
+                    <volist empty="" name="class" id="li" key="k">
+                        <div class="products-13__swiperbox">
+                            <div class="swiper-container products-13__swiper">
+                                <div class="swiper-wrapper">
+                                    <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="12">
+                                        <div class="swiper-slide">
+                                            <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                            <div class="index_proitem_name"><h6 title="{:subtxt($indexpro['pro_name'],80)}">{:subtxt($indexpro['pro_name'],20)}</h6></div>
+
+                                        </div>
+                                    </volist>
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination products-13__pagination"></div>
+                            </div>
+                        </div>
+                    </volist>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+
+            <else/>
+            <div class="products-13__swiperbox">
+                <div class="swiper-container products-13__swiper">
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="indexpro" id="indexpro" key="k" offset="0" length="12">
+                            <div class="swiper-slide">
+                                <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                <div class="index_proitem_name"><h6 title="{:subtxt($indexpro['pro_name'],80)}">{:subtxt($indexpro['pro_name'],20)}</h6></div>
+
+                            </div>
+                        </volist>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination products-13__pagination"></div>
+                </div>
+            </div>
+        </if>
+
+    </div>
+</section>

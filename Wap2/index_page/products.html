@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<section>
+<php>
+if($data9[4]){
+	$new_hjzf_products__Products__bj=getindeximgurl($data9[4]);
+}else{
+	$new_hjzf_products__Products__bj="";
+}
+$new_hjzf_products__Products=$data9[0] or $new_hjzf_products__Products="PRODUCT";
+$new_hjzf_products__More=$data9[1] or $new_hjzf_products__More="+ More";
+$new_hjzf_products__More_color=$data9[2] or $new_hjzf_products__More_color="#adc537";
+$new_hjzf_products__Products_color=$data9[5] or $new_hjzf_products__Products_color="#333";
+$new_hjzf_products__More_href=$data9[3] or $new_hjzf_products__More_href="javascript:;";
+</php>
+<style>
+.new_hjzf_products__More{
+	color:{$new_hjzf_products__More_color}
+}
+.new_hjzf_products__title{
+    color:{$new_hjzf_products__Products_color};
+	background:url(
+	{$new_hjzf_products__Products__bj}
+	) center/100% no-repeat;
+}
+</style>
+<div class="new_hjzf_products__products">
+	<div class="new_hjzf_products__title">
+    <a href="{$new_hjzf_products__More_href}"><div class="new_hjzf_products__More">{$new_hjzf_products__More}</div></a>
+    <div class="new_hjzf_products__Products">{$new_hjzf_products__Products}</div>
+    <div class="clear"></div>
+    </div>
+    <div class="new_hjzf_products__products_indexhotpro">
+    <volist name="indexpro" id="pro" key="k" offset="0" length="9">
+        <div class="new_hjzf_products__products_indexhotpro__product">
+            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><div class="new_hjzf_products__products_indexhotpro__img" style="background:url({:getmainimgurl($pro['main_img'])}) no-repeat center center / contain">  
+            </div></a>
+            <div class="new_hjzf_products__products_indexhotpro__txt"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a></div>
+        </div> 
+        <if condition="$k%3 eq 0">
+        	<div class="clear"></div>
+        </if>   
+    </volist>
+        <div class="clear"></div>
+    </div>
+
+</div>
+
+
+
+</section>

@@ -1,0 +1,71 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .caseList:hover .caseTitle{
+            color: #{$color};
+        }
+
+    </style>
+   <div class="caseContainer">
+       <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                您的位置：&nbsp;
+                <a href="{:U('/')}">首页</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    <if condition="$data47[0] eq ''">
+                        案例中心
+                        <else/>
+                        {$data47[0]}
+                    </if>
+                </span>
+            </div>
+        </div>
+       <div class="pageBannerContainer">
+           <if condition="$banner neq ''">
+               <volist name="banner" id="banner" offset="0" length="1">
+                   <div class="pageBannerImg">
+                       <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                   </div>
+               </volist>
+               <else/>
+               <div class="pageBannerImg">
+                   <img src="{:getindeximgurl($data47[5])}" alt=""/>
+               </div>
+           </if>
+           <Include file="./Tpl/HJ04_CN/caseleft.html" />
+       </div>
+       <div class="caseMainContainer">
+           <ul class="caseContent container wow slideInUp" data-wow-duration="0.6s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                <volist empty="没有案例" name="allnews" id="allnews">
+                    <php>
+                        $case_name=get_wap_case_class_name($allnews['cates_class']);
+                    </php>
+                    <li class="caseList lf">
+                        <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}">
+                            <div class="caseImgContainer">
+                                <if condition="$allnews['new_pro'] eq 0 or $allnews['new_pro'] eq ''">
+                                    <img src="__TMPL__HJ04/img/case_nopic.jpg" border="0" />
+                                    <else/>
+                                    <img src="{:getpcimgurl($allnews['new_pro'])}" alt="{$allnews['title']}" />
+                                </if>
+                            </div>
+                            <div>
+                                <p class="caseTitle ellipsis_one">{$allnews['title']}</p>
+                                <p class="caseClassify ellipsis_one">{$case_name}</p>
+                            </div>
+                        </a>
+                    </li>
+                    <if condition="($key+1)%3 eq 0">
+                    <div class="clear"></div>
+                    </if>
+                </volist>
+               <div class="clear"></div>
+               <div class="main_page">{$page}</div>
+           </ul>
+       </div>
+   </div>
+</block>

@@ -1,0 +1,192 @@
+<!--{$pagename}-->
+<php>
+	if($data692[0]){
+	$color = $data692[0];
+	}
+	if($data692[1]){
+	$mobile_bg = $data692[1];
+	}else{
+	$mobile_bg = '333';
+	}
+	if($data692[2]){
+	$mobile_navbtn = $data692[2];
+	}else{
+	$mobile_navbtn = 'fff';
+	}
+	if($data692[3]){
+	$img_url = $data692[3];
+	}else{
+	$img_url = '';
+	}
+	$searchurl = 'mobile_search1';
+
+	if($data692[4]) {
+	$top_bg = $data692[4];
+	}else{
+	$top_bg = '333333';
+	};
+
+	if($data692[5]) {
+	$top_col = $data692[5];
+	}else{
+	$top_col = 'ffffff';
+	};
+
+	if($data692[9]) {
+	$signin = $data692[9];
+	}else{
+	$signin = 'Sign in';
+	};
+
+	$arr = get_list_val($data692[6]);
+	$arra = get_list_val($data692[10]);
+
+</php>
+<style>
+	.head_hj28_top {
+		background-color: #{$top_bg};
+		color: #{$top_col};
+	}
+
+	.search_suggestion_row .search_item {
+		background-color: #{$color};
+	}
+
+	.header_hj28 .head_hj28_top a {
+		transition: all .5s;
+		color: #{$top_col};
+	}
+
+	.head_hj28_top a:hover {
+		color: #{$color};
+	}
+
+	.head_hj28_top a.signin {
+		color: #{$top_col} !important;
+		background-color: #{$color};
+	}
+</style>
+<!--mobile nav content-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/index_page/_mobile.css">
+<script src="__TMPL__HJZF2_Z/index_page/_mobile.js"></script>
+<Include file="./Tpl/HJZF2_Z/index_page/_mobile.html" />
+
+
+<!-- pc nav -->
+<header class="nav-hidden-mobile header_hj28">
+	<div class="head_hj28_top">
+		<div class="head_hj28_top_left">
+			<a href="mailto:{:chaifen($about[email],0)}">
+				<i class="fa fa-envelope-o"></i>
+				{:chaifen($about[email],0)}
+			</a>
+		</div>
+		<div class="head_hj28_top_right">
+			<!-- search -->
+			<div class="head_hj28_top_search">
+				<form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL"
+					class="head_hj06_search">
+					<input type="text" name="keywords" id="keyword" placeholder="{:__('Product Search')}">
+					<button type="submit" id="search-submit"><img src="__TMPL__HJZF2_Z/img/search_hj28.svg"
+							width="20" /></button>
+				</form>
+			</div>
+			<!-- nav -->
+			<if condition="$data692[6]">
+				<div class="head_hj28_top_nav">
+					<ul>
+						<volist name="arr" id="a">
+							<li><a href="{$a[link]}">{$a[title]}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</if>
+			<!-- other -->
+			<div class="head_hj28_top_other">
+				<if condition="$data692[7] neq ''">
+					<a href="/login.html" class="signin">
+						<img src="{:getindeximgurl($data692[8])}">
+						{$signin}
+					</a>
+				</if>
+				<if condition="$data692[10]">
+					<volist name="arra" id="a" length="1" offset="0">
+						<a href="{$a[link]}">
+							<img src="{$a[ico]}">
+							{$a[text]}
+						</a>
+					</volist>
+				</if>
+			</div>
+		</div>
+	</div>
+
+	<div class="head_hj28_bottom">
+		<div class="logo">
+			<a href="{:U('/')}">{$logo}</a>
+		</div>
+		<nav class="nav menu">
+			<ul class="nav_wrapper">
+				<if condition="$webid eq '1840'">
+					<volist name="web_navigation" id="vo" key="key">
+						<if condition="$vo['id'] eq '22314' or $vo['id'] eq '22327'">
+							<li id="menu{$vo['id']}">
+								<a href="{$vo['url']}">{$vo['title']}</a>
+								<!-- 二级 start -->
+								<if condition="$vo['child'] neq ''">
+									<ul class="nav_wrapper_yiji">
+										<volist name="vo['child']" id="v" offset="0" key="key">
+											<li>
+												<a href="{$v['url']}">
+													<if condition="$allclass_topchild['fid']">
+														<img src="{:getmainimgurl($v['fid'])}" alt="{$v['title']}"
+															class="img-fluid">
+													</if>
+													{$v['title']}
+												</a>
+											</li>
+										</volist>
+									</ul>
+								</if>
+							</li>
+						</if>
+					</volist>
+				</if>
+				<volist empty="" name="allclass" id="allclass_head">
+					<li id="menu{$allclass_head['pcid']}">
+						<a
+							href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+						<if condition='$allclass_head["childs"] neq ""'>
+							<ul class="nav_wrapper_yiji">
+								<volist empty="" name="allclass_head['childs']" id="allclass_topchild">
+									<li>
+										<a
+											href="{:U('/product_category','','')}/{:getprocatename($allclass_topchild['pcid'])}">
+											<if condition="$allclass_topchild['fid']">
+												<img src="{:getmainimgurl($allclass_topchild['fid'])}"
+													alt="{$allclass_topchild['class_name']}" class="img-fluid">
+											</if>
+											{$allclass_topchild['class_name']}
+										</a>
+										<if condition='$allclass_topchild["childs"] neq ""'>
+											<span>
+												<volist empty="" name="allclass_topchild['childs']"
+													id="allclass_topthred">
+													<a
+														href="{:U('/product_category','','')}/{:getprocatename($allclass_topthred['pcid'])}">
+														{$allclass_topthred['class_name']}</a>
+												</volist>
+											</span>
+										</if>
+									</li>
+								</volist>
+							</ul>
+						</if>
+					</li>
+
+				</volist>
+			</ul>
+		</nav>
+	</div>
+
+</header>

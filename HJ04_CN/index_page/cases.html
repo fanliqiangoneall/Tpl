@@ -1,0 +1,44 @@
+<!--{$pagename}-->
+<style type="text/css">
+    .serviceMore{
+        color: #{$color};
+    }
+</style>
+<div class="hj01_cases" <if condition="$data10[3] neq '' and $data10[4] neq ''">style="padding-top: {$data10[3]}px;padding-bottom: {$data10[4]}px;background-image: url({:getindeximgurl($data10[2])});background-repeat: no-repeat;background-size: contain;background-position-x: center;background-position-y: 88px;background-attachment: fixed;}"<else/>style="background-image: url({:getindeximgurl($data10[2])});background-repeat: no-repeat;background-size: contain;background-position-x: center;background-position-y: 88px;background-attachment: fixed;}"</if>>
+    <div class="container">
+        <div class="serviceTopContainer">
+            <div class="serviceLeft lf">
+                <div class="serviceTopTitle">{$data10[0]}</div>
+                <div class="serviceTopTips">{$data10[1]}</div>
+            </div>
+            <ul class="serviceRight rt">
+                <li class="serviceActive"><a href="{:U('/cases')}"><h3>全部</h3></a></li>
+                <volist empty="no" name="allcaseclass" id="new" >
+                    <li><a href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+                </volist>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <ul class="mainServiceContainer indexCase">
+            <volist name="indexcases" id="indexcase" offset="0" length="3">
+                <li class="mainServiceList wow slideInLeft lf" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="5"  data-wow-iteration="1">
+                    <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">
+                        <div class="serviceImg">
+                            <if condition="$indexcase['new_pro'] eq 0 or $indexcase['new_pro'] eq ''">
+                                <img src="__TMPL__ZL04/img/case_nopic.jpg" border="0" />
+                                <else/>
+                                <img src="{:getpcimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" />
+                            </if>
+                        </div>
+                        <div class="serviceTextContainer">
+                            <div class="serviceTitle">{$indexcase['title']}</div>
+                            <div class="serviceText">{:HtmlEncode(subtxt($indexcase['news_description'],42))}</div>
+                            <div class="serviceMore">更多</div>
+                        </div>
+                    </a>
+                </li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>

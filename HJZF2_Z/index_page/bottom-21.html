@@ -1,0 +1,141 @@
+<!--{$pagename}-->
+<php>
+    if($data534[0]){
+        $color = $data534[0];
+    }
+</php>
+<style>
+.hotTell em{
+    color: #{$color};
+}
+</style>
+<section class="hjzf2_z_bottom_21">
+    <!-- top -->
+    <if condition="$is_index">
+        <div class="hjzf2_z_bottom_21_box nav-hidden-mobile">
+            <img src="{:getindeximgurl($data534[2])}" alt="" class="img-fluid">
+            <div class="hjzf2_z_bottom_21_box_wrapper">
+                <div class="container">
+                    <div class="index_yuanquan">
+                        <div class="quan"></div>
+                        <small class="ripper1"></small>
+                        <small class="ripper2"></small>
+                        <small class="ripper3"></small>
+                        <small class="ripper4"></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </if>
+    <!-- middle -->
+    <div class="hjzf2_z_bottom_21_top_bg nav-hidden-mobile">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8">
+                    <ul class="hjzf2_z_bottom_21_top_list">
+                        <volist name="web_navigation" id="vo" offset="1" length='8' key="key">
+                            <li>
+                                <a href="{$vo['url']}">{$vo['title']}</a>
+                                <if condition="$vo[child] neq '' ">
+                                    <span>
+                                        <volist name="vo['child']" id="v" offset="0" key="key">
+                                            <a menu_data="{$v['id']}" href="{$v['url']}">{$v['title']}</a>
+                                        </volist>
+                                    </span>
+                                    <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+                                    <span>
+                                        <volist empty="" name="allcaseclass" id="allclass_head">
+                                            <a
+                                                href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">{$allclass_head['class_name']}</a>
+                                        </volist>
+                                    </span>
+                                    <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+                                    <span>
+                                        <volist empty="" name="allnewclass" id="allclass_head">
+                                            <a
+                                                href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">{$allclass_head['class_name']}</a>
+                                        </volist>
+                                    </span>
+                                    <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                                    <span>
+                                        <volist empty="" name="allclass" id="allclass_head">
+                                            <a
+                                                href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                        </volist>
+                                    </span>
+                                </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+
+                <div class="col-xs-4">
+                    <ul class="hjzf2_z_bottom_21_top_ewm">
+                        <php>
+                            $arr = get_list_val($data534[1]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <li>
+                                <img src="{$a[ewm]}" alt="{$a[con]}">
+                                <p>{$a[con]}</p>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- bottom -->
+    <div class="hjzf2_z_bottom_21_bottom_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-xl-4 nav-hidden-mobile">
+                    <div class="d-flex align-center hjzf2_z_bottom_21_bottom_wrapper_left">
+                        <div class="hjzf2_z_bottom_21_bottom_wrapper_left_img">
+                            <img src="__TMPL__HJZF2_Z/img/tell_en.png" alt="">
+                        </div>
+                        <span class="hotTell">
+                            <p>咨询热线</p>
+                            <em>{:chaifen($about['phone'],0)}</em>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-xl-4">
+                    <div class="hjzf2_z_bottom_21_bottom_tell">
+                        <img src="__TMPL__HJZF2_Z/img/svg/heart.svg" alt="">
+                        <span>业务、服务支持： {:chaifen($about['mobile'],0)} {:chaifen($about['email'],0)}</span>
+                    </div>
+                    <div class="hjzf2_z_bottom_21_bottom_tell">
+                        <img src="__TMPL__HJZF2_Z/img/svg/add.svg" alt="">
+                        <span>地址：{:chaifen($about['address'],0)}</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-xl-4">
+                    <div class="hjzf2_z_bottom_21_bottom_tell">
+                        <img src="__TMPL__HJZF2_Z/img/svg/tel.svg" alt="">
+                        <span>公司总机：{$about['phone']}</span>
+                    </div>
+                    <div class="hjzf2_z_bottom_21_bottom_tell">
+                        <img src="__TMPL__HJZF2_Z/img/svg/fax.svg" alt="">
+                        <span>传真：{:chaifen($about['fax'],0)}</span>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <php>
+                        $nowtime=date("Y",time());
+                    </php>
+                    <div class="hjzf2_z_bottom_21_bottom_bg_wrapper text-center">
+                        Copyright&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights
+                        reserved')}《中华人民共和国增值电信业务经营许可证》编号：苏&nbsp;B2-20100284&nbsp;<if condition="get_txtBeiAn()">
+                            <a href="http://beian.miit.gov.cn/"
+                                target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+                            </a>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

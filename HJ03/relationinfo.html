@@ -1,0 +1,25 @@
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+    <h5 class="main-cases-detail-title" style="margin-bottom: 10px;">Related Products</h5>
+<div style="margin-top:15px;">
+<volist empty="" id="labelprodlist" name="labelprodlist" key="k">
+    <div class="main_proitem">
+        <div class="main_proitem_box">
+            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a></div>
+            <div class="main_proitem_second">
+                <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                    <div class="main_proitem_name margin-10px-bottom"><h6 title="{$hotpro['pro_name']}">{:subtxt($labelprodlist['pro_name'],20)}</h6></div>
+                    <div class="main_proitem_desc">{:subtxt($labelprodlist['pro_description'],40)}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <if condition="($k)%3 neq 0">
+        <div class="jiange"></div>
+    </if>
+</volist>
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</if>

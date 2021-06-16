@@ -1,0 +1,81 @@
+<!--{$pagename}-->
+<php>
+    if($data492[0]){
+    $color = $data492[0];
+    }
+    if($data492[6]){
+    $mbbg = $data492[6];
+    }else{
+    $mbbg = '000';
+    }
+
+</php>
+<style>
+    .HJZF2_Z_other_93_wrapper li:hover .HJZF2_Z_other_93_wrapper_txt span {
+        background-color: #{$color};
+        color: #fff;
+    }
+
+    .HJZF2_Z_other_93 {
+        background-color: #{$data492[1]};
+    }
+
+    .HJZF2_Z_other_93_wrapper_pagination span.active,
+    .HJZF2_Z_other_93_wrapper_pagination span.swiper-pagination-bullet-active {
+        background: #{$color};
+    }
+
+    .HJZF2_Z_other_93_wrapper_mb span {
+        background-color: #{$mbbg};
+    }
+</style>
+
+<section class="HJZF2_Z_other_93 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="index_title pb20 wow fadeInUpBig" data-wow-duration="1S" data-wow-delay="0">
+                    <span class="hover">{$data492[2]}</span>
+                    <span class="normal">{$data492[3]}</span>
+                </div>
+				<if condition="$data492[4]">
+                <div class="index_sub_title pb40 wow fadeInUpBig" data-wow-duration="1S" data-wow-delay="0">
+                    {$data492[4]}
+                </div>
+				</if>
+            </div>
+            <php>
+                $arr = get_list_val($data492[5]);
+            </php>
+            <div class="clearfix"></div>
+            <div class="swiper-container HJZF2_Z_other_93_wrapper">
+                <ul class="swiper-wrapper">
+                    <volist name="arr" id="a">
+                        <li class="swiper-slide">
+							<if condition="$a[link]">
+                            <a href="{$a[link]}">
+								<else/>
+								<a>
+								</if>
+                                <div class="HJZF2_Z_other_93_wrapper_mb">
+                                    <img src="{$a[img]}" alt="{$a[title]}" class="img-fluid">
+                                    <span>
+										<if condition="$a['ico']">
+                                        <img src="{$a[ico]}" alt="{$a[title]}">
+										</if>
+                                        <p>{$a[title]}</p>
+                                    </span>
+                                </div>
+                                <div class="HJZF2_Z_other_93_wrapper_txt">
+                                    <span class="index_text">{$a[title]}</span>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+                <div class="HJZF2_Z_other_93_wrapper_pagination text-center"></div>
+            </div>
+
+        </div>
+    </div>
+</section>

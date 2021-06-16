@@ -1,0 +1,40 @@
+<ssection class="wap2_product_three">
+    <div class="container">
+        <div class="wap2_product_three__title">{$data39[0]}</div>
+        <div class="swiper-container product_three-top">
+            <div class="swiper-wrapper">
+                <volist name="indexpro" id="indexprowap" key="k" offset="0" length='12' >
+                    <div class="swiper-slide">
+                        <a href="{:U('/Product','','')}/{:getproname($indexprowap['pid'])}">
+                            <div class="index_proImg">
+                                <img
+                                        src="{:getmainimgurl($indexprowap['main_img'])}"
+                                        class="preload-image" alt="{$indexprowap['pro_name']}"/>
+                            </div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <div class="wap2_product_three3__down">
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-container product_three-thumbs">
+                <div class="swiper-wrapper">
+                    <volist name="indexpro" id="indexprowap" key="k" offset="0" length='12' >
+                        <div class="swiper-slide">
+                            <div class="index_proImg_s">
+                                <img
+                                        src="{:getmainimgurl($indexprowap['main_img'])}"
+                                        class="preload-image" alt="{$indexprowap['pro_name']}"/>
+                            </div>
+                        </div>
+
+                    </volist>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ssection>

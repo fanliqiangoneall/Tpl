@@ -1,0 +1,274 @@
+<extend name="YP01_CN:base" />
+<block name="content">
+<Include file="./Tpl/YP01_CN/index_page/head.html" />
+<SCRIPT src="__TMPL__YP01_CN/js/jquery-1.8.3.min.js" type="text/javascript"></SCRIPT>
+<script type="text/javascript" src="__TMPL__YP01_CN/js/proDetail.js"></script>
+<script type="text/javascript" src="__TMPL__YP01_CN/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__YP01_CN/css/jquery.lightbox-0.5.css"/>
+
+<style type="text/css">
+  .s{overflow: auto }
+.mod18 .prev{
+	top:75px;background:url({:getindeximgurl($data3[1])}) no-repeat;left:0px;
+	}
+
+.mod18 .next{
+	top:75px;background:url({:getindeximgurl($data3[3])}) no-repeat;right:0px;
+	}  
+
+.mod18 .prev:hover{
+	top:75px;background:url({:getindeximgurl($data3[2])}) no-repeat;left:0px;
+	}
+
+.mod18 .next:hover{
+	top:75px;background:url({:getindeximgurl($data3[4])}) no-repeat;right:0px;
+	}  
+</style>
+
+<script type="text/javascript">
+$(function(){
+  $('#gx1 > table').addClass('s');
+});
+</script>
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<style type="text/css">
+  .left_con:first-child li{display: block !important;}
+</style>
+
+<Include file="./Tpl/YP01_CN/left.html" />
+
+
+<div class="r_mbx"><img src="__TMPL__YP01_CN/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<a href="{:U('/product')}">产品中心</a><volist empty="" name="path" id="path">&nbsp;>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($path['pcid'])}">{$path['class_name']}</a></volist>&nbsp;>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a></div>
+
+<div class="page_LeftClass2">
+
+<div class="page_Main">
+    <div id="product_detail">
+          <div class="left">
+            <div class="big_pic" id="gallery"><a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if> class="jqzoom"></a> <a href="#" title="{$product['pro_name']}"></a></div>
+          </div>
+          <div class="left product_info">
+            <div class="pro_info_box">
+              <ul>
+                <li style="font-size: 38px;color: #333;line-height: 55px;text-transform: uppercase;">{$product['pro_name']}</li>
+                <li style="background:url(__TMPL__YP01_CN/img/in_mail.png) left no-repeat;padding-left:25px; line-height:40px;font-size: 20px;color: #4c4c4c;">邮箱：<a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4)" style="color:#2d8df0;font-size: 22px">{:chaifen($about['email'],0)}</a></li>
+                <li style="background:url(__TMPL__YP01_CN/img/in_tel.png) left no-repeat;padding-left:25px; line-height:40px;font-size: 20px;color: #4c4c4c;">电话：{:chaifen($about['phone'],0)}</li>
+
+                <li class="in_promore2">
+                   <a href="#inquiry"  style="line-height: 26px;color: #fff;font-size: 14px;">联系我们</a>
+                </li>
+              </ul>
+            </div>
+            <ul class="pic_list smallImgList">
+                <div class="mod18"><span id="prev" class="btn prev"></span> <span id="next" class="btn next"></span>
+                  <div id="listBox" class="listBox">
+                    <ul class="cf">
+                       <li class="hover"><a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}"  <if condition="$pro['proalt'] neq ''">alt="{$product['proalt']}"<else/>alt="{$product['pro_name']}"</if> class="jqzoom"></a></li>
+                      <volist name="proimg" id="proimg">
+                        <if condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                          <li><a href="{:getfimgurl($proimg['field_auxiliary_fid'])}" ><img src="{:getfimgurl($proimg['field_auxiliary_fid'])}" class="jqzoom" <if condition="$pro['proalt'] neq ''">alt="{$product['proalt']}"<else/>alt="{$product['pro_name']}"</if>/></a></li>
+                        </if>
+                      </volist>
+                    </ul>
+                  </div>
+                </div>
+                <script type="text/javascript">
+        (function(){
+            
+            function G(s){
+                return document.getElementById(s);
+            }
+            
+            function getStyle(obj, attr){
+                if(obj.currentStyle){
+                    return obj.currentStyle[attr];
+                }else{
+                    return getComputedStyle(obj, false)[attr];
+                }
+            }
+            
+            function Animate(obj, json){
+                if(obj.timer){
+                    clearInterval(obj.timer);
+                }
+                obj.timer = setInterval(function(){
+                    for(var attr in json){
+                        var iCur = parseInt(getStyle(obj, attr));
+                        iCur = iCur ? iCur : 0;
+                        var iSpeed = (json[attr] - iCur) / 5;
+                        iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                        obj.style[attr] = iCur + iSpeed + 'px';
+                        if(iCur == json[attr]){
+                            clearInterval(obj.timer);
+                        }
+                    }
+                }, 30);
+            }
+            var oList = G("listBox");
+            var oPrev = G("prev");
+            var oNext = G("next");
+        
+            var oListLi = oList.getElementsByTagName("li");
+            var len2 = oListLi.length;
+            
+            var oListUl = oList.getElementsByTagName("ul")[0];
+            var w2 = oListLi[0].offsetWidth;
+        
+            oListUl.style.width = w2 * len2 + "px";
+        
+            var index = 0;
+            
+            var num = 2;
+            var num2 = Math.ceil(num / 2);
+        
+            function Change(){
+                if(index < num2){
+                    Animate(oListUl, {left: 0});
+                }else if(index + num2 <= len2){
+                    Animate(oListUl, {left: - (index - num2 + 1) * w2});
+                }else{
+                    Animate(oListUl, {left: - (len2 - num) * w2});
+                }
+        
+                for (var i = 0; i < len2; i++) {
+                    oListLi[i].className = "";
+                    if(i == index){
+                        oListLi[i].className = "on";
+                    }
+                }
+            }
+            
+            oNext.onclick = function(){
+                index ++;
+                index = index == len2 ? 0 : index;
+                Change();
+            }
+        
+            oPrev.onclick = function(){
+                index --;
+                index = index == -1 ? len2 -1 : index;
+                Change();
+            }
+        
+            for (var i = 0; i < len2; i++) {
+                oListLi[i].index = i;
+                oListLi[i].onclick = function(){
+                    index = this.index;
+                    Change();
+                }
+            }
+            
+        })()
+        function jumpto() {
+            $('html,body').animate({scrollTop: $('#inquiry').offset().top}, 1000);
+            return false;
+        };
+          function show(i)
+    { 
+      switch(i)
+      {
+      case 1:
+       document.getElementById("gx1").style.display="block";
+       document.getElementById("gx2").style.display="none"; 
+       document.getElementById("pro1").className="d_1";
+       document.getElementById("pro2").className="d_2";
+      break;
+    
+      case 2:
+       document.getElementById("gx1").style.display="none";
+       document.getElementById("gx2").style.display="block";  
+       document.getElementById("pro1").className="d_2";
+       document.getElementById("pro2").className="d_1";
+      break;
+      
+      }
+    }
+        </script>
+              </ul>
+          </div>
+          <div class="clear" style="height:28px;"></div>
+
+        <div class="page_RightTitle">产品详情</div>
+        <div id="pro_profile">{:htmlspecialchars_decode($product['pro_profile'])}</div>
+
+          <div class="clear" style="clear:both; height:0;"></div>
+          <div class="bt" style="margin-top:22px;"><a href="javascript:history.go(-1)" onfocus="blur()" style="display:block; font-size:14px; text-align:center; line-height:35px; color:#fff;">返回</a></div>
+    </div>
+    <div class="page_RightTitle" id="inquiry" style="margin-top:30px;">立即咨询</div>
+    <div class="proinquiry"> <include file="YP01_CN:submitinquiry" /></div>
+    <div style="clear:both;"></div>
+    <if condition="$otherpro neq ''">
+<div class="index_products_title">
+  <ul>
+     <li style="font-size:40px; color:#333; line-height:44px;height: 44px; text-align: center;text-transform: uppercase;font-weight: bold;">其他产品</li>
+  </ul>
+</div>
+    <div class="page_RightMain" style="padding-bottom:20px;">
+       <volist empty="" name="otherpro" id="otherpro" offset="0" length="4">
+            <div class="asd2">
+                <div class="img" ><a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}"><img src="{:getpcimgurl($otherpro['main_img'])}" <if condition="$otherpro['proalt'] neq ''">alt="{$otherpro['proalt']}"<else/>alt="{$hotpro['pro_name']}"</if> /></a>
+                </div>
+ 
+                <div class="in_proname2">
+                   <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}" style="font-size: 14px;text-transform: uppercase;">{$otherpro['pro_name']}</a>
+                </div>
+              </div>
+            <if condition="($key+1)%4 eq 0">
+              <div style="clear:both; width: 100%; height:26px;"></div>
+          <else/>
+              <div style="width:3px; height:10px; background:none; float:left;"></div>
+          </if>  
+        </volist>  
+    </div>
+    <div style="clear:both;"></div>
+    </if>
+    <if condition="$newpro neq ''">
+<div class="index_products_title" style="margin-top: 30px;">
+  <ul>
+     <li style="font-size:40px; color:#333; line-height:44px;height: 44px; text-align: center;text-transform: uppercase;font-weight: bold;">New Products</li>
+  </ul>
+</div>
+    <div class="page_RightMain" style="padding-bottom:20px;">
+       <volist empty="" name="newpro" id="newpro" offset="0" length="4">
+            <div class="asd2">
+                <div class="img" ><a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}"><img src="{:getpcimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> /></a>
+                </div>
+ 
+                <div class="in_proname2">
+                   <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" style="font-size: 14px;text-transform: uppercase;">{$newpro['pro_name']}</a>
+                </div>
+              </div>
+            <if condition="($key+1)%4 eq 0">
+              <div style="clear:both; width: 100%; height:26px;"></div>
+          <else/>
+              <div style="width:3px; height:10px; background:none; float:left;"></div>
+          </if>  
+        </volist>  
+    </div>
+    </if>
+     <div style="clear:both"></div>
+            <div style="width:100%">
+                  <!--产品关键词-->
+                  <if condition="get_productkeyword($product['pid']) neq ''"> <include file="YP01_CN:keywords" /> </if>
+                  <!--关联信息-->
+                  <include file="YP01_CN:relationinfo" />
+                  <include file="YP01_CN:relationnew" />
+                  <include file="YP01_CN:relationcase" />
+                  <!--评论-->
+                  <if condition="comment_show() eq 1"> <include file="YP01_CN:comment" /> </if>
+             </div>
+
+     <div style="clear:both; height:30px;"></div>
+</div>
+</div>
+<Include file="./Tpl/YP01_CN/index_page/bottom.html" />
+</block>

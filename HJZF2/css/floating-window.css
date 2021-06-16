@@ -1,0 +1,52 @@
+#HJZF2_floatWindow{
+    position: fixed;
+    width: 500px;
+    height: 300px;
+
+    cursor: pointer;
+    z-index: -2;
+}
+#HJZF2_floatWindow.window_fei{
+    left: 0;
+    top:0;
+}
+.HJZF2_floatWindow_img{width: 100%;height: 100%}
+#HJZF2_floatWindow.left_show{
+    bottom: 0;z-index: 10000;
+    animation: right_show 2s;
+    -moz-animation: right_show 2s;	/* Firefox */
+    -webkit-animation: right_show 2s;	/* Safari 和 Chrome */
+    -o-animation: right_show 2s;	/* Opera */
+}
+#HJZF2_floatWindow.right_show{
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    animation: right_show 2s;
+    -moz-animation: right_show 2s;	/* Firefox */
+    -webkit-animation: right_show 2s;	/* Safari 和 Chrome */
+    -o-animation: right_show 2s;	/* Opera */
+}
+@keyframes right_show
+{
+    from {bottom: -100px;}
+    to {bottom: 0;}
+}
+
+@-moz-keyframes right_show /* Firefox */
+{
+    from {bottom: -100px;}
+    to {bottom: 0;}
+}
+
+@-webkit-keyframes right_show /* Safari 和 Chrome */
+{
+    from {bottom: -100px;}
+    to {bottom: 0;}
+}
+
+@-o-keyframes right_show /* Opera */
+{
+    from {bottom: -100px;}
+    to {bottom: 0;}
+}

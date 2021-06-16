@@ -1,0 +1,111 @@
+<extend name="HJ03:basein" />
+<block name="content">
+	<style>
+		.class_t2d_all{
+			background: #{$color};
+		}
+		.inner_t2d_nav>ul>li.class_t2d_all a h3{color: #fff!important;}
+
+		.main_page .current{
+			background:#{$color}; color:#fff;border:1px solid #{$color};
+		}
+		.page-title-inner{
+			overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 16px;
+		}
+
+		.main_proitem:hover .main_proitem_name h6{
+			color: #{$color};
+		}
+		.main_proitem:after{
+			content: '';display: table;width: 0;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+		}
+		.main_proitem:hover:after{
+			content: '';display: table;width: 100%;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+		}
+		.main_product_more span{
+			color: #{$color};}
+
+		.main_product_more:hover span{
+			color:#{$color};
+		}
+
+		.main_product_title_right a:hover{
+			background: #ccc;
+		}
+	</style>
+	<if condition="$data47[2] neq ''">
+		<style>
+			.Breadcrumbs{width: 50%;float: right;}
+		</style>
+	</if>
+	<if condition="$data47[2] eq ''">
+		<style>
+			.main-content-right {
+				width: 880px;
+				float: right;
+			}
+			.page-title-inner{margin-top: 20px;}
+			.main-content-right .main-cases-detail-title{text-align: left}
+			.main_proitem{width: 280px;min-height: 250px;margin-bottom: 28px;}
+			.main_proitem_img{width: 240px;height: 164px;}
+			.main_proitem_box{height: 250px;}
+			.jiange{width: 20px;}
+			.main_proitem_second{padding: 12px 10px 12px;}
+			.main_proitem_name h6{
+				overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 16px;
+			}
+			.main_proitem_desc{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+		</style>
+	</if>
+	<div id="wrapper">
+		<div id="inbanner_box">
+			<div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+		</div>
+		<div class="page-title-inner" style="margin-bottom: 40px;">
+			<div class="container">
+				<div class="Breadcrumbs">Your location: <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current"><if condition="$data47[3] neq ''">{$data47[3]} <else/>Product center</if></span></div>
+				<if condition="$data47[2] neq ''">
+					<section class="main-content-top">
+						<Include file="./Tpl/HJ03/left_2.html" />
+					</section>
+				</if>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="page_nei_main" id="main-content-wrapper">
+			<if condition="$data47[2] eq ''">
+				<section class="main-content-left">
+					<Include file="./Tpl/HJ03/left.html" />
+				</section>
+			</if>
+			<section <if condition="$data47[2] neq ''">class="main-content-dowm"<else/>class="main-content-right"</if>>
+			<div class="main-content-right2">
+				<div class="page_RightMain">
+						<div class="page_Main">
+							<!--<h3 class="nosecrch_title margin-40px-bottom">All tags</h3>-->
+							<include file="HJ03:relationinfo" />
+							<div style="height: 30px;width: 100%"></div>
+							<include file="HJ03:relationnew" />
+						<div style="clear:both;height: 50px;"></div>
+					</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+			</section>
+			<div class="clear"></div>
+	</div>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_product_four_title,.new_hjzf_product_four_next,.new_hjzf_product_four_prev,.text-centers a,.proshow-top-arrow{
+        background: #{$data70[1]};
+    }
+    .new_hjzf_product_four_productItemBox_name a h3{
+        color: #{$data70[1]};
+    }
+    .text-centers a{
+        border-color: #{$data70[1]}
+    }
+</style>
+<if condition="$data70[0]">
+    <style>
+        .new_hjzf_product_four{
+            background: url({:getindeximgurl($data70[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<section class="new_hjzf_product_four">
+    <div class="new_hjzf_product_four_title">
+        <div class="container">
+            <div class="row">
+                <div class="new_hjzf_product_four_title--main index_title pb20">{$data70[2]}</div>
+                <div class="new_hjzf_product_four_title--desc">{$data70[3]}</div>
+            </div>
+        </div>
+        <div class="proshow-top-arrow"></div>
+    </div>
+    <div class="new_hjzf_product_four_Content">
+        <div class="container">
+            <div class="row">
+                <div class="new_hjzf_product_four_productWrap">
+                    <div class="new_hjzf_product_four_product swiper-container">
+                        <div class="swiper-wrapper">
+                            <volist empty="" name="indexpro" id="indexprohjzf_products_HJ01" key="k" offset="0" length="12">
+                                <div class="swiper-slide new_hjzf_product_four_productItem">
+                                    <div class="new_hjzf_product_four_productItemBox">
+                                        <div class="new_hjzf_product_four_productItemBox_img"><a href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}"><img src="{:getmainimgurl($indexprohjzf_products_HJ01['main_img'])}" <if condition="$indexprohjzf_products_HJ01['proalt'] neq ''">alt="{$indexprohjzf_products_HJ01['proalt']}"<else/>alt="{$indexprohjzf_products_HJ01['pro_name']}"</if> /></a></div>
+                                        <div class="new_hjzf_product_four_productItemBox_name">
+                                            <a href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}"><h3 class="index_text">{$indexprohjzf_products_HJ01['pro_name']}</h3></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev new_hjzf_product_four_prev"></div>
+                    <div class="swiper-button-next new_hjzf_product_four_next"></div>
+                </div>
+                <div class="pro-btn-more">
+                    <div class="text-centers"><a href="{:U('/product')}">{$data70[4]}</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

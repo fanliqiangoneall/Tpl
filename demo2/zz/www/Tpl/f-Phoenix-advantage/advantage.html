@@ -1,0 +1,55 @@
+<link href="__TMPL__f-Phoenix-advantage/advantage.css" rel="stylesheet">
+<div id="index_advantage">
+  <div style="width: 1190px;margin: auto;height: 603px;position: relative;">
+   <div id="index_advantage_animate">
+    <div class="index_ad_left">
+       <div class="index_ad_title">
+           Three Advantages
+       </div>
+       <div class="ad_left1">
+          <div class="ad_left_title" style="background: url(__TMPL__demo2/img/ad1.png) center left no-repeat;">Customized</div>
+          <div class="ad_left_con">Customized design to make your product standingout. </div>
+       </div>
+        <div class="ad_left2">
+          <div class="ad_left_title" style="background: url(__TMPL__demo2/img/ad2.png) center left no-repeat;">Various</div>
+          <div class="ad_left_con">Our knowledge on wide range of material selection as well as process selection to get desired look and finish</div>
+       </div>
+        <div class="ad_left3">
+          <div class="ad_left_title" style="background: url(__TMPL__demo2/img/ad3.png) center left no-repeat;">Quality efficiency</div>
+          <div class="ad_left_con">Consistent quality control with best possible delivery<br /> 
+date</div>
+       </div>
+    </div>
+   </div>
+   <div id="index_advantage_animate_1">
+    <div class="index_advantage_adv_cont">
+          <div class="index_advantage_adv_ad_1">
+             <img src="__TMPL__demo2/img/ad_right.png">
+          </div>
+          
+
+        <div style="clear: both;"></div>
+      
+    </div>
+   </div>  
+  </div>  
+</div>
+<script>
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>1700){
+		$('#index_advantage_animate').show();
+		$('#index_advantage_animate').removeClass().addClass('fadeInDown');
+		$("#index_advantage_animate_1").show();
+		$("#index_advantage_animate_1").addClass("fadeInUpBig");
+		$(".ad_left1").show();
+		$(".ad_left1").addClass("fadeInRightBig");
+		$(".ad_left2").show();
+		$(".ad_left2").addClass("fadeInRightBig1");
+		$(".ad_left3").show();
+		$(".ad_left3").addClass("fadeInRightBig2");
+	}
+});
+</script>

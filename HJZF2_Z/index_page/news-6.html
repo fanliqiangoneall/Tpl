@@ -1,0 +1,62 @@
+<!--{$pagename}-->
+<if condition="$data109[0]">
+    <style>
+        .HJZF2_Z__news-6{
+            background: url({:getindeximgurl($data109[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2_Z__news-6__img__contain a:hover i,.swiper-button-prev.HJZF2_Z__news-6__prev i, .swiper-button-next.HJZF2_Z__news-6__next i{
+        color: #{$data109[1]};
+    }
+    .HJZF2_Z__news-6__swiper .swiper-slide .HJZF2_Z__news-6__content .HJZF2_Z__news-6__more:before,.HJZF2_Z__news-6__swiper__pagination .swiper-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active,.HJZF2_Z__news-6__mainTitle:before{
+        background:#{$data109[1]} ;
+    }
+    .HJZF2_Z__news-6__swiper__pagination .swiper-pagination span.swiper-pagination-bullet{
+        border: 2px solid #{$data109[1]};
+    }
+</style>
+
+<section class="HJZF2_Z__news-6 index_pd">
+    <div class="HJZF2_Z__news-6__container">
+        <div class="HJZF2_Z__news-6__mainTitle index_title pb20">{$data109[2]}</div>
+        <div class="HJZF2_Z__news-6__swiperBox">
+            <div class="swiper-container HJZF2_Z__news-6__swiper">
+                <div class="swiper-wrapper">
+                    <volist name="indexnews" id="indexnew" offset="0" length="8" key="k">
+                        <div class="swiper-slide">
+                            <div class="HJZF2_Z__news-6__img">
+                                <a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()"><img   src="{:getimgurl($indexnew['new_pro'])}" border="0" alt="{$indexnew['title']}" /></a>
+                                <div class="HJZF2_Z__news-6__img__contain">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()"><span class="plus"><i class="fa fa-plus"></i></span></a>
+                                </div>
+                            </div>
+                            <div class="HJZF2_Z__news-6__content">
+                                <div class="HJZF2_Z__news-6__name index_title"><a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()">{:subtxt($indexnew['title'],40)}</a></div>
+                                <div class="HJZF2_Z__news-6__date index_text">
+                                 
+                                    <php>
+                                        $news_calss = get_wap_news_class_name($indexnew['news_class']);
+                                    </php>
+                                    <span class="category-link"><a href="{:U('/new_category',array('classid'=>$indexnew['news_class']))}" class="index_sub_title">{$news_calss}</a></span>
+                                    <time><a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()">{:date('Y-m-d ',$indexnew['created'])}</a></time>
+                                </div>
+                                <div class="HJZF2_Z__news-6__desc index_text">
+                                    {:subtxt($indexnew['news_description'],200)}
+                                </div>
+                                <a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()" class="HJZF2_Z__news-6__more index_title">{:__('Read More')} <i class="fa fa-caret-right"></i></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="swiper-button-prev HJZF2_Z__news-6__prev"><i class="fa fa-chevron-left"></i></div>
+                <div class="swiper-button-next HJZF2_Z__news-6__next"><i class="fa fa-chevron-right"></i></div>
+            </div>
+            <div class="HJZF2_Z__news-6__swiper__pagination">
+                <div class="swiper-pagination HJZF2_Z__news-6__pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>

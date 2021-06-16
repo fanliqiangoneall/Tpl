@@ -1,0 +1,295 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo2/css/products.css" rel="stylesheet">
+<style>
+    <if condition="$data9[7] neq ''">
+    .index_products{
+    margin-top: {$data9[7]}px;
+    }
+    </if>
+      .asd2>div>div:nth-child(1) a {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          word-break: break-all;
+      }
+      .asd2>div>div:nth-child(2) a {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          word-break: break-all;
+      }
+</style>
+
+<if condition="$data9[6]">
+    <style>
+        .index_products{
+            background:  url({:getindeximgurl($data9[6])}) no-repeat center;
+        }
+    </style>
+</if>
+<if condition="$data1[22] neq ''">
+    <style>
+        .in_proname2{bottom: -200px;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;}
+        .asd2:hover .in_proname2{bottom: 0;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;}
+    </style>
+</if>
+<div class="index_products">
+<div class="index_product2">
+ <div id="index_products_animate" style="display:none;">
+  <div class="index_products_title">
+   {$data[0]}
+  </div>
+ </div>
+
+    <div class="index_products_zwbg" id="pic">
+     <div id="index_products_animate_2" style="display:none;"> 
+      <div class="index_proleft">
+          <img id="add_vedio" src="{:getindeximgurl($data[1])}">
+      </div>
+     </div> 
+     <div>
+         <!--多个产品滚动-->
+         <php>
+             if(!$data9[2]){
+             $data9[2]=6;
+             }
+
+             for($i=1;$i<$data9[2];$i+=6){
+             $volist_count[]=$i;
+             }
+         </php>
+         <if condition="$data9[2] gt 6">
+             <link rel="stylesheet" href="__TMPL__demo2/css/idangerous.swiper.css">
+             <script src="__TMPL__demo2/js/idangerous.swiper.min.js"></script>
+         </if>
+
+         <div id="index_products_swiper" style="width: 843px;float: right; height:538px; overflow:hidden; position:relative;">
+             <div class="swiper-container index_products_swiper">
+                 <div class="swiper-wrapper">
+
+                     <volist name="volist_count" id="i_count">
+                         <php>$zq_offsets=($i_count-1); </php>
+
+                         <div class="swiper-slide">
+                             <volist empty="" name="indexpro" id="pro" offset="$zq_offsets" length='6'>
+
+
+                                 <defined name="PRODIMGFLAG">
+
+
+
+
+                                     <div class="asd2" style="border:0;border-radius:2px;box-shadow: 0 0 20px #ccc;"  onmouseover="changeprod(1,{$pro['pid']})" onmouseout="changeprod(2,{$pro['pid']})">
+
+
+                                         <div style="border-radius:2px;border:0;background:#f2f2f2;position:relative;height:221px;" id="cpordlist1_{$pro['pid']}">
+                                             <div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+                                                 <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}" style="color:#333;font-size:16px;">{$pro['pro_name']}</a>
+                                             </div>
+                                             <div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+                                                 <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"style="color:#666;font-size:14px;">{$pro['pro_description']}</a>
+                                             </div>
+                                             <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+                                                 <div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+                                                 <div style="width:80%;margin:0 auto;padding-top:14px;"><img src="__TMPL__demo3/img/hui.png" ></div>
+                                             </a>
+                                         </div>
+
+
+                                         <div style="border-radius:2px;border:0;background:#{$color};position:relative;height:221px;display:none;" id="cpordlist2_{$pro['pid']}">
+                                             <div class="" style="width:80%;margin:0 auto;padding:30px 0 0 0;">
+                                                 <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}" style="color:#fff;font-size:16px;">{$pro['pro_name']}</a>
+                                             </div>
+                                             <div class="" style="width:80%;margin:0 auto;padding:10px 0 0 0;">
+                                                 <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"style="color:#dddddd;font-size:14px;">{$pro['pro_description']}</a>
+                                             </div>
+                                             <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}" style="position:absolute;display:inline-block;bottom:0;height:45px;z-index:10000;width:100%;">
+                                                 <div class="" style="width:80%;height:1px;border-bottom:1px solid #e0e0e0;margin:0 auto;"></div>
+                                                 <div style="width:80%;margin:0 auto;padding-top:14px;"><img src="__TMPL__demo3/img/lan.png" ></div>
+                                             </a>
+                                         </div>
+
+
+                                     </div>
+
+
+
+                                     <else />
+
+                                     <div class="asd2" >
+                                         <div class="img2" ><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a>
+                                         </div>
+
+                                         <div class="in_proname2">
+                                             <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a>
+                                         </div>
+
+                                     </div>
+
+                                 </defined>
+
+
+
+                                 <if condition="($key+1)%3 eq 0">
+                                     <div style="clear:both; width: 100%; height:34px;"></div>
+                                     <else/>
+                                     <div style="width:32px; height:10px; background:none; float:left;"></div>
+                                 </if>
+                             </volist>
+                         </div>
+                     </volist>
+                 </div>
+
+             </div>
+             <div style="clear: both;width: 100%;height: 22px;"></div>
+             <div class="pagination index_products_swiper_page"></div>
+         </div>
+     </div>
+  </div>
+ </div> 
+</div>
+<if condition="$data9[2] gt 6">
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            var mySwiper_products = new Swiper('.index_products_swiper',{
+                loop: true,
+                autoplay: true,
+                pagination: {
+                    el: '.index_products_swiper_page',
+					clickable :true,
+                },
+            });
+        });
+
+    </script>
+    <style>
+
+        #index_products_swiper .pagination {
+            position: absolute;
+            z-index: 20;
+            bottom: 10px;
+            width: 1190px;
+            text-align: center;
+            left: -170px;
+        }
+        #index_products_swiper .swiper-pagination-bullet {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 10px;
+            border: 1px solid #fff;
+            cursor: pointer;
+			outline:medium;
+            background:url({:getindeximgurl($data9[3])});
+        background-repeat:no-repeat;
+        background-size:contain;
+        }
+        #index_products_swiper .swiper-active-switch {
+            background:url({:getindeximgurl($data9[4])});
+        background-repeat:no-repeat;
+        background-size:contain;
+        }
+    </style>
+</if>
+<script>
+
+    function changeprod(type,pid){
+        //console.log(type)
+        if(type==1){
+            $("#cpordlist2_"+pid).show();
+            $("#cpordlist1_"+pid).hide();
+        }
+        else{
+            $("#cpordlist1_"+pid).show();
+            $("#cpordlist2_"+pid).hide();
+        }
+    }
+    $(function(){
+        var top=$("#pic").offset().top;
+        if(top<800){
+            $('#index_products_animate_1').show();
+            $('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+            $('#index_products_animate_2').show();
+            $('#index_products_animate_2').removeClass().addClass('fadeInDown');
+            $('#index_products_animate').show();
+            $('#index_products_animate').removeClass().addClass('fadeInLeft');
+        }
+    })
+    $(window).scroll( function() {
+        var scrollTop=$(document).scrollTop();
+        //alert(scrollTop);
+
+        var top=$("#pic").offset().top;
+        if(top-scrollTop<580){
+            $('#index_products_animate_1').show();
+            $('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+            $('#index_products_animate_2').show();
+            $('#index_products_animate_2').removeClass().addClass('fadeInDown');
+            $('#index_products_animate').show();
+            $('#index_products_animate').removeClass().addClass('fadeInLeft');
+        }
+    });
+</script>
+<script>
+$(function(){
+var top=$("#pic").offset().top;
+if(top<800){
+
+		$('#index_products_animate_1').show();
+		$('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+		$('#index_products_animate_2').show();
+		$('#index_products_animate_2').removeClass().addClass('fadeInDown');
+		$('#index_products_animate').show();
+		$('#index_products_animate').removeClass().addClass('fadeInLeft');
+}
+})
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	top=$("#pic").offset().top;
+	if(top-scrollTop<580){	
+		$('#index_products_animate_1').show();
+		$('#index_products_animate_1').removeClass().addClass('fadeInRightBig');
+		$('#index_products_animate_2').show();
+		$('#index_products_animate_2').removeClass().addClass('fadeInDown');
+		$('#index_products_animate').show();
+		$('#index_products_animate').removeClass().addClass('fadeInLeft');
+	}
+
+});
+</script>
+<script type="text/javascript">
+    $(function(){
+     $(".subNav").mouseenter(function(){
+      $(this).toggleClass("currentDd").siblings(".subNav").removeClass("currentDd")
+      $(this).toggleClass("currentDt").siblings(".subNav").removeClass("currentDt")
+      
+      // 修改数字控制速度， slideUp(500)控制卷起速度
+      $(this).next(".navContent").slideToggle(500).siblings(".navContent").slideUp(500);
+     })  
+    })
+   </script>
+   
+   <if condition="$data9[5]">
+   <script src="__TMPL__demo2/js/layer.js"></script>
+      <script>
+   $("#add_vedio").click(function(){
+	  
+	layer.open({
+  type: 2,
+  title: '',
+  shadeClose: true,
+  shade: 0.8,
+  area: ['800px', '600px'],
+  maxmin: true, 
+  content: '{$data9[5]}' //iframe的url
+}); 
+})
+   </script>
+   </if>
+
+   

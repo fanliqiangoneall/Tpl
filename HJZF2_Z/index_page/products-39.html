@@ -1,0 +1,113 @@
+<!--{$pagename}-->
+<style>
+    .products_39_title span.on {
+        background-color: #{$data541[1]};
+    }
+    .products_39 {
+        background-color: #{$data541[0]};
+    }
+    div[class^='products_39_container_pagination'] span.swiper-pagination-bullet-active {
+        background-color: #{$data541[1]};
+    }
+</style>
+<section class="products_39 index_pd">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 text-center">
+                <div class="index_title pb20">
+                    {$data541[2]}
+                </div>
+                <div class="index_sub_title pb40">
+                    {$data541[3]}
+                </div>
+            </div>
+            <php>
+                $arr_str=$data541[4];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $k=>$a){
+                $list[$k]=get_index_products_categoryname($a);
+                }
+                $arr_stra=$data541[4];
+                $arra=explode(',',$arr_stra);
+                foreach($arra as $ks=>$aa){
+                $lista[$ks]=get_index_products_category($aa);
+                }
+            </php>
+            <div class="products_39_title col-xs-12 index_text">
+                <volist empty="" name="list" id="li" key="key">
+                    <span>{$li['class_name']}</span>
+                </volist>
+            </div>
+            <div class="col-xs-12">
+                <volist empty="" name="lista" id="lia" key="keya">
+                    <div class="products_39_container_{$keya} products_39_container_list">
+                        <div class="products_39_container_main{$keya} products_39_container swiper-container">
+                            <div class="swiper-wrapper">
+                                <volist name="lia" id="lib">
+                                    <div class="swiper-slide">
+                                        <a href="{:U('/Product','','')}/{:getproname($lib['pid'])}">
+                                            <img src="{:getimgurl($lib['main_img'])}" alt="{$lib[pro_name]}"
+                                                class="img-fluid">
+                                            <span class="fx-center index_sub_title">
+                                                {$lib['pro_name']}
+                                            </span>
+                                        </a>
+                                    </div>
+                                </volist>
+
+                            </div>
+                            <div class="products_39_container_pagination{$keya} text-center"></div>
+                        </div>
+                        <div class="swiper-button-next products_39_next{$keya} swiper-button-black"></div>
+                        <div class="swiper-button-prev products_39_prev{$keya} swiper-button-black"></div>
+                    </div>
+                </volist>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<if condition="$data541[6]">
+    <!-- 成舍移动端 -->
+    <style>
+        @media(max-width: 767px) {
+            .products_39 {
+                display: none;
+            }
+        }
+    </style>
+    <div class="nav-hidden-pc case_19_mobile">
+        <volist empty="" name="lista" id="liab" key="keyb">
+            <div class="index_title text-center">
+                {$list[$keyb-1]['class_name']}
+            </div>
+            <div class="products_39_container_{$keyb} products_39_container_list_mobile">
+                <div class="products_39_container_main{$keyb} products_39_container swiper-container">
+                    <div class="swiper-wrapper">
+                        <volist name="liab" id="liba">
+                            <div class="swiper-slide">
+                                    <a href="{:U('/Product','','')}/{:getproname($liba['pid'])}">
+                                        <img src="{:getimgurl($lib['main_img'])}" alt="{$lib[pro_name]}" class="img-fluid">
+                                    <div class="products_39_mobile">
+                                        <div class="index_sub_title">
+                                            {$liba['pro_name']}
+                                        </div>
+                                        <div class="index_text">
+                                            {$liba['pro_description']}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                    <!-- <div class="products_39_container_pagination{$keyb} text-center"></div> -->
+                </div>
+                <!-- <div class="swiper-button-next swiper-button-black"></div>
+            <div class="swiper-button-prev swiper-button-black"></div> -->
+            </div>
+        </volist>
+    </div>
+</if>

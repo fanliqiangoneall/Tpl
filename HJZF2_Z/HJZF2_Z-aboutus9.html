@@ -1,0 +1,62 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,ul.InsidePages_left_navlist>li > a > h3:hover,ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$color};
+        }
+        .InsidePages_content-right_content_title:before{
+            background: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+    </style>
+    <div class="index_wrapper inner9__wrapper" id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+            </if>
+        </div>
+        <div class="index_inner container">
+            <div class="row">
+                <div class="HJZF_Z__inner9--text wow bounceIn">
+                    <div class="index_title">{$inner_data[0]}</div>
+                    <div class="index_text">{$inner_data[1]}</div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__inner9--leftcate" navcrumbs>
+            <div class="index_inner container">
+                <div class="row">
+                    <Include file="./Tpl/HJZF2_Z/left_othercate9.html" />
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_othercatemobile9.html" />
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="index_inner container" id="payment">
+                <div class="row">
+                	<section  class="col-xs-12 InsidePages_content2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="hidden-xs hidden-sm hidden-md col-lg-12 InsidePages_content-right_editor" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                                <div class="col-xs-12 hidden-lg hidden-xl InsidePages_content-right_editor"><if condition="$intro_class['wapreadme']">{:htmlspecialchars_decode($intro_class['wapreadme'])} <else/>{:htmlspecialchars_decode($intro_class['readme'])}</if></div>
+                                <div class="page_nei_space"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

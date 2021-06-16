@@ -1,0 +1,37 @@
+<!--left style-->
+<style>
+    .inner_t2d_nav>ul>li:hover{
+        background: #{$color};
+    }
+    .inner_t2d_nav>ul>li:hover >a>h3{
+        color: #fff;
+    }
+    .inner_t2d_nav>ul>li.class_t2don{
+        background: #{$color};
+    }
+    .inner_t2d_nav>ul>li.class_t2don >a>h3{
+        color: #fff;
+    }
+</style>
+<!--left style-->
+
+<div class="main_left">
+    <div class="inner_t2d_nav">
+        <ul>
+            <li class="class_t2d_all"><a href="{:U('/product')}"><h3>All</h3></a></li>
+            <volist empty="No data" name="allclass" id="allclass_left">
+
+                <li pro-class-id="{$allclass_left['pcid']}" <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="class_t2don"<else/>class="class_t2d"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                <!--<if condition='$allclass_left["childs"] neq ""'>
+                    <ul>
+                        <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                            <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="childon"<else/>class="child"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}#pro_head">{$allclass_leftchild['class_name']}</a></li>
+                        </volist>
+                    </ul>
+                </if>-->
+                </li>
+            </volist>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>

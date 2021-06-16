@@ -1,0 +1,64 @@
+<extend name="YP01:base" />
+<block name="content">
+<Include file="./Tpl/YP01/index_page/head.html" />
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+<style type="text/css">
+  .left_con:first-child li{display: block !important;}
+</style>
+<Include file="./Tpl/YP01/left.html" />
+<script>
+$(document).ready(function(){	
+  $(".in_asd .in_rsp").hide();	
+  $(".in_asd").hover(function(){
+	  $(this).find(".in_rsp").stop().fadeTo(500,0.7)
+	  $(this).find(".in_text").stop().animate({left:'0'}, {duration: 500})
+  },
+  function(){
+	  $(this).find(".in_rsp").stop().fadeTo(500,0)
+	  $(this).find(".in_text").stop().animate({left:'375'}, {duration: "fast"})
+	  $(this).find(".in_text").animate({left:'-375'}, {duration: 0})
+  });
+  });
+</script>
+<div class="r_mbx"><img src="__TMPL__YP01/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/product')}">Products</a>&nbsp;>&nbsp;{$type}</div>
+<div class="page_LeftClass2">
+
+<div class="page_Main">
+
+    <div class="index_products_title">
+      <ul>
+         <li style="font-size:40px; color:#333; line-height:44px;height: 44px; text-align: center;font-weight: bold;">{$type}</li>
+      </ul>
+    </div>
+    <div class="page_RightMain" style="padding-bottom:20px;">
+     <volist empty="" name="pro" id="newpro" offset="0">
+            <div class="asd2">
+                <div class="img" ><a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}"><img src="{:getpcimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> /></a>
+                </div>
+ 
+                <div class="in_proname2">
+                   <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" style="font-size: 14px;text-transform: uppercase;" title="{$newpro['pro_name']}">{:HtmlEncode(subtxt($newpro['pro_name'],50))}</a>
+                </div>
+              </div>
+            <if condition="($key+1)%4 eq 0">
+              <div style="clear:both; width: 100%; height:26px;"></div>
+          <else/>
+              <div style="width:3px; height:10px; background:none; float:left;"></div>
+          </if>  
+        </volist>  
+       <div class="clear"></div>
+       <div class="main_page">{$page}</div>
+    </div>
+    <div style="clear:both"></div>
+  </div>  
+</div>
+<Include file="./Tpl/YP01/index_page/bottom.html" />
+</block>

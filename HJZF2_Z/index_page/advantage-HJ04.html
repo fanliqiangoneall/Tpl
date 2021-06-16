@@ -1,0 +1,42 @@
+<!--{$pagename}-->
+<php>
+    if($data215[0]){ $color = $data215[0]; } 
+    if($data215[3]){ $bg = getindeximgurl($data215[3]); }
+</php>
+<style>
+    .hjzf2_z_advantage_HJ04 {
+        background: url({$bg}) no-repeat center;
+    }
+    .hjzf2_z_advantage_HJ04_title:before{
+        background-color: #{$color};
+    }
+    @media (max-width:768px) {
+        .hjzf2_z_advantage_HJ04{
+            background: #{$data215[5]};
+        }
+    }
+    .hjzf2_z_advantage_HJ04 ,.hjzf2_z_advantage_HJ04_text a.more,
+    .hjzf2_z_advantage_HJ04_text a.more{
+        color: #{$data215[6]};
+        border-color: #{$data215[6]};
+    }
+    .hjzf2_z_advantage_HJ04_text a.more:hover{
+        color: #{$color};
+    }
+</style>
+
+<section class="hjzf2_z_advantage_HJ04 index_pd">
+    <div class="container">
+        <div class="row wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".3s" >
+            <div class="col-xs-12 col-md-4 hjzf2_z_advantage_HJ04_title index_title">
+                <h2>{$data215[1]}</h2>
+            </div>
+            <div class="col-xs-12 col-md-7 col-md-offset-1 hjzf2_z_advantage_HJ04_text">
+                <p class="index_sub_title">
+                    {$data215[2]}
+                </p>
+                <a href="{$data215[4]}" class="more index_text">{:__('Read More')}</a>
+            </div>
+        </div>
+    </div>
+</section>

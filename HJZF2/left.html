@@ -1,0 +1,114 @@
+<!--left3 style-->
+<style>
+    .InsidePages_left_content-main{
+        border-top-color:#{$color}
+    }
+	.InsidePages_left_content-main ul>li>ul>li{ position:relative;}
+	.InsidePages_left_content-main ul>li>ul>li .class_button {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    cursor: pointer;
+	top: 4px;
+    right: -15px;
+}
+.InsidePages_left_content-main ul>li>ul>li>ul>li a h3{
+	font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    padding-left:40px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+</style>
+<!--left style3-->
+<div class="InsidePages_content-left_content">
+    <script>
+        $(document).ready(function(){
+            $(".class_button").on("click",function(){
+                if( $(this).next('ul').css("display")=="none"){
+                    $(this).next('ul').css("display","block");
+                    $(this).parent().addClass("yijion");
+                }else{
+                    $(this).next('ul').css("display","none");
+                    $(this).parent().removeClass("yijion").addClass("yiji");
+                }
+            });
+            $(".childon").parent().parent().addClass("yijion");
+
+
+        })
+    </script>
+    <if condition="$inner_data[5]">
+        <script>
+            $(document).ready(function(){
+                if($("ul.InsidePages_left_navlist>li.yiji > ul").length>-1){
+
+                    $(".InsidePages_left_navlist ul").css("display","block");
+                };
+            })
+
+        </script>
+    </if>
+    <div class="InsidePages_left_content">
+            <div class="InsidePages_left_search">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <li class="search_first"><input data-language="{:C('LANGUAGE')}"type="text" value="{:__('Product Search')}" name="keywords" id="keyword2" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                    <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                    <div class="clear"></div>
+                </form>
+            </div>
+
+
+        <div class="InsidePages_left_content-main">
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">{$vo['title']} </if>
+                </volist>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="allclass" id="allclass_left">
+
+                    <li pro-class-id="{$allclass_left['pcid']}" <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yijion"<else/>class="yiji"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                    <span  <if condition="count($allclass_left['childs']) gt 0">class="class_button"<else/>class="class_button_none"</if>></span>
+
+                    <if condition='$allclass_left["childs"] neq ""'>
+                        <ul>
+                            <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                                <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="childon"<else/>class="child"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}#pro_head">{$allclass_leftchild['class_name']}</a><span  <if condition="count($allclass_leftchild['childs']) gt 0">class="class_button"<else/>class="class_button_none"</if>></span>
+                                    
+                    <if condition='$allclass_left["childs"] neq ""'>
+                        
+                        <ul>
+                            <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftchild1">
+                                <li <if condition="$classid eq $allclass_leftchild1['pcid'] or $prolist['parent_id'] eq $allclass_leftchild1['pcid'] or $product['class_id'] eq $allclass_leftchild1['pcid'] or $procate['parent_id'] eq $allclass_leftchild1['pcid']">class="sanjion"<else/>class="sanji"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild1['pcid'])}#pro_head">{$allclass_leftchild1['class_name']}</a>
+                                </li>
+                            </volist> 
+                            <if condition="count($allclass_leftchild['childs']) gt 7">
+                                <if condition="$inner_data[7] neq '' ">
+                                    <li class="child">
+                                        <a href="{:getindexlink($inner_data[6])}">
+                                            <h3>
+                                                {$inner_data[7]}
+                                            </h3>
+                                        </a>
+                                    </li> 
+                                </if>  
+                            </if>
+                                                
+                        </ul> 
+                     </if>                                 
+                                </li>
+                            </volist>
+                        </ul>
+                    </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+
+
+
+</div>

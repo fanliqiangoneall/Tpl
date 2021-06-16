@@ -1,0 +1,375 @@
+<volist empty="" name="floatWindow" id="floatWindow" key="k" offset="0" length="8">
+	<if condition="$floatWindow['windowImg']">
+		<section id="HJZF2_floatWindow">
+			<a href="{$floatWindow['windowUrl']}">
+				<if condition="$floatWindow['windowImg']">
+					<php>
+						$hjzf2_floatWindow_img=getimgurl($floatWindow['windowImg']);
+						$window_type = $floatWindow['windowType'] or $window_type='0';
+					</php>
+					<script>
+						var window_type = <?php echo $window_type;?>;
+						console.log(window_type);
+					</script>
+					<style>
+						.HJZF2_floatWindow_img{
+							background:url({$hjzf2_floatWindow_img}) center/100% no-repeat;
+						}
+					</style>
+					<div class="HJZF2_floatWindow_img"></div>
+				</if>
+			</a>
+		</section>
+	</if>
+</volist>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__TMPL__demo3/js/wow.js"></script>
+ <script src="__TMPL__demo3/js/statitics.js"></script>
+ <script src="__TMPL__demo3/js/slick.min.js"></script>
+	<script src="__TMPL__public/js/layer/layer.js"></script>
+	<script src="__TMPL__demo3/js/swiper.min.js"></script>
+    <script src="__TMPL__demo3/js/move_port.js"></script>
+	<script type="text/javascript" src="__TMPL__public/js/wow.min.js"></script>
+	<script>
+		new WOW().init();
+	</script>
+    <script>
+		$(function(){
+			if($("#HJZF2_floatWindow").length>0){
+				function close(){
+					var close = "<div class=\"close_port\">×</div>";
+					$("#HJZF2_floatWindow").append(close);
+					$(".close_port").css({
+						position: 'absolute',
+						display: 'none',
+						width: '20px',
+						height: '20px',
+						top: 0,
+						right: 0,
+						color: 'red',
+						border: '1px solid red',
+						background: '#ccc',
+						textAlign: 'center',
+						lineHeight: '20px',
+						cursor: 'pointer'
+					});
+					$("#HJZF2_floatWindow").hover(function(){
+						$(this).find('.close_port').show();
+					},function(){
+						$(this).find('.close_port').hide();
+					});
+					$("#HJZF2_floatWindow").find('.close_port').on('click',function(){
+						$(this).parent().remove();
+					});
+				}
+				if(typeof window_type!="undefined" && window_type===0){
+					//去除浮窗
+					$("#HJZF2_floatWindow").remove();
+				}else if(typeof window_type!="undefined" && window_type===1){
+					//靠左漂浮
+					$("#HJZF2_floatWindow").addClass("left_show");
+					close();
+				}else if(typeof window_type!="undefined" && window_type===2){
+					//靠右漂浮
+					$("#HJZF2_floatWindow").addClass("right_show");
+					close();
+
+				}else if(typeof window_type!="undefined" && window_type===3){
+					$("#HJZF2_floatWindow").addClass("window_fei");
+					$("#HJZF2_floatWindow").css("zIndex","10000");
+					move_obj("#HJZF2_floatWindow");
+				}else{
+					return false;
+				}
+			}
+		});
+
+</script>
+    <script>
+		/*banner*/
+		$('#HJ02-banner1').slick({infinite: true, slidesToShow: 1, slidesToScroll: 1, lazyLoad: 'ondemand',cssEase:'ease',autoplay:'true',dots:true});
+		/*banner*/
+
+		/*index product*/
+		var swiper_pro = new Swiper('.index_pro_slickbox', {
+			slidesPerView: 3,
+			spaceBetween: 50,
+			slidesPerGroup:3,
+			loop: true,
+			pagination: {
+				el: '.hj02-pro-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.hj02-pro-next',
+				prevEl: '.hj02-pro-prev',
+			},
+		});
+		/*index product*/
+jQuery('#animate_banner').removeClass().addClass('fadeInLeft');
+function goTop(){
+  jQuery('html,body').animate({'scrollTop':0},600);
+}
+jQuery(function(){
+  jQuery('.skype-show').hide();   
+  jQuery(".skype-container").bind('mouseenter',function(){
+    jQuery('.skype-show').show();
+  })
+  jQuery(".skype-container").bind('mouseleave',function(){        
+    jQuery('.skype-show').hide();
+  });
+});
+jQuery(function(){
+  jQuery('.whatsapp-show').hide();   
+  jQuery(".whatsapp-container").bind('mouseenter',function(){
+    jQuery('.whatsapp-show').show();
+  })
+  jQuery(".whatsapp-container").bind('mouseleave',function(){        
+    jQuery('.whatsapp-show').hide();
+  });
+});
+		jQuery(function(){
+			jQuery('.whatsapp-show2').hide();
+			jQuery(".whatsapp-container2").bind('mouseenter',function(){
+				jQuery('.whatsapp-show2').show();
+			})
+			jQuery(".whatsapp-container2").bind('mouseleave',function(){
+				jQuery('.whatsapp-show2').hide();
+			});
+		});
+jQuery(function(){
+  jQuery('.email-show').hide();   
+  jQuery(".email-container").bind('mouseenter',function(){
+    jQuery('.email-show').show();
+  })
+  jQuery(".email-container").bind('mouseleave',function(){        
+    jQuery('.email-show').hide();
+  });
+});
+
+jQuery(function(){
+	jQuery('.wxewm-show').hide();   
+	jQuery(".wxewm-container").bind('mouseenter',function(){
+		jQuery('.wxewm-show').show();
+	})
+	jQuery(".wxewm-container").bind('mouseleave',function(){        
+		jQuery('.wxewm-show').hide();
+	});
+});
+
+//导航自动选定的方法
+
+jQuery(function(){
+	var color="#{$color}";
+	var url=window.location.href;
+	jQuery("#index_navigation_animate_2 li a").each(function(){
+		
+		var href=jQuery(this).attr("href");
+		href=href.toLowerCase();
+		url=url.toLowerCase();
+		//区分出啥是啥，主要就是区分出new pro case
+		
+		//优先找顶级，找不到在按规则排
+		//console.log(href);
+			<if condition="C('webid') eq 1101">
+			<!--特别处理一下-->
+			if(url.indexOf("/jsfa.html")!=-1){
+				$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+				$("#left_title_names:contains(产品中心)").html("音乐教育")
+				return false;
+			}
+				if(url.indexOf("/yljc.html")!=-1){
+				$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+					$("#left_title_names:contains(产品中心)").html("音乐教育")
+				return false;
+			}
+		if(url.indexOf("/yjxt.html")!=-1){
+			$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+			$("#left_title_names:contains(产品中心)").html("音乐教育")
+			return false;
+		}
+		if(url.indexOf("/yljx.html")!=-1){
+			$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+			$("#left_title_names:contains(产品中心)").html("音乐教育")
+			return false;
+		}
+		if(url.indexOf("/ylrj.html")!=-1){
+			$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+			$("#left_title_names:contains(产品中心)").html("音乐教育")
+			return false;
+		}
+				if(url.indexOf("/ylpx.html")!=-1){
+				$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+					$("#left_title_names:contains(产品中心)").html("音乐教育")
+				return false;
+			}
+						
+				if(url.indexOf("/yl.html")!=-1){
+				$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+					$("#left_title_names:contains(产品中心)").html("音乐教育")
+				return false;
+			}
+						
+				if(url.indexOf("/yljs.html")!=-1){
+				$(".top_menu h2:contains(音乐教育)").css("color",color).addClass("myactive");
+					$("#left_title_names:contains(产品中心)").html("音乐教育")
+				return false;
+			}					
+
+			</if>		
+		
+		
+		if(href==url){		
+			//设置成本来导航的情况
+			jQuery(".top_menu").find('h2').css("color","#333333");	
+			jQuery(this).parents(".top_menu").find('h2').css("color",color);
+			jQuery(this).parents(".top_menu").find('h2').addClass("myactive");
+			//跳出循环
+			
+		
+			
+			return false;
+		}else{
+			//说明是产品
+			url=url.toLowerCase();
+							
+			
+			if(url.indexOf("product")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents(".top_menu").find('h2').css("color",color);
+					jQuery(this).parents(".top_menu").find('h2').addClass("myactive");
+					<if condition="C('webid') eq 1101">
+					<!--特别处理一下-->
+						$(".top_menu h2:contains(音乐教育)").css("color","#333333").removeClass("myactive");
+						
+					</if>
+				}
+			}
+			//说明是产品
+			if(url.indexOf("new")!=-1){
+				if(href.indexOf("new")!=-1){
+					jQuery(this).parents(".top_menu").find('h2').css("color",color);
+					jQuery(this).parents(".top_menu").find('h2').addClass("myactive");
+				}
+			}			
+			
+			//说明是产品
+			if(url.indexOf("case")!=-1){
+				if(href.indexOf("case")!=-1){
+					jQuery(this).parents(".top_menu").find('h2').css("color",color);
+					jQuery(this).parents(".top_menu").find('h2').addClass("myactive");
+				}
+			}
+						
+		}
+	})
+})
+
+var path="";
+    </script>
+    <script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},
+		"bdText":"","bdMini":"2",
+		"bdMiniList":false,
+		"bdPic":"","bdStyle":"0","bdSize":"16"},
+		"share":{},
+
+		"selectShare":{"bdContainerClass":null,
+		"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};
+		with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//{$Think.EWMWEBURL}/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<Include file="./Tpl/demo3/sidebar.html" />      
+  </body>
+  
+  <if condition="C('webid') eq 1101">
+<script>
+$(document).ready(function(){
+var choose=$(".myactive:contains(音乐教育)").html();
+if(choose=="音乐教育"){
+	//console.log("ok");
+	//说明现在是选中音乐教育的情况要显示出包含音乐的
+	$(".subNav h3").css("display","none");
+	$(".subNav h3:contains(音)").not(".subNav h3:contains(数字音频大赛)").not(".subNav h3:contains(中国音乐小金钟)").css("display","block");
+}else{
+	//console.log("no");
+	$(".subNav h3:contains(音)").not(".subNav h3:contains(数字音频大赛)").not(".subNav h3:contains(中国音乐小金钟)").css("display","none");
+}
+})
+</script>
+</if>
+<if condition="C('webid') eq 1101">
+<script>
+
+
+</script>
+<style>
+.page_LeftClass .subNavBox img{ display:none}
+</style>
+</if>
+<if condition="C('webid') eq 1138">
+<style>
+.index_navigation_page_Menu ul li {
+    position: relative;
+    display: inline;
+    float: left;
+    padding: 0 13px !important;
+}
+</style>
+</if>
+<script>
+	$(function(){
+		if($("#HJZF2_floatWindow").length>0){
+			function close(){
+				var close = "<div class=\"close_port\">×</div>";
+				$("#HJZF2_floatWindow").append(close);
+				$(".close_port").css({
+					position: 'absolute',
+					display: 'none',
+					width: '20px',
+					height: '20px',
+					top: 0,
+					right: 0,
+					color: 'red',
+					border: '1px solid red',
+					background: '#ccc',
+					textAlign: 'center',
+					lineHeight: '20px',
+					cursor: 'pointer'
+				});
+				$("#HJZF2_floatWindow").hover(function(){
+					$(this).find('.close_port').show();
+				},function(){
+					$(this).find('.close_port').hide();
+				});
+				$("#HJZF2_floatWindow").find('.close_port').on('click',function(){
+					$(this).parent().remove();
+				});
+			}
+			if(typeof window_type!="undefined" && window_type===0){
+				//去除浮窗
+				$("#HJZF2_floatWindow").remove();
+			}else if(typeof window_type!="undefined" && window_type===1){
+				//靠左漂浮
+				$("#HJZF2_floatWindow").addClass("left_show");
+				close();
+			}else if(typeof window_type!="undefined" && window_type===2){
+				//靠右漂浮
+				$("#HJZF2_floatWindow").addClass("right_show");
+				close();
+
+			}else if(typeof window_type!="undefined" && window_type===3){
+				$("#HJZF2_floatWindow").addClass("window_fei");
+				$("#HJZF2_floatWindow").css("zIndex","10000");
+				move_obj("#HJZF2_floatWindow");
+			}else{
+				return false;
+			}
+		}
+	});
+</script>
+</html>
+

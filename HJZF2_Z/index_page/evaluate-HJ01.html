@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+<php>
+    if($data55[1]){ $evaluate_hj01_bg = $data55[1];}    
+    if($data55[0]){
+        $evaluate_hj01_bgimg=getindeximgurl($data55[0]);
+    }
+    $arr5 = get_list_val($data55[5]);
+</php>
+<style>
+    .evaluate_hjslide:hover .evaluate_hjslideBox{
+        border-color:#{$data55[2]};
+    }
+    .evaluate_hjslide:hover .evaluate_hjslideBox::before{
+        border-color:#{$data55[2]} transparent transparent transparent;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets.evaluate_hjpage .swiper-pagination-bullet-active{
+        background: #{$data55[2]};
+    }
+    .evaluate_hjnext i,.evaluate_hjprev i{
+        color: #{$data55[2]};
+    }
+</style>
+<section class="evaluate-hj01 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="evaluate_titleBox text-center">
+                    <div class="index_title pb20">{$data55[3]}</div>
+                    <div class="index_sub_title pb40">{$data55[4]}</div>
+                </div>
+                <div class="evaluate_content">
+                    <div class="swiper-container evaluate_hj01_container">
+                        <div class="swiper-wrapper">
+                            <volist name="arr5" id="item" key="k">
+                                <div class="swiper-slide evaluate_hjslide">
+                                    <div class="evaluate_hjslideBox">
+                                        <if condition="$item['src']"><a href="{$item['src']}"></if>
+                                        <div class="evaluate_hjslidename index_sub_title">{$item['title']}</div>
+                                        <div class="evaluate_hjslidecontent index_text">{$item['content']}</div>
+                                        <if condition="$item['src']"></a></if>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination evaluate_hjpage"></div>
+                        <div class="swiper-button-next evaluate_hjnext"><i class="fa fa-angle-right"></i></div>
+                        <div class="swiper-button-prev evaluate_hjprev"><i class="fa fa-angle-left"></i></div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

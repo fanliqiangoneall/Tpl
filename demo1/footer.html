@@ -1,0 +1,50 @@
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__TMPL__demo1/js/statitics.js"></script>
+    <script>
+jQuery('#animate_banner').removeClass().addClass('fadeInLeft');
+function goTop(){
+  jQuery('html,body').animate({'scrollTop':0},600);
+}
+jQuery(function(){
+  jQuery('.mobile-show').hide();   
+  jQuery(".mobile-container").bind('mouseenter',function(){
+    jQuery('.mobile-show').show();
+  })
+  jQuery(".mobile-container").bind('mouseleave',function(){        
+    jQuery('.mobile-show').hide();
+  });
+});
+jQuery(document).ready(function(){
+  jQuery(".sidebar ul li").hover(function(){
+    jQuery(this).find(".sidebox").stop().animate({"width":"230px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"
+		})
+    jQuery(this).find(".sidebox2").stop().animate({"width":"250px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"
+		})
+    jQuery(this).find(".sidebox3").stop().animate({"width":"200px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"
+	})
+  },function(){
+    jQuery(this).find(".sidebox").stop().animate({"width":"60px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"{$data13[12]}"
+		})  
+    jQuery(this).find(".sidebox2").stop().animate({"width":"60px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"{$data13[12]}"
+	})
+    jQuery(this).find(".sidebox3").stop().animate({"width":"60px"},200).css({
+		"opacity":"1","filter":"Alpha(opacity=100)","background":"{$data13[12]}"
+		})
+  }); 
+});  
+var path="";
+    </script>
+<Include file="./Tpl/demo1/sidebar.html" />    
+  </body>
+</html>
+

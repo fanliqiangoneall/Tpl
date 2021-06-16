@@ -1,0 +1,258 @@
+<!--{$pagename}-->
+<php>
+    if($data249[5]){
+        $imgs=[];
+        $matches=getimages(htmlspecialchars_decode($data249[5]));
+        if(isset($matches[1])){
+            $imgs=$matches[1];
+        }
+    }
+    if($data249[6]){
+        $imgs2=[];
+        $matches=getimages(htmlspecialchars_decode($data249[6]));
+        if(isset($matches[1])){
+            $imgs2=$matches[1];
+        }
+    }
+    foreach($imgs as $k=>$img){
+    $icon1[$k]['img']=$img;
+    }
+    foreach($imgs2 as $k=>$img2){
+    $icon1[$k]['img2']=$img2;
+    }
+    $icon1_name=explode("\\r\\n",$data249[7]);
+    $icon1_desc=explode("\\r\\n",$data249[8]);
+
+    foreach($icon1_name as $k=>$name1){
+    $icon1[$k]['name']=$name1;
+    }
+    foreach($icon1_desc as $k=>$desc1){
+    $icon1[$k]['desc']=$desc1;
+    }
+
+    if($data249[11]){
+    $imgs3=[];
+    $matches=getimages(htmlspecialchars_decode($data249[11]));
+    if(isset($matches[1])){
+    $imgs3=$matches[1];
+    }
+    }
+    if($data249[12]){
+    $imgs4=[];
+    $matches=getimages(htmlspecialchars_decode($data249[12]));
+    if(isset($matches[1])){
+    $imgs4=$matches[1];
+    }
+    }
+    foreach($imgs3 as $k=>$img){
+    $icon2[$k]['img']=$img;
+    }
+    foreach($imgs4 as $k=>$img2){
+    $icon2[$k]['img2']=$img2;
+    }
+    $icon2_name=explode("\\r\\n",$data249[13]);
+    $icon2_desc=explode("\\r\\n",$data249[14]);
+
+    foreach($icon2_name as $k=>$name1){
+    $icon2[$k]['name']=$name1;
+    }
+    foreach($icon2_desc as $k=>$desc1){
+    $icon2[$k]['desc']=$desc1;
+    }
+
+
+    if($data249[17]){
+    $imgs5=[];
+    $matches=getimages(htmlspecialchars_decode($data249[17]));
+    if(isset($matches[1])){
+    $imgs5=$matches[1];
+    }
+    }
+    if($data249[18]){
+    $imgs6=[];
+    $matches=getimages(htmlspecialchars_decode($data249[18]));
+    if(isset($matches[1])){
+    $imgs6=$matches[1];
+    }
+    }
+    foreach($imgs5 as $k=>$img){
+    $icon3[$k]['img']=$img;
+    }
+    foreach($imgs6 as $k=>$img2){
+    $icon3[$k]['img2']=$img2;
+    }
+    $icon3_name=explode("\\r\\n",$data249[19]);
+    $icon3_desc=explode("\\r\\n",$data249[20]);
+
+    foreach($icon3_name as $k=>$name1){
+    $icon3[$k]['name']=$name1;
+    }
+    foreach($icon3_desc as $k=>$desc1){
+    $icon3[$k]['desc']=$desc1;
+    }
+
+    if($data249[23]){
+    $imgs7=[];
+    $matches=getimages(htmlspecialchars_decode($data249[23]));
+    if(isset($matches[1])){
+    $imgs7=$matches[1];
+    }
+    }
+    if($data249[24]){
+    $imgs8=[];
+    $matches=getimages(htmlspecialchars_decode($data249[24]));
+    if(isset($matches[1])){
+    $imgs8=$matches[1];
+    }
+    }
+    foreach($imgs7 as $k=>$img){
+    $icon4[$k]['img']=$img;
+    }
+    foreach($imgs8 as $k=>$img2){
+    $icon4[$k]['img2']=$img2;
+    }
+    $icon4_name=explode("\\r\\n",$data249[25]);
+    $icon4_desc=explode("\\r\\n",$data249[26]);
+
+    foreach($icon4_name as $k=>$name1){
+    $icon4[$k]['name']=$name1;
+    }
+    foreach($icon4_desc as $k=>$desc1){
+    $icon4[$k]['desc']=$desc1;
+    }
+
+    if($data249[27]){
+    $imgs9=[];
+    $matches=getimages(htmlspecialchars_decode($data249[27]));
+    if(isset($matches[1])){
+    $imgs9=$matches[1];
+    }
+    }
+    foreach($imgs9 as $k=>$img){
+    $icond[$k]['img']=$img;
+    }
+    $icond_name=explode("\\r\\n",$data249[28]);
+    $icond_desc=explode("\\r\\n",$data249[29]);
+
+    foreach($icond_name as $k=>$name1){
+    $icond[$k]['name']=$name1;
+    }
+    foreach($icond_desc as $k=>$desc1){
+    $icond[$k]['desc']=$desc1;
+    }
+
+</php>
+<style>
+    .ind_show_nav_boc{
+        border-bottom: 1px solid #{$color};
+    }
+    .ind_show_nav_boc > div.on,.ind_show_nav_boc > div:hover{
+        background: #{$color};
+    }
+</style>
+<section class="hjzf2_service-14">
+    <div class="service-14_wrap">
+        <div class="service-14_showbox">
+            <div class="service-14_show1" style="background: url({:getindeximgurl($data249[0])}) no-repeat center/cover">
+                <div>
+                    <div class="big_title index_title animated fadeInUpSmall">{$data249[1]}</div>
+                    <div class="ind_show_info index_sub_title animated fadeInUpSmall">{$data249[2]}</div>
+                </div>
+            </div>
+            <if condition="$icon1">
+                <div class="service-14_show" style="background: url({:getindeximgurl($data249[3])}) no-repeat center/cover">
+                    <div>
+                        <div class="big_title index_title animated fadeInUpSmall">{$data249[4]}</div>
+                        <div class="ind_show_con_box">
+                            <volist empty="" name="icon1" id="li" key="k">
+                                <if condition="$li['name']">
+                                    <div class="at_on animated fadeInUpSmall">
+                                        <span><img src="{:getindeximgurl($data249[30])}" alt="{$li['name']}"/></span>
+                                        <div class="show_icon_case">
+                                            <div class="car_icon_box"><img src="{$li[img]}" alt="{$li['name']}" class="one"/><img src="{$li[img2]}" alt="{$li['name']}" class="second"/></div>
+                                            <div class="car_text_box"><div class="industry_name">{$li['name']}</div><div class="show_icon_info">{$li['desc']}</div></div>
+                                        </div>
+                                    </div>
+                                </if>                                
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </if>
+            <if condition="$icon2">
+                <div class="service-14_show" style="background: url({:getindeximgurl($data249[9])}) no-repeat center/cover">
+                    <div>
+                        <div class="big_title index_title animated fadeInUpSmall">{$data249[10]}</div>
+                        <div class="ind_show_con_box">
+                            <volist empty="" name="icon2" id="li" key="k">
+                                <if condition="$li['name']">
+                                    <div class="at_on animated fadeInUpSmall">
+                                        <span><img src="{:getindeximgurl($data249[30])}" alt="{$li['name']}"/></span>
+                                        <div class="show_icon_case">
+                                            <div class="car_icon_box"><img src="{$li[img]}" alt="{$li['name']}" class="one"/><img src="{$li[img2]}" alt="{$li['name']}" class="second"/></div>
+                                            <div class="car_text_box"><div class="industry_name">{$li['name']}</div><div class="show_icon_info">{$li['desc']}</div></div>
+                                        </div>
+                                    </div>
+                                </if>                                
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </if>
+            <if condition="$icon3">
+                <div class="service-14_show" style="background: url({:getindeximgurl($data249[15])}) no-repeat center/cover">
+                    <div>
+                        <div class="big_title index_title animated fadeInUpSmall">{$data249[16]}</div>
+                        <div class="ind_show_con_box">
+                            <volist empty="" name="icon3" id="li" key="k">
+                                <if condition="$li['name']">
+                                    <div class="at_on animated fadeInUpSmall">
+                                        <span><img src="{:getindeximgurl($data249[30])}" alt="{$li['name']}"/></span>
+                                        <div class="show_icon_case">
+                                            <div class="car_icon_box"><img src="{$li[img]}" alt="{$li['name']}" class="one"/><img src="{$li[img2]}" alt="{$li['name']}" class="second"/></div>
+                                            <div class="car_text_box"><div class="industry_name">{$li['name']}</div><div class="show_icon_info">{$li['desc']}</div></div>
+                                        </div>
+                                    </div>
+                                </if>                               
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </if>
+
+            <if condition="$icon4">
+                <div class="service-14_show" style="background: url({:getindeximgurl($data249[21])}) no-repeat center/cover">
+                    <div>
+                        <div class="big_title index_title animated fadeInUpSmall">{$data249[22]}</div>
+                        <div class="ind_show_con_box">
+                            <volist empty="" name="icon4" id="li" key="k">
+                                <if condition="$li['name']">
+                                    <div class="at_on animated fadeInUpSmall">
+                                        <span><img src="{:getindeximgurl($data249[30])}" alt="{$li['name']}"/></span>
+                                        <div class="show_icon_case">
+                                            <div class="car_icon_box"><img src="{$li[img]}" alt="{$li['name']}" class="one"/><img src="{$li[img2]}" alt="{$li['name']}" class="second"/></div>
+                                            <div class="car_text_box"><div class="industry_name">{$li['name']}</div><div class="show_icon_info">{$li['desc']}</div></div>
+                                        </div>
+                                    </div>
+                                </if>                                
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </if>
+        </div>
+        <div class="ind_show_nav_boc">
+            <volist empty="" name="icond" id="li" key="k">
+                <div class="nav_at">
+                    <img src="{$li['img']}" alt="{$li['name']}"/>
+                    <div class="ind_show_tab_name">
+                        <div class="index_sub_title">{$li['name']}</div>
+                        <small class="index_text">{$li['desc']}</small>
+                    </div>
+                </div>
+            </volist>
+        </div>
+
+
+    </div>
+</section>

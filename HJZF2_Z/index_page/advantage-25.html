@@ -1,0 +1,103 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data389[3]">.hjzf_advantage_25 {
+        background: url({:getindeximgurl($data389[3])
+    }
+
+    ) no-repeat top center/cover;
+    }
+
+    </if>.hjzf_advantage_25_wrapper_flex .right {
+        color:#{$data389[4]};
+    }
+
+    .hjzf_advantage_25_wrapper_flex .right .index_title {
+        color: #{$data389[1]};
+    }
+
+    .hjzf_advantage_25_wrapper_flex .right .index_btn {
+        background-color: #fff;
+    }
+
+    .hjzf_advantage_25_wrapper .swiper-pagination span {
+        border-color: #{$data389[1]};
+    }
+
+    .hjzf_advantage_25_wrapper .swiper-pagination span.swiper-pagination-bullet-active {
+        background-color: #{$data389[2]};
+    }
+
+    .hjzf_advantage_25_wrapper .swiper-pagination span:before,
+    .hjzf_advantage_25_wrapper .swiper-pagination span:after,
+    .hjzf_advantage_25_wrapper .swiper-button-next:before,
+    .hjzf_advantage_25_wrapper .swiper-button-prev:before,
+    .hjzf_advantage_25_wrapper .swiper-button-next:after,
+    .hjzf_advantage_25_wrapper .swiper-button-prev:after,
+    .hjzf_advantage_25_wrapper .swiper-button-next,
+    .hjzf_advantage_25_wrapper .swiper-button-prev {
+        background-color: #{$data389[1]};
+    }
+    .hjzf_advantage_25_wrapper .my-mask-l:before{
+        background-color: #{$data389[1]};
+    }
+    #advantage-25_1623 .hjzf_advantage_25_wrapper_flex .right{
+        width: 100%;
+    }
+
+    
+</style>
+
+<div class="hjzf_advantage_25 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6 hjzf_advantage_25_img">
+                <img src="{:getindeximgurl($data389[5])}" class="img-fluid">
+            </div>
+
+            <div class="col-xs-12 col-lg-6">
+
+                <div class="hjzf_advantage_25_wrapper swiper-container">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arr = get_list_val($data389[0]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <div class="swiper-slide hjzf_advantage_25_wrapper_flex">
+                                <div class="right tac">
+                                    <div class="index_title pb20">{$a[title]}</div>
+                                    <if condition="$a[ico]">
+                                        <img src="{$a[ico]}" class="img-fluid m-auto pb20">
+                                    </if>
+                                    <if condition="$a[sub]">
+                                        <div class="index_sub_title pb20">
+                                            {$a[sub]}
+                                        </div>
+                                    </if>
+                                    <if condition="$a[con]">
+                                        <div class="index_text pb40">
+                                            {$a[con]}
+                                        </div>
+                                    </if>
+                                    <a href="{$a[link]}" class="my-mask-l more index_btn">{$a[more]}</a>
+                                </div>
+                            </div>
+                        </volist>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <!-- <div class="swiper-button-next swiper-button-white">
+                        <i class="fa fa-chevron-up"></i>
+                    </div>
+                    <div class="swiper-button-prev swiper-button-white">
+                        <i class="fa fa-chevron-down"></i>
+                    </div> -->
+                    
+                </div>
+
+            </div>
+
+
+            
+        </div>
+    </div>
+</div>

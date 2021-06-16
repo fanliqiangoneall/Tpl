@@ -1,0 +1,81 @@
+<extend name="HJ01CN:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[5])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner">
+                <div class="container">
+                    <h1 class="ins-page-title-txt no-margin padding-5px-tb">网站地图</h1>
+                    <div class="Breadcrumbs"><a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;网站地图</div>
+                </div>
+            </div>
+            <div class="ins-pagetitle-scroll-wrapper container"><a class="ins-pagetitle-scroll-link" href="javascript:goToMain()"><i class="fa fa-angle-down"></i></a></div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ01CN/left.html" />
+            </section>
+            <section class="main-content-right">
+
+                    <div class="page_RightMain">
+                        <div class="page_Main" id="sitemap">
+                            <ul>
+                                <volist name="web_navigation" id="vo_map" offset="0" length='8' key="key">
+                                    <li><a href="{$vo_map['url']}" <if condition="strstr($vo_map['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,5)"</if>>{$vo_map['title']}</a>
+                                        <if condition="strstr($vo_map['url'],'/product.html') eq '/product.html'">
+                                            <ul style="margin-bottom:10px;">
+                                                <volist empty="" name="allclass" id="allclass_map">
+                                                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_map['pcid'])}">{$allclass_map['class_name']}</a>
+                                                        <if condition="$allclass_map['childs'] neq ''">
+                                                            <ul>
+                                                                <volist empty="" name="allclass_map['childs']" id="allclass_mapchild">
+                                                                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_mapchild['pcid'])}">{$allclass_mapchild['class_name']}</a></li>
+                                                                </volist>
+                                                            </ul>
+                                                        </if>
+                                                    </li>
+                                                </volist>
+                                            </ul>
+                                        </if>
+                                        <if condition="$vo_map['child'] neq ''">
+                                            <ul style="margin-bottom:10px;">
+                                                <volist name="vo_map['child']" id="navchild">
+                                                    <li><a href="{$navchild['url']}"><h3>{$navchild['title']}</h3></a></li>
+                                                </volist>
+                                            </ul>
+                                        </if>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="main_content_slogan">
+            <div class="container">
+                <div class="main_content_slogan_left ">
+                    <if condition="$data14[18]">
+                        <h3 class="margin-10px-bottom">{$data14[18]}：{:chaifen($about['phone'],0)}</h3>
+                        <else/>
+                        <h3 class="margin-10px-bottom">获取报价或致电：{:chaifen($about['phone'],0)}</h3>
+                    </if>
+                    <p class="main_content_slogan_text" style="letter-spacing: 1px">{$data14[10]}</p>
+                </div>
+                <div class="main_content_slogan_right ">
+                    <div class="main_content_slogan_right_more text-right">
+                        <a href="{:U('/contactus')}">联系我们</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

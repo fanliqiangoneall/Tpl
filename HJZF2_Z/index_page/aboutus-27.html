@@ -1,0 +1,31 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data522[0]">
+	.hjzf_z_aboutus27_bg{
+		background: url({:getindeximgurl($data522[0])}) no-repeat left center/cover;
+	}
+    </if>
+</style>
+
+<section class="hjzf_z_aboutus27">	
+    <div class="hjzf_z_aboutus27_bg flex">
+        <div class="hjzf_z_aboutus27--left">
+            <div class="hjzf_z_aboutus27_leftbox">
+                <h1 class="hjzf_z_aboutus27_title index_title">{$data522[1]}</h1>
+                <div class="hjzf_z_aboutus27_text index_text pb40">{:HtmlEncode(subtxt($company_info['description'],450))}</div>
+                <if condition="$data522[4]">
+                <a href="{$data522[5]}" class="index_btn">{$data522[4]}</a>
+                </if>
+            </div>
+        </div>
+        <div class="hjzf_z_aboutus27--right">
+            <div class="aboutus_right_box" style="background:url({:getindeximgurl($data522[2])}) no-repeat center/cover">                
+            <if condition="$data522[3]">
+            <video src="{$data522[3]}" width="100%" autoplay="autoplay" loop="loop" muted></video>
+            <else/>
+            <img src="{:getindeximgurl($data522[2])}" alt="">           
+            </if>
+            </div>
+        </div>        
+    </div>
+</section>

@@ -1,0 +1,35 @@
+<style type="text/css">
+    .left_title_2{
+        background: #{$color};
+    }
+    .subNav_2 >a >h3:hover{
+        color: #{$color};
+    }
+    .subNavon_2 >a >h3{
+        color: #{$color};
+    }
+    .left_cont_phone{
+        background: #{$color};
+    }
+</style>
+
+<div class="page_LeftClass_2">
+    <div class="left_title_2">
+            <span></span>
+            News Center
+    </div>
+    <div class="subNavBox_2">
+        <volist empty="no" name="allnewclass" id="new"  offset="0" length="21">
+            <div  <if condition="$newscate['classid'] eq $new['classid']">class="subNavon_2"<else/>class="subNav_2"</if>><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></div>
+    </volist>
+</div>
+<div class="clear"></div>
+<div class="left_contactbox" style="margin-top: 15px;margin-bottom: 30px;">
+<div class="left_cont_phone">
+    National service hotline
+    <span>{:chaifen($about['phone'],0)}</span>
+</div>
+    <div class="left_cont_a"><if condition="chaifen($about['msn'],0)"><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3);" target="_blank">Online Consultation</a><else/><a href="{:U('/contactus')}">Online Consultation</a></if></div>
+</div>
+
+</div>

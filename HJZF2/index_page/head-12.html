@@ -1,0 +1,106 @@
+<php>
+    $nav_length=$data176[2] or $nav_length=7;
+    $nav_color=$data176[3] or $nav_color="333333";
+    if($data176[0]){
+    $head_12_bj=getindeximgurl($data176[0]);
+    }else{
+    $head_12_bj="";
+    }
+    $lan = HtmlEncode($data176[4]) or $lan="";
+</php>
+
+<script>
+    var lan_str = "<?php echo $lan;?>";
+</script>
+<style>
+    #head-12{
+        background:url(
+        {$head_12_bj}
+        ) center/cover;
+    }
+    .head-12__navbar ul.head-12__nav__ul>li.menu_on>a>h2{
+        color:#{$color};font-weight: bold;position: relative;
+    }
+    .head-12__navbar ul.head-12__nav__ul>li:hover >a>h2{
+        color:#{$color};
+    }
+    .head-12__msn ul li div.head-12__msnBtn.active{
+        background: #{$color};color: #fff;border-color: #{$color};
+    }
+    .head-12__msn ul li div.head-12__msnBtn:hover,.head-12__msn ul li div.head-12__msnBtn:hover a{
+        background: #{$color};color: #fff;border-color: #{$color};
+    }
+    .head-12__navbar ul.head-12__nav__ul>li>a>h2{
+        color: #{$nav_color};
+    }
+</style>
+
+<header id="head-12">
+    <div class="container">
+        <div class="head-12__content flex">
+            <div class="head-12__Logo">
+                <a href="{:U('/')}" style="float: left;">{$logo}</a>
+            </div>
+            <div class="head-12__navbar">
+                <ul class="head-12__nav__ul">
+                    <volist name="web_navigation" id="vo" offset="0" length="$nav_length" key="key">
+                        <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <ul class="head-12__nav__dropdown-menu">
+
+                                    <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                        <li>
+                                            <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+                                        </li>
+                                    </volist>
+
+                            </ul>
+                            <else/>
+
+                            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                <ul class="head-12__nav__dropdown-menu  hj02-pro-menu">
+
+                                        <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="8" >
+                                            <li>
+                                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                            </li>
+                                        </volist>
+
+
+                                </ul>
+                            </if>
+                        </if>
+                        </li>
+                    </volist>
+                </ul>
+                <if condition="$data176[4]">
+                <div class="head-12__language">
+
+                        <ul>
+                            <li><p data-count="English">{:__('Language')}</p>
+                                <ul id="lang_ul">
+
+                                </ul>
+                            </li>
+                        </ul>
+
+                </div>
+                </if>
+                <div class="head-12__msn">
+                    <ul>
+                        <li><div class="head-12__msnBtn"><i class="fa fa-phone"></i></div>
+                            <div class="head-12__msnContent">{:__('Phone: ')}{:chaifen($about['phone'],0)}</div>
+                        </li>
+                        <li><div class="head-12__msnBtn"><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1);"><i class="fa fa-envelope"></i></a></div>
+                            <div class="head-12__msnContent">{:__('E-mail: ')}<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1);">{:chaifen($about['email'],0)}</a></div>
+                        </li>
+                        <li><div class="head-12__msnBtn"><i class="fa fa-weixin"></i></div>
+                            <div class="head-12__msnContent head-12__msnpic"><img src="{:getindeximgurl($data176[1])}" alt="" width="120px" height="120px"/></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="down_bg"></div>
+</header>

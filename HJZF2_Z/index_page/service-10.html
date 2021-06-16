@@ -1,0 +1,93 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-12 10:05:55
+ * @LastEditTime: 2020-12-24 14:16:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \undefined\\wenjian\www\Pc\Tpl\HJZF2_Z\index_page\service-10.html
+-->
+<!--{$pagename}-->
+<php>
+    if($data241[0]){
+    $serv_bg=getindeximgurl($data241[0]);
+    }else{
+    $serv_bg=' ';
+    }
+    if($data241[5]){
+    $imgs=[];
+    $matches=getimages(htmlspecialchars_decode($data241[5]));
+    if(isset($matches[1])){
+    $imgs=$matches[1];
+    }
+    }
+    foreach($imgs as $k=>$img){
+    $service[$k]['img1']=$img;
+    }
+    
+    if($data241[6]){
+    $imgs2=[];
+    $matches2=getimages(htmlspecialchars_decode($data241[6]));
+    if(isset($matches2[1])){
+    $imgs2=$matches2[1];
+    }
+    }
+   
+    foreach($imgs2 as $k=>$img){
+    $service[$k]['img2']=$img;
+    }
+   
+    $serve10_name=explode("\\n",$data241[7]);
+    $serve10_desc=explode("\\n",$data241[8]);
+    $serve10_a=explode("\\n",$data241[9]);
+
+    foreach($serve10_name as $k=>$name){
+    $service[$k]['name']=$name;
+    }
+    
+    foreach($serve10_desc as $k=>$desc){
+    $service[$k]['desc']=$desc;
+    }
+    
+    foreach($serve10_a as $k=>$a){
+    $service[$k]['href']=$a;
+    }
+    
+</php>
+<style>
+    .hjzf2_service-10{
+        background: url('{$serv_bg}') no-repeat center/cover #{$data241[1]};
+    }
+    .service-10_content li:hover .item .name{
+        color: #{$data241[2]};
+    }
+</style>
+<section class="hjzf2_service-10 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 service-10_titlebox text-center">
+                <if condition="$data241[3]"><div class="index_sub_title pb20 fadeInRightBig wow">{$data241[3]}</div></if>
+                <if condition="$data241[4]"><div class="index_title pb40 fadeInRightBig wow" data-wow-duration="0.6s" data-wow-delay="0.2s">{$data241[4]}</div></if> 
+            </div>
+            <div class="col-xs-12 fadeInLeftBig wow" data-wow-duration="0.6s" data-wow-delay="0.4s">
+                <ul class="service-10_content flex">
+                    <volist empty="" name="service" id="li" key="k">
+                        <if condition="$li">
+                            <li class="col-xs-6 col-lg-3 text-center">
+                                <a href="{$li['href']}">
+                                <div class="imgwrap">
+                                    <div class="img-0 text-center"><img src="{$li['img1']}" alt="{$li['name']}"/></div>
+                                    <div class="img-1 text-center"><img src="{$li['img2']}" alt="{$li['name']}"/></div>
+                                </div>
+                                <div class="item index_text">
+                                        <div class="name">{$li['name']}</div>
+                                        <p class="desc">{$li['desc']}</p>
+                                </div>
+                                </a>
+                            </li>
+                        </if>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

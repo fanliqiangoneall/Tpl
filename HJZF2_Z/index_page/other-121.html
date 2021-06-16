@@ -1,0 +1,111 @@
+<!--{$pagename}-->
+<php>
+	$arrs = get_list_val($data718[5]);
+</php>
+<style>
+	.hjzf_other_121_title .index_sub_title:before {
+		background-color: #{$data718[3]};
+	}
+	.hjzf_other_121_bg_wrapper .left{
+		color: #{$arrs[0][subcol]};
+	}
+	.hjzf_other_121_bg_wrapper .left span{
+		color: #{$arrs[0][col]};
+	}
+	.hjzf_other_121_bg{
+		background:  url({:getindeximgurl($data718[4])}) no-repeat center;
+	}
+	.hjzf_other_121_bg_wrapper .right a.index_btn{
+		color: #{$color};
+    	border: 1px solid #{$color};
+	}
+	.hjzf_other_121_bg_wrapper a.index_btn:hover{
+		color: #fff;
+		background-color: #{$color};
+	}
+	.hjzf_other_121_bg_wrapper a.index_btn:hover .hover{
+		opacity: 1;
+	}
+</style>
+<script>
+	var hjzf_other_121_len = '<?php echo $len;?>';
+</script>
+<section class="hjzf_other_121 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-center hjzf_other_121_title pb40 wow fadeInUp">
+					<div class="index_title">
+						{$data718[1]}
+					</div>
+					<div class="index_sub_title">
+						{$data718[2]}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hjzf_other_121_bg wow fadeInUp">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="hjzf_other_121_bg_wrapper">
+						<div class="left">
+							<div class="left_box">
+								<div class="index_title">
+									<span>{$arrs[0][title]}</span> <br>
+									{$arrs[0][sub]}
+								</div>
+								<div class="index_text">
+									{$arrs[0][qian]}<span>{$arrs[0][hou]}</span>
+								</div>
+							</div>
+						</div>
+						<div class="right">
+							<div class="right_l">
+								<span>
+								<php>
+									$arra = get_list_val($data718[10]);
+								</php>
+								<volist name="arra" id="b">
+									<a <if condition="$b[link]">
+									href="{$b[link]}"
+									</if> >{$b[title]}</a>
+								</volist>
+							</span>
+							</div>
+							<div class="right_r">
+								<span>
+									<php>
+										$arr = get_list_val($data718[6]);
+									</php>
+									<volist name="arr" id="a">
+										<a <if condition="$a[link]">
+										href="{$a[link]}"
+										</if> >{$a[title]}</a>
+									</volist>
+								</span>
+								<a href="{$data718[8]}" class="index_btn">
+									<if condition="$data718[7]">
+										{$data718[7]}
+										<else />
+										{:__('Read More')}
+									</if>
+									<if condition="$data718[9]">
+										<div class="par">
+											<img src="{:getindeximgurl($data718[9])}" class="normal">
+											<img src="{:getindeximgurl($data718[11])}" class="hover">
+										</div>
+									</if>
+								</a>
+							</div>
+							
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

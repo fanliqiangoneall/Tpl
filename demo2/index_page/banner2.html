@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<if condition="has_mould('banner2') eq true">
+    <style>
+        .page_Banner{display: none}
+    </style>
+</if>
+<php>
+    if(!$data30[11]){
+    $data30[11]=600;
+    }
+</php>
+<link href="__TMPL__demo2/css/banner2.css" rel="stylesheet">
+<style>
+
+    .HJ02-banner1-box{
+        height: {$data30[11]}px;
+    }
+    #HJ02-banner1{
+    height: {$data30[12]}px;
+    }
+    #HJ02-banner1 .slick-list{
+    height: {$data30[11]}px;
+    }
+    #HJ02-banner1 .slick-track{
+        height: {$data30[11]}px;
+    }
+    .HJ02-banner1-item{
+    height: {$data30[11]}px;
+    }
+    #HJ02-banner1 .slick-prev:hover{
+        background: #{$color};
+    }
+    #HJ02-banner1 .slick-next:hover{
+        background: #{$color};
+    }
+    #HJ02-banner1 .slick-dots li.slick-active button:before{
+        background: #{$color};opacity: 1;
+    }
+    .HJ02-banner1-box_other ul li:hover h4 a:before{
+       content: '';width: 100%;height: 2px;display: table;position: absolute;;bottom: -2px;left: 0;background: #{$color};transition: .6s;
+    }
+    .container{width: 1190px;margin: auto}
+</style>
+<if condition="$data30[0] eq ''">
+    <style>
+        .HJ02-banner1-box{
+            margin-bottom: 50px;
+        }
+    </style>
+</if>
+<section class="HJ02-banner1-box">
+    <div id="HJ02-banner1">
+        <volist name="banner" id="banner_pic" key="k">
+            <div class="HJ02-banner1-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                <a target="_blank" href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="display: block;width: 100%;height: 100%">
+
+                </a>
+            </div>
+        </volist>
+    </div>
+    <if condition="$data30[0]">
+    <div class="HJ02-banner1-box_other">
+        <div class="container">
+            <ul>
+                <php>
+                    for($ban=1;$ban<10;$ban=$ban+3){
+                </php>
+                <if condition="$data30[$ban] neq ''">
+                    <div>
+                        <li>
+                            <p><a href="{$data30[$ban+2]}"><img src="{:getindeximgurl($data30[$ban+1])}" alt="{$data30[$ban]}"/></a></p>
+                            <h4><a href="{$data30[$ban+2]}">{$data30[$ban]}</a></h4>
+                        </li>
+                    </div>
+                </if>
+
+                <php>}</php>
+            </ul>
+
+        </div>
+    </div>
+    </if>
+</section>

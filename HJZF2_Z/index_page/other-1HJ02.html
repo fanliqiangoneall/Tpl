@@ -1,0 +1,87 @@
+<!--{$pagename}-->
+<style>
+    .other-1hj02-inquiry_wrap #index_inquiry input#index_submit {
+        background: #{$data90[1]};
+    }
+
+    .other-1hj02-contact_itemicon i {
+        color: #{$data90[1]};
+    }
+</style>
+<section class="HJZF3_Z_other-1hj02">
+    <div class="other-1hj02-top_title">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="other-1hj02-top_titlew_rap">
+                        <div class="other-1hj02-topmain index_title">{$data90[2]}</div>
+                        <div class="other-1hj02-topdesc index_sub_title">{$data90[3]}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div
+                class="col-xs-12 col-lg-offset-1 col-lg-10 col-md-offset-0 col-md-12 col-sm-offset-0 other-1hj02-contact index_pd">
+                <div class="other-1hj02-contactwrap">
+                    <div class="other-1hj02-contact_item col-lg-4 address">
+                        <div class="other-1hj02-contact_itemicon pb20">
+                            <if condition="$data90[6]">
+                                <img src="{:getindeximgurl($data90[6])}" alt="{:__('OUR LOCATION')}">
+                                <else />
+                                <i class="fa fa-map-o"></i>
+                            </if>
+                        </div>
+                        <p class="other-1hj02-contact_jianchen">{:__('OUR LOCATION')}</p>
+                        <div class="other-1hj02-contact_content index_text">{$about['address']}</div>
+                    </div>
+                    <div class="other-1hj02-contact_item col-lg-4 phone">
+                        <div class="other-1hj02-contact_itemicon pb20">
+                            <if condition="$data90[7]">
+                                <img src="{:getindeximgurl($data90[7])}" alt="{:__('CALL US')}">
+                                <else />
+                                <i class="fa fa-mobile"></i>
+                            </if>
+                        </div>
+                        <p class="other-1hj02-contact_jianchen">{:__('CALL US')}</p>
+                        <div class="other-1hj02-contact_content index_text">
+                            <if condition="chaifen($about['mobile'],0)">{:chaifen($about['mobile'],0)}<br /></if>
+                            <if condition="chaifen($about['phone'],0)">{:chaifen($about['phone'],0)}</if>
+                        </div>
+                    </div>
+                    <div class="other-1hj02-contact_item col-lg-4 mail">
+                        <div class="other-1hj02-contact_itemicon pb20">
+                            <if condition="$data90[8]">
+                                <img src="{:getindeximgurl($data90[8])}" alt="{:__('DROP US A LINE')}">
+                                <else />
+                                <i class="fa fa-envelope-o"></i>
+                            </if>
+                        </div>
+                        <p class="other-1hj02-contact_jianchen">{:__('DROP US A LINE')}</p>
+                        <div class="other-1hj02-contact_content index_text"> <a
+                                href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);"
+                                class="index_text">{:chaifen($about['email'],0)}</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-xs-offset-0 other-1hj02-down">
+                <div class="other-1hj02-down_titlewrap pb40">
+                    <div class="other-1hj02-down_title index_title pb20">{$data90[4]}</div>
+                    <div class="other-1hj02-down_desc index_text"> {:HtmlEncode($data90[5])}</div>
+                </div>
+                <div class="other-1hj02-inquiry_wrap">
+                    <if condition="C('language') eq 'cn'">
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index.html" />
+                        <elseif condition="C('language') eq 'pt'"/>
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index_pt.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2_Z/submitinquiry_index_en.html" />
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</section>

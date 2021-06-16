@@ -1,0 +1,30 @@
+<!--{$pagename}-->
+<style>
+    #hj02_index_other1{
+        background: url({:getindeximgurl($data14[0])}) no-repeat center;background-size: cover;
+    }
+    .index_inquiry_left_title{
+        background: #{$color};
+    }
+
+</style>
+
+    <div id="hj02_index_other1">
+    <div class="container">
+        <ul class="shuzi_box">
+            <php>for($i=1;$i<8;$i=$i+2){</php>
+
+            <if condition="$data14[$i] neq ''">
+                <li class="abus_shuzi" id="count{$i}">
+                    <div class="abus_shuzibox">
+                        <span class="count_shuzi margin-10px-bottom" data-counter-time="2000" >{$data14[$i]}</span>
+                        <p class="count_shuzi_desc margin-15px-bottom ">{$data14[$i+1]}</p>
+                    </div>
+                </li>
+            </if>
+            <php>}</php>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>
+

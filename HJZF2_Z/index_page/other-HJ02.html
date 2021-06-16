@@ -1,0 +1,45 @@
+<!--{$pagename}-->
+<php>
+    if($data219[0]){ $other_bg= $data219[0]; } 
+    if($data219[1]){ $other_color= $data219[1]; }
+    if($data219[2]){ $len= $data219[2]; }
+    if($data219[3]){ $sea_img=getindeximgurl($data219[3]); }
+</php>
+<style>
+    .search_submit_sea{
+        background:#{$other_color} url({$sea_img}) no-repeat center center/35%;
+    }
+    .HJZF_Z_other_HJ02{
+        background-color: #{$other_bg};
+    }
+</style>
+<section class="HJZF_Z_other_HJ02 hidden-xs hidden-sm hidden-md">
+    <div class="container">
+        <div class="row wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".1s">
+            <div class="col-xs-12 col-md-8 col-md-offset-2 HJZF_Z_other_HJ02">
+                <div class="HJZF_Z_other_HJ02_search clearfix">
+                        <if condition="C( 'language') eq 'cn' ">
+                                <form action="{:U( '/search')}" onSubmit="return CheckForm(this)" method="Post" >
+                                    <button type="submit" id="search-submita" value="{$search_btn_imghover}" 
+									data-tick="{:__('Please enter the keywords')}" class="search_submit_sea">
+                                    </button>
+                                <input type="text" placeholder="{:__('Product Search')}" name="keywords" class="index_seach_input" id="keyword" onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;) " onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)">
+                				</form>
+                                <else/>
+
+  <form action="{:U( '/search')}" onSubmit="return CheckForm($(this))" method="Post" >
+    <button type="submit" id="search-submitaa" placeholder="{$search_btn_imghover}" class="search_submit_sea"></button>
+    <input type="text" value="Find a product…" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Find a product…&#39;)" onblur="OnBlurFun(this,&#39;Find a product…&#39;)" class="index_seach_input" >
+                </form>
+                            </if>
+                </div>
+            <ul class="HJZF_Z_other_HJ02_product_category">
+                <volist empty="no" name="allclass" id="vo" offset="0" length="$len">
+                    <li><a href="{:U('/product_category','','')}/{:getprocatename($vo['pcid'])}">{$vo['class_name']}</a></li>
+                </volist>
+            </ul>
+
+            </div>
+        </div>
+    </div>
+</section>

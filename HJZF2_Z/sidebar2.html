@@ -1,0 +1,34 @@
+<style>
+.side ul li,.sidetop,.side ul li .sidebox,.side ul li .sidebox2,.side ul li .sidebox3{
+    background: #{$color};
+}
+</style>
+<div class="side">
+    <ul>
+        <li <if condition="chaifen($about['msn'],0) eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"</if>>
+        <div class="sidebox"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0" style="position: relative;left: 0;top: -48px"></div>
+        <div class="sidebox_content"><span style="line-height:25px;"><b><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,4)" target="_blank">{:chaifen($about['contact'],0)}</a><br /><a href="skype:{:chaifen($about['msn'],1)}?chat" onclick="turn_sta(4,4)" target="_blank">{:chaifen($about['contact'],1)}</a><br /><a href="skype:{:chaifen($about['msn'],2)}?chat" onclick="turn_sta(4,4)" target="_blank">{:chaifen($about['contact'],2)}</a></b></span>
+
+        </div>
+        </li>
+        <li  <if condition="chaifen($about['whatsapp'],0) eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"</if>>
+        <div class="sidebox"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0" style="position: relative;left: -48px;top: -48px"></div>
+        <div class="sidebox_content"><span><b><a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" target="_blank" onclick="turn_sta(8,2)">+86-{:chaifen($about['whatsapp'],0)}</a></b></span></div>
+        </li>
+        <li <if condition="chaifen($about['email'],0) eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"</if>>
+        <div class="sidebox"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0" style="position: relative;left: 0;top: -96px"></div>
+        <div class="sidebox_content"><span><b><a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()" onclick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></b></span><br/>
+            <span><b><a href="mailto:{:chaifen($about['email'],1)}" onfocus="blur()" onclick="turn_sta(3,3)">{:chaifen($about['email'],1)}</a></b></span>
+        </div>
+        </li>
+        <li <if condition="$data50[1] eq ''"> class="hidden-xs hidden-sm hidden-md hidden-lg hidden-xl"</if>>
+        <div class="sidebox"><a href="javascript:void(0)"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0" alt="Top" style="position: relative;left:-48px;top: -142px"></a></div>
+        <if condition="$data50[1]"><div class="sidebox_content" style="text-align: center"><img src="{:getindeximgurl($data50[1])}" border="0" ><br/><span><b><a href="javascript:void(0)">{$data50[2]}</a></b></span></div></if>
+        </li>
+        <li>
+            <div class="sidebox"><a href="javascript:void(0)"><img src="__TMPL__HJZF2_Z/img/r_xp2.png" border="0" alt="Top" style="position: relative;"></a></div>
+            <div class="sidebox_content" style="text-align: left"><span style="font-size:18px;"><b>Feedback</b></span><br /><span><b>{:__('Tel: ')}{:chaifen($about['mobile'],0)}<br />{:__('E-mail: ')}<a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()" onclick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></b></span></div>
+        </li>
+        <li><div class="sidebox"><a href="javascript:goTop();"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0" alt="Top" style="position: relative;left:0;"></a></div></li>
+    </ul>
+</div>

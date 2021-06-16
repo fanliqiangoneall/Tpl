@@ -1,0 +1,212 @@
+<script src="/Tpl/HJZF2_Z/js/submityanzheng.js"></script>
+<php>
+	if($inner_data[0]){
+		$input_bg = $inner_data[0];
+	}else{
+		$input_bg = $color;
+	}
+</php>
+<style>
+	.inquiryinfo input[type=text]{
+		line-height: 35px;
+		margin-bottom: 15px;
+		padding-left: 15px;
+	}
+	.sanzuwu_contact{
+		width: 100%;
+		line-height: 35px;
+	}
+	.yz_alert{
+		position: absolute;
+		left: 0;
+		bottom: -10px;
+	}
+	#message{
+		margin-bottom: 10px;
+		padding-left: 15px;
+	}
+</style>
+<php>
+	$lan_submit = C('Language');
+</php>
+	{:session("tncode_check","ok")}
+<script>
+	jQuery(function () {
+
+		jQuery("#message").focus(function () {
+			jQuery("#message_alert").html("");
+		});
+		jQuery("#linkname").focus(function () {
+			jQuery("#linkname_alert").html("");
+		});
+		jQuery("#phone").focus(function () {
+			jQuery("#phone_alert").html("");
+		});
+		jQuery("#email").focus(function () {
+			jQuery("#email_alert").html("");
+		});
+		jQuery("#code_char").focus(function () {
+			jQuery("#code_char_alert").html("");
+		});
+
+		jQuery("#getcode_char").click(function () {
+			jQuery(this).attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char1").click(function () {
+			jQuery("#getcode_char").attr("src", '//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+	})
+
+
+
+
+	function yz_submit() {
+		var language = '<?php echo $lan_submit;?>';
+		var count = 0;
+		var message = Trims(jQuery("#message").val());
+		var linkname = Trims(jQuery("#linkname").val());
+		var phone = Trims(jQuery("#phone").val());
+		var email = Trims(jQuery("#email").val());
+
+
+		if (linkname.length <= 0) {
+			if (language == 'esp' || language == 'spa') {
+				jQuery("#linkname_alert").html("El nombre no puede estar vacío!");
+			} else {
+				jQuery("#linkname_alert").html("The name cannot be empty!");
+			}
+			count++;
+		}
+		else {
+			jQuery("#linkname_alert").html("");
+		}
+
+
+		
+		if (phone.length > 0 && is_phone(jQuery('#phone').val())) {
+			if (language == 'esp' || language == 'spa') {
+				jQuery("#phone_alert").html("La información del teléfono es incorrecta!");
+			} else {
+				jQuery("#phone_alert").html("Telephone information is wrong!");
+			}
+
+			count++;
+		} else {
+			jQuery("#phone_alert").html("");
+		}
+
+		if (email.length <= 0) {
+			if (language == 'esp' || language == 'spa') {
+				jQuery("#email_alert").html("El correo electrónico no puede estar vacío!");
+			} else {
+				jQuery("#email_alert").html("The email cannot be empty!");
+			}
+			count++;
+		}
+		else {
+
+			if (!is_email(email)) {
+				jQuery("#email_alert").html("Email format error");
+				count++;
+			}
+			else {
+				jQuery("#email_alert").html("");
+			}
+		}
+
+
+		if (message.length <= 0) {
+			if (language == 'esp' || language == 'spa') {
+				jQuery("#message_alert").html("¡El contenido de consulta no puede estar vacío!");
+			} else {
+				jQuery("#message_alert").html("Consulting content cannot be empty!");
+			}
+			count++;
+		}
+		else {
+			jQuery("#message_alert").html("");
+		}
+
+		// /* 不要询盘验证 */
+		// if ({$webid} !== 1654 && {$webid} !== 1083 && {$webid} !== 1711) {
+		// 	var code_char = jQuery("#code_char").val();
+		// 	jQuery.ajax({
+		// 		type: "POST",
+		// 		url: "{:U('/verification','','')}",
+		// 		async: false,
+		// 		data: { code: code_char },
+		// 		success: function (data) {
+		// 			if (data == 1) {
+		// 				jQuery("#code_char_alert").html("");
+		// 			} else {
+		// 				count++;
+		// 				if (language == 'esp' || language == 'spa') {
+		// 					jQuery("#code_char_alert").html("Error de código de verificación");
+		// 				} else {
+		// 					jQuery("#code_char_alert").html("Verification code error");
+		// 				}
+		// 			}
+		// 		}
+		// 	});
+		// }
+
+		if (count > 0) {
+			return false;
+		}
+		else {
+			if (language == 'esp' || language == 'spa') {
+				jQuery("#inbut").html('<h5 style="color:#F00;">por favor espera</h5>');
+			} else {
+				jQuery("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+			}
+			var h = $(".message").html();
+			$(".message").html(h +  "\n sjyl："+ $("#sjyl").val() + "\n sjwd："+ $("#sjwd").val() + "\n gzzj："+ $("#gzzj").val() + "\n gzcd："+ $("#gzcd").val());
+			return true;
+		};
+	};
+
+</script>
+<div class="inquiry" id="zixun">
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname" placeholder="{:__('Name: ')}"><span class="yz_alert"
+						id="linkname_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryright"><input type="text" name="phone" id="phone" placeholder="{:__('Mobile: ')}"><span class="yz_alert"
+						id="phone_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryright"><input type="text" name="email" id="email" placeholder="{:__('E-mail: ')}"><span class="yz_alert"
+						id="email_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryright">
+					<textarea name="message" id="message" style="height:210px;" placeholder="{:__('Message: ')}">{$product["pro_name"]}</textarea>
+					<span class="yz_alert" id="message_alert"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<input type="hidden" name="prodid" value="{$product['pid']}" />
+				<div id="inbut"><input class="sanzuwu_contact" type="submit" value="{:__('Submit')}" name="submit" />
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>

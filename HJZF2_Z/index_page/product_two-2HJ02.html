@@ -1,0 +1,92 @@
+<!--{$pagename}-->
+<style>
+    .products-2hj02__proMore a{
+        color: #{$data94[1]};
+    }
+</style>
+<if condition="$data94[0]">
+    <style>
+        .hjzf2_z__producttwo--2hj02{
+            background: url({:getindeximgurl($data94[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<section class="hjzf2_z__producttwo--2hj02 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="hjzf2_z__producttwo--2hj02_titlebox pb20">
+                    <h3 class="hjzf2_z__producttwo--2hj02_title index_title pb20">{$data94[2]}</h3>
+                    <div class="hjzf2_z__producttwo--2hj02_futitle">{$data94[3]}</div>
+                </div>
+
+                <php>
+                    $arr_str=$data94[9];
+                    $arr=explode(',',$arr_str);
+                    foreach($arr as $k=>$a){
+                    $list_class[$k]=get_index_products_categoryname($a);
+                    }
+                    foreach($arr as $c=>$b){
+                    $class[$c]['data']=get_index_products_category($b,$all_pro);
+                    }
+                </php>
+                <div class="products-2hj02__content">
+                    <div style="position: relative">
+                        <ul class="products-2hj02__categroy">
+                                <volist empty="" name="list_class" id="li" key="k" offset="0" length="1">
+                                    <li class="products-2hj02__content__itemBox first">
+                                        <div class="products-2hj02img"><img src="{:getindeximgurl($data94[4])}" alt="{$li['class_name']}"/></div><br/><div class="index_sub_title">{$li['class_name']}</div>
+                                    </li>
+                                </volist>
+                                <volist empty="" name="list_class" id="li" key="k" offset="1" length="1">
+                                    <li class="products-2hj02__content__itemBox second">
+                                        <div class="products-2hj02img"><img src="{:getindeximgurl($data94[5])}" alt="{$li['class_name']}"/></div><br/><div class="index_sub_title">{$li['class_name']}</div>
+                                    </li>
+                                </volist>
+                                <volist empty="" name="list_class" id="li" key="k" offset="2" length="1">
+                                    <li class="products-2hj02__content__itemBox third">
+                                        <div class="products-2hj02img"><img src="{:getindeximgurl($data94[6])}" alt="{$li['class_name']}"/></div><br/><div class="index_sub_title">{$li['class_name']}</div>
+                                    </li>
+                                </volist>
+                                <volist empty="" name="list_class" id="li" key="k" offset="3" length="1">
+                                    <li class="products-2hj02__content__itemBox four">
+                                        <div class="products-2hj02img"><img src="{:getindeximgurl($data94[7])}" alt="{$li['class_name']}"/></div><br/><div class="index_sub_title">{$li['class_name']}</div>
+                                    </li>
+                                </volist>
+                                <volist empty="" name="list_class" id="li" key="k" offset="4" length="1">
+                                    <li class="products-2hj02__content__itemBox five">
+                                        <div class="products-2hj02img"><img src="{:getindeximgurl($data94[8])}" alt="{$li['class_name']}"/></div><br/><div class="index_sub_title">{$li['class_name']}</div>
+                                    </li>
+                                </volist>
+                        </ul>
+
+                    </div>
+                    <div class="products-2hj02__content--down swiper-container gallery-top wow bounceInLeft" data-wow-duration="1s">
+                        <ul class="products-2hj02__content--down__wrap">
+                            <volist empty="" name="class" id="li" key="k">
+                                <li class="products-2hj02__downBox">
+                                    <div>
+                                        <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="4">
+                                            <div class="products-2hj02__item">
+                                                <div>
+                                                    <div class="products-2hj02__proImg"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" /></div>
+                                                    <div class="products-2hj02__protext">
+                                                        <div class="products-2hj02__proName"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}" class="index_text">{$indexpro['pro_name']}</a></div>
+                                                        <div class="products-2hj02__proMore"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{:__('Read More')}</a></div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </volist>
+                                    </div>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

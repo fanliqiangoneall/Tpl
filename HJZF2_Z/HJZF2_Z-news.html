@@ -1,0 +1,107 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,.main_newslist li:hover .main_news_title h5,.main_news_dowm a:hover{
+            color: #{$color};
+        }
+        .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li:hover,.main-content_inner_news>ul>li:first-child{
+            background: #{$color};
+
+        }
+        .main-content_inner_news>ul>li.yijion_news a h3,.main-content_inner_news>ul>li:hover a h3,.main-content_inner_news>ul>li:first-child a h3{
+            color: #fff;
+        }
+        .main_page .current{
+            background: #{$color};border: 1px solid #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_aboutus.html" />
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('News')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-12">
+                        <Include file="./Tpl/HJZF2_Z/newleft.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftnews_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 InsidePages_content-right2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="main_newslist ul_li_list">
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allnews" id="allnews">
+                                        <li id="new_list{$key}">
+                                            <div class="new_list_row">
+                                                <div class="col-xs-12 col-lg-2 main_newsimg">
+                                                    <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"<else/>src="{:getindeximgurl($inner_data[2])}"</if> border="0" /></a>
+                                                </div>
+                                                <div class="col-xs-12 col-lg-10 main_news_right">
+                                                    <div class="col-xs-12 col-sm-9 main_news_right_content lf">
+                                                        <div class="main_news_title"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><h5>{$allnews['title']}</h5></a></div>
+                                                        <div class="hidden-xs main_news_desc">{:subtxt($allnews['news_description'],200)}</div>
+                                                    </div>
+                                                    <div class="hidden-xs col-sm-3 main_news_right_date rt">
+                                                        <if condition="C('Language') eq 'cn'">
+															<if condition="$webid eq '1844'">
+																<p><span>{:date('Y年',$allnews['created'])}</span>
+																	{:date('m月d日 ',$allnews['created'])}</p>
+																<else/>
+                                                            <p>{:date('m月d  ',$allnews['created'])}</p>
+															</if>
+                                                            <else/>
+                                                            <if condition="$webid eq '355'">
+                                                                <p style="font-size: 16px;">{:date('Y-m-d',$allnews['created'])}</p>
+                                                                <else/>
+                                                                <p>{:date('d M ',$allnews['created'])}</p>
+                                                            </if>
+                                                        </if>
+
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                    <div class="main_news_dowm"><span><img src="__TMPL__HJZF2_Z/img/view.png" alt=""/>{$allnews['click_num']}</span><span style="line-height: 30px;">|</span><span><img src="__TMPL__HJZF2_Z/img/view_right.png" alt=""/><a
+                                                            href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">{:__('Read More')}</a></span>
+                                                            <if condition="$inner_data[3]">
+                                                            <span>{:date('Y-m-d',$allnews['created'])}</span>
+                                                            </if>
+                                                        </div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

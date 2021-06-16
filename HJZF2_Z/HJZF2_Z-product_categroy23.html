@@ -1,0 +1,198 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[1]){
+		$color = $inner_data[1];
+		}
+	</php>
+	<style>
+		.HJZF_Z__Breadcrumbs span.current {
+			color: #{$color};
+		}
+
+		.main_page .current {
+			background: #{$color};
+			border: 1px solid #{$color};
+		}
+
+		.hjzf2_z_products_right {
+			border-bottom: 1px solid #666;
+			margin-bottom: 30px;
+			padding-left: 20px;
+			padding-bottom: 10px;
+			position: relative;
+			line-height: 50px;
+			height: 50px;
+		}
+
+		.hjzf2_z_products_right:before {
+			position: absolute;
+			display: block;
+			content: '';
+			left: 0;
+			top: 5px;
+			height: 25px;
+			width: 4px;
+			background-color: #{$color};
+		}
+
+		.hjzf2_z_products_right h2 {
+			font-size: 22px;
+		}
+
+		.hjzf2_z_products_right_list {
+			margin-left: -15px;
+			margin-right: -15px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.hjzf2_z_products_right_list li {
+			margin-bottom: 20px;
+		}
+
+		.hjzf2_z_products_right_list li a {
+			display: block;
+			box-shadow: 0 0 15px 5px rgba(124, 124, 124, .1);
+			padding-bottom: 10px;
+		}
+
+		.hjzf2_z_products_right_list li:hover .hjzf2_z_products_right_list_txt {
+			color: #{$color};
+		}
+
+		.hjzf2_z_products_right_list_img {
+			overflow: hidden;
+		}
+
+		.hjzf2_z_products_right_list_img img {
+			transition: all .5s;
+		}
+
+		.hjzf2_z_products_right_list li:hover .hjzf2_z_products_right_list_img img {
+			transform: rotate(5deg) scale(1.05);
+		}
+
+		<if condition="$inner_data[2]">.product21_content {
+			background-color: #{$inner_data[2]};
+		}
+
+		</if>.hjzf2_z_products_right_list li .hjzf2_z_products_right_list_txt {
+			padding-top: 5px;
+			margin-left: 15px;
+			margin-right: 15px;
+			border-top: 1px solid #f1f1f1;
+		}
+
+		.hjzf2_z_products_content_bg {
+			background-color: #fff;
+			padding: 20px 30px;
+			margin-bottom: 50px;
+		}
+		.hjzf2_pro_title{
+			margin: 0 15px;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			margin-bottom: 30px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid #888;
+		}
+		.hjzf2_pro_title a{
+			padding: 5px 35px;
+			color: #333;
+			background-color: #{$color};
+		}
+		.hjzf2_pro_title h3{
+			font-size: inherit;
+		}
+		.hjzf2_z_products_wrapper_img{
+			border: 5px solid #eaeaea;
+		}
+		.hjzf2_z_products_wrapper li{
+			margin-bottom: 10px;
+		}
+		.hjzf2_z_products_wrapper li p{
+			text-align: center;
+			font-size: 16px;
+			color: #333;
+			margin: 10px auto;
+		}
+		.HJZF_Z__innerContent,#HJZF_Z__wrapper{
+			margin-bottom: 0 !important;
+		}
+		
+		@media(max-width: 1200px ){
+			.hjzf2_pro_title{
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			.hjzf2_pro_title a{
+				margin-top: 10px;
+			}
+			.hjzf2_z_products_content_bg{
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+		
+		
+	
+	</style>
+
+<Include file="./Tpl/HJZF2_Z/inner/fixleft.html" />
+
+
+	<div class="HJZF_Z__wrapper inner_4__innerwrapper" id="HJZF_Z__wrapper">
+		<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner" offset="0" length="1">
+					<div class="in_banner">
+						<img src="{:getimgurl($banner['ad_pic'])}" alt="" />
+					</div>
+				</volist>
+				<else />
+				<div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+			</if>
+		</div>
+		<div class="product21_content">
+			<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+								class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="HJZF_Z__innerContent ">
+				<div class="container">
+					<div class="row">
+						<!-- 分类 + 产品 -->
+							<div class="col-xs-12 hjzf2_z_products_content_bg">
+								<div class="hjzf2_pro_title">
+									<span class="index_sub_title">{$prolist['class_name']}</span>
+									<a href="javascript:;">{:__('Read More')}></a>
+								</div>
+								<ul class="hjzf2_z_products_wrapper">
+									<volist name="pro" id="a">
+										<li class="col-xs-6 col-md-4">
+											<a href="{:U('/Product','','')}/{:getproname($a['pid'])}">
+												<div class="hjzf2_z_products_wrapper_img">
+													<img src="{:getmainimgurl($a['main_img'])}" alt="{$a['pro_name']}" class="img-fluid">
+												</div>
+												<p>{$a['pro_name']}</p>
+											</a>
+										</li>
+									</volist>
+								</ul>
+							</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</block>

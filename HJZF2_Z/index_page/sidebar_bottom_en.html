@@ -1,0 +1,68 @@
+<style>
+.mfb-component__button--main {
+    background-color: #{$color};
+    display: inline-block;
+    position: relative;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+
+    -webkit-user-drag: none;
+    color: #f1f1f1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 25px;
+    height: 40px;
+    width: 40px;
+    z-index: 20;
+}
+.mobile_down{
+    background: #{$color};
+}
+</style>
+<ul class="mobile_sidebar hidden-lg hidden-xl">
+    <li><a class="mfb-component__button--main mfb-component__button--back" href="javascript:history.go(-1);"><i class="fa fa-reply"></i></a></li>
+    <li><a class="mfb-component__button--main mfb-component__button--top" href="javascript:goTop();"><i class="fa fa-angle-up"></i></a></li>
+</ul>
+<script>
+
+</script>
+<div class="mobile_down_top hidden-lg hidden-xl">
+    <div class="mobile_down">
+        <ul>
+            <if condition="$webid eq '780'">
+                <li><a href="{:U('/')}"><i class="fa fa-home"></i><br/>{:__('Home')}</a></li>
+            </if>
+            <if condition="$webid eq '72'">
+            <li><a onclick="turn_sta(6,2)" href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"><i class="fa fa-whatsapp"></i><br/>WhatsApp</a></li>
+            <elseif condition="chaifen($about['mobile'],0) neq ''" />
+            <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['mobile'],0)}"><i class="fa fa-phone"></i><br/>{:__('Tel')}</a></li>
+            <elseif condition="chaifen($about['phone'],0) neq ''" />
+            <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['phone'],0)}"><i class="fa fa-phone"></i><br/>{:__('Tel')}</a></li>
+            </if>
+            <if condition="$webid eq '780'">
+                <div style="display: none;">
+            </if>
+            <if condition="strstr(chaifen($about['msn'],0),'http') neq false">
+                    <li><a onclick="turn_sta(4,2)" href="{:chaifen($about['msn'],0)}"><i class="fa fa-facebook"></i><br/>FaceBook</a></li>
+                <elseif condition="chaifen($about['msn'],0) neq ''" /> 
+                    <li><a onclick="turn_sta(4,2)" href="skype:{:chaifen($about['msn'],0)}?chat"><i class="fa fa-skype"></i><br/>Skype</a></li>
+                </if>
+            <if condition="$webid eq '780'">
+                </div>
+            </if>
+            <li><a onclick="turn_sta(3,2)" href="mailto:{:chaifen($about['email'],0)}"><i class="fa fa-envelope"></i><br/>{:__('E-mail')}</a></li>
+            <if condition="$webid eq '1611' or $webid eq '1555'">
+            <li><a onclick="turn_sta(6,2)" href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"><i class="fa fa-whatsapp"></i><br/>WhatsApp</a></li>
+            <else/>
+            <li><a onclick="turn_sta(2,2)" href="{:U('/contactus')}"><i class="fa fa-user"></i><br/>{:__('Contact')}</a></li>
+            </if>
+            <li><a onclick="turn_sta(1,2)" href="{:U('/Inquiry')}"><i class="fa fa-commenting"></i><br/>{:__('Inquiry')}</a></li>
+        </ul>
+    </div>
+</div>
+
+

@@ -1,0 +1,196 @@
+<!--{$pagename}-->
+<style>
+    .index_nav_dh_class2 li h2:hover{
+        line-height:93px;color:#fff;background:#{$color};transition: all 0.4s;
+    }
+</style>
+<if condition="$data1[2] eq 2">
+    <div>
+        <div class="index_navigation_head_class2">
+            <if condition="$data1[4] neq ''">
+                <div class="navtop_class2">
+                    <div class="navtop1_class2">
+                        <a href="{$data1[4]}"><li>英文</li></a><li>|</li><a href="{$data1[5]}"><li style="color:#{$color};">中文</li></a>
+                    </div>
+                </div>
+            </if>
+
+            <div class="index_navigation_Top_class2">
+                <div style="width: 1190px;margin: auto;">
+                    <div class="index_navigation_Logo_class2" >
+                        <ul>
+                            <li style="float:left;"><a href="{:U('/')}">{$logo}</a></li>
+                            <li style="float:left; margin-top:13px; margin-left:14px;width: 325px;"><span>{$data1[3]}</span><br />{$data1[7]}</li>
+                        </ul>
+                    </div>
+                    <div class="index_nav_class2">
+                        <div class="index_nav_dh_class2">
+                            <ul>
+                                <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+                                    <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                                    <!--<if condition="$key neq 6"><li class="index_navigation_line"></li></if>-->
+                                </volist>
+                            </ul>
+                        </div>
+                        <!--搜索-->
+                        <div class="head_search_class2">
+                            <a href="javascript:void(0);"><img src="{:getindeximgurl($data1[6])}" alt="search"/></a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+
+
+                <div class="head_searchlan_class2" >
+                    <div style="width: 1190px;margin: auto">
+                        <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm(this);">
+                            <ul>
+                                <li style="width: 90%;height: 50px;float: left;">
+                                    <input type="text" name="keywords" id="keywords1" value="搜索..." onfocus="OnFocusFun(this,&#39;搜索...&#39;)" onblur="OnBlurFun(this,&#39;搜索...&#39;)" style="height:48px;outline:none;background: #ffffff; border:none;color:#333;line-height:48px;font-size:14px;width: 98%; padding-left:2%; overflow:hidden;"></li>
+                                <li style="width:10%; height: 47px;float: left;"><input type="image" src="{:getindeximgurl($data1[6])}" name="submit" class="submit" style="outline: none;width: 20px;position: relative;top: 14px;"></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <elseif condition="$data1[8] eq 3"/>
+        <style>
+            .ZL01_header_class3_top{width: 100%;min-width: 1190px;max-width: 1920px;margin: auto;background: #333;height: 42px;}
+            .container{width: 1190px;margin: auto;}
+            .ZL01_header_class3 ul li{line-height: 42px;color: #d5d5d5}
+            .ZL01_header_class3_menu{
+                position: absolute;top: 42px;left: 0;width:100%;min-width:1190px;max-width:1920px;height:80px;z-index:9;background:url({:getindeximgurl($data1[9])}) repeat;
+            }
+            .ZL01_header_class3_menu_logo{width: 262px;height: 100px;float: left;}
+            .ZL01_header_class3_menu_logo img{max-width: 262px;height: auto;position: absolute;top: 50%;transform: translateY(-50%);}
+            .ZL01_header_class3_menu_right{float: right;max-width: 800px;}
+            .ZL01_header_class3_menu_right>ul>li{float: left;list-style: none;padding: 19px 30px;position: relative;text-decoration: none;}
+            .ZL01_header_class3_menu_right>ul>li>a{text-decoration: none;}
+            .ZL01_header_class3_menu_right>ul>li>a>h2{color: #fff;font-size: 16px;font-weight: bold;}
+            .ZL01_header_class3_menu_right>ul>li:hover a h2{text-decoration: none;}
+            .ZL01_header_class3_menu_right>ul>li>ul{position: absolute;top: 80px;left: 0;width: 150px;background: #fff;opacity: 0;transform: translateY(10px);height: 0;overflow: hidden;}
+            .ZL01_header_class3_menu_right>ul>li>ul>li{padding: 10px 20px;}
+            .ZL01_header_class3_menu_right>ul>li>ul>li>a{font-size: 16px;color: #333;font-weight: normal;line-height: 24px;}
+            .ZL01_header_class3_menu_right>ul>li:hover ul{transform: translateY(0);opacity: 1;transition: .6s;height: auto;}
+            .ZL01_header_class3_menu_right>ul>li>ul>li:hover{
+                background: #{$color}
+            }
+			.menuon2{
+			background: #{$color} 
+			}
+            .ZL01_header_class3_menu_right>ul>li>ul>li:hover a{color: #fff;text-decoration: none;}
+        </style>
+        <header class="ZL01_header_class3">
+            <div class="ZL01_header_class3_top">
+                <div class="container">
+                    <ul>
+                        <li style="float:left;">欢迎光临{$about['company_name']}官方网站！</li>
+                        <li style="float:right; margin-top:7px;"><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div></li>
+                        <li style="float:right;">分享：</li>
+                        <li style="float:right;margin-right: 20px;">咨询热线：{:chaifen($about['phone'],0)}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ZL01_header_class3_menu">
+                <div class="container">
+                    <div class="ZL01_header_class3_menu_logo">
+                            <a href="{:U('/')}">{$logo}</a>
+                    </div>
+                    <div class="ZL01_header_class3_menu_right">
+                        <ul>
+                            <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+                                <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a>
+                                    <if condition="$vo['child'] neq ''">
+                                        <ul>
+                                            <volist name="vo['child']" id="navchild">
+                                                <li><a href="{$navchild['url']}">{$navchild['title']}</a></li>
+                                            </volist>
+                                        </ul>
+                                    </if>
+                                </li>
+                            </volist>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </header>
+
+
+
+    <else/>
+    <div class="ZL01_class1">
+        <div class="index_top_headbg">
+            <div class="index_top_head">
+                <ul>
+                    <li>欢迎访问{$about['company_name']}官方网站！</li>
+                    <li style="float:right; margin-top:2px;"><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div></li>
+                    <li style="float:right;">分享：</li>
+                </ul>
+            </div>
+        </div>
+        <div class="index_navigation_head">
+            <div class="index_navigation_Top">
+                <div class="index_navigation_Logo">
+                    <ul>
+                        <li><a href="{:U('/')}">{$logo}</a></li>
+                        <li style="margin-left:20px; padding-left:18px; border-left:1px solid #d2d2d2; height:34px; margin-top:10px;">{$data1[0]}</li>
+                    </ul>
+                </div>
+                <div class="index_navigation_HeadRight">
+                    <ul>
+                        <li style="margin-right:10px;"><img src="{:getindeximgurl($data1[1])}" style="vertical-align:middle;"></li>
+                        <li>咨询热线<br /><span>{:chaifen($about['phone'],0)}</span></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="index_navigation_page_Menubg">
+            <div class="index_navigation_page_Menu" id="smoothmenu1">
+                <ul>
+                    <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+                        <li id="menu"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a>
+                            <if condition="$vo['child'] neq ''">
+                                <ul style="width:144px;">
+                                    <volist name="vo['child']" id="navchild">
+                                        <li><a href="{$navchild['url']}">{$navchild['title']}</a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                        </li>
+                    </volist>
+                    <li class="index_navigation_search">
+                        <div class="Page_Search">
+                            <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm(this);">
+                                <div style="width:115px; float:left; margin-left:9px; border:none;">
+                                    <input type="搜索..." name="keywords" id="keywords1" placeholder="搜索..." value="搜索..." style="color:#e3e3e3; width:115px; border:none; line-height:28px; background:none;" onfocus="OnFocusFun(this,&#39;搜索...&#39;)" onblur="OnBlurFun(this,&#39;搜索...&#39;)">
+                                </div>
+                                <div style="width:23px; float:right; margin-top:6px; margin-right:8px;">
+                                    <input type="image" src="__TMPL__ZL01/img/search_dot.png" height="16" name="submit" class="submit">
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+</if>
+
+
+
+
+

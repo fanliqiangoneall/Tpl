@@ -1,0 +1,250 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .caseList:hover .caseTitle{
+            color: #{$color};
+        }
+        .page_body_container{
+            background: {$data47[21]};
+        }
+        .moreIcon{
+            background: url({:getindeximgurl($data47[22])}) no-repeat 100% 100%;
+        }
+        .proDetailMore{
+            background: url({:getindeximgurl($data47[23])});
+            background-repeat: no-repeat;
+            background-position: 10px 6px;
+        }
+        .proContactContainer{
+            background-image: url({:getindeximgurl($data47[24])});
+            background-repeat: no-repeat;
+            background-position: 10px 6px;
+        }
+    </style>
+    <div class="productContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                您的位置：&nbsp;
+                <a href="{:U('/')}">首页</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    <if condition="$data47[2] eq ''">
+                        产品中心
+                        <else/>
+                        {$data47[2]}
+                    </if>
+                </span>
+            </div>
+        </div>
+        <if condition="$banner neq ''">
+            <div class="pageBannerContainer">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="pageBannerImg">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </div>
+                </volist>
+            </div>
+            <else/>
+            <div class="pageBannerContainer">
+                <div class="pageBannerImg">
+                    <img src="{:getindeximgurl($data47[8])}" alt=""/>
+                </div>
+            </div>
+        </if>
+        <div class="page_body_container">
+            <if condition="$data47[39] neq ''">
+                <Include file="./Tpl/HJ04_CN/left02.html" />
+            </if>
+            <div class="pageMainContainer container">
+                <if condition="$data47[39] eq ''">
+                    <Include file="./Tpl/HJ04_CN/left.html" />
+                </if>
+                <if condition="$data47[19] neq ''">
+                    <div <if condition="$data47[39] neq ''">class="proMainContainer02"<else/>class="rt proMainContainer"</if>>
+                        <div class="proTitleContainer">
+                            <span class="proTitle">新品推荐</span>
+                        <span class="proMore rt">
+                            <a href="{:U('/all_isnew')}">更多<span class="moreIcon"></span></a>
+                        </span>
+                        </div>
+                        <div class="proContainer">
+                            <ul class="proContent">
+                                <volist name="newpro" id="newpro">
+                                    <li class="proList lf">
+                                        <div class="proImgContainer">
+                                            <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                <img src="{:getmainimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> />
+                                            </a>
+                                        </div>
+                                        <div class="proTextContaner">
+                                            <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                <div class="proName ellipsis_one">
+                                                    {$newpro['pro_name']}
+                                                </div>
+                                                <div class="proDesc ellipsis_one">
+                                                    {$newpro['pro_description']}
+                                                </div>
+                                            </a>
+                                            <div class="proLine"></div>
+                                        </div>
+                                        <div class="proListHover">
+                                            <div style="padding: 36px 20px 0 20px;">
+                                                <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                    <div class="proHName">
+                                                        {$newpro['pro_name']}
+                                                    </div>
+                                                    <div class="proHDesc">
+                                                        {:subtxt($newpro['pro_description'],40)}
+                                                    </div>
+                                                </a>
+                                                <div class="proBtnContainer">
+                                                    <div class="proDetailMore lf">
+                                                        <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                            <span>查看详情</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="proContactContainer rt">
+                                                        <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}">
+                                                            <span>立即咨询</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <if condition="($key+1)%3 eq 0"><div class="clear"></div></if>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$data47[20] neq ''">
+                    <div <if condition="$data47[39] neq ''">class="proMainContainer02"<else/>class="rt proMainContainer"</if>>
+                        <div class="proTitleContainer">
+                            <span class="proTitle">热门产品</span>
+                        <span class="proMore rt">
+                            <a href="{:U('/all_ishot')}">更多<span class="moreIcon"></span></a>
+                        </span>
+                        </div>
+                        <div class="proContainer">
+                            <ul class="proContent">
+                                <volist name="hotpro" id="hotpro">
+                                    <li class="proList lf">
+                                        <div class="proImgContainer">
+                                            <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                <img src="{:getmainimgurl($hotpro['main_img'])}" <if condition="$hotpro['proalt'] neq ''">alt="{$hotpro['proalt']}"<else/>alt="{$hotpro['pro_name']}"</if> />
+                                            </a>
+                                        </div>
+                                        <div class="proTextContaner">
+                                            <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                <div class="proName ellipsis_one">
+                                                    {$hotpro['pro_name']}
+                                                </div>
+                                                <div class="proDesc ellipsis_one">
+                                                    {$hotpro['pro_description']}
+                                                </div>
+                                            </a>
+                                            <div class="proLine"></div>
+                                        </div>
+                                        <div class="proListHover">
+                                            <div style="padding: 36px 20px 0 20px;">
+                                                <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                    <div class="proHName">
+                                                        {$hotpro['pro_name']}
+                                                    </div>
+                                                    <div class="proHDesc">
+                                                       {:subtxt($hotpro['pro_description'],40)}
+                                                    </div>
+                                                </a>
+                                                <div class="proBtnContainer">
+                                                    <div class="proDetailMore lf">
+                                                        <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                            <span>查看详情</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="proContactContainer rt">
+                                                        <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                            <span>立即咨询</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <if condition="($key+1)%3 eq 0"><div class="clear"></div></if>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$data47[18] neq ''">
+                    <div <if condition="$data47[39] neq ''">class="proMainContainer02"<else/>class="rt proMainContainer"</if>>
+                        <div class="proTitleContainer">
+                            <span class="proTitle">所有产品</span>
+                        </div>
+                        <div class="proContainer">
+                            <ul class="proContent">
+                                <volist name="allpro" id="allpro">
+                                    <li class="proList lf">
+                                        <div class="proImgContainer">
+                                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                <img src="{:getmainimgurl($allpro['main_img'])}" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"<else/>alt="{$allpro['pro_name']}"</if> />
+                                            </a>
+                                        </div>
+                                        <div class="proTextContaner">
+                                            <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                <div class="proName ellipsis_one">
+                                                    {$allpro['pro_name']}
+                                                </div>
+                                                <div class="proDesc ellipsis_one">
+                                                   {:subtxt($allpro['pro_description'],40)}
+                                                </div>
+                                            </a>
+                                            <div class="proLine"></div>
+                                        </div>
+                                        <div class="proListHover">
+                                            <div style="padding: 36px 20px 0 20px;">
+                                                <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                    <div class="proHName">
+                                                        {$allpro['pro_name']}
+                                                    </div>
+                                                    <div class="proHDesc">
+                                                      {:subtxt($allpro['pro_description'],40)}
+                                                    </div>
+                                                </a>
+                                                <div class="proBtnContainer">
+                                                    <div class="proDetailMore lf">
+                                                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                            <span>查看详情</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="proContactContainer rt">
+                                                        <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                                            <span>立即咨询</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <if condition="($key+1)%3 eq 0"><div class="clear"></div></if>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </if>
+                <div class="clear"></div>
+                <div class="main_page" style="float:right;width: 814px;">{$page}</div>
+            </div>
+        </div>
+    </div>
+</block>

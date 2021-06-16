@@ -1,0 +1,120 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .InsidePages_list li.yijion>a>h3,
+        .InsidePages_list li.yiji:hover>a>h3,
+        .HJZF_Z__Breadcrumbs span.current,
+        .InsidePages_left_content-main {
+            border-color: #{$color};
+            color: #{$color};
+        }
+        @media(max-width: 767px){
+            .inner-3__cateprofile__part3{
+                padding-top: 15px !important;
+            }
+        }
+    </style>
+    <div class="index_wrapper inner9__wrapper" id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile.html" />
+        </div>
+        <php>
+            $arr = get_list_val($inner_data[2]);
+            foreach($arr as $k=>$v){                
+                $arr_list = explode(',',$v['otherpage_id']);                
+                if(in_array($intro_class['classid'],$arr_list)){
+                    $big_title = $v['name'];
+                }
+            }
+        </php>
+        <div class="index_inner container">
+            <div class="row">
+                <if condition="$webid neq '1721'">
+                <div class="HJZF_Z__inner9--text wow bounceIn">
+                    <else/>
+                <div class="HJZF_Z__inner9--text">
+                </if>
+                    <if condition='$inner_data[2]'>
+                        <div class="index_title">{$big_title}</div>
+                        <else/>
+                        <div class="index_title">{$inner_data[0]}</div>
+                    </if>
+                    <div class="index_text">{$inner_data[1]}</div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__inner9--leftcate">
+            <div class="index_inner container">
+                <div class="row">
+                    <Include file="./Tpl/HJZF2_Z/left_othercate9.html" />
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_othercatemobile9.html" />
+                    </section>
+                </div>
+            </div>
+        </div>
+       
+        <div id="main-content-wrapper">
+            <div class="index_inner container">
+                <div class="row">
+                    <section class="col-xs-12 InsidePages_content2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="hidden-xs hidden-sm hidden-md col-lg-12 InsidePages_content-right_editor"
+                                    id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                                <div class="col-xs-12 hidden-lg hidden-xl InsidePages_content-right_editor">
+                                    <if condition="$intro_class['wapreadme']">
+                                        {:htmlspecialchars_decode($intro_class['wapreadme'])}
+                                        <else />{:htmlspecialchars_decode($intro_class['readme'])}</if>
+                                </div>
+                                <div class="page_nei_space"></div>
+								<if condition="$intro_class['classid'] eq '9976'">
+									<style>
+											.detail_title{
+												margin-top: 20px;
+												padding-bottom: 15px;
+												margin-bottom: 15px;
+												font-size: 22px;
+												border-bottom: 1px solid #eaeaea;
+											}
+											.detail_title h2{
+												display: inline-block;
+												position: relative;
+											}
+											.detail_title h2:before{
+												position: absolute;
+												display: block;
+												content:'';
+												width: 100%;
+												height: 3px;
+												left: 0;
+												bottom: -20px;
+												background-color: #{$color};
+											}
+									</style>
+									<!-- 李梅 三诺 单页面加询盘 -->
+									<div class="detail_inquery">
+										<div class="detail_title">
+											<h2>{:__('Inquiry Now')}</h2></div>
+										<!--询盘-->
+										<div class="proinquiry">
+											<if condition="C('language') eq 'cn'">
+												<Include file="./Tpl/HJZF2_Z/submitinquiry_cn.html" />
+												<else/>
+												<Include file="./Tpl/HJZF2_Z/submitinquiry.html" />
+											</if>
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+									<!-- 李梅 三诺 单页面加询盘 -->
+								</if>
+								
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

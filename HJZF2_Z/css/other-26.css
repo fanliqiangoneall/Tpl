@@ -1,0 +1,41 @@
+.hjzf_other_26 .flex{
+    justify-content: space-between;
+    text-align: center;
+}
+.hjzf_other_26 .flex p{
+    padding:20px;
+    font-size: 20px;
+}
+.hjzf_other_26 .flex li{
+    transition: all .5s ease;
+    position: relative;
+}
+.hjzf_other_26 .flex li span{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    opacity: 0;
+    transition: all .5s ease;
+    transform: translateX(-50%);
+}
+.hjzf_other_26 .flex li:hover span{
+    opacity: 1;
+}
+.hjzf_other_26 .flex li p{
+    transition: all .3s;
+}
+.hjzf_other_26 .flex li:hover p{
+    margin-top: -5px;
+}
+
+@media (max-width: 768px) {
+    .hjzf_other_26 .flex{
+        flex-wrap: wrap;
+    }
+    .hjzf_other_26 .flex li{
+        flex: 0 0 50%;
+    }
+    .hjzf_other_26 .flex li:hover{
+        margin: 0;
+    }
+}

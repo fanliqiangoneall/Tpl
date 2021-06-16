@@ -1,0 +1,84 @@
+<style>
+.new_hjzf_aboutus-10 .more_box a:hover:before{
+        background-color: #{$data128[5]};
+    }
+    .new_hjzf_aboutus-10 .more_box a:before{
+    background: #{$data128[5]};
+}
+.new_hjzf_aboutus-10 .view_botton{
+    background: #{$data128[5]};
+}
+
+.new_hjzf_aboutus-10 #aboutus_10{
+    margin-top: {$data128[6]}px;
+    margin-bottom: {$data128[7]}px;
+    background: url({:getindeximgurl($data128[8])}) no-repeat center;background-size: cover;
+}
+.swiper-pagination-bullet-active{
+    background: #{$data128[5]}!important;
+}
+.new_hjzf_aboutus-10 .mainTitle:before{
+    background: #{$data128[5]};
+}
+.new_hjzf_aboutus-10 .news_item-title a:before{
+  background: #{$data128[5]};
+}
+</style>
+
+<section id="aboutus_10">
+    <div class="container">
+        <div class="container_left wow fadeInUp" data-wow-delay="0" data-wow-offset="300">
+            <img src="{:getindeximgurl($data128[0])}" alt="左侧图片">
+        </div>
+        <div class="container_aboutus wow fadeInUp" data-wow-delay="0" data-wow-offset="300">
+            <div class="aboutus_title">
+                <div class="mainTitle">
+                    {$data128[1]}
+                </div>
+            </div>
+            <div class="aboutus_content">
+                {:HtmlEncode(subtxt($company_info['description'],300))}&nbsp;&nbsp;
+            </div>
+            <div class="more_box">
+                <a href="{:U('/aboutus')}" class="about_us_more-button wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0"><span>{:__('More')}</span></a>
+            </div>
+        </div>
+        <div class="container_views wow fadeInUp" data-wow-delay="0" data-wow-offset="200">
+            <div class="views_head">
+                <img src="{:getindeximgurl($data128[2])}">
+                <div class="view_botton" onclick="window.open('{:U('/news')}','_self')">
+                    <div class="view_botton_box">
+                        <a href="{:U('/news')}">{$data128[3]}</a>
+                        <div class="down">
+                            <img src="{:getindeximgurl($data128[9])}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view_swiper swiper-container">
+                    <div class="views_content swiper-wrapper">
+                            <volist name="indexnews" id="indexnews" offset="0" length='6' key="k">
+                                <div class="news_item swiper-slide" style="height:70px">
+                                    <div class="news_item_date">
+                                        <div style="margin-top: 6px">
+                                        <span style="font-size: 30px;"><if condition="C('language') eq 'cn'">{:date('d',$indexnews['created'])}<else/>{:date('d',$indexnews['created'])}</if></span>
+                                        <span style="font-size: 16px;"><if condition="C('language') eq 'cn'">{:date('m月',$indexnews['created'])}<else/>{:date('M',$indexnews['created'])}</if></span>
+                                    </div>
+
+                                    </div>
+                                    <div class="hjnews_content">
+                                            <div class="news_item-title">
+                                                <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()">{:subtxt($indexnews['title'],40)}</a>
+                                            </div>
+
+                                            <p class="news_item-desc-wai">{:subtxt($indexnews['news_description'],100)}</p>
+                                     </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="swiper-pagination aboutus-10-agination"></div>
+            </div>
+        </div>
+    </div>
+</section>

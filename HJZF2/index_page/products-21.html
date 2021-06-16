@@ -1,0 +1,65 @@
+<style>
+.products-21-top{
+    background: url({:getindeximgurl($data212[0])}) no-repeat center;
+}
+.products-21__categroy_pagination.swiper-pagination .swiper-pagination-bullet-active{
+    background-color: #{$data212[2]};
+}
+</style>
+
+<section id="products-21">
+    <div class="products-21-top">
+        <div class="container">
+            <div class="products-21-top_content">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="products-21__content">
+            <div class="swiper-container products-21_container">
+                <div class="swiper-wrapper products-21__categroy">
+                    <php>
+                        $arr_str=$data212[1];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_index_products_categoryname($a);
+                    }
+                    foreach($arr as $c=>$b){
+                    $class[$c]['data']=get_index_products_category($b,$all_pro);
+                }
+            </php>
+            <volist empty="" name="list" id="li" key="k">
+                <div class="swiper-slide products-21__categroy_item">
+                    <div class="cateimg"><img src="{:getmainimgurl($li['fid'])}" alt=""/></div>
+                    <div class="catename"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a></div>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination products-21__categroy_pagination"></div>
+    </div>
+    
+
+    <div class="products-21__content--down wow bounceInLeft" data-wow-duration="1s" data-wow-offset="0">
+        <ul class="products-21__content--down__wrap">
+            <volist empty="" name="class" id="li" key="k">
+                <li class="products-21__content__itemBox">
+                    <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="3">
+                        <div class="products-21__item">
+
+                            <div class="products-21__proName">
+                                <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><h3>{$indexpro['pro_name']}</h3></a>
+                                <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}" class="products-21__proMore">{:__('Read More')}</a>
+                            </div>
+                            <div class="products-21__proImg"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" width="437px" height="320px"/></div>
+                        </div>
+                    </volist>
+                </li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+
+
+</div>
+</div>
+</section>

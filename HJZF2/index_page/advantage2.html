@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+<!--advantage start-->
+<php>
+    if($data6[16] ==''){
+    $data6[16] =70;
+    }
+    if($data6[17] ==''){
+    $data6[17] =70;
+    }
+    if($data6[18] ==''){
+    $data6[18] =0;
+    }
+    if($data6[19] ==''){
+    $data6[19] =0;
+    }
+</php>
+<if condition="$data6[15]">
+    <style>
+        .new_hjzf_advantage .HJ05-advantage-box{
+            background: url({:getindeximgurl($data6[15])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_advantage .HJ05-advantage-box{
+        padding-top:{$data6[16]}px;padding-bottom:{$data6[17]}px;margin-top:{$data6[18]}px;margin-bottom:{$data6[19]}px;
+    }
+    .new_hjzf_advantage .HJ05-advan-title .ttwrap,.new_hjzf_advantage .HJ05-advan-item:hover .num{
+        background: #{$data47[9]};
+    }
+    .new_hjzf_advantage .HJ05-advan-item:hover .num:before{
+        background: linear-gradient(to bottom right, transparent 0%,transparent 43%,#{$data47[9]} 56%,#{$data47[9]} 100%);
+    }
+    .new_hjzf_advantage .HJ05-advan-item:hover .num:after{
+         background: linear-gradient(to top left, transparent 0%,transparent 43%,#{$data47[9]} 56%,#{$data47[9]} 100%);
+     }
+    .new_hjzf_advantage .HJ05-advan-item:hover .content-wrap .desc-title{
+        color: #{$data47[9]};
+    }
+</style>
+<section class="hj-advantage HJ05-advantage-box">
+    <div class="container">
+        <h3 class="HJ05-advan-title wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200"><span class="ttwrap">{$data6[0]}</span></h3>
+        <p class="HJ05-advan-title_2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">{$data6[1]}</p>
+        <div class="HJ05-advan-content">
+            <div class="HJ05-advan-content-item lf wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">
+                <div class="HJ05-advan-item flex">
+                    <div class="num">1</div>
+                    <div class="content-wrap">
+                        <div class="desc-title">{$data6[2]}</div>
+                        <div class="desc-line">{:HtmlEncode(subtxt($data6['3'],200))}</div>
+                    </div>
+                </div>
+                <div class="HJ05-advan-item flex">
+                    <div class="num">2</div>
+                    <div class="content-wrap">
+                        <div class="desc-title">{$data6[5]}</div>
+                        <div class="desc-line">{:HtmlEncode(subtxt($data6['6'],200))}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="HJ05-advan-content-item center hvr-wobble-horizontal"><img src="{:getindeximgurl($data6[14])}" alt=""/></div>
+            <div class="HJ05-advan-content-item rt wow fadeInRight" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="300">
+                <div class="HJ05-advan-item flex">
+                    <div class="num">3</div>
+                    <div class="content-wrap">
+                        <div class="desc-title">{$data6[8]}</div>
+                        <div class="desc-line">{:HtmlEncode(subtxt($data6['9'],200))}</div>
+                    </div>
+                </div>
+                <div class="HJ05-advan-item flex">
+                    <div class="num">4</div>
+                    <div class="content-wrap">
+                        <div class="desc-title">{$data6[11]}</div>
+                        <div class="desc-line">{:HtmlEncode(subtxt($data6['12'],200))}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>
+<!--advantage end-->
+
+
+

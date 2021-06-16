@@ -1,0 +1,18 @@
+<extend name="WAP:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu5').removeClass().addClass("menuon1");
+});
+</script>
+<div><img src="__TMPL__WAP/img/banner1.jpg" border="0" width="100%" /></div>
+<div data-role="content" style="padding-top:15px;">
+  <div class="main_top"><a href="{:U('/')}">Home</a>&nbsp;>&nbsp;{$intro_class['class_name']}</div>
+  <div class="lmtitle">{$intro_class['class_name']}</div>
+  <div style="width:100%; height:10px;"></div>
+  <div class="page_main">
+  {:htmlspecialchars_decode($intro_class['readme'])}
+  {:htmlspecialchars_decode(get_contactus_code())}
+  </div>
+</div>
+</block>

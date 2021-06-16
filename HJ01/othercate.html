@@ -1,0 +1,58 @@
+<extend name="HJ01:basein" />
+<block name="content">
+    <if condition="$data14[20] neq ''">
+        <style>
+            .main_left{display: none!important;}
+            .main-content-right{width: 100%!important;}
+        </style>
+    </if>
+    <div id="wrapper">
+        <link rel="stylesheet" type="text/css" href="__TMPL__HJ01/css/jquery.lightbox-0.5.css"/>
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[5])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner">
+                <div class="container">
+                    <h1 class="ins-page-title-txt no-margin padding-5px-tb">{$intro_class['class_name']}</h1>
+                    <div class="Breadcrumbs"><a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;{$intro_class['class_name']}</div>
+                </div>
+            </div>
+            <div class="ins-pagetitle-scroll-wrapper container"><a class="ins-pagetitle-scroll-link" href="javascript:goToMain()"><i class="fa fa-angle-down"></i></a></div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left" <if condition="count($navrs) gt 0">style="display:block" <else/>style="display:none"</if>>
+                <if condition="count($navrs) gt 0">
+                    <Include file="./Tpl/HJ01/otherleft.html" />
+                    <else/>
+                    <Include file="./Tpl/HJ01/left.html" />
+                </if>
+            </section>
+            <section  <if condition="count($navrs) gt 0">class="main-content-right" <else/>class="main-content-right2"</if>>
+                <div class="page_RightMain">
+                    <div class="page_Main" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                    <div style="clear:both;height: 30px;"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="main_content_slogan">
+            <div class="container">
+                <div class="main_content_slogan_left ">
+                    <h3 class="margin-10px-bottom">Get Your Quote or Call: {:chaifen($about['phone'],0)}</h3>
+                    <p class="main_content_slogan_text" style="letter-spacing: 1px">{$data14[10]}</p>
+                </div>
+                <div class="main_content_slogan_right ">
+                    <div class="main_content_slogan_right_more text-right">
+                        <a href="{:U('/contactus')}">CONTACT US</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

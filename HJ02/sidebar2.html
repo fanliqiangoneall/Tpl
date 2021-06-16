@@ -1,0 +1,72 @@
+<style>
+#skypeCheckNotice{position:fixed !important;}
+#skypedetectionswf{ display:none !important;}
+.side ul li{
+    background: #{$color};
+
+}
+.sidetop{
+    background: #{$color};
+}
+.side ul li .sidebox,.side ul li .sidebox2,.side ul li .sidebox3{
+    background: #{$color};
+}
+    .side ul li:hover .sidebox,.side ul li:hover .sidebox2,.side ul li:hover .sidebox3{
+        background: #{$color};
+    }
+.ewm_box{
+    position: absolute;
+    left: -140px;
+    padding: 20px;
+    background: #f0f0f0;
+    top: -30px;text-align: center;display: none;
+}
+.ewm_box img{width: 100px!important;height: 100px!important;}
+.side ul li:hover .ewm_box{display: block}
+</style>
+<div class="side">
+    <ul>
+        <li style=" <if condition="chaifen($about['email'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox2"><img src="__TMPL__WH01/img/sider-3.png" border="0"><span style="line-height:60px;margin-left: 5px"><b><a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()" style="color:#fff" onclick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></b></span></div>
+        </li>
+
+        <if condition="$data13[13]">
+            <li>
+                <a href="javascript:void(0);" id="mobile_ewm"><img src="__TMPL__HJ02/img/r_wechat.png" border="0" alt="mobile"></a>
+                <div class="ewm_box">
+                    <img src="{:getindeximgurl($data13[13])}" alt="mobile" width="150" height="150"/>
+                </div>
+            </li>
+        </if>
+
+        <li  style=" <if condition="chaifen($about['whatsapp'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox2"><img src="__TMPL__WH01/img/sider-2.png" border="0"><span style="line-height:60px;margin-left: 5px;color:#fff;"><b>+86-{:chaifen($about['whatsapp'],0)}</b></span></div>
+        </li>
+        <li  style=" <if condition="chaifen($about['mobile'],0) eq ''"> display:none;</if>"">
+        <div class="sidebox2"><img src="__TMPL__HJ02/img/r_tel3.png" border="0"><span style="line-height:60px;margin-left: 5px;color:#fff;"><b>{:chaifen($about['mobile'],0)}</b></span></div>
+        </li>
+        <li>
+            <a href="{:U('/contactus#zixun')}" onclick="turn_sta(1,4)"><img src="__TMPL__WH01/img/sider-4.png" border="0" alt="Top"></a>
+        </li>
+
+        <li style="height:60px;"><a href="javascript:goTop();" class="sidetop"><img src="__TMPL__WH01/img/sider-5.png" border="0" alt="Top"></a></li>
+
+    </ul>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        $(".side ul li").eq(4).css("background-image", "none");
+
+        /*var color_hover = "{$data1[0]}";
+        var color_hover2 = " #{$color}";*/
+        jQuery(".side ul li").hover(function () {
+            jQuery(this).find(".sidebox").stop().animate({"width": "220px"}, 200)
+            jQuery(this).find(".sidebox2").stop().animate({"width": "300px"}, 200)
+            jQuery(this).find(".sidebox3").stop().animate({"width": "220px"}, 200)
+        }, function () {
+            jQuery(this).find(".sidebox").stop().animate({"width": "60px"}, 200)
+            jQuery(this).find(".sidebox2").stop().animate({"width": "60px"}, 200)
+            jQuery(this).find(".sidebox3").stop().animate({"width": "60px"}, 200)
+        })
+    });
+</script>

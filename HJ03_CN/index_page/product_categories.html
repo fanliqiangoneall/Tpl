@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<link href="__TMPL__demo2/css/productcategories.css" rel="stylesheet">
+  <div class="index_fl">
+    <div id="index_productslist_animate">
+     <div class="index_fl_title">
+        {$data[0]}
+     </div>
+     <div class="index_fl_title2">{$data[1]}</div>
+    </div>
+    <div id="index_productslist_animate_1">
+     <div class="index_flcon">
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:getindexlink($data[4])}"><img src="{:getindeximgurl($data[2])}"></a></div>
+           <div class="index_flcon2"><a href="{:getindexlink($data[4])}">{$data[3]}</a></div>
+        </li>
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:getindexlink($data[7])}"><img src="{:getindeximgurl($data[5])}"></a></div>
+           <div class="index_flcon2"><a href="{:getindexlink($data[7])}">{$data[6]}</a></div>
+        </li>
+        <li>
+           <div style="text-align: center;height: 145px;"><a href="{:getindexlink($data[10])}"><img src="{:getindeximgurl($data[8])}"></a></div>
+           <div class="index_flcon2"><a href="{:getindexlink($data[10])}">{$data[9]}</a></div>
+        </li>
+     </div>
+    </div> 
+  </div>
+
+<script>
+jQuery('#index_productslist_animate').removeClass().addClass('fadeInRight');
+$(window).scroll( function() {
+  scrollTop=$(document).scrollTop();
+  //alert(scrollTop);
+  
+  if(scrollTop>100){  
+  $('#index_productslist_animate_1').show();
+  $('#index_productslist_animate_1').removeClass().addClass('fadeInLeft');
+  }
+
+});
+</script>

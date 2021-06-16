@@ -1,0 +1,76 @@
+<!--{$pagename}-->
+<php>
+	if($data678[0]){
+		$color = $data678[0];
+	}
+</php>
+<style>
+	.products_44_wrapper_title li:hover,.products_44_wrapper_title li.on,
+	.products_44_wrapper_con li em{
+		background-color: #{$color};
+	}
+	.products_44_wrapper_con .p-15 i{
+		background-color: #{$color};
+	}
+</style>
+
+<section class="products_44 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="index_title pb20 text-center">{$data678[1]}</div>
+				<div class="index_sub_title pb40 text-center">{$data678[2]}</div>
+				<div class="products_44_wrapper">
+					<php>
+						$arr_str=$data678[3];
+						$arr=explode(',',$arr_str);
+						foreach($arr as $k=>$a){
+						$list[$k]=get_index_products_categoryname($a);
+						}
+					</php>
+					<ul class="products_44_wrapper_title">
+						<volist empty="" name="list" id="li" key="key">
+							<li>{$li['class_name']}</li>
+						</volist>
+					</ul>
+					<volist empty="" name="list" id="lia" key="key">
+						<div class="products_44_wrapper_con">
+							<ul>
+								<php>
+									$lista=get_index_products_category($lia['pcid'], 8);
+								</php>
+								<volist empty="" name="lista" id="lic" key="keya">
+								<li>
+									<a href="{:U('/Product','','')}/{:getproname($lic['pid'])}">
+										<div class="products_44_wrapper_img">
+											<img src="{:getimgurl($lic['main_img'])}" alt="" class="img-fluid">
+										</div>
+										<div class="products_44_wrapper_con_title">
+											{:subtxt($lic['pro_name'],60)}
+										</div>
+										<p class="p-15">
+											<if condition="$webid eq '1826'">
+												{$lic['pro_model']} 
+												<i>{:__('Read More')}</i>
+												<else/>
+											{:subtxt($lic['pro_description'],80)}
+											</if>
+											
+										</p>
+										<span>
+											<em>{:__('Read More')}</em>
+										</span>
+									</a>
+								</li>
+								</volist>
+							</ul>
+						</div>
+					</volist>
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>

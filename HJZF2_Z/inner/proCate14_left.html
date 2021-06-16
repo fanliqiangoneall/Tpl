@@ -1,0 +1,192 @@
+<!--left-->
+<style>
+    .innerprocate_14_navwrapper {
+        border-top: 1px solid #f0ebd8;
+        border-bottom: 1px solid #f0ebd8;
+        margin-bottom: 90px;
+    }
+    .innerprocate_14_navlist>li {
+        border-left: 1px solid #f0ebd8;
+        flex-shrink: 1;
+        width: 20%;
+        padding: 15px 15px 10px 15px;
+        display: flex;
+        align-items: center;
+    }
+    .innerprocate_14_navlist>li:last-child {
+        border-right: 1px solid #f0ebd8;
+    }
+
+    .innerprocate_14_navlist>li a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .innerprocate_14_navlist>li.first_item img.cate_pic {
+        max-width: 58px;
+        margin-right: 20px;
+    }
+
+    .innerprocate_14_navlist>li.first_item a h3 {
+        font-size: 20px;
+        line-height: 32px;
+        font-weight: normal;
+    }
+
+    .innerprocate_14_navlist>li.first_nav:hover>a>h3,
+    .innerprocate_14_navlist>li.first_item:hover a h3 {
+        color: #{$inner_data[1]};
+    }
+
+    .innerprocate_14_navlist>li.first_nav {
+        position: relative;
+        z-index: 96;
+    }
+
+    .innerprocate_14_navlist>li.first_nav a {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn {
+        width: 21px;
+        height: 21px;
+        display: inline-block;
+        position: relative;
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn::before,
+    .innerprocate_14_navlist>li.first_nav span.more_btn::after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #333;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        transition: 0.6s;
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn::before {
+        top: 0;
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn::after {
+        bottom: 0;
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn .line {
+        width: 100%;
+        height: 2px;
+        background: #333;
+        display: inline-block;
+        transform: translateY(-4px);
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn.active::after {
+        transform: rotate(45deg) translate(-7px, -7px);
+        transition: 0.6s;
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn.active::before {
+        transform: rotate(-45deg) translate(-6px, 7px);
+        transition: 0.6s;
+    }
+
+    .innerprocate_14_navlist>li.first_nav span.more_btn.active .line {
+        display: none;
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul {
+        position: absolute;
+        top: 100%;
+        width: calc(100% + 1px);
+        left: -1px;
+        background: #fff;
+        border: 1px solid #f0ebd8;
+        height: 0;
+        max-height: 500px;
+        overflow-y: auto;
+        transition: 0.6s;
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul.active {
+        height: auto;
+        transition: 0.6s;
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul li {
+        padding: 6px 20px;
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul li a h3 {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: normal;
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul li:hover a h3 {
+        color: #{$inner_data[1]};
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul::-webkit-scrollbar-track {
+        background-color: #fff;
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius: 2em;
+    }
+
+    .innerprocate_14_navlist>li.first_nav>ul::-webkit-scrollbar-thumb {
+        background-color: #e3e3e3;
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        border-radius: 2em;
+    }
+
+    @media(max-width:1600px) {}
+</style>
+<div class="innerprocate_14_navwrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="innerprocate_14_navbox">
+                    <ul class="innerprocate_14_navlist flex">
+                        <li class="first_nav">
+                            <a href="{:U('/product')}">
+                                <h3>all</h3>
+                            </a>
+                            <span class="more_btn"><span class="line"></span></span>
+                            <ul>
+                                <volist empty="" name="allclass" id="allclass_left" offset="0">
+                                    <li pro-class-id="{$allclass_left['pcid']}" class="">
+                                        <a
+                                            href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </li>
+                        <volist empty="" name="allclass" id="allclass_left" offset="0" length="4">
+                            <li pro-class-id="{$allclass_left['pcid']}" class="first_item">
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}"><img
+                                        src="{:getmainimgurl($allclass_left['fid'])}" alt=""
+                                        class="cate_pic">{$allclass_left['class_name']}</a>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on('click', '.more_btn', function () {
+        $(this).toggleClass("active");
+        $(".innerprocate_14_navlist>li.first_nav>ul").toggleClass("active");
+    })
+</script>

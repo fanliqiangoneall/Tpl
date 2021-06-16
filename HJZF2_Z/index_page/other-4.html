@@ -1,0 +1,92 @@
+<!--{$pagename}-->
+<php>
+    if($data46[0]){
+        $other__bj='url('.getindeximgurl($data46[0]).') no-repeat center/cover';
+    }
+    
+</php>
+<if condition="$data46[0]">
+    <style>
+        .HJZF_Z_other4{
+        background: {$other__bj};
+        }
+    </style>
+</if>
+<style>
+.HJZF_Z_other4__contactnr ul li i,.inquiry_box #inquiry_box6{
+	background: #{$data46[12]};
+}
+.HJZF_Z_other4__mainTitle1,.HJZF_Z_other4__mainTitle2{
+    color: #{$data46[16]};
+}
+.HJZF_Z_other4__contactelement{
+    color: #{$data46[17]};
+}
+.HJZF_Z_other4__contactnr ul li span{
+    color: #{$data46[18]};
+}
+</style>
+<section class="HJZF_Z_other4 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF_Z_other4__container">
+            	<div class="HJZF_Z_other4__mainTitle wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s">
+                   <div class="HJZF_Z_other4__mainTitle1 index_sub_title">{$data46[1]}</div>
+                   <div class="HJZF_Z_other4__mainTitle2 index_title">{$data46[2]}</div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-xl-6">
+            	<div class="HJZF_Z_other4__leftinquiry wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                	 <if condition="C('language') eq 'cn'">
+                   	 <Include file="./Tpl/HJZF2_Z/submitinquiry_index.html" />
+                     <elseif condition="C('language') eq 'rus'"/>
+                      <Include file="./Tpl/HJZF2_Z/submitinquiry_index_rus.html" />
+                      <else/>
+                      <Include file="./Tpl/HJZF2_Z/submitinquiry_index_en.html" />
+                     </if>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-xl-6">
+            	<div class="HJZF_Z_other4__rightcontact wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.8s">
+                     <div class="HJZF_Z_other4__contactelement index_text">{$data46[3]}</div>
+                     <div class="HJZF_Z_other4__contactnr">
+                        <ul>
+                           <if condition="$about['phone']"><li style="background:url({:getindeximgurl($data46[13])}) left 5px no-repeat;"><span class="index_sub_title nav-hidden-mobile">
+                            {:chaifen($about['phone'],0)}
+                           </span>
+                           <span class="index_sub_title nav-hidden-pc">
+                            <a href="tel:{:chaifen($about['phone'],0)}">{:chaifen($about['phone'],0)}</a>
+                           </span>
+                        
+                        </li></if>
+                           <if condition="$about['address']"><li style="background:url({:getindeximgurl($data46[14])}) left 5px no-repeat;"><span class="index_sub_title">{$about['address']}</span></li></if>
+                           <li style="background:url({:getindeximgurl($data46[15])}) left 5px no-repeat;">
+                           <if condition="chaifen($about['email'],0)"><span class="index_sub_title">{:chaifen($about['contact'],0)}: </span><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,5)"><span class="index_sub_title">{:chaifen($about['email'],0)}</span></a></if><br />
+                           <if condition="chaifen($about['email'],1)"><span class="index_sub_title">{:chaifen($about['contact'],1)}: </span><a href="mailto:{:chaifen($about['email'],1)}" onFocus="blur()" onClick="turn_sta(3,5)"><span class="index_sub_title">{:chaifen($about['email'],1)}</span></a></if><br />
+                           <if condition="chaifen($about['email'],2)"><span class="index_sub_title">{:chaifen($about['contact'],2)}: </span><a href="mailto:{:chaifen($about['email'],2)}" onFocus="blur()" onClick="turn_sta(3,5)"><span class="index_sub_title">{:chaifen($about['email'],2)}</span></a></if><br />
+                           <if condition="chaifen($about['email'],3)"><span class="index_sub_title">{:chaifen($about['contact'],3)}: </span><a href="mailto:{:chaifen($about['email'],3)}" onFocus="blur()" onClick="turn_sta(3,5)"><span class="index_sub_title">{:chaifen($about['email'],3)}</span></a></if>
+                           </li>
+                        </ul>
+                     </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <if condition="$data46[4]">
+        	<div class="HJZF_Z_other4__tblist wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.2s">
+                <php>
+                    for($i=4;$i<11;$i=$i+2){
+                </php>
+                <div class="col-xs-6 col-lg-3 other4__item">
+                    <div>
+                        <a href="{$data46[$i+2]}" target="_blank"><img src="{:getindeximgurl($data46[$i])}" /></a>
+                    </div>
+                </div>
+                <php>
+                    }
+                </php>
+                <div class="clear"></div>
+            </div>
+            </if>
+        </div>
+    </div>
+</section>

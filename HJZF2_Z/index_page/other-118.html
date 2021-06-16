@@ -1,0 +1,36 @@
+<!--{$pagename}-->
+<php>
+	if($data715[0]){
+	$color = $data715[0];
+	};
+</php>
+<style>
+	.hjzf_other_118 ul li:hover div.hjzf_other_118_wrapper {
+		background-color: #{$color};
+	}
+</style>
+<section class="hjzf_other_118">
+	<ul>
+		<php>
+			$arr = get_list_val($data715[1]);
+		</php>
+		<volist name="arr" id="a">
+			<li>
+				<div class="hjzf_other_118_wrapper">
+					<div class="hjzf_other_118_text index_sub_title">
+						{$a[text]}
+					</div>
+					<img src="{:getindeximgurl($data715[2])}" alt="">
+					<div class="index_title">
+						{$a[year]}
+					</div>
+					<div class="index_text">
+						{$a[info]}
+					</div>
+				</div>
+				<img src="{$a[img]}" alt="">
+			</li>
+		</volist>
+	</ul>
+
+</section>

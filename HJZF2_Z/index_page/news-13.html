@@ -1,0 +1,74 @@
+<!--{$pagename}-->
+<style>
+.new_hjzf_news_13_newscon .new_hjzf_news_13_newscon_data_day,
+.new_hjzf_news_13_newscon_inner a.details
+{
+    color: #{$data206[1]};
+}
+.new_hjzf_news_13_swiper .new_hjzf_news_13_pagination span.swiper-pagination-bullet-active{
+    background-color: #{$data206[1]};
+}
+</style>
+<if condition="C('Language') eq 'cn'">
+    <style>
+.new_hjzf_news_13_newscon .new_hjzf_news_13_newscon_data_day{
+    font-size: 36px;
+}
+</style>
+</if>
+<section class="new_hjzf_news_13 index_pd">
+    <div class="container">
+       <div class="row">
+		<if condition="$data206[2]">
+			<php>
+				$arr = get_list_val($data206[2]);
+			</php>
+			<div class="pb40">
+				<div class="news_13_new_title pb20">
+					<span class="index_title">
+						{$arr[0][title]}
+					</span>
+					<span class="index_sub_title">
+						{$arr[0][sub]}
+					</span>
+				</div>
+				<div class="text-center index_text news_13_new_title_index">
+					{$arr[0][info]}
+				</div>
+            </div>
+
+			  <else/>
+          <div class="col-xs-12 wow fadeInUp" data-wow-duration=".5s">
+            <div class="new_hjzf_news_13_title text-center index_title pb40">{$data206[0]}</div>
+        </div>
+		</if>
+<div class="col-xs-12">
+        <div class="swiper-container new_hjzf_news_13_swiper col-xs-12">
+            <div class="swiper-wrapper">
+               <volist name="indexnews" id="indexnew2" offset="0" length="9" key="k2">
+                 <div class="swiper-slide wow fadeInUp" data-wow-duration="1.5s">
+                  <div class="new_hjzf_news_13_newsimg">
+                   <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}"><img class="lazy img-responsive" src="{:getimgurl($indexnew2['new_pro'])}" data-original="{:getimgurl($indexnew2['new_pro'])}" alt="{$indexnew2['title']}" width="100%" border="0"/></a>
+               </div>
+               <div class="new_hjzf_news_13_newscon flex">
+                <div class="new_hjzf_news_13_newscon_data_mobile"><span class="new_hjzf_news_13_newscon_data_y_m"><if condition="C('Language') eq 'cn'">{:date('Y-m-d',$indexnew2['created'])} <else/>{:date('m-d-Y',$indexnew2['created'])}</if></span></div>
+                <div class="new_hjzf_news_13_newscon_data text-center"><span class="new_hjzf_news_13_newscon_data_y_m"><if condition="C('Language') eq 'cn'">{:date('Y-m',$indexnew2['created'])}<else/>{:date('m-d',$indexnew2['created'])}</if></span><span class="new_hjzf_news_13_newscon_data_day"><if condition="C('Language') eq 'cn'">{:date('d',$indexnew2['created'])}<else/>{:date('Y',$indexnew2['created'])}</if></span></div>
+                <div class="new_hjzf_news_13_newscon_inner">
+                    <h3 class="ellipsis_two"><a href="{:U('/new_detail',array('nid'=>$indexnew2["nid"]))}" class="index_sub_title">{$indexnew2['title']}</a></h3>
+                    <p class="ellipsis_four index_text">{$indexnew2['news_description']}</p>
+                    <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" class="details">{:__('Read More')} ></a>
+                </div>
+            </div>
+        </div>
+    </volist>
+</div>
+<div class="swiper-pagination new_hjzf_news_13_pagination"></div>
+
+</div>
+</div>
+
+
+</div>
+</div>
+
+</section>

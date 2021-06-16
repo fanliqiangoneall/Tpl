@@ -1,0 +1,132 @@
+<!--{$pagename}-->
+<if condition="$data167[0]">
+    <style>
+        .new_hjzf_news-11{
+            background: url({:getindeximgurl($data167[0])}) no-repeat center/cover fixed;
+        }
+    </style>
+</if>
+<style>
+	.new_hjzf_news-11--title .swiper-slide-active:before,.new_hjzf_news-11--title2:before{
+		background: #{$color};
+	}
+    .new_hjzf_news-11--title  a:hover,.new_hjzf_news-11__itemLeft__first:hover .new_hjzf_news-11__itemLeft__name a{
+        color: #{$data167[1]};
+    }
+    .new_hjzf_news-11__itemLeft:hover a,.hjzf_news11-content .hjzf_news11--next:hover i, .hjzf_news11-content .hjzf_news11--prev:hover i{
+        color: #{$data167[1]};
+    }
+    .new_hjzf_news-11__itemRight:hover .new_hjzf_news-11__itemRight__name a{
+        color: #{$data167[1]};
+    }
+</style>
+<section class="new_hjzf_news11 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-7 new_hjzf_news-11__left wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0" >
+            	<div class="swiper-container hjzf_news11-class new_hjzf_news-11--title">
+                	<div class="swiper-wrapper">
+                	  <div class="swiper-slide"><h3 class="new_hjzf_news11--bt index_sub_title">{$data167[2]}</h3></div>
+                      <div class="swiper-slide"><h3 class="new_hjzf_news11--bt index_sub_title">{$data167[4]}</h3></div>
+                      <div class="new_hjzf_news11--more"><if condition="$data167[6]"><a href="{$data167[6]}">{$data167[5]}</a><else/><a href="{:U('/news')}">{$data167[5]}</a></if></div>
+                    </div>
+                </div>
+                <php>
+                    $arr_str=$data167[3];
+                    $arr=explode(',',$arr_str);
+                    foreach($arr as $k=>$a){
+                    $list[$k]['data']=get_index_news_category($a,8);
+                    }
+                </php>
+                <div class="swiper-container hjzf_news11-content new_hjzf_news-11--leftContent">
+                    <div class="swiper-wrapper">
+                    <volist name="list" id="li" >
+                    	
+                        <div alt="{$li['name']}" class="new_hjzf_news-11--leftWrap swiper-slide">
+                        <if condition="count($li['data']) gt 4">
+                        <div class="swiper-button-prev hjzf_news11--prev"><i class="fa fa-angle-left"></i></div>
+                    	<div class="swiper-button-next hjzf_news11--next"><i class="fa fa-angle-right"></i></div>
+                        </if>
+                                <volist name="li['data']" id="indexnews" offset="0" length="2" key="k">
+                                    <li class="col-xs-6 col-lg-6 new_hjzf_news-11__itemLeft__first">
+                                        <div class="new_hjzf_news-11__itemLeft__img">
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews['new_pro'])}" border="0" alt="{$indexnews['title']}"/></a>
+                                        </div>
+                                        <div class="new_hjzf_news-11__itemLeft__imgRight">
+                                            <div class="new_hjzf_news-11__itemLeft__name"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" class="index_sub_title">{:subtxt($indexnews['title'],40)}</a></div>
+                                            <div class="new_hjzf_news-11__itemLeft__desc"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" class="index_text">{:subtxt($indexnews['news_description'],100)}</a></div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                                <div class="swiper-container new_hjzf_news-11--gundong">
+                                    <div class="swiper-wrapper">
+                                        <volist name="li['data']" id="indexnews2" offset="2" length="10" key="k_news11">
+                                            <if condition="$k_news11%2 eq 1"><div class="swiper-slide"></if>
+                                            <li class="new_hjzf_news-11__itemLeft">
+                                                <div><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()">{:subtxt($indexnews2['title'],60)}</a> <span>{:date('Y-m-d ',$indexnews2['created'])}</span></div>
+                                            </li>
+                                            <if condition="$k_news11%2 eq 0"></div></if>
+                                            <if condition="$k_news11 eq (count($li['data'])-2) && $k_news11%2 neq 0"></div></if>
+                                        </volist>
+                                    </div>
+                                </div>
+                        </div>
+                    </volist>
+                    </div>
+                 </div>
+
+            </div>
+            <div class="col-xs-12 col-lg-5 new_hjzf_news-11__right  wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0">
+                <h3 class="new_hjzf_news-11--title new_hjzf_news-11--title2 index_sub_title">{$data167[7]}
+                    <if condition="$data167[10]"><a href="{$data167[10]}">{$data167[9]}</a> <else/>
+                        <a href="{:U('/news')}">{$data167[9]}</a></if>
+                </h3>
+                <div class="new_hjzf_news-11--RightContent">
+                    <php>
+                        $arr_str2=$data167[8];
+                        $arr2=explode(',',$arr_str2);
+                        foreach($arr2 as $k2=>$a2){
+                        $list2[$k2]['data']=get_index_news_category($a2,8);
+                        }
+                    </php>
+                    
+                        <volist name="list2" id="li2" >
+                            <ul alt="{$li['name']}" class="new_hjzf_news-11--rightWrap">
+                            <div class="swiper-container hjzf_news11_faq--container">
+                    			<div class="swiper-wrapper">
+                                <volist name="li2['data']" id="indexnews" offset="0" length="12" key="k">
+                                	<div class="swiper-slide">
+                                    <li class="new_hjzf_news-11__itemRight">
+                                        <div class="new_hjzf_news-11__itemRight__name">
+                                            <span><img src="{:getindeximgurl($data167[11])}" alt="{:subtxt($indexnews['title'],60)}"></span>
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" class="index_sub_title">{:subtxt($indexnews['title'],60)}</a></div>
+                                        <div class="new_hjzf_news-11__itemRight__desc">
+                                            <span><img src="{:getindeximgurl($data167[12])}" alt="{:subtxt($indexnews['title'],60)}"></span>
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" class="index_text">{$indexnews['news_description']}</a></div>
+                                    </li>
+                                    </div>
+                                </volist>
+                                </div>
+                            </div>
+                            </ul>
+    
+                        </volist>
+                        
+                    
+                </div>
+
+            </div>
+            <div class="clear"></div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+
+    
+    

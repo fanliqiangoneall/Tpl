@@ -1,0 +1,41 @@
+<style>
+.HJZF_Z__inner_product_categroy5 ul li.on a,.HJZF_Z__inner_product_categroy5 ul li:hover a{
+    color: #fff;
+    background-color: #{$color};
+}
+</style>
+<div class="HJZF_Z__inner_product_categroy5">
+    <div class="HJZF_Z__inner_product_categroy5_title">
+        <h2 class="fz28 text-center">{$prolist['class_name']}</h2>
+    </div>
+    <if condition="$webid neq '75' and $webid neq '1820'">
+    <ul>
+        <li class="yiji"><a href="{:U('/product')}">
+            <if condition="$webid eq '1721'">
+                        所有案例
+                        <else/>
+            {:__('All products')}
+            </if>
+            </a></li>
+		
+        <volist empty="" name="allclass" id="allclass_left">
+            <li 
+            <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yiji on"<else/>class="yiji"</if>
+            >
+            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+        </li>
+    </volist>
+</ul>
+<else/>
+<php>
+    $child = get_children($classid);
+</php>
+    <ul>
+        <volist name="child" id="childList">
+        <li class="yiji">
+            <a href="{:U('/product_category','','')}/{:getprocatename($childList['pcid'])}">{$childList['class_name']}</a>
+        </li>
+        </volist>
+    </ul>
+</if>
+</div>

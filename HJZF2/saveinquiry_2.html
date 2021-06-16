@@ -1,0 +1,130 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <div id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Feedback')}</span></div>
+            </div>
+        </div>
+
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+
+            <section class="inner_module2__inPage-100">
+            <div class="inner_module2__inPageRight-content">
+
+                    <h5 class="inner_module2__inPage-title">{:__('Feedback')}</h5>
+
+                <div class="inner_module2__inPageRight-content-box" id="payment">
+                    <if condition="C('language') eq 'en'">
+                        <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto">
+                            <tr>
+                                <th align="center" bgcolor="#cccccc">Message</th>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <br />
+                                    <present name="message" style=" text-align:center;">
+                                        {$message}<br />
+                                    </present>
+                                    <present name="error" style=" text-align:center;">
+                                        {$error}<br />
+                                    </present>
+                                    <p class="detail"></p>
+                                    <p class="jump" style=" text-align:center;">
+                                        <a id="href" href="<?php echo($jumpUrl); ?>">Click to return to the previous page</a> Please waite <b id="wait">5</b> seconds
+                                    </p><br /></td>
+                            </tr>
+                        </table>
+                        <elseif condition="C('LANGUAGE') eq 'de'"/>
+                        <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;margin-bottom: 60px;">
+                            <tr>
+                                <th align="center" bgcolor="#cccccc">Nachrichtentipps</th>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <br />
+                                    <present name="message" style=" text-align:center;">
+                                        {$message}<br />
+                                    </present>
+                                    <present name="error" style=" text-align:center;">
+                                        {$error}<br />
+                                    </present>
+                                    <p class="detail"></p>
+                                    <p class="jump" style=" text-align:center;">
+                                        <a id="href" href="<?php echo($jumpUrl); ?>">Klicken Sie hier, um zur vorherigen Seite zurückzukehren</a> Wartezeit <b id="wait">5</b>Sekunden
+                                    </p><br /></td>
+                            </tr>
+                        </table>
+                        <elseif condition="C('LANGUAGE') eq 'rus' or C('LANGUAGE') eq 'ru'"/>
+                        <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;margin-bottom: 60px;">
+                            <tr>
+                                <th align="center" bgcolor="#cccccc">Новости Советы</th>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <br />
+                                    <present name="message" style=" text-align:center;">
+                                        {$message}<br />
+                                    </present>
+                                    <present name="error" style=" text-align:center;">
+                                        {$error}<br />
+                                    </present>
+                                    <p class="detail"></p>
+                                    <p class="jump" style=" text-align:center;">
+                                        <a id="href" href="<?php echo($jumpUrl); ?>">Нажмите здесь, чтобы вернуться на предыдущую страницу</a> период ожидания <b id="wait">5</b>секунд
+                                    </p><br /></td>
+                            </tr>
+                        </table>
+                        <else/>
+                        <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto;margin-bottom: 60px;">
+                            <tr>
+                                <th align="center" bgcolor="#cccccc">信息提示</th>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <br />
+                                    <present name="message" style=" text-align:center;">
+                                        {$message}<br />
+                                    </present>
+                                    <present name="error" style=" text-align:center;">
+                                        {$error}<br />
+                                    </present>
+                                    <p class="detail"></p>
+                                    <p class="jump" style=" text-align:center;">
+                                        <a id="href" href="<?php echo($jumpUrl); ?>">单击以返回上一页</a> 等待时间 <b id="wait">5</b>秒
+                                    </p><br /></td>
+                            </tr>
+                        </table>
+                    </if>
+
+                    <script type="text/javascript">
+                        (function(){
+                            var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+                            var interval = setInterval(function(){
+                                var time = --wait.innerHTML;
+                                if(time <= 0) {
+                                    location.href = href;
+                                    clearInterval(interval);
+                                };
+                            }, 1000);
+                        })();
+                    </script>
+                    {:htmlspecialchars_decode(get_inquiry_code())}
+                </div>
+                <div class="page_nei_space"></div>
+            </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>
+

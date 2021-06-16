@@ -1,0 +1,106 @@
+<php>
+    if($data220[0]){ $bg = getindeximgurl($data220[0]); } ;
+    if($data220[1]){ $adv_color = $data220[1]; } ;
+    if($data220[2]){ $ioc2 = getindeximgurl($data220[2]);
+} if($data220[3]){ $ioc3 = getindeximgurl($data220[3]); };
+</php>
+<style>
+.advantage_HJ06{
+    background: url({$bg}) no-repeat center/cover;
+    overflow: hidden;
+}
+.advantage_HJ06_matrix{
+    background-color: #{$adv_color};
+}
+.advantage_HJ06_text_inner i{
+    color: #{$adv_color};
+}
+@media (max-width: 768px) {
+    .advantage_HJ06{
+        background: #{$data220[22]};
+    }
+}
+</style>
+
+<section class="advantage_HJ06" id="advantage_HJ06">
+    <div class="advantage_HJ06_matrix"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-5 advantage_HJ06_text">
+                <div class="advantage_HJ06_text_top">
+                    <h2 class="wow slideInLeft ellipsis_one" data-wow-delay=".3s">{$data220[2]}</h2>
+                    <h3 class="wow slideInLeft" data-wow-delay=".6s">{$data220[3]}</h3>
+                </div>
+                <div class="swiper-container advantage_HJ06_swiper wow slideInLeft" data-wow-delay=".9s">
+                    <ul class="swiper-wrapper">
+                        <if condition="$data220[4]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[4]}</span>
+                                <p>{$data220[12]}</p>
+                            </li>
+                        </if>
+                        <if condition="$data220[5]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[5]}</span>
+                                <p>{$data220[13]}</p>
+                            </li>
+                        </if>
+                        <if condition="$data220[6]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[6]}</span>
+                                <p>{$data220[14]}</p>
+                            </li>
+                        </if>
+                        <if condition="$data220[7]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[7]}</span>
+                                <p>{$data220[15]}</p>
+                            </li>
+                        </if>
+                        <if condition="$data220[8]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[8]}</span>
+                                <p>{$data220[16]}</p>
+                            </li>
+                        </if>
+                        <if condition="$data220[9]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[9]}</span>
+                                <p>{$data220[17]}</p>
+                            </li>
+                        </if>
+                        <if condition="$data220[10]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[10]}</span>
+                                <p>{$data220[18]}</p>
+                            </li>
+                        </if>
+                        <if condition="$data220[11]">
+                            <li class="swiper-slide advantage_HJ06_text_inner">
+                                <i></i>
+                                <span>{$data220[11]}</span>
+                                <p>{$data220[19]}</p>
+                            </li>
+                        </if>
+                    </ul>
+                    <a href="{$data220[21]}" class="more">{$data220[20]}</a>
+                    <div class="swiper_btn">
+                        <div class="advantage_HJ06_swiper-btn-prev">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="advantage_HJ06_swiper-btn-next">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+<php>
+    if($data454[8]){
+    $color = $data454[8];
+    }
+</php>
+<style>
+    <if condition="$data454[0]">.hjzf_advantage_39 {
+        background: url({:getindeximgurl($data454[0])
+    }
+
+    ) no-repeat center top/cover;
+    }
+
+    </if>.hjzf_advantage_39_right .index_title:before {
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf_advantage_39 index_pd">
+    <div class="container">
+        <div class="row">
+
+            <div class="hjzf_advantage_39_left col-xs-12 col-md-6">
+                <if condition="$data454[1]">
+                    <img src="{:getindeximgurl($data454[1])}" alt="{$data454[2]}" class="img-fluid">
+                </if>
+            </div>
+            <div class="hjzf_advantage_39_right col-xs-12 col-md-6">
+                <if condition="$data454[2]">
+                    <div class="index_title pb40">
+                        {$data454[2]}
+                    </div>
+                </if>
+                <if condition="$data454[3]">
+                    <div class="index_text">
+                        {$data454[3]}
+                    </div>
+                </if>
+                <if condition="$data454[4]">
+                    <div class="index_text">
+                        {$data454[4]}
+                    </div>
+                </if>
+                <if condition="$data454[5]">
+                    <img src="{:getindeximgurl($data454[5])}" alt="{$data454[2]}" class="img-responsive">
+                </if>
+                <if condition="$data454[6]">
+                    <div class="index_text">
+                        {$data454[6]}
+                    </div>
+                </if>
+                <if condition="$data454[7]">
+                    <div class="index_text">
+                        {$data454[7]}
+                    </div>
+                </if>
+            </div>
+
+        </div>
+    </div>
+</section>

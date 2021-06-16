@@ -1,0 +1,55 @@
+<!--{$pagename}-->
+<if condition="has_mould('other-2') eq false">
+	<style>
+		.index_other-2{display: none}
+	</style>
+	<else/>
+	<style>
+		.index_other-2{
+			height: 440px;padding-top: 40px;background: url({:getindeximgurl($data15[0])}) no-repeat;
+		}
+	</style>
+	<link href="__TMPL__demo2/css/productcategories2.css" rel="stylesheet">
+</if>
+<style>
+	.index_other2Item{margin-left: 24px;}
+	.index_other2Item:first-child{margin-left: 0;}
+</style>
+<div class="index_other-2">
+	<div id="index_productslist_animate">
+		<div class="index_fl_title">
+			{$data[1]}
+		</div>
+
+	</div>
+	<div id="index_productslist_animate_2">
+		<div class="index_productslist2_list">
+			<ul>
+				<php>
+					for($i=2;$i<13;$i=$i+3){
+				</php>
+					<li class="index_proclass_item index_other2Item">
+						<div class="indexproclass_img indexproclass_img1"><a href="{$data15[$i+1]}"><img src="{:getindeximgurl($data15[$i+2])}" alt="{$data15[$i]}"/></a></div>
+						<div class="index_class_name index_class_name1"><a href="{$data15[$i+1]}"><h3>{$data15[$i]}</h3></a></div>
+					</li>
+				<php>
+					}
+				</php>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+	jQuery('#index_productslist_animate').removeClass().addClass('fadeInRight');
+	$(window).scroll( function() {
+		scrollTop=$(document).scrollTop();
+		//alert(scrollTop);
+
+		if(scrollTop>100){
+			$('#index_productslist_animate_1').show();
+			$('#index_productslist_animate_1').removeClass().addClass('fadeInLeft');
+		}
+
+	});
+</script>

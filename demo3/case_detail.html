@@ -1,0 +1,98 @@
+<extend name="demo3:base" />
+<block name="content">
+    <script type="text/javascript" src="__TMPL__demo3/js/jquery.lightbox-0.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__TMPL__demo3/css/jquery.lightbox-0.5.css"/>
+<Include file="./Tpl/demo3/in_head.html" />
+<div id="">
+    <if condition="$newclass['banner'] neq '' and $newclass['banner'] neq 0">
+        <div class="in_banner" style="background:url({:getimgurl($newclass['banner'])}) center no-repeat;"></div>
+
+        <elseif condition="$data1[15] neq ''"/>
+        <div class="in_banner" style="background:url({:getindeximgurl($data1[15])}) center no-repeat"></div>
+        <else/>
+        <div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+
+    </if>
+</div>
+
+
+<div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$newclass['class_name']}</div>
+<div style="width: 1190px;margin:0 auto">
+    <if condition="$data1[14] neq ''">
+        <Include file="./Tpl/demo3/caseleft2.html" />
+        <else/>
+        <Include file="./Tpl/demo3/caseleft.html" />
+    </if>
+    
+    
+
+    <div class="page_Main">
+        <if condition="$data1[14] neq ''">
+            <div class="page_RightTitle_2">{$news['title']}</div>
+            <else/>
+            <div class="page_RightTitle"><span>{$news['title']}</span></div>
+        </if>
+        <div id="newsdetailshow">
+
+            <div class="summary" style="margin-top: 30px;">
+            </div>
+            <div class="describe htmledit edit" id="infoContent">
+                <div id="payment">
+                {:htmlspecialchars_decode($news['body'])}
+                    </div>
+            </div>
+        </div>
+        <div class="bt" style="margin-top:22px;"><a href="javascript:history.back()" onfocus="blur()" style="display:block; font-size:14px; text-align:center; line-height:35px; color:#fff;">返回</a></div>
+
+
+        <div class="prev_next">
+            <ul>
+                <li>上一条:
+                    <if condition="$newprev[0]['title'] eq ''">
+                        没有
+                        <else/>
+                        <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">{$newprev[0]['title']}</a>
+                    </if>
+                </li>
+                <li>下一条:
+                    <if condition="$newnext[0]['title'] eq ''">
+                        没有
+                        <else/>
+                        <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">{$newnext[0]['title']}</a>
+                    </if>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+    <script>
+
+        $('#payment img').on('click', function(){
+            console.log($(this).parent().attr("href"));
+            var mp4 = $(this).parent().attr("href");
+            if(mp4){
+                if(mp4.indexOf('.mp4')>0){
+                    layer.open({
+                        type: 2,
+                        title: ['video', 'font-size:18px;'],
+                        area: ['80%', '80%'],
+                        shadeClose: true, //点击遮罩关闭
+                        maxmin: true,
+                        //content: '__TMPL__ZERO/video/a/demo.htm'
+                        content: data
+                    });
+                    return false;
+                }else{
+                    $('#payment a').has('img').not(".pdf").lightBox();
+                }
+            }
+
+        });
+    </script>
+    <div class="clearfix"></div>
+</div>
+<Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" /><Include file="./Tpl/demo3/index_page/bottom-5.html" />
+</block>

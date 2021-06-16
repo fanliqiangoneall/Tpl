@@ -1,0 +1,153 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        /*产品侧边栏样式*/
+        ul.InsidePages_left_navlist>li:hover >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion>ul li:hover >a>h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yiji:hover >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yiji:hover  span.class_button:before{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion:hover  span.class_button:before{
+            color: #{$inner_data[0]};
+        }
+        /*产品侧边栏样式*/
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$inner_data[0]};
+        }
+
+        /* .main_product_more span{
+            color: #{$inner_data[0]};} */
+
+        .main_product_more:hover span{
+            color:#fff;
+        }
+        .main_product_title_right a:hover{
+            background: #{$inner_data[0]};
+        }
+        .InsidePages_content-left__contact2 h2{
+            color: #{$inner_data[0]};
+        }
+    </style>
+    <if condition="$inner_data[2] neq ''">
+        <style>
+            .main_proitem_second h6{
+            font-size: {$inner_data[2]}px;
+            }
+        </style>
+    </if>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+        <div class="Breadcrumbs"><div class="Breadcrumbs_down"><a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span></div></div>
+
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left">
+                <Include file="./Tpl/HJZF2/left.html" />
+                <if condition="$inner_data[7]">
+                    <div class="InsidePages_content-left__contact" style="background:url({:getindeximgurl($inner_data[6])}) center top no-repeat">
+                        <div class="InsidePages_content-left__contactwrap">
+                            <div class="InsidePages_content-left__contactName">
+                                {$about['company_name']}
+                            </div>
+                            <ul>
+                                <li><span>{:__('Free sales hotline: ')}</span><p>{:chaifen($about['phone'],0)}</p></li>
+                                <li><span>{:__('Tel: ')}</span><p>{:chaifen($about['phone'],1)}<br/>{:chaifen($about['phone'],2)}</p></li>
+                                <li><span>{:__('Fax: ')}</span><p>{:chaifen($about['fax'],0)}</p></li>
+                                <li><span>{:__('Email: ')}</span><p><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,3);">{:chaifen($about['email'],0)}</a></p></li>
+                                <li><span>{:__('Add: ')}</span><p>{$about['address']}</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <elseif condition="$inner_data[8]"/>
+                    <div class="InsidePages_content-left__contact2">
+                        <img src="{:getindeximgurl($inner_data[9])}">
+                        <h2>{:__('Contact Us')}</h2>
+                        <ul>
+                            <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[10])}">{:__('Contact: ')}{:chaifen($about['contact'],0)}</li>
+                            <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[11])}">{:__('Tel: ')}{:chaifen($about['phone'],0)}</li>
+                            <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[12])}">{:__('Mobile: ')}{:chaifen($about['mobile'],0)}</li>
+                            <li style="line-height:30px; padding-top:8px;"><img src="{:getindeximgurl($inner_data[13])}">{:__('Email: ')}<a href="mailto:{:chaifen($about['email'],0)}" onClick="turn_sta(3,3)" rel="nofollow">{:chaifen($about['email'],0)}</a></li>
+                            <if condition="C('language') eq 'en'">
+                                <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[14])}">Skype: <a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3)" rel="nofollow">{:chaifen($about['msn'],0)}</a></li>
+                                <elseif condition="C('language') eq 'cn'"/>
+                                <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[14])}">QQ: <a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,4)" target="_blank">{:chaifen($about['msn'],0)}</a></li>
+                            </if>
+
+                        </ul>
+                    </div>
+                </if>
+            </section>
+            <section class="InsidePages_content-right">
+                    <div class="InsidePages_content-right_content ">
+                        <div class="InsidePages_content-right_content-main">
+                            <div class="mainpage_probox ">
+                                    <volist empty="" name="allclass" id="allclass_left">
+                                       <div class="InsidePages_content-right_content_title">{$allclass_left['class_name']}</div>
+                                            <if condition='$allclass_left["childs"] neq ""'>
+                                                <ul>
+                                                    <volist empty="" name="allclass_left['childs']" id="allclass_leftchild" key="k" offset="0">
+
+                                                        <div class="main_proitem ">
+                                                            <div class="main_proitem_box">
+                                                                <div class="main_proitem_img">
+                                                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">
+                                                                        <if condition="$allclass_leftchild['fid']">
+                                                                            <img src="{:getmainimgurl($allclass_leftchild['fid'])}"/>
+                                                                            <else/>
+                                                                            <img src="{:getindeximgurl($inner_data[3])}" alt=""/>
+                                                                        </if>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="main_proitem_second">
+                                                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">
+                                                                        <div class="main_proitem_name">{:subtxt($allclass_leftchild['class_name'],60)}</div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <if condition="($k)%3 neq 0">
+                                                            <div style="width:34px; height:10px; background:none; float:left;"></div>
+                                                            <else/>
+                                                            <div style="clear: both"></div>
+                                                        </if>
+                                                    </volist>
+                                                </ul>
+                                                <div class="clear"></div>
+                                            </if>
+                                    </volist>
+                            </div>
+                        </div>
+                    </div>
+
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>

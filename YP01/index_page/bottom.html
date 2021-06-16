@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<div class="index_bottom_footer">
+ <div class="index_bottom_foot">
+
+     <div class="index_bottom_left">
+   <div class="index_bottom_right_title">
+    Navigation
+   </div>
+   <div class="index_bottom_left_d">
+     <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+            <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+          </volist>
+   </div>
+ </div>
+
+
+ <div class="index_bottom_con">
+   <div class="index_bottom_right_title">
+    Contact Us
+   </div>
+     <if condition="$about['contact']"><li>General manager: {$about['contact']}</li></if> 
+     
+     <li>
+       Tel: {:chaifen($about['phone'],0)}&nbsp;&nbsp;<if condition="chaifen($about['phone'],1)">/&nbsp;&nbsp;{:chaifen($about['phone'],1)}</if>
+     </li>
+     <if condition="$about['fax']">
+     <li>
+       Fax: {:chaifen($about['fax'],0)}
+     </li>
+     </if>
+     <li>
+       Email: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2)">{:chaifen($about['email'],0)}</a>
+     </li>
+     <li>
+       Add: {$about['address']}
+     </li>
+ </div>
+ <if condition="$data13[0] neq '' or $data13[0] neq 0">
+       <div class="index_bottom_right">
+       <div class="index_bottom_left_title">
+          Mobile Website
+        </div> 
+      <span style="width: 96px;float: left;"> <img src="{:getindeximgurl($data13[0])}" style="width: 124px;"></span>
+        
+      <div style="clear: both;"></div>
+   
+ </div>
+        </if>
+
+  
+
+
+ </div>  
+   
+   <div class="index_bottom_bottom2">
+    <div class="index_bottom_bottom3"> 
+           <php>
+            $nowtime=date("Y",time());
+            $currtime=2019;
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>             
+             &nbsp; {$about['company_name']} All Rights Reserved&nbsp;&nbsp;&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;<a href="{:U('/alltag')}" onfocus="blur()">Alltag</a>&nbsp;&nbsp;<a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by&nbsp;Zhonghuan  Internet&nbsp;</a>&nbsp;&nbsp;&nbsp;
+             {:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}
+
+    </div>
+   </div>
+   <if condition="$friend_link neq ''">
+    <div class="friendlink">
+        <div class="link"><span style="float:left; line-height:30px;">Links:</span>
+              <volist name="friend_link" id="friend_link">
+              <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+              <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+              </if>
+              </volist>     
+              <div style="clear:both"></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    </if>
+
+  </div>
+</div>
+  

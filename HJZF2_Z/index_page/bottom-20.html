@@ -1,0 +1,170 @@
+<!--{$pagename}-->
+<php>
+    if($data520[3]){
+    $color = $data520[3];
+    }
+</php>
+<style>
+    .hjzf2_z_bottom_20{
+        background:#000;
+    }
+    <if condition="$data520[1]">
+	.hjzf2_z_bottom_20 {
+        background-color: #{$data520[1]};
+    }
+
+    </if>
+	<if condition="$data520[0]">
+        .hjzf2_z_bottom_20 {
+        background-image: url({:getindeximgurl($data520[0])});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    }
+
+    </if>.hjzf2_z_bottom_20,
+    .hjzf2_z_bottom_20 a {
+        color:#{$data520[2]}
+    }
+
+
+    .hjzf2_z_bottom_20 a:hover {
+        color:#{$color};
+    }
+    .bottom_form_box form .form_item input.bottom_email_submit{
+        background-color: #{$color};
+    }
+</style>
+
+<section class="hjzf2_z_bottom_20">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <ul class="hjzf2_z_bottom_20_wrapper mb-40">
+                    <php>
+                        $arr = get_list_val($data520[4]);
+                        $arra = get_list_val($data520[5]);
+                        $arrb = get_list_val($data520[6]);
+                        $arrc = get_list_val($data520[7]);
+                        $arrd = get_list_val($data520[11]);
+                    </php>
+                    <if condition="$arr">
+                        <li>
+                            <volist name="arr" id="a" key="k">
+                                <if condition="$k eq '1'">
+                                    <div class="hjzf2_z_bottom_20_wrapper_title index_sub_title">
+                                        <a href="{$a[link]}">{$a[title]}</a>
+                                    </div>
+                                    <else />
+                                    <a href="{$a[link]}">{$a[title]}</a>
+                                </if>
+                            </volist>
+                        </li>
+                    </if>
+                    <if condition="$arra">
+                        <li>
+                            <volist name="arra" id="a" key="k">
+                                <if condition="$k eq '1'">
+                                    <div class="hjzf2_z_bottom_20_wrapper_title index_sub_title">
+                                        <a href="{$a[link]}">{$a[title]}</a>
+                                    </div>
+                                    <else />
+                                    <a href="{$a[link]}">{$a[title]}</a>
+                                </if>
+                            </volist>
+                        </li>
+                    </if>
+                    <if condition="$arrb">
+                        <li>
+                            <volist name="arrb" id="a" key="k">
+                                <if condition="$k eq '1'">
+                                    <div class="hjzf2_z_bottom_20_wrapper_title index_sub_title">
+                                        <a href="{$a[link]}">{$a[title]}</a>
+                                    </div>
+                                    <else />
+                                    <a href="{$a[link]}">{$a[title]}</a>
+                                </if>
+                            </volist>
+                        </li>
+                    </if>
+                    <if condition="$arrc">
+                        <li>
+                            <volist name="arrc" id="a" key="k">
+                                <if condition="$k eq '1'">
+                                    <div class="hjzf2_z_bottom_20_wrapper_title index_sub_title">
+                                        <a href="{$a[link]}">{$a[title]}</a>
+                                    </div>
+                                    <else />
+                                    <a href="{$a[link]}">{$a[title]}</a>
+                                </if>
+                            </volist>
+                        </li>
+                    </if>
+                    <li>
+                        <div class="hjzf2_z_bottom_20_wrapper_title index_sub_title">
+                            {$data520[8]}
+                        </div>
+                        <p class="mb-10">{:HtmlEncode($data520[9])}</p>
+                        <if condition="$data520[10] eq ''">
+                            <div class="hjzf2_z_bottom_20_wrapper_title_submit">
+                                <Include file="./Tpl/HJZF2_Z/email_address.html" />
+                            </div>
+                        </if>
+                        <dl class="d-flex">
+                            <volist name="arrd" id="a" key="k">
+                                <a href="{$a[link]}">
+                                    <if condition="$k eq '1'">
+                                        <dd class="img-par">
+                                        <else/>
+                                        <dd class="img-par ml-10">
+                                    </if>
+                                        <img src="{$a[ico]}" class="normal">
+                                        <img src="{$a[icoh]}" class="hover">
+
+										<if condition="$a[ewm]">
+											<div class="bottom_20_ewm">
+												<img src="{$a[ewm]}">
+											</div>
+										</if>
+                                    </dd>
+                                </a>
+                            </volist>
+                        </dl>
+                    </li>
+                </ul>
+                <php>
+                    $nowtime=date("Y",time());
+                    </php>
+                <div class="text-center py-10 hjzf2_z_bottom_20_wrapper_copyright">
+                    CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}&nbsp;{:__('All rights reserved')}&nbsp;
+                    <if condition="get_txtBeiAn()">
+                        <a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+                        </a>&nbsp;
+                    </if>
+                    <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                    <a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <if condition="$data520[12] neq '1'"><a id="mianze" title="免责声明" target="_blank"
+                                style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a
+                                href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        </if>
+                        <else />
+                        <if condition="$data520[12] neq '1'">
+                            <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by Zhonghuan Internet</a>
+                        </if>
+                    </if>&nbsp;
+                    <if condition="$webid eq '1770'">
+                    <if condition="chaifen($about['mobile'],0)">
+                        <span>{:__('Phone: ')}</span>{:chaifen($about['mobile'],0)}&nbsp;
+                    </if>
+                    <if condition="chaifen($about['phone'],0)">
+                        <span>{:__('Tel: ')}</span><span>{:chaifen($about['phone'],0)}</span>
+                    </if>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

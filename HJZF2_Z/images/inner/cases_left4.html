@@ -1,0 +1,25 @@
+<style>
+.HJZF_Z__inner_case4 ul li.on a,
+.HJZF_Z__inner_case4 ul li:hover a{
+    background-color: #{$color};
+    color: #fff;
+}
+.inner_case4_class ul li a:hover:after{
+	width:100%;
+	background:#{$color};
+}
+</style>
+<div class="HJZF_Z__inner_case4">
+    <div class="lf index_title">{:__('Cases')}</div>
+    <div class="rt inner_case4_class">
+    	<ul>
+        <volist empty="no" name="allnewclass" id="new" offset="0">
+            <li <if condition="$newscate['classid'] eq $new['classid']">class="yiji on"
+                <else/>class="yiji"</if>>
+                <a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a>
+            </li>
+        </volist>
+    	</ul>
+    </div>
+    <div class="clear"></div>
+</div>

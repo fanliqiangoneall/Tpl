@@ -1,0 +1,33 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_63 {
+        background: url({:getindeximgurl($data391[0])}) no-repeat center top/cover;
+        color: #{$data391[2]};
+    }
+    .hjzf2_other_63 .index_title {
+        color: #333;
+    }
+    .hjzf2_other_63_wrapper{
+        width: 80%;
+        margin: 0 auto;
+        font-size: 16px;
+    }
+</style>
+<section class="hjzf2_other_63 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="hjzf2_other_63_wrapper">
+                    <div class="index_title text-center pb40">
+                        {$data391[1]}
+                    </div>
+                    <if condition="C('language') eq 'cn'">
+                        <Include file="./Tpl/HJZF2_Z/submit_other_63.html" />
+                        <else />
+                        <Include file="./Tpl/HJZF2_Z/submit_other_63_en.html" />
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

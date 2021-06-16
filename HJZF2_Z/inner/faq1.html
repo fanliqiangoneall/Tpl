@@ -1,0 +1,89 @@
+<style>
+.HJZF_Z_news6__mwrap{
+	border:2px #{$inner_data[9]} solid;
+	padding:40px;
+}
+.HJZF_Z_news6__mwrap .news6_xbt{
+	color:#{$color};
+	display:block;
+}
+.HJZF_Z_news6__mwrap .news6_bt{
+	color:#14203F;
+	display:block;
+}
+#news6_fenlei_menu{
+	width:100%;
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit{
+	margin-top:10px;
+	background:#f3f9ff;
+	display:flex;
+	align-items: center;
+	position:relative;
+	height:60px;
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit a{
+	padding:0 40px 0 60px;
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit img{
+	left:10px;
+	position:absolute;
+	width:100%;
+	max-width:40px;
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit i{
+	position:absolute;
+	top:50%;
+	margin-top:-7px;
+	right:25px;
+	z-index:91;
+	color:#C2CBE1;
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit h3{
+	font-size:18px;
+	color:#14203F;
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit:hover,#news6_fenlei_menu .HJZF_Z_news6__tit.cur{
+	background-color:#{$inner_data[1]};
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit:hover i,#news6_fenlei_menu .HJZF_Z_news6__tit.cur i{
+	color:#{$color};
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit a:before{
+	position: absolute;
+	display: block;
+	content:'';
+	border: 1px solid #2D9DEF;
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	left: 20px;
+	top: 22px;
+}
+@media(max-width:1400px){
+.HJZF_Z_news6__mwrap{
+	padding:20px;
+}
+}
+@media(max-width:1200px){
+#news6_fenlei_menu .HJZF_Z_news6__tit img{
+	display:none;
+}
+#news6_fenlei_menu .HJZF_Z_news6__tit a{
+	padding:0 40px 0 20px;
+	position: relative;
+}
+
+}
+</style>
+<div class="HJZF_Z_news6__mwrap wow fadeInUp">
+	<div class="news6_inner__title">
+    	<span class="index_text news6_xbt">{$inner_data[1]}</span>
+        <span class="index_title news6_bt">{$inner_data[2]}</span>
+    </div>
+    <div id="news6_fenlei_menu">
+        <volist empty="no" name="allnewclass" id="new" offset="0">
+            <div <if condition="$newscate['classid'] eq $new['classid']">class="HJZF_Z_news6__tit cur"<else/>class="HJZF_Z_news6__tit"</if>><img src="{$tuji}"><a style="cursor:pointer;" href="{:U('/faq_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a><i class="fa fa-long-arrow-right"></i></div>
+        </volist>
+    </div>
+</div>

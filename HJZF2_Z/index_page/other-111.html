@@ -1,0 +1,66 @@
+<!--{$pagename}-->
+<style>
+	<if condition="$data690[0]">
+    .hjzf2__other_111 {
+        background-image: url({:getindeximgurl($data690[0])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+    .hjzf2__other_111__more a,.hjzf2__other_111__next:hover, .hjzf2__other_111__prev:hover {
+        background: #{$color};
+    }
+	.hjzf2__other_111_TitleWrap .hjzf2__other_111_mainTitle,.hjzf2__other_111_TitleWrap .hjzf2__other_111_desTitle{
+		color: #{$data690[6]};
+	}
+</style>
+<section class="hjzf2__other_111 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf2__other_111_TitleWrap pb40">
+                <h2 class="hjzf2__other_111_mainTitle index_title pb20">{$data690[2]}</h2>
+                <div class="hjzf2__other_111_desTitle index_sub_title">{$data690[3]}</div>
+            </div>
+        </div>
+    </div>
+    <div class="hjzf2__other_111__content">
+        <div class="swiper-container hjzf2__other_111__swiper">
+            <div class="swiper-wrapper">
+				<php>
+					$arr = get_list_val($data690[4]);
+				</php>
+                <volist name="arr" id="vo" key="h">
+                    <div class="swiper-slide hjzf2__other_111_item">
+                        <div class="hjzf2__other_111_pic">
+							<if condition="$vo[link]">
+                            <a href="{$vo[link]}" onFocus="blur()">
+								<else/>
+								<a>
+								</if>
+								
+								<img border="0" data-src="{$vo[img]}" class="swiper-lazy"/></a>
+                        </div>
+							<if condition="$vo[link]">
+                            <a href="{$vo[link]}" onFocus="blur()">
+								<else/>
+								<a>
+								</if>
+								<div class="hjzf2__other_111__info">
+                                <div class="hjzf2__other_111__name index_sub_title">{$vo[title]}</div>
+                                <div class="hjzf2__other_111__desc index_text">{$vo[info]}</div>
+                            </div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+            <div class="swiper-button-next hjzf2__other_111__next"><i class="fa fa-arrow-right"></i></div>
+            <div class="swiper-button-prev hjzf2__other_111__prev"><i class="fa fa-arrow-left"></i></div>
+        </div>
+		<if condition="$data690[5]">
+			<div class="hjzf2__other_111__more">
+				<a href="{:U('/cases')}">{:__('Read More')}</a>
+			</div>
+		</if>
+    </div>
+</section>

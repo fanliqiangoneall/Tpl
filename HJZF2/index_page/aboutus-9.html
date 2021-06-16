@@ -1,0 +1,125 @@
+<style>
+    .aboutus_9_menu_subtitle_box:nth-child(1){
+        background: #{$data125[11]};
+    }
+.aboutus_9_menu_subtitle_box:nth-child(1) .menu_icon{
+    background: #{$data125[11]};
+}
+.aboutus_9_menu_subtitle_box.active .aboutus_9_menu_subtitle{color:#333;}
+
+</style>
+<if condition="$data125[0]">
+    <style>
+        #aboutus-9{
+            overflow: hidden;
+            background-image:url({:getindeximgurl($data125[0])});
+            background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        }
+    </style>
+</if>
+<section id="aboutus-9">
+    <div class="aboutus-9__container">
+        <div class="aboutus_9_main wow slideInRight" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="10"  data-wow-iteration="1"">
+            <div class="aboutus_9_head">
+                <div class="aboutus_9_maintitle">
+                    {$data125[2]}
+                </div>
+                <div class="aboutus_9_subtitle">
+                    {$data125[3]}
+                </div>
+            </div>
+            <div class="aboutus_9_content">
+                <ul>
+                    <li>
+                        {$data125[4]}
+                    </li>
+                    <li>
+                        {$data125[6]}
+                    </li>
+                    <li>
+                        {$data125[8]}
+                    </li>
+                    <li>
+                        {$data125[10]}
+                    </li>
+                </ul>
+              
+            </div>
+            <ul class="aboutus_9_menu">
+                <if condition="$data125[3] neq ''">
+                    <li class="aboutus_9_menu_subtitle_box box1 active">
+                        <div class="menu_icon ">
+                            <img src="{:getindeximgurl($data125[16])}">
+                            </div>
+                        <div class="aboutus_9_menu_subtitle">{$data125[3]}</div>
+                    </li> 
+                </if>   
+                <if condition="$data125[5] neq ''">
+                    <li class="aboutus_9_menu_subtitle_box box2">
+                        <div class="menu_icon ">
+                            <img src="{:getindeximgurl($data125[13])}">
+                            </div>
+                        <div class="aboutus_9_menu_subtitle">{$data125[5]}</div>
+                    </li> 
+                </if> 
+                <if condition="$data125[7] neq ''">
+                    <li class="aboutus_9_menu_subtitle_box box3">
+                        <div class="menu_icon ">
+                            <img src="{:getindeximgurl($data125[14])}">
+                            </div>
+                        <div class="aboutus_9_menu_subtitle">{$data125[7]}</div>
+                    </li> 
+                </if> 
+                <if condition="$data125[9] neq ''">
+                    <li class="aboutus_9_menu_subtitle_box box4">
+                        <div class="menu_icon ">
+                            <img src="{:getindeximgurl($data125[15])}">
+                            </div>
+                        <div class="aboutus_9_menu_subtitle">{$data125[9]}</div>
+                    </li> 
+                </if>  
+            </ul>
+
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+    <script>
+        $('.aboutus_9_menu_subtitle_box').hover(function(){
+            $(this).css('background','#{$data125[11]}');
+            $(this).children('.menu_icon').css('background','#{$data125[11]}');
+        });
+
+
+        $('.aboutus_9_menu_subtitle_box').hover(function(){
+           var subtitle_box_index = $(this).index()
+           if(subtitle_box_index==0){
+                $('.box2').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[13])}')
+                $('.box3').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[14])}')
+                $('.box4').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[15])}')
+                $(this).children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[16])}')
+           }
+           if(subtitle_box_index==1){
+                $('.box1').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[12])}')
+                $('.box3').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[14])}')
+                $('.box4').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[15])}')
+                $(this).children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[17])}')
+           }
+           if(subtitle_box_index==2){
+                $('.box1').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[12])}')
+                $('.box2').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[13])}')
+                $('.box4').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[15])}')
+                $(this).children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[18])}')
+           }
+           if(subtitle_box_index==3){
+                $('.box1').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[12])}')
+                $('.box2').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[13])}')
+                $('.box3').children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[14])}')
+                $(this).children('.menu_icon').children('img').attr('src','{:getindeximgurl($data125[19])}')
+           }
+
+        })
+    </script>
+</section>

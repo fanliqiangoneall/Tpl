@@ -1,0 +1,40 @@
+<if condition="$data160[0]">
+    <style>
+        .HJZF2__evalute-4{
+            background: url({:getindeximgurl($data160[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+
+</style>
+<section class="HJZF2__evalute-4">
+    <div class="container">
+        <hgroup class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+            <h3 class="HJZF2__evalute-4__title">{$data160[2]}</h3>
+            <h3 class="HJZF2__evalute-4__subtitle">{$data160[3]}</h3>
+        </hgroup>
+        <div class="HJZF2__evalute-4__content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="250">
+            <div class="swiper-container HJZF2__evalute-4__swiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        for($i=4;$i<51;$i=$i+6){
+                    </php>
+                    <div class="swiper-slide">
+                        <div class="HJZF2__evalute-4__item">
+                            <div class="HJZF2__evalute-4__itemLogo"><img src="{:getindeximgurl($data160[$i])}" alt="{$data160[$i+2]}"/></div>
+                            <div class="HJZF2__evalute-4__itemDesc">{:HtmlEncode(subtxt($data160[$i+1],400))}</div>
+                            <div class="HJZF2__evalute-4__itemName">{$data160[$i+2]}</div>
+                        </div>
+                        <div class="HJZF2__evalute-4__itemHover" style="background: url({:getindeximgurl($data160[$i+3])}) no-repeat center">
+                            <a href="{$data160[$i+5]}">{$data160[$i+4]}</a>
+                        </div>
+                    </div>
+                    <php>
+                        }
+                    </php>
+                </div>
+        </div>
+            <div class="swiper-pagination HJZF2__evalute-4__pagination"></div>
+    </div>
+</section>

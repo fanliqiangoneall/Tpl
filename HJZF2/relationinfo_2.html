@@ -1,0 +1,21 @@
+<if condition="$labelprodlist neq ''">
+    <div class="inner_module2__inPage-list">
+        <volist empty="" name="labelprodlist" id="labelprodlist" key="k" offset="0" length="3">
+            <div class="inner_module2__inPage-proitem">
+                <div class="inner_module2__inPage-proitem-in">
+                    <div class="inner_module2__inPage-proitemImg"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a></div>
+                    <div class="inner_module2__inPage-proitemText">
+                        <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                            <div class="inner_module2__inPage-proitemName ">{$labelprodlist['pro_name']}</div>
+                            <if condition="$labelprodlist['pro_description']"></if><div class="inner_module2__inPage-proitemDes">{:subtxt($labelprodlist['pro_description'],50)}</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <if condition="($k)%3 neq 0">
+                <div class="inner_module2__inPage-jiange"></div>
+            </if>
+        </volist>
+        <div style="clear:both;"></div>
+    </div>
+</if>

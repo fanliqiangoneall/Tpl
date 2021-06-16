@@ -1,0 +1,53 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <div id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i><a
+                        href="{:U('/download')}">{:__('Download')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$downcate['class_name']}</span></div>
+            </div>
+        </div>
+
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+            <section class="inner_module2__inPage-left">
+                <Include file="./Tpl/HJZF2/leftdownload_2.html" />
+            </section>
+            <section class="inner_module2__inPage-right">
+                <div class="inner_module2__inPageRight-content">
+
+                    <div class="inner_module2__inPageRight-content-box">
+                        <h5 class="inner_module2__inPage-title">{$downcate['class_name']}</h5>
+                        <div class="product_detail_editor_content">
+                            <div class="download">
+                                <div class="body">
+                                    <ul class="donload_list">
+                                        <volist name="download" id="download" key="k">
+                                            <li>
+                                                <a href="{:getimgurl($download['linkurl'])}" target="_blank"><span class="download_right">{:__('Download')}</span></a>
+                                                <a href="{:U('/download_detail',array('id'=>$download["id"]))}" ><p>{$download['title']}</p></a>
+                                                <div style="clear: both"></div>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                    <div class="main_page">{$page}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page_nei_space"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>
+

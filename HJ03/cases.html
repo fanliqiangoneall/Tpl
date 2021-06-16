@@ -1,0 +1,101 @@
+<extend name="HJ03:basein" />
+<block name="content">
+    <style type="text/css">
+        .class_t2d_all{
+            background: #{$color};
+        }
+        .inner_t2d_nav>ul>li.class_t2d_all a h3{color: #fff!important;}
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+    </style>
+    <if condition="$data47[2] neq ''">
+        <style>
+            .Breadcrumbs{width: 50%;float: right;}
+        </style>
+    </if>
+    <if condition="$data47[2] eq ''">
+        <style>
+            .main-content-right {
+                width: 880px;
+                float: right;
+            }
+            .page-title-inner{margin-top: 20px;}
+            .index_caseitem{
+                width: 280px!important;
+            }
+            .index_caseitem_img{width: 280px;height: 191px;}
+            .jiange {width: 20px;}
+            .index_caseitem:hover .index_caseitem_down{
+                transition: all .36s ease;-webkit-transform: translateY(-60px);-moz-transform: translateY(-60px);transform: translateY(-60px);
+            }
+        </style>
+    </if>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$data47[1] neq ''">
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[1])}) no-repeat center;"></div>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+             </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 40px;">
+            <div class="container">
+                <div class="Breadcrumbs">Your location: <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current"><if condition="$data47[5] neq ''">{$data47[5]} <else/>Cases</if></span></div>
+                <if condition="$data47[2] neq ''">
+                    <section class="main-content-top">
+                        <Include file="./Tpl/HJ03/caseleft_2.html" />
+                    </section>
+                </if>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <if condition="$data47[2] eq ''">
+            <section class="main-content-left">
+                    <Include file="./Tpl/HJ03/caseleft.html" />
+            </section>
+             </if>
+            <section <if condition="$data47[2] neq ''">class="main-content-dowm"<else/>class="main-content-right"</if>>
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <div class="mian_content_casebox">
+                                        <div class="ul_li_list3">
+                                            <volist name="allnews" id="allnews" key="k">
+                                                <php>
+                                                    $case_name=get_wap_case_class_name($allnews['cates_class']);
+                                                </php>
+                                                <div class="index_caseitem">
+                                                    <div class="index_caseitem_box">
+                                                        <div class="index_caseitem_img"> <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><if condition="$allnews['new_pro'] eq 0 or $allnews['new_pro'] eq ''"><img src="__TMPL__HJ03/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($allnews['new_pro'])}" alt="{$allnews['title']}" /></if></a></div>
+                                                        <div class="index_caseitem_down_wai">
+                                                            <div class="index_caseitem_down">
+                                                                <div class="index_case_title "><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" title="{$allnews['title']}"><h4>{:subtxt($allnews['title'],30)}</h4></a></div>
+                                                                <div class="index_case_class "><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><h6>{$case_name}</h6></a></div>
+                                                                <if condition="$allnews['news_description']">
+                                                                    <div class="index_case_title2">{:subtxt($allnews['news_description'],60)}</div>
+                                                                </if>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <if condition="$k % 3 neq 0">
+                                                    <div class="jiange"></div>
+                                                </if>
+                                            </volist>
+                                            <div style="clear:both"></div>
+                                        </div>
+                            </div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".main_left_news .main-content_inner_news>ul li:first-child").addClass("yijion_news")
+        })
+    </script>
+</block>

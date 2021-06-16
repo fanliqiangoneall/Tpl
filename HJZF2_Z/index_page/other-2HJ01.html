@@ -1,0 +1,67 @@
+<!--{$pagename}-->
+<if condition="$data61[0]">
+    <style>
+        .HJZF2_Z_other_2hj01{
+            background: url({:getindeximgurl($data61[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+.HJZF2_Z_other_2hj01_line span{
+	border-color:#{$data61[4]};
+}
+.HJZF2_Z_other_2hj01_infoicon{
+	background: #{$data61[4]};
+}
+</style>
+<section class="HJZF2_Z_other_2hj01 index_pd">
+    <div class="container">
+        <div class="row">
+           <div class="HJZF2_Z_other_2hj01_body">
+           		<div class="col-sm-12 col-lg-4 col-xl-4">
+                	<div class="HJZF2_Z_other_2hj01_left">
+                        <div class="HJZF2_Z_other_2hj01_title index_title"><span>{$data61[1]}</span></div>
+                        <div class="HJZF2_Z_other_2hj01_line"><span></span></div>
+                        <div class="clear"></div>
+                        <div class="HJZF2_Z_other_2hj01_ms1"><span class="index_sub_title">{$data61[2]}</span></div>
+                        <div class="HJZF2_Z_other_2hj01_ms2"><span class="index_text">{$data61[3]}</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                	<div class="HJZF2_Z_other_2hj01_middle">
+                        <div class="HJZF2_Z_other_2hj01_infobox">
+                            <div class="HJZF2_Z_other_2hj01_iconcomponent">
+                                <div class="HJZF2_Z_other_2hj01_infoicon"><i class="fa fa-envelope-o"></i></div>
+                                <div class="HJZF2_Z_other_2hj01_infobt"><span class="index_sub_title">{:__('Email')}</span></div>
+                                <div class="HJZF2_Z_other_2hj01_infoadd"><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,5)"><span class="index_text">{:chaifen($about['email'],0)}</span></a></div>
+                            </div>
+
+                            <div class="HJZF2_Z_other_2hj01_iconcomponent">
+                            	<div class="HJZF2_Z_other_2hj01_infoicon"><i class="fa fa-whatsapp"></i></div>
+                                <div class="HJZF2_Z_other_2hj01_infobt"><span class="index_sub_title">WhatsApp</span></div>
+                                <div class="HJZF2_Z_other_2hj01_infoadd"><a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" onclick="turn_sta(8,5);"><span class="index_text">+86-{:chaifen($about['whatsapp'],0)}</span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                	<div class="HJZF2_Z_other_2hj01_right">
+                        <div class="HJZF2_Z_other_2hj01_infobox">
+                        	<div class="HJZF2_Z_other_2hj01_iconcomponent">
+                            	<div class="HJZF2_Z_other_2hj01_infoicon"><i class="fa fa-phone"></i></div>
+                                <div class="HJZF2_Z_other_2hj01_infobt"><span class="index_sub_title">{:__('Phone')}</span></div>
+                                <div class="HJZF2_Z_other_2hj01_infoadd"><span class="index_text">{:chaifen($about['phone'],0)}<br />{:chaifen($about['phone'],1)}</span></div>
+                            </div>
+                            <div class="HJZF2_Z_other_2hj01_iconcomponent">
+                                <div class="HJZF2_Z_other_2hj01_infoicon"><i class="fa fa-location-arrow"></i></div>
+                                <div class="HJZF2_Z_other_2hj01_infobt"><span class="index_sub_title">{:__('Add')}</span></div>
+                                <div class="HJZF2_Z_other_2hj01_infoadd"><span class="index_text">{$about['address']}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+           </div>
+        </div>
+    </div>
+</section>

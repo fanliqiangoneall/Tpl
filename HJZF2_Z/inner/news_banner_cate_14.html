@@ -1,0 +1,103 @@
+<php>
+    if($inner_data[3]){
+        $bg = $inner_data[3];
+    }else{
+        $bg = 'eee';
+    }
+    </php>
+<style>
+     /* breadcrumb */
+     .HJZF_Z__Breadcrumbs{
+        background-color: #{$bg};
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 40px !important;
+    }
+   .HJZF_Z__Breadcrumbs .row{
+       text-align: left;
+   }
+
+    .news_12_con{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 99;
+    }
+    .HJZF_Z__innerBanner:after{
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content:'';
+        left: 0;
+        top: 0;
+    }
+   .news_12_tt{
+       margin-bottom: 10px;
+   }
+   .news_12_zs{
+       position: relative;
+       width: 100px;
+       height: 2px;
+       background-color: #999;
+       margin: 15px auto;
+   }
+   .news_12_zs span{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: 2px solid #{$color};
+        z-index: 9;
+   }
+   .news_12_zs span:after{
+       position: absolute;
+       width: 50%;
+       height: 50%;
+       left: 50%;
+       top: 50%;
+       transform: translate(-50%, -50%);
+       content:'';
+       background-color: #{$color};
+       border-radius: 50%;
+   }
+   .news_12_menu .first{
+       color: #{$color};
+   }
+   .news_12_menu a{
+       color: #333;
+   }
+   @media(max-width: 768px) {
+    .HJZF_Z__innerBanner2,.HJZF_Z__innerBanner2 + .HJZF_Z__Breadcrumbs{
+        margin-bottom: 10px;
+    }
+   }
+</style>
+
+<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2" data-banner="a">
+    <if condition="$newscate['banner'] neq '0'">
+        <div class="in_banner"><img src="{:getimgurl($newscate['banner'])}" class="img-fluid"/></div>
+        <elseif condition="$banner neq ''"/>
+        <volist name="banner" id="banner" offset="0" length="1">
+            <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" class="img-fluid"/></div>
+        </volist>
+        <else/>
+        <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" class="img-fluid" /></div>
+    </if>
+</div>
+<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-14">
+                <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                href="{:U('/news')}">{:__('News')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+            </div>
+        </div>
+    </div>
+</div>

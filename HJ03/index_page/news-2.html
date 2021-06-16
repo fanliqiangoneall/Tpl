@@ -1,0 +1,86 @@
+<!--{$pagename}-->
+<php>
+    if($data33[5]==''){
+        $data33[5] = 90;
+    }
+    if($data33[6]==''){
+    $data33[6] = 90;
+    }
+</php>
+<if condition="$data33[7]">
+    <style>
+        .hj02_cases{
+            background: url({:getindeximgurl($data33[7])}) no-repeat center;
+        }
+    </style>
+</if>
+<style type="text/css">
+    .hj02_cases{
+        padding-top:{$data33[5]}px;padding-bottom:{$data33[6]}px;
+    }
+</style>
+
+<section class="hj03_cases module">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <div id="index_product_title_left1"><p>{$data33[0]}</p><if condition="$data33[1]"><span>{$data33[1]}</span></if></div>
+            </div>
+            <div class="index_product_title_right wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.3s" data-wow-offset="200">
+                <ul class="hj02_proclasslist">
+                    <php>
+                        $arr_str=$data33[2];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_wap_news_class_name($a);
+                        }
+                    </php>
+                    <li class="hj02_proclasslist_on" <if condition="$data33[3] neq ''">style="display:none"</if>><a href="{:U('/news')}">All News</a></li>
+                    <volist empty="" name="list" id="li" key="k">
+                        <if condition="$li">
+                            <li><a data-ajax='false' href="{:U('/new_category',array('classid'=>$a))}">{$li}</a></li>
+                        </if>
+                    </volist>
+                    <li><a <if condition="$data33[3] neq ''">href="{$data33[3]}" <else/>href="{:U('/news')}"</if>>Read More</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <div class="index_prolist_wai2">
+            <div  id="index_caselist">
+                    <volist name="indexnews" id="indexnews2" offset="0" length="3">
+                        <php>
+                            $news_name=get_wap_news_class_name($indexnews2['news_class']);
+                        </php>
+                        <div class="index_caseitem wow fadeInUp"  data-wow-delay="0" data-wow-offset="150">
+                            <div class="index_caseitem_box">
+                                <div class="index_caseitem_img"> <a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}"><if condition="$indexnews2['new_pro'] eq 0 or $indexnews2['new_pro'] eq ''"><img src="__TMPL__ZL01/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($indexnews2['new_pro'])}" alt="{$indexnews2['title']}" /></if></a></div>
+                               <div class="index_caseitem_down_wai">
+                                   <div class="index_caseitem_down">
+                                       <div class="index_case_title "><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}"><h4>{:subtxt($indexnews2['title'],17)}</h4></a></div>
+                                       <div class="index_case_class "><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}"><h6>{$news_name}</h6></a></div>
+                                       <if condition="$indexnews2['news_description']">
+                                           <div class="index_case_title2">{:subtxt($indexnews2['news_description'],150)}</div>
+                                       </if>
+                                   </div>
+                               </div>
+                            </div>
+
+                        </div>
+                    </volist>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <if condition="$data10[4] neq ''">
+        <script>
+            $(document).ready(function(){
+                $(".index_caseitem_box a").click(function(){
+                    event.preventDefault();
+                });
+            })
+        </script>
+    </if>
+</section>
+
+

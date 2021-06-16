@@ -1,0 +1,118 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+        </php>
+  <style>
+  .InsidePages_left_content-main {
+    border-top-color: #{$color};
+}
+.HJZF_Z__innerContent_product_categroy5 li:hover .inner_pro_info{
+    background-color: #{$inner_data[2]};
+}
+.HJZF_Z__innerContent_product_categroy5 li:hover .inner_pro_info .inner_pro_info_title,
+.HJZF_Z__innerContent_product_categroy5 li:hover .inner_pro_info .inner_pro_info_content{
+    color: #{$inner_data[3]};
+}
+.main_page .current{
+    background: #{$color};
+    border-color: #{$color};
+}
+</style>
+<!-- banner start -->
+<div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+    <div class="pro_Banner">
+        <if condition="$prolist['banner']">
+            <div class="in_banner">
+                <img src="{:getimgurl($prolist['banner'])}" alt="" />
+            </div>
+            <elseif condition="$banner neq '' " />
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner ads">
+                    <img src="{:getimgurl($banner['ad_pic'])}" alt="" />
+                </div>
+            </volist>
+            <else/>
+            <div class="in_banner">
+                <img src="{:getindeximgurl($inner_data[0])}" alt="" />
+            </div>
+        </if>
+    </div>
+</div>
+<!-- banner end -->
+
+<!-- bread start -->
+<div class="HJZF_Z__Breadcrumbs" style="margin-bottom: 30px;" navcrumbs>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <a href="{:U('/product')}">
+                    <if condition="$webid eq '1721'">
+                        所有案例
+                        <else/>
+                    {:__('Products')}
+                    </if>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bread end -->
+
+<!-- side start -->
+<div class="HJZF_Z__innerContent">
+    <div class="container">
+        <div class="row">
+            <section class="hidden-xs hidden-sm hidden-md col-xs-12">
+                <Include file="./Tpl/HJZF2_Z/left_product5.html" />
+            </section>
+            <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                <Include file="./Tpl/HJZF2_Z/left_mobile.html" />
+            </section>
+        </div>
+    </div>
+</div>
+<!-- side end -->
+
+<!-- pro list start-->
+<div class="HJZF_Z__innerContent">
+    <div class="container">
+        <ul class="row HJZF_Z__innerContent_product_categroy5 clearfix">
+            <php>
+                $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+            </php>
+            <volist empty="$no_empty" name="allpro" id="allpro" key="k" offset="0">
+                <li class="col-xs-6 col-md-3">
+                    <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" class="inner_pro_box">
+                        <div class="inner_pro_img">
+                            <if condition="$allpro['main_img']">
+                                <img src="{:getmainimgurl($allpro['main_img'])}" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"
+                                    <else/>alt="{$allpro['pro_name']}"</if> />
+                                    <else/>
+                                    <img src="{:getindeximgurl($inner_data[3])}" />
+                                </if>
+                            </div>
+                            <div class="inner_pro_info">
+                                <p class="inner_pro_info_title fz16 ellipsis_two">{$allpro['pro_name']}</p>
+                                <p class="inner_pro_info_content ellipsis_two">
+                                    <if condition="$webid eq '355'">
+                                        {:__('Model: ')} {$allpro['pro_model']}
+                                        <else/>
+                                      {:subtxt($allpro['pro_description'],80)}
+                                    </if>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="main_page">{$page}</div>
+        </div>
+    </div>
+    <!-- pro list end -->
+
+</block>

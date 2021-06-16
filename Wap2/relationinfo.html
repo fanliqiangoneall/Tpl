@@ -1,0 +1,40 @@
+<if condition="$labelprodlist neq ''">
+<style>
+.relationinfo{}
+.relationinfo__pro{ width:33%; box-sizing:border-box; float:left;}
+.relationinfo__title{ font-size:18px; font-weight:200;margin-top:20px;}
+.relationinfo__every__pro{ padding:5px;}
+.relationinfo__every__pro img{ width:100%;}
+.relationinfo__pro__name a{ font-size:13px; text-decoration:none; font-weight:200px; color:#3d3d3d;}
+</style>
+    <div class="relationinfo">
+        <h5 class="relationinfo__title">{:__('Related products')}</h5>
+        <div class="clear"></div>
+      
+        <volist empty="" name="labelprodlist" id="labelprodlist" offset="0" length="3" key="k">
+            <div class="relationinfo__pro">
+                <div class="relationinfo__every__pro">
+                   		<a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                        <if condition="$labelprodlist['main_img']">
+                            <img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> />
+                        </if>
+                        </a>
+                    <div class="relationinfo__pro__name">
+                        <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                            <div class=""><h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],60)}</h6></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <if condition="($k)%3 eq 0">
+                <div class="clear"></div>
+            </if>
+        </volist>
+    </div>
+    <div  class="clear"></div>
+
+
+
+
+
+</if>

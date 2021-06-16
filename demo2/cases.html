@@ -1,0 +1,74 @@
+<extend name="demo2:basein" />
+<block name="content">
+
+
+<div id="">
+    <if condition="$data1[41] neq ''">
+
+        <div class="in_banner" style="background:url({:getindeximgurl($data1[41])}) center no-repeat"></div>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+<div class="" style="clear:both"></div>
+    <div class="r_mbx"><img src="__TMPL__demo2/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<if condition="C('webid') eq 1099">FAQ<else/>Case</if></div>
+<!--2019 2 1 孙设计设计-->
+
+<div style="width: 1190px;margin:0 auto">
+    <if condition="$data1[17] neq ''">
+        <Include file="./Tpl/demo2/caseleft2.html" />
+        <else/>
+        <Include file="./Tpl/demo2/casesleft.html" />
+    </if>
+<div class="page_Main">
+    <style>
+        .page_RightTitle_2 {
+            background: #f8f8f8;
+            padding-top: 30px;
+            height: 70px;
+            line-height: 70px;
+            font-size: 30px;
+            color: #{$color};
+            padding-left: 20px;
+            overflow: hidden;
+            font-weight: bold;
+        }
+    </style>
+    <if condition="$data1[17] neq ''">
+        <div class="page_RightTitle_2"><if condition="C('webid') eq 1099">FAQ<elseif condition="$data1[34]"/>{$data1[34]}<else/>Case</if></div>
+        <else/>
+        <div class="page_RightTitle"><span><if condition="C('webid') eq 1099">FAQ<elseif condition="$data1[34]"/>{$data1[34]}<else/>Case</if></span></div>
+    </if>
+    <div class="page_RightMain" style="padding-bottom:20px;">
+      <volist empty="" name="allnews" id="allnews">
+          <if condition="$data1[18] neq ''">
+              <div class="nei_case_list">
+                      <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}">{$allnews['title']} <span class="nei_case_data">{:date('M-d-Y',$allnews['created'])}</span></a>
+              </div>
+              <else/>
+              <div class="asd2">
+                  <div class="img2" ><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}"><img src="{:getimgurl($allnews['new_pro'])}" alt="{$allnews['title']}" /></a>
+                  </div>
+                  <div class="in_proname2">
+                      <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}">{$allnews['title']}</a>
+                  </div>
+              </div>
+              <if condition="($key+1)%3 eq 0">
+                  <div style="clear:both; width: 100%; height:39px;"></div>
+                  <else/>
+                  <div style="width:33px; height:10px; background:none; float:left;"></div>
+              </if>
+          </if>
+
+        </volist>  
+       <div style="clear:both;"></div>
+         <div class="main_page">{$page}</div>
+    </div>
+
+
+
+    <div style="clear:both; height:40px;"></div>
+</div>
+</div>
+</block>

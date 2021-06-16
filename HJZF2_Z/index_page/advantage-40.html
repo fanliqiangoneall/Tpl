@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+<php>
+    if($data455[5]){
+    $color = $data455[5];
+    }
+</php>
+<style>
+    <if condition="$data455[0]">.hjzf_advantage_40 {
+        background: url({:getindeximgurl($data455[0])
+    }
+
+    ) no-repeat center top/cover;
+    }
+
+    </if>.hjzf_advantage_40_right .index_title:before {
+        background-color: #{$color};
+    }
+    .sub_tit{
+        color: #{$color};
+    }
+    .hjzf_advantage_40_wrapper li em,.hjzf_advantage_40_wrapper_img span:before,.hjzf_advantage_40_wrapper_img span:after{
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf_advantage_40 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title text-center pb20 wow fadeInDown" data-wow-delay=".1s">
+                {$data455[1]}
+            </div>
+            <div class="index_text sub_tit text-center pb40 wow fadeInDown" data-wow-delay=".2s">
+                {$data455[2]}
+            </div>
+
+            <ul class="hjzf_advantage_40_wrapper wow fadeInUp" data-wow-delay=".4s">
+                <php>
+                    $arr = get_list_val($data455[3]);
+                </php>
+                <volist name="arr" id="a">
+                    <li>
+                        <a href="{$a[link]}">
+                            <span>{$a[title]}</span>
+                            <p>{$a[sub]}</p>
+                        </a>
+                        <em></em>
+                    </li>
+                </volist>
+                <div class="hjzf_advantage_40_wrapper_img">
+                    <img src="{:getindeximgurl($data455[4])}" alt="{$data455[1]}" class="img-fluid">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+</section>

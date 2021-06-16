@@ -1,0 +1,43 @@
+<!--{$pagename}-->
+<php>
+    if($data15[0]){
+        $other__bj='url('.getindeximgurl($data15[0]).') no-repeat center/cover';
+    }
+</php>
+<if condition="$data15[0]">
+    <style>
+        .HJZF_Z_other--2{
+        background: {$other__bj};
+        }
+    </style>
+</if>
+<if condition="$data15[1]">
+    <style>
+        .HJZF_Z_other--2{
+            background: #{$data15[1]};
+        }
+    </style>
+</if>
+<style>
+    .other--2__item>div{
+        background: #333;
+    }
+</style>
+<section class="HJZF_Z_other--2 index_pd">
+    <div class="container">
+        <div class="row">
+            <php>
+                for($i=2;$i<13;$i=$i+3){
+            </php>
+            <div class="col-xs-12 col-lg-3 other--2__item">
+                <div>
+                    <img class="lazy" src="{:getindeximgurl($data15[$i])}" alt="{$data15[$i+1]}"/>
+                    <a href="{$data15[$i+2]}"><p class="index_sub_title ellipsis_two">{$data15[$i+1]}</p><div class="index_text">Click to view details ></div></a>
+                </div>
+            </div>
+            <php>
+                }
+            </php>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,73 @@
+<!--{$pagename}-->
+<style>
+    </style>
+    <if condition="has_mould('bottom') eq true">
+        <style>
+            .HJ03_bottom{display: block}
+        </style>
+    </if>
+    <if condition="$data80[2] neq ''">
+        <style>
+            .HJ03_bottom{
+                background: url({:getindeximgurl($data80[2])}) left center no-repeat !important;
+            }
+        </style>
+    </if>
+    <style>
+        .bottom_xian{width: 100%;border-bottom: 1px solid rgba(255,255,255,.05);height: 2px;padding-bottom: 10px;padding-top: 50px;}
+    </style>
+    <div class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="300"><if condition="$data80[4] neq ''">
+        <a href="{$data80[4]}">
+    </if>
+        <if condition="$data80[3]">
+            <img src="{:getindeximgurl($data80[3])}" alt="" width="100%"/>
+        </if>
+        <if condition="$data80[4] neq ''"></a></if>
+    </div>
+    <div class="HJ03_bottom">
+        <div class="container">
+            <div class="hj03-bottom-header">
+                <p class="hj03-bottom-title">{$data80[0]}</p>
+                <p class="hj03-bottom-title2">{$data80[1]}</p>
+            </div>
+            <div class="hj03-bottom-contactlist">
+                <ul>
+                    <if condition="$about['address']">
+                        <li>Add: {$about['address']}</li>
+                    </if>
+                    <if condition="$about['zip']">
+                        <li>Zip: {:chaifen($about['zip'],0)}</li>
+                    </if>
+                    <if condition="$about['phone']">
+                        <li>Phone: {:chaifen($about['phone'],0)}</li>
+                    </if>
+                    <if condition="$about['mobile']">
+                        <li>Mobile: {:chaifen($about['mobile'],0)}&nbsp;/&nbsp;{:chaifen($about['mobile'],1)}</li>
+                    </if>
+                    <if condition="$about['fax']">
+                        <li>Fax: {:chaifen($about['fax'],0)}</li>
+                    </if>
+                    <if condition="$about['email']">
+                        <li>Email: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                    </if>
+                </ul>
+            </div>
+           <div class="clear bottom_xian"></div>
+    
+            <div class="hj02-copy">
+                <php>
+                    $nowtime=date("Y",time());
+                    if(!$data80[7]){
+                    $currtime=2019;
+                    }else{
+                    $currtime=$data80[7];
+                    }
+    
+                </php>
+                <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+                &nbsp;{$about['company_name']} All rights reserved&nbsp;&nbsp;&nbsp;
+                <a style="" href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;<span style="font-size:14px;"><a  href="{:U('/alltag','','')}">All tags</a></span>&nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="常州网络公司" target="_blank">Zhonghuan Internet</a>
+            </div>
+        </div>
+    </div>
+    

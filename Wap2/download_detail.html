@@ -1,0 +1,94 @@
+<extend name="Wap2:base" />
+<block name="content">
+<style>
+    .new_detail{ padding:10px;}
+	.new_detail img{ max-width:100%; height:auto !important;}
+    .new_detail__proname{ font-size:24px; color:#333; font-weight:bold; padding:10px; text-align:center;}
+    .new_detail__Breadcrumbs, .new_detail__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+    .new_detail__submit_title{width: auto;height: auto;text-align: left;background: #fff;color: #333;font-size: 24px;line-height: 27px;}
+    .new_detail__view{ padding:0 5px;}
+    .new_detail__shijian{ position:relative; top:2px;}
+    .new_detail__page{margin-bottom: 20px;}
+    .new_detail__page a{ text-decoration:none; color:rgba(73,70,70,1.00);}
+    .new_detail__page li{ margin:5px 0px;}
+    .new_detail__page li p{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+    .news_detail_editor{margin-top: 20px;border-bottom: 1px solid #d0d0d0;padding-bottom: 20px;margin-bottom: 30px;overflow-x:auto;}
+</style>    
+<link rel="stylesheet" href="__TMPL__/Wap2/css/swiper.min.css">
+    <div class="new_detail">
+    <div class="new_detail__Breadcrumbs">
+        <div class="new_detail__Breadcrumbs_down">
+            <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<a
+                href="{:U('/news')}">{:__('News')}</a>&nbsp;>>&nbsp;<span class="current">{$newclass['class_name']}</span>
+        </div>
+    </div>
+<article>
+<div id="news_detail">
+                                <div>
+                                    <h5 class="new_detail__proname">{$news['title']}</h5>
+                                    <div style="text-align: center;">
+                                        <span><i><img class="new_detail__shijian" src="__TMPL__HJZF2/img/shijian.png" alt=""/></i>&nbsp;<if condition="LANGUAGE eq 'en'">{:date('M d, Y',$news['created'])}<elseif condition="LANGUAGE eq 'rus'"/>{:date('M d, Y',$news['created'])}<elseif condition="LANGUAGE eq 'de'"/>{:date('M d, Y',$news['created'])} <else/>{:date('Y年m月d日 ',$news['created'])}</if></span><span style="padding: 0 10px;">|</span><span><i><img class="new_detail__shijian new_detail__view" src="__TMPL__HJZF2/img/view.png" alt=""/></i>{:__('View:')}{$news['click_num']}</span>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <php>
+                                    if($news['moblieedit']!=1){
+                                   		$html=htmlspecialchars_decode($news['body']);
+                                    }else{
+                                    	$html=htmlspecialchars_decode($news['wapbody']);
+                                    }
+                                    </php>
+                                    
+                                    <div class="news_detail_editor">{$html}</div>
+                                    <div class="new_detail__page">
+                                        <ul>
+                                            <if condition="$newprev[0]['title'] eq ''">
+
+                                             <else/>
+                                                <li class="">
+                                                    <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                        <p>{:__('Prev: ')}{$newprev[0]['title']}</p>
+                                                    </a>
+                                                </li>
+                                            </if>
+                                            <if condition="$newnext[0]['title'] eq ''">
+
+                                            <else/>
+                                                <li class="">
+                                                        <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                            <p>{:__('Next: ')}{$newnext[0]['title']}</p>
+                                                         </a>
+                                                </li>
+                                            </if>
+                                                <div class="clear"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        <section>
+                            <!--询盘-->
+                            <div>
+                            <span class="new_detail__submit_title">{:__('Immediately consult')}</span>
+                            <div style="clear:both;"></div>
+                            	<Include file="./Tpl/Wap2/submit.html" />
+                            </div>
+                            <div style="clear:both;"></div>
+                        </section>
+                        <include file="Wap2:relationinfo" />
+                        <include file="Wap2:relationnew" />                             
+</article>                            
+                        </div>
+                        <div style="clear:both;height: 30px;"></div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+</block>

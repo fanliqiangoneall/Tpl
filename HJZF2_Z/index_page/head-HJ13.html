@@ -1,0 +1,712 @@
+<!--{$pagename}-->
+<php>
+    if($data404[7]){
+        $color = $data404[7];
+    }
+</php>
+<style>
+    .head_hj13_top {
+        background-color: #{$data404[0]};
+        color: #{$data404[1]};
+    }
+
+    .head_hj13_top a {
+		cursor:pointer;
+        color: #{$data404[1]}
+    }
+
+    .head_hj13_nav {
+        background-color: #{$data404[5]};
+    }
+
+    .nav_drop li:hover {
+        background-color: #{$color};
+        color: #fff;
+    }
+
+    .nav_drop li:hover h3,
+    .nav_drop li:hover span {
+        color: #fff;
+    }
+
+    .hj13_search {
+        background-color: #{$color};
+    }
+
+    .hj13_search:before {
+        border-right: 10px solid #{$color};
+        border-bottom: 40px solid #{$color};
+    }
+
+    .head_hj13_nav .nav>ul>li:hover h2 {
+        color: #fff;
+    }
+
+    .head_hj13_nav .nav>ul>li:before {
+        border-bottom-color: #{$color};
+        border-right-color: #{$color};
+    }
+
+    .head_hj13_nav .nav>ul>li:after {
+        border-left-color: #{$color};
+        border-top-color: #{$color};
+    }
+
+    .head_hj13_nav .nav>ul>li:hover {
+        background-color: #{$color};
+        transform: translateY(-10px);
+    }
+	.gg_lang fx-center{ cursor:pointer}
+</style>
+<php>
+	if($webid == 1756){
+		$fixed = '111';
+	}else{
+		$fixed = '';
+	}
+</php>
+<if condition="$data404[12]">
+	<style>
+		.head_hj13_nav .nav>ul>li:hover{
+			background-color: transparent;
+			transform: none;
+		}
+		.head_hj13_nav .nav>ul>li:before,.head_hj13_nav .nav>ul>li:after{
+			border-color: transparent;
+			display: none;
+		}
+		.head_hj13_nav .nav > ul > li:hover .nav_drop{
+			display: none;
+			visibility: hidden;
+		}
+		.head_hj13_nav .nav > ul > li,.head_hj13_menu .menu{
+			position: static;
+		}
+		.head_hj13_menu_fixed{
+			position: relative;
+		}
+		.sannuo_wrapper .sannuo_drop li:hover a{
+			color: #{$color};
+		}
+		.head_hj13_nav .nav > ul > li > a > span h2{
+			position: relative;
+		}
+		.head_hj13_nav .nav > ul > li > a > span h2:before{
+			position: absolute;
+			display: block;
+			content:'';
+			width: 0;
+			height: 3px;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 10px;
+			transition: all .5s;
+			background-color: #{$color};
+		}
+		.head_hj13_nav .nav > ul li:hover h2:before{
+			width: 100%;
+		}
+		.sannuo_left a{
+			transition: all .5s;
+		}
+		.sannuo_left a:hover{
+			border-color: #{$color};
+			color: #{$color};
+		}
+	</style>
+</if>
+<php>
+	$language = HtmlEncode($data404[13]);
+</php>
+<script>
+    var lan_str = "<?php echo $language;?>";
+    var sungou = "<?php echo $fixed;?>";
+</script>
+
+<header class="nav-hidden-mobile head_hj13">
+    <!-- top -->
+    <div class="head_hj13_top_bg">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="head_hj13_top">
+                    <div class="left fl">
+						<if condition="$data404[11]">
+							<php>
+								$arra = get_list_val($data404[11]);
+							</php>
+							<volist name="arra" id="a">
+								<if condition="$a['link']">
+									<a href="{$a['link']}">
+								</if>
+								<if condition="$a['ico']">
+								<img src="{$a['ico']}" alt="">
+								</if>
+								<span>{$a['txt']}</span>
+								<if condition="$a['link']">
+									</a>
+								</if>
+								</volist>
+							<else/>
+							<if condition="$data404[2]">
+								<img src="{:getindeximgurl($data404[2])}" alt="{$data404[3]}">
+							</if>
+							<if condition="$data404[3]">
+								<span>{$data404[3]}</span>
+							</if>
+						</if>
+                    </div>
+                    <if condition="$data404[4]">
+                        <ul class="right fr">
+                            <php>
+                                $arr = get_list_val($data404[4]);
+                            </php>
+                            <volist name="arr" id="a">
+                                <li>
+                                    <if condition="$a[link]">
+                                        <a href="{$a[link]}">
+                                    </if>
+                                    <if condition="$a[ico]">
+                                        <img src="{$a[ico]}" alt="{$a[text]}">
+                                    </if>
+                                    {$a[text]}
+                                    <if condition="$a[link]">
+                                        </a>
+                                    </if>
+                                </li>
+                            </volist>
+                            <if condition="$webid eq '1784'">
+                                
+                                
+	                            <div id="google_translate_element2"></div>
+                                 <script type="text/javascript">
+                                    function googleTranslateElementInit2() { 
+                                        new google.translate.TranslateElement({ 
+                                            pageLanguage: 'en', 
+                                            autoDisplay: false 
+                                        }, 'google_translate_element2'); }
+                                </script>
+                                <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2" async></script>
+                                <script src="__TMPL__HJZF2_Z/js/eval_transtion.js" async></script>
+
+                                <style>
+                                    .gg_lang{
+                                        position: relative;
+                                        margin-left: 20px;
+                                    }
+                                    .gg_lang span{
+                                        height: 100%;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        min-width: 160px;
+                                        padding: 0 5px;
+                                        background-color: rgba(0,0,0,.6);
+                                        border: 1px solid #fff;
+                                    }
+                                    .gg_lang:hover #m1{
+                                        display: block;
+                                    }
+                                    #m1{
+                                        display: none;
+                                        position: absolute;
+                                        left: 0;
+                                        top: 100%;
+                                        z-index: 99;
+                                        min-width: 100%;
+                                        background-color: #fff;
+                                    }
+                                    #m1 a img{
+                                        margin-right: 8px;
+                                    }
+                                    #m1 a{
+                                        color: #333;
+                                        display: flex;
+                                        align-items: center;
+                                        padding-left: 10px;
+                                        padding-right: 10px;
+                                        margin-bottom: 5px;
+                                        margin-top: 5px;
+                                    }
+                                    #m1 a:hover{
+                                        background-color: #eee;
+                                        color:#{$color};
+                                    }
+
+                                    /* 新加的谷歌翻译 */
+                                a.gflag {
+                                    vertical-align: middle;
+                                    font-size: 16px;
+                                    padding: 1px 0;
+                                    background-repeat: no-repeat;
+                                    background-image: url(//gtranslate.net/flags/16.png);
+                                }
+
+                                a.gflag img {
+                                    border: 0;
+                                }
+
+                                a.gflag:hover {
+                                    background-image: url(//gtranslate.net/flags/16a.png);
+                                }
+
+                                #goog-gt-tt {
+                                    display: none !important;
+                                }
+
+                                .goog-te-banner-frame {
+                                    display: none !important;
+                                }
+
+                                .goog-te-menu-value:hover {
+                                    text-decoration: none !important;
+                                }
+
+                                body {
+                                    top: 0 !important;
+                                }
+
+                                #google_translate_element2 {
+                                    display: none !important;
+                                }
+                                /* 新加的谷歌翻译 */
+
+                            </style>
+                                <script>
+                                    $(function () {
+                                        var first = $('#m1 .lian:first-child').clone();
+                                        $('.gg_lang_div').append(first);
+                                        $('#m1 .lian').click(function () {
+                                            var self = $(this).clone();
+                                            $('.gg_lang_div').html('').append(self);
+                                        })
+                                    })
+                                </script>
+                                <div class="gg_lang fx-center">
+                                    <span><div class="gg_lang_div"></div> <i class="fa fa-caret-down ml-5"></i></span>
+                                        <div id="m1">
+                                        	<div class="lian"><a onclick="doGTranslate('en|en')"><img src="__TMPL__HJZF2_Z/img/lang/ico_en.gif" width="20" height="13" alt=""> English</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|es')"><img src="__TMPL__HJZF2_Z/img/lang/ico_es.gif" width="20" height="13" alt=""> Espana</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|es')"><img src="__TMPL__HJZF2_Z/img/lang/ico_hr.gif" width="20" height="13"> Hrvatska</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|fr')"><img src="__TMPL__HJZF2_Z/img/lang/ico_fr.gif" width="20" height="13" alt=""> Français</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|it')"><img src="__TMPL__HJZF2_Z/img/lang/ico_it.gif" width="20" height="13" alt=""> Italiano</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|pt')"><img src="__TMPL__HJZF2_Z/img/lang/ico_pt.gif" width="20" height="13" alt=""> Português</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|ja')"><img src="__TMPL__HJZF2_Z/img/lang/ico_ja.gif" width="20" height="13" alt=""> 日本の</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|ko')"><img src="__TMPL__HJZF2_Z/img/lang/ico_ko.gif" width="20" height="13" alt=""> 한국어</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|ar')"><img src="__TMPL__HJZF2_Z/img/lang/ico_ar.gif" width="20" height="13" alt=""> العربية</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|de')"><img src="__TMPL__HJZF2_Z/img/lang/ico_de.gif" width="20" height="13" alt=""> Deutsch</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|cs')"><img src="__TMPL__HJZF2_Z/img/lang/ico_cs.gif" width="20" height="13" alt=""> česky</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|da')"><img src="__TMPL__HJZF2_Z/img/lang/ico_da.gif" width="20" height="13" alt=""> Dansk</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|nl')"><img src="__TMPL__HJZF2_Z/img/lang/ico_nl.gif" width="20" height="13" alt=""> Nederlands</a></div>
+                                             <div class="lian"><a onclick="doGTranslate('en|fi')"><img src="__TMPL__HJZF2_Z/img/lang/ico_fi.gif" width="20" height="13" alt=""> suomi</a></div>
+                                             <div class="lian"><a onclick="doGTranslate('en|el')"><img src="__TMPL__HJZF2_Z/img/lang/ico_el.gif" width="20" height="13" alt=""> Ελληνικά</a></div>
+                                             <div class="lian"><a onclick="doGTranslate('en|hi')"><img src="__TMPL__HJZF2_Z/img/lang/ico_hi.gif" width="20" height="13" alt=""> हिन्दी</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|no')"><img src="__TMPL__HJZF2_Z/img/lang/ico_no.gif" width="20" height="13" alt=""> norsk</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|tr')"><img src="__TMPL__HJZF2_Z/img/lang/ico_tr.gif" width="20" height="13" alt=""> Türkiye</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|th')"><img src="__TMPL__HJZF2_Z/img/lang/ico_th.gif" width="20" height="13" alt=""> ประเทศไทย</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|bg')"><img src="__TMPL__HJZF2_Z/img/lang/ico_bg.gif" width="20" height="13" alt=""> български</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|ru')"><img src="__TMPL__HJZF2_Z/img/lang/ico_ru.gif" width="20" height="13" alt=""> русский</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|sv')"><img src="__TMPL__HJZF2_Z/img/lang/ico_sv.gif" width="20" height="13" alt=""> Svenska</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|pl')"><img src="__TMPL__HJZF2_Z/img/lang/ico_pl.gif" width="20" height="13" alt=""> Polski</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|ro')"><img src="__TMPL__HJZF2_Z/img/lang/ico_ro.gif" width="20" height="13" alt=""> Română</a></div>
+                                            <div class="lian"><a onclick="doGTranslate('en|vi')"><img src="__TMPL__HJZF2_Z/img/lang/ico_vi.gif" width="20" height="13" alt=""> Việt Nam</a></div>
+                                            <div class="clear"></div>
+                                        </div>
+                                </div>
+                            </if>
+                        </ul>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- menu -->
+	<div class="head_hj13_menu_fixed">
+    <div class="container ">
+        <div class="row">
+            <div class="head_hj13_menu">
+                <div class="head_hj13_logo">
+                    <a href="{:U('/')}" class="logo">{$logo}
+                    </a>
+                </div>
+                <div class="head_hj13_nav">
+                    <nav class="nav menu">
+
+						<if condition="$webid eq '1784'">
+							<!-- 锐英科 -->
+							<div class="limei_ryk">
+								<ul>
+									<volist empty="" name="allclass" id="allclass_head">
+										<li data="{$allclass_head['child']}">
+											<a
+												href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">
+												<div class="head_hj13_nav_img">
+												<img data-src="{:getmainimgurl($allclass_head['fid'])}"
+												data-alt="{$allclass_head['class_name']}" class="img-fluid loading">
+											</div>
+												<span>{$allclass_head['class_name']}</span></a>
+										</li>
+									</volist>
+								</ul>
+							</div>
+							<!-- 锐英科 -->
+						</if>
+
+                        <ul>
+                            <volist name="web_navigation" id="vo" offset="0" length='$len' key="key">
+                                <li id="menu{$vo['id']}" 
+                                <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                                    class="nav_li pro"
+                                <else/>
+                                class="nav_li"
+                            </if>
+                                 data-url="{$vo['url']}" >
+                                    <a href="{$vo['url']}" <if
+                                        condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">
+                                        onclick="turn_sta(2,1)"
+                                        <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                                        </if> ><span>{$vo['title']}</span></a>
+										<if condition="$vo[child] neq '' and $data404[12] neq '' ">
+											<!-- 三诺二级 -->
+											<div class="sannuo_box">
+												<div class="container">
+													<div class="row">
+														<div class="sannuo_wrapper">
+															<div class="sannuo_left">
+																<b>{$vo['title']}</b>
+																<p>{$vo['nav_desc']}</p>
+																<a href="{$vo['url']}">{:__('Read More')}</a>
+															</div>
+															<ul class="sannuo_drop">
+																<volist name="vo['child']" id="v" offset="0" key="key">
+																	<li><a href="{$v['url']}"><i class="fa fa-angle-right"></i>	{$v['title']}</a></li>
+																</volist>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+											<div class="sannuo_box">
+												<div class="container">
+													<div class="row">
+														<div class="sannuo_wrapper">
+															<div class="sannuo_left">
+																<b>{$vo['title']}</b>
+																<p>{$vo['nav_desc']}</p>
+																<a href="{$vo['url']}">{:__('Read More')}</a>
+															</div>
+															<ul class="sannuo_drop">
+																<volist empty="" name="allcaseclass" id="allclass_head">
+																	<li><a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}"><i class="fa fa-angle-right"></i>	{$allclass_head['class_name']}</a></li>
+																</volist>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+											<div class="sannuo_box">
+												<div class="container">
+													<div class="row">
+														<div class="sannuo_wrapper">
+															<div class="sannuo_left">
+																<b>{$vo['title']}</b>
+																<p>{$vo['nav_desc']}</p>
+																<a href="{$vo['url']}">{:__('Read More')}</a>
+															</div>
+															<ul class="sannuo_drop">
+																<volist empty="" name="allnewclass" id="allclass_head">
+																	<li><a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}"><i class="fa fa-angle-right"></i>	{$allclass_head['class_name']}</a></li>
+																</volist>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+											<div class="sannuo_box">
+												<div class="container">
+													<div class="row">
+														<div class="sannuo_wrapper">
+															<div class="sannuo_left">
+																<b>{$vo['title']}</b>
+																<p>{$vo['nav_desc']}</p>
+																<a href="{$vo['url']}">{:__('Read More')}</a>
+															</div>
+															<ul class="sannuo_drop">
+																<volist empty="" name="allclass" id="allclass_head">
+																	<li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}"><i class="fa fa-angle-right"></i>	{$allclass_head['class_name']}</a></li>
+																</volist>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- 三诺二级 -->
+										</if>
+										
+										
+										
+                                    <!-- 二级 start -->
+                                    <if condition="$vo[child] neq '' ">
+                                        <ul class="nav_drop">
+                                            <volist name="vo['child']" id="v" offset="0" key="key">
+                                                <li>
+                                                    <a href="{$v['url']}" <if
+                                                        condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">
+                                    </if>> <span>{$v['title']}</span></a>
+                                </li>
+                            </volist>
+                        </ul>
+                        <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+                        <ul class="nav_drop">
+                            <volist empty="" name="allcaseclass" id="allclass_head">
+                                <li>
+                                    <a
+                                        href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}"><span>{$allclass_head['class_name']}</span></a>
+                                </li>
+                            </volist>
+                        </ul>
+                        <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+                        <ul class="nav_drop">
+                            <volist empty="" name="allnewclass" id="allclass_head">
+                                <li>
+                                    <a
+                                        href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}"><span>{$allclass_head['class_name']}</span></a>
+                                </li>
+                            </volist>
+                        </ul>
+                        <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                            <if condition="$webid neq '1784'">
+                            <ul class="nav_drop">
+                                <volist empty="" name="allclass" id="allclass_head">
+                                    <li data="{$allclass_head['child']}">
+                                        <a
+                                            href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}"><span>{$allclass_head['class_name']}</span></a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            </if>
+                        </if>
+                        </li>
+                        </volist>
+                        <div class="hj13_search">
+                            <span>
+                                <if condition="$data404[6]">
+                                    <img src="{:getindeximgurl($data404[6])}" />
+                                    <else />
+                                    <img src="__TMPL__HJZF2_Z/img/mobile_search1.svg" width="30" />
+                                </if>
+                            </span>
+                            <div class="hj13_search_form">
+                                <if condition="C('language') eq 'cn'">
+                                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)"
+                                        ID="searchALL" class="head_hj06_search">
+                                        <li class="search_first"><input type="text" value="{:__('Product Search')}"
+                                                name="keywords" id="keyword"
+                                                onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)"
+                                                onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)">
+                                        </li>
+                                        <li class="search_second">
+                                            <button type="submit" id="search-submit"><i
+                                                    class="fa fa-search"></i></button>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </form>
+                                    <else />
+                                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)"
+                                        ID="searchALL" class="head_hj06_search">
+                                        <li class="search_first"><input type="text" value="keyword" name="keywords"
+                                                id="keyword" onfocus="OnFocusFun(this,&#39;keyword&#39;)"
+                                                onblur="OnBlurFun(this,&#39;keyword&#39;)">
+                                        </li>
+                                        <li class="search_second">
+                                            <button type="submit" id="search-submit"><i
+                                                    class="fa fa-search"></i></button>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </form>
+                                </if>
+                            </div>
+                        </div>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</header>
+
+<style>
+    .HJZF2__head_hj06_mobile {
+        background-color: #{$data404[8]};
+    }
+    .mobile_navbutton span:before, .mobile_navbutton span:after ,.mobile_navbutton span{
+        background-color: #{$data404[10]}
+    }
+</style>
+<!--mobile nav-->
+<div class="HJZF2__head_hj06_mobile_empty nav-hidden-pc"></div>
+<div class="nav-hidden-pc mobile_head HJZF2__head_hj06_mobile">
+    <div class="mobile_search_content hidden-xl">
+        <div class="mobile_search">
+            <div class="mobile_search_box">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <div class="mobile_search_input">
+                        <if condition="C(Language) eq 'cn' or C(Language) eq 'zh'">
+                            <div class="mobile_search_input"><input type="text" value="{:__('Product Search')}"
+                                    name="keywords" id="keyword_mcn"
+                                    onfocus="OnFocusFun_m(this,&#39;{:__('Product Search')}&#39;)"
+                                    onblur="OnBlurFun_m(this,&#39;{:__('Product Search')}&#39;)"><button type="submit"
+                                    id="search-submit"><i class="fa fa-search"></i></button></div>
+                            <else />
+                            <div class="mobile_search_input"><input type="text" value="{:__('Product Search')}"
+                                    name="keywords" id="keyword_m"
+                                    onfocus="OnFocusFun_m(this,&#39;{:__('Product Search')}&#39;)"
+                                    onblur="OnBlurFun_m(this,&#39;{:__('Product Search')}&#39;)"><button type="submit"
+                                    id="search-submit"><i class="fa fa-search"></i></button></div>
+                        </if>
+                    </div>
+                    <div class="mobile_search_close">
+                        <img src="__TMPL__HJZF2_Z/img/mobile_close.svg"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-13 flex mobile_head_content">
+                <div class="mobile_logo">
+                    <a href="{:U('/')}">{$logo}</a>
+                </div>
+                <div>
+                    <div class="mobile_navbutton hidden-xl">
+                        <a href="javascript:void(0);" class="dt-mobile-menu-icon">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="mobile_searchbutton">
+                        <a href="javascript:void(0);">
+                            <if condition="$data404[9]">
+                                <img src="{:getindeximgurl($data404[9])}"/>
+                                <else />
+                                <img src="__TMPL__HJZF2_Z/img/mobile_search1.svg"/>
+                            </if>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--mobile nav-->
+<!--mobile nav content-->
+<div class="mobile-sticky-header-overlay nav-hidden-pc" id="mobile-sticky-header-overlay">
+    <div class="mobile-menu-Sidebar" id="mobile-menu-Sidebar">
+        <div class="mobile-menutop">
+            <div class="mobile-menutop-box">
+                <if condition="$data404[13]">
+                    <div class="mobile_languagebutton">
+                        <div>
+                            <img src="__TMPL__HJZF2_Z/img/langauge_icon.svg"/>
+                            <span>{:__('Language')}</span>
+                        </div>
+                    </div>
+                </if>
+                <div>
+                    <div class="mobile-menu-Sidebar-close">
+                        <span></span>
+                    </div>
+                    <div class="mobile_searchbutton">
+                        <a href="javascript:void(0);">
+                            <img src="__TMPL__HJZF2_Z/img/mobile_search.svg"/>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mobile_languagelist">
+                <ul id="lang_ul_mobile" class="language_ul"></ul>
+            </div>
+        </div>
+        <div class="mobile-header-scrollbar-wrap HJZF2__header_hj06_navigation" id="mobile-header-scrollbar-wrap">
+            <ul class="hj_navbar_nav--mobile">
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav-more"</if>>
+                        <a menu_data="{$vo['id']}" href="{$vo['url']}" <if
+                            condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"
+                            <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                            class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                        <if condition="$vo[child] neq '' ">
+                            <span class="next-level-button">
+                                <img src="__TMPL__HJZF2_Z/img/plus.svg"/>
+                            </span>
+                            <ul class="hj_navbar_nav_dropdown-menu">
+
+                                <volist name="vo['child']" id="v" offset="0" key="key">
+                                    <li>
+                                        <a menu_data="{$v['id']}" href="{$v['url']}" <if
+                                            condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"
+                        </if> onFocus="blur()">
+                        <h3>{$v['title']}</h3>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <elseif condition="strstr($vo['url'],'/cases.html') eq '/cases.html'" />
+            <span class="next-level-button">
+                <img src="__TMPL__HJZF2_Z/img/plus.svg"/>
+            </span>
+            <ul class="hj_navbar_nav_dropdown-menu  HJ01-pro-menu">
+
+                <volist empty="no" name="allcaseclass" id="allclass_head" offset="0" length="8">
+                    <li>
+                        <a href="{:U('/case_category',array('classid'=>$allclass_head['classid']))}">
+                            {$allclass_head['class_name']}</a>
+                    </li>
+                </volist>
+                <div class="clear"></div>
+            </ul>
+            <elseif condition="strstr($vo['url'],'/news.html') eq '/news.html'" />
+            <span class="next-level-button">
+                <img src="__TMPL__HJZF2_Z/img/plus.svg"/>
+            </span>
+            <ul class="hj_navbar_nav_dropdown-menu  HJ01-pro-menu">
+
+                <volist empty="no" name="allnewclass" id="allclass_head" offset="0" length="8">
+                    <li>
+                        <a href="{:U('/new_category',array('classid'=>$allclass_head['classid']))}">
+                            {$allclass_head['class_name']}</a>
+                    </li>
+                </volist>
+                <div class="clear"></div>
+            </ul>
+            <else />
+
+            <if condition="strstr($vo['url'],'/product.html') eq '/product.html'">
+                <span class="next-level-button">
+                    <img src="__TMPL__HJZF2_Z/img/plus.svg"/>
+                </span>
+                <ul class="hj_navbar_nav_dropdown-menu  HJ01-pro-menu">
+                    <volist empty="no" name="allclass" id="allclass_head" offset="0" length="8">
+                        <li>
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">
+                                {$allclass_head['class_name']}</a>
+                        </li>
+                    </volist>
+                    <div class="clear"></div>
+                </ul>
+            </if>
+            </if>
+            </li>
+            </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--mobile nav content-->

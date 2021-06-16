@@ -1,0 +1,38 @@
+<!--{$pagename}-->
+<style>
+    .banner_11_wrapper .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background-color: #{$color};
+    }
+    .hjzf_banner_12_con a:hover{
+    color: #{$color};
+}
+</style>
+<section class="hjzf_banner_12">
+    <div class="swiper-container banner_11_wrapper">
+        <div class="swiper-wrapper">
+            <php>
+                $arr = get_list_val($data373[5]);
+            </php>
+            <volist name="arr" id="a">
+                <div class="swiper-slide">
+                    <a href="{$a[link]}">
+                        <img src="{$a[img]}" class="img-full" alt="{$a[title]}">
+                    </a>
+                    <div class="hjzf_banner_12_con">
+                        <div class="index_title">{$data373[0]}</div>
+                        <div class="index_text">
+                            <span>
+                                <a href="{$data373[2]}">{$data373[1]}</a> | 
+                                <a href="{$data373[4]}">{$data373[3]}</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination banner_11_pagination"></div>
+        <div class="swiper-button-next banner_11_next"><i class="fa fa-angle-right"></i></div>
+        <div class="swiper-button-prev banner_11_prev"><i class="fa fa-angle-left"></i></div>
+    </div>
+
+</section>

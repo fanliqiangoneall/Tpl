@@ -1,0 +1,73 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        #sitemap>ul>li>a>h2:before {
+            content: '';
+            display: table;
+            width: 4px;
+            height: 16px;
+            background: #{$inner_data[1]};
+            position: absolute;
+            left: -13px;
+            top: 15px;
+        }
+    </style>
+    <if condition="$inner_data[2]">
+        <style>
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><span class="current">{:__('Sitemap')}</span></div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap">
+            <div class="container">
+                <section  class="InsidePage--3__contentBox--100">
+                    <div class="InsidePage--3__contentBoxWrap">
+                        <div class="InsidePage--3__title">{:__('Sitemap')}</div>
+                        <div class="InsidePage--3__contentBoxMain box-sizing" id="InsidePage--3__sitemap">
+                            <ul>
+                                <volist name="web_navigation" id="vo_map" offset="0" length='8' key="key">
+                                    <li><a href="{$vo_map['url']}" <if condition="strstr($vo_map['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,5)"</if>>{$vo_map['title']}</a>
+                                        <if condition="strstr($vo_map['url'],'/product.html') eq '/product.html'">
+                                            <ul style="margin-bottom:10px;">
+                                                <volist empty="" name="allclass" id="allclass_map">
+                                                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_map['pcid'])}">{$allclass_map['class_name']}</a>
+                                                    </li>
+                                                </volist>
+                                                <div class="clear"></div>
+                                            </ul>
+                                        </if>
+                                        <if condition="$vo_map['child'] neq ''">
+                                            <ul style="margin-bottom:10px;">
+                                                <volist name="vo_map['child']" id="navchild">
+                                                    <li><a href="{$navchild['url']}"><h3>{$navchild['title']}</h3></a></li>
+                                                </volist>
+                                                <div class="clear"></div>
+                                            </ul>
+                                        </if>
+                                    </li>
+                                </volist>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                        <div class="page_nei_space"></div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

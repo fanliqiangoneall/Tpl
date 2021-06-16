@@ -1,0 +1,49 @@
+<!--{$pagename}-->
+<style>
+    #aboutus{
+        background: url({:getindeximgurl($data4[9])}) no-repeat center;background-size: cover;
+    }
+    .ab_title h3{
+        color:{$data4[10]}
+    }
+    #ab_text{
+    color:{$data4[11]}
+    }
+
+    .count_shuzi{
+        color:{$data4[12]} ;
+    }
+    .count_shuzi_desc{
+        color:{$data4[12]} ;
+    }
+</style>
+
+
+
+<!--about us start-->
+<div id="aboutus">
+    <div class="container">
+        <div class="ab_title" id="ab_title"><h3>{$data4[0]}</h3></div>
+        <div class="ab_text">
+            <p id="ab_text">
+                {:HtmlEncode(subtxt($company_info['description'],700))}
+            </p>
+        </div>
+        <ul class="shuzi_box">
+            <php>for($i=1;$i<8;$i=$i+2){</php>
+
+            <if condition="$data4[$i] neq ''">
+                <li class="abus_shuzi" id="count{$i}">
+                    <div class="abus_shuzibox">
+                        <span class="count_shuzi font-weight-700 margin-10px-bottom" data-counter-time="2000" >{$data4[$i]}</span>
+                        <p class="count_shuzi_desc margin-15px-bottom letter-spacing-1 font-weight-500">{$data4[$i+1]}</p>
+                    </div>
+                </li>
+            </if>
+            <php>}</php>
+
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--about us end-->

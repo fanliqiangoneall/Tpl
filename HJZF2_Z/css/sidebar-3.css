@@ -1,0 +1,177 @@
+.side_fourth {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 999;
+}
+
+.side_fourth_wrappera {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    min-width: 170px;
+    padding: 0 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    transition: all .5s;
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+}
+
+.side_fourth_wrappera:after {
+    position: absolute;
+    display: block;
+    right: -18px;
+    z-index: 1;
+    top: 50%;
+    width: 0;
+    height: 0;
+    margin-top: -5px;
+    border: 9px solid #ccc;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    content: '';
+}
+
+.side_fourth_wrappera li {
+    position: relative;
+    min-width: 150px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.side_fourth_wrappera li a{display: flex;justify-content: flex-start;}
+.side_fourth_wrappera li:last-child {
+    border-bottom: none;
+}
+
+.side_fourth_img {
+    display: block;
+    position: relative;
+    float: left;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.side_fourth_img img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.side_fourth_img img.my_icon_on {
+    opacity: 0;
+    z-index: 3;
+    transition: all .4s;
+}
+
+.side_fourth_wrappera li:hover img.my_icon_on {
+    opacity: 1;
+}
+
+.side_fourth_text {
+    margin-left: 15px;
+    transition: all .5s;
+}
+
+.side_fourth_wrappera li .side_fourth_hover_text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    padding: 10px;
+    white-space: nowrap;
+	font-size:14px;
+	line-height:25px;
+}
+.side_fourth_wrappera li:hover .side_fourth_hover_text {
+    transform: translateX(-107%);
+    opacity: 1;
+    visibility: visible;
+}
+.side_fourth_wrappera li .side_fourth_hover_img {
+    position: absolute;
+    width: 165px;
+    height: 165px;
+	padding:10px;
+    left: -185px;
+    top: 0;
+    opacity: 0;
+	visibility:hidden;
+    transition: all .5s;
+}
+
+.side_fourth_wrappera li:hover .side_fourth_hover_img {
+    opacity: 1;
+	visibility:visible;
+}
+
+.side_fourth_hover_img {
+    opacity: 1;
+	visibility:visible;
+}
+
+.side_fourth_hover_img img {
+    width: 165px;
+    height: 165px;
+    display: block;
+    border: 1px solid #ccc;
+}
+
+.side_first_btn.side_fourth_btn {
+    right: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 3px;
+}
+.side_fourth_wrappera li .side_ewm_hover_img {
+    position: absolute;
+	padding: 10px;
+    left: -316px;
+	width:300px;
+    top: -50px;
+    opacity: 0;
+	visibility:hidden;
+    transition: all .5s;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.side_fourth_wrappera li:hover .side_ewm_hover_img {
+    opacity: 1;
+	visibility:visible;
+}
+
+.side_ewm_hover_img {
+    opacity: 1;
+	visibility:visible;
+}
+
+.side_ewm_hover_img img {
+    width: 135px;
+    height: 135px;
+    display: block;
+    border: 1px solid #ccc;
+}
+.ewm_bg{ padding:10px; background:#FFFFFF; line-height:25px; font-size:14px;}
+@media (max-width: 1200px) {
+    .side_fourth {
+        display: none;
+    }
+}

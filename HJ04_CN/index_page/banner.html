@@ -1,0 +1,103 @@
+<style>
+    .bannerIcon{
+        color: #{$color};
+    }
+    #btn_prev:hover{
+        background: #{$color};
+    }
+    #btn_prev:hover .bannerIcon{
+        color: #fff;
+    }
+    #btn_next:hover{
+        background: #{$color};
+    }
+    #btn_next:hover .bannerIcon{
+        color: #fff;
+    }
+</style>
+<div <if  condition="count($banner) neq 1">class="bannerContainer swiper-container02"<else/>class="bannerContainer "</if>>
+    <if  condition="count($banner) neq 1">
+        <div class="bannerContent swiper-wrapper">
+            <volist name="banner" id="banner_pic" key="k">
+                <div class="bannerList swiper-slide">
+                    <a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}">
+                        <img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""/>
+                    </a>
+                </div>
+            </volist>
+        </div>
+        <else/>
+        <volist name="banner" id="banner_pic" key="k" offset="0" length="1">
+            <div class="bannerList">
+                <a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}">
+                    <img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""/>
+                </a>
+            </div>
+        </volist>
+    </if>
+    <if condition="count($banner) neq 1">
+        <div class="swiper-button-prev">
+            <i class="fa fa-caret-left bannerIcon" aria-hidden="true"></i>
+            <div class="prevImgContainer">
+                <img src="" alt=""/>
+            </div>
+        </div>
+        <div class="swiper-button-next">
+            <i class="fa fa-caret-right bannerIcon" aria-hidden="true"></i>
+            <div class="nextImgContainer">
+                <img src="" alt=""/>
+            </div>
+        </div>
+    </if>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container02', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    var length = $(".swiper-pagination span").length;
+    function prevImg(){
+        $(".swiper-button-prev i").removeClass("fa-caret-left").addClass("fa-long-arrow-left");
+        var imgIndex = $(".swiper-pagination span.swiper-pagination-bullet-active").index();
+        var imgSrc = $(".bannerContent div").eq(imgIndex).children().children("img").attr("src");
+        $(".prevImgContainer").css("display","block");
+        $(".prevImgContainer img").attr("src",imgSrc);
+    }
+    function nextImg(){
+        $(".swiper-button-next i").removeClass("fa-caret-right").addClass("fa-long-arrow-right");
+        var imgIndex02 = $(".swiper-pagination span.swiper-pagination-bullet-active").index();
+        var imgSrc = $(".bannerContent div").eq(imgIndex02+2).children().children("img").attr("src");
+        $(".nextImgContainer").css("display","block");
+        $(".nextImgContainer img").attr("src",imgSrc);
+    }
+    $(".swiper-button-prev").mouseenter(function(){
+        prevImg();
+    });
+    $(".swiper-button-prev").click(function(){
+        prevImg();
+    });
+    $(".swiper-button-prev").mouseleave(function(){
+        $(".swiper-button-prev i").removeClass("fa-long-arrow-left").addClass("fa-caret-left");
+        $(".prevImgContainer").css("display","none");
+    });
+    $(".swiper-button-next").mouseenter(function(){
+        nextImg();
+    });
+    $(".swiper-button-next").click(function(){
+        nextImg();
+    });
+    $(".swiper-button-next").mouseleave(function(){
+        $(".swiper-button-next i").removeClass("fa-long-arrow-right").addClass("fa-caret-right");
+        $(".nextImgContainer").css("display","none");
+    });
+</script>

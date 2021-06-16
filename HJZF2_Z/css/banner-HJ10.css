@@ -1,0 +1,201 @@
+.hjzf_banner_hj10{
+    position: relative;
+}
+.hj10_banner_wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+.hj10_banner_wrapper span.index_title{
+    font-size: 5vw;
+    line-height: 1.5;
+}
+.hj10_banner_wrapper p.index_title{
+    font-size: 3vw;
+    line-height: 1.5;
+}
+.hj10_banner_top{
+    position: relative;
+}
+.hj10_banner_top_pagination{
+    position: absolute;
+    bottom: 170px !important;
+    z-index: 9;
+    text-align: center;
+}
+.hj10_banner_top_pagination span{
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    opacity: 1 !important;
+}
+/* bottom */
+.hj10_banner_bottom{
+    position: absolute;
+    bottom: 2vw;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+.hj10_banner_thumbs{
+    padding-bottom: 1vw;
+    margin-bottom: 1vw;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.hj10_banner_bottom_wrapper{
+    padding: 2vw 3vw;
+    border: 1px solid rgba(255,255,255,.1);
+    position: relative;
+    color: #fff;
+}
+.hj10_banner_bottom_wrapper:before{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    content:'';
+    z-index: -1;
+    opacity: .7;
+}
+.hj10_banner_thumbs_wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+}
+.hj10_banner_thumbs_wrapper i{
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50px;
+            flex: 0 0 50px;
+    margin-right: 1vw;
+}
+.hj1_banner_pogation i{
+    font-size: 18px;
+    margin-left: 1vw;
+}
+.hj10_banner_thumbs_wrapper .info p{
+    opacity: .6;
+}
+.hjzf_banner_hj10{
+    position: relative;
+}
+.hjzf_banner_video{
+    width: 100%;
+}
+@media(max-width:1600px){
+    .hj10_banner_bottom{
+        bottom: -4vw !important;
+    }
+    .hj10_banner_wrapper{
+        transform: translate(0,-5vw);
+        -webkit-transform: translate(0,-5vw);
+    }
+}
+
+@media(max-width: 1200px) {
+    .hj10_banner_thumbs{
+        padding-bottom: 25px;
+        margin-bottom: 0;
+        border: 0;
+    }
+    .hj10_banner_thumbs_wrapper i{
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 40px;
+                flex: 0 0 40px;
+    }
+    .hj10_banner_bottom{
+        bottom: -6vw !important;
+    }
+    
+}
+
+@media(max-width: 768px) {
+    .hj10_banner_thumbs_wrapper{
+        -webkit-box-pack: flex-start;
+            -ms-flex-pack: flex-start;
+                justify-content: flex-start;
+    }
+    .hj10_banner_thumbs_wrapper i{
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 40px;
+                flex: 0 0 40px;
+    }
+    .hj10_banner_next,.hj10_banner_prev{
+        width: 15px;
+        height: 30px;
+        background-size: 15px 30px;
+    }
+    .hj10_banner_thumbs_wrapper .info .index_sub_title{
+        font-size: 14px;
+    }
+    .hj10_banner_top_pagination{
+        bottom: 10px !important;
+    }
+    .hj10_banner_bottom{
+        position: static;
+    }
+    .hj1_banner_pogation{
+        border-top: 1px solid rgba(255,255,255,.2);
+        padding-top: 10px;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .hj10_banner_thumbs_wrapper i{
+        margin-right: 15px;
+        padding-top: 5px;
+    }
+    .hj10_banner_bottom_pagination{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0 !important;
+        z-index: 9 !important;
+        text-align: center;
+    }
+    .hj10_banner_bottom_pagination span{
+        width: 8px;
+        height: 8px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        background: none;
+        opacity: 1 !important;
+    }
+    .hj10_banner_bottom_pagination .active{
+        background-color: #fff;
+    }
+    .hj1_banner_pogation .index_sub_title{
+        font-size: 14px;
+    }
+}
+
+.d-none{
+    display: none;
+}
+.mobile_video.on{
+    display: none;
+}
+.d-none.on{
+    display: block;
+}

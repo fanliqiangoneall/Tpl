@@ -1,0 +1,40 @@
+<if condition="$data7[1]">
+    <style>
+        .HJZF2_evaluate{
+            background: url({:getindeximgurl($data7[1])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    .HJZF2_evaluate__swiper .swiper-pagination-bullet-active{
+        background: #{$color};opacity: 1;border-radius: 0;}
+</style>
+<section class="HJZF2_evaluate">
+    <div class="container">
+        <h4 class="HJZF2_evaluate__title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">{$data7[2]}</h4>
+        <div class="HJZF2_evaluate__content wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="200">
+            <div class="swiper-container HJZF2_evaluate__swiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        for($i=3;$i<26;$i=$i+3){
+                    </php>
+                    <if condition="$data7[$i]">
+                    <div class="swiper-slide">
+                        <div class="HJZF2_evaluate__item">
+                            <div class="HJZF2_evaluate__itemImg"><img src="{:getindeximgurl($data7[$i+2])}" alt="picture"/></div>
+                            <div class="HJZF2_evaluate__itemName">{$data7[$i]}</div>
+                            <p class="HJZF2_evaluate__itemDesc">{$data7[$i+1]}</p>
+                        </div>
+                    </div>
+                    </if>
+                   <php>
+                       }
+                   </php>
+
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination HJZF2_evaluate__pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>

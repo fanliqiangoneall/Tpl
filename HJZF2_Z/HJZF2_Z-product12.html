@@ -1,0 +1,184 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .inner_4__innerwrapper {
+            margin-bottom: 0 !important;
+            padding-bottom: 40px;
+            background-color: #{$inner_data[2]};
+        }
+        .index_btn {
+            background-color: #{$color};
+            color: #fff;
+        }
+       
+        .hjzf_pro_12_wrapper_left {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            height: 100%;
+            margin-bottom: 15px;
+        }
+        .hjzf_pro_12_wrapper_left span{
+            cursor: pointer;
+        }
+        .hjzf_pro_12_wrapper_left h3,
+        .hjzf_pro_12_wrapper_left p {
+            margin: 20px auto;
+        }
+        .hjzf_pro_12_wrapper_top {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .hjzf_pro_12_wrapper_top{
+            margin-bottom: 30px;
+        }
+        .hjzf_pro_12_wrapper_bottom li{margin-bottom: 30px;}
+        .hjzf_pro_12_wrapper_box,
+        .hjzf_pro_12_wrapper_box a {
+            display: block;
+            height: 100%;
+        }
+        .hjzf_pro_12_wrapper_bottom .hjzf_pro_12_wrapper_box a{
+            height: auto;
+        }
+        .hjzf_pro_12_wrapper_box a {
+            background-color: #fff;
+        }
+        .hjzf_pro_12_wrapper_box p {
+            font-size: 14px;
+            text-align: center;
+            line-height: 2;
+            color: #333;
+        }
+        .hjzf_pro_12_wrapper_bottom{
+            display: none;
+        }
+        .hjzf_pro_12_wrapper_bottom li{
+            transition: all .5s .3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .hjzf_pro_12_wrapper_bottom.on li{
+            transform: translateY(0px);
+            opacity: 1;
+        }
+        .hjzf_pro_12_wrapper_box{
+            transition: all .5s;
+        }
+        .hjzf_pro_12_wrapper_box:hover{
+            box-shadow: 0 0 10px 3px rgba(100,100,100,.1);
+        }
+        @media(max-width: 768px) {
+        .hjzf_pro_12_wrapper_top_l{
+            margin-bottom: 30px;
+        }
+        .hjzf_pro_12_wrapper_top .hjzf_pro_12_wrapper_right {
+            display: none;
+        }
+        .hjzf_pro_12_wrapper_bottom{
+            display: block;
+        }
+        .hjzf_pro_12_wrapper_bottom li{
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hjzf_pro_12_wrapper_left h3, .hjzf_pro_12_wrapper_left p{
+            margin: 10px auto;
+        }
+        .hjzf_pro_12_wrapper_left{
+            padding: 10px;
+        }
+       }
+    </style>
+
+    <div class="HJZF_Z__wrapper inner_4__innerwrapper" id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z//inner/banner_product.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/products_bread.html" />
+        <div class="hjzf_pro_12_bg">
+            <div class="container">
+                <div class="row">
+                    <php>
+                        $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                    </php>
+                    <volist empty="$no_empty" name="allclass" id="allclass_left" offset="0" key="k">
+                        <div class="hjzf_pro_12_wrapper clearfix">
+                            <div class="hjzf_pro_12_wrapper_top">
+                                <!-- left -->
+                                <div class="col-lg-6 col-xs-12 hjzf_pro_12_wrapper_top_l">
+                                    <div class="hjzf_pro_12_wrapper_left">
+                                        {$allclass_left['class_name']}
+                                        <p>{$allclass_left['readme']}</p>
+                                        <span class="index_btn">{:__('Read More')}</span>
+                                    </div>
+                                </div>
+                                <!-- right -->
+                                <php>
+                                    $hotPro = get_hot_products_category($allclass_left['pcid'],2);
+                                    if(is_null($hotPro)){
+                                    $hotPro = get_index_products_category($allclass_left['pcid'],2);
+                                    }
+                                    $allPro = get_product_byclass_index($allclass_left['pcid']);
+                                </php>
+                                <volist empty="" name="hotPro" id="hotproa" offset="0" length="2">
+                                    <div class="col-lg-3 col-xs-6 hjzf_pro_12_wrapper_right">
+                                        <div class="hjzf_pro_12_wrapper_box">
+                                            <a
+                                                href="{:U('/Product','','')}/{:getproname($hotproa['pid'])}">
+                                                <img src="{:getmainimgurl($hotproa['main_img'])}"
+                                                    alt="{$hotproa[pro_name]}" class="img-fluid">
+                                                <p>{$hotproa[pro_name]}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </volist>
+                            </div>
+                            <ul class="hjzf_pro_12_wrapper_bottom">
+                                
+                                <volist empty="" name="allPro" id="allProa">
+                                    <li class="col-xs-6 col-lg-3">
+                                        <div class="hjzf_pro_12_wrapper_box">
+                                            <a
+                                                href="{:U('/Product','','')}/{:getproname($allProa['pid'])}">
+                                                <img src="{:getmainimgurl($allProa['main_img'])}"
+                                                    alt="{$allProa[pro_name]}" class="img-fluid">
+                                                <p>{$allProa[pro_name]}</p>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </volist>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</block>
+<block name="footer_js">
+    <script>
+        require(['jquery'], function ($) {
+            $('.hjzf_pro_12_wrapper_left span').click(function () {
+                $(this).parents('.hjzf_pro_12_wrapper_top').siblings('.hjzf_pro_12_wrapper_bottom').slideToggle(500).toggleClass('on');
+                $(this).parents('.hjzf_pro_12_wrapper_top').siblings('.hjzf_pro_12_wrapper_bottom').find('li').each(function (i) {
+                    $(this).css({
+                        'transition-delay': i * .1 + .3 + 's'
+                    })
+                })
+            });
+
+        })
+
+
+    </script>
+</block>

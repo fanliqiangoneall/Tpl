@@ -1,0 +1,189 @@
+<!--{$pagename}-->
+<if condition="has_mould('bottom') eq false">
+    <style>
+        .index_bottom_footer{ display:none}
+    </style>
+    <else/>
+    <link href="__TMPL__demo2/css/bottom.css" rel="stylesheet">
+</if>
+<style>
+.index_bottom_footer {
+    width: 100%;
+    clear: both;
+    margin: auto;
+    min-width: 1190px;
+    max-width: 1920px !important;
+    background: url({:getindeximgurl($data13[1])}) center center no-repeat !important;
+    min-height: 305px;
+}
+</style>
+
+
+<div class="index_bottom_footer">
+ <div style="width: 1190px;min-height: 260px;margin: 0 auto">
+   <div class="index_bottom_nav">
+      <volist name="web_navigation" id="vo" offset="0" length='9' key="key">
+            <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+          </volist>
+       <div style="clear:both"></div>
+   </div>
+   
+ <!--  <div class="" style=" height:1px; width:100%; background:#D7D5D5"></div>-->
+   
+ <div class="index_bottom_left">
+   <div class="index_bottom_left_d">
+     <if condition="$about['contact']">
+         <li>Manager: {$about['contact']}</li>
+     </if>
+     <if condition="chaifen($about['phone'],0)">
+         <li>
+           Tel: {:chaifen($about['phone'],0)}
+         </li>
+  	 </if>
+     
+     
+       <if condition="chaifen($about['mobile'],0)">
+           <li>
+               Mobile: {:chaifen($about['mobile'],0)}
+           </li>
+       </if>
+             <if condition="C('webid') eq 1107">
+       		<li><span>Fax:{$about['fax']}</span></li>
+       </if> 
+       
+	<if condition="chaifen($about['email'],0)">     
+     <li>
+       Email: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);gtag_report_conversion_email();" style="color:#fff">{:chaifen($about['email'],0)}</a><if condition="chaifen($about['email'],1)">&nbsp;&nbsp;<a href="mailto:{:chaifen($about[email],1)}" onclick="turn_sta(3,4);gtag_report_conversion_email();" style="color:#fff">{:chaifen($about['email'],1)}</a>  </if>
+     </li>
+     </if>
+
+     <if condition="$about['company_name']"> 
+         <li>
+           <span <if condition="$data13[4]">style="display:none" <else/> style="in-block"</if> >Company Name: </span>{$about['company_name']}
+         </li>
+         <div class="clear"></div>
+     </if>
+     <if condition="$about['address']"> 
+     <li>
+      <if condition="$data13[5]">{$data13[5]}: <else/>Add: </if>{$about['address']}
+     </li>
+     </if>
+       <if condition="$data13[3]">
+           <li>
+               <if condition="$data13[6]">{$data13[6]}: <else/>Add: </if>{$data13[3]}
+           </li>
+       </if>
+       
+
+       
+   </div>
+ </div>
+ 
+ 
+ 
+ <div class="index_bottom_right" style="width:150px;">
+ <if condition="$data13[0]">
+    <div style="padding: 0px;padding-bottom: 10px">
+      <span style="width: 150px;float: right;height: 150px;"><img src="{:getindeximgurl($data13[0])}" style="width: 150px;"></span>
+      <div style="clear: both;"></div>
+    </div>
+ </if>   
+        <!--[if gt IE 8]>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <span style="float: left;font-size: 14px;color: #fff">Share:</span>
+  <div class=""  style="float:left;">
+  	<div class="addthis_sharing_toolbox"></div>
+  </div>
+  <script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-573a7b508824f77c"></script>
+  <![endif]-->
+ </div>
+ 
+ 
+   <div style="clear: both;height: 20px;width: 100%"></div>
+   <!-- <div class="" style=" height:1px; width:100%; background:#D7D5D5"></div>-->
+   <div class="index_bottom_bottom2">
+    <div style="width: 1190px;margin: 0 auto;line-height: 46px;color: #fff">
+       <php>
+            $nowtime=date("Y",time());
+            if(!$data13[2]){
+            $currtime=2018;
+            }else{
+            $currtime=$data13[2];
+           	}
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>             
+             &nbsp; {$about['company_name']} All Rights Reserved.&nbsp;&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;<span style="float: right;"><a href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;&nbsp;&nbsp;<if condition="$data13[7]"><else/>Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>&nbsp;&nbsp;&nbsp;</if></span>
+  {:htmlspecialchars_decode(get_google())}</div>
+    </div>
+  </div>
+</div>
+
+ <if condition="$friend_link neq ''">
+        <div class="friendlink" style="margin-top: 0px;">
+            <div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">FriendLink:&nbsp;</span>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; text-align:center;color: #fff;line-height: 20px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                    </if>
+                </volist>
+                <!--<div style="clear:both"></div>-->
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </if>
+
+
+ <script type="text/javascript">
+   function CheckForm(theForm)
+  {
+    if (theForm.keywords.value=="Search")
+    {
+      alert('Please enter the keywords');
+      theForm.keywords.focus();
+      return false;
+    }
+    
+    return true; 
+  }
+  function OnFocusFun(element,elementvalue)
+    {
+      if(element.value==elementvalue)
+      {
+        element.value="";
+        element.style.color="#888888";
+      }
+    }
+    //离开输入框时触发事件
+    function OnBlurFun(element,elementvalue)
+    {
+      if(element.value==""||element.value.replace(/\s/g,"")=="")
+      {
+        element.value=elementvalue;    
+        element.style.color="#888888";
+      }
+    }
+jQuery('#index_navigation_animate').removeClass().addClass('fadeInLeft');
+jQuery(".index_navigation_page_Menu ul li").each(function() {
+  jQuery(this).mouseenter(function(){
+       var a=jQuery(".index_navigation_page_Menu ul li").index(jQuery(this));
+       var num=a+1;
+       if(num==5){
+         }
+       else{
+       jQuery(".index_navigation_page_Menu ul li b:eq("+a+")").show();
+       jQuery("#frn_l_"+num).show();
+       }
+     }).mouseleave(function(){
+        var a=jQuery(".index_navigation_page_Menu ul li").index(jQuery(this));
+        var num=a+1;
+        jQuery(".index_navigation_page_Menu ul li b:eq("+a+")").hide();
+        jQuery("#frn_l_"+num).hide();
+       })
+  });
+ </script>
+<script type="text/javascript">
+jQuery('#index_bottom_animate').removeClass().addClass('fadeInDown');
+jQuery('#index_bottom_animate_1').removeClass().addClass('fadeInLeft');
+jQuery('#index_bottom_animate_2').removeClass().addClass('fadeInRight');
+</script>

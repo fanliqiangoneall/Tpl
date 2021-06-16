@@ -1,0 +1,58 @@
+<extend name="Wap2:base" />
+<block name="content">
+    <style>
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+        .web404{ padding:10px;}
+        .web404 img{ width:100%;}
+        .web404__Breadcrumbs, .web404__Breadcrumbs a{ text-decoration:none; color:#3d3d3d; font-size:14px;}
+        .jump a,.jump{color: #333;}
+    </style>
+    <div class="web404">
+
+        <div class="web404__Breadcrumbs">
+            <div class="web404__Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span class="current">{:__('Feedback')}</span>
+            </div>
+        </div>
+
+            <table width="100%" border="1" align="center" cellpadding="3" cellspacing="0" style="margin: 50px auto">
+                <tr>
+                    <th align="center" bgcolor="#cccccc">{:__('Message')}</th>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <br />
+                        <present name="message" style=" text-align:center;">
+                            {$message}<br />
+                        </present>
+                        <present name="error" style=" text-align:center;">
+                            {$error}<br />
+                        </present>
+                        <p class="detail"></p>
+                        <p class="jump" style=" text-align:center;">
+                            <if condition="C('language') eq 'cn'">
+                                <a id="href" href="<?php echo($jumpUrl); ?>">单击以返回上一页</a> 等待时间 <b id="wait">5</b> 秒
+                                <else/>
+                                <a id="href" href="<?php echo($jumpUrl); ?>">Click to return to the previous page</a> Please waite <b id="wait">5</b> seconds
+                            </if>
+                        </p><br /></td>
+                </tr>
+            </table>
+        <script type="text/javascript">
+            (function(){
+                var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+                var interval = setInterval(function(){
+                    var time = --wait.innerHTML;
+                    if(time <= 0) {
+                        location.href = href;
+                        clearInterval(interval);
+                    };
+                }, 1000);
+            })();
+        </script>
+        {:htmlspecialchars_decode(get_inquiry_code())}
+
+    </div>
+</block>

@@ -1,0 +1,35 @@
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+    <h5 class="main-cases-detail-title">Related Products</h5>
+    <div style="margin-top:15px;">
+        <div class="page_Main">
+            <volist empty="" name="labelprodlist" id="labelprodlist" offset="0" length="3" key="k">
+                <div class="main_proitem">
+                    <div class="main_proitem_box">
+                        <div class="main_proitem_img">
+                            <if condition="$labelprodlist['main_img'] neq ''">
+                                <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a>
+                                <else/>
+                                <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getindeximgurl($data47[1])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a>
+                            </if>
+                        </div>
+                        <div class="main_proitem_second">
+                            <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                                <div class="main_proitem_name margin-10px-bottom"><h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],60)}</h6></div>
+                                <div class="main_proitem_desc">{:subtxt($labelprodlist['pro_description'],80)}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <if condition="($k)%3 eq 0">
+                    <div style="clear:both; overflow:hidden; height:24px;"></div>
+                    <else/>
+                    <div style="width:8px; height:10px; background:none; float:left;"></div>
+                </if>
+            </volist>
+        </div>
+    <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
+</if>

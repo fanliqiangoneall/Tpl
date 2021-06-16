@@ -1,0 +1,263 @@
+<!--{$pagename}-->
+<php>
+    if($data495[1]){
+    $mobile_bg = $data495[1];
+    }else{
+    $mobile_bg = 'fff';
+    }
+    if($data495[2]){
+    $mobile_navbtn = $data495[2];
+    }else{
+    $mobile_navbtn = '333';
+    }
+    if($data495[3]){
+    $img_url = $data495[3];
+    }else{
+    $img_url = '';
+    }
+    if($data495[14]){
+    $num = $data495[14];
+    }else{
+    $num = '6';
+    }
+    $searchurl = 'mobile_search';
+	if($data495[17]){
+    $menu_gd = $data495[17];
+    }
+	if($data495[0]){
+		$color = $data495[0];
+	}
+	if($data495[19]){
+		$logo_img = $data495[19];
+	}
+
+	if($data495[15]){
+		$mobile_link  = $data495[15];
+	}
+	
+	$proId = get_list_val($data495[15]);
+
+</php>
+<style>
+	<if condition="$data495[20]">
+		.haader_hj23_bottom{
+			background: #{$data495[20]} !important;
+		}
+	</if>
+	<if condition="$data495[21]">
+		.haader_hj23_bottom_nav > .nav > li > a h3{
+			color: #{$data495[21]};
+		}
+	</if>
+    .haader_hj23_bottom_nav .nav > li:hover > a h3 ,
+    .header_hj23_bottom_nav_drop li .header_hj23_bottom_nav_drop_img a:hover .haader_hj23_bottom_drap_wrapper_title h3,
+    .header_hj23_bottom_nav_drop li span a:hover h3,
+	.header_hj23_bottom_nav_drop li a:hover h3{
+        color: #{$color};
+    }
+	.haader_hj23_bottom_drap_wrapper_title h3{
+		color:#{$data495[0]} !important;
+	}
+    .head_hj22_nav .menu ul li:hover h2 {
+        border-bottom: 1px solid #{$color};
+    }
+    .head_hj23_search_form form button {
+        background-color: #{$color};
+    }
+    .haader_hj23_bottom_nav li h3 {
+        font-weight: bold;
+    }
+	
+</style>
+<!--mobile nav content-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/index_page/_mobile.css">
+<script src="__TMPL__HJZF2_Z/index_page/_mobile.js"></script>
+<Include file="./Tpl/HJZF2_Z/index_page/_mobile.html" />
+
+<php>
+    if($data495[4]){
+    $top_bg = $data495[4];
+    }else{
+    $top_bg = $color;
+    }
+    $list = get_list_val($data495[5]);
+</php>
+<php>
+    $language = HtmlEncode($data495[16]);
+    $language_arr = explode("<br>",$language);
+    foreach($language_arr as $key=>$v){
+        $lang_list[$key]['name'] = explode('：',$v)[0];
+        $lang_list[$key]['src'] = explode('：',$v)[1];
+    }
+</php>
+<script>    
+    var lan_str = "<?php echo $language;?>";
+</script>
+<style>
+    .hader_hj23_top {
+        background-color: #{$top_bg};
+    }
+
+    .hader_hj23_mid {
+        background-color: #{fff};
+    }
+</style>
+<header class="nav-hidden-mobile">
+    <if condition="$data495[5]">
+        <div class="hader_hj23_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 bd">                       
+                        <div class="swiper-container" id="case4">
+                            <div class="swiper-wrapper">
+                                <volist name="list" id="li" offset="0" key="k">
+                                    <div class="swiper-slide"><img src="{:getindeximgurl($data495[6])}" style="margin-right:5px;"><a <if condition="$li[link]">href="{$li[link]}"</if> title="{$li[title]}"><span>{$li['title']}</span></a></div>
+                                </volist>                               
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </if>
+    <!-- 中间部分 -->
+    <div class="hader_hj23_mid">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 d-flex justify-content-between">
+                    <div class="header_hj23_email">
+                        <a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(3,1)">
+                            <if condition="$data495[7]">
+                                <img src="{:getindeximgurl($data495[7])}" />
+                                <else />
+                                <img src="__TMPL__HJZF2_Z/img/email_white.png" width="30" />
+                            </if>
+                            {:chaifen($about['email'],0)}
+                        </a>
+                    </div>
+                    <div class="header_hj23_nav flex">
+                        <ul class="nav menu d-flex justify-between">
+                            <volist name="web_navigation" id="vo" offset="0" key="key">
+                                <li id="menu{$vo['id']}" class="nav_li" data-url="{$vo['url']}">
+                                    <a href="{$vo['url']}" <if
+                                        condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">
+                                        onclick="turn_sta(2,1)"
+                                        <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'" />
+                                        class="nav_pro" </if> ><span>{$vo['title']}</span></a>
+                                </li>
+                            </volist>
+                            <if condition="$data495[10]">
+                            <div class="d-flex justify-between lang_qh">
+                                <if condition="$data495[8]">
+                                    <img src="{:getindeximgurl($data495[8])}" />
+                                </if>
+                                <a href="{$data495[9]}" target="_blank">{$data495[10]}</a>
+                            </div>
+                            </if>
+                        </ul>
+						<if condition="$data495[16]">
+                        <div class="head_langauge">
+                            <i class="fa fa-language"></i><span>{:__('Language')}</span>
+                            <ul id="lang_ul" class="language_ul">
+                                <volist name="lang_list" id="vo" offset="0" key="key">
+                                    <li class="{$vo['name']}" data-count="{$vo['name']}"><a href="{$vo['src']}">{$vo['name']}</a></li>
+                                </volist>
+                            </ul>
+                        </div>
+						</if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="haader_hj23_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 d-flex justify-between flex-nowrap">
+                    <div class="logo">
+                        <a href="{:U('/')}">{$logo}</a>
+                    </div>
+                    <div class="haader_hj23_bottom_nav flex-auto d-flex flex-nowrap align-center">
+                        <ul class="nav menu d-flex justify-between align-center flex-auto flex-nowrap">
+                            <volist empty="" name="allclass" id="allclass_head" offset="0" length="$num" key="kay">
+                                <li data-id="{$allclass_head['pcid']}" class="d-flex flex-nowrap">
+									<if condition="$data495[15]">
+                                        <a href="{$proId[$key][link]}" class="d-flex 15">
+									<else/>
+									<a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}" class="d-flex cate">
+									</if>
+                                    <span>{$allclass_head['class_name']}</span>
+                                    <!-- <if condition="$allclass_head['childs'] neq ''">
+                                        <i class="fa fa-angle-down"></i>
+                                    </if> -->
+									</a>
+                                    <if condition="$allclass_head['childs'] neq ''">
+                                        <ul class="header_hj23_bottom_nav_drop">
+                                            <li>
+                                                <div class="header_hj23_bottom_nav_drop_img">
+													<if condition="$allclass_head['fid']">
+                                                    <img src="{:getmainimgurl($allclass_head['fid'])}"
+                                                    alt="{$allclass_head['class_name']}" class="img-responsive">
+													</if>
+                                                    <div class="haader_hj23_bottom_drap_wrapper_title">
+                                                        {$allclass_head['class_name']}</div>
+                                                </div>
+                                                <span>
+                                                    <volist empty="" name="allclass_head['childs']"
+                                                        id="allclass_headb">
+                                                        <a
+                                                            href="{:U('/product_category','','')}/{:getprocatename($allclass_headb['pcid'])}">{$allclass_headb['class_name']}</a>
+                                                    </volist>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </if>
+                                </li>
+                            </volist>
+
+                        </ul>
+                        <div class="head_hj23_search">
+                            <span>
+								<if condition="$data495[18]">
+									<img src="{:getindeximgurl($data495[18])}" alt="" width="30">
+									<else/>
+                                <img src="__TMPL__HJZF2_Z/img/mobile_search.svg" width="30" />
+								</if>
+                            </span>
+
+                            <!-- search -->
+                            <div class="head_hj23_search_form">
+                                <if condition="C('language') eq 'cn'">
+                                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)"
+                                        ID="searchALL" class="head_hj06_search">
+                                        <input type="text" value="{:__('Product Search')}" name="keywords" id="keyword"
+                                            onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)"
+                                            onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)">
+                                        <button type="submit" id="search-submit"><img
+                                                src="__TMPL__HJZF2_Z/img/mobile_search1.svg" width="30" /></button>
+                                    </form>
+                                    <else />
+                                    <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)"
+                                        ID="searchALL" class="head_hj06_search">
+                                        <input type="text" value="keyword" name="keywords" id="keyword"
+                                            onfocus="OnFocusFun(this,&#39;keyword&#39;)"
+                                            onblur="OnBlurFun(this,&#39;keyword&#39;)">
+                                        <button type="submit" id="search-submit"><img
+                                                src="__TMPL__HJZF2_Z/img/mobile_search1.svg" width="30" /></button>
+                                    </form>
+                                </if>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</header>

@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<php>
+    if($data329[1]){ $service_19_bg = $data329[1];}    
+    if($data329[0]){
+        $service_19_bgimg=getindeximgurl($data329[0]);
+    }
+    $arr3 = get_list_val($data329[3]);
+    
+</php> 
+<style>
+    .service-19{
+        background: url({$service_19_bgimg}) no-repeat center;
+    }
+    .service-19{
+        background: #{$service_19_bg};
+    }
+
+    .service-19_tabs li.active{
+        background: #{$data329[4]};color:#fff
+    }
+    .service-19_itemlist ul li div.right .content a:hover{
+        color: #{$data329[4]};
+    }
+</style>
+<section class="service-19">    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="service-19_maintitle index_title pb20">{$data329[2]}</div>
+                <div class="service-19_tabs">
+                    <volist name="arr3" id="item">
+                        <if condition="$key eq 0">
+                            <li class="index_text active">{$item['title']}</li>   
+                            <else/>    
+                            <li class="index_text">{$item['title']}</li>   
+                        </if>
+                          
+                    </volist>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="service-19_itemlist">
+        <ul>
+            <volist name="arr3" id="item">                           
+                <li <if condition="$key eq 0">class="active"</if>>
+                    <div class="service-19_item">
+                        <div class="left" style="background: url('{$item['image']}') no-repeat center/cover;">
+                        
+                        </div>
+                        <div class="right">
+                            <div class="content">
+                                <div class="service-19_itemName index_sub_title pb20">{$item['title']}</div>
+                                <p class="index_text ellipsis_four">{$item['content']}</p>
+                                <a href="{$item['src']}" class="index_text">{:__('Read More')}</a>
+                            </div>
+                            
+                        </div>  
+                    </div>
+                        
+                </li>
+            </volist>
+        </ul>                    
+    </div>
+</section>

@@ -1,0 +1,135 @@
+<style>
+.InsidePages_list.inner9__leftlist li.yijion,.InsidePages_list.inner9__leftlist li:hover{ 
+	background:#{$color};
+}
+.InsidePages_list.inner9__leftlist li.yijion>a>h3,.InsidePages_list.inner9__leftlist li:hover>a>h3{
+	color:#fff;
+}
+</style>
+<if condition="$intro_class['classid'] eq '10116'">
+	<style>
+		.InsidePages_content2{
+			display: none;
+		}
+	</style>
+</if>
+<if condition="$intro_class['classid'] eq '9893' or $intro_class['classid'] eq '9976' or $intro_class['classid'] eq '9977' or $intro_class['classid'] eq '9978' or $intro_class['classid'] eq '10116'">
+	<style>
+		.HJZF_Z__inner9--leftcate:after{
+			display: none;
+		}
+		.InsidePages_list.inner9__leftlist li.yijion{
+			background: transparent;
+			padding: 20px;
+		}
+		.InsidePages_list.inner9__leftlist li:hover{
+			background: transparent;
+		}
+		.InsidePages_list.inner9__leftlist {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.InsidePages_list.inner9__leftlist li{
+			flex: 0 0 25%;
+			width: 25%;
+			padding: 20px;
+		}
+		.InsidePages_list.inner9__leftlist li a{
+			display: block;
+			padding: 20px;
+			width: 100%;
+			border: 2px solid #ccc;
+			transition: all .5s;
+		}
+		.InsidePages_list.inner9__leftlist li .index_sub_title h3{
+			font-size: 18px;
+			color: #333;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			transition: all .5s;
+		}
+		.InsidePages_list.inner9__leftlist li p{
+			min-height: 63px;
+		}
+		.InsidePages_list.inner9__leftlist li em h3{
+			font-style: normal;
+			font-size: 14px;
+			width: 155px;
+			line-height: 35px;
+			margin: 0 auto;
+			margin-top: 20px;
+			border: 1px solid #{$color};
+			color: #{$color};
+		}
+		.InsidePages_list.inner9__leftlist li:hover a,.InsidePages_list.inner9__leftlist li.yijion a{
+			border-color: #{$color};
+		}
+		.InsidePages_list.inner9__leftlist li:hover .index_sub_title h3,.InsidePages_list.inner9__leftlist li.yijion .index_sub_title h3{
+			color: #{$color};
+		}
+		@media(max-width: 767px) {
+			.sannuo_fuwu{
+				padding: 0 15px;
+			}
+			.InsidePages_list.inner9__leftlist li{
+				padding: 0 !important;
+				margin-bottom: 20px;
+			}
+		}
+	</style>
+</if>
+<if condition="$intro_class['classid'] eq '10116'">
+	<p style="text-align: center;">
+		<span style="font-size: 30px;">服务承诺</span>
+	</p>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row sannuo_fuwu">
+			<div class="col-xs-4" style="text-align: center;">
+				<img src="/uploadfiles/103.120.83.63/webid1756/uploadimage/202104/961617936687217.png" title="961617936687217.png" _src="/uploadfiles/103.120.83.63/webid1756/uploadimage/202104/961617936687217.png" class="img-fluid" alt="服务_03.png"/><br/>
+				<p>
+					给予维保咨询答复 30min
+				</p>
+			</div>
+			<div class="col-xs-4" style="text-align: center;">
+				<img src="/uploadfiles/103.120.83.63/webid1756/uploadimage/202104/7041618820134443.png" title="7041618820134443.png" _src="/uploadfiles/103.120.83.63/webid1756/uploadimage/202104/7041618820134443.png" class="img-fluid" alt="服务_05.png"/><br/>
+				<p>
+					12个月内免费维修
+				</p>
+			</div>
+			<div class="col-xs-4" style="text-align: center;">
+				<img src="/uploadfiles/103.120.83.63/webid1756/uploadimage/202104/3741618820142164.png" title="3741618820142164.png" _src="/uploadfiles/103.120.83.63/webid1756/uploadimage/202104/3741618820142164.png" class="img-fluid" alt="服务_07.png"/><br/>
+				<p>
+					24小时热线待命
+				</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+</if>
+
+
+<div class="InsidePages-left_content col-xs-12 hidden-xs hidden-sm hidden-md" data="{:dump($intro_class['classid'])}">
+    <ul class="InsidePages_list inner9__leftlist">  
+        <volist empty="" name="navrs" id="nav">      
+			<if condition="$intro_class['classid'] eq '9893' or $intro_class['classid'] eq '9976' or $intro_class['classid'] eq '9977' or $intro_class['classid'] eq '9978' or $intro_class['classid'] eq '10116'">
+				
+			    <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if>>
+				<a href="{$nav['url']}">
+					<img src="{:getmainimgurl($nav['nav_img'])}" alt="{$nav['title']}">
+					<div class="index_sub_title">
+						{$nav['title']}
+					</div>
+					<p>{$nav['nav_desc']}</p>
+					<em>{$nav['title']}</em>
+				</a>
+			</li>
+			<else/>
+            <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" <if condition="$nav[id] eq '21083'"> target="_blank" </if>>{$nav['title']}</a></li>
+			</if>
+        </volist>
+    </ul>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,118 @@
+<!--{$pagename}-->
+<style>
+    #aboutus2{width: 100%;min-width: 1190px;max-width: 1920px;height: 556px;padding-top: 90px;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;}
+    #aboutus2 .ab_cont{height: 405px;width: 1190px;margin: auto;}
+    .ab_pic{width: 614px;height: 368px;position: relative;top: -30px;left: 24px;float: left;}
+    .ab_text2{width: 490px;float: right;padding-top: 40px;position: relative;height: 365px;}
+    .ab_text2 p{font-size: 26px;line-height: 35px;color: #fff;font-family: Arial;margin-bottom: 25px;}
+    .ab_text2 div.abus_text{font-size: 15px;line-height: 25px;color: #fff;font-family: Arial;padding-right: 40px;}
+    #ab_picbox{width: 614px;height: 368px;}
+    .page_indexpic{float: left;	overflow: hidden;width: 614px;height: 368px;}
+    .page_indexpic ul {width: 1842px;height: auto;}
+    .page_indexpic ul li {list-style: none;float: left;background: #fff;text-align: center;width: 614px;height: 368px;}
+    .page_indexpic ul li img{width: 100%;height: 100%;}
+
+    #tip{position: absolute; height: 10px; width: auto; z-index: 2; bottom: -34px;right: 50%;transform: translateX(50%);-webkit-transform:translateX(50%);-moz-transform: translateX(50%); }
+    #tip ul li{cursor: pointer; float: left; border: 1px solid #fff; width: 10px; height: 10px; border-radius: 50%; background: transparent; margin-right: 10px;}
+    #tip ul li.current{
+        background: #fff;
+    }
+    #aboutus2{
+        background: url({:getindeximgurl($data41[1])}) no-repeat center;
+    }
+    #aboutus2 .ab_cont{
+        background: url({:getindeximgurl($data41[2])}) no-repeat center;
+
+    }
+
+
+
+
+
+
+
+
+    .abus_more{
+        width: 130px;height: 40px;text-align: center;line-height: 40px;background-color: rgba(0,0,0,0.5);position: absolute;bottom: 0;right: 34px;
+    }
+    .abus_more a{font-size: 16px;color: #ffffff;font-family: Arial;font-weight: normal;}
+    .abus_more a:hover { text-decoration:underline;}
+
+
+
+</style>
+
+
+
+<!--about us start-->
+<div id="aboutus2">
+    <div class="ab_cont">
+
+
+        <div class="ab_text2">
+            <p>{$data41[0]}</p>
+            <div class="abus_text">
+                {:HtmlEncode(subtxt($company_info['description'],400))}
+            </div>
+            <div class="abus_more"><a href="{:U('/aboutus')}" onfocus="blue()">Read More </a></div><img src="__TMPL__WH01/img/abus2_more.jpg" alt="" style="position: absolute;bottom: 0;right: 0"/>
+            <div class="clear"></div>
+        </div>
+
+        <div class="ab_pic">
+            <div id="ab_picbox" >
+                    <div id="pic" class="page_indexpic">
+                            <ul>
+                                <php>
+                                    $imgs=aboutusimg();
+                                    if(!$data4[5]){
+                                    $data4[5]=3;
+                                    }
+                                </php>
+                                <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[5]">
+                                    <if condition="$banerimg['imgurl'] neq ''">
+                                    <li ><a href="javascript:void(0);" <if condition="$data4[4]">id="adv_video{$k1}"</if>    ><img src="{$banerimg['imgurl']}" border="0" /></a></li>
+                                    </if>
+                                </volist>
+                            </ul>
+
+                    </div>
+
+                    <div id="tip">
+                        <ul>
+                            <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[5]">
+                                <if condition="$banerimg['imgurl'] neq ''">
+                               <li id="smallimg_{$k1}" onMouseOver="change({$k1})"></li>
+                                </if>
+                            </volist>
+                        </ul>
+
+                    </div>
+
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        if($("#tip ul li").length==1){
+            $("#tip").hide();
+        }
+    })
+
+
+    $('#adv_video1').on('click', function(){
+        layer.open({
+            type: 2,
+            title: ['Video', 'font-size:18px;'],
+            area: ['80%', '80%'],
+            shadeClose: true, //µã»÷ÕÚÕÖ¹Ø±Õ
+            maxmin: true,
+            //content: '__TMPL__ZERO/video/a/demo.htm'
+            content: '{$data4[4]}'
+        });
+    });
+</script>
+<!--about us end-->

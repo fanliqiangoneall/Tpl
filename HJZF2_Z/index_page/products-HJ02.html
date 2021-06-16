@@ -1,0 +1,62 @@
+<!--{$pagename}-->
+<if condition="$data85[0]">
+    <style>
+        .products-HJ02{
+            background: url({:getindeximgurl($data85[0])}) no-repeat center / cover;
+        }
+        
+    </style>
+</if>
+<style>
+    .products-HJ02--itemName a:hover {
+        color: #{$color};
+    }
+</style>
+<php>
+    if($data85[3]){
+        $len = $data85[3];
+    }else{
+        $len =16;
+    }
+</php> 
+<section class="products-HJ02 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="products-HJ02__title pb20"><h3 class="index_title">{$data85[2]}</h3><a href="{:U('/product')}" class="index_text">{:__('Read More')}</a><div class="clear"></div></div>
+            </div>
+            <if condition="$data85[4]">
+                <div class="clearfix"></div>
+                <div class="products-HJ02__content swiper-container products_hj02_swiper">
+                    <div class="products-HJ02__list swiper-wrapper">
+            <else/>
+            <div class="products-HJ02__content">
+                <div class="products-HJ02__list">
+            </if>
+                    <volist empty="" name="indexpro" id="indexpro" key="k" offset="0" length="$len">
+            <if condition="$data85[4]">
+                <div class="swiper-slide">
+            <else/>
+                        <div class="col-xs-6 col-md-3 col-lg-3">
+                            </if>
+                            <div class="products-HJ02--item">
+                                <div class="img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                <div class="products-HJ02--itemName ellipsis_two"><a class="index_text" href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                <div class="products-HJ02--itemClass ellipsis_two"><a class="index_text" href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{:get_index_products_categoryname($indexpro['class_id'])['class_name']}</a></div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <if condition="$data85[4]">
+                    <div class="products_hj02_swiper_navgination">
+                        <div class="swiper-button-prev swiper-button-white products_hj02_swiper_prev"></div>
+                        <div class="swiper-button-next swiper-button-white products_hj02_swiper_next"></div>
+                    </div>
+                </if>
+            </div>
+         
+
+        </div>
+
+    </div>
+</section>

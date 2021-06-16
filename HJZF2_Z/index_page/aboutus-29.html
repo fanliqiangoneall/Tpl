@@ -1,0 +1,51 @@
+<!--{$pagename}-->
+<php>
+	if($data547[0]){
+	$color = $data547[0];
+	};
+	$arr = get_list_val($data547[2]);
+
+</php>
+<style>
+	<if condition="$data547[1]">.hjzf_z_aboutus29 {
+		background-image: url({:getindeximgurl($data547[1])});
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	}
+	</if>
+	.hjzf_z_aboutus29_right {
+		background-repeat: no-repeat;
+		background-position: center;
+		background-image: url({:getindeximgurl($data547[3])});
+	}
+ 	.hjzf_z_aboutus29_right a {
+		background: url('/Tpl/HJZF2_Z/img/ruiyi/nav_bg.png') no-repeat center;
+	}
+</style>
+<section class="hjzf_z_aboutus29 swiper-container">
+	<div class="swiper-wrapper">
+		<volist name="arr" id="a">
+			<div class="swiper-slide hjzf_z_aboutus29_con">
+				<div class="hjzf_z_aboutus29_left" style="background: url('{$a[img]}') no-repeat center/cover;">
+					<!-- <img src="{$a[img]}" class="img-fluid"> -->
+				</div>
+				<div class="hjzf_z_aboutus29_right">
+					<div class="hjzf_z_aboutus29_title">
+						<div class="index_title">
+							{$a[title]}
+						</div>
+						<div class="index_text">
+							{$a[sub]}
+						</div>
+					</div>
+					<div class="mb-40">
+						{$a[info]}
+					</div>
+					<a href="{$data547[4]}" class="index_btn">{:__('Read More')}</a>
+				</div>
+			</div>
+		</volist>
+	</div>
+	<div class="hjzf_z_aboutus29_leftpagination swiper-pagination"></div>
+</section>

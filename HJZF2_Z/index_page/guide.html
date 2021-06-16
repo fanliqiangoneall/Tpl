@@ -1,0 +1,27 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_guid .overlay{
+        background-color: #{$data405[0]};
+    }
+    .hjzf_guid .preloader{
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf_guid">
+    <div class="loader-wrap">
+        <div class="preloader">
+            <div class="preloader-close">{:__('Loading')}</div>
+        </div>
+        <if condition="$data405[1]">
+        <div class="preloader-center">
+            <img src="{:getindeximgurl($data405[1])}" alt="{:__('Loading')}">
+            <span>
+                {:__('Loading')}
+            </span>
+        </div>
+        </if>
+        <div class="layer"><span class="overlay"></span></div>
+        <div class="layer"><span class="overlay"></span></div>
+        <div class="layer"><span class="overlay"></span></div>
+    </div>
+</section>

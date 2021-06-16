@@ -1,0 +1,429 @@
+<!--使用方法如下，把下列属性写入dom-->
+<!--<div class="add_shop_car_btn" pid="{$pro['pid']}" pro_img="{:getmainimgurl($pro['main_img'])}" pro_name="{$pro['pro_name']}">                  
+</div>-->
+<style>
+/*购物车*/
+.shop_info_info_one_num{
+	color:#{$color};
+}
+.alert_row{ display:flex;}
+.alert_input{ flex:0 0 50%;padding-left: 15px;margin: 3px; color:rgba(249,3,7,1.00)}
+.input_car_num{ display:inline-block; border:0px; background:none; cursor:pointer; max-width:80%}
+.shop_input_row{ display:flex;  flex-wrap:wrap;}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+  ::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滚动条轨道 内阴影+圆角*/
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滑块 内阴影+圆角*/
+  ::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    background-color: #c8c8c8;
+  }
+.shop_info_tool{ max-height:70vh; overflow:auto; display:none; position:relative;}
+.shop_input_email_row{ padding-right:10px;}
+.shop_input_email{ width: 100%;}
+.shop_from{ margin:30px 0 20px 0;}
+.shop_input{ background:#f4f4f4; height:32px; outline:none; padding-left:15px; border-radius:5px; border:0px; margin:3px;}
+.clear_car_row{ display:flex; justify-content:flex-end; align-items:center; margin-top:20px; margin-bottom:30px;}
+.clear_car{ width:100px; height:45px; color:#fff; background:#2fa46c; align-items:center; line-height:45px; text-align:center;cursor:pointer;}
+.Determine{ 
+width:100px; 
+height:45px; 
+color:#fff;
+border:0px;
+cursor:pointer;
+background:#{$color};
+line-height:45px; text-align:center;
+}
+.shop_info_info_one{ width:80%; padding-left:25px;}
+.shop_info_in_car_row{ padding:0px 0px;}
+.shop_info_in_car{ padding:20px 0px; display:flex; align-items:center;border-bottom:1px solid #d7d7d7;}
+.shop_info_x{ 
+color:#{$color};
+}
+.shop_info_img{
+	width:60px; height:60px;
+
+}
+.car_box{ 
+width:48px; 
+height:48px;
+display:flex;
+position:fixed;
+right:0px;
+top:200px;
+justify-content:center;
+align-items:center;
+z-index:100;
+cursor:pointer;
+background:#{$color};
+}
+
+.car_num{ 
+position:absolute; bottom:5px; right:5px; display:inline-flex; justify-content:center; align-items:center;background:#fff; width:20px; height:20px; font-size:14px; border-radius:50%; color:#{$color};
+}
+.shop_info_tool{
+	position:absolute;
+	width:400px;
+	padding:50px 25px 100px 25px; 
+	background:url(__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/shopcar.png) no-repeat ;
+	right:50px;
+	top:0px;
+	background-size: cover;
+}
+.shop_car_name{ color:#333; font-size:20px; padding-bottom:30px; border-bottom:1px solid #d7d7d7; position:relative;}
+.car_close{background:url(__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/close.png) no-repeat ; background-size:cover; width:30px; height:30px; position:absolute; top:0px; right:0px; z-index:2}
+/*购物车end*/
+</style>
+<div class="car_box">
+	<img src="__TMPL__HJZF2_Z/HJZF2_Z-product_categories-lingtong/car.png"/>
+    <span class="car_num">0</span>
+	<div class="shop_info_tool">
+    	
+    	<div class="shop_car_name">Shopping Cart<span></span><div class="car_close"></div></div>
+        <div class="shop_info_in_car_row">
+
+        </div>
+        <textarea style="display:none" name="message"></textarea>
+        
+        <div class="alert_row">
+            <div class="message_alert alert_input"></div>          
+        </div>        
+        <div class="clear_car_row">
+        	<div class="clear_car">Clear Cart</div>
+        </div>
+        <div class="shop_car_name">Place An Order Now</div>
+        <div class="shop_from">
+        <form action="{:U('/saveinquiry','','')}" method="post">
+            <div class="shop_input_row">
+                <input class="shop_input" placeholder="Your Name" name="linkname">
+                <input class="shop_input" placeholder="Your Phone" name="phone">
+            </div>
+            <div class="alert_row">
+                <div class="linkname_alert alert_input"></div>
+                <div class="phone_alert alert_input"></div>            
+            </div>
+            <div class="shop_input_email_row">
+                <input class="shop_input shop_input_email" placeholder="Your Email" name="email">
+            </div>
+            <div class="alert_row">
+                <div class="email_alert alert_input"></div>           
+            </div>            
+            <div class="clear_car_row">
+                <input readonly class="Determine" value="Determine">
+            </div>    
+                <input type="hidden" name="tncode_check" value="ok"/>
+                    
+        </form>
+        </div>
+    </div>    
+</div>
+<div id="flyItem" class="fly_item"><img src=""></div>
+<style>
+.fly_item {
+    border: 1px solid #000;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    position: absolute;
+	display:none;
+    opacity: .8;
+    filter: alpha(opacity=80);
+	border-radius:40px;
+	z-index:999;
+}
+.fly_item img{ width:38px; height:38px; animation: zuan 2.5s ease-in-out infinite;}
+
+@keyframes zuan{
+	from{
+		transform: rotate(0);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+</style>
+<script>
+
+
+ 
+require(['jquery','funParabola','jstorage'],function($,funParabola,jstorage){
+
+//算一个最大宽度
+
+$(document).ready(function(e) {
+	var maxwidth=$(window).width()-48;
+    $(".shop_info_tool").css("max-width",maxwidth+"px");
+});
+
+$(window).resize(function () {
+	var maxwidth=$(window).width()-48;
+    $(".shop_info_tool").css("max-width",maxwidth+"px");
+})
+function addcar(eleFlyElement){
+	var eleShopCart=$(".car_box").eq(0).get(0);
+	myParabola=funParabola(eleFlyElement, eleShopCart, {
+		speed: 800, //抛物线速度
+		curvature: 0.0008, //控制抛物线弧度
+		complete: function() {
+			//$(eleFlyElement).remove();
+			$("#flyItem").hide();
+		}
+	});
+	$("#flyItem").show();
+	myParabola.position().move();
+}
+
+$(document).on("click",".add_shop_car_btn",function(event){
+	//创建一个div
+	console.log("点击了一个按钮");
+
+	var goods={};
+	goods.pid=$(this).attr('pid');
+	goods.pro_img=$(this).attr('pro_img');
+	goods.pro_name=$(this).attr('pro_name');
+	goods.num=1;
+	
+	var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+	scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+	$("#flyItem").css("left",event.clientX + scrollLeft + "px");
+	$("#flyItem").css("top",event.clientY + scrollTop + "px");
+	var src=goods.pro_img;
+	$("#flyItem").find("img").attr("src",src);
+	$("#flyItem").show();
+	var eleFlyElement=$("#flyItem").get(0);
+	console.log("eleFlyElement",eleFlyElement);
+	addcar(eleFlyElement);
+	//存一个商品对象{name:img:num:}
+
+	console.log("goods",goods);
+	
+	if($.jStorage.get("shop_cat")){
+		var shop_car=$.jStorage.get("shop_cat");
+	}else{
+		var shop_car={
+			car_infos:[],
+			car_num:0,
+			};
+	}
+	console.log("shop_car1",shop_car);
+	shop_car.car_num=shop_car.car_num+1;
+	if(shop_car.car_infos){
+		var addnew=1;
+		$.each(shop_car.car_infos,function(i,v){
+			if(v.pid==goods.pid){
+				addnew=0;
+				shop_car.car_infos[i]['num']=parseInt(shop_car.car_infos[i]['num'])+1;
+			}
+		})
+		if(addnew==1){
+			shop_car.car_infos.push(goods);
+		}
+	}
+	console.log("shop_car",shop_car);
+	$.jStorage.set("shop_cat",shop_car);
+	show_car_num();
+	car_show_ui();
+}).on("click",".car_box",function(){
+	$(".shop_info_tool").toggle();
+	car_show_ui();
+
+
+}).on("click",".shop_info_tool",function(){
+	//阻止冒泡；
+	return false;
+}).on("click",".clear_car",function(){
+	console.log("clear_car");
+	$.jStorage.deleteKey("shop_cat");
+	show_car_num();
+	car_show_ui();
+}).on("click",".Determine",function(){
+	var linkname=$.trim($(this).parent().parent().find("input[name='linkname']").val());
+	var phone=$.trim($(this).parent().parent().find("input[name='phone']").val());
+	var email=$.trim($(this).parent().parent().find("input[name='email']").val());
+	var message="";
+	var shop_cat=$.jStorage.get("shop_cat");
+	console.log("Determine",shop_cat.car_infos);
+	if(shop_cat){
+		if(shop_cat.car_infos){
+			$.each(shop_cat.car_infos,function(i,v){
+				message=message+
+				'产品名字：'+v.pro_name+'\\n'+
+				'产品需求数量：'+v.num+'\\n';
+				
+			})
+	
+		}	
+	}
+	
+	console.log("linkname",linkname);
+	console.log("email",email);
+	console.log("phone",phone);
+	var count =0;
+	if(linkname.length<=0){
+		$(this).parent().parent().find(".linkname_alert").html("The name cannot be empty!");
+		count++;
+	}
+	else{
+		$(this).parent().parent().find(".linkname_alert").html("");
+	}
+
+
+	var str=/[\\u4E00-\\u9FA5a-zA-Z]/;
+
+
+	if(str.test(phone)){
+		$(this).parent().parent().find(".phone_alert").html("Telephone information is wrong!");
+	}
+
+	if(email.length<=0){
+		$(this).parent().parent().find(".email_alert").html("The email cannot be empty!");
+		count++;
+	}
+	else{
+		$(this).parent().parent().find(".email_alert").html("");
+	}
+	var email_str=/^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$/;
+	if(!email_str.test(email)){
+		$(this).parent().parent().find(".email_alert").html("Email format error!");
+		count++;
+	}
+
+	if(message.length<=0){
+		$(this).parent().parent().find(".message_alert").html("Shopping Cart cannot be empty!");
+		count++;
+	}
+	else{
+		$(this).parent().parent().find(".message_alert").html("");
+	}
+	$(this).parent().parent().find("textarea[name='message']").html(message);
+	console.log("message",message);
+	if(count==0){
+	
+	$(this).parent().parent().submit();
+	$(this).parent().html('<h5 style="color:#F00;">Please wait</h5>');
+	}
+	
+}).on("click",".shop_info_x",function(){
+	var pid=$(this).attr("pid");
+	console.log("pid",pid);
+  	var tip=confirm("Make sure you want to delete the item");
+	if($.jStorage.get("shop_cat")&&tip&&pid){
+		var shop_car=$.jStorage.get("shop_cat");
+		console.log("delete_cat_shop_car",shop_car);
+		shop_car.car_num=0;
+		if(shop_car.car_infos){
+			var deleted_index="";
+			$.each(shop_car.car_infos,function(i,v){
+				console.log("v",v);
+				if(v.pid==pid){
+					deleted_index=i;
+				}else{
+					shop_car.car_num=shop_car.car_num+v.num;
+				}
+			});
+			shop_car.car_infos.splice(deleted_index,1);
+			
+			console.log("shop_info_x",shop_car);
+			$.jStorage.set("shop_cat",shop_car);
+			show_car_num();
+			car_show_ui();
+		}		
+	}
+		
+	
+
+
+}).on("input propertychange",".input_car_num",function(event){
+	
+	var pid=$(this).attr("pid");
+	var num=$(this).val();
+	console.log("input propertychange",num);
+	if(num<=0){
+		num=1;
+		$(this).val(num);
+	}
+	if($.jStorage.get("shop_cat")&&pid){
+		var shop_car=$.jStorage.get("shop_cat");
+		shop_car.car_num=0;
+		if(shop_car.car_infos){
+			
+			$.each(shop_car.car_infos,function(i,v){
+				if(v.pid==pid){
+					v.num=num;
+					shop_car.car_infos[i].num=num;
+				}
+				shop_car.car_num=parseInt(shop_car.car_num)+parseInt(v.num);
+				
+			})
+			
+			console.log("shop_info_x",shop_car);
+			$.jStorage.set("shop_cat",shop_car);
+			show_car_num();
+			car_show_ui();
+		}		
+	}	
+}).on("click",".car_close",function(){
+	$(".shop_info_tool").fadeOut();
+})
+
+
+
+
+function car_show_ui(){
+	var car_html="Nothing";
+	if($.jStorage.get("shop_cat")){
+		var shop_car=$.jStorage.get("shop_cat");
+		console.log("car_show_ui_shop_car",shop_car);
+		$(".shop_car_name span").html("("+shop_car.car_num+")");	
+		if(shop_car.car_infos){
+			car_html="";
+			$.each(shop_car.car_infos,function(i,v){		
+				car_html=car_html+
+				`<div class="shop_info_in_car">`+
+					`<div class="shop_info_img"><img class="img-responsive" src="`+v.pro_img+`"/></div>`+
+					`<div class="shop_info_info_one">`+
+						`<div class="shop_info_info_one_name">`+v.pro_name+`</div>`+
+						`<div class="shop_info_info_one_num">x<input pid="`+v.pid+`" class="input_car_num" type="number" value="`+v.num+`"></div>`+
+					`</div>`+
+					`<div pid="`+v.pid+`" class="shop_info_x">x</div>`+
+				`</div>`;	
+			});
+		}
+		$(".shop_info_in_car_row").html(car_html);
+	}else{
+		$(".shop_car_name span").html("");
+		$(".shop_info_in_car_row").html(car_html);
+	}
+}
+
+
+function show_car_num(){
+	if($.jStorage.get("shop_cat")){
+		var shop_car=$.jStorage.get("shop_cat");
+		$(".car_num").html(shop_car.car_num);	
+	}else{
+		$(".car_num").html("0");
+	}
+}
+
+show_car_num();
+
+})
+
+
+
+</script>

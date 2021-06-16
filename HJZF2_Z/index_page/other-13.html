@@ -1,0 +1,153 @@
+<!--{$pagename}-->
+<php>
+    if($data169[0]){
+        $other__bj='url('.getindeximgurl($data169[0]).') no-repeat center/cover';
+    }
+</php>
+<if condition="$data169[0]">
+    <style>
+        .HJZF_Z_other--13{
+        background: {$other__bj};
+        }
+    </style>
+</if>
+<if condition="$data169[14]">
+    <style>
+        .other--13__itemmask{
+            background: url({:getindeximgurl($data169[14])}) no-repeat center/cover;
+        }
+        {}
+    </style>
+</if>
+<section class="HJZF_Z_other--13 index_pd">
+    <div class="container">
+        <div class="row">
+            <if condition="$data169[1]"><div class="col-xs-12 hjzf2_other13_mainTitle wow fadeInLeft pb40 index_title" data-wow-duration="1s">{$data169[1]}</div></if>
+            <if condition="$data169[2]"> <div class="col-xs-12 hjzf2_other13_mainjs wow fadeInRight index_sub_title" data-wow-duration="1s">{:HtmlEncode($data169[2])}</div></if>
+            <div class="clear"></div>
+            <div class="hjzf2_other13_container">
+                <php>
+                    for($i=3;$i<10;$i=$i+2){
+                </php>
+                <div class="col-xs-6 col-lg-3 other--13__list item_13_top_list wow fadeInLeft" data-wow-duration="1s">
+                    <div class="other--13__item item_13_top">
+                    <if condition="$data169[19]">
+                        <style>
+                           
+                            .other--13__itemname{
+                                min-height: 60px;
+                            }
+                            .item_13_top .other--13__itempic{position: relative;overflow: visible;}
+                            .item_13_top_list.other--13__list:before,.item_13_top_list.other--13__list:after{
+                                display: none;
+                            }
+                            .item_13_top .other--13__itempic:before{ content:''; width:100%; height:1px; background:#fff; top: 132px; right: 50%; z-index:1; position:absolute;}
+                            .item_13_top .other--13__itempic:after{ content:'\\f0da'; font-family: 'FontAwesome'; color:#fff; font-size:30px; position:absolute; left:-25%; z-index:1; top: 110px;}
+                            .item_13_top_list:first-child .other--13__itempic:before,.item_13_top_list:first-child .other--13__itempic:after{ display:none;}
+                            @media(max-width: 767px){
+                                .other--13__itemname{
+                                    min-height: 0;
+                                }
+                            }
+                        </style>
+                        <div class="other--13__itemname index_sub_title nav-hidden-mobile"><p style="color: #fff;">{$data169[$i+1]}</p></div>
+                    </if>
+                    	<div class="other--13__itemmask"></div>
+                        <div class="other--13__itempic"><img class="lazy" src="{:getindeximgurl($data169[$i])}" alt="{$data169[$i+1]}"/></div> 
+                        <if condition="$data169[19]">
+                            <div class="other--13__itemname index_sub_title nav-hidden-pc"><p style="color: #fff;">{$data169[$i+1]}</p></div>
+                        </if>
+                    </div>
+                    <if condition="$data169[19] eq ''">
+                        <div class="other--13__itemname index_sub_title"><p>{$data169[$i+1]}</p></div>
+                    </if>
+                </div>
+                <php>
+                    }
+                </php>
+                
+                <if condition="$data169[17]">
+                <div class="col-xs-6 col-lg-3 other--13__list wow fadeInLeft" data-wow-duration="1s">
+                    <div class="other--13__item">
+                    	<div class="other--13__itemmask"></div>
+                        <div class="other--13__itempic"><img class="lazy" src="{:getindeximgurl($data169[17])}" alt="{$data169[18]}"/></div> 
+                    </div>
+                    <div class="other--13__itemname index_sub_title"><p>{$data169[18]}</p></div>
+                </div>
+                </if>
+                <div class="clear"></div>
+            </div>
+
+            <!-- 李梅新加第二行 -->
+            <if condition="$data169[19]">
+                <php>
+                    $arr = get_list_val($data169[20]);
+                </php>
+            <div class="hjzf2_other13_containera flex-reserver">
+                <volist name="arr" id="a">
+                    <div class="col-xs-6 col-lg-3 other--13__lista wow fadeInRight" data-wow-duration="1s">
+                        <div class="other--13__item">
+                            <div class="other--13__itemmask"></div>
+                            <div class="other--13__itempic"><img class="lazy" src="{$a[img]}" alt="{$a[title]}"/></div> 
+                        </div>
+                        <div class="other--13__itemname index_sub_title"><p>{$a[title]}</p></div>
+                    </div>
+                </volist>
+                </div>
+            </if>
+            <!-- 李梅新加第二行 -->
+
+            <div class="col-xs-12 hjzf2_other13_logo wow fadeInUp" data-wow-duration="1s">
+            	<if condition="$data169[12] or $data169[13]">
+            	<div class="swiper-container hjzf2_other13_swiper">
+                    <div class="swiper-wrapper">
+                        <if condition="$data169[11]">
+                        <div class="swiper-slide hjzf2_other13_slide">
+                               <img src="{:getindeximgurl($data169[11])}"/>
+                        </div>
+                        </if>
+                        <if condition="$data169[12]">
+                        <div class="swiper-slide hjzf2_other13_slide">
+                               <img src="{:getindeximgurl($data169[12])}"/>
+                        </div>
+                        </if>
+                        <if condition="$data169[13]">
+                        <div class="swiper-slide hjzf2_other13_slide">
+                               <img src="{:getindeximgurl($data169[13])}" />
+                        </div>
+                        </if>
+                        <if condition="$data169[15]">
+                        <div class="swiper-slide hjzf2_other13_slide">
+                               <img src="{:getindeximgurl($data169[15])}"/>
+                        </div>
+                        </if>
+                        <if condition="$data169[16]">
+                        <div class="swiper-slide hjzf2_other13_slide">
+                               <img src="{:getindeximgurl($data169[16])}"/>
+                        </div>
+                        </if>
+                        
+                    </div>
+    
+                </div>
+                <else/>
+                <if condition="$data169[11]">
+                <div class="hjzf2_other13_swiper2">
+                	<div class="hjzf2_other13_slide"><img src="{:getindeximgurl($data169[11])}"/></div>
+                </div>
+                </if>
+                </if>
+            </div>
+            <if condition="$data169[21]">
+            <php>
+                    $arr_btn = get_list_val($data169[21]);
+            </php>
+            <div class="col-xs-12 hjzf2_other13_btn wow fadeInUp" data-wow-duration="1s">
+            	<volist name="arr_btn" id="b">
+                <a href="{$b[link]}" onFocus="blur()" class="hjzf2_other13_more">{$b[text]}</a>
+                </volist>
+            </div>
+            </if>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,27 @@
+<!--{$pagename}-->
+<if condition="$data8[0] neq ''">
+<div id="index_news_animate" style="visibility:hidden;">
+<div class="index_ys_news">
+    <div class="index_news_title">{$data8[0]}</div>
+    <div class="index_news_container">
+      <div class="index_news_pic"><div id="index_news_animate1" style="visibility: hidden"><img src="{:getindeximgurl($data8[1])}" border="0" /></div></div>
+      <div class="index_news_right">
+          <div id="index_news_animate2" style="visibility: hidden">
+              <volist name="indexnews" id="indexnews3" offset="0" length="3">
+                  <div class="index_news_list"<if condition="$key eq 2">style="border-bottom:none; margin-bottom:5px;"</if>>
+                  <a href="{:U('/new_detail',array('nid'=>$indexnews3['nid']))}">
+                      <div class="news_right_text"><span>{:date('Y-m-d',$indexnews3['created'])}</span>{:subtxt($indexnews3['title'],30)}</div>
+                      <div class="news_right_jj">{:subtxt($indexnews3['news_description'],40)}</div>
+                  </a>
+          </div>
+          </volist>
+          </div>
+
+        <div class="clear"></div>
+        <div class="index_news_more"><a href="{:U('/news')}">了解更多</a></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+</div>
+</if>
+</div>

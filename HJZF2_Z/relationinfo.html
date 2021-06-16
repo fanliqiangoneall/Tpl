@@ -1,0 +1,32 @@
+<if condition="$labelprodlist neq ''">
+    <php>
+        if($webid == '355'){
+            $len = '5';
+        }elseif($webid == '1765'){
+        	$len = '20';
+        }else{
+            $len = '3';
+        }
+    </php>
+    <div class="mainpage_probox" >
+        <volist empty="" name="labelprodlist" id="labelprodlist" offset="0" length="$len" key="k">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 main_proitem">
+                <div class="main_proitem_box">
+                    <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                        <if condition="$labelprodlist['main_img']">
+                            <img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> />
+                            <else/>
+                            <img src="{:getindeximgurl($inner_data[3])}" alt=""/>
+                        </if>
+                        </a></div>
+                    <div class="main_proitem_second">
+                        <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                            <div class="main_proitem_name margin-10px-bottom"><h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],60)}</h6></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </volist>
+    </div>
+    <div style="clear:both;"></div>
+</if>

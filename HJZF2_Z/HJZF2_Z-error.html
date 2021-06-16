@@ -1,0 +1,85 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+  <style>
+    .HJZF_Z__Breadcrumbs span.current{
+        color: #{$inner_data[1]};
+    }
+    .InsidePages_content-right_content_title:before{
+        background: #{$inner_data[1]};
+    }
+    .edit{margin-bottom: 60px;}
+</style>
+  <div id="HJZF_Z__innerBanner">
+    <if condition="$banner neq ''">
+        <volist name="banner" id="banner" offset="0" length="1">
+            <div class="in_banner"><img
+                    src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+        </volist>
+        </volist>
+        <else/>
+        <div class="in_banner"><img
+                src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+    </if>
+</div>
+<div class="HJZF_Z__Breadcrumbs" navcrumbs>
+    <div class="container">
+        <div class="row">
+           <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">404</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="in_page_main">
+   <div class="container">
+      <div class="row">
+          <div class="col-xs-12">
+            
+            <div class="edit">
+                <table width="60%" border="1" align="center" cellpadding="3" cellspacing="0">
+                 <tr>
+                  <th align="center" bgcolor="#cccccc" style=" text-align:center;">{:__('Message Tips')}</th>
+                 </tr>
+                 <tr>
+                  <td align="center"> 
+                   <br />
+                   <present name="message" style=" text-align:center;">
+                   {$message}<br />
+                   </present>
+                   <present name="error" style=" text-align:center;">
+                   {$error}<br />
+                   </present>
+                <p class="detail"></p>
+                <p class="jump" style=" text-align:center;">
+                    <if condition="C('language') eq 'en'">
+                        <a id="href" href="<?php echo($jumpUrl); ?>">Click to return to the previous page</a> Please waite <b id="wait">5</b> seconds
+                        <else/>
+                        <a id="href" href="<?php echo($jumpUrl); ?>">点击返回到上一页</a> 等待时间：<b id="wait">3</b>
+                    </if>
+                
+                </p><br /></td>
+                 </tr>
+                </table>
+          <script type="text/javascript">
+          (function(){
+          var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+          var interval = setInterval(function(){
+              var time = --wait.innerHTML;
+              if(time <= 0) {
+                  location.href = href;
+                  clearInterval(interval);
+              };
+          }, 600);
+          })();
+          </script> 
+      
+               </div>
+          </div>
+        
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+</div>
+
+</block>

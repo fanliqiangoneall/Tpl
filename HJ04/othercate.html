@@ -1,0 +1,35 @@
+<extend name="HJ04:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .caseList:hover .caseTitle{
+            color: #{$color};
+        }
+    </style>
+    <div class="otherContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                Your location: &nbsp;<a href="{:U('/')}">Home</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    {$intro_class['class_name']}
+                </span>
+            </div>
+        </div>
+        <div class="pageBannerImg">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                </volist>
+                <else/>
+                <img src="{:getindeximgurl($data47[7])}" alt=""/>
+            </if>
+            <Include file="./Tpl/HJ04/otherleft.html" />
+        </div>
+        <div class="pageMainContainer">
+            <div class="page_Main container" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+        </div>
+    </div>
+</block>

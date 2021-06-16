@@ -1,0 +1,133 @@
+<php>
+    if($inner_data[1]){
+        $color = $inner_data[1];
+    }
+</php>
+<style>
+    <if condition="$inner_data[4]">
+        .left_aboutus10_contact.top{
+            display: none;
+        }
+        </if>
+        <if condition="$inner_data[5]">
+        .left_aboutus10_contact.bottom{
+            display: none;
+        }
+        </if>
+    .left_aboutus10_contact {
+        border: 1px solid #ccc;
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+
+    .left_aboutus10_contact img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+
+    .left_aboutus10_contact span {
+        display: flex;
+    }
+    .left_aboutus10_contact span:not(:last-child){
+        border-bottom: 1px dashed #999;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .left_aboutus10_contact i {
+        flex: 0 0 30px;
+        margin-left: 10px;
+        color: #666;
+        font-size: 20px;
+    }
+    .left_aboutus10_contact_link{
+        line-height: 2;
+    }
+    .left_aboutus10_contact_link a {
+        display: block;
+        color: #333;
+    }
+    .left_aboutus10_contact_link a.more{
+        background-color: #{$color};
+        display: block;
+        width: 110px;
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+</style>
+<div class="left_aboutus10">
+    <div class="left_aboutus10_contact top">
+        <if condition="$inner_data[2]">
+            <img src="{:getindeximgurl($inner_data[2])}" class="img-fluid" />
+        </if>
+        <if condition="chaifen($about['email'],0)">
+            <span>
+                <i class="fa fa-envelope"></i>
+
+                <div class="left_aboutus10_contact_link">
+        </if>
+
+        <if condition="chaifen($about['email'],0)">
+            <a href="mailto:{:chaifen($about['email'],0)}">{:chaifen($about['email'],0)}</a>
+        </if>
+        <if condition="chaifen($about['email'],1)">
+            <a href="mailto:{:chaifen($about['email'],1)}">{:chaifen($about['email'],1)}</a>
+        </if>
+        <if condition="chaifen($about['email'],2)">
+            <a href="mailto:{:chaifen($about['email'],2)}">{:chaifen($about['email'],2)}</a>
+        </if>
+        <if condition="chaifen($about['email'],0)">
+    </div>
+    </span>
+    </if>
+
+    <if condition="chaifen($about['phone'],0)">
+        <span>
+            <i class="fa fa-phone"></i>
+            <div class="left_aboutus10_contact_link">
+    </if>
+    <if condition="chaifen($about['phone'],0)">
+        {:chaifen($about['phone'],0)}
+    </if>
+    <if condition="chaifen($about['phone'],1)">
+        <br>{:chaifen($about['phone'],1)}
+    </if>
+    <if condition="chaifen($about['phone'],2)">
+        <br>{:chaifen($about['phone'],2)}
+    </if>
+    <if condition="chaifen($about['phone'],0)">
+</div>
+</span>
+</if>
+
+<if condition="$about['address']">
+    <span>
+        <i class="fa fa-map-marker"></i>
+        <div>
+</if>
+{$about['address']}
+<if condition="$about['address']">
+    </div>
+    </span>
+</if>
+
+
+</div>
+<div class="left_aboutus10_contact bottom">
+    <if condition="$inner_data[3]">
+        <img src="{:getindeximgurl($inner_data[3])}" class="img-fluid" />
+    </if>
+    <div class="left_aboutus10_contact_link">
+        <!-- 热门新闻 -->
+        <volist name="hotnews_abus" id="hotNews" offset="0" key="k">
+        <a href="{:U('/new_detail',array('nid'=>$hotNews['nid']))}">{$hotNews['title']}</a>
+        </volist>
+        <a href="{:U('/news')}" class="more">{:__('Read More')}</a>
+    </div>
+</div>
+</div>

@@ -1,0 +1,44 @@
+<!--{$pagename}-->
+<style>
+    .wap2_aboutus3 .section-title span,.wap2_aboutus3 .section.destinations .vd-des .vd-des-name{
+        color: #{$data48[7]};
+    }
+    .wap2_aboutus3 .readmore-btn{
+        background: #{$data48[7]};
+    }
+</style>
+<div class="wap2_aboutus3">
+<div class="section destinations">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="section-title">
+                        {$data48[0]}<span class="theme-secondary-color">{$data48[1]}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row row-list-destination">
+            <div class="col s12">
+                <div class="vacation-place">
+                    <div class="vd-photo">
+                        <img src="{:getindeximgurl($data48[2])}" alt="img">
+                    </div>
+                    <div class="vd-des">
+                        <div class="vd-des-left">
+                            <if condition="$data48[3]">
+                                <div class="vd-des-name"><span>{$data48[3]}</span></div>
+                            </if>
+                            <div class="vd-des-location">{:htmlspecialchars_decode($data48[4])}</div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="readmore-news">
+                            <a href="{$data48[6]}" class="readmore-btn">{$data48[5]}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

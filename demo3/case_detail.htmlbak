@@ -1,0 +1,31 @@
+<extend name="demo3:base" />
+<block name="content">
+
+<div class="in_banner" style="background:url(__TMPL__demo3/img/inbanner4.jpg) center no-repeat"></div>
+<div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;案例&gt;&gt;&nbsp;{$news['title']}</div>
+
+<div style="width: 1190px;margin:0 auto">
+  <Include file="./Tpl/demo3/left.html" />
+  <div class="page_Main"> 
+    <div class="page_RightTitle"><span>{$news['title']}</span></div>
+<div id="newsdetailshow">
+         
+  <div class="summary" style="margin-top: 30px;">
+   </div>
+  <div class="describe htmledit edit" id="infoContent">
+	  {:htmlspecialchars_decode($news['body'])}
+  </div>  
+</div>
+
+            	
+                
+                              
+
+                 
+            </div>
+            </div>
+
+<div class="clearfix"></div>
+
+
+</block>

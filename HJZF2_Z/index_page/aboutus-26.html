@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<php>
+    if($data518[0]){
+        $color = $data518[0];
+    }
+</php>
+<style>
+    .HJZF2_Z_aboutus_26_right,.HJZF2_Z_aboutus_26_left a{
+        background-color: #{$color};
+    }
+</style>
+<section class="HJZF2_Z_aboutus_26 index_pd clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 HJZF2_Z_aboutus_26_wrapper">
+                <!-- left -->
+                <php>
+                    $arr = get_list_val($data518[3]);
+                </php>
+                <volist name="arr" id="a" length="1" offset="0">
+                    <style>
+                        .HJZF2_Z_aboutus_26_left_box:after{
+                            background-color: #{$a[mb]};
+                        }
+                    </style>
+                <div class="col-lg-8 col-xs-12 HJZF2_Z_aboutus_26_left">
+                    <img src="{$a[img]}" class="img-fluid" alt="{$data518[1]}">
+                    <div class="HJZF2_Z_aboutus_26_left_box">
+                        <div class="index_sub_title">
+                            {$a[info]}
+                        </div>
+                        <a href="{$a[link]}">{$a[more]}<i class="fa fa-long-arrow-right" style=" padding-left:10px;" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                </volist>
+                <!-- right -->
+                <div class="col-lg-4 col-xs-12 HJZF2_Z_aboutus_26_right">
+                    <div class="index_text mb-20">{$data518[1]}</div>
+                    <div class="index_title">{$data518[2]}</div>
+                    <div class="nav-hidden-pc">
+                        <div class="index_text">
+                            {$arr[0][info]}
+                        </div>
+                        <a href="{$arr[0][link]}"> {$arr[0][more]}<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

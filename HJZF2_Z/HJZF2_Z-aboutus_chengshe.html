@@ -1,0 +1,66 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<Include file="./Tpl/HJZF2_Z/inner/banner_add_mobile_aboutus.html" />
+		</div>
+		<div class="HJZF_Z__innerContent" id="main-content-wrapper">
+			<div class="container">
+				<div class="row">
+					<section class="hidden-xs hidden-sm hidden-md col-xs-12 HJZF_Z__inner--left" <if
+						condition="count($navrs) gt 0">style="display:block"
+						<else /> style="display:none"</if>>
+						<Include file="./Tpl/HJZF2_Z/left_chengshe.html" />
+					</section>
+					<section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+						<Include file="./Tpl/HJZF2_Z/left_othercatemobile.html" />
+					</section>
+					<section class="col-xs-12 InsidePages_content-right2 aboutus_chengshe">
+						<div class="InsidePages_content-right__wrap">
+							<div class="InsidePages_content-right_content-main">
+								<!-- <if condition="count($navrs) gt 0">
+                                    <h5 class="chengshe_left_title">{$intro_class['class_name']}</h5>
+                                </if> -->
+								<div class="hidden-xs hidden-sm hidden-md InsidePages_content-right_editor"
+									id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+								<div class=" hidden-lg hidden-xl InsidePages_content-right_editor" id="payment1">
+									<if condition="$intro_class['wapreadme']">
+										{:htmlspecialchars_decode($intro_class['wapreadme'])}
+										<else />{:htmlspecialchars_decode($intro_class['readme'])}
+									</if>
+								</div>
+								<div class="page_nei_space"></div>
+							</div>
+						</div>
+					</section>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<if condition="$webid eq '1721'">
+		<script>
+			require(['jquery', 'swiper'], function ($, Swiper) {
+				new Swiper('.HJZF2_Z_other_90_t', {
+					slidesPerView: 5,
+					slidesPerColumn: 2,
+					pagination: {
+						el: '.HJZF2_Z_other_90_t .swiper-pagination',
+						clickable: true
+					},
+					autoplay: true,
+					breakpoints: {
+						768: {
+							slidesPerColumn: 1,
+							slidesPerView: 3,
+						},
+						1280: {
+							slidesPerView: 4,
+							slidesPerColumn: 2,
+						}
+					}
+				});
+			});
+		</script>
+	</if>
+</block>

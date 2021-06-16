@@ -1,0 +1,141 @@
+<style>
+    .inquiryright textarea{padding:0 5px;border:1px solid #d4d4d4; background:transparent; width:100%; font-family:'微软雅黑';min-height: 100px;font-size: 14px;box-sizing: border-box;}
+    .commentright input#code_char2{width: 20%;height:32px;line-height:32px;padding:0 5px; background:#fff; border:1px solid #d4d4d4; font-family:'微软雅黑';background: transparent;font-size: 14px;}
+    .yz_alert{display: inline-block;line-height: 28px;font-size: 14px;height: 28px;position: absolute;right: 10px;top: 6px;}
+    .inquiryright,.commentright{width:100%;margin-bottom: 15px;position: relative}
+    .productbutton{
+        background: #{$color};
+        color: #fff;
+        border: 0 !important;
+        cursor: pointer;
+        font-size:16px;
+        height: 40px !important;
+        width:120px !important;
+        line-height: 40px;
+        text-align:center;
+        border-radius: 5px;
+    }
+    .productbutton:hover {
+        background: {$data1[0]};
+    }
+</style>
+<script>
+$(function(){
+$("#content").focus(function(){
+$("#content_alert").html("");
+});
+
+$("#code_char2").focus(function(){
+$("#code_char2_alert").html("");
+});
+
+    jQuery("#getcode_char2").click(function(){
+        jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+    });
+    jQuery("#getcode_char12").click(function(){
+        jQuery("#getcode_char2").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+    });
+
+})
+function yz_comment(){
+var count=0;
+var content =Trims($("#content").val());
+if(content .length<=0){
+$("#content_alert").html("*评论内容不能为空");
+count++;
+}
+else{
+$("#content_alert").html("");
+}
+
+
+   /* var code_char2 = $("#code_char2").val();
+    $.ajax({
+        type: "POST",
+        url: "__APP__/chk_code2.php?act=char",
+        async:false,
+        data: {code:code_char2},
+        success: function(data){
+
+            if(data==1){
+                $("#code_char2_alert").html("");
+            }else{
+                count++;
+                $("#code_char2_alert").html("Code error！");
+            }
+        }
+    });*/
+    var code_char2 = jQuery("#code_char2").val();
+    jQuery.ajax({
+        type: "POST",
+        url: "/verification",
+        async:false,
+        data: {code:code_char2},
+        success: function(data){
+
+            if(data==1){
+                jQuery("#code_char2_alert").html("");
+            }else{
+                count++;
+                jQuery("#code_char2_alert").html("验证码错误");
+            }
+        }
+    });
+
+if(count>0){
+return false;
+}
+else{
+$("#commentsubmit").attr("disabled","true");
+return true;
+}
+
+}
+function Trims(str)
+{
+return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+} 
+</script>
+
+<div class="inquiry" style="margin-bottom:20px; border-top:1px dashed #ccc;margin-top: 20px;">
+ <div class="commentTitle"><h5><span><a href="{:U('/newscommentlist',array('nid'=>$news['nid']))}" target="_blank">查看更多(共{:newscommentlistcount($news['nid'])}条)</a></span>评论列表</h5></div>
+ <div class="commentlist">
+ <if condition="newscommentlistcount($news['nid']) eq 0">
+  <font style="color:#999999;">没有评论</font>
+ <else />
+   <volist empty="No Content" name="commentlist" id="commentlist" key="k" offset="0" length="3">
+     <ul>
+       <li>{$k}. {$commentlist["content"]} [评论时间：{:date("Y-m-d",$commentlist["adddate"])}]</li>
+     </ul>
+   </volist>
+  </if>
+   <div class="clear" style="height:20px;"></div>
+ </div>
+</div>
+
+
+<div class="inquiry">
+<div class="inquiry_Title"><h5>我想要评论</h5></div>
+<form action="__APP__/newssavecontent" method="post" onsubmit="return yz_comment();">
+  <div class="inquiryinfo">
+    <div class="inquiryleft">你的评论内容 *</div>
+	<div class="inquiryright"><textarea name="content" id="content" ></textarea><div style="clear:both;"></div><span class="yz_alert" id="content_alert" style="color:#f00"></span>
+	<div class="clear"></div>
+ </div>
+ <div class="clear"></div>
+</div>
+
+    <div class="commentinfo" style="margin-bottom: 10px;">
+        <div class="commentright"><input type="text" class="input" id="code_char2" placeholder="Code *" name="code2" maxlength="3" />&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char2" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char12"><img
+                src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -4px;top: -1px;height: 32px"/></a><br/><span class="yz_alert" id="code_char2_alert" style="color: #f00"></span></div>
+        <div class="clear"></div>
+    </div>
+
+<div class="inquiryinfo">
+<input type="hidden" name="nid" value="{$news['nid']}" />
+<input class="productbutton" id="commentsubmit" type="submit" value="提交"  name="submit"/>
+</div>
+</form>
+
+<div class="clear"></div>
+</div>

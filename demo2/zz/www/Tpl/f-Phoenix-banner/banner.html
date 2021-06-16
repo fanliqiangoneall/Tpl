@@ -1,0 +1,52 @@
+<SCRIPT src="__TMPL__demo2/js/jquery-1.8.3.min.js" type="text/javascript"></SCRIPT>
+<script type="text/javascript" src="__TMPL__f-Phoenix-banner/banner.js"></script>
+<link href="__TMPL__f-Phoenix-banner/banner.css" rel="stylesheet">
+<div class="page_Banner">
+    <div class="DB_tab25">
+
+        <ul class="DB_bgSet">
+            <volist name="banner" id="banner">
+            	<a href="{:($banner['ad_link'])}"><li style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat; height:742px; display:block;"></li></a>
+            </volist>
+        </ul>
+
+        <ul class="DB_imgSet">
+            <li>
+              
+            </li>
+            <li>
+               
+            </li>
+            <li>
+               
+            </li>
+        </ul>
+
+        <div class="DB_menuWrap">
+            <ul class="DB_menuSet">
+                <li><img src="__TMPL__demo2/img/btn_off.gif" alt=""/></li>
+                <li><img src="__TMPL__demo2/img/btn_off.gif" alt=""/></li>
+                <li><img src="__TMPL__demo2/img/btn_off.gif" alt=""/></li>
+            </ul>
+            <!--<div class="DB_next"><img src="__TMPL__demo2/img/nextArrow.png" alt="NEXT"/></div>
+            <div class="DB_prev"><img src="__TMPL__demo2/img/prevArrow.png" alt="PREV"/></div> -->
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $('.DB_tab25').DB_tabMotionBanner({
+        key:'b28551',
+        autoRollingTime:5000,
+        bgSpeed:500,
+        motion:{
+            DB_1_1:{top:-50,opacity:0,speed:1000,delay:500},
+			DB_1_2:{top:-30,opacity:0,speed:1000,delay:500},
+            DB_2_1:{top:50,opacity:0,speed:1000,delay:500},
+            DB_2_2:{top:50,opacity:0,speed:1000,delay:500},
+            DB_3_1:{left:-50,opacity:0,speed:1000,delay:500},
+			DB_3_2:{top:50,opacity:0,speed:1000,delay:1000},
+            end:null
+        }
+    })
+</script>

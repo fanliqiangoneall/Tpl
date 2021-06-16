@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<php>
+    if($data523[0]){
+    $color = $data523[0];
+    }
+</php>
+<style>
+    <if condition="$data523[1]">
+    .hjzf_advantage_61 {
+        background-image: url({:getindeximgurl($data523[1])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    </if>
+    .hjzf_advantage_61 {
+        background-color: #333;
+    }
+</style>
+<section class="hjzf_advantage_61">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="hjzf_advantage_61_list">
+                    <php>
+                        $arr = get_list_val($data523[2]);
+                    </php>
+                    <volist name="arr" id="a" key="k">
+                        <li>
+                            <span>{$a[title]}</span>
+                            <div class="hjzf_advantage_61_con">
+                                {:HtmlEncode($data523[$k+2])}
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

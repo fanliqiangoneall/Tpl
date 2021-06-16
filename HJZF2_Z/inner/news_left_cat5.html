@@ -1,0 +1,47 @@
+<style>
+.HJZF_Z__inner5_class{
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.HJZF_Z__inner5_class li{
+	display: inline-block;
+	margin: 0 20px;
+	margin-bottom: 15px;
+}
+.HJZF_Z__inner5_class li a{
+	padding: 10px 0;
+	display: block;
+	border: 2px solid transparent;
+	transition: all .4s ease;
+}
+
+.HJZF_Z__inner5_class li h3{
+	font-size: 20px;
+    line-height: 32px;
+    font-weight: normal;
+}
+.HJZF_Z__inner5_class ul li.on a,
+.HJZF_Z__inner5_class ul li:hover a {
+    border-bottom:2px solid #{$inner_data[1]};
+    color: #{$inner_data[1]};
+}
+@media (max-width:767px) {
+.HJZF_Z__inner5_class li h3{
+	font-size: 18px;
+    line-height: 30px;
+}
+}
+</style>
+<div class="HJZF_Z__inner5_class">
+    <ul>
+        <li class="yiji">
+            <a href="{:U('/news')}" class="index_sub_title">{:__('All news')}</a>
+        </li>
+        <volist empty="no" name="allnewclass" id="new" offset="0">
+            <li <if condition="$newscate['classid'] eq $new['classid']">class="yiji on"<else/>class="yiji"</if>>
+                <a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a>
+            </li>
+        </volist>
+    </ul>
+</div>

@@ -1,0 +1,79 @@
+<style>
+	.erji{
+		padding: 0 30px 0 20px;
+		margin-bottom: 20px;
+	}
+	.erji li a{
+		padding: 5px 15px 5px 20px;
+		display: block;
+	}
+	.erji li h3{
+		font-size: 14px;
+		color: #333;
+		line-height: 25px;
+	}
+	.erji li.yijion_news h3,ul.InsidePages_left_navlist > li.on > a > h3,ul.InsidePages_left_navlist > li.yijion_news > a > h3{
+		color: #{$color};
+	}
+</style>
+<div class="InsidePages_content-left_content inner_hidden">
+    <div class="HJZF_Z__inner--left__content">
+        <div class="InsidePages_left_search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if
+                        condition="C('Language') eq 'cn'">id="keyword2"
+                    <else />id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)"
+                    onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="InsidePages_left_content-main">
+            <p>{:__('Case Category')}</p>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="allnewclass" id="nav">
+					<if condition="$webid eq '440' or $webid eq '516'">
+					<!-- 钱贝佐安案例加二级 -->
+					<if condition="$nav['classid'] eq '85' or $nav['classid'] eq '86' or $nav['classid'] eq '89' or $nav['classid'] eq '90'">
+						<li data-id="{$nav['classid']}" <if condition="$newscate['classid'] eq $nav['classid']">class="yijion_news"<else/>class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$nav["classid"]))}">{$nav['class_name']}</a>  
+							<if condition="$nav['classid'] eq '86' or $nav['classid'] eq '90'">
+							<span class="class_button"></span>
+							</if>
+						</li>
+					<else/>
+						<li <if condition="$newscate['classid'] eq $nav['classid']">class="yijion_news case_erji child"<else/>class="yiji_news case_erji child"</if>>
+							<a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$nav["classid"]))}">{$nav['class_name']}</a>
+						</li>
+					</if>
+					<else/>
+					<li data-id="{$nav['classid']}" <if condition="$newscate['classid'] eq $nav['classid']">class="yijion_news"<else/>class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$nav["classid"]))}">{$nav['class_name']}</a>
+					</li>
+					</if>
+					
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script>
+require(['jquery'],function($){
+	$(function(){
+		$('.InsidePages_left_navlist .case_erji').wrapAll('<ul class="erji"></ul>');
+		$('.yijion_news').parent('.erji').prev().addClass('on');
+
+		$('.class_button').click(function () {
+			$('.erji').slideToggle();
+		})
+	});
+	
+});
+</script>
+<if condition="$inner_data[2]">
+    <style>
+        .inner_hidden {
+            display: none;
+        }
+    </style>
+    <Include file="./Tpl/HJZF2_Z/left.html" />
+</if>

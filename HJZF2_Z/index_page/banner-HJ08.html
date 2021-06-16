@@ -1,0 +1,29 @@
+<!--{$pagename}-->
+<style>
+    .hj08_banner_pagination .swiper-pagination-bullet-active {
+        background: #{$color};
+    }
+</style>
+<section class="hjzf_banner_hj08 index_wrapper">
+    <div class="swiper-container hj08_banner_top">
+        <div class="swiper-wrapper">
+            <volist name="banner" id="banner_pic" key="k" offset="0">
+                <div class="swiper-slide">
+                    <if condition="$banner_pic['ad_pic']">
+                        <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg has_nowapbanner"</if>>
+                            <a href="{$banner_pic['ad_link']}"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%"/></a>
+                        </div>
+                    </if>
+                    <if condition="$banner_pic['use_wap']">
+                        <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                            <a href="{$banner_pic['ad_link']}"><img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%" border="0"/></a>
+                        </div>
+                    </if>
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-button-next swiper-button-white hj08_banner_next"></div>
+        <div class="swiper-button-prev swiper-button-white hj08_banner_prev"></div>
+        <div class="swiper-pagination hj08_banner_pagination"></div>
+    </div>
+</section>

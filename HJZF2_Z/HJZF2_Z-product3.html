@@ -1,0 +1,113 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .main_page .current{
+            background: #{$color};border: 1px solid #{$color};
+        }        
+        .inner-3__product_hover:after{
+            background-color: #{$color};-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;filter:alpha(opacity=80);
+        }
+    </style>
+    <div class="HJZF_Z__wrapper inner_4__innerwrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner3">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" />
+                    </div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" /></div>
+            </if>
+        </div>
+        <div class="HJZF_Z__Breadcrumbs" style="margin-bottom: 0.5rem" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Products')}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <php>
+            if($inner_data[2]){
+            $imgs=[];$imgs_mobile=[];
+            $matches=getimages(htmlspecialchars_decode($inner_data[2]));
+            if(isset($matches[1])){
+            $imgs=$matches[1];
+            $imgs_mobile=$matches[1];
+            }
+            }
+            $img_index=0;
+            $img_index_mobile = 0;
+        </php>
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <section class="inner-3__productWrap">
+                        <volist empty="" name="allclass" id="allclass_left">
+                            <php>
+                                $tuji=$imgs[$img_index];
+                                $img_index++;
+                            </php>
+                            <div  <if condition="($key+1)%8 eq 0 or ($key+1) eq 1">class="inner-3__productItem inner-3__productItem_l" <else/>class="inner-3__productItem"</if>>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}" class="inne3_productscale">
+                                    <div class="inner-3__product_pic"> <img src="{$tuji}" /></div>
+                                    <div class="inner-3__product_hover text-center flex inner-3__product_color">
+                                        {$allclass_left['class_name']}
+                                        <p class="ellipsis_three">{$allclass_left['readme']}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        <if condition="($key+1)%7 eq 0">
+                            <div class="clear inner-3_clear hidden_499"></div>
+                        </if>
+                </volist>
+                    </section>
+                    <div class="clear"></div>
+                    <div class="inner-3__productWrap_mobile">
+                        <div class="flex">
+                            <php>
+                                $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                            </php>
+                            <volist empty="$no_empty" name="allclass" id="allclass_left">
+                                <php>
+                                    $tuji_mobile=$imgs_mobile[$img_index_mobile];
+                                    $img_index_mobile++;
+                                </php>
+                                <div  <if condition="($key+1)%8 eq 0 or ($key+1) eq 1">class="inner-3__productItem inner-3__productItem_mobilefirst" <else/>class="inner-3__productItem"</if>>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}" class="inne3_productscale">
+                                    <div class="inner-3__product_pic"> <img src="{$tuji_mobile}" /></div>
+                                </a>
+                                <div class="inner-3__product_mobile">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">
+                                        <div class="ellipsis_three"> {$allclass_left['class_name']}</div>
+                                    </a>
+                                </div>
+                        </div>
+                        </volist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="footer_js">
+    <script>
+        require(['jquery'],function($){
+            $(window).resize(function(){
+                var l_height = $(".inner-3__productItem:nth-child(2)").height()*2+20;
+                console.log(l_height);
+                $(".inner-3__productItem_l").height(l_height);
+            });
+        });
+    </script>
+</block>

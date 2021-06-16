@@ -1,0 +1,14 @@
+<if condition="$hotpro neq ''">
+    <ul class="other_pro_17">
+        <volist empty="" name="hotpro" id="hotproa" key="k" offset="0" length="4">
+            <li>
+                <a href="{:U('/Product','','')}/{:getproname($hotproa['pid'])}">
+                    <div class="inner-3__proimg">
+                        <img src="{:getmainimgurl($hotproa['main_img'])}" alt="{$hotproa['pro_name']}"  class="img-fluid"/>
+                    </div>
+                    <h3 title="{$hotproa['pro_name']}" class="text-center">{$hotproa['pro_name']}</h3>
+                </a>
+            </li>
+        </volist>
+    </ul>
+</if>

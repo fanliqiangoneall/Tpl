@@ -1,0 +1,33 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_company-HJ02 .hj02_index_videoBox{
+        background: url({:getindeximgurl($data88[6])}) no-repeat center;
+    }
+    .new_hjzf_company-HJ02 .hj02_index_videoBox_right{
+        background: url({:getindeximgurl($data88[2])}) no-repeat center;
+    }
+    .new_hjzf_company-HJ02 .hj02_video_more:hover{
+        background: #fff;color: #{$color}
+    }
+    .new_hjzf_company-HJ02 .hj02_video_more:hover:before{
+        content: '';display: table;width: 24px;height: 2px;background: #{$color};position: absolute;right: 10px;top: 15px;}
+
+</style>
+<section class="hj02_index_videoBox padding-40px-bottom">
+    <div class="container">
+        <div class="hj02_index_videoBox_left left" id="hj02_index_videoBox_left">
+            <div id="imgContainer">
+                <php>for($v=3;$v<6;$v=$v+1){</php>
+                <if condition="$data88[$v]">
+                    <img src="{:getindeximgurl($data88[$v])}" alt="{$about['company_name']}" id="imgs"/>
+                </if>
+                <php>}</php>
+            </div>
+        </div>
+        <div class="hj02_index_videoBox_right right" id="hj02_index_videoBox_right">
+            <a href="javascript:void(0);"  <if condition="$data88[7] neq ''">id="hj02_video"</if>data-video="{$data88[7]}" ><img src="{:getindeximgurl($data88[1])}" alt=""/></a>
+            <p class="margin-50px-top margin-40px-bottom hj02_index_videoBox_right_title">{$data88[0]}</p>
+            <a href="{$data88[8]}" class="hj02_video_more">{:__('Read More')}</a>
+        </div>
+    </div>
+</section>

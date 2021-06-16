@@ -1,0 +1,98 @@
+<!--{$pagename}-->
+<!--{:dump(has_mould('bottom-3'))}-->
+<php>
+    if($data38[6]==''){
+        $data38[6] ==100;
+    }
+</php>
+<if condition="has_mould('bottom-3') eq false">
+<style>
+#bottom3{ display:none;}
+</style>
+<else/>
+<link href="__TMPL__demo2/css/bottom3.css" rel="stylesheet">
+</if>
+<if condition="$data38[0]">
+    <style>
+        #bottom3{
+            background:url({:getindeximgurl($data38[0])});background-repeat:no-repeat;background-position: center;
+        }
+    </style>
+</if>
+<div id="bottom3" >
+
+<style>
+.index_bottom_bottom3{ color:#fff;}
+#bottom3 .link_b{
+    margin-left: {$data38[6]}px;
+}
+</style>
+<php>
+$first_navs= explode("\\r\\n",$data38[1]);
+$first_urls= explode("\\r\\n",$data38[2]);
+foreach($first_navs as $k=>$v){
+	$nav_1s[$k]['name']=$v;
+    $nav_1s[$k]['url']=$first_urls[$k];
+}
+$first_nav2s= explode("\\r\\n",$data38[3]);
+$first_url2s= explode("\\r\\n",$data38[4]);
+foreach($first_nav2s as $k=>$v){
+	$nav_2s[$k]['name']=$v;
+    $nav_2s[$k]['url']=$first_url2s[$k];
+}
+</php>
+<div class="bottom_f">
+<div class="b_nav" style="margin-right: 30px;">
+	<volist name="nav_1s" id="nav_1">
+	<div class="b_nav_c">
+    <a href="{$nav_1['url']}">{$nav_1['name']}</a>
+    </div>
+    </volist>
+</div>
+<div class="b_nav">
+	<volist name="nav_2s" id="nav_2">
+	<div class="b_nav_c nav_2">
+    <a href="{$nav_2['url']}">{$nav_2['name']}</a>
+    </div>
+    </volist>
+</div>
+
+<div class="b_nav link_b">
+<if condition="$about['company_name']"><div class="b_nav_c">Company name: {$about['company_name']}</div></if>
+<if condition="$about['zip']"><div class="b_nav_c">Zip: {$about['zip']}</div></if>
+<if condition="chaifen($about['phone'],0)"><div class="b_nav_c">Phone: {:chaifen($about['phone'],0)}</div></if>
+<if condition="chaifen($about['mobile'],0)"><div class="b_nav_c">Mobile: {:chaifen($about['mobile'],0)}</div></if>
+<if condition="chaifen($about['email'],0)"><div class="b_nav_c">Email: <a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></div></if>
+    <if condition="$about['company_name']"><div class="b_nav_c">Add: {$about['address']}</div></if>
+</div>
+<div class="clear" style="margin-bottom: 20px;"></div>
+    <div class="index_bottom_bottom3">
+        <php>
+            $nowtime=date("Y",time());
+            if(!$data38[5]){
+            $currtime=2019;
+            }else{
+            $currtime=$data38[5];
+            }
+        </php>
+        <div class="bottom_f">
+            <div style="width:50%; float:left;color:#fff;font-size:14px;">
+                <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} all rights reserved.&nbsp;
+            </div>
+
+            <div style="width:50%; float:right;color:#fff;font-size:14px; text-align:right;">
+                <a href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;
+                <span style="font-size:16px;  color:#ffff;"><a href="{:U('/alltag','','')}">All tags</a></span>&nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="zhonghuan Internet" target="_blank">zhonghuan Internet</a>&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;&nbsp;</div>
+            <div class="clear"></div>
+        </div>
+
+        {:htmlspecialchars_decode(get_google())}</div>
+
+         </div>
+
+           <div class="clear"></div>
+         </div>
+         <div class="clear"></div>
+
+</div>
+

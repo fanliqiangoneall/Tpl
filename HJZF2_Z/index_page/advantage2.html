@@ -1,0 +1,95 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_advantage2__item.active .HJZF2_advantage2__name{
+        color:#{$data35[0]}
+    }
+    .HJZF2_advantage2_wrap--left_more:hover{
+        color: #{$data35[0]};font-weight: bold;
+    }
+    .HJZF2_advantage2__item.swiper-slide-thumb-active .HJZF2_advantage2__img--after,.HJZF2_advantage2__item.active .HJZF2_advantage2__img--after{
+        display: block;transition: 0.6s;
+    }
+    .HJZF2_advantage2__item.swiper-slide-thumb-active .HJZF2_advantage2__img--before,.HJZF2_advantage2__item.active .HJZF2_advantage2__img--before{
+        display: none;transition: 0.6s;
+    }
+
+</style>
+<if condition="$data35[1]">
+    <style>
+        .HJZF2_advantage2{
+            background: url({:getindeximgurl($data35[1])}) no-repeat center;
+        }
+    </style>
+</if>
+<php>
+    $num = $data35[40];
+</php>
+<script>
+    var tab_num = "<?php echo $num ?>";
+</script>
+<section class="HJZF2_advantage2 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="HJZF2_advantage2__title index_title pb20">{$data35[2]}</div>
+                <if condition="$data35[3]">
+                    <p class="HJZF2_advantage2__subtitle index_sub_title pb40">{$data35[3]}</p>
+                </if>
+            </div>
+            <div class="HJZF2_advantage2__content">
+                <div class="col-xs-12">
+                    <div class="swiper-container HJZF2_advantage2_swiper">
+                        <div class="HJZF2_advantage2__wrap swiper-wrapper">
+                            <php>
+                                for($i=4;$i<39;$i=$i+6){
+                            </php>
+                            <if condition="$data35[$i]">
+                            <div class="HJZF2_advantage2__item swiper-slide">
+                                <div class="HJZF2_advantage2__img">
+                                    <div class="HJZF2_advantage2__img--before"><img src="{:getindeximgurl($data35[$i+1])}" alt="{$data35[$i]}"/></div>
+                                    <div class="HJZF2_advantage2__img--after"><img src="{:getindeximgurl($data35[$i+2])}" alt="{$data35[$i]}"/></div>
+                                </div>
+                                <p class="HJZF2_advantage2__name index_sub_title">{$data35[$i]}</p>
+                            </div>
+                            </if>
+                            <php>
+                                }
+                            </php>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next HJZF2_Z__advantage2--next"><i class="fa fa-angle-right"></i></div>
+                    <div class="swiper-button-prev HJZF2_Z__advantage2--prev"><i class="fa fa-angle-left"></i></div>
+                </div>
+                <div class="clear"></div>
+                <div class="swiper-container HJZF2_advantage2Down_swiper">
+                    <div class="HJZF2_advantage2_wrap swiper-wrapper">
+                        <php>
+                            for($i=4;$i<39;$i=$i+6){
+                        </php>
+                        <if condition="$data35[$i]">
+                        <div class="swiper-slide">
+                            <div class="col-xs-12 col-lg-8">
+                                <div class="HJZF2_advantage2_wrap--left">
+                                    <p class="HJZF2_advantage2_wrap--left__title index_sub_title">{$data35[$i]}</p>
+                                    <div class="HJZF2_advantage2_wrap--left__desc index_text">{:HtmlEncode($data35[$i+3])}</div>
+                                    <a href="{$data35[$i+4]}" class="HJZF2_advantage2_wrap--left_more">{:__('Read More')}  ></a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-lg-4">
+                                <div class="HJZF2_advantage2_wrap--right" style="background: url({:getindeximgurl($data35[$i+5])}) no-repeat center/cover;">
+
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                            </if>
+                        <php>
+                            }
+                        </php>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

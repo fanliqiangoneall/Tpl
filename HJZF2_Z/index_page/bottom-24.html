@@ -1,0 +1,115 @@
+<!--{$pagename}-->
+<php>
+	$col = explode(",",$data647[0]);
+</php>
+<style>
+	.hjzf2_z_bottom_24{
+		animation: bgcolor 15s linear alternate infinite;
+	}
+	@keyframes bgcolor {
+		0% {
+			background-color: #{$col[0]};
+		}
+		25%{
+			background-color: #{$col[1]};
+		}
+		50%{
+			background-color: #{$col[2]};
+		}
+		100%{
+			background-color: #{$col[3]};
+		}
+	}
+<if condition="$data647[5]">
+	.hjzf_bottom_24_fix{
+		background-image: url({:getindeximgurl($data647[5])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+		background-attachment: fixed;
+	}
+</if>
+
+</style>
+
+
+<if condition="$data647[5]">
+<section class="hjzf_bottom_24_fix nav-hidden-mobile">
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+	<div class="d-flex">
+	<span>{$data647[8]}</span>{$data647[9]}
+</div>
+</div>
+</div>
+</div>
+
+</section>
+<section class="nav-hidden-pc">
+	<img src="{:getindeximgurl($data647[7])}" class="img-fluid">
+</section>
+</if>
+<section class="hjzf2_z_bottom_24">
+	<div class="container">
+		<div class="row d-flex">
+			<div class="col-2 logo_col">
+				<div class="foot_logo">
+					<a href="{:U('/')}">
+						<img src="{:getindeximgurl($data647[6])}" alt="foot logo">
+					</a>
+				</div>
+			</div>
+			<div class="col-2">
+				<div class="foot_title">
+					{:HtmlEncode($data647[1])}
+				</div>
+			</div>
+		</div>
+		<div class="row mt-40 bottom_24_wrapper">
+			<php>
+				$nowtime=date("Y",time());
+			</php>
+			<div class="col-2">
+				CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;{$about['company_name']}<br>
+				{:__('All rights reserved')}&nbsp;<if condition="get_txtBeiAn()">
+					<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}
+					</a>
+				</if>&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+				<a href="{:U('/alltag','','')}">{:__('All tags')}</a>
+				</if>
+			</div>
+
+			<php>
+				$arre = get_list_val($data647[2]);
+				$arra = get_list_val($data647[4]);
+			</php>
+			<volist name="arre" id="a" key="k">
+				<div class="col-2">
+					<h3>{$a['title']}</h3>
+					<p>{$a['content']}</p>
+				</div>
+			</volist>
+
+			<!-- 设社交 -->
+			<div class="col-1 bottom_24_sj">
+				<h3>{$data647[3]}</h3>
+				<span>
+					<volist name="arra" id="a" key="k">
+						<if condition="$a['link']">
+							<a href="{$a['link']}">
+						</if>
+						<img src="{$a['img']}" alt="">
+						<if condition="$a['link']">
+							</a>
+						</if>
+						<div class="ewm">
+							<img src="{$a['ewm']}" alt="">
+						</div>
+					</volist>
+				</span>
+			</div>
+
+		</div>
+	</div>
+</section>

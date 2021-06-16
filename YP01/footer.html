@@ -1,0 +1,310 @@
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="__TMPL__YP01/js/wow.js"></script>
+    <script src="__TMPL__YP01/js/statitics.js"></script>
+    <script src="__TMPL__YP01/js/jquery.kinMaxShow-1.1.min.js" type="text/javascript"  charset="utf-8"></script>
+<script type="text/javascript" src="__TMPL__YP01/js/layer.js"></script>
+<script type="text/javascript" src="__TMPL__YP01/js/gun.js"></script>
+<script>
+    var isround = "";
+    var scrollmove = "";
+    var masktime = 10;
+    var focus_cur = 1;
+	if(document.getElementById("pic")){
+    var p = document.getElementById("pic").getElementsByTagName("li");
+	}
+	if(document.getElementById("tip")){
+    var h = document.getElementById("tip").getElementsByTagName("li");
+	isround = setTimeout("change(2)",5000000);
+	}
+    
+</script>    
+<script>
+//banner  
+jQuery(function(){
+    jQuery("#kinMaxShow").kinMaxShow({
+            height:729,
+            button:{
+                    showIndex:false,
+                    normal:{background:'#ffffff',border:'0',left:'20%',bottom:'62px',width:'16px',height:'16px'},
+                    focus:{
+                        background:'#{$color}'
+                        ,border:'0'
+                    }
+                },
+            callback:function(index,action){
+            }
+        });
+});
+
+
+//首页关于我们
+if($("#index_about_animate_1").length>0){
+$(document).ready(function(){
+  //判断一下是不是在首页上
+  var window_height=$(window).height();
+  var top=$("#index_about_animate_1").offset().top;
+  if(top<window_height){
+
+    $('#index_about_animate_1').css("visibility","visible");
+    $('#index_about_animate_1').addClass('fadeInLeft');
+
+  }
+})
+
+$(window).scroll( function() {
+  scrollTop=$(document).scrollTop();
+  //alert(scrollTop);
+  
+  if(scrollTop>750){  
+
+  $('#index_about_animate_1').show();
+  $('#index_about_animate_1').removeClass().addClass('fadeInLeft');
+
+  }
+
+});
+}
+
+//首页产品
+if($("#index_products_animate").length>0){
+$(document).ready(function(){
+  //判断一下是不是在首页上
+  var window_height=$(window).height();
+  var top=$("#index_products_animate").offset().top;
+  if(top<window_height){
+    $('#index_products_animate_1').css("visibility","visible");
+    $('#index_products_animate_1').addClass('fadeInLeft');
+  }
+})
+
+jQuery('#index_products_animate').removeClass().addClass('fadeInRight');
+$(window).scroll( function() {
+  scrollTop=$(document).scrollTop();
+  //alert(scrollTop);
+  
+  if(scrollTop>400){  
+  $('#index_products_animate_1').show();
+  $('#index_products_animate_1').removeClass().addClass('fadeInLeft');
+  }
+
+});
+}
+
+//首页新闻
+if($("#index_news_animate_2").length>0){
+$(document).ready(function(){
+  //判断一下是不是在首页上
+  var window_height=$(window).height();
+  var top=$("#index_news_animate_2").offset().top;
+  if(top<window_height){
+    $('#index_news_animate').css("visibility","visible");
+    $('#index_news_animate').addClass('fadeInDown');
+    $('#index_news_animate_1').css("visibility","visible");
+    $('#index_news_animate_1').addClass('fadeInLeft');
+    $('#index_news_animate_2').css("visibility","visible");
+    $('#index_news_animate_2').addClass('fadeInRight');
+  }
+})
+
+$(window).scroll( function() {
+    scrollTop=$(document).scrollTop();
+    //alert(scrollTop);
+    
+    if(scrollTop>1550){ 
+    $('#index_news_animate').show();
+    $('#index_news_animate').removeClass().addClass('fadeInDown');
+    $('#index_news_animate_1').show();
+    $('#index_news_animate_1').removeClass().addClass('fadeInLeft');
+    $('#index_news_animate_2').show();
+    $('#index_news_animate_2').removeClass().addClass('fadeInRight');
+    }
+
+});
+}
+
+//首页FAQ
+if($("#index_honor_animate").length>0){
+$(document).ready(function(){
+  //判断一下是不是在首页上
+  var window_height=$(window).height();
+  var top=$("#index_honor_animate").offset().top;
+  if(top<window_height){
+    $('#index_honor_animate').css("visibility","visible");
+    $('#index_honor_animate').addClass('fadeInDown');
+  }
+})
+
+$(window).scroll( function() {
+    scrollTop=$(document).scrollTop();
+    //alert(scrollTop);
+    
+    if(scrollTop>2050){  
+    $('#index_honor_animate').show();
+    $('#index_honor_animate').removeClass().addClass('fadeInDown');
+    }
+
+});
+}
+
+
+        (function($) {
+            $.fn.newstitle = function(b) {
+                var c, item, httpAdress;
+                b = jQuery.extend({
+                    Speed: 500,
+                    autostart: 1,
+                    autohide: 1
+                }, b);
+                c = $(this);
+                item = c.children("ul").parent("li").children("a");
+                httpAdress = window.location;
+                // item.addClass("inactive");
+
+                function _item() {
+                    var a = $(this);
+                    if (b.autohide) {
+                        a.parent().parent().find(".active").parent("li").children("ul").slideUp(b.Speed / 1.2, function() {
+                            $(this).parent("li").children("a").removeAttr("class");
+                            $(this).parent("li").children("a").attr("class", "inactive")
+                        })
+                    }
+                    if (a.attr("class") == "inactive") {
+                        a.parent("li").children("ul").slideDown(b.Speed, function() {
+                            a.removeAttr("class");
+                            a.addClass("active");
+                        })
+                    }
+                    if (a.attr("class") == "active") {
+                        a.parent("li").children("ul").slideUp(b.Speed)
+                        a.removeAttr("class");
+                        a.addClass("inactive");
+                    }
+                }
+                item.unbind("click").click(_item);
+                if (b.autostart) {
+                    c.children("a").each(function() {
+                        if (this.href == httpAdress) {
+                            $(this).parent("li").parent("ul").slideDown(b.Speed, function() {
+                                $(this).parent("li").children(".inactive").removeAttr("class");
+                                $(this).parent("li").children("a").addClass("active")
+                            })
+                        }
+                    })
+                }
+            }
+        })(jQuery);
+
+        $(document).ready(function (){
+            $(".newstitle ul li").newstitle();
+        });
+
+
+
+
+jQuery('#animate_banner').removeClass().addClass('fadeInLeft');
+function goTop(){
+  jQuery('html,body').animate({'scrollTop':0},600);
+}
+
+jQuery(document).ready(function(){
+  jQuery(".sidebar ul li").hover(function(){
+    jQuery(this).find(".sidebox").stop().animate({"width":"230px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"})
+    jQuery(this).find(".sidebox2").stop().animate({"width":"260px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"})
+    jQuery(this).find(".sidebox3").stop().animate({"width":"200px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"})
+  },function(){
+    jQuery(this).find(".sidebox").stop().animate({"width":"60px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"})  
+    jQuery(this).find(".sidebox2").stop().animate({"width":"60px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"})
+    jQuery(this).find(".sidebox3").stop().animate({"width":"60px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#{$color}"})
+  }); 
+});  
+
+jQuery(function(){
+	jQuery('.wx-show').hide();   
+	jQuery(".wx-container").bind('mouseenter',function(){
+		jQuery('.wx-show').show();
+	})
+	jQuery(".wx-container").bind('mouseleave',function(){        
+		jQuery('.wx-show').hide();
+	});
+});
+var path="";
+
+//导航自动选定的方法
+jQuery(function(){
+  var color="#{$color}";
+  var url=window.location.href;
+  jQuery(".index_navigation_page_Menu li a").each(function(){
+    var href=jQuery(this).attr("href");
+    href=href.toLowerCase();
+    url=url.toLowerCase();
+    //区分出啥是啥，主要就是区分出new pro case 优先找顶级，找不到在按规则排
+//    console.log(href);
+//    console.log("url",url);
+    if(href==url){
+    /*  jQuery(this).parent("li").addClass("menuon");*/
+        jQuery(this).parent("li").addClass("menu_on");
+        return false;
+    }else{
+
+      //说明是产品
+      url=url.toLowerCase();
+      if(url.indexOf("product_category")!=-1){
+        if(href.indexOf("product")!=-1){
+          jQuery(this).parents("li").addClass("menu_on");
+        }
+      }
+      //说明是产品
+      if(url.indexOf("new")!=-1){
+        if(href.indexOf("new")!=-1){
+          jQuery(this).parents("li").addClass("menuon4");
+        }
+      }
+
+      //说明是产品
+      if(url.indexOf("case")!=-1){
+        if(href.indexOf("case")!=-1){
+          jQuery(this).parents("li").addClass("menuon");
+        }
+      }
+
+    }
+
+  })
+})
+</script>
+    <script>
+        /*导航放多个案例类显示多个高亮问题*/
+        $(document).ready(function(){
+            var url=window.location.href;
+            if(url.indexOf("product_category")!=-1){
+                var current_nav_id = '<?php echo $prolist["pcid"]?>';
+            }
+            jQuery(".index_navigation_page_Menu>ul>li").each(function(){
+
+                var nav_id = jQuery(this).attr("nav-id");
+                if(current_nav_id && nav_id==(current_nav_id)){
+                    jQuery(this).addClass("menu_on").siblings().removeClass("menu_on");
+                    return false;
+                }
+                if($(this).children("a").attr("href").indexOf("product_category")==-1){
+                    $(this).removeClass("menu_on");
+                }
+            })
+        })
+    </script>
+  <script>
+    $(window).scroll( function() {
+        scrollTop=$(document).scrollTop();
+        if(scrollTop>600){
+            $('.sidebar').show().addClass('fadeInRight');
+        }else{
+            $('.sidebar').hide(1000);
+        }
+    });
+</script> 
+<Include file="./Tpl/YP01/sidebar.html" />      
+  </body>
+</html>
+

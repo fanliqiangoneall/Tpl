@@ -1,0 +1,65 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                您的位置：&nbsp;
+                <a href="{:U('/')}">首页</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    客户反馈
+                </span>
+            </div>
+        </div>
+        <div class="pageBannerContainer">
+            <div class="pageBannerImg">
+                <img src="{:getindeximgurl($data47[8])}" alt=""/>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ04_CN/left.html" />
+            </section>
+            <section class="main-content-right">
+                    <div class="page_RightMain">
+                        <div class="page_Main">
+                            <table width="500" border="1" align="center" cellpadding="3" cellspacing="0" style="margin:0 auto">
+                                <tr>
+                                    <th align="center" bgcolor="#cccccc">信息</th>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <br />
+                                        <present name="message" style=" text-align:center;">
+                                            {$message}<br />
+                                        </present>
+                                        <present name="error" style=" text-align:center;">
+                                            {$error}<br />
+                                        </present>
+                                        <p class="detail"></p>
+                                        <p class="jump" style=" text-align:center;">
+                                            <a id="href" href="<?php echo($jumpUrl); ?>">点击返回上一页</a> 等待时间： <b id="wait">5</b>
+                                        </p><br /></td>
+                                </tr>
+                            </table>
+                            <script type="text/javascript">
+                                (function(){
+                                    var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+                                    var interval = setInterval(function(){
+                                        var time = --wait.innerHTML;
+                                        if(time <= 0) {
+                                            location.href = href;
+                                            clearInterval(interval);
+                                        };
+                                    }, 1000);
+                                })();
+                            </script>
+                            {:htmlspecialchars_decode(get_inquiry_code())}
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

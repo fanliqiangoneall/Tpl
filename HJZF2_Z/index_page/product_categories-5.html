@@ -1,0 +1,93 @@
+<!--{$pagename}-->
+<php>
+    if($data227[0]){
+        $procat_bg = getindeximgurl($data227[0]);
+    }
+    if($data227[1]) {
+        $procat_bgcolor = $data227[1];
+    }
+</php>
+<style>
+    .hjzf_procate-5{
+        background: url({$procat_bg}) no-repeat center;background-size: cover;
+    }
+    .hjzf_procate-5{
+        background-color: #{$procat_bgcolor};
+    }
+    .hjzf_procate-5_page .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background-color: #{$data227[2]};
+    }
+    
+</style>
+
+<section class="hjzf_procate-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="hjzf_procate-5__title">
+                    <h3 class="index_title">{$data227[3]}</h3>
+                    <span>{$data227[4]}</span>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="hjzf_procate-5__itemWrap">
+                    <div class="swiper-container hjzf_procate-5__swiper">
+                        <div class="swiper-wrapper">
+                            <if condition="$data227[5]">
+                                <div class="swiper-slide">
+                                    <php>
+                                        for($i=5;$i<20;$i=$i+4){
+                                    </php>
+                                    <if condition="$data227[$i]">
+                                        <li class="hjzf_procate-5__item">
+                                            <div class="hjzf_procate-5__itembox">
+                                                <div class="hjzf_procate-5__itempic"><img src="{:getindeximgurl($data227[$i])}" alt="{$data227[$i+1]}" border="0" /></div>
+                                                <div class="hjzf_procate-5__itemmask">
+                                                    <a href="{$data227[$i+3]}">
+                                                        <div class="hjzf_procate-5__itemName">{$data227[$i+1]}</div>
+                                                        <div class="hjzf_procate-5__itemjs">{$data227[$i+2]}</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </if>
+
+                                    <php>
+                                        }
+                                    </php>
+                                </div>
+                            </if>
+                            <if condition="$data227[21]">
+                                <div class="swiper-slide">
+                                    <php>
+                                        for($i=21;$i<36;$i=$i+4){
+                                    </php>
+                                    <if condition="$data227[$i]">
+                                        <li class="hjzf_procate-5__item">
+                                            <div class="hjzf_procate-5__itembox">
+                                                <div class="hjzf_procate-5__itempic"><img src="{:getindeximgurl($data227[$i])}" alt="{$data227[$i+1]}" border="0" /></div>
+                                                <div class="hjzf_procate-5__itemmask">
+                                                    <a href="{$data227[$i+3]}">
+                                                        <div class="hjzf_procate-5__itemName">{$data227[$i+1]}</div>
+                                                        <div class="hjzf_procate-5__itemjs">{$data227[$i+2]}</div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </if>
+
+                                    <php>
+                                        }
+                                    </php>
+                                </div>
+                            </if>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination hjzf_procate-5_page"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,90 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_service_31_wrapper_container .swiper-pagination span.swiper-pagination-bullet-active {
+        background-color: #{$data386[4]};
+        border: 1px solid #{$data386[4]};
+    }
+    .hjzf_service_31_wrapper_faq_title{
+        font-weight: bold;
+        font-size: 20px;    }
+</style>
+<section class="hjzf_service_31 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 index_title text-center pb40">
+                {$data386[0]}
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="hjzf_service_31_wrapper clearfix">
+                <!-- left -->
+                <div class="col-xs-12 col-lg-8 hjzf_service_31_wrapper_left">
+                    <div class="hjzf_service_31_wrapper_container swiper-container">
+                        <ul class="swiper-wrapper">
+                            <php>
+                                $arr = get_list_val($data386[1]);
+                            </php>
+                            <volist name="arr" id="a">
+                                <li class="swiper-slide">
+                                    <img src="{$a[img]}" class="img-fluid">
+                                </li>
+                            </volist>
+                        </ul>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="index_text pb40">
+                        {:HtmlEncode($data386[2])}
+                    </div>
+
+                    <div class="index_title pb40">
+                        {$data386[5]}
+                    </div>
+                    <ul class="hjzf_service_31_wrapper_faq">
+                        <php>
+                            $arra = get_list_val($data386[6]);
+                        </php>
+                        <volist name="arra" id="ab">
+                            <if condition="$ab[title]">
+                                <div class="hjzf_service_31_wrapper_faq_title">
+                                    {$ab[title]}
+                                </div>
+                                <br>
+                            </if>
+                            <if condition="$ab[text]">
+                                <div class="hjzf_service_31_wrapper_faq_text">
+                                    {$ab[text]}
+                                </div>
+                                <br>
+                            </if>
+                            <if condition="$ab[img]">
+                                <img src="{$ab[img]}" class="img-fluid">
+                                <br>
+                            </if>
+                            <if condition="$ab[video]">
+                                <video src="{$ab[video]}" class="img-fluid"></video>
+                                <br>
+                            </if>
+                        </volist>
+                        <if condition="$data386[7]">
+                            {:htmlspecialchars_decode($data386[7])}
+                        </if>
+                    </ul>
+                </div>
+                <!-- right -->
+                <div class="col-xs-12 col-lg-4 hjzf_service_31_wrapper_right">
+                    <div class="hjzf_service_31_wrapper_xp">
+                        <div class="index_sub_title text-center pb20">
+                            {$data386[3]}
+                        </div>
+                        <if condition="C('language') eq 'cn'">
+                            <Include file="./Tpl/HJZF2_Z/submit_service_31.html" />
+                            <else />
+                            <Include file="./Tpl/HJZF2_Z/submit_service_31_en.html" />
+                        </if>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

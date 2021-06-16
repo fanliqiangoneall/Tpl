@@ -1,0 +1,57 @@
+<!--{$pagename}-->
+<php>
+    if($data227[0]){
+    $procat_bg = getindeximgurl($data227[0]);
+    }
+    if($data227[1]) {
+    $procat_bgcolor = $data227[1];
+    }
+</php>
+<style>
+    .procate_left span {
+        color: #{$color};
+    }
+
+    .hjzf_procate_6_wrapper__pagination .swiper-pagination-bullet-active {
+        background-color: #{$color};
+    }
+</style>
+
+<section class="hjzf_procate_6">
+    <div class="swiper-container hjzf_procate_6_wrapper pb40">
+        <div class="swiper-wrapper">
+            <php>
+
+                $arr_str=$data361[1];
+                $arr=explode(',',$arr_str);
+                foreach($arr as $k=>$a){
+                $list[$k]=get_index_products_categoryname($a);
+                }
+                $arrla = get_list_val($data361[3]);
+            </php>
+            <volist empty="" name="list" id="li" key="keya">
+
+                <div class="swiper-slide">
+                    <a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}"
+                        class="hjzf_procate_6_slide_wrapper">
+                        <div class="procate_word">{$arrla[$keya-1]['word']}</div>
+                        <div class="procate_left_wrapper">
+                            <div class="procate_left">
+                                <span class="index_text">{$arrla[$keya-1]['sub']} </span>
+                                <strong class="index_sub_title">{$li['class_name']}</strong>
+                            </div>
+                            <div class="procate_more">
+                                <span>{$data361[0]}</span>
+                            </div>
+                        </div>
+                        <div class="procate_img">
+                            <img src="{:getmainimgurl($li['fid'])}" alt="{$li['class_name']}">
+                        </div>
+                    </a>
+                </div>
+            </volist>
+
+        </div>
+        <div class="hjzf_procate_6_wrapper__pagination text-center"></div>
+    </div>
+</section>

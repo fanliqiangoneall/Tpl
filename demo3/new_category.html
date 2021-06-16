@@ -1,0 +1,99 @@
+<extend name="demo3:base" />
+<block name="content">
+<Include file="./Tpl/demo3/in_head.html" />
+<div id="">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+</if>
+</div>
+
+
+<if condition="C('webid') eq 1138 and $newscate['banner']">
+<style>
+.in_banner{ display:none;}
+.in_banner1{ width:100%; margin:0 auto; min-width:1190px; max-width:1920px; height:300px;}
+</style>
+
+<div class="in_banner1" style="background:url({:getimgurl($newscate['banner'])}) center no-repeat"></div>
+</if>
+
+
+
+<div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$newscate['class_name']}</div>
+
+
+<div style="width: 1190px;margin:0 auto">
+    <if condition="$data1[14] neq ''">
+        <Include file="./Tpl/demo3/newleft2.html" />
+        <else/>
+        <Include file="./Tpl/demo3/newleft.html" />
+    </if>
+<div class="page_Main">
+    <if condition="$data1[14] neq ''">
+        <div class="page_RightTitle_2">{$newscate['class_name']}</div>
+        <else/>
+        <div class="page_RightTitle"><span>{$newscate['class_name']}</span></div>
+    </if>
+  <div class="body" style="margin-top: 45px;">
+
+
+  			<if condition="$newscatelist eq ''">
+            <div class="page_RightTitle" style="background:none"><span>没有新闻</span></div> 
+            </if>
+
+
+        <volist name="newscatelist" id="newscatelist" key="k">
+              <div class="in_case">
+                  <div class="incase_pic"><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}"><if condition="$newscatelist['new_pro'] neq ''"><img src="{:getimgurl($newscatelist['new_pro'])}" border="0" alt="{$newscatelist['title']}" /><else/><img src="__TMPL__demo3/img/case_pic.jpg" border="0" /></if></a></div>
+                  <div class="incase_name">
+                     <li style="float: left;color: #999;font-size: 16px;line-height: 28px;margin-bottom: 10px">{:date('Y-m-d',$newscatelist['created'])}</li>
+                     <li style="margin-bottom: 10px;"><a href="{:U('/new_detail',array('nid'=>$newscatelist["nid"]))}" style="font-size: 22px;color: #333333;line-height: 30px;">{$newscatelist['title']}</a></li>
+                     <li style="color: #999;font-size: 16px;line-height: 28px;">{:subtxt($newscatelist['news_description'],100)}</li>
+                  </div>  
+              </div>
+              <if condition="$k % 3 neq 0">
+                 <div style="width:32px; float:left; height:30px;"></div>
+              <else/>
+                 <div style="clear:both"></div>
+              </if>
+         </volist>
+
+          </div>
+          <style>
+          .green-black{font-size:16px;}
+          .green-black a{ padding:5px; font-size:16px;}
+          </style>
+  <div class="clearfix clear"></div>
+<div class="green-black" style="text-align:center; padding:20px 20px;">{$page}</div>     
+</div>
+</div>
+<Include file="./Tpl/demo3/index_page/bottom.html" />
+<div style="clear:both;"></div>
+<Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-5.html" />
+<if condition="C('webid') eq 1138">
+<!--孙润舒说要改的-->
+<style>
+.sun{ color:#333 !important;}
+</style>
+<script>
+var pro1=",3047,";
+var cur_pro="{$Think.get.classid}";
+cur_pro=","+cur_pro+",";
+if(pro1.indexOf(cur_pro)>-1){
+	$("#news_left_sun").html("肿瘤治疗前沿");
+	$(".top_menu h2:contains(新闻中心)").addClass("sun");
+	$(".subNav h3").css("display","none");
+	$(".subNav h3:contains(肿瘤治疗前沿)").css("display","block");
+}else{
+
+	$("#news_left_sun").html("新闻中心");
+	$(".top_menu h2:contains(肿瘤治疗前沿)").addClass("sun");
+	$(".subNav h3:contains(肿瘤治疗前沿)").css("display","none");
+}
+</script>
+</if>
+</block>

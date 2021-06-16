@@ -1,0 +1,35 @@
+<!--{$pagename}-->
+<style>
+    .service-11_color{
+        color: #fff;
+    }
+    .service-11_btn a:hover{
+        background-color: #{$color};
+    }
+</style>
+<section class="hjzf2_service-11">
+    <div class="service-11_wrap">
+        <div class="service-11_bg nav-hidden-mobile" style="background: url({:getindeximgurl($data245[0])}) no-repeat center/cover"></div>
+        <div class="nav-hidden-pc">
+            <img src="{:getindeximgurl($data245[0])}" class="img-fluid">
+        </div>
+        <div class="service-11_content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-offset-7 col-lg-5 service-11_textbox">
+                        <div class="service-11_text1 service-11_color index_title ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">{$data245[1]}</div>
+                        <div class="service-11_text1 service-11_color index_title ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">{$data245[2]}</div>
+                        <div class="service-11_text2 service-11_color index_sub_title ani wow fadeInUp" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.7s" data-wow-duration="1s" data-wow-delay="0s">{$data245[3]}</div>
+                        <div class="service-11_line wow fadeInDown ani" data-wow-duration="1s" data-wow-delay="0.5s" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.9s"></div>
+                        <div class="service-11_text3 service-11_color index_text wow fadeInDown pb20 ani" data-wow-duration="1s" data-wow-delay="1s" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.9s" swiper-animate-delay="1.1s">{$data245[4]}</div>
+                        <if condition="$data245[5]">
+                            <div class="service-11_btn wow fadeInDown ani" data-wow-duration="1s" data-wow-delay="1.5s" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="1.2s">
+                                <a href="{$data245[6]}" class="index_btn">{$data245[5]}</a>
+                            </div>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,96 @@
+<!--{$pagename}-->
+<php>
+    if($data120[27]){
+    $procat_bg = getindeximgurl($data120[27]);
+    }
+    if($data120[28]) {
+    $procat_bgcolor = $data120[28];
+    }
+</php>
+<style>
+    .HJZF2_Z__aboutus-7{
+        background: url({$procat_bg}) no-repeat center;background-size: cover;
+    }
+    .HJZF2_Z__aboutus-7{
+        background-color: #{$procat_bgcolor};
+    }
+    .HJZF2_Z__aboutus-7__title--main:after{
+        background: #{$color};
+    }
+</style>
+<section class="HJZF2_Z__aboutus-7 index_pd">
+    <div class="container">
+        <div class="row">
+			<div class="col-xs-12">
+            <div class="HJZF2_Z__aboutus-7__title--main index_title pb40 clearfix">
+					{$data120[0]}
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="HJZF2_Z__aboutus-7_content">
+        <div class="container">
+            <div class="row">
+                <div class="HJZF2_Z__aboutus-7_wrap">
+                    <div class="col-sm-12  col-lg-6 col-xl-6 wow fadeInLeft" data-wow-duration="1s">
+                        <div class="HJZF2_Z__aboutus-7__columm--inner">
+                            <div class="HJZF2_Z__aboutus-7_wrapper">
+                                <h2 class="HJZF2_Z__aboutus-7--left__title index_sub_title pb20">{$data120[1]}</h2>
+                                <div class="HJZF2_Z__aboutus-7--left__desc index_text pb20 word_break">{:HtmlEncode($data120[2])}</div>
+                                <div class="HJZF2_Z__aboutus-7--left__tb">
+                                    
+                                    <div class="col-sm-12 col-lg-6 col-xl-6">
+                                        <div class="HJZF2_Z__aboutus-7--left__icon" style="margin-right:10px;">
+                                           <ul>
+                                           <php>
+                                              for($i=3,$j=9,$t=21;$i<6,$j<12,$t<24;$i=$i+1,$j=$j+1,$t=$t+1){
+                                           </php>
+                                               <if condition="$data120[$j]"><li class="index_text"><a href="{$data120[$t]}"><img src="{:getindeximgurl($data120[$i])}" alt="{$data120[$j]}">{$data120[$j]}</a></li></if>
+                                           <php>
+                                              }
+                                           </php>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-sm-12 col-lg-6 col-xl-6">
+                                        <div class="HJZF2_Z__aboutus-7--left__icon">
+                                           <ul>
+                                           <php>
+                                              for($i2=6,$j2=12,$t2=24;$i2<9,$j2<15,$t2<27;$i2=$i2+1,$j2=$j2+1,$t2=$t2+1){
+                                           </php>
+                                               <if condition="$data120[$j2]">
+                                                   <li class="index_text"><a href="{$data120[$t2]}"><img src="{:getindeximgurl($data120[$i2])}" alt="{$data120[$j2]}">{$data120[$j2]}</a></li>
+                                               </if>
+                                           <php>
+                                              }
+                                           </php>
+                                           </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-6 col-xl-6 wow fadeInRight" data-wow-duration="1s" >
+                        <div class="HJZF2_Z__aboutus-7__columm--inner" id="aboutus-7__gallery">
+                            <php>
+                                for($i3=15;$i3<21;$i3=$i3+1){
+                            </php>
+                            <div class="HJZF2_Z__aboutus-7--center__item col-xs-6 col-sm-4 col-lg-4 col-xl-4">
+                                <div class="HJZF2_Z__aboutus-7--center__item__icon" id="about_pic_btn">
+									<if condition="$data120[$i3]">
+                                    <a href="{:getindeximgurl($data120[$i3])}"><img class="lazy" src="__TMPL__HJZF2_Z/img/timg.gif" data-original="{:getindeximgurl($data120[$i3])}" alt="timg" /></a>
+									</if>
+                                </div>
+                            </div>
+                            <php>
+                                }
+                            </php>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

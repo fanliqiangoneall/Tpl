@@ -1,0 +1,75 @@
+<extend name="WH01_CN:basein" />
+<block name="content">
+    <if condition="$newscate['banner'] neq '' and $newscate['banner'] neq 0">
+        <style>
+            .in_banner{
+                background:url({:getimgurl($newscate['banner'])}) center no-repeat;
+            }
+        </style>
+
+        <elseif condition="$data30[13]"/>
+        <style>
+            .in_banner{
+                background:url({:getindeximgurl($data30[13])}) center no-repeat;
+            }
+        </style>
+        <elseif condition="$data3[7]"/>
+        <style>
+            .in_banner{
+                background:url({:getindeximgurl($data3[7])}) center no-repeat;
+            }
+        </style>
+    </if>
+
+
+    <div class="in_banner" style="width: 100%;height: 300px;margin: auto;"></div>
+    <div class="r_mbx"><Include file="./Tpl/WH01_CN/bread.html" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;<if condition="$data1[10]">{$data1[10]}<else/>案例中心</if>&nbsp;>&nbsp;{$newscate['class_name']}</div>
+
+
+    <div class="page_nei_main">
+        <Include file="./Tpl/WH01_CN/leftcases.html" />
+        <div class="page_RightMain">
+            <div class="page_class_head_1">
+                <div class="indpro_title">
+                    <img src="__TMPL__WH01_CN/img/protitle_bg.png" alt="protitle_bg.png"><span>{$newscate['class_name']}</span><img src="__TMPL__WH01_CN/img/protitle_bg2.png">
+                </div>
+            </div>
+
+            <div class="page_Main">
+                <div class="page_pro">
+                    <volist name="newscatelist" id="newscatelist" key="k">
+                        <div class="asd">
+                            <div class="img"><img src="{:getimgurl($newscatelist['new_pro'])}" alt="{$newscatelist['title']}" /></div>
+                            <div class="in_proname_a"><a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}">{$newscatelist['title']}</a></div>
+
+                            <div class="rsp"></div>
+                            <a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}">
+                            <div class="text" style="top:0px;">
+                                <div class=""  style="width: 284px;height: 214px; background:rgba(0,0,0,0.5);">
+                                    <div class="rsp_more" style=" position:relative; top:68px;">{$newscatelist['title']}</div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <if condition="$data1[7]">
+                            <if condition="$k%3 neq 0">
+                                <li style="width:39px; height:50px; float:left;list-style: none"></li>
+                                <else/>
+                                <li class="clear" style="height: 18px;"></li>
+                            </if>
+                            <else/>
+                            <if condition="$k%4 neq 0">
+                                <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                                <else/>
+                                <li class="clear" style="height: 18px;"></li>
+                            </if>
+                        </if>
+                    </volist>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="main_page">{$page}</div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</block>

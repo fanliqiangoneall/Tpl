@@ -1,0 +1,90 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style type="text/css">
+        .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li:hover{
+            background: #{$inner_data[0]};
+        }
+        .main-content_inner_news>ul>li.yijion_news>a>h3,.main-content_inner_news>ul>li:hover >a>h3{color: #fff}
+        .Breadcrumbs span.current{
+            color: #{$inner_data[0]};
+        }
+        .mian_content_casebox>ul>li:hover .hj05-news-pic img{transform: scale(1.1);-webkit-transform: scale(1.1);-moz-transform: scale(1.1);transition: .6s;-moz-transition: .6s;-webkit-transition: .6s;}
+        .mian_content_casebox>ul>li .news_item-title:hover a,.mian_content_casebox>ul>li .news_item_more:hover,.mian_content_casebox>ul>li .news_item_more:hover i{
+            color: #{$inner_data[0]};
+        }
+        .mian_content_casebox>ul>li .news_info .news_item_more:after{
+            border-bottom: #{$inner_data[0]} solid 3px;
+        }
+        .main_page .current{
+            background: #{$inner_data[0]}; color:#fff;border:1px solid #{$inner_data[0]};
+        }
+    </style>
+    <div class="inner_module2_cases_page" id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+                <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+                </volist>
+             <else/>
+                <div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">
+                    <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/cases')}"><if condition="$inner_data[3]">{$inner_data[3]}<else/>{:__('Cases')}</if></a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+            <section <if condition="$inner_data[2]">class="inner_module2__inPage-left" <else/>class="InsidePages_content-left2"</if> >
+            <if condition="$inner_data[2]">
+                <Include file="./Tpl/HJZF2/caseleft_2.html" />
+                <else/>
+                <Include file="./Tpl/HJZF2/caseleft.html" />
+            </if>
+            </section>
+            <section <if condition="$inner_data[2]">class="InsidePages_content-right" <else/>class="InsidePages_content-right2"</if>>
+                <div class="InsidePages_content-right_content ">
+                    <div class="InsidePages_content-right_content-main">
+                        <if condition="$inner_data[2]">
+                        <h5 class="inner_module2__inPage-title">{$newscate['class_name']}</h5>
+                        </if>
+                        <ul class="mian_content_casebox">
+                           <if condition="$newscatelist neq ''">
+                               <ul class="main_caselist" data-myli="1">
+                                   <else/>
+                                   <ul class="main_caselist" data-myli="0">
+                           </if>
+
+                            <volist name="newscatelist" id="newscatelist" key="k">
+                                <li class="main_caseitem">
+                                    <div class="hj05-news-pic">
+                                        <a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($newscatelist['new_pro'])}" border="0" width="242" height="172"/></a>
+                                    </div>
+
+                                    <div class="news_info">
+                                        <div class="news_item-title ellipsis_two case_item-title" style="text-align: center"><a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}" onFocus="blur()">{:subtxt($newscatelist['title'],60)}</a></div>
+                                    </div>
+                                </li>
+                                <if condition="$k % 4 neq 0 and $inner_data[2] eq ''">
+                                    <div style="float:left;height: 20px;width: 20px;"></div>
+                                    <elseif condition="$k % 3 neq 0 and $inner_data[2]"/>
+                                    <div style="float:left;height: 20px;width: 17px;"></div>
+                                </if>
+                            </volist>
+                                <div style="clear:both"></div>
+                            </ul>
+                        </div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

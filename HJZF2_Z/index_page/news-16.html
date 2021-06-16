@@ -1,0 +1,48 @@
+<!--{$pagename}-->
+<style>
+    .news_wrapper span,.hjzf_news_16_title a:hover{
+        color: #{$data273[1]};
+    }
+    .hjzf2_news_16{
+        background-color: #{$data273[0]};
+    }
+    
+</style>
+<section class="hjzf2_news_16 index_pd index_wrapper">
+    <div class="index_inner">
+            <div class="hjzf_news_16_title pb40">
+                <span class="index_title wow fadeInLeftBig">{$data273[2]}</span>
+                <span class="index_sub_title wow fadeInLeftBig" data-wow-delay=".3s">{$data273[3]}</span>
+                <a href="{:U('/news')}" class="more wow fadeInLeft transition-ease" data-wow-delay=".6s">{$data273[4]}</a>
+            </div>
+        <div class="swiper-container hjzf2_news_16_swiper">
+            <div class="swiper-wrapper">
+                <php>
+                    if($data273[5]){
+                        $lena = $data273[5];
+                    }else{
+                        $lena = 8;
+                    }
+                </php>
+                <volist name="indexnews" id="new" offset="0" length="$lena">
+                    <div class="swiper-slide">
+                        <a href="{:U('/new_detail',array('nid'=>$new['nid']))}" class="news_wrapper_out">
+                            <img src="{:getimgurl($new['new_pro'])}" class="img-responsive" alt="{$new['title']}">
+                            <i><span>{:date('Y-m-d',$new['created'])}</span></i>
+                            <div class="news_wrapper">
+                                <span><em>{:date('Y-m-d',$new['created'])}</em>{$new['title']}</span>
+                                <p>{$new['news_description']}</p>
+                            </div>
+                        </a>
+                    </div>
+                </volist>
+
+            </div>
+            <!-- Add Arrows -->
+            <div class="hjzf2_news_16_next"></div>
+            <div class="hjzf2_news_16_prev"></div>
+        </div>
+
+
+    </div>
+</section>

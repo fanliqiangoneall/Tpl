@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+
+<if condition="has_mould('product_categories-2') eq false">
+    <style>
+        .index_productslist2{display: none}
+    </style>
+    <else/>
+    <style>
+        .index_productslist2{
+            height: 440px;padding-top: 40px;background: url({:getindeximgurl($data44[1])}) no-repeat;
+        }
+    </style>
+    <link href="__TMPL__demo2/css/productcategories2.css" rel="stylesheet">
+</if>
+
+  <div class="index_productslist2">
+    <div id="index_productslist_animate">
+     <div class="index_fl_title">
+        {$data[0]}
+     </div>
+
+    </div>
+    <div id="index_productslist_animate_2">
+     <div class="index_productslist2_list">
+         <ul>
+             <volist empty="" name="allclass" id="allclass_index" offset="0" length="4">
+                 <li class="index_proclass_item">
+                     <div class="indexproclass_img indexproclass_img1"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}"><img src="{:getimgurl($allclass_index['fid'])}" alt="{$allclass_index['class_name']}"/></a></div>
+                     <div class="index_class_name index_class_name1" ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_index['pcid'])}">{$allclass_index['class_name']}</a></div>
+                 </li>
+                 <if condition="($key+1)%4 eq 0">
+                     <div style="clear:both; width: 100%; height:39px;"></div>
+                     <else/>
+                     <div style="width:24px; height:10px; background:none; float:left;"></div>
+                 </if>
+             </volist>
+         </ul>
+     </div>
+    </div> 
+  </div>
+
+<script>
+jQuery('#index_productslist_animate').removeClass().addClass('fadeInRight');
+$(window).scroll( function() {
+  scrollTop=$(document).scrollTop();
+  //alert(scrollTop);
+  
+  if(scrollTop>100){  
+  $('#index_productslist_animate_1').show();
+  $('#index_productslist_animate_1').removeClass().addClass('fadeInLeft');
+  }
+
+});
+</script>

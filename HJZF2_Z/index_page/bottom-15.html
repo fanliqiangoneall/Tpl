@@ -1,0 +1,160 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data453[0]">
+    .hjzf_Z_bottom-15{
+        background-color: #{$data453[0]};
+    }
+    </if>
+	{}
+</style>
+<php>
+    $arr = get_list_val($data453[2]);
+    $arra = get_list_val($data453[3]);
+    $arrb = get_list_val($data453[4]);
+    $arrc = get_list_val($data453[5]);
+</php>
+
+<if condition="$friend_link neq '' and $data453[11] neq ''">
+    <div class="HJZF2_Z__bottom__friendlink">
+    	<div class="container">
+            <div class="row">
+                <div class="HJZF2_Z__bottom__link"><span style="float:left; margin-right:5px; line-height:30px;">{:__('FriendLink: ')}</span>
+                  <volist name="friend_link" id="friend_link">
+                      <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                          <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                      </if>
+                  </volist>     
+                  <div style="clear:both"></div>
+              </div>
+              <div class="clear"></div>
+          </div>
+      </div>
+  </div>
+</if>
+
+
+
+<div class="hjzf_Z_bottom-15">
+    <div class="container">
+        <div class="row">
+            <if condition="$data453[1]">
+                <div class="col-xs-12 flogo">
+                    <img src="{:getindeximgurl($data453[1])}" class="img-responsive">
+                </div>
+            </if>
+            <div class="col-md-10 hidden-xs hidden-md hidden-sm">
+                <div class="row">
+                    <ul class="col-xs-3 foot_list">
+                        <volist name="arr" id="a" key="k">
+                            <li>
+                                <if condition="$a[link]"><a href="{$a[link]}"></if>{$a[title]}<if condition="$a[link]">
+                                    </a></if>
+                            </li>
+                        </volist>
+                    </ul>
+                    <ul class="col-xs-3 foot_list">
+                        <volist name="arra" id="a" key="k">
+                            <li>
+                                <if condition="$a[link]"><a href="{$a[link]}"></if>{$a[title]}<if condition="$a[link]">
+                                    </a></if>
+                            </li>
+                        </volist>
+                    </ul>
+                    <ul class="col-xs-3 foot_list">
+                        <volist name="arrb" id="a" key="k">
+                            <li>
+                                <if condition="$a[link]"><a href="{$a[link]}"></if>{$a[title]}<if condition="$a[link]">
+                                    </a></if>
+                            </li>
+                        </volist>
+                    </ul>
+                    <ul class="col-xs-3 foot_list">
+                        <volist name="arrc" id="a" key="k">
+                            <li>
+                                <if condition="$a[link]"><a href="{$a[link]}"></if>{$a[title]}<if condition="$a[link]">
+                                    </a></if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 foot_img">
+                <if condition="$data453[6]">
+                    <a <if condition="$data453[10]">href="{$data453[10]}" target="_blank"</if>><img src="{:getindeximgurl($data453[6])}" class="img-responsive"></a>
+                </if>
+                <if condition="$about['address']">
+                    <div class="foot_txt"><span>{:__('Add: ')}</span><span>{$about['address']}</span></div>
+                </if>
+                <if condition="chaifen($about['mobile'],0)">
+                    <div class="foot_txt"><span>{:__('Tel: ')}</span><span>{:chaifen($about['mobile'],0)}</span></div>
+                </if>
+                <if condition="chaifen($about['Fax'],0)">
+                    <div class="foot_txt"><span>{:__('Fax: ')}</span><span>{:chaifen($about['Fax'],0)}</span></div>
+                </if>
+                <if condition="chaifen($about['Tel'],0)">
+                    <div class="foot_txt"><span>{:__('Tel: ')}</span><span>{:chaifen($about['Tel'],0)}</span></div>
+                </if>
+                <if condition="chaifen($about['email'],0)">
+                    <div class="foot_txt"><span>{:__('E-mail: ')}</span><span><a href="mailto:{:chaifen($about['email'],0)}"
+                            onclick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></span></div>
+                </if>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data453[8]){
+                $currtime=2020;
+                }else{
+                $currtime=$data453[8];
+                }
+            </php>
+            <div class="hjzf_Z_bottom-15_foot_bottom">
+                <span class="left">
+                    <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}
+                        <else />CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+                    &nbsp;{$about['company_name']}&nbsp;&nbsp;{:__('All rights reserved')}
+                </span>
+                <span class="right">
+                    <if condition="get_txtBeiAn()">
+                        <a href="http://beian.miit.gov.cn/"
+                            target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;</if>
+                    <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;
+                    <span>
+                        <a href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <if condition="$data453[9] eq ''"><a id="mianze" title="免责声明" target="_blank"
+                                style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;<span>中环互联网</span><a
+                                href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                        </if>
+                        <else />
+                        <if condition="$data453[9] eq ''">
+                            <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by
+                                Zhonghuan Internet</a>
+                        </if>
+                    </if>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<if condition="$friend_link neq '' and $data453[11] eq ''">
+    <div class="HJZF2_Z__bottom__friendlink">
+    	<div class="container">
+            <div class="row">
+                <div class="HJZF2_Z__bottom__link"><span style="float:left; margin-right:5px; line-height:30px;">{:__('FriendLink: ')}</span>
+                  <volist name="friend_link" id="friend_link">
+                      <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                          <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                      </if>
+                  </volist>     
+                  <div style="clear:both"></div>
+              </div>
+              <div class="clear"></div>
+          </div>
+      </div>
+  </div>
+</if>

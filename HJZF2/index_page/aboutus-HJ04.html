@@ -1,0 +1,31 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_aboutus-HJ04 .aboutUsContentContainer{
+        background-image: url({:getindeximgurl($data99[4])});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    }
+
+    .new_hjzf_aboutus-HJ04 .aboutUsContent{
+    font-size: 13px;
+    line-height: 26px;
+    color: #999;
+    margin-top: 40px;
+}
+</style>
+<div class="aboutUsContentContainer">
+    <div class="aboutUsContainer container">
+        <div class="aboutUsLeft lf wow fadeInLeft" data-wow-duration="1s" data-wow-offset="200">
+            <p class="aboutUsTitle">{$data99[1]}</p>
+            <p class="aboutUsTips">{$data99[2]}</p>
+            <p class="aboutUsContent">{$data99[3]}</p>
+            <a href="{:U('/aboutus')}" class="aboutUsMore"><if condition="$data99[5]">{$data99[5]}<else/>{:__('Read More')}</if></a>
+        </div>
+        <div class="aboutUsRight rt wow fadeInRight" data-wow-duration="1s" data-wow-offset="200">
+            <img src="{:getindeximgurl($data99[0])}" alt=""/>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

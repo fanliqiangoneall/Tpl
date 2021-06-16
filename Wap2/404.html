@@ -1,0 +1,28 @@
+<extend name="Wap2:base" />
+<block name="content">
+    <style>
+        .Breadcrumbs span.current {
+            text-decoration:none; color:#3d3d3d; font-size:14px;
+        }
+		.web404{ padding:10px;}
+		.web404 img{ width:100%;}
+		.web404__Breadcrumbs, .web404__Breadcrumbs a{ text-decoration:none; color:#3d3d3d; font-size:14px;}
+    </style>
+    <div class="web404">
+
+                <div class="web404__Breadcrumbs">
+                    <div class="web404__Breadcrumbs_down">
+                        <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span class="current">404</span>
+                    </div>
+                </div>
+        <div style="margin-top: 50px;">
+            <if condition="C('LANGUAGE') eq 'cn'">
+                <img src="__TMPL__HJZF2/img/404_cn.png" border="0" alt="404" />
+                <else/>
+                <img src="__TMPL__HJZF2/img/404.png" border="0" alt="404" />
+            </if>
+        </div>
+
+
+    </div>
+</block>

@@ -1,0 +1,64 @@
+<style type="text/css">
+    .left_title_2{
+        background: #{$color};
+    }
+    .subNav_2 >a >h3:hover{
+        color: #{$color};
+    }
+    .subNavon_2 >a >h3{
+        color: #{$color};
+    }
+    .left_cont_phone{
+        background: #{$color};
+    }
+    .navContent_2 >div >li.erji_2 >a > h3:hover{
+        color: #{$color};
+    }
+    .navContent1_2 >div >li.erji_2 >a > h3:hover{
+        color: #{$color};
+    }
+    .navContent1_2 >div >li.erjion_2 >a > h3{
+        color: #{$color};
+    }
+</style> 
+
+<div class="page_LeftClass_2">
+    <div class="left_title_2">
+        <span></span>
+        PRODUCTS
+    </div>
+    <div class="subNavBox_2">
+        <volist empty="no" name="allclass" id="allclass_left"  offset="0">
+            <div  <if condition="inthiscate($classid,$allclass_left['pcid'],$product)">class="subNavon_2"<else/>class="subNav_2"</if>><a style="cursor:pointer;" href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></div>
+
+            <div <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="navContent1_2"<else/>class="navContent_2"</if>>
+    <if condition='$allclass_left["childs"] neq ""'>
+        <div>
+            <volist empty="no" name="allclass_left['childs']" id="childs">
+                <li <if condition="$classid eq $childs['pcid'] or $prolist['parent_id'] eq $childs['pcid'] or $product['class_id'] eq $childs['pcid'] or $procate['parent_id'] eq $childs['pcid']">class="erjion_2"<else/>class="erji_2"</if> ><a href="{:U('/Product_category','','')}/{:getprocatename($childs['pcid'])}">{$childs['class_name']}</a></li>
+                <if condition='$childs["childs"] neq ""'>
+                    <div class="child2_2" <if condition="$classid eq $childs['pcid'] or $prolist['parent_id'] eq $childs['pcid'] or $product['class_id'] eq $childs['pcid'] or $procate['parent_id'] eq $childs['pcid']">style="display:block"<else/>style="display:none"</if>>
+                    <ul>
+                        <volist empty="" name="childs['childs']" id="childs_left">
+                            <li><a href="{:U('/product_category','','')}/{:getprocatename($childs_left['pcid'])}">{$childs_left['class_name']}</a></li>
+                        </volist>
+                    </ul>
+        </div>
+    </if>
+    </volist>
+</div>
+</if>
+
+            </div>
+
+        </volist>
+    </div>
+    <div class="clear"></div>
+<div class="left_contactbox" style="margin-top: 15px;margin-bottom: 30px;">
+<div class="left_cont_phone">
+    National service hotline
+    <span>{:chaifen($about['phone'],0)}</span>
+</div>
+    <div class="left_cont_a"><if condition="chaifen($about['msn'],0)"><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3);" target="_blank">Online Consultation</a><else/><a href="{:U('/contactus')}">Online Consultation</a></if></div>
+</div>
+</div>

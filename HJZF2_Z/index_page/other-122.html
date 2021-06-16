@@ -1,0 +1,27 @@
+<!--{$pagename}-->
+<php>
+
+</php>
+<style>
+.hjzf_other_122 ul li{
+	height: {$data720[2]}px;
+}
+.hjzf_other_122 li span:before{
+	background-color: #{$color};
+}
+</style>
+<section class="hjzf_other_122 index_pd">
+	<php>
+		$arr = get_list_val($data720[1]);
+	</php>
+	<ul>
+		<volist name="arr" id="a">
+			<li style="background: url({$a[img]}) no-repeat;">
+				<a href="{$a[link]}">
+					<img src="{$a[img]}" alt="{$a[title]}" class="nav-hidden-pc">
+					<span>{$a[title]}</span>
+				</a>
+			</li>
+		</volist>
+	</ul>
+</section>

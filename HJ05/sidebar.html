@@ -1,0 +1,57 @@
+<style>
+#skypeCheckNotice{position:fixed !important;}
+#skypedetectionswf{ display:none !important;}
+.side ul li{
+    background: #{$color};
+
+}
+.sidetop{
+    background: #{$color};
+}
+.side ul li .sidebox,.side ul li .sidebox2,.side ul li .sidebox3{
+    background: #{$color};
+}
+    .side ul li:hover .sidebox,.side ul li:hover .sidebox2,.side ul li:hover .sidebox3,.side ul li:hover .sidetop{
+        background: #{$data47[9]};
+    }
+</style>
+<div class="side">
+    <ul>
+        <if condition="$data47[18] neq ''">
+        <li style="height:60px;"><div class="sidetop"><a href="{$data47[19]}" target="_blank"><img src="{:getindeximgurl($data47[18])}" border="0"></a></div></li>
+        </if>
+        <li style=" <if condition="chaifen($about['msn'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox"><img src="__TMPL__WH01/img/sider-1.png" border="0"><span style="line-height:60px; color:#fff;margin-left: 5px"><b><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3)" target="_blank" style="color: #fff">{:chaifen($about['msn'],0)}</a></b></span></div>
+        </li>
+        <li  style=" <if condition="chaifen($about['whatsapp'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox2"><img src="__TMPL__WH01/img/sider-2.png" border="0"><span style="line-height:60px;margin-left: 5px;color:#fff;"><b>+86-{:chaifen($about['whatsapp'],0)}</b></span></div>
+        </li>
+        <li style=" <if condition="chaifen($about['email'],0) eq ''"> display:none;</if>"">
+            <div class="sidebox2"><img src="__TMPL__WH01/img/sider-3.png" border="0"><span style="line-height:60px;margin-left: 5px"><b><a href="mailto:{:chaifen($about['email'],0)}" onfocus="blur()" style="color:#fff" onclick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></b></span></div>
+        </li>
+        <li>
+            <div class="sidetop"><a href="{:U('/contactus#zixun')}" onclick="turn_sta(1,4)" ><img src="__TMPL__WH01/img/sider-4.png" border="0" alt="Top"></a></div>
+        </li>
+        <li style="height:60px;"><div class="sidetop"><a href="javascript:goTop();" ><img src="__TMPL__WH01/img/sider-5.png" border="0" alt="Top"></a></div></li>
+        <if condition="$data1[35] neq ''">
+            <li style="height:60px;"><a onclick="Detector.floatclick();return false;"  href="javascript:void(0);"><img src="{:getindeximgurl($data1[36])}" border="0" alt="link"></a></li>
+        </if>
+    </ul>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        $(".side ul li").eq(4).css("background-image", "none");
+
+        /*var color_hover = "{$data1[0]}";
+        var color_hover2 = " #{$color}";*/
+        jQuery(".side ul li").hover(function () {
+            jQuery(this).find(".sidebox").stop().animate({"width": "220px"}, 200)
+            jQuery(this).find(".sidebox2").stop().animate({"width": "300px"}, 200)
+            jQuery(this).find(".sidebox3").stop().animate({"width": "220px"}, 200)
+        }, function () {
+            jQuery(this).find(".sidebox").stop().animate({"width": "60px"}, 200)
+            jQuery(this).find(".sidebox2").stop().animate({"width": "60px"}, 200)
+            jQuery(this).find(".sidebox3").stop().animate({"width": "60px"}, 200)
+        })
+    });
+</script>

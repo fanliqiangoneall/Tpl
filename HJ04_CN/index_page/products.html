@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+<style type="text/css">
+    .mainServiceContainer li:hover .indexProText{
+        color: #{$color};
+    }
+</style>
+<div class="hj01_cases" <if condition="$data9[5] neq '' and $data9[6] neq ''">style="padding-top: {$data9[5]}px;padding-bottom: {$data9[6]}px;"</if>>
+    <div class="container">
+        <div class="serviceTopContainer">
+            <div class="serviceLeft lf">
+                <div class="serviceTopTitle">{$data9[0]}</div>
+                <div class="serviceTopTips">{$data9[1]}</div>
+            </div>
+            <ul class="serviceRight rt">
+                <li class="serviceActive"><a href="{:U('/product')}"><h3>全部</h3></a></li>
+                <if condition="$data9[8]">
+                    <php>
+                        $arr_str=$data9[8];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_index_products_categoryname($a);
+                        }
+                    </php>
+                    <volist empty="" name="list" id="li" key="k">
+                        <if condition="$li">
+                            <li><a data-ajax='false' href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}"><h3>{$li['class_name']}</h3></a></li>
+                        </if>
+                    </volist>
+                    <else/>
+                    <volist empty="no" name="allclass" id="allclasspro"  offset="0" length="8" >
+                        <li>
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclasspro['pcid'])}">{$allclasspro['class_name']}</a>
+                        </li>
+                    </volist>
+                </if>
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <ul class="mainServiceContainer">
+
+            <volist empty="no" name="indexpro" id="indexpro">
+                <li class="mainProList lf wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s" data-wow-offset="5"  data-wow-iteration="1">
+                    <php>
+                        $class_id = $indexpro['class_id'];
+                        $class_name = get_index_products_categoryname($class_id)['class_name'];
+                    </php>
+                    <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                        <div class="serviceImg">
+                            <img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> />
+                        </div>
+                        <div class="indexProText ellipsis_one">{$indexpro['pro_name']}</div>
+                        <div class="ellipsis_one">{$indexpro['pro_description']}</div>
+                    </a>
+                </li>
+                <if condition="($key+1)%3 eq 0"><div class="clear"></div></if>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+<!--{$pagename}-->
+<php>
+    if($data8[4]==''){
+        $data8[4]=90;
+    }
+    if($data8[5]==''){
+    $data8[5]=90;
+    }
+</php>
+
+<if condition="$data8[2] neq ''">
+    <style>
+        #hj03_news{
+            background: url({:getindeximgurl($data8[2])}) no-repeat center;background-size: cover;
+        }
+    </style>
+</if>
+<style>
+    #hj03_news{
+        padding-bottom: {$data8[5]}px;padding-top:{$data8[4]}px;
+    }
+    .news_item:hover .news_item_date .more-button{
+        background: #{$color};color: #fff;text-indent: 0;transition: all .36s ease;
+    }
+    .news_item:hover .news_item-title a{
+        color: #{$color}
+    }
+</style>
+<!--news start-->
+
+<section id="hj03_news" class="module">
+
+    <div class="container">
+        <section class="index_product_title margin-30px-bottom">
+            <div class="index_product_title_left wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                <div id="index_product_title_left1"><p>{$data8[0]}</p><span>{$data8[1]}</span></div>
+            </div>
+            <div class="index_product_title_right wow fadeInUp" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="300">
+                <ul class="hj02_proclasslist">
+                    <li class="hj02_proclasslist_on"><a href="{:U('/news')}">All</a></li>
+                    <php>
+                        $arr_str=$data8[3];
+                        $arr=explode(',',$arr_str);
+
+                        foreach($arr as $k=>$a){
+                        $list[$k]['name']=get_wap_news_class_name($a);
+                        $list[$k]['data']=get_index_news_category($a,4);
+                        }
+                    </php>
+
+                    <volist name="list" id="li" >
+                       
+                        <li class="class_name1"><a href="{:U('/new_category/classid','','')}/{$arr[$key]}">{$li['name']}</a></li>
+                        
+                    </volist>
+
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <section class="hj03-news-box">
+            <if condition="$data8[6] gt '3'">
+            <div class="swiper-container hj03-news_list">
+                <div class="swiper-wrapper">
+                    <volist name="indexnews" id="indexnews1" offset="0" length="$data8[6]" key="k_news1">
+                        <if condition="$k_news1%3 eq 1"><li class="swiper-slide"></if>
+                            <div class="news_item news_item{$k_news1} wow fadeInUp"  data-wow-delay="0" data-wow-offset="300">
+                                <div class="hjnews_pic">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews1["nid"]))}" onFocus="blur()" >
+                                    <if condition="$indexnews1['new_pro'] neq ''">
+                                        <img src="{:getimgurl($indexnews1['new_pro'])}" border="0" />
+                                        <else/>
+                                        <img src="{:getindeximgurl($data47[10])}" alt=""/>
+                                    </if>
+                                    </a>
+                                </div>
+                                <div class="hjnews_content">
+                                    <p class="news_item-title"><a href="{:U('/new_detail',array('nid'=>$indexnews1["nid"]))}" onFocus="blur()">{:subtxt($indexnews1['title'],40)}</a></p>
+                                    <p class="news_item-desc-wai">{:subtxt($indexnews1['news_description'],100)}</p>
+                                    <php>
+                                        $newsclass_name1 = get_wap_news_class_name($indexnews1['news_class']);
+                                    </php>
+                                    <span>{$newsclass_name1}</span>
+                                </div>
+                                <p class="news_item_date">
+                                    <span>{:date('m M ',$indexnews1['created'])}</span>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnews1["nid"]))}" onFocus="blur()" class="more-button">More</a>
+                                </p>
+                                <div class="clear"></div>
+                            </div>
+                        <if condition="$k_news1%3 eq 0"></li></if>
+                        <if condition="$k_news1 eq $data8[6] && $k_news1%2 neq 0"></li></if>
+                    </volist>
+                </div>
+                <div class="swiper-newsbpagination"></div>
+            </div>
+            <elseif condition="$data8[6] eq ''"/>
+            <volist name="indexnews" id="indexnews2" offset="0" length="3" key="k">
+                <div class="news_item news_item{$k} wow fadeInUp"  data-wow-delay="0" data-wow-offset="300">
+                    <div class="hjnews_pic">
+                        <a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()" >
+                        <if condition="$indexnews2['new_pro'] neq ''">
+                            <img src="{:getimgurl($indexnews2['new_pro'])}" border="0" />
+                            <else/>
+                            <img src="{:getindeximgurl($data47[10])}" alt=""/>
+                        </if>
+                        </a>
+                    </div>
+                    <div class="hjnews_content">
+                        <p class="news_item-title"><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()">{:subtxt($indexnews2['title'],40)}</a></p>
+                        <p class="news_item-desc-wai">{:subtxt($indexnews2['news_description'],100)}</p>
+                        <php>
+                            $newsclass_name = get_wap_news_class_name($indexnews2['news_class']);
+                        </php>
+                        <span>{$newsclass_name}</span>
+                    </div>
+                    <p class="news_item_date">
+                        <span>{:date('m M ',$indexnews2['created'])}</span>
+                        <a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()" class="more-button">More</a>
+                    </p>
+                    <div class="clear"></div>
+                </div>
+            </volist>
+            </if>
+        </section>
+    </div>
+</section>
+
+<!--news end-->
+

@@ -1,0 +1,53 @@
+<!--{$pagename}-->
+<php>    
+    if($data425[1]){
+    $color = $data425[1];
+    }
+</php>
+
+<style>
+    <if condition="$data425[0]">
+        .hjzf_case_22 {
+        background: url({:getindeximgurl($data425[0])}) no-repeat center / cover;
+    }
+        </if>  
+        .case_21_right_title{
+            color: #{$data425[1]};}
+            .case_21_right_title::before{
+            background: #{$data425[1]};
+        }
+        .case_22_btn:hover{
+            background: #{$data425[1]};
+            color:#fff;
+            border-color:#{$data425[1]}
+        }
+</style>
+
+<section class="hjzf_case_22">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="case_22_title_icon"><span>{$data425[3]}</span></div>
+                <div class="case_22_title index_title pb20">
+                    {$data425['2']}
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="case_22_main">
+                    <div class="case_22_left">
+                        <div>
+                            <img src="{:getindeximgurl($data425[4])}" alt="">
+                        </div>               
+                    </div>
+                    <div class="case_22_right">
+                        <div class="case_22_right_title index_sub_title pb40 wow fadeInRight" data-wow-duration="1s">{$data425[5]}</div>
+                        <div class="case_22_right_desc index_text pb40 wow fadeInRight" data-wow-duration="1s">{$data425[6]}</div>
+                        <a href="{$data425[7]}" class="case_22_btn">{:__('Read More')}</a>
+                    </div>
+                </div>
+            </div>
+           
+            
+        </div>
+    </div>
+</section>

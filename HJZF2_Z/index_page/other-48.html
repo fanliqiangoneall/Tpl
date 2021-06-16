@@ -1,0 +1,44 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data333[0]">
+    .hjzf2_other_48_main{
+        background: url({:getindeximgurl($data333[0])}) no-repeat center top/100% 100%; 
+    }
+    </if>
+    .other_48_title{
+        color: #{$data333[6]};
+    }
+	.other_48_btn1{
+		border:1px solid #{$data333[6]};
+		color:#{$data333[6]};
+	}
+    .other_48_btn1:hover{
+		color:#{$data333[7]};
+		background:#fff;
+	}
+    .hjzf2_other_48{
+        padding-top: 80px;
+    }
+    @media (max-width:767px){
+        .hjzf2_other_48{
+            padding-top: 40px;
+        }
+    }
+</style>
+<section class="hjzf2_other_48">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+            	<div class="hjzf2_other_48_main">
+                    <div class="other_48_title index_title text-center wow fadeInUp" data-wow-delay="0.2">
+                        {$data333[1]}
+                    </div>
+                    <div class="other_48_btn text-center wow fadeInUp" data-wow-delay="0.8">
+                        <a href="{$data333[3]}" class="other_48_btn1 index_text">{$data333[2]}</a>
+                        <a href="{$data333[5]}" class="other_48_btn1 index_text">{$data333[4]}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

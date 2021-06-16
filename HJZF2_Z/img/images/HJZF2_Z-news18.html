@@ -1,0 +1,64 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <link rel="stylesheet" href="__TMPL__/HJZF2_Z/inner/css/HJZF2_Z-news18.css">
+    <div id="HJZF_Z__wrapper">
+        <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt="" /></div>
+                </volist>
+                <else />
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt="" /></div>
+            </if>
+        </div>
+        <div class="HJZF2_Z-news18_box_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="HJZF2_Z-news18_box clearfix">
+                        <!-- left -->
+                        <div class="news18_left dean_left">
+                            <div class="info_news_type">
+                                <ul>
+                                    <volist empty="" name="allnewclass" id="nav">
+                                        <li class="new_act"><a href="{:U('/new_category',array('classid'=>$nav["classid"]))}"><span>{$nav['class_name']}</span><i></i></a></li>
+                                    </volist>
+                                </ul>
+                            </div>
+                            <div class="info_news_con_bottom">
+                                <ul>
+                                    <!-- loop start -->
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No News').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allnews" id="allnews">
+                                        <li><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                                                <div>
+                                                    <strong>{$allnews['title']}</strong>
+                                                    <small class="visible-xs">{:date('Y-m-d ',$allnews['created'])}</small>
+                                                    <span>{:subtxt($allnews['news_description'],200)}</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+
+                        </div>
+                        <!-- right -->
+                        <div class="news18_right dean_right">
+                            <Include file="./Tpl/HJZF2_Z/inner/left_dean.html" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</block>

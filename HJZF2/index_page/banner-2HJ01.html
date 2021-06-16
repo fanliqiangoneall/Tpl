@@ -1,0 +1,96 @@
+<!--{$pagename}-->
+<style>
+    .page_Banner2 .slick-prev{width: 40px;height: 40px;left: 100px!important;z-index: 99;border-radius: 4px;}
+    .page_Banner2 .slick-prev:before{
+        content: '\f104';font-family: "FontAwesome";font-size: 12px;
+    }
+    .page_Banner2 .slick-next{width: 40px;height: 40px;right: 100px!important;z-index: 99;border-radius: 4px;}
+    .page_Banner2 .slick-next:before{
+        content: '\f105';font-family: "FontAwesome";font-size: 12px;
+    }
+   .page_Banner2 .slick-prev:hover{
+        background: {$data62[9]} no-repeat;
+    }
+   .page_Banner2 .slick-next:hover {
+        background: {$data62[10]} no-repeat;
+    }
+   .page_Banner2 .slick-prev{
+        background: {$data62[7]} no-repeat;
+        
+    }
+    .page_Banner2 .slick-next{
+        background: {$data62[8]} no-repeat;
+    }
+    .tp-bullets.simplebullets.round .bullet:hover,
+    .tp-bullets.simplebullets.round .bullet.selected,
+    .tp-bullets.simplebullets.navbar .bullet:hover,
+    .tp-bullets.simplebullets.navbar .bullet.selected {
+        background: {$data62[11]} no-repeat;
+    }
+    .tp-bullets.simplebullets.round .bullet{
+        background: {$data62[12]} no-repeat;
+    }
+.page_Banner2 .slick-dots{
+    bottom: 40px;
+}
+    .page_Banner2 .slick-dots li{
+        width: 17px;height: 16px;background: {$data62[7]} no-repeat;
+    }
+    .page_Banner2 .slick-dots li:before{display: none;}
+    .page_Banner2 .slick-dots li button{display: none;}
+    .page_Banner2 .slick-dots li.slick-active{
+        width: 17px;height: 16px;background: {$data62[8]} no-repeat;
+    }
+    
+</style>
+
+
+<php>
+    if(!$data62[3]){
+    $data62[3]=670;
+    }
+</php>
+<style>
+    .page_Banner2{
+    max-height: {$data62[3]}px;
+    }
+    .page_Banner2_box{
+    max-height: {$data62[3]}px;
+    }
+
+</style>
+
+<if condition="$data62[1] neq ''">
+    <div id="index_banner_animate">
+        <div class="page_Banner2">
+            <div class="page_Banner2_box">
+
+                        <if condition="$data62[0]">
+                            <div data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300">
+                                <a href="{$data62[4]}"><img src="{:getindeximgurl($data62[0])}" alt="" width="100%"/></a>
+                            </div>
+                            </if>
+                        <if condition="$data62[1]">
+                        <div data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" >
+                            <a href="{$data62[5]}"><img src="{:getindeximgurl($data62[1])}" alt="" width="100%"/></a>
+                        </div>
+                            </if>
+                        <if condition="$data62[2]">
+                            <div data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" >
+                                <a href="{$data62[6]}"><img src="{:getindeximgurl($data62[2])}" alt="" width="100%"/></a>
+                            </div>
+                        </if>
+            </div>
+        </div>
+    </div>
+    <else/>
+    <div class="page_Banner2">
+        <ul>
+            <li data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" >
+                <a href="{$data62[4]}"><img src="{:getindeximgurl($data62[0])}" alt="" style="max-width: 100%"/></a>
+            </li>
+        </ul>
+    </div>
+</if>
+
+

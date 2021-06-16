@@ -1,0 +1,133 @@
+<!--{$pagename}-->
+<php>
+$arr = get_list_val($data710[5]);
+$leng = $data710[6];
+if(!$leng){
+$leng=5;
+}
+$all= count($arr);
+if($all>$leng){
+$page=ceil($all/$leng);
+}else{
+$page=1;
+}
+
+</php>
+<style>
+.hjzf2_other_44_wrapper { display:flex;}
+.fadeInLeft{ flex:0 0 50%;}
+.fadeInRight{flex:0 0 50%; padding:0 5%;}
+.page{ display:flex; flex-wrap:wrap; margin-bottom:32px;}
+.page_one{ padding:15px 24px; border-radius:5px; color:#fff; font-size:20px; color:#fff;background:#999999; margin-right:24px; cursor:pointer; margin-bottom:5px;}
+.page_one_active{
+	background:#{$color} !important;
+}
+.fix_icon{
+	margin-right:16px;
+background:url({:getindeximgurl($data[0])}) no-repeat; width:20px; height:20px;
+}
+
+.end_icon{ 
+background:url({:getindeximgurl($data[2])}) no-repeat; width:20px; height:20px;
+}
+.faq44{ display:flex; background:#F4F4F4; align-items:center; padding:24px; color:#666666; justify-content:space-between; border-bottom:1px solid #fff;}
+.faq_left_des{ display:none;}
+.faq_content{ flex:0 0 80%;}
+
+.faq44_active .faq_content a{color:#fff;}
+.faq44_active .fix_icon,.faq44_active:hover .fix_icon{
+	background:url({:getindeximgurl($data[1])}) no-repeat !important;
+	}
+.faq44_active .end_icon,.faq44_active:hover .end_icon{
+	background:url({:getindeximgurl($data[3])}) no-repeat !important;
+	}
+.faq44:hover .faq_content a{ 
+color:#{$color}
+}
+.faq44:hover .fix_icon{
+	background:url({:getindeximgurl($data[7])}) no-repeat;
+	}
+.faq44:hover .end_icon{
+	background:url({:getindeximgurl($data[8])}) no-repeat;
+	}
+.faq44_active,.faq44_active:hover .faq_content a{ 
+color:#fff !important; 
+background:#{$color} !important;
+}	
+.faq_r_t{ font-size:36px; color:#000000; font-weight:bold; line-height:48px;}
+.faq_r_d{ font-size:20px; color:#666666; line-height:34px; margin-top:30px;}
+.page_faq_ul,.faq_r_one{ display:none;}
+.page_0{ display:block}
+.faq_r_one[listnum="1"]{display:block;}
+@media(max-width: 750px) {
+.hjzf2_other_44_wrapper{ flex-direction:column;}
+.wow fadeInRight{ display:none;}
+.faq44_active +.faq_left_des{ display:block !important; font-size:16px; line-height:35px; padding:10px; box-shadow:0px 7px 6px #ccc; margin-bottom:10px;}
+}
+</style>
+<section class="hjzf2_other_44 index_pd">
+    <div class="container">
+        <div class="row index_text">
+            <div class="index_title text-center pb40 wow fadeInUp">
+                {$data710[4]}
+            </div>
+            <div class="col-xs-12">
+                 <ul class="page">
+                        <for start="0" end="$page">
+                            <php>
+                                $page_star=$leng*$i;
+                                $page_end=$page_star+$leng;
+                                if($page_star==0){
+                                    $page_star=1;
+                                }
+                                if($page_end>$all){
+                                    $page_star=$all;
+                                }                                
+                            </php>
+                            <li page="{$i}" class="page_one <if condition="$page_star eq 1">page_one_active</if>">{$page_star}-{$page_end}</li>
+                        </for>
+                    </ul>
+                <ul class="hjzf2_other_44_wrapper index_text">
+
+                    <div class="wow fadeInLeft">
+
+                    <for start="0" end="$page">
+                        <php>
+                        $offset=$leng*$i;
+                        </php>
+                    	<div class="page_{$i} page_faq_ul">	
+                        <volist name="arr" id="a" offset="$offset" length="$leng" key="key">
+                            <li listnum="{$key}" class="faq44 <if condition="$offset eq 0 and $key eq 1">faq44_active</if>" >
+                                <div class="fix_icon"></div>
+                                <span class="faq_content">
+                                    <a href="{$a['link']}" class="index_sub_title">{$a['title']}</a>
+                                </span>
+                                <div class="end_icon"></div>
+                            </li>
+                            <li class="faq_left_des">                                   
+                                        {$a['des']}
+                             </li>
+                        </volist>
+                        </div>
+                    </for>
+                    </div>
+                    
+                    <div class="wow fadeInRight">
+
+                    
+                        <volist name="arr" id="a" key="key">
+							<div class="faq_r_one" listnum="{$key}">
+                                <div class="faq_r_t">{$a['title']}</div>
+                                <div class="faq_r_d">{$a['des']}</div>                           
+    						</div>                                    
+                           
+                        </volist>
+            
+                    </div>
+                </ul>
+                
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>

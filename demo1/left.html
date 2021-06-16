@@ -1,0 +1,17 @@
+<div class="page_inleft">
+  <div class="in_tophead">沃尔夫产品分类</div>
+  <div class="page_LeftClass">
+     <volist empty="" name="allclass" id="allclass_left">
+          <div class="parent1"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></div>
+          <volist empty="" name="allclass_left['childs']" id="allclass_three">
+               <div <if condition="inthiscate($classid,$allclass_three['pcid'],$product)">class="zparent1"<else/>class="zparent"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_three['pcid'])}">{$allclass_three['class_name']}</a></div>
+          </volist>
+          <if condition="$allclass_left['childs'] neq ''"><div style="clear:both; height:10px;"></div></if>
+     </volist>
+  </div>
+  <div class="left_contact">
+     <ul>
+        <li style="padding-left:30px;">全国服务热线<br /><span>{:chaifen($about['phone'],0)}</span></li>
+     </ul>
+  </div>
+</div>

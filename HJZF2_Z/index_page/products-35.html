@@ -1,0 +1,89 @@
+<!--{$pagename}-->
+<php>
+    if($data235[1]){
+        $color = $data235[1];
+    }
+</php>
+<style>
+    <if condition="$data514[0]">.new_hjzf_product35 {
+        background-color: #{$data514[0]};
+    }
+    </if><if condition="$data514[1]">.new_hjzf_product35 {
+        background-image: url({:getindeximgurl($data514[1])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    </if>
+    .new_hjzf_product35_pagination span.swiper-pagination-bullet-active,
+    .new_hjzf_product35_wrapper_box_po:after{
+        background-color: #{$color};
+    }
+    .new_hjzf_product35_wrapper_box_text span{
+        color: #{$color};
+    }
+</style>
+
+<section class="new_hjzf_product35 index_pd">
+    <if condition="$data514[4]">
+        <div class="container">
+    <div class="row">
+        <else />
+            <div class="container-fluid">
+    </if>
+        <div class="col-xs-12 text-center fadeInRightBig wow">
+            <div class="index_title pb20 fadeInLeftBig wow" data-wow-duration="0.6s" data-wow-delay="0.2s">
+                {$data514[2]}
+            </div>
+            <div class="index_text pb40">
+                {$data514[3]}
+            </div>
+        </div>
+        <div class="col-xs-12 new_hjzf_product35_wrapper swiper-container wow fadeInUp">
+            <div class="swiper-wrapper">
+                <volist name="indexpro" id="indexpro5" offset="0" length="24" key="k">
+                    <php>
+                        $class_name = get_index_products_categoryname($indexpro5['class_id'])['class_name'];
+                        $case_name = get_wap_case_class_name($indexcases[$k-1]['cates_class'])
+                    </php>
+                    <div class="swiper-slide">
+                        <div class="new_hjzf_product35_wrapper_box">
+                            <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+                                <div>
+                                    <img src="{:getmainimgurl($indexpro5['main_img'])}" alt="{$indexpro5['pro_name']}" class="img-responsive">
+                                </div>
+                                <div class="new_hjzf_product35_wrapper_box_text">
+                                    <div class="index_sub_title">{:subtxt($indexpro5['pro_name'], 35)}</div>
+                                    <span>{$class_name}</span>
+                                </div>
+                                <div class="new_hjzf_product35_wrapper_box_po">
+                                    <div class="index_sub_title pb20">{$indexpro5['pro_name']}</div>
+                                    <div class="index_text">{:subtxt($indexpro5['pro_description'],220)}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <if condition="$indexcases[$k-1]">
+                    <div class="swiper-slide">
+                        <div class="new_hjzf_product35_wrapper_box">
+                            <a href="{:U('/case_detail',array('nid'=>$indexcases[$k-1]['nid']))}">
+                                <div>
+                                    <img src="{:getimgurl($indexcases[$k-1]['new_pro'])}" alt="{$indexcases[$k-1]['title']}" class="img-responsive">
+                                </div>
+                            <div class="new_hjzf_product35_wrapper_box_text">
+                                    <div class="index_sub_title">{$indexcases[$k-1]['title']}</div>
+                                    <span>{$case_name}</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    </if> -->
+
+                </volist>
+
+            </div>
+            <div class="new_hjzf_product35_pagination text-center"></div>
+        </div>
+    </div>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+<!--{$pagename}-->
+<php>
+	if($data397[7]){
+		$color = $data397[7];
+	}
+</php>
+<style>
+  <if condition="$data397[0]">
+    .hjzf_advantage_27{
+        background: url({:getindeximgurl($data397[0])}) no-repeat center/ cover;
+        color:#{$data397[7]};
+    }
+    </if>
+    <if condition="$data397[0]">
+    .hjzf_advantage_27_wrapper_con{
+        background: url({:getindeximgurl($data397[2])}) no-repeat top right;
+    }
+    </if>
+    .hjzf_advantage_27 a.index_btn{
+        color: #{$color};
+        border: 1px solid #{$color};
+        border-radius: 50px;
+    }
+</style>
+
+<section class="hjzf_advantage_27 index_pd">
+    <div class="container">
+        <div class="row hjzf_advantage_27_wrapper">
+            <if condition="$data397[1]">
+            <div class="col-xs-12  col-md-12 col-lg-6">
+            <div class="row-little">
+                <img src="{:getindeximgurl($data397[1])}" class="img-fluid" alt="{$data397[3]}">
+            </div>
+            </div>
+            </if>
+            <div class="col-xs-12 col-md-12 col-lg-6 hjzf_advantage_27_wrapper_con">
+                <div class="index_title pb40">
+                    {$data397[3]}
+                </div>
+                <div class="index_text pb40">
+                    {:HtmlEncode($data397[4])}
+                </div>
+                <a href="{$data397[6]}" class="index_btn">
+                    {$data397[5]}
+                </a>
+            </div>
+
+            
+            
+        </div>
+    </div>
+</section>

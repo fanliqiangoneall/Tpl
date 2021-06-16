@@ -1,0 +1,76 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .InsidePage--3__Protitle .InsidePage--3__ProtitleMore:hover{
+            color: #{$inner_data[1]};
+        }
+        .main_page .current{
+             background: #{$inner_data[1]};border-color: #{$inner_data[1]};
+         }
+        .InsidePage--3__prolist--contentTitle:hover{
+            text-decoration: underline;color: #{$inner_data[1]};
+        }
+        .InsidePage--3__prolist--contentButton:hover{
+            background: #{$inner_data[1]};border-color: #{$inner_data[1]};color: #fff;
+        }
+        #switch_btn .switch_btn_icon.select i{
+            color: #{$inner_data[1]};
+        }
+        .InsidePage--3__breadcrumbs span.current{
+            color: #{$inner_data[1]};
+        }
+        .InsidePage--3__contentNavWrap--product__title{
+            background: #{$inner_data[1]};
+        }
+    </style>
+    <if condition="$inner_data[3]">
+        <style>
+            .InsidePage--3__contentNav.left,.InsidePage--3__contentBox.left{float: left;}
+            .InsidePage--3__contentBox.left{padding-left: 60px;padding-right: 0;}
+            .InsidePage--3__contentNav.left .InsidePage--3__contentNavWrap--list li a{text-align: left;}
+            .InsidePage--3__breadcrumbs.left{justify-content: flex-end;}
+        </style>
+    </if>
+    <div id="InsidePage--3__wrap">
+        <div class="InsidePage--3__bannerWrap">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="InsidePage--3__banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="InsidePage--3__banner" style="background:url({:getindeximgurl($inner_data[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="InsidePage--3__breadcrumbsWrap flex">
+            <div class="container">
+                <div class="InsidePage--3__breadcrumbs flex left"><a href="{:U('/')}">{:__('Home')}</a><i class="fa fa-angle-right"></i><span class="current">{:__('Products')}</span></div>
+            </div>
+        </div>
+        <div class="InsidePage--3__contentWrap InsidePage--3__contentWrap--product">
+            <div class="container">
+
+                <section class="InsidePage--3__contentNav InsidePage--3__contentNav--product left">
+                    <if condition="$inner_data[4] eq '1'">
+                        <Include file="./Tpl/HJZF2/left_productNav1.html" />
+                        <elseif condition="$inner_data[4] eq '2'"/>
+                        <Include file="./Tpl/HJZF2/left_productNav2.html" />
+                        <else/>
+                        <Include file="./Tpl/HJZF2/left_productNav3.html" />
+                    </if>
+                </section>
+                <if condition="$inner_data[5] eq '1'">
+                    <Include file="./Tpl/HJZF2/in_productContent1.html" />
+                    <elseif condition="$inner_data[5] eq '2'"/>
+                    <Include file="./Tpl/HJZF2/in_productContent2.html" />
+                    <else/>
+                    <Include file="./Tpl/HJZF2/in_productContent1.html" />
+                </if>
+
+                <div class="clear"></div>
+            </div>
+
+
+        </div>
+    </div>
+
+</block>

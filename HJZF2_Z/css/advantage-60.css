@@ -1,0 +1,128 @@
+.hjzf_advantage_60{
+    color: #fff;
+}
+.hjzf_advantage_60_img_text{
+    position: absolute;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    display: block;
+    z-index: 9;
+}
+.hjzf_advantage_60_img_text span {
+    padding: 30px;
+    position: relative;
+    display: block;
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+.hjzf_advantage_60_img_text span:after{
+    background-color: #000;
+    position: absolute;
+    display: block;
+    content:'';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;   
+    bottom: 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+.hjzf_advantage_60_img_text em{
+    font-style: normal;
+    text-align: right;
+    display: block;
+}
+.swiper-button-nag > div{
+    background-size: 60%;
+    position: static;
+    margin-top: 0;
+}
+.swiper-button-nag{
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+.swiper-button-nag:after{
+    display: block;
+    content:'';
+    position: absolute;
+    width: 1px;
+    height: 60%;
+    background-color: #fff;
+    left: 50%;
+    top: 20%;
+}
+.hjzf_advantage_60_img_text{
+    perspective: 500px;
+    overflow: hidden;
+}
+.hjzf_advantage_60_img_text span{
+    transform: translateX(80px) translateZ(50px) rotateY(45deg);
+    transform-origin: 100% 50%;
+    perspective-origin: 100% 100%;
+    transition:all 0.7s cubic-bezier(0.48, 0.72, 0, 1.16) .3s;
+    opacity: 0;
+}
+.hjzf_advantage_60_img_text em{
+    transform: translateX(80px) translateZ(50px) rotateY(45deg);
+    transform-origin: 100% 50%;
+    perspective-origin: 100% 100%;
+    transition: all 0.7s cubic-bezier(0.48, 0.72, 0, 1.16) .5s;
+    opacity: 0;
+}
+.swiper-slide-active .hjzf_advantage_60_img_text span,.swiper-slide-active .hjzf_advantage_60_img_text em{
+    transform: none;
+    opacity: 1;
+}
+
+@media(min-width: 1366px){
+    .hjzf_advantage_60_img_text{
+        width: 55%;
+    }
+}
+
+@media(max-width: 1200px) {
+    .hjzf_advantage_60_img{
+        width: 50%;
+    }
+    .hjzf_advantage_60_img_text em{
+        padding-right: 20px;
+    }
+}
+@media(max-width: 1365px){
+    .hjzf_advantage_60_img_text{
+        width: 60%;
+    }
+    .hjzf_advantage_60_img_text{
+        top: 45px;
+        transform: translateY(0);
+    }
+}
+@media(max-width: 1200px) {
+    .hjzf_advantage_60_img{
+        max-width: 100%;
+        width: auto;
+    }
+    .hjzf_advantage_60_img_text{
+        position: static;
+        transform: translateY(0);
+        width: 100%;
+    }
+    .swiper-button-nag{
+        bottom: 45px;
+        z-index: 9;
+        right: 20px;
+    }
+}
+@media(max-width: 1200px){
+    .swiper-button-nag{
+        bottom: 30px;
+    }
+}

@@ -1,0 +1,105 @@
+<!--{$pagename}-->
+<php>
+    if($data13[24]==''){
+        $data13[24] = 364;
+    }
+</php>
+<style>
+    .HJ02_bottom{
+       background: #{$data13[4]};height: {$data13[24]}px;
+    }
+    .hj02_bottom_nav nav li{
+
+        background: url({:getindeximgurl($data13[6])}) left center no-repeat !important;
+    }
+    .hj02_bottom_nav nav li:hover a h2{text-decoration: underline}
+    .hj02_bottom_class ul li{
+        background: url({:getindeximgurl($data13[6])}) left center no-repeat !important;
+    }
+    .hj02_bottom_class ul li:hover a h3{text-decoration: underline}
+</style>
+
+<div class="HJ02_bottom">
+    <div class="container">
+        <ul class="hj02_bottom_list margin-20px-bottom">
+            <li class="hj02_bottom_nav">
+                <p>{$data13[0]}</p>
+                <nav>
+                    <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+                        <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                    </volist>
+                </nav>
+            </li>
+            <li class="hj02_bottom_class">
+                <p>{$data13[1]}</p>
+                <if condition="$data13[11] eq ''">
+                    <ul>
+                        <volist empty="" name="allclass" id="allclass_left" offset="0" length='7'>
+                            <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></li>
+                        </volist>
+                    </ul>
+                    <else/>
+                    <ul>
+                        <php>
+                            for($b=12;$b<23;$b=$b+2){
+                        </php>
+                        <if condition="$data13[$b] neq ''">
+                            <li><a href="{$data13[$b+1]}"><h3>{$data13[$b]}</h3></a></li>
+                        </if>
+
+                        <php>
+                            }
+                        </php>
+
+                    </ul>
+                </if>
+            </li>
+            <li class="hj02_bottom_contact">
+                <p>{$data13[2]}</p>
+                <ul>
+                    <if condition="$about['mobile']"><li>手机号：{:chaifen($about['mobile'],0)}</li></if>
+                    <if condition="$about['phone']"><li>电话：{:chaifen($about['phone'],0)}</li></if>
+                    <li>邮箱：<a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);" style="color:#fff">{:chaifen($about['email'],0)}</a></li>
+                    <li>地址：{$about['address']}</li>
+                </ul>
+            </li>
+            <li class="hj02_bottom_share">
+                <p>{$data13[3]}</p>
+                <div class="ewm"><img src="{:getindeximgurl($data13[5])}" alt=""/></div>
+            </li>
+            <div class="clear"></div>
+        </ul>
+        <div class="hj02-copy ">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data13[7]){
+                $currtime=2019;
+                }else{
+                $currtime=$data13[7];
+                }
+
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp; {$about['company_name']} &nbsp;&nbsp;&nbsp;<if condition="$data13[8]"><a href="{$data13[9]}" target="_blank">{$data13[8]}</a></if>&nbsp;&nbsp;
+
+            <a style="" href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>&nbsp;&nbsp;<span style="font-size:14px;"><a  href="{:U('/alltag','','')}">所有标签</a></span>&nbsp;&nbsp;<a
+                id="mianze" title="Zhonghuan Internet" target="_blank" style="cursor:pointer;">免责声明</a><if condition="$data13[26] eq ''">&nbsp;&nbsp;<a href="https://www.one-all.com" title="常州网络公司中环互联网" target="_blank">常州网络公司</a>中环互联网设计制作</if>
+            <div class="hj02-bottom-share right" style="width: 190px;height: 28px;overflow: hidden">
+                <ul>
+                    <li style="line-height: 20px;margin-right:5px;margin-top: 3px; font-size: 15px;color: #fff;float: left;">分享：</li>
+                    <div class="bdsharebuttonbox" >
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+                        <a href="#" class="bds_renren" data-cmd="renren"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+                    </div>
+                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

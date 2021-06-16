@@ -1,0 +1,67 @@
+<!--{$pagename}-->
+<php>
+    $arr = get_list_val($data429[2]);
+    $arra = get_list_val($data429[1]);
+</php>
+<style>
+    .HJZF2_other_74_container .swiper-pagination-bullet-active{
+        background: #fff !important;
+    }
+    <if condition="$data429[0]">
+        .HJZF2_other_74_text{
+            background: url({:getindeximgurl($data429[0])}) no-repeat center/cover;
+        }
+        </if>
+</style>
+<section class="HJZF2_other_74">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 d-flex">
+            <!-- left -->
+            <div class="col-xs-12 col-lg-6 pr-0 HJZF2_other_74_text d-flex flex-column justify-content-center">
+                <volist name="arra" id="a" offset="0" length="1" key="k">
+                    <if condition="$a[link]">
+                        <a href="{$a[link]}">
+                    </if>
+                    <if condition="$a[title]">
+                        <div class="index_sub_title f-b pb20">
+                            {$a[title]}
+                        </div>
+                    </if>
+                    <if condition="$a[link]">
+                        </a>
+                    </if>
+                    <if condition="$a[sub]">
+                        <div class="index_sub_title pb20">
+                            {$a[sub]}
+                        </div>
+                    </if>
+                    <if condition="$a[isflag]">
+                        <span></span>
+                    </if>
+                    <if condition="$a[info]">
+                        <p>
+                            {$a[info]}
+                        </p>
+                    </if>
+                </volist>
+            </div>
+            <!-- right -->
+            <div class="col-xs-12 col-lg-6 p-0">
+                <div class="swiper-container HJZF2_other_74_container">
+                    <div class="swiper-wrapper">
+                        <volist name="arr" id="a" offset="0" key="k">
+                            <div class="swiper-slide">
+                                <img src="{$a[img]}" class="img-fluid" data="{$k}">
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="HJZF2_other_74_next swiper-button-next swiper-button-white"></div>
+                    <div class="HJZF2_other_74_prev swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-pagination HJZF2_other_74_pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>

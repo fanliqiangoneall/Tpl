@@ -1,0 +1,78 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_other_22{
+        background: url({:getindeximgurl($data259[0])}) repeat-x center top;
+    }
+    .hjzf_other_22,.hjzf_other_22_wrapper_bottom .more,
+    .other_22__swiper-button-next,.other_22__swiper-button-prev,
+    .hjzf_other_22_wrapper_bottom .flex li{
+        color: #{$data259[38]};
+    }
+    <if condition="$data259[39]">
+    .hjzf_other_22 a:hover{
+        color: #{$data259[39]};
+    }
+    <else/>
+    .hjzf_other_22 a:hover{
+        color: #{$color};
+    }
+    </if>
+    <if condition="$data259[41]">
+    @media(max-width: 768px) {
+    .hjzf_other_22{
+        background: url({:getindeximgurl($data259[41])}) no-repeat center top/cover !important;
+    }
+    }
+    </if>
+</style>
+<section class="hjzf_other_22 index_pd">
+    <!-- top -->
+    <div class="container">
+        <div class="row">
+            <div class="title_wrapper tac">
+                <div class="index_title">{$data259[1]}</div>
+                <div class="index_sub_title">{$data259[2]}</div>
+            </div>
+        </div>
+    </div>
+    <!-- mid -->
+    <div class="container index_pda">
+        <div class="row">
+            <div class="swiper-container hjzf_other_22_swiper">
+                    <div class="swiper-wrapper">
+                        <php>
+                        for($i=3;$i<8;$i=$i+1){
+                        </php>
+                         <if condition="$data259[$i]">
+                        <div class="swiper-slide tac"><img src="{:getindeximgurl($data259[$i])}" alt="{$data259[1]}" class="img-fluid"></div>
+                        </if>
+                        <php>}</php> 
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next other_22__swiper-button-next"><i class="fa fa-angle-right"></i></div>
+                    <div class="swiper-button-prev other_22__swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                    <if condition="$data259[42]">
+                        <a href="{$data259[43]}" class="other_22_more nav-hidden-mobile">
+                            <img src="{:getindeximgurl($data259[42])}" alt=""></a>
+                        </if>
+            </div>
+        </div>
+    </div>
+    <!-- bottom -->
+    <div class="container hjzf_other_22_wrapper_bottom">
+        <div class="row">
+            <ul class="flex">
+                <php>
+                for($i=8;$i<38;$i=$i+2){
+                </php>
+                <if condition="$data259[$i]">
+                    <li> <img src="{:getindeximgurl($data259[$i])}" alt="{$data259[$i+1]}"> <span>{$data259[$i+1]}</span></li>
+                </if>
+               <php>}</php> 
+            </ul>
+            <div class="tac">
+                <a href="{$data259[40]}" class="more transition-ease">{:__('Read More')}</a>
+            </div>
+        </div>
+    </div>
+</section>

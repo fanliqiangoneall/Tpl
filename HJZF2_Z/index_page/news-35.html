@@ -1,0 +1,120 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_news_35 {
+        background-color: #{$data689[0]};
+    }
+    .hjzf2_news_list li span,
+    .hjzf2_news_right_top li .hjzf2_news_right_top_con a{
+        transition: all .5s;
+    }
+    .hjzf2_news_title a:before,
+    .hjzf2_news_right_top li span,
+    .hjzf2_news_list li:hover span {
+        background-color: #{$color};
+    }
+    .hjzf2_news_img_title span {
+        color: #{$color};
+        border-color: #{$color};
+    }
+    .hjzf2_news_right_bottom li:hover a span,
+    .hjzf2_news_img_title:hover,
+    .hjzf2_news_list li:hover .hjzf2_news_list_title a ,
+    .hjzf2_news_right_top li .hjzf2_news_right_top_con a:hover{
+        color: #{$color};
+    }
+</style>
+<section class="hjzf2_news_35 index_pd">
+    <div class="container">
+        <div class="row">
+			<div class="text-center pb40">
+            <div class="index_title text-center">
+                {$data689[1]}
+            </div>
+			<if condition="$data689[2]">
+				<div class="index_sub_title">
+					{$data689[2]}
+				</div>
+			</if>
+		</div>
+
+            <php>
+                $list = get_index_news_category($data689[3],100);
+                $listcate = get_news_info($data689[3]);
+                $listb = get_index_news_category($data689[4],100);
+                $listcateb = get_news_info($data689[4]);
+
+            </php>
+
+            <div class="col-lg-6 col-xs-12 news_left">
+                <div class="hjzf2_news_title">
+                    <a href="{:U('/new_category',array('classid'=>$listcate['classid']))}"><span>{$listcate['class_name']}</span>
+                        <i></i> <em>{:__('MORE+')}</em></a>
+                </div>
+                <div class="hjzf2_news_img">
+                    <volist empty="" name="list" id="li" offset="0" length="1">
+						<a href="{:U('/new_detail',array('nid'=>$li["nid"]))}">
+							<img src="{:getimgurl($li['new_pro'])}" alt="{$li['title']}" class="img-fluid">
+							<div class="hjzf2_news_img_title">
+								<if condition="$data689[5]">
+								<span>{$data689[5]}</span>
+								</if>
+								{$li['title']}
+							</div>
+							<p class="ellipsis_two">{$li['news_description']}</p>
+						</a>
+                    </volist>
+                    <ul class="hjzf2_news_list">
+                        <volist empty="" name="list" id="lia" offset="1" length="4">
+							<li>
+								<span>
+									<em>{:date('d',$lia['created'])}</em>
+									<i>{:date('Y/m',$lia['created'])}</i>
+								</span>
+								<div class="hjzf2_news_list_title">
+									<a href="{:U('/new_detail',array('nid'=>$lia["nid"]))}">{$lia['title']}</a>
+								</div>
+							</li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+
+
+			<div class="col-lg-6 col-xs-12 news_left">
+                <div class="hjzf2_news_title">
+                    <a href="{:U('/new_category',array('classid'=>$listcateb['classid']))}"><span>{$listcateb['class_name']}</span>
+                        <i></i> <em>{:__('MORE+')}</em></a>
+                </div>
+                <div class="hjzf2_news_img">
+                    <volist empty="" name="listb" id="li" offset="0" length="1">
+						<a href="{:U('/new_detail',array('nid'=>$li["nid"]))}">
+							<img src="{:getimgurl($li['new_pro'])}" alt="{$li['title']}" class="img-fluid">
+							<div class="hjzf2_news_img_title">
+								<if condition="$data689[5]">
+								<span>{$data689[5]}</span>
+								</if>
+								{$li['title']}
+							</div>
+							<p class="ellipsis_two">{$li['news_description']}</p>
+						</a>
+                    </volist>
+                    <ul class="hjzf2_news_list">
+                        <volist empty="" name="listb" id="lia" offset="1" length="4">
+							<li>
+								<span>
+									<em>{:date('d',$lia['created'])}</em>
+									<i>{:date('Y/m',$lia['created'])}</i>
+								</span>
+								<div class="hjzf2_news_list_title">
+									<a href="{:U('/new_detail',array('nid'=>$lia["nid"]))}">{$lia['title']}</a>
+								</div>
+							</li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>

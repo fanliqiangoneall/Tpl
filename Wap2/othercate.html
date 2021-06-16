@@ -1,0 +1,46 @@
+<extend name="Wap2:base" />
+<block name="content">
+<php>
+$othercate__current=$inner_data[1] or $othercate__current=$intro_class['class_name'];
+if($inner_data[2]){
+	$othercate__title_bj=getindeximgurl($inner_data[2]);
+}else{
+	$othercate__title_bj="none";	
+}
+</php>
+<style>
+.othercate__content{
+	padding:10px;
+}
+.othercate__banner{ width:100%;}
+.othercate__Breadcrumbs, .othercate__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+.othercate__title{ color:#333;font-size:18px; font-weight:200; padding:5px 0px; background:url({$othercate__title_bj}) no-repeat;
+}
+.othercate__content img{ max-width:100%;}
+.othercate__content article{ padding:20px 0px 10px 0;font-size: 16px;color: #333;}
+</style>
+    <section class="othercate__content">
+        <div>
+            <if condition="$inner_data[0] neq ''">
+             	<img class="othercate__banner" src="{:getindeximgurl($inner_data[0])}">
+            </if>
+        </div>
+        
+        <div class="othercate__Breadcrumbs">
+            <div class="othercate__Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<span class="othercate__current">{$othercate__current}</span>
+            </div>
+        </div>
+        <article>
+        <php>
+        if($intro_class['hasmobile']==1){
+        	$html=htmlspecialchars_decode($intro_class['wapreadme']);
+        }else{
+       		$html=htmlspecialchars_decode($intro_class['readme']);
+        }
+        </php>
+        {$html}
+        </article>
+
+    </section>
+</block>

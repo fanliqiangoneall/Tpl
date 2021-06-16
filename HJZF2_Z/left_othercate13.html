@@ -1,0 +1,83 @@
+<style>
+    .inner_13_leftnav,.inner_13_leftnavwrap{
+        width: 100%;
+    }
+    .inner_13_leftnavlist{
+        background: #f0ebd8;
+        position: relative;
+        padding: 0 0 200px;
+        overflow: hidden;
+    }
+    ul.inner_13_leftnavlist>li {
+        float: left;
+        display: block;
+        padding: 0;
+        margin-top: 1px;
+        width: 100%;
+        position: relative;
+        z-index: 9;
+    }
+
+    ul.inner_13_leftnavlist>li>a {
+        display: block;
+        border: 0;
+        font-size: 18px;
+        text-transform: none;
+        padding: 15px 20px;
+        position: relative;
+        border-bottom: 1px solid;
+        border-color: #e0dac5;
+    }
+    ul.inner_13_leftnavlist>li.yijion>a::before{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin: auto;
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 26px solid transparent;
+        border-bottom: 26px solid transparent;
+        border-right: 20px solid #fff;
+        z-index: 2;
+        transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        }
+    ul.inner_13_leftnavlist>li>a>h3{
+        font-size: 18px;
+        line-height: 24px;
+    }
+    ul.inner_13_leftnavlist>li:hover,ul.inner_13_leftnavlist>li.yijion{
+        background: #{$inner_data[1]};
+    }
+    ul.inner_13_leftnavlist>li:hover>a>h3,ul.inner_13_leftnavlist>li.yijion>a>h3{
+        color: #fff;
+    }
+    
+    .inner_13_leftnavlist:after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -135px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 334px;
+        background: url({:getindeximgurl($inner_data[2])}) no-repeat;
+        z-index: 0;
+    }
+    .InsidePages_left_content-main{
+        border-top-color:#{$inner_data[1]};
+    }
+</style>
+<div class="inner_13_leftnav">
+    <div class="inner_13_leftnavwrap">                   
+            <ul class="inner_13_leftnavlist">
+                <volist empty="" name="navrs" id="nav">
+                    <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+                </volist>
+            </ul>
+    </div>
+</div>

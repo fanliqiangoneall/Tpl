@@ -1,0 +1,232 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+        $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .main_caselist14 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+		.caselist14_left a{
+			padding:20px;
+		}
+        .main_caselist14 li:hover h5{
+            color: #{$color};
+        }
+        .main_caselist14 h5 {
+            font-size: 18px;
+            margin-bottom:15px;
+			color:#333;
+            line-height: 2;
+			font-weight:bold;
+        }
+		.main_caselist14 .caselist14_left span{
+			font-size: 14px;
+    		color: #d6d6d6;
+			display: block;
+		}
+        .main_caselist14 .p15{
+            padding: 0 15px;
+        }
+        
+        .main_caselist14 p {
+            margin-bottom: 20px;
+			color:#848484;
+			line-height: 24px;
+			font-size:14px;
+			margin-top: 15px;
+        }
+		.main_caselist14 li.odd-li:before{
+			content: "";
+			height: 45px;
+			width: 3px;
+			display: block;
+			position: absolute;
+			top: 28px;
+			left: 0;
+			transition: all .45s;
+			background: #{$color};
+		}
+		.main_caselist14 li.even-li:before{
+			content: "";
+			background: #333;
+			height: 45px;
+			width: 3px;
+			display: block;
+			right: 0;
+			position: absolute;
+			top: 28px;
+			transition: all .45s;
+		}
+
+        .main_caselist14 li a {
+            display: block;
+            height: 100%;
+			position:relative;
+        }
+        .main_caselist14 li{
+            margin-bottom: 25px;
+			background-color: #fff;
+			position:relative;
+			width:100%;
+        }
+		.main_caselist14 li:hover{
+			box-shadow:0 0 20px rgba(0,0,0,0.1);
+			transition:all .45s;
+		}
+		.main_caselist14 li:hover:before{
+			height:100%;
+			top:0;
+		}
+		.caselist14_img.fr{
+			padding-right:0;
+		}
+		.caselist14_img.fl{
+			padding-left:0;
+		}
+        .main_caselist14 .info {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+		.caselist14_graybox{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			filter: alpha(opacity=0);
+			transition: all 0.4s ease 0s;
+		}
+		.caselist14_bgbox{ 
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			opacity: 0.4;
+			filter: alpha(opacity=40);
+		}
+		.main_caselist14 li:hover .caselist14_graybox { opacity: 1; filter: alpha(opacity=1); }
+        @media(min-width: 1200px) {
+            .main_newslist3 .newslist_left {
+                min-height: 120px;
+            }
+        }
+
+        .HJZF_Z__Breadcrumbs span.current,
+        ul.InsidePages_left_navlist>li>a>h3:hover,
+        ul.InsidePages_left_navlist>li.yijion>a>h3 {
+            color: #{$color};
+        }
+
+        .main_page .current {
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+
+        .InsidePages_content-right_content_title:before {
+            background: #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top: 2px solid #{$color};
+        }
+
+        .main_newslist3 li:hover a.more {
+            background-color: #{$color};
+            height: 35px;
+        }
+
+        @media(min-width: 1200px) {
+            #lightbox-container-image {
+                min-height: 400px;
+            }
+        }
+
+        @media(max-width: 1199px) {
+            #lightbox-container-image {
+                min-height: 80px;
+            }
+
+            #lightbox-container-image-box,
+            #lightbox-container-image-data-box {
+                width: 80% !important;
+                height: auto !important;
+            }
+        }
+		@media(max-width:767px){
+			.caselist14_img{ padding:0;}
+			.caselist14_left a{
+				padding:20px 0;
+			}
+		}
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/cases')}">{:__('Cases')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container" id="payment">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-12 HJZF_Z__inner--left">
+                        <Include file="./Tpl/HJZF2_Z/inner/case_left14.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftcases_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 HJZF_Z__inner--right">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <ul class="main_caselist14 ul_li_list clearfix">
+                                    <!-- loop start -->
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="newscatelist" id="newscatelist" key="k_class">
+                                        <li <if condition="$k_class%2 eq 1">class="odd-li"<else/>class="even-li"</if>>
+                                            <div <if condition="$k_class%2 eq 1">class="caselist14_img col-md-4 col-xs-12 fr"<else/>class="caselist14_img col-md-4 col-xs-12 fl"</if>>
+                                            	<a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}" onFocus="blur()">
+                                                <img <if condition="$newscatelist['new_pro']">src="{:getimgurl($newscatelist['new_pro'])}"
+                                                    <else/>src="{:getindeximgurl($inner_data[2])}"</if> border="0" class="img-responsive" />
+                                                <div class="caselist14_graybox"><span class="caselist14_bgbox"></span></div>
+                                                </a>
+                                            </div>
+                                            <div <if condition="$k_class%2 eq 1">class="caselist14_left col-md-8 col-xs-12 fl"<else/>class="caselist14_left col-md-8 col-xs-12 fr"</if>>
+                                                <a href="{:U('/case_detail',array('nid'=>$newscatelist["nid"]))}">
+                                                    <h5 class="fz16">{$newscatelist['title']}</h5>
+                                                	<span>{:zq_date($newscatelist['created'])}</span>
+                                                	<p class="hidden-xs">{:subtxt($newscatelist['news_description'],200)}</p>
+                                                </a>
+                                            </div>
+
+                                        </li>
+                                    </volist>
+                                    <!-- loop end -->
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

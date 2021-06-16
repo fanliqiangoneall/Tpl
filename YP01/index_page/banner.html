@@ -1,0 +1,24 @@
+<script>
+$(document).ready(function () {
+  $('#menu1').removeClass().addClass("menuon");
+});
+</script>
+<style>
+#kinMaxShow .KMSPrefix_kinMaxShow_image_box{overflow:hidden; min-width:1002px;}
+#kinMaxShow .KMSPrefix_kinMaxShow_button li{ margin-right:24px !important;}
+
+<if condition="count($banner) lt 2">
+.KMSPrefix_kinMaxShow_button{ display:none}
+</if>
+</style>
+
+
+<div class="page_Banner">
+  <div id="kinMaxShow">
+    <volist name="banner" id="banner">
+      <div><a href="{$banner['ad_link']}" title="{$banner['pic_title']}" onFocus="blur()"><img src="{:getimgurl($banner['ad_pic'])}" alt="{$banner['pic_title']}"/></a></div>
+    </volist>
+  </div>
+</div>
+
+<!---->

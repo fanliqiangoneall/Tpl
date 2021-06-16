@@ -1,0 +1,177 @@
+<!--{$pagename}-->
+<php>
+    if($data59[0]){
+    $btm_bg = getindeximgurl($data59[0]);
+}
+if($data59[1]) {
+$btm_bgcolor = $data59[1];
+}
+</php>
+<style>
+.hjzf_bottom_hj01{
+    background: url({$btm_bg}) no-repeat center;background-size: cover;
+}
+.hjzf_bottom_hj01{
+    background: #{$btm_bgcolor};
+}
+.bottom_hj01_title{
+    color: #{$data59[3]};
+}
+.hjzf_bottom_list li a h3, .hjzf_bottom_list li a h2, .hjzf_bottom_list li span,.bottom_hj01__copyright--left,.bottom_hj01__copyright--left a,.hjzf_bottom_list li,.hjzf_bottom_list li a,
+.HJZF2_Z__bottom__link span,
+.HJZF2_Z__bottom__link a,.HJZF2_Z__bottom__link{
+    color: #{$data59[4]};
+}
+.hjzf_bottom_content{
+    border-bottom-color: #{$data59[9]};
+}
+.hjzf_bottom_hj01 a:hover,.hjzf_bottom_hj01 h2:hover,.hjzf_bottom_hj01 h3:hover{text-decoration: underline}
+</style>
+<footer class="hjzf_bottom_hj01 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf_bottom_content">
+                <div class="hidden-xs hidden-sm hidden-md col-lg-3">
+                    <div class="bottom_hj01_title index_sub_title">{$data59[5]}</div>
+                    <ul class="hjzf_bottom_list">
+                        <volist name="web_navigation" id="vo" offset="0" key="key">
+                            <li id="menu{$key}"><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,2)"</if>onFocus="blur()">{$vo['title']}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="hidden-xs hidden-sm hidden-md col-lg-3">
+                    <div class="bottom_hj01_title index_sub_title">{$data59[6]}</div>
+                    <ul class="hjzf_bottom_list">
+                        <php>
+                            if(!$data59[10]){
+                            $botleng=8;
+                        }else{
+                        $botleng=$data59[10];
+                    }
+
+                </php>
+                <volist empty="" name="allclass" id="allclass_b" offset="0" length="$botleng">
+                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_b['pcid'])}">{$allclass_b['class_name']}</a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="hidden-xs hidden-sm hidden-md col-lg-3">
+            <div class="bottom_hj01_title index_sub_title">{$data59[7]}</div>
+            <ul class="hjzf_bottom_list">
+            	<if condition="C('webid') eq '1034'">
+                <li><span>{:__('Contact: ')}</span>&nbsp;{:chaifen($about['contact'],0)}&nbsp;{:chaifen($about['mobile'],0)}</li>
+                <li><span>{:__('Tel: ')}</span>&nbsp;{:chaifen($about['phone'],0)}</li>
+                <li><span>{:__('E-mail: ')}</span>&nbsp;<a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],0)}</a></li>
+                <elseif condition="C('webid') eq '1643'" />
+                <li><span>{:__('Contact: ')}</span>&nbsp;{:chaifen($about['contact'],0)}</li>
+                <li><span>{:__('Tel: ')}</span>&nbsp;{:chaifen($about['phone'],0)}</li>
+                <li><span>{:__('Mobile: ')}</span>&nbsp;{:chaifen($about['mobile'],0)}、{:chaifen($about['mobile'],1)}、{:chaifen($about['mobile'],2)}</li>
+                <li><span>{:__('Fax: ')}</span>&nbsp;{:chaifen($about['fax'],0)}</li>
+                <else/>
+                <if condition="chaifen($about['contact'],0)"><li><span>
+					<if condition="$data59[15]">
+						{$data59[15]}
+						<else/>
+					{:__('Sales Manager: ')}
+					</if>
+				</span>&nbsp;{:chaifen($about['contact'],0)}</li></if>
+                <if condition="chaifen($about['email'],0)"><li><span>{:__('E-mail: ')}</span>&nbsp;<a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],0)}</a></li></if>
+                <if condition="chaifen($about['whatsapp'],0)"><li><span>{:__('Mob&WhatsApp: ')}</span>&nbsp;<a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" onclick="turn_sta(8,2);">+86-{:chaifen($about['whatsapp'],0)}</a></li></if>
+                <if condition="chaifen($about['phone'],0)"><li><span>{:__('Tel: ')}</span>&nbsp;{:chaifen($about['phone'],0)}</li></if>
+                </if>
+                <if condition="chaifen($about['contact'],1)"><li><span>
+					<if condition="$data59[15]">
+					{$data59[15]}
+					<else/>
+				{:__('Sales Manager: ')}
+				</if></span>&nbsp;{:chaifen($about['contact'],1)}</li></if>
+                <if condition="chaifen($about['email'],1)"><li><span>{:__('E-mail: ')}</span>&nbsp;<a href="mailto:{:chaifen($about['email'],1)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],1)}</a></li></if>
+                <if condition="chaifen($about['whatsapp'],1)"><li><span>{:__('Mob&WhatsApp: ')}</span>&nbsp;<a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],1)}" onclick="turn_sta(8,2);">+86-{:chaifen($about['whatsapp'],1)}</a></li></if>
+                <if condition="chaifen($about['phone'],1)"><li><span>{:__('Tel: ')}</span>&nbsp;{:chaifen($about['phone'],1)}</li></if>
+                <if condition="chaifen($about['address'],0)"><li><span>{:__('Add: ')}</span>&nbsp;{$about['address']}</li></if>
+                <if condition="chaifen($about['msn'],0) and (C('Language') neq 'cn' and C('Language') neq 'zh')">
+                    <li><span>Skype: </span>&nbsp;<a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,2)" target="_blank">{:chaifen($about['msn'],0)}</a></li>
+                </if>
+                <if condition="chaifen($about['msn'],0) and (C('Language') eq 'cn' or C('Language') eq 'zh')">
+                    <li><span>QQ: </span>&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,2)" target="_blank">{:chaifen($about['msn'],0)}</a></li>
+                </if>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-3">
+            <div class="bottom_hj01_title index_sub_title bottom_hj01_inquirytitle">{$data59[8]}</div>
+            <div class="bottom_hj01_form">
+                <if condition="C('language') eq 'cn'">
+                <Include file="./Tpl/HJZF2_Z/submitinquiry_bottom_hj01_cn.html" />
+                <else />
+                <Include file="./Tpl/HJZF2_Z/submitinquiry_bottom_hj01_en.html" />
+            </if>
+            </div>
+        </div>
+        <div class="clear"></div>
+               <!--  <div class="bottom_form_alert">
+                    <span class="yz_alert" id="linkname_alert"></span>
+                    <span class="yz_alert" id="phone_alert"></span>
+                    <span class="yz_alert" id="email_alert"></span>
+                    <span class="yz_alert" id="message_alert"></span>
+                    <span class="yz_alert" id="code_char_alert"></span>
+                </div> -->
+            </div>
+        </div>
+    </div>   
+    <div class="bottom_hj01_copyrightContent">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-8 bottom_hj01__copyright--left">
+                    <php>
+                        $nowtime=date("Y",time());
+                        if(!$data59[11]){
+                        $currtime=2019;
+                    }else{
+                    $currtime=$data59[11];
+                }
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp; {$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+            <if condition="C('language') eq 'cn'">
+                <if  condition="$data59[13] neq '1'"><a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                </if>
+                <else/>
+                <if  condition="$data59[13] neq '1'">
+                <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Designed by Zhonghuan Internet</a>
+                </if>
+            </if>
+        </div>
+        <div class="col-xs-12 col-md-4 bottom_hj01__copyright--right">
+            <ul>
+                <if condition="$data186[0]"><li><a href="{$data186[0]}"><img src="{:getindeximgurl($data186[5])}"/></a></li></if>
+                <if condition="$data186[1]"><li><a href="{$data186[1]}"><img src="{:getindeximgurl($data186[6])}"/></a></li></if>
+                <if condition="$data186[2]"><li><a href="{$data186[2]}"><img src="{:getindeximgurl($data186[7])}"/></a></li></if>
+                <if condition="$data186[3]"><li><a href="{$data186[3]}"><img src="{:getindeximgurl($data186[8])}"/></a></li></if>
+                <if condition="$data186[4]"><li><a href="{$data186[4]}"><img src="{:getindeximgurl($data186[9])}"/></a></li></if>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<if condition="$friend_link neq ''">
+    <div class="HJZF2_Z__bottom__friendlink">
+    	<div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="HJZF2_Z__bottom__link"><span style="float:left; margin-right:5px; line-height: 30px;">{:__('FriendLink: ')}</span>
+                      <volist name="friend_link" id="friend_link">
+                          <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:30px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                              <div style="float:left; line-height:30px; text-align:center; margin-right:20px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+                          </if>
+                      </volist>     
+                      <div style="clear:both"></div>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</if>
+</footer>

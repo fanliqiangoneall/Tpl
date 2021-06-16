@@ -1,0 +1,38 @@
+<extend name="demo2:base" />
+<block name="content">
+<!--面包屑代码块开始-->
+<div class="r_top">Current Position : <a href="{:U('/')}">Home</a> > <a href="/inquiry.html">INQUIRY</a></div>
+<div class="in_banner"><img src="__TMPL__demo2/img/inquirybanner.jpg" /></div>
+<div class="clear"></div>
+<!--代码块结束-->
+
+
+<!--产品列表代码块开始-->
+<div class="main">
+  <div class="sidebar">
+    <div class="Page_Leftbg">
+      <div class="Page_LeftTop"></div>
+      <div class="Page_LeftClass">
+        <div class="Page_LeftClassTitle">products</div>
+        <div class="Page_LeftClassList">
+          <ul>
+            <li style="height:1px; line-height:1px; background:url(__TMPL__demo2/img/leftline.jpg)"></li>
+            <volist empty="No Content" name="allclass" id="allclass">
+            <li class="parent"><a href="{:U('/product_category','','')}/{:getprocatename($allclass['pcid'])}">{$allclass['class_name']}</a></li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+      <div class="Page_LeftBottom"></div>
+    </div>
+  </div>
+  <div class="rightmain">
+    <div class="rightlm">INQUIRY</div>
+    <div class="product_body2">
+      <div class="body" style="width:630px; padding-left:5px; float:left;line-height:24px;"> <include file="ZERO:Feedbackfrom" />	</div>
+    </div>
+  </div>
+  <div style="clear:both"></div>
+</div>
+<!--代码块结束-->
+</block>

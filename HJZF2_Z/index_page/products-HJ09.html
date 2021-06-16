@@ -1,0 +1,42 @@
+<!--{$pagename}-->
+<style>
+    .products_wrapper_out:hover .products_wrapper i {
+        <if condition="$data276[1]">background-color: #{$data276[1]};
+        border-color: #{$data276[1]};
+        <else/>background-color: #{$color};
+        border-color: #{$color};
+        </if>
+    }
+</style>
+<section class="hjzf2_products_hj09 index_pd index_wrapper">
+    <div class="index_inner">
+        <div class="hjzf_products_hj09_title pb40">
+            <span class="index_title wow fadeInLeft">{$data276[2]}</span>
+            <span class="index_sub_title wow fadeInLeft" data-wow-delay=".3s">{$data276[3]}</span>
+            <a href="{:U('/product')}" class="more wow fadeInLeft transition-ease" data-wow-delay=".6s">{$data276[4]}</a>
+        </div>
+        <div class="swiper-container hjzf2_products_hj09_swiper">
+            <div class="swiper-wrapper">
+                <php>
+                    if($data276[5]){ $lena = $data276[5]; }else{ $lena = 8; }
+                </php>
+                <volist name="indexnews" id="new" offset="0" length="$lena">
+                    <div class="swiper-slide">
+                        <a href="{:U('/new_detail',array('nid'=>$new['nid']))}" class="products_wrapper_out transform_scale_5">
+                            <img src="{:getimgurl($new['new_pro'])}" class="img-responsive" alt="{$new['title']}">
+                            <div class="products_wrapper">
+                                <span>{$new['title']}</span>
+                                <p>{$new['news_description']}</p>
+                                <i>{$data276[6]}</i>
+                            </div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+            <!-- Add Arrows -->
+            <div class="hjzf2_products_hj09_next"></div>
+            <div class="hjzf2_products_hj09_prev"></div>
+        </div>
+
+    </div>
+</section>

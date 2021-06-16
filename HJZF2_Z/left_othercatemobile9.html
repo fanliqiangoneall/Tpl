@@ -1,0 +1,130 @@
+<style>
+    .InsidePages_left_content-main p em{
+        font-style: normal;
+    }
+</style>
+
+<div class="InsidePages_content-left_content">
+    <script>
+        $(document).ready(function(){
+            $(".HJZF_Z__inner__mobileLeftMenu .class_button").on("click",function(){
+                $(this).next('ul').slideToggle();
+                if( $(this).next('ul').css("display")=="none"){
+                    $(this).parent().addClass("yijion");
+                }else{
+                    $(this).parent().removeClass("yijion").addClass("yiji");
+                }
+            });
+            $(".HJZF_Z__inner__mobileLeftMenu .mobile--left_showButton").on("click",function(){
+                $(".HJZF_Z__inner__mobileLeftMenu .InsidePages_left_navlist").slideToggle();
+            });
+            var len = $('.InsidePages_left_navlist li').length;
+            if(len < 1) {
+                $('.HJZF_Z__inner--left__content').hide();
+            };
+            var text = $('.InsidePages_left_navlist li.yijion').text();
+            $('.InsidePages_left_content-main p em').text(text);
+        })
+    </script>
+    <div class="HJZF_Z__inner--left__content">
+        <div class="InsidePages_left_content-main">
+            <p><em>{$navparentname}</em><span class="mobile--left_showButton"><i></i></span></p>
+            <ul class="InsidePages_left_navlist">
+                <volist empty="" name="navrs" id="nav">
+                    <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<if condition="$intro_class['classid'] eq '9893' or $intro_class['classid'] eq '9976' or $intro_class['classid'] eq '9977' or $intro_class['classid'] eq '9978' or $intro_class['classid'] eq '10116'">
+	<style>
+		@media(max-width: 1200px) {
+			.InsidePages_list.inner9__leftlist li{
+				flex: 0 0 50% !important;
+				width: 50% !important;
+				padding: 20px;
+			}
+		}
+
+		@media(max-width: 768px) {
+			.InsidePages_list.inner9__leftlist li{
+				flex: 0 0 100% !important;
+				width: 100% !important;;
+			}
+			.HJZF_Z__inner9--leftcate:after,.InsidePages_content-left_content{
+			display: none;
+		}
+		.InsidePages_list.inner9__leftlist li.yijion{
+			background: transparent;
+			padding: 20px;
+		}
+		.InsidePages_list.inner9__leftlist li:hover{
+			background: transparent;
+		}
+		.InsidePages_list.inner9__leftlist {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		
+		.InsidePages_list.inner9__leftlist li a{
+			display: block;
+			padding: 20px;
+			width: 100%;
+			border: 2px solid #ccc;
+			transition: all .5s;
+		}
+		.InsidePages_list.inner9__leftlist li .index_sub_title h3{
+			font-size: 18px;
+			color: #333;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			transition: all .5s;
+		}
+		.InsidePages_list.inner9__leftlist li p{
+			min-height: 42px;
+		}
+		.InsidePages_list.inner9__leftlist li em h3{
+			font-style: normal;
+			font-size: 14px;
+			width: 155px;
+			line-height: 35px;
+			margin: 0 auto;
+			margin-top: 20px;
+			border: 1px solid #{$color};
+			color: #{$color};
+		}
+		.InsidePages_list.inner9__leftlist li:hover a,.InsidePages_list.inner9__leftlist li.yijion a{
+			border-color: #{$color};
+		}
+		.InsidePages_list.inner9__leftlist li:hover .index_sub_title h3,.InsidePages_list.inner9__leftlist li.yijion .index_sub_title h3{
+			color: #{$color};
+		}
+		}
+	</style>
+	<div class="InsidePages-left_content col-xs-12" data="{:dump($intro_class['classid'])}">
+		<ul class="InsidePages_list inner9__leftlist">  
+			<volist empty="" name="navrs" id="nav">      
+				<if condition="$intro_class['classid'] eq '9893' or $intro_class['classid'] eq '9976' or $intro_class['classid'] eq '9977' or $intro_class['classid'] eq '9978' or $intro_class['classid'] eq '10116'">
+					
+					<li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if>>
+					<a href="{$nav['url']}">
+						<img src="{:getmainimgurl($nav['nav_img'])}" alt="{$nav['title']}">
+						<div class="index_sub_title">
+							{$nav['title']}
+						</div>
+						<p>{$nav['nav_desc']}</p>
+						<em>{$nav['title']}</em>
+					</a>
+				</li>
+				<else/>
+				<li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion"<else/>class="yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" <if condition="$nav[id] eq '21083'"> target="_blank" </if>>{$nav['title']}</a></li>
+				</if>
+			</volist>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	
+</if>

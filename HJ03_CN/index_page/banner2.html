@@ -1,0 +1,90 @@
+<!--{$pagename}-->
+<style>
+    .page_Banner2 .slick-prev{width: 36px;height: 69px;left: 100px!important;z-index: 99;}
+    .page_Banner2 .slick-prev:before{display: none;}
+    .page_Banner2 .slick-next{width: 36px;height: 69px;right: 100px!important;z-index: 99;}
+    .page_Banner2 .slick-next:before{display: none;}
+   .page_Banner2 .slick-prev:hover{
+        background: url({:getindeximgurl($data30[5])}) no-repeat;
+    }
+   .page_Banner2 .slick-next:hover {
+        background: url({:getindeximgurl($data30[6])}) no-repeat;
+    }
+   .page_Banner2 .slick-prev{
+        background: url({:getindeximgurl($data30[3])}) no-repeat;
+    }
+    .page_Banner2 .slick-next{
+        background: url({:getindeximgurl($data30[4])}) no-repeat;
+    }
+    .tp-bullets.simplebullets.round .bullet:hover,
+    .tp-bullets.simplebullets.round .bullet.selected,
+    .tp-bullets.simplebullets.navbar .bullet:hover,
+    .tp-bullets.simplebullets.navbar .bullet.selected {
+        background: url({:getindeximgurl($data30[7])}) no-repeat;
+    }
+    .tp-bullets.simplebullets.round .bullet{
+        background: url({:getindeximgurl($data30[8])}) no-repeat;
+    }
+.page_Banner2 .slick-dots{
+    bottom: 40px;
+}
+    .page_Banner2 .slick-dots li{
+        width: 17px;height: 16px;background: url({:getindeximgurl($data30[7])}) no-repeat;
+    }
+    .page_Banner2 .slick-dots li:before{display: none;}
+    .page_Banner2 .slick-dots li button{display: none;}
+    .page_Banner2 .slick-dots li.slick-active{
+        width: 17px;height: 16px;background: url({:getindeximgurl($data30[8])}) no-repeat;
+    }
+    
+</style>
+
+
+<php>
+    if(!$data30[9]){
+    $data30[9]=670;
+    }
+</php>
+<style>
+    .page_Banner2{
+    max-height: {$data30[9]}px;
+    }
+    .page_Banner2_box{
+    max-height: {$data30[9]}px;
+    }
+
+</style>
+<if condition="$data30[1] neq ''">
+    <div id="index_banner_animate">
+        <div class="page_Banner2">
+            <div class="page_Banner2_box">
+
+                        <if condition="$data30[0]">
+                            <div data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300">
+                                <a href="{$data30[10]}"><img src="{:getindeximgurl($data30[0])}" alt="" width="100%"/></a>
+                            </div>
+                            </if>
+                        <if condition="$data30[1]">
+                        <div data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" >
+                            <a href="{$data30[11]}"><img src="{:getindeximgurl($data30[1])}" alt="" width="100%"/></a>
+                        </div>
+                            </if>
+                        <if condition="$data30[2]">
+                            <div data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" >
+                                <a href="{$data30[12]}"><img src="{:getindeximgurl($data30[2])}" alt="" width="100%"/></a>
+                            </div>
+                        </if>
+            </div>
+        </div>
+    </div>
+    <else/>
+    <div class="page_Banner2">
+        <ul>
+            <li data-transition="3dcurtain-vertical" data-slotamount="15" data-masterspeed="300" >
+                <a href="{$data30[10]}"><img src="{:getindeximgurl($data30[0])}" alt="" /></a>
+            </li>
+        </ul>
+    </div>
+</if>
+
+

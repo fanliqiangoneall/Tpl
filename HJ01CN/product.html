@@ -1,0 +1,168 @@
+<extend name="HJ01CN:basein" />
+<block name="content">
+    <style>
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_product_more{
+        color: {$data1[0]};
+        }
+        .main_product_more:hover{
+        background: {$data1[0]};color:#fff;
+        }
+        .main_proitem_img a:before{
+        background: rgba(0,0,0,0.5);
+        }
+        .main_proitem_name h6{
+            color: #{$color}
+        }
+        .main_proitem_more{
+        color:{$data1[0]};
+        }
+        .main_proitem_more:hover:after{
+        background: {$data1[0]};
+        width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[5])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner">
+                <div class="container">
+                    <h1 class="ins-page-title-txt no-margin padding-5px-tb"><if condition="$data1[4]">{$data1[4]} <else/>产品中心</if></h1>
+                    <div class="Breadcrumbs"><a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<if condition="$data1[4]">{$data1[4]} <else/>产品中心</if></div>
+                </div>
+            </div>
+            <div class="ins-pagetitle-scroll-wrapper container"><a class="ins-pagetitle-scroll-link" href="javascript:goToMain()"><i class="fa fa-angle-down"></i></a></div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left">
+                <Include file="./Tpl/HJ01CN/left.html" />
+            </section>
+            <section class="main-content-right">
+                <if condition="$data14[12]">
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <section class="main_product_title">
+                                <div class="main_product_title_left">
+                                    <div><h3>热门产品</h3></div>
+                                </div>
+                                <div class="main_product_title_right">
+                                    <div>
+                                        <a href="{:U('/all_ishot')}" class="main_product_more font-weight-700">查看更多</a>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </section>
+                            <div class="mainpage_probox margin-30px-top">
+                                <volist empty="" name="hotpro" id="hotpro" key="k" offset="0" length="6">
+                                    <div class="main_proitem">
+                                        <div class="main_proitem_box">
+                                            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}"><img src="{:getmainimgurl($hotpro['main_img'])}" <if condition="$hotpro['proalt'] neq ''">alt="{$hotpro['proalt']}"<else/>alt="{$hotpro['pro_name']}"</if> /></a></div>
+                                            <div class="main_proitem_second">
+                                                <div class="main_proitem_name margin-10px-bottom"><h6>{$hotpro['pro_name']}</h6></div>
+                                                <div class="main_proitem_desc">{:subtxt($hotpro['pro_description'],30)}</div>
+                                                <div class="margin-15px-top">
+                                                    <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}" class="main_proitem_more">查看更多</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="$k%2 eq 0">
+                                        <div class="clear" style="height: 30px;"></div>
+                                    </if>
+                                </volist>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div style="clear: both;height: 30px;"></div>
+                        </div>
+                        <div class="page_Main">
+                            <section class="main_product_title">
+                                <div class="main_product_title_left">
+                                    <div><h3>新品推荐</h3></div>
+                                </div>
+                                <div class="main_product_title_right">
+                                    <div>
+                                        <a href="{:U('/all_isnew')}" class="main_product_more font-weight-700">查看更多</a>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </section>
+                            <div class="mainpage_probox margin-30px-top">
+                                <volist empty="" name="newpro" id="newpro" key="k" offset="0" length="6">
+                                    <div class="main_proitem ">
+                                        <div class="main_proitem_box">
+                                            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}"><img src="{:getmainimgurl($newpro['main_img'])}" <if condition="$newpro['proalt'] neq ''">alt="{$newpro['proalt']}"<else/>alt="{$newpro['pro_name']}"</if> /></a></div>
+                                            <div class="main_proitem_second">
+                                                <div class="main_proitem_name margin-10px-bottom"><h6>{$newpro['pro_name']}</h6></div>
+                                                <div class="main_proitem_desc">{:subtxt($newpro['pro_description'],100)}</div>
+                                                <div class="margin-15px-top">
+                                                    <a href="{:U('/Product','','')}/{:getproname($newpro['pid'])}" class="main_proitem_more">查看更多</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="$k%2 eq 0">
+                                        <div class="clear" style="height: 30px;"></div>
+                                    </if>
+                                </volist>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <else/>
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <div class="mainpage_probox ">
+                                <volist empty="" name="allpro" id="allpro" key="k" offset="0">
+                                    <div class="main_proitem ">
+                                        <div class="main_proitem_box">
+                                            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}"><img src="{:getmainimgurl($allpro['main_img'])}" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"<else/>alt="{$allpro['pro_name']}"</if> /></a></div>
+                                            <div class="main_proitem_second">
+                                                <div class="main_proitem_name margin-10px-bottom"><h6>{$allpro['pro_name']}</h6></div>
+                                                <div class="main_proitem_desc">{:subtxt($allpro['pro_description'],30)}</div>
+                                                <div class="margin-15px-top">
+                                                    <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}" class="main_proitem_more">查看更多</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="$k%2 eq 0">
+                                        <div class="clear" style="height: 30px;"></div>
+                                    </if>
+                                </volist>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+                </if>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <div class="main_content_slogan">
+            <div class="container">
+                <div class="main_content_slogan_left ">
+                    <if condition="$data14[18]">
+                        <h3 class="margin-10px-bottom">{$data14[18]}：{:chaifen($about['phone'],0)}</h3>
+                        <else/>
+                        <h3 class="margin-10px-bottom">获取报价或致电：{:chaifen($about['phone'],0)}</h3>
+                    </if>
+                    <p class="main_content_slogan_text" style="letter-spacing: 1px">{$data14[10]}</p>
+                </div>
+                <div class="main_content_slogan_right ">
+                    <div class="main_content_slogan_right_more text-right">
+                        <a href="{:U('/contactus')}">联系我们</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,81 @@
+<!--{$pagename}-->
+<style>
+    .HJZF_Z_other_HJ09 {
+        background: url({:getindeximgurl($data252[0])
+    }
+
+    ) no-repeat center top/cover;
+    height: 100vh;
+    background-attachment: fixed;
+    }
+
+    .HJZF_Z_other_HJ09 {
+        color: #{$data252[1]};
+    }
+
+    .HJZF_Z_other_HJ09_right {
+        color: #{$data252[2]};
+    }
+
+    @media(max-width: 768px) {
+        .HJZF_Z_other_HJ09 {
+            height: 50vh;
+        }
+    }
+
+    @media(min-width: 1200px) {
+        .HJZF_Z_other_HJ09 .row {
+            height: calc(100vh - 160px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    }
+</style>
+<section class="HJZF_Z_other_HJ09 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF_Z_other_HJ09_title pb40 tar">
+                <div class="index_title pb20">
+                    {$data252[3]}
+                </div>
+                <div class="index_sub_title">
+                    {$data252[4]}
+                </div>
+            </div>
+            <div class="flex">
+                <li class="left wow fadeInLeft">
+                    <img src="{:getindeximgurl($data252[7])}" alt="{$data252[5]}" class="w-100">
+                    <div class="HJZF_Z_other_HJ09_con">
+                        <span>{$data252[5]}</span>
+                        <p>{$data252[6]}</p>
+						<if condition="$data252[15]">
+							<a href="{$data252[15]}">
+                        <img src="{:getindeximgurl($data252[8])}" alt="{$data252[5]}">
+						</a>
+						<else/>
+                        <img src="{:getindeximgurl($data252[8])}" alt="{$data252[5]}">
+						</if>
+                    </div>
+                </li>
+                <li class="right wow fadeInRight">
+                    <div class="top">
+                        <img src="{:getindeximgurl($data252[11])}" class="w-100" alt="{$data252[9]}">
+                        <div class="HJZF_Z_other_HJ09_right">
+                            <span>{$data252[9]}</span>
+                            <p>{$data252[10]}</p>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <img src="{:getindeximgurl($data252[14])}" class="w-100" alt="{$data252[12]}">
+                        <div class="HJZF_Z_other_HJ09_right">
+                            <span>{$data252[12]}</span>
+                            <p>{$data252[13]}</p>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+</section>

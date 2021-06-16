@@ -1,0 +1,181 @@
+<!--left style-->
+<if condition="$data14[17]">
+    <style>
+        .main_content_slogan{
+       background: url({:getindeximgurl($data14[17])}) no-repeat center;
+
+        }
+    </style>
+    <else/>
+    <style>
+        .main_content_slogan{
+            background:  #{$color};
+        }
+    </style>
+</if>
+<if condition="$data14[19]">
+    <style>
+        .yiji > ul{display: block}
+    </style>
+</if>
+<style>
+    .main-content_inner > ul >li:hover >a:before{
+    background: {$data1[0]};
+    }
+    .main-content_inner > ul >li.yijion >a:before{
+    background: {$data1[0]};
+    }
+    .main-content_inner > ul >li >a > h3{
+        color: #{$color};
+    }
+    .yijion > ul > li > a > h3{
+        color: #{$color};
+    }
+    .main-content_inner_contact{
+        background:url({:getindeximgurl($data14[8])}) no-repeat center;
+    }
+
+    .main_content_slogan_right_more a{
+    background: {$data1[0]};
+    border-color:{$data1[0]};
+    }
+    .main_content_slogan_right_more a:hover{
+        background: transparent;border-color:#fff;
+    }
+    .yiji >ul >li >a >h3:hover{
+        color:{$data1[0]};
+    }
+    .yijion >ul >li >a >h3:hover{
+        color:{$data1[0]};
+    }
+    .childon>a>h3{
+        color:{$data1[0]}!important;
+    }
+    .child>a>h3{
+        color: #{$color}!important;
+    }
+    .child:hover >a>h3{
+        color: {$data1[0]}!important;
+    }
+    .child>ul>li>a{
+        position: relative;
+        display: block;
+        padding: 14px 15px 14px 40px;
+        background-color: #f3f7f9;
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .child>ul>li>a>h3{
+        font-weight: 500;
+        font-size: 15px;
+        color: #{$color};
+        line-height: 25px;
+        font-style: normal;
+    }
+    .childon>ul>li>a{
+        position: relative;
+        display: block;
+        padding: 14px 15px 14px 40px;
+        background-color: #f3f7f9;
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .childon>ul>li>a>h3{
+        font-weight: 500;
+        font-size: 15px;
+        color: #{$color};
+        line-height: 25px;
+        font-style: normal;
+    }
+    .threeon>a>h3{
+        color: {$data1[0]}!important;;
+    }
+    .child>ul>li:hover >a>h3{
+    color:{$data1[0]};
+    }
+    .childon>ul>li:hover >a>h3{
+        color:{$data1[0]};
+    }
+</style>
+<!--left style-->
+
+<div class="main_left">
+    <if condition="$data9[7]">
+        <php>
+            $arr_str=$data9[7];
+        </php>
+        <script>
+            $(document).ready(function(){
+                var arry_ph = "<?php echo $arr_str ?>";
+                var pro_array = arry_ph.split(',');
+                console.log(pro_array);
+                $.each(pro_array,function(ke,val){
+                    $(".yijion[pro-class-id='"+val+"']").attr('xian',"1")
+                })
+                $(".childon").parent().css("display","block");
+            })
+
+        </script>
+
+
+    </if>
+    <if condition="$data1[14] neq ''">
+        <script>
+            $(document).ready(function(){
+                $(".main_proitem_more_parent").hide();
+                $(".main-content_inner > ul > li > a").click(function () {
+                    return false;
+                }).css("cursor",'default');
+                $(".main_proitem_img> a").click(function () {
+                    return false;
+                }).css("cursor",'default');
+            })
+        </script>
+        <style>
+            .main_proitem{max-height: 404px!important;height: auto!important;}
+        </style>
+    </if>
+    <div class="main-content_inner">
+        <ul class="margin-20px-bottom">
+            <volist empty="No data" name="allclass" id="allclass_left">
+
+                <li pro-class-id="{$allclass_left['pcid']}" <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yijion"<else/>class="yiji"</if>><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+
+                <if condition='$allclass_left["childs"] neq ""'>
+                    <ul>
+                        <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                            <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="childon"<else/>class="child"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a>
+                            <if condition='$allclass_leftchild["childs"] neq ""'>
+                                <ul>
+                                    <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftthree">
+                                        <li <if condition="$classid eq $allclass_leftthree['pcid'] or $prolist['parent_id'] eq $allclass_leftthree['pcid'] or $product['class_id'] eq $allclass_leftthree['pcid'] or $procate['parent_id'] eq $allclass_leftthree['pcid']">class="threeon"<else/>class="three"</if> ><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftthree['pcid'])}">{$allclass_leftthree['class_name']}</a></li>
+                                    </volist>
+                                </ul>
+                            </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </if>
+                </li>
+            </volist>
+        </ul>
+        <div class="main-content_inner_contact margin-30px-top">
+            <div class="margin-15px-bottom"><h4 class="text-center main-content_inner_contact_title">{$data14[9]}</h4></div>
+            <div class="main-content_conlist">
+                <if condition="chaifen($about['msn'],0) neq ''"><p>Skype: <a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3)" >{:chaifen($about['msn'],0)}</a></p></if>
+
+                <if condition="chaifen($about['email'],0) neq ''"><p>Email: <a href="mailto:{:chaifen($about['email'],0)}?chat" onclick="turn_sta(4,3);" onfocus="blur()">{:chaifen($about['email'],0)}</a></p></if>
+
+                <if condition="chaifen($about['email'],1) neq ''"><p><span style="opacity: 0">Email: </span><a href="mailto:{:chaifen($about['email'],1)}?chat" onclick="turn_sta(4,3);" onfocus="blur()">{:chaifen($about['email'],1)}</a></p></if>
+
+                <if condition="chaifen($about['phone'],0) neq ''"><p>Phone: {:chaifen($about['phone'],0)}</p></if>
+
+                <if condition="chaifen($about['phone'],1) neq ''"><p><span style="opacity: 0">Phone: </span>{:chaifen($about['phone'],1)}</p></if>
+                <if condition="chaifen($about['mobile'],0) neq ''"><p>Mobile: {:chaifen($about['mobile'],0)}</p></if>
+
+                <if condition="$data14[18]"><p style="display: none">Add: {$about['address']}</p><else/><p>Add: {$about['address']}</p></if>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

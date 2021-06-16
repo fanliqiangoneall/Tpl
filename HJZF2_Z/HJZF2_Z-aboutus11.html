@@ -1,0 +1,204 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[2]){
+        $mbbg = $inner_data[2];
+        }else{
+        $mbbg = $color;
+        }
+    </php>
+    <style>
+        .main-title-section-wrapper {
+            width: 100%;
+            margin: auto;
+            padding: 172px 0 54px;
+            clear: both;
+            position: relative;
+            margin-bottom: 100px;
+        }
+        .main-title-section-wrapper:before {
+            position: absolute;
+            content: "";
+            display: block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #{$mbbg};
+            opacity: .6;
+        }
+        .breadcrumb {
+            clear: both;
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, .6);
+            position: relative;
+        }
+
+        .breadcrumb a {
+            color: #333;
+        }
+
+        .breadcrumb .current {
+            color: rgba(0, 0, 0, .5);
+        }
+
+        .main-title-section {
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+    </style>
+    <div class="HJZF_Z__wrapper">
+        <!-- 顶部面包屑导航+banner图开始 -->
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner[0]['use_wap']">
+                <volist name="banner" id="bannera" offset="0" length="1">
+                    <section class="main-title-section-wrapper default hidden-lg hidden-xl" navcrumbs
+                        style="background: url({:getimgurl($bannera['logo_wap_bg'])}) no-repeat center;">
+                </volist>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="breadcrumb">
+                                <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+                                    class="current">{:__('About us')}</span>
+                            </div>
+                            <div class="main-title-section">
+                                <h1>{:__('About us')}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <volist name="banner" id="bannera" offset="0" length="1">
+                    <section class="main-title-section-wrapper default hidden-xs hidden-sm hidden-md" navcrumbs
+                        style="background: url({:getimgurl($bannera['ad_pic'])}) no-repeat center;">
+                </volist>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="breadcrumb">
+                                <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span
+                                    class="current">{:__('About us')}</span>
+                            </div>
+                            <div class="main-title-section">
+                                <h1>{:__('About us')}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <else />
+                <if condition="$banner neq ''">
+                    <volist name="banner" id="bannerc" offset="0" length="1">
+                        <section class="main-title-section-wrapper default" navcrumbs
+                            style="background: url({:getimgurl($bannerc['ad_pic'])}) no-repeat center;">
+                    </volist>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="breadcrumb">
+                                    <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i
+                                        class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('About
+                                        us')}</span>
+                                </div>
+                                <div class="main-title-section">
+                                    <h1>{:__('About us')}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </section>
+                    <else />
+
+                    <section class="main-title-section-wrapper default" navcrumbs
+                        style="background: url({:getindeximgurl($inner_data[0])}) no-repeat center;">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="breadcrumb">
+                                        <a href="{:U('/')}"> {:__('Home')}</a>&nbsp;<i
+                                            class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('About
+                                            us')}</span>
+                                    </div>
+                                    <div class="main-title-section">
+                                        <h1>{:__('About us')}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </if>
+            </if>
+        </div>
+        <!-- 顶部面包屑导航+banner图结束 -->
+        <style>
+            .inner_13_otherpage_content {
+                width: 100%;
+            }
+
+            .wpbtitle_wrapper {
+                margin: auto;
+                width: 100%;
+                margin-bottom: 60px;
+            }
+
+            .wpbtitle_wrapper .dt-sc-small-separator {
+                width: 51px;
+                height: 3px;
+                display: inline-block;
+                clear: both;
+                text-align: center;
+                margin: 0 0 12px;
+                background: #{$inner_data[1]};
+            }
+
+            @media(max-width:576px) {
+                .main-title-section-wrapper {
+                    margin-bottom: 50px;
+                    padding: 80px 0 40px;
+                }
+
+                .wpbtitle_wrapper {
+                    margin-bottom: 20px;
+                }
+            }
+        </style>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container" id="payment">
+                <div class="row">
+                    <!-- <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/left_othercatemobile.html" />
+                    </section> -->
+                    <section class="col-xs-12 inner_13_otherpage_wrap">
+                        <div class="inner_13_otherpage_content">
+                            <div class="wpbtitle_wrapper text-center">
+                                <div class="dt-sc-small-separator"></div>
+                                <h2 class="inner_13_maintitle">{$intro_class['class_name']}</h2>
+                            </div>
+
+                            <div class="hidden-xs hidden-sm hidden-md InsidePages_content-right_editor" id="payment">
+                                {:htmlspecialchars_decode($intro_class['readme'])}</div>
+                            <div class="hidden-lg hidden-xl InsidePages_content-right_editor" id="payment1">
+                                <if condition="$intro_class['wapreadme']">
+                                    {:htmlspecialchars_decode($intro_class['wapreadme'])}
+                                    <else />{:htmlspecialchars_decode($intro_class['readme'])}</if>
+                            </div>
+                            <div class="page_nei_space"></div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

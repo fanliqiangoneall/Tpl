@@ -1,0 +1,20 @@
+<!--{$pagename}-->
+<style>
+    .bottom_7_box {
+        background-color: #{$data123[0]};
+        color: #{$data123[2]};
+    }
+    .bottom_7_box a,.bottom_7_nr {
+        color: #{$data123[2]};
+    }   
+</style>
+<php>
+    $nowtime=date("Y",time());
+</php>
+<div class="container-fluid bottom_7_box">
+	<if condition="$data123[1]"><div class="bottom_7_nr">{:HtmlEncode($data123[1])}</div></if>
+    <div class="bottom_7_list text-right">
+        © {$nowtime} - {$about['company_name']}&nbsp;<if condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>&nbsp;
+    </div>
+</div>
+<div id="page_top"><a href="#"><i class="fa fa-arrow-up"></i></a></div>

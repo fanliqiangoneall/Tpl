@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<php>
+	if($data700[0]) {
+	$color = $data700[0];
+	}
+</php>
+<style>
+	.hjzf_other_113 img {
+		max-width: 100%;
+	}
+	.hjzf_other_113_right a{
+		color: #fff;
+		background-color: #{$color};
+	}
+</style>
+<section class="hjzf_other_113 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 hjzf_other_113_wrapper mb-40">
+				<div class="hjzf_other_113_left">
+					<div class="index_title">
+						{$data700[1]}
+					</div>
+					<div class="index_sub_title">
+						{$data700[2]}
+					</div>
+				</div>
+				<div class="hjzf_other_113_right">
+					<a href="{$data700[4]}" class="index_btn">{$data700[3]}</a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-lg-6 p-0">
+				<img src="{:getindeximgurl($data700[5])}" class="img-fluid">
+			</div>
+			<div class="col-xs-12 col-lg-6 p-0">
+				<img src="{:getindeximgurl($data700[6])}" class="img-fluid">
+			</div>
+		</div>
+	</div>
+</section>

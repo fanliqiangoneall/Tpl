@@ -1,0 +1,305 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .pro_detail_lunbo {
+            background-color: #{$inner_data[1]};
+            padding-top: 40px;
+        }
+
+        .pro_detail_con {
+            background-color: #{$inner_data[0]};
+        }
+
+        .pro_detail_lunbo_wrapper {
+            margin-bottom: 40px;
+        }
+
+        .detail_10_thumbs .swiper-wrapper {
+            justify-content: center;
+        }
+
+        .detail_10_thumbs .swiper-slide {
+            border: 2px solid transparent;
+            transition: all .5s;
+        }
+
+        .detail_10_gallery {
+            margin-bottom: 20px;
+        }
+
+        .detail_10_thumbs .swiper-slide:hover,
+        .detail_10_thumbs .swiper-slide.swiper-slide-active {
+            border-color:#{$color};
+        }
+
+        .product_detail_editor_content {
+            background: transparent;
+        }
+    </style>
+
+    <!-- banner start-->
+    <div class="HJZF_Z__innerBanner HJZF_Z__innerBanner2">
+        <if condition="$webid eq '1766'">
+            <img src="{:getimgurl($product['pro_file'])}" class="w-100">
+            <else />
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <!-- 吟飞内页banner文字动效 -->
+                        <eq name="webid" value="1795">
+                            <div class="text_jc" data-text="{$product['pro_name']}"></div>
+                            <style>
+                                .in_banner {
+                                    position: relative;
+                                }
+                                .text_jc {
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    color: #fff;
+                                    z-index: 9;
+                                    font-size: 30px;
+                                }
+                                .yinfeiNeiye,.pro_detail_lunbo_wrapper{
+                                    display: none;
+                                }
+                            </style>
+                        </eq>
+                        <!-- 吟飞内页banner文字动效 -->
+                        <eq name="webid" value="1721">
+                            <a href="{$banner['ad_link']}">
+                        </eq>
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt="" data="bannerList" />
+                        <eq name="webid" value="1721">
+                            </a>
+                        </eq>
+                    </div>
+                </volist>
+                <else />
+                <div class="in_banner">
+                    <img src="{:getindeximgurl($inner_data[0])}" alt="" />
+                </div>
+            </if>
+        </if>
+    </div>
+    <!-- banner end -->
+
+    <div class="pro_detail_lunbo">
+        <div class="container">
+            <div class="row">
+                <!-- pic start -->
+                <div class="col-xs-12">
+
+                   
+
+                    <div class="index_title yinfeiNeiye text-center pb40">
+                        {$product['pro_name']}
+                    </div>
+                    <div class="pro_detail_lunbo_wrapper">
+
+                        <!-- 大图 start -->
+                        <div class="swiper-container detail_10_gallery">
+                            <div class="swiper-wrapper">
+                                <volist name="proimg" id="proimgBig">
+                                    <if
+                                        condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                        <div class="swiper-slide">
+                                            <div class="pro_detail10_img">
+                                                <img src="{:getfimgurl($proimgBig['field_auxiliary_fid'])}"
+                                                    class="jqzoom img-fluid" <if
+                                                    condition="$proimgBig['field_auxiliary_title'] eq ''">alt="{$proimgBig['pro_name']}"
+                                                <else />alt="{$proimgBig['field_auxiliary_title']}"
+                                    </if>/>
+                            </div>
+                        </div>
+                        </if>
+                        </volist>
+                    </div>
+                    <div class="detail_10_gallery_next swiper-button-next swiper-button-black"></div>
+                    <div class="detail_10_gallery_prev swiper-button-prev swiper-button-black"></div>
+                </div>
+                <!-- 大图 end -->
+
+                <!-- 小图 start -->
+                <div class="swiper-container detail_10_thumbs">
+                    <div class="swiper-wrapper">
+
+                        <volist name="proimg" id="proimgBig">
+                            <if condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                <div class="swiper-slide">
+                                    <div class="pro_detail10_img">
+                                        <img src="{:getfimgurl($proimgBig['field_auxiliary_fid'])}"
+                                            class="jqzoom img-fluid" <if
+                                            condition="$proimgBig['field_auxiliary_title'] eq ''">alt="{$proimgBig['pro_name']}"
+                                        <else />alt="{$proimgBig['field_auxiliary_title']}"
+                            </if>/>
+                    </div>
+                </div>
+                </if>
+                </volist>
+            </div>
+        </div>
+        <!-- 小图 end -->
+
+    </div>
+
+
+    </div>
+    <!-- pic end -->
+
+
+    </div>
+    </div>
+
+    </div>
+
+    <!-- con strat -->
+    <div class="pro_detail_con">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+
+                    <div class="product_detail_editor_content product_detail_editor_content_show">
+                        <!--more editors-->
+                        <if condition="$editor_count eq 1">
+                            <div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="product_detail_editor_content_title">
+                                                <if condition="$inner_data[3]">
+                                                    {$inner_data[3]}
+                                                    <else />{:__('Product Detail')}
+                                                </if>
+                                            </div>
+                                            <div class="pro_detail detail_editor" id="gx1" style="display:block;">
+                                                {:str_replace('&nbsp;','
+                                                ',htmlspecialchars_decode($product['pro_profile']))}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <else />
+                            <php>
+                                $editor_list=$inner_data[2]; $editor_ary = explode(',',$editor_list);
+                                foreach($editor_ary as $k=>$a){ $elist[$k]=$a; }
+                            </php>
+                            <div class="mainDetail-tabs_box" style="position: relative; display: none;">
+                                <div id="menu_tab">
+                                    <ul>
+                                        <volist empty="" name="elist" id="lit" key="y">
+                                            <if condition="$lit">
+                                                <li index="{$y}"
+                                                    class="tabsTitle2 <if condition='$y eq 1'> current </if>">
+                                                    <a href="#feautre_tab{$y}">{$lit}</a>
+                                                </li>
+                                            </if>
+                                        </volist>
+                                    </ul>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+
+                                        <ul class="mainDetail-tabs">
+
+                                            <volist empty="" name="elist" id="li" key="k">
+                                                <if condition="$li">
+                                                    <li index="{$k}"
+                                                        class="tabsTitle2 <if condition='$k eq 1'> current </if>">
+                                                        <a href="#feautre_tab{$k}">{$li}</a>
+                                                    </li>
+                                                </if>
+                                            </volist>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <for start="1" end="$editor_count+1">
+                                <php>
+                                    if($i==1){ $edit_name="pro_profile"; }else{ $edit_name="pro_profile".$i; }
+                                    $editor_list=$inner_data[5]; $editor_ary = explode(',',$editor_list);
+                                    foreach($editor_ary as $k=>$a){ $elist[$k]=$a; }
+                                </php>
+
+                                <div index="{$i}" class="pro_detail_box" id="feautre_tab{$i}">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+
+                                                <h2 class="InsidePages_content2_common_title Iedittitle">
+                                                    <span>{$elist[$i-1]}</span>
+                                                </h2>
+                                                <div class="detail_editor Iedittitle_detail">
+                                                    {:str_replace('&nbsp;','
+                                                    ',htmlspecialchars_decode($producteditors[$edit_name]))}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </for>
+                        </if>
+
+                        <!--more editors-->
+                    </div>
+
+
+                </div>
+                <!-- con end -->
+            </div>
+        </div>
+    </div>
+
+</block>
+<block name="footer_js">
+    <script>
+        require(['jquery', 'swiper'], function ($, Swiper) {
+            var detail_10_thumbs = new Swiper('.detail_10_thumbs', {
+                spaceBetween: 16,
+                slidesPerView: 10,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                breakpoints: {
+                    1200: {
+                        slidesPerView: 6,
+                        spaceBetween: 15
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 10
+                    }
+
+                },
+                observer: true,
+                observeParents: true,
+            });
+            var detail_10_gallery = new Swiper('.detail_10_gallery', {
+                navigation: {
+                    nextEl: '.detail_10_gallery_next',
+                    prevEl: '.detail_10_gallery_prev',
+                },
+                thumbs: {
+                    swiper: detail_10_thumbs
+                },
+                observer: true,
+                observeParents: true,
+                on: {
+                    slideChange: function () {
+                        var index = this.activeIndex;
+                        $('.detail_10_thumbs .swiper-slide').eq(index).addClass('swiper-slide-active').siblings('div').removeClass('swiper-slide-active');
+                    }
+                }
+            });
+
+            $('.detail_10_thumbs').on('click', '.swiper-slide', function () {
+                $(this).addClass('swiper-slide-active').siblings('div').removeClass('swiper-slide-active');
+            })
+        });
+    </script>
+</block>

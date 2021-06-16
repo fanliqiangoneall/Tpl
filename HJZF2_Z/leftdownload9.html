@@ -1,0 +1,17 @@
+<style>
+.InsidePages_list.inner9__leftlist li.yijion,.InsidePages_list.inner9__leftlist li:hover{ 
+	background:#{$color};
+}
+.InsidePages_list.inner9__leftlist li.yijion>a>h3,.InsidePages_list.inner9__leftlist li:hover>a>h3{
+	color:#fff;
+}
+</style>
+<div class="InsidePages-left_content col-xs-12 hidden-xs hidden-sm hidden-md">
+    <ul class="InsidePages_list inner9__leftlist">  
+        <volist empty="" name="alldownloadclass" id="alldownloadclass_pc">
+            <li <if condition="$alldownloadclass_pc['classid'] eq $downcate['classid'] or $alldownloadclass_pc['classid'] eq $download['file_type']">class="yijion"<else/>class="yiji"</if>><a href="{:U('/download_category',array('classid'=>$alldownloadclass_pc["classid"]))}">{$alldownloadclass_pc['class_name']}</a>
+            </li>
+        </volist>
+    </ul>
+    <div class="clear"></div>
+</div>

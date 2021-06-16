@@ -1,0 +1,84 @@
+<!--{$pagename}-->
+<if condition="$data75[14]">
+    <style>
+        .new_hjzf_advantage-HJ03 #hj03_advantage{
+            background:url({:getindeximgurl($data75[14])}) no-repeat center;
+        }
+    </style>
+</if>
+<style>
+    /*advantage start*/
+    .new_hjzf_advantage-HJ03 .hj03-adv-item:hover:after{
+    background: #{$color};
+    }
+    .new_hjzf_advantage-HJ03 .hj03-adv-item:hover p.title{
+        color: #{$color};
+    }
+
+    /*advantage end*/
+
+</style>
+<!--choice start-->
+<section id="hj03_advantage" class="module">
+    <div class="container">
+        <p class="hj03-adv-title">{$data75[0]}</p>
+        <p class="hj03-adv-title2">{$data75[1]}</p>
+        <div class="hj03-adv-left lf">
+            <if condition="$data75[4] neq ''">
+                <a href="{$data75[4]}" target="_self">
+            </if>
+                    <div class="hj03-adv-item wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="450">
+                        <div class="adv_icon">01</div>
+                    <p class="title">{:HtmlEncode(subtxt($data75['2'],40))}</p>
+                    <p class="item_des">{:HtmlEncode(subtxt($data75['3'],100))}</p>
+                    </div>
+            <if condition="$data75[4] neq ''">
+                </a>
+            </if>
+
+
+                <if condition="$data75[7] neq ''">
+                    <a href="{$data75[7]}" target="_self">
+                </if>
+                <div class="hj03-adv-item wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="400">
+                    <div class="adv_icon">02</div>
+                    <p class="title">{:HtmlEncode(subtxt($data75['5'],40))}</p>
+                    <p class="item_des">{:HtmlEncode(subtxt($data75['6'],100))}</p>
+                </div>
+                <if condition="$data75[7] neq ''">
+                    </a>
+                </if>
+
+        </div>
+        <div class="hj03-adv-right rt">
+            <if condition="$data75[10] neq ''">
+                <a href="{$data75[10]}" target="_self">
+            </if>
+            <div class="hj03-adv-item wow fadeInRight" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="450">
+                <div class="adv_icon">03</div>
+                <p class="title">{:HtmlEncode(subtxt($data75['8'],40))}</p>
+                <p class="item_des">{:HtmlEncode(subtxt($data75['9'],100))}</p>
+            </div>
+            <if condition="$data75[10] neq ''">
+                </a>
+            </if>
+            <if condition="$data75[13] neq ''">
+                <a href="{$data75[13]}" target="_self">
+            </if>
+            <div class="hj03-adv-item wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="400">
+                <div class="adv_icon">04</div>
+                <p class="title">{:HtmlEncode(subtxt($data75['11'],40))}</p>
+                <p class="item_des">{:HtmlEncode(subtxt($data75['12'],100))}</p>
+            </div>
+            <if condition="$data75[13] neq ''">
+                </a>
+            </if>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+<div class="clear"></div>
+<!--choice end-->
+
+
+

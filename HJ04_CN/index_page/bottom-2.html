@@ -1,0 +1,144 @@
+<!--{$pagename}-->
+<style>
+    .bottom02Title{
+        font-size: 16px;
+        color: {$data31[2]};
+    }
+    .bottomNavContent{
+        margin-top: 15px;
+    }
+    .bottomNavList{
+        width: 110px;
+        float: left;
+        margin-top: 10px;
+    }
+    .bottomNavList a h2{
+        font-size: 14px;
+        font-weight: normal;
+    }
+    .bottomNavContainer{
+        width: 220px;
+    }
+    .bottom02TopContainer{
+        padding: 30px 0;
+    }
+    .bottomFooter{
+        background: {$data31[1]};
+    }
+    .bottomContactUs{
+        width: 500px;
+        margin-top: 15px;
+    }
+    .bottomContactUs li{
+        float: left;
+        min-width: 190px;
+        margin-top: 10px;
+    }
+    .bottom02TopContainer,.bottom02TopContainer a,.bottom02TopContainer a h2,.bottomFootContent,.bottomFootContent a{
+        color: {$data31[2]}!important;
+    }
+    .bottomFoot02Container{
+        border-top: 1px solid {$data31[3]};
+    }
+	.friendlink .link,.friendlink .link a{
+		font-size: 14px;line-height: 20px;color: {$data31[2]}
+    }
+</style>
+<if condition="$data47[40]">
+    <style>
+        .bottom02TopContainer{padding-top: 135px;}
+    </style>
+</if>
+<div class="bottomContainerContent" <if condition="has_mould('bottom-2') eq true">style="display:block;background: {$data31[1]};"<else/>style="display:none"</if>>
+    <div class="bottomContainer" <if condition="$data31[4] neq ''">style="margin-top: -75px;"</if>>
+    <div class="bottom02TopContainer">
+    <div class="container">
+        <div class="bottomNavContainer lf">
+            <div class="bottom02Title">网站导航</div>
+            <ul class="bottomNavContent">
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li id="menu{$key}" class="bottomNavList">
+                        <a menu_data="{$vo['id']}" href="{$vo['url']}" onFocus="blur()">
+                            {$vo['title']}
+                        </a>
+                    </li>
+                </volist>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div style="margin-left: 200px;" class="lf">
+            <div class="bottom02Title">联系我们</div>
+            <ul class="bottomContactUs">
+                <if condition="$about['contact'] neq ''">
+                    <li>联系人：{:chaifen($about['contact'],0)}</li>
+                </if>
+                <if condition="$webid eq '1221'">
+                	<li>手机：{:chaifen($about['mobile'],0)}、{:chaifen($about['mobile'],1)}、{:chaifen($about['mobile'],2)}</li>
+                <elseif condition="$about['mobile'] neq ''" />
+                    <li>手机：{:chaifen($about['mobile'],0)}</li>
+                </if>
+                <if condition="$about['fax'] neq ''">
+                    <li>传真：{:chaifen($about['fax'],0)}</li>
+                </if>
+                <if condition="$about['msn'] neq ''">
+                    <li>QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes">{:chaifen($about['msn'],0)}</a></li>
+                </if>
+                <if condition="$about['email'] neq ''">
+                    <li>邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2);">{:chaifen($about['email'],0)}</a></li>
+                </if>
+                <li style="width: auto;">公司地址：{$about['address']}</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <if condition="$data31[0]">
+        <div class="codeContainer rt" style="margin-top: 0px;">
+            <div class="bottom02Title" style="text-align: center;">手机站</div>
+            <div class="codeContent" style="margin-top: 20px;">
+                <img src="{:getindeximgurl($data31[0])}" alt=""/>
+            </div>
+        </div>
+        </if>
+    </div>
+    <div class="clear"></div>
+    </div>
+    <div class="bottomFooter">
+        <div class="bottomFootContainer bottomFoot02Container container">
+            <div class="bottomFootContent">
+                <php>
+                    $nowtime=date("Y",time());
+                    $currtime=2019;
+                </php>
+                <div class="lf bottomFootLeft">
+                    <if condition="$nowtime gt $currtime">
+                        CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}
+                        <else/>
+                        CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-
+                    </if>
+                    &nbsp;{$about['company_name']} 版权所有&nbsp;&nbsp;<a href="https://beian.miit.gov.cn" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>
+                </div>
+                <div class="rt bottomFootRight">
+                    <a href="https://www.one-all.com" title="常州网络公司" target="_blank" style="color: #666;">常州网络公司</a>中环互联网设计制作&nbsp;&nbsp;
+                    <a href="{:U('/sitemap')}" onfocus="blur()" style="color: #666;">网站地图</a>&nbsp;&nbsp;
+                    <a href="{:U('/alltag')}" style="color: #666;">所有标签</a>&nbsp;&nbsp;
+                    <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;color: #666;">免责声明</a><if condition="$webid eq 1255">&nbsp;&nbsp;<span style="color:#3391cf;">本站支持IPV6</span></if>
+                    {:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <if condition="$friend_link neq ''">
+        <div class="friendlink container" style="padding: 10px 0;">
+            <div class="link"><span>友情链接：</span>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                       <a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a>
+                    </if>
+                </volist>
+                <!--<div style="clear:both"></div>-->
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </if>
+    </div>
+</div>

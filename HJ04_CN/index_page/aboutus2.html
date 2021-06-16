@@ -1,0 +1,64 @@
+<!--{$pagename}-->
+<style>
+    .aboutUs02Container{
+        background-image: url({:getindeximgurl($data41[0])});
+    }
+    .aboutUs02Content{
+        background-color: {$data41[2]};
+    }
+    .aboutUs02More{
+        background: url({:getindeximgurl($data41[3])}) no-repeat center center;
+        margin-top:35px;
+        -webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;transition: all .5s;
+    }
+    .aboutUs02More:hover{
+        -webkit-transform: translate(25px);-moz-transform: translate(25px);-o-transform: translate(25px);transform: translate(25px);
+    }
+    .aboutUs02Icon span{
+        background: #fff!important;
+        border:1px solid #fff!important;
+    }
+</style>
+<div class="aboutUs02Container">
+    <div class="aboutUs02Content container">
+        <div class="aboutUs02Left lf swiper-container03">
+            <ul class="aboutUs02ListContainer swiper-wrapper">
+                <php>
+                    for($i=4;$i<10;$i=$i+1){
+                </php>
+                <if condition="$data41[$i] neq ''">
+                    <li class="aboutUs02List swiper-slide">
+                        <img src="{:getindeximgurl($data41[$i])}" alt=""/>
+                    </li>
+                </if>
+                <php>
+                    }
+                </php>
+            </ul>
+            <div class="swiper-pagination aboutUs02Icon"></div>
+        </div>
+        <div class="aboutUs02Right rt">
+            <div class="aboutUs02Title">关于我们</div>
+            <div class="aboutUs02Tips">About Us</div>
+            <div class="aboutUs02Text">{$data41[1]}</div>
+            <a href="{:U('/aboutus')}" class="aboutUs02More rt"></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container03', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.aboutUs02Icon',
+            clickable: true,
+        }
+    });
+</script>

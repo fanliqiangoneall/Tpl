@@ -1,0 +1,66 @@
+<!--{$pagename}-->
+<style>
+.index_about_aboutbg {
+    min-width: 1190px;
+    max-width: 1920px;
+    height: 437px;
+    margin: auto;
+    background: url({:getindeximgurl($data[1])}) center center no-repeat !important;
+}
+.index_about_title{
+	line-height: 50px;font-size: 35px;color: #111111;padding-bottom: 21px;background:url({:getindeximgurl($data1[1])}) bottom center no-repeat;text-align: center;
+	}
+.about_more:hover{
+	border:1px solid #{$color};
+	}
+.about_more:hover a{
+	color: #{$color}
+	}
+</style>
+<link href="__TMPL__demo2/css/aboutus.css" rel="stylesheet">
+<div class="index_about_aboutbg" style="position:relative;">
+
+    <div id="aboutus_center" style="position:absolute; top:50%; width:100%; margin-top:">
+        <div id="index_about_animate"><div class="index_about_title" style="color:#{$data4[2]}">{$data[0]}</div></div>
+        <div id="index_about_animate_1" >
+      <div class="index_about">
+        <div class="index_about_aboutnr">
+          <div class="index_about_con" style="color:#{$data4[3]}">{:HtmlEncode(subtxt($company_info['description'],705))}</div>
+          <div style="width: 100%;height: 25px;clear: both;"></div>
+          <li class="about_more" style="border:1px solid #{$data4[4]}"><a href="{:U('/aboutus')}" style="color:#{$data4[4]}">Read more</a></li>
+        </div>
+        </div>
+       </div> 
+    </div>    
+</div>
+<script>
+$(function(){
+var heigh=$("#aboutus_center").height();
+var margin_top=heigh/2;
+$("#aboutus_center").css("margin-top","-"+margin_top+"px");
+})
+
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>3261){	
+	$('#index_about_animate').show();
+	$('#index_about_animate').removeClass().addClass('fadeInDown');
+	$('#index_about_animate_1').show();
+	$('#index_about_animate_1').removeClass().addClass('fadeInLeft');
+	$('#index_about_animate_2').show();
+	$('#index_about_animate_2').removeClass().addClass('swing');
+	}
+
+});
+
+function show(n)
+{
+document.getElementById(n).style.display="block";
+}
+function hide(n)
+{
+document.getElementById(n).style.display="none";
+}
+</script>

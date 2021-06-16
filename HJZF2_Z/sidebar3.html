@@ -1,0 +1,243 @@
+<style>
+    .side {
+        display: none !important;
+    }
+
+    .mysidebar {
+        position: fixed;
+        bottom: 15%;
+        right: 0;
+        z-index: 9999;
+        width: 60px;
+        height: 60px;
+    }
+
+    .mysidebar_btn {
+        transition: all .5s ease;
+        width: 220px;
+        height: 60px;
+        right: -160px;
+        position: absolute;
+        border: 0;
+        cursor: pointer;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        box-shadow: 0 0 5px 3px rgba(0, 0, 0, .1);
+        background-color: #{$color};
+    }
+
+    .mysidebar_btn:hover {
+        right: 0;
+    }
+
+    .mysidebar_btn:focus {
+        right: -160px;
+    }
+
+    .mysidebar_btn img {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        left: 15px;
+        fill: currentColor;
+        top: 15px;
+    }
+
+    .mysidebar_btn span {
+        display: block;
+        position: absolute;
+        width: 120px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        left: 60px;
+        top: 0;
+        font-size: 24px;
+        color: #fff;
+    }
+
+    .mysidebar_wrapper {
+        position: absolute;
+        bottom: 0;
+        width: 450px;
+        right: 60px;
+        padding: 20px;
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
+        background-color: #fff;
+        color: #333;
+        display: block;
+    }
+
+    .mysidebar_wrapper h3,
+    .mysidebar_wrapper_title {
+        color: #{$color};
+    }
+
+    .mysidebar_wrapper_colse {
+        display: block;
+        width: 50px;
+        height: 50px;
+        float: right;
+        position: relative;
+        text-align: right;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .mysidebar_wrapper_colse:after,
+    .mysidebar_wrapper_colse:before {
+        position: absolute;
+        content: '';
+        width: 30px;
+        height: 1px;
+        right: 0;
+        top: 40%;
+        background-color: #{$color};
+    }
+
+    .mysidebar_wrapper_colse:after {
+        transform: rotateZ(45deg);
+    }
+
+    .mysidebar_wrapper_colse:before {
+        transform: rotateZ(-45deg);
+    }
+
+    .mysidebar_wrapper_title {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+
+    .mysidebar_wrapper_email {
+        display: block;
+    }
+
+    .mysidebar_wrapper_email .a-button__label {
+        overflow: hidden;
+        color: #fff;
+        display: block;
+        padding: 5px 10px;
+        min-height: 50px;
+        line-height: 50px;
+        background-color: #{$color};
+    }
+
+    .mysidebar_wrapper_text p {
+        margin-bottom: 15px;
+        line-height: 30px;
+    }
+
+    .mysidebar_wrapper_text p a {
+        color: #333;
+        transition: all .3s ease;
+    }
+
+    .mysidebar_wrapper_text .link a:hover {
+        text-decoration: underline;
+        color: #{$color};
+    }
+
+    .mysidebar_wrapper_text {
+        line-height: 1;
+        font-size: 16px;
+    }
+
+    .a-button__label i {
+        display: block;
+        width: 45px;
+        height: 45px;
+        overflow: hidden;
+        float: right;
+    }
+
+    .side_first_btn {
+        position: fixed;
+        z-index: 999;
+        right: 8px;
+        bottom: 20px;
+        border: 0;
+        width: 45px;
+        height: 45px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, .1);
+    }
+</style>
+<div class="mysidebar hidden-xs hidden-sm hidden-md">
+    <button class="mysidebar_btn">
+        <img src="__TMPL__HJZF2_Z/img/sidebar3_contact_us.svg" alt="">
+        <span>{:__('Contact us ')}</span>
+    </button>
+    <div class="mysidebar_wrapper">
+        <h3 class="mysidebar_wrapper_title">{:__('Contact us ')} <i class="mysidebar_wrapper_colse"></i></h3>
+        <div class="mysidebar_wrapper_text">
+            <p>
+                {$about['address']}
+            </p>
+            
+            <if condition="$webid eq '651'">
+                <p>{:chaifen($about['contact'],0)}{:chaifen($about['mobile'],0)}（微信同号）</p>
+                <p>{:chaifen($about['contact'],1)}{:chaifen($about['mobile'],1)}</p>
+                <p>{:chaifen($about['contact'],2)}：{:chaifen($about['phone'],1)}</p>
+                <p>{:chaifen($about['contact'],3)}：{:chaifen($about['phone'],2)}</p>
+            </if>
+            <if condition="$webid neq '651' && chaifen($about['mobile'],0)">
+                <p>
+                    {:__('Mobile: ')} {:chaifen($about['mobile'],0)}
+                </p>
+            </if>
+            <if condition="$webid neq '651' && chaifen($about['phone'],0)">
+                <p>
+                    {:__('Phone: ')} {:chaifen($about['phone'],0)}
+                </p>
+            </if>
+            <if condition="$webid neq '651' && chaifen($about['fax'],0)">
+                <p>{:__('Fax: ')} {:chaifen($about['fax'],0)}</p>
+            </if>
+
+                <if condition="C('Language') neq 'cn' and chaifen($about['msn'],0)">
+                    <p>
+                        {:__('Skype: ')} <a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,4)"
+                            target="_blank">{:chaifen($about['msn'],0)}</a>
+                    </p>
+                    <elseif condition="chaifen($about['msn'],0)"/>
+                        <p>
+                        {:__('QQ：')} <a href="https://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,4)"
+                            target="_blank">{:chaifen($about['msn'],0)}</a>
+                    </p>
+                </if>
+            <if condition="chaifen($about['whatsapp'],0)">
+                <p>{:__('WhatsApp: ')} <a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"
+                        target="_blank" onclick="turn_sta(8,4)">+86-{:chaifen($about['whatsapp'],0)}</a></p>
+            </if>
+            <if condition="$webid eq '1559'">
+                <p>Facebook: <a href="https://www.facebook.com/tong.ling.50767" target="_blank">1021145026@qq.com</a>
+                </p>
+            </if>
+
+            <p>
+                <if condition="chaifen($about['email'],0)">
+                    <a href="mailto:{:chaifen($about[email],0)}" class="mysidebar_wrapper_email"
+                        onclick="turn_sta(3,4);">
+                        <span class="a-button__label">{:__('E-mail: ')} {:chaifen($about['email'],0)}<i><img
+                                    src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0"
+                                    style="position: relative;left: 0;top: -96px"></i></span>
+                    </a>
+                </if>
+                <if condition="chaifen($about['email'],1)">
+                    <a href="mailto:{:chaifen($about[email],1)}" class="mysidebar_wrapper_email">
+                        <span class="a-button__label">
+                            <font style="opacity: 0;">{:__('E-mail: ')}</font> {:chaifen($about['email'],1)}<i><img
+                                    src="__TMPL__HJZF2_Z/img/side-sprites2.png" border="0"
+                                    style="position: relative;left: 0;top: -96px"></i>
+                        </span>
+                    </a>
+                </if>
+            </p>
+        </div>
+    </div>
+</div>
+
+<button class="side_first_btn hidden-xs hidden-sm hidden-md"
+    style="background: url( __TMPL__HJZF2_Z/img/side-sprites2.png) no-repeat -1px 0 #{$color}"
+    onclick="goTop()"></button>

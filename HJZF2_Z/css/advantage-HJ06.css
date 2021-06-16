@@ -1,0 +1,200 @@
+body{
+    word-break: break-word;
+}
+.advantage_HJ06{
+    height: 735px;
+    color: #fff;
+    overflow: hidden;
+    padding-top: 100px;
+    position: relative;
+}
+.advantage_HJ06_matrix{
+    position: absolute;
+    width: 100%;
+    height: 735px;
+    top: 0;
+    left: -150%;
+    opacity: 0.9;
+    background-color: #666;
+    transition: all .6s linear .3s;
+    transform: matrix(1.1, 0, 0.3, 1, -674.5, 0);
+}
+.advantage_HJ06_text h2{
+    font-size: 50px;
+    font-style: italic;
+    white-space: nowrap;
+    font-weight: bold;
+}
+.advantage_HJ06_text h2.index_title{
+    line-height: 50px;
+}.advantage_HJ06_text h3.index_title{
+    line-height: 70px;
+}
+.advantage_HJ06_text h3{
+    font-size: 70px;
+    font-style: italic;
+    white-space: nowrap;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.advantage_HJ06.active .advantage_HJ06_matrix{
+    left: 0;
+}
+.advantage_HJ06_text_inner i{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-style: normal;
+    font-size: 24px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.advantage_HJ06_text_inner span{
+    font-size: 24px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 40px;
+}
+.advantage_HJ06_text_inner p{
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    font-family: OpenSans;
+    margin-bottom: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:  -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    word-break: keep-all;
+}
+.advantage_HJ06_swiper a.more{
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    display: block;
+    font-size: 18px;
+    letter-spacing: 2px;
+    width: 190px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+    transition: all .5s ease;
+    letter-spacing: 2px;
+}
+.advantage_HJ06_swiper a.more:before{
+    position: absolute;
+    content:'';
+    width: 0%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    transition: all .5s ease;
+    z-index: -1;
+}
+.advantage_HJ06_swiper a.more:hover{
+    color: #ec5a26;
+}
+.advantage_HJ06_swiper a.more:hover:before{
+    color: #fff;
+    width: 100%;
+}
+.swiper_btn{
+    position: absolute;
+    bottom: 5px;
+    left: 220px;
+    z-index: 99;
+}
+.swiper_btn [class^='advantage_HJ06_swiper-btn']{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 32px;
+    outline: 0;
+}
+.swiper_btn .advantage_HJ06_swiper-btn-prev,.swiper_btn .advantage_HJ06_swiper-btn-next{
+    color: rgba(0,0,0,.5);
+    margin-right: 10px;
+    transition: all .5s ease-in;
+}
+.swiper_btn i{
+    height: 40px;
+    display: block;
+    line-height: 40px;
+}
+.swiper_btn div:hover{
+    background-color: rgba(0,0,0,.5) !important;
+    color: #fff !important;
+}
+.advantage_HJ06_text_inner{
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+
+@media (min-width:1366px) {
+    .advantage_HJ06_text_inner p{
+        min-height: 150px;
+        overflow: hidden;
+    }
+}
+/* mobile */
+@media (max-width:768px) {
+    .advantage_HJ06_text h2{
+        font-size: 32px;
+    }
+    .advantage_HJ06_text h3{
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+    .advantage_HJ06{
+        height: auto;
+        padding-bottom: 70px;
+        padding-top: 70px;
+    }
+    .advantage_HJ06_swiper a.more{
+        width: 150px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 14px;
+    }
+    .advantage_HJ06_matrix{
+        transform: inherit !important;
+    }
+    
+}
+
+@media (min-width:1601px) {
+    .advantage_HJ06_matrix{
+        transform: matrix(.75, 0, 0.3, 1, -674.5, 0);
+    }
+}
+@media (min-width: 1440px) and (max-width: 1600px){
+    .advantage_HJ06_matrix{
+        transform: matrix(.9, 0, 0.25, 1, -674.5, 0);
+    }
+}
+@media (min-width: 1024px) and (max-width:1366px){
+    .advantage_HJ06_matrix{
+        transform: matrix(1.37, 0, 0.3, 1, -674.5, 0);
+    }
+}

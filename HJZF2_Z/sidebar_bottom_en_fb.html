@@ -1,0 +1,42 @@
+<style>
+    .mfb-component__button--main {
+        background-color: #{$color};
+        display: inline-block;
+        position: relative;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+
+        -webkit-user-drag: none;
+        color: #f1f1f1;
+        text-align: center;
+        line-height: 40px;
+        font-size: 25px;
+        height: 40px;
+        width: 40px;
+        z-index: 20;
+    }
+    .mobile_down{
+        background: #{$color};
+    }
+</style>
+<ul class="mobile_sidebar hidden-lg hidden-xl">
+    <li><a class="mfb-component__button--main mfb-component__button--back" href="javascript:history.go(-1);"><i class="fa fa-reply"></i></a></li>
+    <li><a class="mfb-component__button--main mfb-component__button--top" href="javascript:goTop();"><i class="fa fa-angle-up"></i></a></li>
+</ul>
+<div class="mobile_down_top hidden-lg hidden-xl">
+    <div class="mobile_down">
+        <ul>
+            <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['mobile'],0)}"><i class="fa fa-phone"></i><br/>{:__('Tel')}</a></li>
+            <li><a onclick="turn_sta(4,2)" href="{:chaifen($about['msn'],0)}?chat"><i class="fa fa-facebook"></i><br/>FaceBook</a></li>
+            <li><a onclick="turn_sta(3,2)" href="mailto:{:chaifen($about['email'],0)}"><i class="fa fa-envelope"></i><br/>{:__('E-mail')}</a></li>
+            <li><a onclick="turn_sta(2,2)" href="{:U('/contactus')}"><i class="fa fa-user"></i><br/>{:__('Contact')}</a></li>
+            <li><a onclick="turn_sta(2,2)" href="{:U('/Inquiry')}"><i class="fa fa-commenting"></i><br/>{:__('Inquiry')}</a></li>
+        </ul>
+    </div>
+</div>
+
+

@@ -1,0 +1,11 @@
+<div class="InsidePage--3__contentNavbg">
+    <div class="InsidePage--3__contentNavWrap">
+        <ul class="InsidePage--3__contentNavWrap--list">
+            <li <if condition="$intro_class['class_name'] eq 'About Us'">class="InsidePage--3_yijion" <else/>class="InsidePage--3_yiji"</if>><a href="{:U('/aboutus')}"><h3>{$intro_class['class_name']}</h3></a></li>
+            <volist empty="" name="navrs" id="nav">
+                <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="InsidePage--3_yijion"<else/>class="InsidePage--3_yiji"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}" >{$nav['title']}</a></li>
+            </volist>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<extend name="HJ02:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 30px;">
+            <div class="container">
+                <div class="Breadcrumbs"><a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">Comment list</span>
+                    <div class="back_tolast"><a href="javascript:history.go(-1)" onfocus="blur()"><img src="__TMPL__HJ02/img/back_to2.png" alt="" style="margin-right: 10px;"/><img src="__TMPL__HJ02/img/back_to.png" alt="" style="margin-right: 10px;"/>Back to list</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+
+            <section class="main-content-right2">
+                    <div class="page_RightMain">
+                        <div class="page_Main">
+                            <volist name="list" id="list" key="k">
+                                <div style="width:100%;padding:10px 0;">
+                                    <div style="float:left;width:2%;">{$k}, </div>
+                                    <div style="float:left;width:88%;">{$list["content"]}</div>
+                                    <div style="float:right;width:10%; text-align:right;">{:date("Y-m-d H:i:s",$list["adddate"])}</div>
+                                    <div style="clear:both"></div>
+                                </div>
+                            </volist>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+
+            </section>
+            <div class="clear"></div>
+
+         </div>
+    </div>
+
+</block>

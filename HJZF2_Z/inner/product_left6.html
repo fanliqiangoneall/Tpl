@@ -1,0 +1,130 @@
+<div class="HJZF_Z__inner--left__content product6_leftnav_cont">
+    <div class="container">
+        <div class="row">
+            <!-- 左边一级 右边二级 start -->
+            <ul class="product6_leftnav_cont_side">
+                <volist empty="" name="allclass" id="allclass_left">
+                    <li class="clearfix">
+                        <span <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yiji on"
+                            <else/>class="yiji"</if>>
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>:
+                        </span>
+                        <if condition='$allclass_left["childs"] neq ""'>
+                            <span class="left_second">
+                                <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}" <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="child on"
+                                        <else/>class="child"</if>>{$allclass_leftchild['class_name']}
+                                    </a>
+                                </volist>
+                            </span>
+                        </if>
+                    </li>
+                </volist>
+            </ul>
+            <!-- 左边一级 右边二级 end -->
+
+            <!-- 当前分类 start -->
+            <div class="sideBar_erji">
+                <volist empty="" name="allclass" id="allclass_lefta">
+                    <if condition='$allclass_lefta["childs"] neq ""'>
+                        <volist empty="" name="allclass_lefta['childs']" id="allclass_leftchild_erji">
+                            <div class="onerji">
+                                <if condition="$allclass_leftchild_erji['banner']">
+                                    <img src="{:getimgurl($allclass_leftchild_erji['banner'])}" alt="" />
+                                    <elseif condition="$banner neq '' " />
+                                    <volist name="banner" id="bannercate" offset="0" length="1">
+                                        <img src="{:getimgurl($bannercate['ad_pic'])}" alt="" />
+                                    </volist>
+                                    <else/>
+                                    <imgsrc="{:getindeximgurl($inner_data[0])}" alt="" />
+                                </if>
+                                <span>
+                                    {$allclass_leftchild_erji['class_name']}
+                                </span>
+                            </div>
+                            <ul class="onerji_list clearfix" style="margin-bottom: 30px;">
+                                <volist empty="" name="allclass_leftchild_erji['childs']" id="allclass_leftchildb">
+                                    <li <if condition="$classid eq $allclass_leftchildb['pcid'] or $prolist['parent_id'] eq $allclass_leftchildb['pcid'] or $product['class_id'] eq $allclass_leftchildb['pcid'] or $procate['parent_id'] eq $allclass_leftchildb['pcid']">class="third on"
+                                        <else/>class="third"</if>
+                                        >
+                                        <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchildb['pcid'])}">
+                                            <span>
+                                                <img src="{:getimgurl($allclass_leftchildb['fid'])}" alt="">
+                                            </span>
+                                            {$allclass_leftchildb['class_name']}
+                                        </a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <!-- 切换start -->
+                            <div class="on_list_show_wrapper">
+                                <volist empty="" name="allclass_leftchild_erji['childs']" id="allclass_leftchildba">
+                                    <php>
+                                        $proLista = get_hot_products_category($allclass_leftchildba['pcid'],3);
+                                    </php>
+                                    <ul class="clearfix on_list_show row_little">
+                                        <foreach name="proLista" item="hotpro">
+                                            <li class="col-xs-4">
+                                                <div class="HJZF_Z__innerContent_product_box_a">
+                                                    <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                        <div class="HJZF_Z__innerContent_product_categroy6_box_img">
+                                                            <if condition="$hotpro['main_img']">
+                                                                <img src="{:getmainimgurl($hotpro['main_img'])}" class="img-responsive" <if condition="$hotpro['proalt'] neq ''">alt="{$hotpro['proalt']}"
+                                                                    <else/>alt="{$hotpro['pro_name']}"</if> />
+                                                                    <else/>
+                                                                    <img src="{:getindeximgurl($inner_data[3])}" class="img-responsive" />
+                                                                </if>
+                                                            </div>
+                                                            <div class="HJZF_Z__innerContent_product_categroy6_box_text">
+                                                                <p class="ellipsis_two">{$hotpro['pro_name']}</p>
+                                                                <span>{$inner_data[4]}</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </foreach>
+                                        </ul>
+                                    </volist>
+                                </div>
+                                <!-- 切换 end -->
+                            </volist>
+                        </if>
+                    </volist>
+                </div>
+                <!-- 当前分类 end -->
+
+            </div>
+        </div>
+    </div>
+    <style>
+    .on_list_show {
+        display: none;
+    }
+</style>
+<block name="footer_js">
+    <script>
+        $(function () {
+            // $('.onerji_list li:first').addClass('on');
+            // $('.on_list_show:first').show();
+            $(".onerji_list").each(function () {
+                var self = $(this).find('li');
+                var self_a = $(this);
+                // self_a.next('.on_list_show_wrapper').find('.on_list_show').eq(0).css('display', 'block');
+                // $(this).find('li').eq(0).addClass('on');
+                self.on('mouseenter', function () {
+                    var that = $(this);
+                    var index = that.index();
+                    // console.log(that, index);
+                    that.addClass('on').siblings('li').removeClass('on');
+                    self_a.next('.on_list_show_wrapper').find('.on_list_show').hide().eq(index).show();
+                    // self_a.next('.on_list_show_wrapper').find('.on_list_show').
+                }).on('mouseleave', function () {
+                    var that = $(this);
+                    that.removeClass('on');
+                    self_a.next('.on_list_show_wrapper').find('.on_list_show').hide();
+                })
+            });
+
+        })
+    </script>
+</block>

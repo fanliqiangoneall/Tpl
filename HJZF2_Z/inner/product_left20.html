@@ -1,0 +1,261 @@
+<php>
+    if($inner_data[4]){
+    $bd = $inner_data[4];
+    }else{
+    $bd = 'eee';
+    }
+</php>
+<style>
+    .products13_left_con {
+        padding-top: 40px;
+        padding-bottom: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-bottom: 30px;
+        background-color: #f2f2f2;
+    }
+
+    .products13_left_tt {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #{$color};
+    }
+
+    .products13_left_yiji {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    .products13_left_yiji i {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .products13_left .products13_left_yiji>a {
+        width: 100%;
+        position: relative;
+        transition: all .5s;
+    }
+
+
+    .products13_left .products13_left_yiji>a>h3 {
+        font-size: 16px;
+    }
+
+    .products13_left_list {
+        margin-bottom: 20px;
+    }
+
+    .products13_left_list h3 {
+        line-height: 2.5;
+        font-size: 16px;
+        padding-left: 10px;
+        transition: all .5s;
+        display: inline-block;
+    }
+
+    .products13_left_list>li {
+        position: relative;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 10px;
+        transition: all .5s;
+    }
+
+    .products13_left_list>li i {
+        font-size: 12px;
+        color: #999;
+        width: 10px;
+    }
+
+    .products13_left_list>li:hover>a h3,
+    .products13_left_list>li.childon>a h3 {
+        color: #{$color};
+    }
+
+    .products13_left_list>li:hover i,
+    .products13_left_list .erji li.thirdon i,
+    .products13_left_list>li.childon i {
+        color: #{$color};
+    }
+    .products13_left .products13_left_yiji>a>h3 {
+        line-height: 2;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+    .products13_left_list .erji li {
+        padding-left: 20px;
+    }
+    .products13_left_list .erji li:hover h3,
+    .products13_left_list .erji li.childon h3{
+        color: #{$color};
+    }
+    .products13_left_list .erji li h3 {
+        color: #333;
+    }
+    .products13_left_list .erji li.thirdon h3{
+        font-size: 14px;
+    }
+    .erji {
+        display: none;
+    }
+    .erji_con{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .erji_con i.fa-angle-left{
+        justify-content: flex-end;
+    }
+    .products13_left_yiji {
+        line-height: 2;
+    }
+    .products13_left_yiji i {
+        font-size: 14px;
+        color: #999;
+        margin-top: 11px;
+    }
+    .products13_left_yiji>a:hover,
+    .products13_left_yiji.on>a,
+    .products13_left_yiji.on>i,
+    .products13_left_yiji:hover i {
+        color:#{$color};
+    }
+    .InsidePages_left_search {
+        box-shadow: 0;
+        border: 1px solid #{$bd};
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .InsidePages_left_search li.search_second button {
+        background-color: #fff;
+    }
+    .InsidePages_left_search li.search_second button:after {
+        color: #999999;
+    }
+    .products13_left_yiji+.products13_left_list {
+        display: none;
+    }
+    .erji{
+        border-bottom: 1px solid #ccc;
+    }
+    .childon .erji_con_l i,.childon .erji_con_l a h3{
+        color: #{$color};
+    }
+    .thirdon{
+        background-color: #{$color};
+    }
+    .products13_left_list .erji li.thirdon h3{
+        color: #fff;
+    }
+</style>
+<script>
+    $(function () {
+        var flag = false;
+        $('.products13_left_yiji').click(function (e) {
+            var _parent = $(this);
+            var nex = _parent.next('ul');
+            console.log(nex);
+            $(this).find('.cbxl').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+            nex.siblings('ul').slideUp();
+            _parent.siblings('div').find('.cbxl').addClass('fa-angle-right').removeClass('fa-angle-down');
+            if (nex.length > 0) {
+                nex.slideToggle();
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        $('.products13_left_list > li > .erji_con').click(function (e) {
+            var self = $(this);
+            var nextDom = self.siblings('ul');
+            var len = nextDom.length;
+            if(len > 0){
+                self.parent().toggleClass('childon');
+                self.siblings('ul').slideToggle();
+                self.find('i').toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+            }
+            var erji = self.parent('li').find('.erji');
+            /* 有二级就不能点击，没有二级可以点击 */
+            console.log(erji);
+            if (erji.length > 0) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        function setOn(dom, par) {
+            var d = $(dom);
+            var len = d.length;
+            if (len > 0) {
+                d.parents(par).show();
+            }
+        };
+        setOn('.thirdon', '.erji');
+        setOn('.childon', '.products13_left_list');
+        $('.childon').find('i').addClass('fa-angle-down').removeClass('fa-angle-right');
+
+    })
+</script>
+
+<div class=" products13_left hidden-xs hidden-sm hidden-md">
+    <div class="products13_left_search">
+        <div class="InsidePages_left_search">
+            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                <li class="search_first"><input type="text" value="{:__('keyword')}" name="keywords" <if
+                        condition="C('Language') eq 'cn'">id="keyword2"
+                    <else />id="keyword1"</if> onfocus="OnFocusFun(this,&#39;{:__('keyword')}&#39;)"
+                    onblur="OnBlurFun(this,&#39;{:__('keyword')}&#39;)"></li>
+                <li class="search_second"><button type="submit" id="search-submit"></button></li>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+    <div class="products13_left_con">
+        <volist empty="" name="allclass" id="allclass_left">
+            <div class="products13_left_yiji <if condition=" $classid eq $allclass_left['pcid'] or $prolist['parent_id']
+                eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq
+                $allclass_left['pcid']">on
+                </if>" pro-class-id="{$allclass_left['pcid']}" >
+                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+               
+            </div>
+            <!-- 二级开始 -->
+            <if condition='$allclass_left["childs"] neq ""'>
+                <ul class="products13_left_list">
+                    <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                        <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">
+                            class="childon"
+                            <else />class="child"
+            </if> >
+            <div class="erji_con">
+                <div class="erji_con_l">
+              <i class="fa fa-angle-right"></i>
+            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a>
+                </div>
+            </div>
+
+            <!-- 三级开始 -->
+            <if condition='$allclass_leftchild["childs"] neq ""'>
+                <ul class="erji">
+                    <volist empty="" name="allclass_leftchild['childs']" id="allclass_leftthird">
+                        <li <if
+                            condition="$classid eq $allclass_leftthird['pcid'] or $prolist['parent_id'] eq $allclass_leftthird['pcid'] or $product['class_id'] eq $allclass_leftthird['pcid'] or $procate['parent_id'] eq $allclass_leftthird['pcid']">
+                            class="thirdon"
+                            <else />class="third"
+            </if> ><a
+                href="{:U('/product_category','','')}/{:getprocatename($allclass_leftthird['pcid'])}">{$allclass_leftthird['class_name']}</a>
+            </li>
+        </volist>
+        </ul>
+        </if>
+        <!-- 三级结束 -->
+        </li>
+        </volist>
+        </ul>
+        </if>
+        <!-- 二级结束 -->
+        </volist>
+    </div>
+</div>

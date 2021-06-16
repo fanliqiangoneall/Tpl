@@ -1,0 +1,103 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style type="text/css">
+        .Breadcrumbs span.current{
+            color: #{$inner_data[0]};
+        }
+        .main_news_prev_next ul li.news_next:hover{
+            background: #A9A9A9;;
+        }
+        .main_news_prev_next ul li.news_prev:hover{
+            background: #A9A9A9;;
+        }
+        .main_news_prev_next ul li.news_next:hover img{opacity: 1}
+        .main_news_prev_next ul li.news_prev:hover img{opacity: 1}
+        .main_news_prev_next ul li.news_next:hover p{
+            color:#fff
+        }
+        .main_news_prev_next ul li.news_prev:hover p{
+            color:#fff
+        }
+        .main_news_prev_next ul li.news_next:hover p:after{
+            content: '';display: table;width: 20px;height: 11px;background: #DADADA;position: absolute;;right: -45px;top: 50%;transform: translateY(-50%);background: url(__TMPL__HJZF2/img/newsnext_2.png);
+        }
+        .main_news_prev_next ul li.news_prev:hover p:after{
+            content: '';display: table;width: 20px;height: 11px;background: #DADADA;position: absolute;;left: -45px;top: 50%;transform: translateY(-50%);background: url(__TMPL__HJZF2/img/newsprev_2.png);
+        }
+        .inquiry_Title h5{
+            color: #333;
+        }
+    </style>
+
+    <div class="inner_module2_cases_page" id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+                <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+                </volist>
+             <else/>
+                <div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">
+                    <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/cases')}">{:__('Cases')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+
+            <section class="InsidePages_content-right2">
+                <div class="InsidePages_content-right_content">
+                    <div class="InsidePages_content-right_content-main">
+                        <div class="news">
+                            <div id="news_detail">
+                                <div class="body">
+                                    <h5 class="HJ01_main_newdetail_title">{$news['title']}</h5>
+                                    <div class="news_view">
+                                        <span class="time"><i><img src="__TMPL__HJZF2/img/shijian.png" alt=""/></i>&nbsp;<if condition="C('language') eq 'cn'">{:date('Y年m月d日',$news['created'])}<else/>{:date('M d, Y',$news['created'])}</if></span>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="news_body" id="payment">{:htmlspecialchars_decode($news['body'])}</div>
+                                    <div class="main_news_prev_next">
+                                        <ul>
+                                            <if condition="$newprev[0]['title'] eq ''">
+
+                                                <else/>
+                                                <li class="news_prev">
+                                                    <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                        <p>{$newprev[0]['title']}</p>
+                                                        <img src="{:getimgurl($newprev[0]['new_pro'])}" alt=""/>
+                                                    </a>
+
+                                                </li>
+                                            </if>
+                                            <if condition="$newnext[0]['title'] eq ''">
+                                                <else/>
+                                                <li class="news_next">
+                                                    <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                        <img src="{:getimgurl($newnext[0]['new_pro'])}" alt=""/>
+                                                        <p>{$newnext[0]['title']}</p>
+                                                    </a>
+
+                                                </li>
+                                            </if>
+                                            <div class="clear"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

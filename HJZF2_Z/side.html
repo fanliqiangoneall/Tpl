@@ -1,0 +1,299 @@
+<php>
+    if($data307[9]){
+    $color_btn = $data307[9];
+    }else{
+    $color_btn = $color;
+    }
+</php>
+<if condition="$data307[0] eq '1'">
+    <link rel="stylesheet" href="__TMPL__HJZF2_Z/css/side.css">
+    <script type="text/javascript" src="__TMPL__HJZF2_Z/js/side.js"></script>
+    <!-- 第一套 -->
+    <button class="side_first_btn"
+        style="background: url( __TMPL__HJZF2_Z/img/side-sprites2.png) no-repeat -1px 0 #{$color_btn}"
+        onclick="goTop()"></button>
+    <style>
+        .side_first_r_top {
+            background-color: #{$data307[1]};
+            padding: 15px 10px;
+        }
+
+        .side_first_r a {
+            transition: all .4s;
+        }
+
+        .side_first_r .side_first_r_img a {
+            background-color: #{$data307[4]};
+            color: #{$data307[5]};
+        }
+
+        .side_first_l {
+            background-color: #{$data307[1]};
+        }
+
+        .side_first_r span a:hover {
+            color: #{$data307[2]};
+        }
+        #sider_tel i{
+            font-style: normal;display: none;
+        }
+        #sider_tel::before{
+               content: attr(data-tel);
+               display: inline-block;
+               width: calc(100% + 20px);
+                height: 100%;
+                line-height: 24px;
+                background-color: #ccc;
+                color: #333;
+                position: absolute;
+                left: -150px;
+                top: 0px;
+                padding: 0 10px;
+                transform: rotateY(90deg);
+                transform-origin: 100% 0;
+                transition: 0.6s ease;perspective:150;
+-webkit-perspective:150;
+        }
+        #sider_tel:hover:before{
+            transform: rotateY(0);
+                transform-origin: 100% 0;
+                transition: 0.6s ease;
+        }
+        
+    </style>
+    <aside class="side_first">
+        <div class="side_first_r">
+            <div class="side_first_r_top">
+                <img src="{:getindeximgurl($data307[3])}">
+            </div>
+            <span class="side_first_r_img">
+                <php>
+                    $arr = get_list_val($data307[8]);
+                </php>
+                <volist name="arr" id="a">
+                    <php>
+                        $link = explode("：",$a[link]);
+                        $link['name']= $link[1];
+                    </php>
+                    <if condition="strstr($a[link],'QQ') neq false">
+                        <a href="https://wpa.qq.com/msgrd?v=3&uin={$link['name']}&site=qq&menu=yes" target="_blank" onclick="turn_sta(5,4)">
+                            <elseif condition="strstr($a[link],'Tel') neq false" />
+                            <a href="javascript:void(0)" target="_blank" id="sider_tel" data-tel="{$link['name']}">
+                                <elseif condition="strstr($a[link],'Skype') neq false" />
+                                <a href="skype:{$link['name']}?chat" target="_blank" onclick="turn_sta(6,4)">
+                                    <elseif condition="strstr($a[link],'Email') neq false" />
+                                    <a href="mailto:{$link['name']}" target="_blank" onclick="turn_sta(3,4)">
+                                        <elseif condition="$a[link] neq true" />
+                                        <a>
+                                            <else />
+                                            <a href="{$a[link]}">
+                    </if>
+                    <span>
+                        <img src="{$a[ico]}" class="my_icon">
+                        <if condition="$a[hover]">
+                        <img src="{$a[hover]}" class="my_icon_on">
+                        </if>
+                    </span>
+                {$a[text]}
+                    <if condition="$a[ewm] neq false">
+                        <div class="ewm">
+                            <img src="{$a[ewm]}">
+                        </div>
+                    </if>
+                    </a>
+                </volist>
+            </span>
+        </div>
+        <div class="side_first_l">
+            <img src="__TMPL__HJZF2_Z/img/jt_left.png">
+        </div>
+    </aside>
+</if>
+
+
+<if condition="$data307[0] eq '2'">
+    <!-- 第二套 -->
+    <link rel="stylesheet" href="__TMPL__HJZF2_Z/css/side.css">
+    <script type="text/javascript" src="__TMPL__HJZF2_Z/js/side.js"></script>
+    <button class="side_first_btn side_second_btn"
+        style="background: url( __TMPL__HJZF2_Z/img/side-sprites2.png) no-repeat -5px -2px #{$color_btn}"
+        onclick="goTop()"></button>
+    <style>
+        .side_second li:hover .side_second_text,
+        .side_second li .side_second_hover:hover {
+            color: #{$data307[2]};
+        }
+
+        .side_second span {
+            transition: all .3s;
+            color: #{$data307[5]};
+        }
+        
+    </style>
+    <aside class="side_second">
+        <ul>
+            <php>
+                $arr = get_list_val($data307[8]);
+            </php>
+            <volist name="arr" id="a">
+                <php>
+                    $link = explode("：",$a[link]);
+                    $link['name']= $link[1];
+                </php>
+                <li>
+                    <if condition="strstr($a[link],'QQ') neq false">
+                        <a href="https://wpa.qq.com/msgrd?v=3&uin={$link['name']}&site=qq&menu=yes" target="_blank" onclick="turn_sta(5,4)">
+                            <elseif condition="strstr($a[link],'Tel') neq false" />
+                            <a href="tel:{$link['name']}" target="_blank" onclick="turn_sta(6,4)">
+                                <elseif condition="strstr($a[link],'Skype') neq false" />
+                                <a href="skype:{$link['name']}?chat" target="_blank" onclick="turn_sta(6,4)">
+                                    <elseif condition="strstr($a[link],'Email') neq false" />
+                                    <a href="mailto:{$link['name']}" target="_blank" onclick="turn_sta(3,4)">
+                                        <elseif condition="$a[link] neq true" />
+                                        <a>
+                                            <else />
+                                            <a href="{$a[link]}">
+                    </if>
+                    <div class="side_second_wrapper">
+                        <span class="side_second_img">
+                            <img src="{$a[ico]}" class="my_icon">
+                            <if condition="$a[hover]">
+                                <img src="{$a[hover]}" class="my_icon_on">
+                                </if>
+                        </span>
+                        <span class="side_second_text">
+                            {$a[text]}
+                        </span>
+                    </div>
+                    <if condition="$a[ewm] neq false">
+                        <span class="side_second_hover_img">
+                            <img src="{$a[ewm]}" alt="{$a[text]}">
+                        </span>
+                        <elseif condition="$a['content'] neq ''" />
+                        <span class="side_second_hover side_second_content">                            
+                            {$a['content']}
+                        </span>
+                        <else />
+                        <span class="side_second_hover">                            
+                            {$a[text]}
+                        </span>
+                    </if>
+                    </a>
+
+                </li>
+            </volist>
+        </ul>
+    </aside>
+</if>
+
+<if condition="$data307[0] eq '3'">
+    <!-- 第三套 -->
+    <div class="side_3">
+        <link rel="stylesheet" href="__TMPL__HJZF2_Z/css/side.css">
+        <script type="text/javascript" src="__TMPL__HJZF2_Z/js/side.js"></script>
+        <button class="side_first_btn side_third_btn"
+            style="background: url( __TMPL__HJZF2_Z/img/side-sprites2.png) no-repeat -1px 1px #{$color_btn}"
+            onclick="goTop()"></button>
+        <style>
+            .form_fixed_button {
+                background-color: #{$data307[2]};
+            }
+
+            .form_itema_full p i {
+                color: #{$data307[2]};
+            }
+
+            .side_third_text {
+                color: #{$data307[5]};
+            }
+
+            #btn_closed:after,
+            #btn_closed:before {
+                background-color: #{$data307[5]};
+            }
+        </style>
+        <aside class="side_third">
+            <div class="form_fixed_button"><i class="fa fa-envelope" aria-hidden="true"></i><span>{$data307[10]}</span>
+            </div>
+            <div class="side_third_inquiry closed">
+                <div class="side_third_text index_sub_title">
+                    {$data307[10]}
+                    <div id="btn_closed"></div>
+                </div>
+                <Include file="./Tpl/HJZF2_Z/submitinquiry_side.html" />
+            </div>
+        </aside>
+    </div>
+</if>
+
+<if condition="$data307[0] eq '4'">
+    <!-- 第四块 -->
+    <link rel="stylesheet" href="__TMPL__HJZF2_Z/css/side.css">
+    <script type="text/javascript" src="__TMPL__HJZF2_Z/js/side.js"></script>
+    <button class="side_first_btn side_fourth_btn"
+        style="background: url( __TMPL__HJZF2_Z/img/side-sprites2.png) no-repeat -3px -1px #{$color_btn}"
+        onclick="goTop()"></button>
+    <style>
+        .side_fourth_text {
+            color: #{$data307[5]};
+        }
+
+        .side_fourth li:hover .side_fourth_text {
+            color: #{$data307[2]};
+        }
+    </style>
+    <aside class="side_fourth">
+        <ul>
+            <div class="side_fourth_bg" style="background: url({:getindeximgurl($data307[7])}) no-repeat right top;">
+            </div>
+            <ul class="side_fourth_wrappera">
+                <php>
+                    $arr = get_list_val($data307[8]);
+                </php>
+                <volist name="arr" id="a">
+                    <php>
+                        $link = explode("：",$a[link]);
+                        $link['name']= $link[1];
+                    </php>
+                    <li>
+                        <if condition="strstr($a[link],'QQ') neq false">
+                            <a href="https://wpa.qq.com/msgrd?v=3&uin={$link['name']}&site=qq&menu=yes" target="_blank" onclick="turn_sta(5,4)">
+                                <elseif condition="strstr($a[link],'Tel') neq false" />
+                                <a href="tel:{$link['name']}" target="_blank" onclick="turn_sta(6,4)">
+                                    <elseif condition="strstr($a[link],'Skype') neq false" />
+                                    <a href="skype:{$link['name']}?chat" target="_blank" onclick="turn_sta(6,4)">
+                                        <elseif condition="strstr($a[link],'Email') neq false" />
+                                        <a href="mailto:{$link['name']}" target="_blank" onclick="turn_sta(3,4)">
+                                            <elseif condition="$a[link] neq true" />
+                                            <a>
+                                                <else />
+                                                <a href="{$a[link]}" target="_blank" >
+                        </if>
+                        <span class="side_fourth_img">
+                            <img src="{$a[ico]}" class="my_icon">
+                            <if condition="$a[hover]">
+                                <img src="{$a[hover]}" class="my_icon_on">
+                                </if>
+                        </span>
+                        <span class="side_fourth_text">
+                            {$a[text]}
+                        </span>
+                        <if condition="$a[ewm] neq false">
+                            <span class="side_fourth_hover_img">
+                                <img src="{$a[ewm]}" alt="{$a[text]}">
+                                <p class="text-center">{$a[content]}</p>
+                            </span>
+                        </if>
+                        <if condition="$a[content] and $a[ewm] eq '' ">
+                            <span class="side_fourth_hover_text">
+                                {$a[content]}
+                            </span>
+                         </if>
+                        </a>
+
+                    </li>
+                </volist>
+            </ul>
+        </ul>
+    </aside>
+</if>

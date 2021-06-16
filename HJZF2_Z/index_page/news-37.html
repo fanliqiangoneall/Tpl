@@ -1,0 +1,80 @@
+<!--{$pagename}-->
+<style>
+	.hjzf_news_37_title .index_sub_title:before {
+		background-color: #{$data717[3]};
+	}
+	.news_37_bottom a.index_btn{
+		color: #{$color};
+    	border: 1px solid #{$color};
+	}
+	.news_37_list_box span em{
+		color: #{$color};
+		border-color: #{$color};
+	}
+	.news_37_title ul li:hover h3{
+		color: #{$color};
+	}
+	.news_37_bottom a.index_btn:hover{
+		color: #fff;
+		background-color: #{$color};
+	}
+	.news_37_bottom a.index_btn:hover .hover{
+		opacity: 1;
+	}
+</style>
+<section class="hjzf2_news_37 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-center hjzf_news_37_title pb40 wow fadeInUp">
+					<div class="index_title">
+						{$data719[1]}
+					</div>
+					<div class="index_sub_title">
+						{$data719[2]}
+					</div>
+				</div>
+				<div class="news_37_title pb40 wow fadeInUp">
+					<ul>
+						<volist empty="" name="allnewclass" id="allclass_new">
+							<li><a
+									href="{:U('/product_category','','')}/{:getprocatename($allclass_new['pcid'])}">{$allclass_new['class_name']}</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+				<div class="news_37_list wow fadeInUp">
+					<ul>
+						<volist name="indexnews" id="new" offset="0" length="3">
+							<li>
+								<a href="{:U('/new_detail',array('nid'=>$new['nid']))}">
+									<img src="{:getimgurl($new['new_pro'])}" alt="">
+								<div class="news_37_list_box">
+									<span>{$data719[7]}{:date('Y-m-d',$new['created'])} <em>{$data719[8]}</em></span>
+									<p>{:subtxt($new['news_description'],60)}</p>
+								</div>
+								</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+				<div class="text-center news_37_bottom wow fadeInUp">
+					<a href="{$data719[5]}" class="index_btn">
+						<if condition="$data719[4]">
+							{$data719[4]}
+							<else />
+							{:__('Read More')}
+						</if>
+						<if condition="$data719[6]">
+							<div class="par">
+								<img src="{:getindeximgurl($data719[6])}" class="normal">
+								<img src="{:getindeximgurl($data719[9])}" class="hover">
+							</div>
+						</if>
+					</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</section>

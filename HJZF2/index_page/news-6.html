@@ -1,0 +1,96 @@
+<!--{$pagename}-->
+    <style>
+        .new_hjzf_news-6 .hj02_pro_more:hover{
+            background: #{$data109[3]};color: #fff;
+        }
+        .new_hjzf_news-6 .hj02_proclasslist li:hover,.class_name1_on{
+            background: #{$data109[3]};
+        }
+        .new_hjzf_news-6 .hj02_proclasslist li:hover a,.new_hjzf_news-6 .hj02_proclasslist li.class_name1_on a{color: #fff;}
+        .new_hjzf_news-6 .news_item_date:after {
+            content: "";display: table;position: absolute;width: 10%;height: 2px;background-color: #{$data109[3]};bottom: -9px;transition: all 0.6s;
+        }
+    </style>
+    <!--news start-->
+    <section id="hjzf2_news-6">
+        <div class="container">
+            <section class="index_product_title margin-30px-bottom">
+                <div class="index_product_title_left">
+                    <div id="index_product_title_left1"><h3>{$data109[0]}</h3></div>
+                </div>
+                <div class="index_product_title_right">
+                    <div id="index_product_title_right1">
+                        <ul class="hj02_proclasslist hj02_newclasslist">
+    
+                            <php>
+                                $arr_str=$data109[2];
+                                $arr=explode(',',$arr_str);
+    
+                                foreach($arr as $k=>$a){
+                                $list[$k]['name']=get_wap_news_class_name($a);
+                                $list[$k]['data']=get_index_news_category($a,9);
+                                }
+                            </php>
+                            <a href="{:U('/news')}" class="hj02_pro_more">{:__('All news')}</a>
+                            <volist name="list" id="li" >
+                                <li class="class_name1"><a href="{:U('/new_category/classid','','')}/{$arr[$key]}">{$li['name']}</a></li>
+                            </volist>
+                        </ul>
+    
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </section>
+            <div class="hj02-news-box">
+                <div class="hj02-news_wai">
+                    <volist name="list" id="li" >
+                        <div class="hj02-news_item">
+                            <if condition="count($li['data']) lt 3 or count($li['data']) eq 3">
+                            <div alt="{$li['name']}" class="hj02-news_item">
+                                <volist name="li['data']" id="indexnews" offset="0" length="6" key="k">
+                                    <div class="news_item" id="news_item">                                                                     
+                                        <div class="hynews_pic margin-30px-top">
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews['new_pro'])}" border="0" /></a>
+                                        </div>                                    
+                                        <div class="news_item-title margin-20px-top"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],40)}</a></div>
+                                        <if condition="$indexnews['news_description']"><div class="news_item-jj margin-20px-top"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['news_description'],48)}</a></div></if>
+                                        <p class="news_item_date"><span>{:date('m-d ',$indexnews['created'])}</span></p>                                    
+                                    </div>
+                                    <if condition="($k)%3 gt 0">
+                                            <div style="width:30px; height:10px;float:left;"></div>
+                                    </if>
+                                </volist>                            
+                            </div>
+                            <else/>
+                            <div class="swiper-container hj02-news_slickbox">
+                                <div class="swiper-wrapper">
+                                    <volist name="li['data']" id="indexnews" offset="0" length="9" key="k">
+                                        <div class="swiper-slide">
+                                            <div class="news_item" id="news_item">              
+                                                <div class="hynews_pic margin-30px-top">
+                                                    <a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($indexnews['new_pro'])}" border="0" /></a>
+                                                </div>                                    
+                                                <div class="news_item-title margin-20px-top"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['title'],40)}</a></div>
+                                                <if condition="$indexnews['news_description']"><div class="news_item-jj margin-20px-top"><a href="{:U('/new_detail',array('nid'=>$indexnews["nid"]))}" onFocus="blur()">{:subtxt($indexnews['news_description'],48)}</a></div></if>
+                                                <p class="news_item_date"><span>{:date('m-d ',$indexnews['created'])}</span></p>                                    
+                                            </div>
+                                        </div>
+                                    </volist>
+                        
+                                </div>
+                                <div class="swiper-pagination hj02-news-pagination"></div>
+                            </div>
+                            </if>
+                        </div>
+                        
+                    </volist>
+    
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--news end-->
+    
+    

@@ -1,0 +1,38 @@
+<!--{$pagename}-->
+<style>
+   .hjzf_aboutus_15{
+       background: url({:getindeximgurl($data274[0])}) no-repeat center/100% 100%;
+   }
+   
+   .hjzf_aboutus_15_left .my-mask-b:before{
+        <if condition="$data274[1]">
+        background-color: #{$data274[1]};
+        <else/>
+        background-color: #{$color};
+        </if>
+}
+@media(max-width: 992px) {
+    .hjzf_aboutus_15{
+        background: url({:getindeximgurl($data274[7])}) no-repeat center/100% 100%;
+        color: #{$data274[8]}
+    }
+}
+</style>
+<section class="hjzf_aboutus_15 index_pd index_wrapper">
+    <div class="index_inner">
+        <ul class="row-little clearfix">
+            <li class="col-xs-12 col-lg-6 hjzf_aboutus_15_left wow fadeInLeft" data-wow-delay=".1s">
+                <img src="{:getindeximgurl($data274[2])}" alt="{$data274[5]}">
+                <a href="{$data274[3]}" class="my-mask-b index_btn">{$data274[4]}</a>
+            </li>
+            <li class="col-xs-12 col-lg-6 hjzf_aboutus_15_right wow fadeInRight" data-wow-delay=".3s">
+                <div class="index_title pb40">
+                    {$data274[5]}
+                </div>
+                <div class="index_text">
+                    {:HtmlEncode($data274[6])}
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

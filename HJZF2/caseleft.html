@@ -1,0 +1,11 @@
+<div class="main_left_news">
+    <div class="main-content_inner_news">
+        <ul>
+            <li><a href="{:U('/cases')}"><h3>{:__('All cases')}</h3></a></li>
+            <volist empty="" name="allnewclass" id="new"  offset="0">
+                <li <if condition="$newscate['classid'] eq $new['classid']">class="yijion_news"<else/>class="yiji_news"</if>><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+            </volist>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</div>

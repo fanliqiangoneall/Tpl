@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+<style>
+   <if condition="$data375[0]">
+    .hjzf_service_26{
+        background: url({:getindeximgurl($data375[0])}) no-repeat center bottom/cover;
+    }
+    </if>
+    .hjzf_service_26_wrapper li a{
+        background-color: #{$data375[4]};
+    }
+    .hjzf_service_26_wrapper li em{
+        color: #{$data375[2]};
+    }
+    .hjzf_service_26_more a{
+        background-color: #{$data375[8]};
+    }
+    .hjzf_service_26_wrapper li:hover a{
+        border-color: #{$data375[8]};
+    }
+
+    .hjzf_service_26_more a{
+    border: 1px solid #{$data375[8]};
+    }
+    .hjzf_service_26_more a:hover{
+        background-color: transparent;
+        border-color: #{$data375[8]};
+        color: #{$data375[8]};
+    }
+</style>
+
+<section class="hjzf_service_26 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title pb40 text-center wow fadeInUp">
+                    {$data375[1]}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <ul class="hjzf_service_26_wrapper pb40 clearfix">
+                <php>
+                    $arr = get_list_val($data375[5]);
+                </php>
+                <volist name="arr" id="a">
+                    <li class="col-xs-12 col-lg-3">
+                        <a href="{$a[link]}">
+                            <img src="{$a[ico]}" alt="{$a[title]}">
+                            <span class="index_sub_title pb20">{$a[title]}</span>
+                            <p class="index_text pb20">{$a[con]}</p>
+                            <em class="index_text">{:__('Read More')}</em>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="hjzf_service_26_more tac"><a href="{$data375[6]}" class="index_btn index_text">{$data375[7]}</a></div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+<if condition="$labelcaselists neq ''">
+
+    <div style="color: #303030;height:42px;line-height:42px;font-size: 20px;background: url(__TMPL__WH01/img/detail_line.png) no-repeat 0 35px;clear: both;">
+        <span style="font-weight:normal;font-size: 24px;color: #333333;">Related Cases</span>
+    </div>
+<div class="page_RightMain" style="padding-bottom:0;">
+<volist empty="" id="labelcaselists" name="labelcaselists" key="k2">
+    <div class="asd">
+         <div class="img"><a href="{:U('/case_detail',array('nid'=>$labelcaselists["nid"]))}"><img src="{:getimgurl($labelcaselists['new_pro'])}" border="0" alt="{$labelcaselists['title']}" /></a></div>
+         <div class="in_proname_a"><a href="{:U('/case_detail',array('nid'=>$labelcaselists["nid"]))}">{$labelcaselists['title']}</a></div>
+
+        <a href="{:U('/case_detail',array('nid'=>$labelcaselists["nid"]))}">
+            <div class="rsp"></div>
+            <div class="text">
+                                 <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                <div class="rsp_more" style=" position:relative; top:68px;">{$labelcaselists['title']}</div>
+                </div>
+            </div>
+        </a>
+     </div>
+    <if condition="$k%4 neq 0">
+        <li style="width:16px; height:50px; float:left;list-style: none"></li>
+        <else/>
+        <li class="clear" style="height: 18px;"></li>
+    </if>
+</volist>
+<div class="clear"></div>
+</div>
+</if>

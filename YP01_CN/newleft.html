@@ -1,0 +1,18 @@
+<div style="width: 100%;border-bottom: 1px solid #e6e6e6">
+<div class="page_LeftClass">
+  <div class="left_con" style="margin-left:-50px">
+
+     <div class="page_Menu" id="smoothmenu1">
+        <ul>
+          <volist empty="no" name="allnewclass" id="news_left">
+                  <li <if condition="$newscate['classid'] eq $news_left['classid'] or $newclass['classid'] eq $news_left['classid']">class="yijion"<else/>class="yiji"</if>  style="background:url({:getimgurl($allclass_left['fid'])}) center no-repeat;"><a href="{:U('/new_category',array('classid'=>$news_left["classid"]))}">{$news_left['class_name']}</a>
+             </li>
+           </volist>
+
+         </ul>
+  </div>
+   
+  </div>
+  <div class="clear"></div>
+</div>
+</div>

@@ -1,0 +1,23 @@
+<section id="HJZF2_floatWindow">
+    <volist empty="" name="floatWindow" id="floatWindow" key="k" offset="0" length="8">
+        <a href="{$floatWindow['windowUrl']}">
+            <if condition="$floatWindow['windowImg']">
+                <php>
+                    $hjzf2_floatWindow_img=getimgurl($floatWindow['windowImg']);
+                    $window_type = $floatWindow['windowType'] or $window_type='0';
+                </php>
+                <script>
+                    var window_type = <?php echo $window_type;?>;
+                </script>
+                <style>
+                    .HJZF2_floatWindow_img{
+                        background:url(
+                        {$hjzf2_floatWindow_img}
+                        ) center/100% no-repeat;
+                    }
+                </style>
+                <div class="HJZF2_floatWindow_img"></div>
+            </if>
+        </a>
+    </volist>
+</section>

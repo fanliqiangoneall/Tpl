@@ -1,0 +1,128 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_z_service-7_next,.HJZF2_z_service-7_prev{
+        color: #{$data192[1]};
+    }
+</style>
+<if condition="$data192[0]">
+    <style>
+        .HJZF2_z_service-7{
+            background: url({:getindeximgurl($data192[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<section class="HJZF2_z_service-7 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="service-7_wrap col-xs-12 col-lg-6 service-7_wrap-left">
+                <div class="service-7_title index_title">{$data192[2]}</div>
+                <div class="service-7_line"><span></span></div>
+                <div class="service-7_swiper_contant">
+                    <div class="swiper-container service-7_swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="service-7_item">
+                                    <div class="service-7_img"><img src="{:getindeximgurl($data192[3])}" alt="{$data192[5]}"/></div>
+                                    <div class="service-7_textcontent">
+                                        <div class="service-7_desc index_text">{:HtmlEncode($data192[4])}</div>
+                                        <div class="service-7_name index_sub_title">{$data192[5]}</div>
+                                        <div class="service-7_job">{$data192[6]}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="service-7_item">
+                                    <div class="service-7_img"><img src="{:getindeximgurl($data192[7])}" alt="{$data192[9]}"/></div>
+                                    <div class="service-7_textcontent">
+                                        <div class="service-7_desc index_text">{:HtmlEncode($data192[8])}</div>
+                                        <div class="service-7_name index_sub_title">{$data192[9]}</div>
+                                        <div class="service-7_job">{$data192[10]}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next HJZF2_z_service-7_next"><i class="fa fa-chevron-right"></i></div>
+                    <div class="swiper-button-prev HJZF2_z_service-7_prev"><i class="fa fa-chevron-left"></i></div>
+                </div>
+            </div>
+            <div class="service-7_wrap col-xs-12 col-lg-6 service-7_wrap-rigt">
+                <div class="service-7_title index_title">{$data192[23]}</div>
+                <div class="service-7_line"><span></span></div>
+                <div class="service-7_logo_content">
+                    <div class="service-7_logo col-xs-6 col-lg-4"><img src="{:getindeximgurl($data192[24])}" alt="{$data192[30]}"/><div class="service-7_logo_name index_text">{$data192[30]}</div></div>
+                    <div class="service-7_logo col-xs-6 col-lg-4"><img src="{:getindeximgurl($data192[25])}" alt="{$data192[31]}"/><div class="service-7_logo_name index_text">{$data192[31]}</div></div>
+                    <div class="service-7_logo col-xs-6 col-lg-4"><img src="{:getindeximgurl($data192[26])}" alt="{$data192[32]}"/><div class="service-7_logo_name index_text">{$data192[32]}</div></div>
+                    <div class="service-7_logo col-xs-6 col-lg-4"><img src="{:getindeximgurl($data192[27])}" alt="{$data192[33]}"/><div class="service-7_logo_name index_text">{$data192[33]}</div></div>
+                    <div class="service-7_logo col-xs-6 col-lg-4"><img src="{:getindeximgurl($data192[28])}" alt="{$data192[34]}"/><div class="service-7_logo_name index_text">{$data192[34]}</div></div>
+                    <div class="service-7_logo col-xs-6 col-lg-4"><img src="{:getindeximgurl($data192[29])}" alt="{$data192[35]}"/><div class="service-7_logo_name index_text">{$data192[35]}</div></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>
+<style>
+    .cursor-dot {
+        z-index: 2;
+        width: 12px;
+        height: 12px;
+        background-color: #242e34
+    }
+    .c-cursor-outline, .cursor-dot {
+        position: absolute;
+        border-radius: 50%
+    }
+    .cursor-dot, .c-cursor-outline {
+        transform: translateX(-50%) translateY(-50%);
+    }
+    .c-cursor-wrapper {
+        opacity: 0;
+
+        -webkit-transition: opacity 0.65s ease-out;
+        -moz-transition: opacity 0.65s ease-out;
+        -ms-transition: opacity 0.65s ease-out;
+        -o-transition: opacity 0.65s ease-out;
+        transition: opacity 0.65s ease-out;
+    }
+
+    .c-cursor-wrapper.load {
+        opacity: 1;
+    }
+</style>
+<!--
+<div class="c-cursor-wrapper"><div id="cursor-dot" class="cursor-dot"></div><div class="c-cursor-outline"></div></div>
+<script type="text/javascript">
+    window.onload = function(){
+        var bsDiv = document.getElementById("cursor-dot");
+        var x, y;
+        // On mousemove use event.clientX and event.clientY to set the location of the div to the location of the cursor:
+        window.addEventListener('mousemove', function(event){
+            x = event.clientX;
+            y = event.clientY;
+            if ( typeof x !== 'undefined' ){
+                bsDiv.style.left = x + "px";
+                bsDiv.style.top = y + "px";
+            }
+        }, false);
+    };
+    $(document).on('mousemove', function(e){
+        $(".c-cursor-wrapper").addClass("load");
+        // make the dot follow the cursor
+        $('#cursor-dot').css({
+            left:  e.pageX,
+            top:   e.pageY
+        });
+    });
+    // Make the circle follow the mouse with some delay and dampending
+    var $mouseX = 0, $mouseY = 0;
+    var $xp = 0, $yp =0;
+    $(document).mousemove(function(e){
+        $mouseX = e.clientX;
+        $mouseY = e.clientY;
+    });
+</script>-->

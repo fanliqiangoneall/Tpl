@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<php>
+	if($data701[0]){
+	$color = $data701[0];
+	};
+</php>
+<style>
+	<if condition="$data701[5]">
+	.products_46{
+		background-color: #{$data701[5]};
+	}
+	</if>
+	.products_46 a.index_btn{
+		color: #fff;
+	}
+</style>
+<section class="products_46 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="index_title text-center pb20">
+					{$data701[1]}
+				</div>
+				<if condition="$data701[3]">
+					<div class="text-center mb-40">
+						<a href="{$data701[2]}" class="index_btn" style="background: url({:getindeximgurl($data701[3])}) no-repeat center;">
+							{$data701[4]}
+						</a>
+					</div>
+				</if>
+			</div>
+			<div class="col-xs-12">
+				<ul class="products_46_wrapper">
+					<volist empty="" name="indexpro" id="lic" offset="0" length="7" key="keya">
+						<li data-wow-delay=".{$keya}s" data-wow-duration=".8s">
+							<a href="{:U('/Product','','')}/{:getproname($lic['pid'])}">
+								<div class="left">
+									<span>{$lic['pro_name']}</span>
+								</div>
+								<div class="right">
+									<img src="{:getimgurl($lic['main_img'])}" class="img-fluid" alt="{$lic['pro_name']}">
+								</div>
+							</a>
+						</li>
+					</volist>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,83 @@
+<!--{$pagename}-->
+<style>
+   
+    /* .HJZF2_Z_other_103{
+        background: url({:getindeximgurl($data496[0])}) no-repeat center/cover;
+    }   */ 
+<if condition="$data506[0]">
+.other_103_bg:nth-child(2n-1){
+    background: url({:getindeximgurl($data506[0])}) no-repeat center/cover;
+}
+</if>
+<if condition="$data506[1]">
+.other_103_bg:nth-child(2n){
+    background: url({:getindeximgurl($data506[1])}) no-repeat center/cover;
+}
+</if>
+.other_103_listwrapper li:hover a{
+    text-decoration: underline;
+    color: #{$color};
+}
+.right_show_row .img_box{
+    float: right;
+}
+.other_103_morebtn a{
+	text-align:center;
+	width:100%;
+	max-width:120px;
+	color:#FFFFFF;
+	padding:10px;
+	background:#{$color};
+}
+</style>
+
+<php>
+	if(!$data506[2]){
+		$data506[2] = I("classid");
+	}
+	$chlilds=get_children($data506[2]);
+
+</php>
+<section class="HJZF2_Z_other_103">
+
+<volist name="chlilds" id="list" key="key">
+    <div class="index_pd other_103_bg">
+        <if condition="$key % 2 eq 0">
+            <div class="container left_show_row ">
+                <else/>
+           <div class="container right_show_row">
+        </if>
+        
+            <div class="row">
+                <div class="col-xs-12 col-lg-7 img_box">
+                    <div class="other_103_imgwrapper">
+                        <a href="{:U('/product_category','','')}/{:getprocatename($list['pcid'])}"><img src="{:getmainimgurl($list['fid'])}" alt="{$list['class_name']}"/></a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-5">
+                    <div class="pb40"><a href="{:U('/product_category','','')}/{:getprocatename($list['pcid'])}" class="index_title other_103_maintitle">{$list['class_name']}</a></div>
+                    <div class="index_text other_103_text pb40">{$list['readme']}</div>
+                    
+                    <php>
+                        $pro_childs = get_children($list['pcid']);
+                    </php>
+                    <if condition="$pro_childs">
+                    <p class="other_103_listtitle index_text pb20">{:__('Classify: ')}</p>
+                    <ul class="other_103_listwrapper clearfix">
+                        <volist name="pro_childs" id="a">
+                            <li>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($a['pcid'])}" class="other_103_listitem">
+                                    {$a['class_name']}
+                                </a>
+                            </li>
+                        </volist>
+                    </ul>
+                    <else/>
+                    <div class="other_103_morebtn pb40"><a href="{:U('/product_category','','')}/{:getprocatename($list['pcid'])}">{:__('Read More')}</a></div>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>        
+</volist>    
+</section>

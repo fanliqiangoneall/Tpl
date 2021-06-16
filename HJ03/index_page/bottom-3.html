@@ -1,0 +1,109 @@
+<!--{$pagename}-->
+<php>
+    if(!$data38[7]){
+        $data38[7] = 254;
+    }
+</php>
+<style>
+    .HJ03_bottom-3{
+        display: none;min-height: {$data38[7]}px;
+    }
+</style>
+<if condition="has_mould('bottom-3') eq true">
+    <style>
+        .HJ03_bottom-3{display: block}
+    </style>
+</if>
+<if condition="$data38[6] neq ''">
+    <style>
+        .HJ03_bottom-3{
+            background: url({:getindeximgurl($data38[6])}) left center no-repeat !important;
+        }
+    </style>
+</if>
+<style>
+    .bottom_xian2{width: 100%;border-bottom: 1px solid rgba(255,255,255,.4);height: 2px;padding-bottom: 10px;padding-top: 30px;}
+</style>
+
+<div class="HJ03_bottom-3">
+    <div class="container">
+
+
+        <div class="HJ03_bottom-3-item lf" style="width: 198px;margin-right: 90px;">
+            <h3>{$data38[0]}</h3>
+            <ul>
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="HJ03_bottom-3-item lf">
+            <h3>{$data38[1]}</h3>
+            <ul>
+                <volist empty="" name="allclass" id="allclass_down" offset="0" length='10'>
+                    <li pro-class-id="{$allclass_down['pcid']}"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_down['pcid'])}">{$allclass_down['class_name']}</a></li>
+                </volist>
+            </ul>
+        </div>
+        <div class="HJ03_bottom-3-item lf">
+            <h3>{$data38[2]}</h3>
+            <ul>
+                <if condition="$about['company_name']">
+                    <li>Company Name: {$about['company_name']}</li>
+                </if>
+                <if condition="$about['contact']">
+                    <li>Contact: {:chaifen($about['contact'],0)}</li>
+                </if>
+                <if condition="$about['phone']">
+                    <li>Tel: {:chaifen($about['phone'],0)}</li>
+                </if>
+                <if condition="$about['mobile']">
+                    <li>Mobile: {:chaifen($about['mobile'],0)}&nbsp;&nbsp;{:chaifen($about['mobile'],1)}</li>
+                </if>
+                <if condition="$about['fax']">
+                    <li>Fax: {:chaifen($about['fax'],0)}</li>
+                </if>
+                <if condition="$about['email']">
+                    <li>E-mail: <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li>
+                </if>
+                <if condition="$about['address']">
+                    <li>Address: {$about['address']}</li>
+                </if>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="HJ03_bottom-3-item lf" style="margin-right: 0;">
+            <h3>{$data38[3]}</h3>
+            <img src="{:getindeximgurl($data38[4])}" alt="" width="100px" height="100px"/>
+        </div>
+       <div class="clear bottom_xian2"></div>
+
+        <div class="hj02-copy">
+            <php>
+                $nowtime=date("Y",time());
+                if(!$data38[5]){
+                $currtime=2019;
+                }else{
+                $currtime=$data38[5];
+                }
+
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+            &nbsp;{$about['company_name']}&nbsp;&nbsp;all rights reserved&nbsp;&nbsp;<a href="http://www.beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;&nbsp;
+            <a style="" href="{:U('/sitemap')}" onfocus="blur()">Sitemap</a>&nbsp;&nbsp;<span style="font-size:14px;"><a  href="{:U('/alltag','','')}">All tags</a></span>&nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="zhonghuan internet" target="_blank">Zhonghuan Internet</a></div>
+            <if condition="$friend_link neq ''">
+        <div class="friendlink" style="margin-top: 0px;">
+            <div class="link">
+            <span style="font-size:14px; font-weight:bold; float:left;line-height:30px;">FriendLink: &nbsp;&nbsp;</span>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; text-align:center; line-height: 30px;margin-right: 15px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                    </if>
+                </volist>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    	</if>
+    </div>
+</div>

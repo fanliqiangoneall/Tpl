@@ -1,0 +1,77 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <div class="index_wrapper" id="wrapper">
+        <style>
+            .HJZF_Z__Breadcrumbs span.current{
+                color: #{$color};
+            }
+            .InsidePages_content-right_content_title:before{
+                background: #{$color};
+            }
+            .InsidePages_left_navlist li.yiji:hover >a>h3,.InsidePages_left_navlist li.yiji:hover >.class_button:before,.InsidePages_left_navlist li.yijion >a>h3{
+                 color: #{$color};
+             }
+            .InsidePages_left_content-main{
+                border-top: 2px solid #{$color};
+            }
+        </style>
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[2])}" alt=""/></div>
+            </if>
+        </div>
+
+        <div class="index_inner container">
+            <div class="row">
+                <div class="HJZF_Z__inner9--text wow bounceIn">
+                    <div class="index_title">{$inner_data[0]}</div>
+                    <div class="index_text">{$inner_data[1]}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="HJZF_Z__inner9--leftcate">
+            <div class="index_inner container">
+                <div class="row">
+                    <Include file="./Tpl/HJZF2_Z/leftdownload9.html" />
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftdownload_mobile.html" />
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="index_inner container">
+                <div class="row">
+                	<div class="InsidePages_content2 col-xs-12">
+                        <div class="InsidePages_content-right__wrap">
+    
+                            <div class="InsidePages_content-right_content-main">
+                                <h5 class="InsidePages_content-right_content_title">{$download['title']}</h5>
+                                <div class="product_detail_editor_content">
+                                    <div class="download">
+                                        <div>
+                                            <a href="{:getimgurl($download['linkurl'])}" target="_blank">
+                                                <div class="download_detail_content">{$download['content']}</div>
+                                            </a>
+                                            <p style="text-align: right"><span class="download_detail_button"><a href="{:getimgurl($download['linkurl'])}" target="_blank">{:__('Download')}</a></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page_nei_space"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</block>

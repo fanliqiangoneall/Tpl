@@ -1,0 +1,90 @@
+<!--{$pagename}-->
+<php>
+	if($data582[0]){
+		$color = $data582[0];
+	};
+</php>
+<style>
+.zuanshi_cate_child li.on .zuanshi_cate_child_img,.zuanshi_cate_child li:hover .zuanshi_cate_child_img{
+	border: 1px solid #{$color};
+}
+</style>
+<section class="products_zuanshi_cate">
+	<div class="products_zuanshi_cate_bread">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-right">
+					<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+						class="fa fa-angle-right"></i>&nbsp;<span class="current">{$data582[1]}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<php>
+		$arr = get_children($data582[2]);
+	</php>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 zuanshi_wrappper">
+				<volist name="arr" id="a">
+					<div class="zuanshi_cate_box">
+						<div class="zuanshi_cate_title text-center">{$a['class_name']}</div>
+						<php>
+							$arr_child = get_children($a['pcid']);
+						</php>
+						<ul class="zuanshi_cate_child">
+							<volist name="arr_child" id="b">
+								<li class="arr_child{$b['pcid']}" data-id="{$b['pcid']}">
+									<if condition="$b['fid']">
+										<div class="zuanshi_cate_child_img">
+											<img src="{:getmainimgurl($b['fid'])}">
+										</div>
+									</if>
+									<span>{$b['class_name']}</span>
+								</li>
+							</volist>
+						</ul>
+					</div>
+				</volist>
+			</div>
+		</div>
+	</div>
+	<div class="container my-20">
+		<div class="row">
+			<div class="col-xs-12">
+				<volist name="arr" id="c">
+					<php>
+						$arr_childa = get_children($c['pcid']);
+					</php>
+					<volist name="arr_childa" id="b">
+						<php>
+							$pro_all = get_allproducts_category_on_index($b['pcid'], 100);
+						</php>
+						<ul class="d-flex zuanshi_cate_con" data-id="{$b['pcid']}">
+							<foreach name="pro_all" item="vo">
+								<li>
+									<a href="{:U('/Product','','')}/{:getproname($vo['pid'])}">
+										<div class="zuanshi_cate_con_img">
+											<img src="{:getmainimgurl($vo['main_img'])}" alt="">
+										</div>
+										<div class="zuanshi_cate_con_text">
+											<div class="zuanshi_cate_con_title">
+												{$vo['pro_name']}
+											</div>
+											<div class="zuanshi_cate_con_des">
+												{:subtxt($vo['pro_description'],200)}
+											</div>
+										</div>
+									</a>
+								</li>
+							</foreach>
+						</ul>
+					</volist>
+				</volist>
+
+			</div>
+		</div>
+	</div>
+
+</section>

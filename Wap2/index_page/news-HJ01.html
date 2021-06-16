@@ -1,0 +1,32 @@
+<style>
+    .wap2_news-hj01__title span{
+        color: #{$color};
+    }
+    .wap2_news-hj01_more a{
+        background: #{$color};
+    }
+</style>
+<section class="wap2_news-hj01">
+    <div class="container">
+        <div class="wap2_news-hj01__title">
+            {$data56[0]} <span>{$data56[1]}</span>
+        </div>
+        <div class="wap2_news-hj01__desc">{$data56[2]}</div>
+        <volist name="indexnews" id="indexnews" offset="0" length="5" key="h">
+                <div class="index_newsitem_box">
+                    <div class="index_newsitem_img">
+                            <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" >
+                                <img src="{:getimgurl($indexnews['new_pro'])}" border="0" />
+                            </a>
+                    </div>
+                    <div class="index_newsitem_down">
+                        <div class="index_newsitem_title"><a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" class="font-weight-600">{:subtxt($indexnews['title'],50)}</a></div>
+                        <div class="index_newsdate"><i class="fa fa-clock-o"></i><span>{:date('Y/m/d ',$indexnews['created'])}</span></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+        </volist>
+        <div class="wap2_news-hj01_more"><a href="{$data56[4]}">{$data56[3]}</a></div>
+    </div>
+</section>

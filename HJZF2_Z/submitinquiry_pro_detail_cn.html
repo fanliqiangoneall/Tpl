@@ -1,0 +1,309 @@
+<style>
+.productbutton{
+	background: #{$color};
+}
+.productbutton:hover {
+	background: #{$data47[9]};
+}
+</style>
+<script>
+	jQuery(function(){
+		jQuery("#message").focus(function(){
+			jQuery("#message_alert").html("");
+		});
+		jQuery("#linkname").focus(function(){
+			jQuery("#linkname_alert").html("");
+		});
+		jQuery("#phone").focus(function(){
+			jQuery("#phone_alert").html("");
+		});
+		jQuery("#email").focus(function(){
+			jQuery("#email_alert").html("");
+		});
+		jQuery("#code_char").focus(function(){
+			jQuery("#code_char_alert").html("");
+		});
+
+
+		jQuery("#getcode_char").click(function(){
+			jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char1").click(function(){
+			jQuery("#getcode_char").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+
+	})
+
+
+	function yz_submit(){
+		var count=0;
+		var message=Trims(jQuery("#message").val());
+		var linkname=Trims(jQuery("#linkname").val());
+		var phone=Trims(jQuery("#phone").val());
+		var email=Trims(jQuery("#email").val());
+
+
+		if(linkname.length<=0){
+			jQuery("#linkname_alert").html("姓名不能为空！");
+			count++;
+		}
+		else{
+			jQuery("#linkname_alert").html("");
+		}
+
+
+
+		if(phone.length<=0){
+
+			jQuery("#phone_alert").html("*电话不能为空！");
+			count++;
+		}else if(is_phone(jQuery('#phone').val()))
+		{
+
+			jQuery("#phone_alert").html("*电话号码有误！");
+			count++;
+		}else{
+			jQuery("#phone_alert").html("");
+		}
+
+
+
+		if(email.length>0 &&!is_email(email)){
+			jQuery("#email_alert").html("*邮箱格式有误！");
+			count++;
+		}
+		else {
+			jQuery("#email_alert").html("");
+		}
+
+
+		if(message.length<=0){
+			jQuery("#message_alert").html("咨询内容不能为空！");
+			count++;
+		}
+		else{
+			jQuery("#message_alert").html("");
+		}
+
+		var code_char = jQuery("#code_char").val();
+		jQuery.ajax({
+			type: "POST",
+			url: "/verification",
+			async:false,
+			data: {code:code_char},
+			success: function(data){
+
+				if(data==1){
+					jQuery("#code_char_alert").html("");
+				}else{
+					count++;
+					jQuery("#code_char_alert").html("验证码错误");
+				}
+			}
+		});
+
+
+		if(count>0){
+			return false;
+		}
+		else{
+			jQuery("#inbut").html('<h5 style="color:#F00;">请稍候</h5>');
+
+			return true;
+		}
+
+	}
+
+
+
+</script>
+<div class="inquiry" id="zixun">
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+		<div  class="col-xs-12 col-lg-3">
+			<div class="inquiryinfo clearfix">
+				<div class="inquiryleft">您的姓名<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname"><span class="yz_alert" id="linkname_alert"></span></div>
+			</div>
+		</div>
+
+		<div  class="col-xs-12 col-lg-3">
+			<div class="inquiryinfo clearfix">
+				<div class="inquiryleft">您的电话 <span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="phone" id="phone"><span class="yz_alert" id="phone_alert"></span></div>
+			</div>
+		</div>
+
+		<!-- 公司名称 start -->
+		<script>
+			var colid="";
+			var coltitle="";
+			var coltype="";
+			var colisrequired="";
+			var columnval=new Array();
+			<volist name='fbrequiredList' id='fbrequiredList'>
+			colid="{$fbrequiredList['id']}";
+			coltitle="{$fbrequiredList['title']}";
+			coltype="{$fbrequiredList['type']}";
+			colisrequired="{$fbrequiredList['isrequired']}";
+			if(colisrequired==1){
+				if(coltype==1||coltype==2||coltype==5){/*文本框、下拉框、文本域、附件上传*/
+					columnval[colid]=Trims(jQuery("#column_"+colid).val());
+					if(columnval[colid].length<=0){
+						jQuery("#column_"+colid+"_alert").html("*"+coltitle+"不能为空");
+						count++;
+					}else{
+						jQuery("#column_"+colid+"_alert").html("");
+					}
+				}
+				else if(coltype==3){/*单选*/
+
+					if (!jQuery("input[name=column_"+colid+"]").is(":checked")) {
+						jQuery("#column_"+colid+"_alert").html("*"+"请选择"+coltitle);
+						count++;
+					} else {
+						jQuery("#column_"+colid+"_alert").html("");
+					}
+
+
+				}
+
+				else if(coltype==4){/*多选*/
+					columnval[colid]=0;
+					jQuery('input:checkbox[name=column_'+colid+'[]]:checked').each(function(){
+						columnval[colid]++;
+
+					})
+
+					if (columnval[colid]==0) {
+						jQuery("#column_"+colid+"_alert").html("*"+"请选择"+coltitle);
+						count++;
+					} else {
+						jQuery("#column_"+colid+"_alert").html("");
+					}
+
+				}
+				else if(coltype==6){/*上传附件*/
+
+					columnval[colid]=Trims(jQuery("#column_"+colid).val());
+					if(columnval[colid].length<=0){
+						jQuery("#column_"+colid+"_alert").html("*"+coltitle+"必须上传文件！");
+						count++;
+					}else{
+						jQuery("#column_"+colid+"_alert").html("");
+					}
+				}
+			}
+			</volist>
+
+			
+
+			function deletefile(obj,id){
+				datas=jQuery('#column_'+id).val();
+
+				if(datas){
+					jQuery.post("__APP__/deletefile",{filename:datas},function(data){
+						data=eval("("+data+")");
+						if(typeof(data.error) != 'undefined'){
+							alert(data.error);
+						}
+						else{
+							alert(data.mes);
+
+							jQuery("#file"+id).html("<a href='javascript:void(0)'  style='background:url(__TMPL__ZERO/img/upfile1.png) no-repeat;width:180px;height:24px;display:inline-block;'><input style='opacity:0;' type='file' name='column_"+id+"'  id='column_"+id+"' onChange='ajaxFileUpload("+id+")'/></a>");
+						}
+					});
+				}
+			}
+			function ajaxFileUpload(id){
+
+				uploading=1;
+				console.log("uploading",uploading);
+				jQuery.ajaxFileUpload(
+				{
+					url:'__APP__/uploadfile',
+					secureuri:false,
+					fileElementId:'column_'+id,
+					dataType: 'json',
+					data:{id:'column_'+id},
+					success: function (data, status)
+					{
+						
+						uploading=0;
+						if(typeof(data.error) != 'undefined')
+						{
+							if(data.error != ''||typeof(data.savename) == 'undefined')
+							{
+								if(data.error){alert(data.error)}else{alert(data.msg);};
+							}else
+							{
+								alert(data.msg);
+
+								jQuery("#file"+id).html('<input type="hidden" name="column_'+id+'" id="column_'+id+'"  value="'+data.savename+'" />文件名：'+data.savename+'<a href="javascript:;" onclick="deletefile(this,'+id+')"  style="width:20px;background:url(__TMPL__ZERO/img/deleted.png)  no-repeat;background-size:100%;display:inline-block;">&nbsp</a>');
+							}
+						}
+					},
+					error: function (data, status, e)
+					{
+						alert(e);
+						uploading=0;
+					}
+				}
+				)
+				
+				return false;
+
+			}
+		</script>
+		<if condition="$fbcolumnList">
+			<volist name='fbcolumnList' id='fbcolumnList'>
+				<div  class="col-xs-12 col-lg-3">
+					<div class="inquiryinfo clearfix">
+						<div class="inquiryleft">{$fbcolumnList['title']} <span style="color:#f00"><if condition="$fbcolumnList['isrequired'] eq '1'"> *</if></span></div>
+						<div class="inquiryright"><input type="text" name="email" id="email"><span class="yz_alert" id="email_alert"></span></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</volist>
+		</if>
+		<!-- 公司名称 end -->
+
+		<div  class="col-xs-12 col-lg-3">
+			<div class="inquiryinfo clearfix">
+				<div class="inquiryleft">您的邮箱</div>
+				<div class="inquiryright"><input type="text" name="email" id="email"><span class="yz_alert" id="email_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div  class="col-xs-12">
+			<div class="inquiryinfo clearfix">
+				<div class="inquiryleft">留言内容<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><textarea name="message" id="message">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="inquiry_code clearfix">
+			<div class="col-xs-12 col-lg-6">
+				<div class="inquiryinfo clearfix">
+					<div class="inquiryleft">验证码<span style="color:#f00">*</span></div>
+					<div class="inquiryright"><input type="text" class="input" id="code_char" name="code" maxlength="6" />&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char" height="32" width="70" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1"><img
+						src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -4px;top: -1px;height: 32px;"/></a><span class="yz_alert" id="code_char_alert"></span></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-lg-offset-2 col-xs-12">
+					<div class="inquiryinfo clearfix">
+						<div class="inquiryleft"></div>
+						<input type="hidden" name="prodid" value="{$product['pid']}"/>
+						<div id="inbut"><input  class="productbutton" type="submit" value="提交"  name="submit" /></div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="clear"></div>
+	</div>

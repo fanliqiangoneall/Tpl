@@ -1,0 +1,180 @@
+<!--{$pagename}-->
+
+<php>
+    if(!$data6[36]){
+    $data6[36] =40;
+    }
+    if(!$data6[37]){
+    $data6[37] =30;
+    }
+</php>
+
+<style>
+    /*advantage start*/
+    .hj02_advantage_left{
+        background:url({:getindeximgurl($data6[26])}) no-repeat center;
+    }
+    .hj02_advantage_right{
+        background:url({:getindeximgurl($data6[27])}) no-repeat center;
+    }
+    .hj02_advantage_left_cont h3{
+        font-size: {$data6[36]}px;
+    }
+    .hj02_advantage_left_more .border:nth-of-type(1){
+        top:-1px;
+        left:0;
+        width:0;
+        height:0;
+        border-top:1px solid #{$color};
+    }
+
+    .hj02_advantage_left_more .border:nth-of-type(2){
+        top:0;
+        right:-1px;
+        width:10px;
+        height:0;
+        border-right:1px solid #{$color};
+    }
+
+    .hj02_advantage_left_more .border:nth-of-type(3){
+        bottom:-1px;
+        right:0;
+        width:0;
+        height:0;
+        border-bottom:1px solid #{$color};
+    }
+
+    .hj02_advantage_left_more .border:nth-of-type(4){
+        bottom:0;
+        left:-1px;
+        width:0;
+        height:0;
+        border-left:1px solid #{$color};
+    }
+    .hj02_advantage_left_more:hover{
+        color: #{$color}
+    }
+    .hj02_advantage_left_more:hover:before{
+        background: #{$color};
+    }
+    .hj02_adv_cont_title{
+        color: #333;font-size: {$data6[37]}px;
+    }
+    .hj02_adv_cont_text{
+        color: #333;height: 62px;overflow: hidden;
+    }
+    .advantages_list .swiper-button-prev{
+        background: url({:getindeximgurl($data6[29])}) no-repeat;
+    }
+    .advantages_list .swiper-button-next{
+        background: url({:getindeximgurl($data6[30])}) no-repeat;
+    }
+    .advantages_list .swiper-pagination-current{
+        color: #{$color};
+    }
+
+    /*advantage end*/
+
+</style>
+<if condition="$data6[33] neq ''">
+    <style>
+        .hj02_adv_item{
+        margin-bottom: {$data6[33]}px!important;;
+        }
+    </style>
+</if>
+
+<if condition="$data6[36] neq ''">
+    <style>
+        htmlspecialchars_decode({$data6[36]})
+    </style>
+
+
+</if>
+
+<!--choice start-->
+<div class="clear"></div>
+<section id="hj02_advantage">
+    <div class="hj02_advantage_left">
+        <div class="hj02_advantage_left_cont padding-125px-top">
+            <img src="{:getindeximgurl($data6[1])}" alt=""/>
+            <h3 class="margin-30px-bottom">{$data6[0]}</h3>
+            <a <if condition="$data6[35] neq ''">href="{$data6[35]}" <else/> href="{:U('/aboutus')}"</if>class="hj02_advantage_left_more">
+            <if condition="$data6[34] neq ''">
+                {$data6[34]}
+                <else/>
+                了解更多
+            </if>
+
+                <border class="border"></border>
+                <border class="border"></border>
+                <border class="border"></border>
+                <border class="border"></border>
+            </a>
+        </div>
+    </div>
+    <div class="hj02_advantage_right">
+        <div class="hj02_advantage_right_box" id="hj02_advantage_right_box">
+            <div class="advantages_list">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <php>
+                            for($ad=2;$ad<13;$ad=$ad+4){
+                        </php>
+                        <if condition="$data6[$ad] neq ''">
+                            <div id="aditem{$ad}" class="hj02_adv_item margin-30px-bottom">
+                                <div class="hj02_adv_image">
+                                    <img src="{:getindeximgurl($data6[$ad])}" alt=""/>
+                                </div>
+                                <div class="hj02_adv_cont">
+                                    <a href="{$data6[$ad+3]}"><h3 class="hj02_adv_cont_title margin-25px-bottom">{$data6[$ad+1]}</h3>
+                                        <p class="hj02_adv_cont_text">{:HtmlEncode(subtxt($data6[$ad+2],100))}</p></a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </if>
+
+                        <php>
+                            }
+                        </php>
+                    </div>
+                    <if condition="$data6[14] neq ''">
+                        <div class="swiper-slide">
+                            <php>
+                                for($ad2=14;$ad2<25;$ad2=$ad2+4){
+                            </php>
+                            <if condition="$data6[$ad2] neq ''">
+                                <div id="aditem{$ad2}" class="hj02_adv_item margin-30px-bottom">
+                                    <div class="hj02_adv_image">
+                                        <img src="{:getindeximgurl($data6[$ad2])}" alt=""/>
+                                    </div>
+                                    <div class="hj02_adv_cont">
+                                        <a href="{$data6[$ad2+3]}"><h3 class="hj02_adv_cont_title margin-25px-bottom">{$data6[$ad2+1]}</h3>
+                                            <p class="hj02_adv_cont_text">{$data6[$ad2+2]}</p></a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </if>
+
+                            <php>
+                                }
+                            </php>
+                        </div>
+                    </if>
+                </div>
+                <if condition="$data6[14] neq ''">
+                    <div class="swiper-pagination hj02-adv-pagination"></div>
+                    <div class="swiper-button-prev hj02-adv-prev"></div>
+                    <div class="swiper-button-next hj02-adv-next"></div>
+                </if>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</section>
+<div class="clear"></div>
+<!--choice end-->
+
+
+

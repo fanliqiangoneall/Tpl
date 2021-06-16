@@ -1,0 +1,106 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2__news_HJ06swiper_pagination .swiper-pagination-bullet-active {
+        <if condition="$data256[1]">background-color: #{$data256[1]};
+        <else/>background-color: #{$color};
+
+        </if>
+    }
+
+    .HJZF2__news_HJ06_bottom li a:hover {
+        <if condition="$data256[1]">color: #{$data256[1]};
+        <else/>color: #{$color};
+        </if>
+    }
+
+
+    .HJZF2__news_HJ06_bottom li:after {
+        background: #{$data256[5]} !important;
+    }
+    
+</style>
+
+<section class="HJZF2__news_HJ06 index_pd">
+    <div class="text-center pb40 wow fadeInDown">
+        <div class="index_title">
+            {$data256[2]}
+        </div>
+        <div class="sub_title">
+            {$data256[3]}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="clearfix h-100 HJZF2__news_HJ06_flex row-little">
+                <!-- left scroll start -->
+                <div class="col-xs-12 col-md-6 HJZF2__news_HJ06_item wow fadeInLeftBig">
+                    <div class="swiper-container HJZF2__news_HJ06_swiper_left">
+                        <div class="swiper-wrapper">
+                            <php>
+                                $arr_stra=$data256[6]; $arra=explode(',',$arr_stra); foreach($arra as $ka=>$as){
+                                    $lista[$ka]=get_news_byid($as); }
+                            </php>
+                            <volist name="lista" id="indexnewb">
+                                <div class="swiper-slide HJZF2__news_HJ06_gallery_slide">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnewb[0]["nid"]))}">
+                                        <div class="HJZF2__news_HJ06_gallery_slide_newimg transform-scale">
+                                            <img src="{:getimgurl($indexnewb[0]['new_pro'])}" width="100%"
+                                                class="transition-ease" alt="{$indexnewb[0]['title']}">
+                                        </div>
+                                        <div class="HJZF2__news_HJ06_gallery_text">
+                                            <span>{:date('y-m-d',$indexnewb[0]['created'])}</span>
+                                            <p class="ellipsis_two">{$indexnewb[0]['title']}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </volist>
+                        </div>
+                        <span class="swiper-button-prev HJZF2__news_HJ06_swiper_prev"></span>
+                        <span class="swiper-button-next HJZF2__news_HJ06_swiper_next"></span>
+                    </div>
+                </div>
+                <!-- left scroll end -->
+
+                <!-- right start -->
+                <php>
+                    $arr_str=$data256[4]; $arr=explode(',',$arr_str); foreach($arr as $k=>$a){
+                    $list[$k]=get_news_byid($a); }
+                </php>
+                <div
+                    class="col-xs-6 hidden-mobile hidden-md hidden-sm HJZF2__news_HJ06_item HJZF2__news_HJ06_item_right wow fadeInRightBig">
+                    <ul class="clearfix HJZF2__news_HJ06_right">
+                        <volist name="list" id="li">
+                            <if condition="$li[0]['title']">
+                                <li class="class_name1">
+                                    <img src="{:getimgurl($li[0]['new_pro'])}" alt="{$li[0]['title']}"
+                                        class="img-responsive">
+                                    <a href="{:U('/new_detail',array('nid'=>$li[0]["nid"]))}">
+                                        <span class="index_sub_title">{$li[0]['title']}</span>
+                                    </a>
+                                </li>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+                <!-- right end -->
+            </div>
+
+            <div class="col-xs-12 swiper-container HJZF2__news_HJ06_bottom">
+                <ul class="clearfix  swiper-wrapper">
+                    <volist name="indexnews" id="indexnewa" offset="0" key="k" length="12">
+                        <li class="swiper-slide">
+                            <div class="title">
+                                <a href="{:U('/new_detail',array('nid'=>$indexnewa["nid"]))}">{$indexnewa['title']}</a>
+                            </div>
+                            <span>{:date('Y-m-d',$indexnewa['created'])}</span>
+                            <p>{$indexnewa['news_description']}</p>
+                        </li>
+                    </volist>
+                </ul>
+                <div class="HJZF2__news_HJ06swiper_pagination swiper-pagination"></div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

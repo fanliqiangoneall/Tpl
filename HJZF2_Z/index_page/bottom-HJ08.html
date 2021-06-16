@@ -1,0 +1,317 @@
+<!--{$pagename}-->
+<php>
+    $bottom_nav_str=explode("\\n",$data248[3]);
+    foreach($bottom_nav_str as $k=>$bottom_nav_arr){
+    $bottom_navs=explode(":",$bottom_nav_arr);
+    $bottom_nav[$k]['name']=$bottom_navs[0];
+    $bottom_nav[$k]['href']=$bottom_navs[1];
+    }
+
+    $bottom_nav_str1=explode("\\n",$data248[4]);
+    foreach($bottom_nav_str1 as $k=>$bottom_nav_str1){
+    $bottom_navs1=explode(":",$bottom_nav_str1);
+    $bottom_nav1[$k]['name']=$bottom_navs1[0];
+    $bottom_nav1[$k]['href']=$bottom_navs1[1];
+    }
+
+    $bottom_nav_str2=explode("\\n",$data248[5]);
+    foreach($bottom_nav_str2 as $k=>$bottom_nav_str2){
+    $bottom_navs2=explode(":",$bottom_nav_str2);
+    $bottom_nav2[$k]['name']=$bottom_navs2[0];
+    $bottom_nav2[$k]['href']=$bottom_navs2[1];
+    }
+
+    $bottom_nav_str3=explode("\\n",$data248[6]);
+    foreach($bottom_nav_str3 as $k=>$bottom_nav_str3){
+    $bottom_navs3=explode(":",$bottom_nav_str3);
+    $bottom_nav3[$k]['name']=$bottom_navs3[0];
+    $bottom_nav3[$k]['href']=$bottom_navs3[1];
+    }
+
+    $bottom_nav_str4=explode("\\n",$data248[7]);
+    foreach($bottom_nav_str4 as $k=>$bottom_nav_str4){
+    $bottom_navs4=explode(":",$bottom_nav_str4);
+    $bottom_nav4[$k]['name']=$bottom_navs4[0];
+    $bottom_nav4[$k]['href']=$bottom_navs4[1];
+    }
+
+    $bottom_nav_str5=explode("\\n",$data248[8]);
+    foreach($bottom_nav_str5 as $k=>$bottom_nav_str5){
+    $bottom_navs5=explode(":",$bottom_nav_str5);
+    $bottom_nav5[$k]['name']=$bottom_navs5[0];
+    $bottom_nav5[$k]['href']=$bottom_navs5[1];
+    }
+    
+</php>
+<php>
+    $arra = get_list_val($data248[25]);
+</php>
+<style>
+    .bottom_hj08 {
+        background: #{$data248[0]};
+    }
+    <if condition="$data248[27]">
+    footer.bottom_hj08{
+        background: url({:getindeximgurl($data248[27])}) no-repeat center/cover;
+    }
+    </if>
+    .bottom_hj08,
+    .bottom_hj08 a {
+        color: #{$data248[1]};
+    }
+
+    .bottom_hj08 a:hover,
+    .bottom_hj08 .tac span,
+    .bottom_hj08_ewm p {
+        color: #{$data248[2]};
+    }
+</style>
+<if condition="$data248[24]">
+    <style>
+        .bottom_hj08 .tac dt {
+            margin-left: 0;
+        }
+
+        .bottom_hj08_top .tac {
+            text-align: left !important;
+        }
+    </style>
+</if>
+<footer class="bottom_hj08">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <php>
+                    $arr = get_list_val($data248[26]);
+                </php>
+                <ul class="bottom_hj08_hjd hidden-xs hidden-sm">
+                    <volist name="arr" id="a">
+                        <li>
+                            <if condition="$a[link]">
+                                <a href="{$a[link]}">
+                            </if>
+                            <if condition="$a[img]">
+                                <img src="{$a[img]}" alt="{$a[title]}">
+                            </if>
+                            <if condition="$a[title]">
+                                <span>{$a[title]}</span>
+                            </if>
+                            <if condition="$a[link]">
+                                </a>
+                            </if>
+                        </li>
+                    </volist>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container  hidden-xs hidden-sm hidden-md">
+        <div class="row">
+            <div class="bottom_hj08_top clearfix">
+                <!-- left start -->
+                <div class="col-xs-10">
+                    <ul class="row-little">
+                        <if condition="$data248[3]">
+                            <li class="col-xs-2">
+                                <dl>
+                                    <dt><a href="{$bottom_nav[0]['href']}">{$bottom_nav[0]['name']}</a></dt>
+                                    <volist name="bottom_nav" id="nav" offset="1" key="k">
+                                        <dd> <a href="{$nav['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                                {$nav['name']}
+                                            </a></dd>
+                                    </volist>
+                                </dl>
+                            </li>
+                        </if>
+                        <if condition="$data248[4]">
+                            <li class="col-xs-2">
+                                <dl>
+                                    <dt><a href="{$bottom_nav1[0]['href']}">{$bottom_nav1[0]['name']}</a></dt>
+                                    <volist name="bottom_nav1" id="nava" offset="1" key="k">
+                                        <dd> <a href="{$nava['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                                {$nava['name']}
+                                            </a></dd>
+                                    </volist>
+                                </dl>
+                            </li>
+                        </if>
+                        <if condition="$data248[5]">
+                            <li class="col-xs-2">
+                                <dl>
+                                    <dt><a href="{$bottom_nav2[0]['href']}">{$bottom_nav2[0]['name']}</a></dt>
+                                    <volist name="bottom_nav2" id="navb" offset="1" key="k">
+                                        <dd> <a href="{$navb['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                                {$navb['name']}
+                                            </a></dd>
+                                    </volist>
+                                </dl>
+                            </li>
+                        </if>
+                        <if condition="$data248[6]">
+                            <li class="col-xs-2">
+                                <dl>
+                                    <dt><a href="{$bottom_nav3[0]['href']}">{$bottom_nav3[0]['name']}</a></dt>
+                                    <volist name="bottom_nav3" id="navc" offset="1" key="k">
+                                        <dd> <a href="{$navc['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                                {$navc['name']}
+                                            </a></dd>
+                                    </volist>
+                                </dl>
+                            </li>
+                        </if>
+                        <if condition="$data248[7]">
+                            <li class="col-xs-2 a">
+                                <dl>
+                                    <dt><a href="{$bottom_nav4[0]['href']}">{$bottom_nav4[0]['name']}</a></dt>
+                                    <volist name="bottom_nav4" id="navd" offset="1" key="k">
+                                        <dd> <a href="{$navd['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                                {$navd['name']}
+                                            </a></dd>
+                                    </volist>
+                                </dl>
+                                <if condition="$webid eq '1558'">
+                                    <ul class="bottom_hj08_icon chat_icon clearfix">
+                                        <volist name="arra" id="b">
+                                            <li>
+                                                <a href="{$b[link]}">
+                                                    <img src="{$b[img1]}" class="img-fluid">
+                                                    <span><img src="{$b[img2]}" class="img-fluid"></span>
+                                                </a>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                </if>
+                            </li>
+                        </if>
+                        <if condition="$data248[7]">
+                            <li class="col-xs-2">
+                                <dl>
+                                    <dt><a href="{$bottom_nav5[0]['href']}">{$bottom_nav5[0]['name']}</a></dt>
+                                    <volist name="bottom_nav5" id="nave" offset="1" key="k">
+                                        <dd> <a href="{$nave['href']}" class="wow fadeInUp" data-wow-delay=".{$k}s">
+                                                {$nave['name']}
+                                            </a></dd>
+                                    </volist>
+                                </dl>
+                            </li>
+                        </if>
+                    </ul>
+                </div>
+                <!-- left end -->
+                <!-- right start -->
+                <div class="col-xs-2 tac">
+                    <dl>
+                        <dt>{$data248[9]}</dt>
+                        <if condition="$data248[24]">
+                            <dd>
+                                <div class="bottom_hj08_tel"><span class="index_text"><i class="fa fa-phone"></i>{:chaifen($about['phone'],0)}</span></div>
+                                <div class="bottom_hj08_fax"><span class="index_text"><i class="fa fa-fax"></i>{:chaifen($about['fax'],0)}</span></div>
+                                <div class="bottom_hj08_whatsapp"><span><i class="fa fa-whatsapp"></i><a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}" onClick="turn_sta(8,2)" target="_blank">+86-{:chaifen($about['whatsapp'],0)}</a></span></div>
+                                <div class="bottom_hj08_email"><span><i class="fa fa-envelope"></i><a href="mailto:{:chaifen($about['email'],0)}" onClick="turn_sta(3,2)">{:chaifen($about['email'],0)}</a></span></div>
+
+                                <ul class="bottom_hj08_icon chat_icon clearfix">
+                                    <volist name="arra" id="a">
+                                        <li>
+                                            <a href="{$a[link]}">
+                                                <img src="{$a[img1]}" class="img-fluid">
+                                                <span><img src="{$a[img2]}" class="img-fluid"></span>
+                                            </a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="bottom_hj08_ewm"><img src="{:getindeximgurl($data248[11])}" alt="{$data248[10]}">
+                                    <p class="index_text">{$data248[10]}</p>
+                                </div>
+                            </dd>
+                            <else />
+                            <dd>
+                                <p>{$data248[10]}</p>
+                                <img src="{:getindeximgurl($data248[11])}" alt="{$data248[10]}">
+                                <ul class="row-little chat_icon clearfix">
+                                    <php>for($i=12,$j=15,$t=18;$i<15,$j<18,$t<21;$i=$i+1,$j=$j+1,$t=$t+1){ </php>
+
+                                            <if condition="$data248[$i]">
+                                                <li class="col-xs-4">
+                                                    <a href="{$data248[$t]}">
+                                                        <img src="{:getindeximgurl($data248[$i])}" class="img-fluid">
+                                                        <span><img src="{:getindeximgurl($data248[$j])}"
+                                                                class="img-fluid"></span>
+                                                    </a>
+                                                </li>
+                                            </if>
+                                            <php>
+                                                }
+                                            </php>
+                                </ul>
+                                <p>
+                                    <if condition="$data248[23]">
+                                        <a href="{$data248[23]}" onclick="turn_sta(3,2);">
+                                    </if>
+                                    {$data248[21]}
+                                    <if condition="$data248[23]">
+                                        </a>
+                                    </if>
+                                </p>
+                                <span>{:chaifen($about['phone'],0)}</span>
+                            </dd>
+                        </if>
+                    </dl>
+                </div>
+                <!-- right end -->
+            </div>
+
+
+        </div>
+    </div>
+    <!-- bottom start -->
+    <div class="bottom_hj08">
+        <div class="container  bottom_hj08_up">
+            <div class="row">
+                <div class="clearfix">
+                    <div class="col-xs-12 col-md-7">
+                        <php>
+                            $nowtime=date("Y",time());
+                        </php>
+                        CopyRight © {$nowtime} - {$about['company_name']} {:__('All rights reserved')}&nbsp;&nbsp;<if
+                            condition="get_txtBeiAn()"><a href="http://beian.miit.gov.cn/"
+                                target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>
+                        <a href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;
+                        <a href="{:U('/alltag','','')}">{:__('All tags')}</a>&nbsp;
+                        <if condition="C('language') eq 'cn'">
+                            <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;
+                            <if condition="$data210[15] eq ''">
+                                中环互联网<a href="https://www.one-all.com" title="常州网站建设" target="_blank">常州网站建设</a>
+                            </if>
+                            <else />
+                            <if condition="$data210[15] eq ''">
+                                Designed by
+                                <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan
+                                    Internet</a>
+                            </if>
+                        </if>
+                    </div>
+                    <php>
+                        $bottom_nav_link=explode("\\n",$data248[22]);
+                        foreach($bottom_nav_link as $k=>$bottom_nav_link){
+                        $bottom_navs6=explode(":",$bottom_nav_link);
+                        $bottom_nav6[$k]['name']=$bottom_navs6[0];
+                        $bottom_nav6[$k]['href']=$bottom_navs6[1];
+                        }
+                    </php>
+                    <div class="col-xs-12 col-md-5 tar fr">
+                        <if condition="$bottom_nav6">
+                            <volist name="bottom_nav6" id="navf" offset="1" key="k">
+                                <a href="{$navf['href']}" class="wow fadeInUp">
+                                    {$navf['name']}
+                                </a>
+                            </volist>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bottom end -->
+</footer>

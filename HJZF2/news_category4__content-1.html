@@ -1,0 +1,33 @@
+<volist empty="" name="allnewclass" id="news_left">
+    <php>
+        $a = $news_left["classid"];
+        $list['data']=get_index_news_category($a,6);
+    </php>
+    <if condition="$list['data']">
+        <div class="InsidePage--3__newCate">
+            <div class="InsidePage--3__content__newsTime">{$news_left['class_name']}</div>
+            <ul class="InsidePage--3__content__newsList">
+                <volist name="newscatelist" id="indexnews" key="h">
+                    <li class="InsidePage--3__content__newsItem wow fadeInUp">
+                        <a href="{:U('/new_detail',array('nid'=>$indexnews['nid']))}" onFocus="blur()" >
+                            <div class="titleLi">
+                                <p>-</p>
+                                <p>{$indexnews['title']}</p>
+                            </div>
+                            <div class="jiantou"><img src="__TMPL__HJZF2/img/inpage3_jiantou.png" alt=""/></div>
+                            <div class="time">
+                                <if condition="C('Language') eq 'en'">
+                                    <p>{:date('d M ',$newscatelist['created'])}</p>
+                                    <elseif condition="C('Language') eq 'rus'" />
+                                    <p>{:date('d M ',$newscatelist['created'])}</p>
+                                    <else/>
+                                    <p>{:date('m月d  ',$newscatelist['created'])}</p>
+                                </if>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </if>
+</volist>

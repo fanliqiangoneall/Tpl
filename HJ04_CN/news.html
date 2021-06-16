@@ -1,0 +1,65 @@
+<extend name="HJ04_CN:basein" />
+<block name="content">
+    <style>
+        .pageTitleActive{
+            color: #{$color};
+        }
+        .newsList:hover .newsTitle{
+            color: #{$color};
+        }
+        .newsBorder{
+            background: #{$color};
+        }
+        .newsList:hover .newsBorder{
+            width: 100%;
+        }
+    </style>
+    <div class="newsContainer">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                您的位置：&nbsp;
+                <a href="{:U('/')}">首页</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                <span class="pageTitleActive">
+                    <if condition="$data47[1] eq ''">
+                        新闻资讯
+                        <else/>
+                        {$data47[1]}
+                    </if>
+                </span>
+            </div>
+        </div>
+        <div class="pageBannerContainer">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="pageBannerImg">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </div>
+                </volist>
+                <else/>
+                <div class="pageBannerImg">
+                    <img src="{:getindeximgurl($data47[6])}" alt=""/>
+                </div>
+            </if>
+            <Include file="./Tpl/HJ04_CN/newleft.html" />
+        </div>
+        <div class="newsMainContainer">
+            <div class="container">
+                <ul class="newsContent">
+                    <volist name="allnews" id="allnews" empty="暂无内容">
+                        <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">
+                            <li class="newsList lf">
+                                <p class="newsTime">{:date('m-d',$allnews['created'])}</p>
+                                <p class="newsTitle ellipsis_two">{$allnews['title']}</p>
+                                <p class="newsDes ellipsis_three">{$allnews['news_description']}</p>
+                                <div class="newsBorder"></div>
+                            </li>
+                        </a>
+                    </volist>
+                    <div class="clear"></div>
+                    <div class="main_page">{$page}</div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,41 @@
+<extend name="HJ04:basein" />
+<block name="content">
+    <div id="wrapper">
+        <div class="pageTitleContainer">
+            <div class="pageTitle container wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s" data-wow-offset="0"  data-wow-iteration="1">
+                Your location: &nbsp;
+                <a href="{:U('/')}">Home</a>&nbsp;&nbsp;
+                <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+                    <span class="pageTitleActive">
+                       404
+                    </span>
+            </div>
+        </div>
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[8])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page_nei_main container" id="main-content-wrapper">
+            <if condition="$data47[39] neq ''">
+                <Include file="./Tpl/HJ04_CN/left02.html" />
+                <else/>
+                <section class="main-content-left">
+                    <Include file="./Tpl/HJ04/left.html" />
+                </section>
+            </if>
+
+            <section <if condition="$data47[39] neq ''">class="proMainContainer02"<else/>class="main-content-right rt"</if>>
+                    <div class="page_RightMain">
+                        <div class="page_Main" style="text-align:center;"><a href="{:U('/')}"><img src="__TMPL__HJ04/img/404.gif" border="0" alt="404" /></a></div>
+                        <div style="clear:both;height: 50px;"></div>
+                    </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

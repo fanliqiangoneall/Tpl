@@ -1,0 +1,152 @@
+<!--{$pagename}-->
+<style>
+.page_Title {
+    width: 243px;
+    height: 87px;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    background: url({:getindeximgurl($data9[1])}) no-repeat;
+}
+
+.index_pro_head {
+    width: 100%;
+    margin-top: 26px;
+    text-align: left;
+    height: 44px;
+    background: url({:getindeximgurl($data9[7])}) left bottom no-repeat;
+    font-weight: bold;
+    font-size: 19px;
+    color: #333333;
+    line-height: 37px;
+}
+</style>
+<link href="__TMPL__demo1/css/products.css" rel="stylesheet">
+<div id="index_products_animate_3">
+<div class="index_products_Searchbg">
+  <div class="index_products_KSearch">
+    <div class="index_products_Search">
+    <script>
+	function CheckForm1(theForm)
+    {
+        if (theForm.keywords.value=="请输入关键词...")
+        {
+            alert('请输入产品关键词!');
+            theForm.keywords.focus();
+            return false;
+        }
+        return true; 
+    }
+    function OnFocusFun1(element,elementvalue)
+                {
+                    if(element.value==elementvalue)
+                    {
+                        element.value="";
+                        element.style.color="#b1b1b1";
+                    }else{
+					
+						element.style.color="#000";
+					}
+                }
+                //离开输入框时触发事件
+                function OnBlurFun1(element,elementvalue)
+                {
+                    if(element.value==""||element.value.replace(/\s/g,"")=="")
+                    {
+                        element.value=elementvalue;    
+                        element.style.color="#b1b1b1";
+                    }else{
+				
+						element.style.color="#000";
+					}
+                }
+    </script>
+    <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm1(this);">
+      <ul>
+        <li style="width:930px;"><if condition="$friend_linktop neq ''">
+           <div style="float:left; color:#595757; line-height:31px;">热门关键词：</div>
+        <volist name="friend_linktop" id="friend_link_top">
+          <if condition="$friend_link_top['link_title'] neq ''" >
+            <div style="float:left; margin-right:10px;"><a target="_new" href="{$friend_link_top['link_url']}">{$friend_link_top['link_title']}</a></div>
+          </if>
+        </volist></if>
+        </li>
+        <li style="width:241px; height:29px; border:1px solid #dedcdb; float:right;">
+        <div style="width:180px; height:16px; float:left; margin-left:9px; border-right:1px solid #dedcdb; margin-top:6px; line-height:16px;"><input type="text" name="keywords" value="请输入关键词..."  onfocus="OnFocusFun1(this,'请输入关键词...')" onblur="OnBlurFun1(this,'请输入关键词...')" style="color:#b1b1b1"/></div>
+        <div style="margin-top:5px;"><input type="submit" value="搜索" class="index_products_searchbtn" style="border:0"/></div>
+        </li>
+      </ul>
+     </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="index_products_indexpro">
+    <div id="index_products_animate" style="display:none;">
+    	<div class="index_products_title"><span>{$data9[4]}</span>&nbsp;<span><img src="__TMPL__demo1/img/round.jpg" style="vertical-align:middle;"></span>&nbsp;{$data9[5]}</div>
+        <div class="index_products_title2">{$data9[6]}</div>
+    </div>
+    <div id="index_products_animate_4" style="display:none;">
+    <div class="index_products_kb"><img src="{:getindeximgurl($data9[0])}" border="0" /></div>
+    </div>
+    <div class="index_products_content">
+        <div id="index_products_animate_1" style="display:none;">
+        <div class="Page_leftclass">
+            <div class="page_Title">{$data9[2]}<br /><span style="font-size:14px; font-weight:normal; text-transform:uppercase;">{$data9[3]}</span></div>
+            <div class="page_proClass">
+               <volist name="allclass" id="allclass1">
+                   <div class="left_class"><a href="{:U('/product_category','','')}/{:getprocatename($allclass1['pcid'])}">{$allclass1['class_name']}</a></div>
+                   <div style="margin-bottom:12px;">
+                   <volist empty="" name="allclass1['childs']" id="allclass_two">
+                      <div class="left_class1"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_two['pcid'])}">{$allclass_two['class_name']}</a></div>
+                   </volist>
+                   </div>
+                </volist>
+            </div>
+        </div>
+        </div>
+        <div id="index_products_animate_2" style="display:none;">
+        <div class="index_products_right">
+          <div class="index_pro_head"><span style="float:right; font-size:14px; color:#333333;">咨询热线：<font style="font-size:17px; color:#{$color};">{:chaifen($about['phone'],0)}</font></span><span>{$data9[4]}</span>热销产品</div>
+          <div class="index_pro_list">
+          <volist empty="" name="indexpro" id="indexpro" offset="0" length="9">
+              <div class="index_products_pagepro">
+                  <div class="index_products_proimg"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getpcimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" /></a></div>
+                  <div class="index_products_proname"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div> 
+              </div>
+              <if condition="($key+1)%3 neq 0">
+                 <div style="width:39px; height:105px; float:left;"></div>
+              <else/>
+                 <div style="clear:both"></div>
+              </if>
+          </volist>
+          </div>
+        </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+jQuery('#index_products_animate_3').removeClass().addClass('fadeInUp');
+
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>1){	
+	$('#index_products_animate').show();
+	$('#index_products_animate').removeClass().addClass('fadeInDown');
+	}
+	if(scrollTop>100){
+	$('#index_products_animate_4').show();
+	$('#index_products_animate_4').removeClass().addClass('fadeInLeft');
+	$('#index_products_animate_1').show();
+	$('#index_products_animate_1').removeClass().addClass('fadeInLeft');
+	$('#index_products_animate_2').show();
+	$('#index_products_animate_2').removeClass().addClass('fadeInRight');
+	}
+
+});
+</script>

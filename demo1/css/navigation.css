@@ -1,0 +1,142 @@
+/*logo*/
+.index_navigation_headbg{min-width:1190px; max-width:1920px; margin:0 auto; height:42px; border-bottom:2px solid #eaeaea; overflow:hidden;}
+.index_navigation_head{width:1190px; margin:0 auto; height:42px;}
+.index_navigation_head ul li{ float:left; font-size:14px; color:#727272; line-height:42px;}
+.index_navigation_head ul li a{font-size:14px; color:#727272;}
+
+.index_navigation_Top{ width:1190px; margin:0 auto; height:113px;}
+.index_navigation_Logo{ width:650px; float:left; height:113px;}
+.index_navigation_Logo img{width:229px; height:34px; border:none;}
+.index_navigation_Logo ul li{ float:left; font-size:16px; color:#333333; line-height:30px;}
+
+.index_navigation_HeadRight{ width:244px; float:right; margin-top:30px;}
+.index_navigation_topmail{background:url(../img/top_tel.jpg) left no-repeat; text-align:right; font-size:14px; color:#424242; line-height:25px;}
+.index_navigation_page_Menubg{min-width:1190px; max-width:1920px; margin:0 auto; height:49px; background:url(../img/menu_bg.jpg) repeat-x;}
+.index_navigation_page_Menu{width:1190px; margin:auto; position:relative;}
+.index_navigation_page_Menu ul li{ float:left; list-style:none; height:49px; padding:0 22px; position:relative;}
+.index_navigation_page_Menu ul li h2{ font-size:15px; color:#ffffff; line-height:49px; font-weight:normal;}
+.index_navigation_page_Menu ul li:hover h2{font-size:15px; color:#ffffff; text-decoration:underline; font-weight:normal; line-height:49px;}
+.index_navigation_page_Menu ul li a:hover{ text-decoration:none;}
+
+.index_navigation_page_Menu ul li#menu8{ background:url(../img/parent2.png) 95px no-repeat}
+.index_navigation_page_Menu ul li#menu8:hover h2{background:url(../img/parent2.png) 95px no-repeat;}
+
+.index_navigation_page_Menu .index_navigation_search_list{ position:absolute; background:#fff; top:49px; width:248px; height:28px; border:1px solid #9f9f9d; font-size:15px; text-align:center; z-index:9999}
+
+
+.index_navigation_page_Menu ul li ul li{
+text-align:center;
+display: block;
+color: #333;
+padding: 10px 20px !important;
+height:auto !important;
+border-bottom:1px dashed #ccc;
+text-decoration: none;
+}
+.index_navigation_page_Menu ul li ul li a{ font-weight:normal; line-height:20px;color: #333;}
+* html .index_navigation_page_Menu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block;
+}
+
+.index_navigation_page_Menu ul li a:link, .index_navigation_page_Menu ul li a:visited{
+color:#333;
+}
+
+.index_navigation_page_Menu ul li a.selected,.index_navigation_page_Menu ul li a:hover{ /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+color:#333;
+}
+
+.index_navigation_page_Menu ul li ul li a.selected h3,.index_navigation_page_Menu ul li  ul li a:hover h3{
+color: #333;
+text-decoration:underline
+}
+	
+/*1st sub level menu*/
+.index_navigation_page_Menu ul li ul{
+position: absolute;
+left: -15px !important;
+display: none; /*collapse all sub menus to begin with*/
+visibility: hidden;
+padding:0;
+margin:0;
+width:150px !important;
+background:#FFFFFF;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.index_navigation_page_Menu ul li ul li{
+display: list-item;
+float: none;
+}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.index_navigation_page_Menu ul li ul li ul{
+top: 0;
+}
+
+/* Sub level menu links style */
+.index_navigation_page_Menu ul li ul li a{
+font:"微软雅黑";
+font-weight:normal;
+font-size:14px;
+padding: 10px;
+margin: 0;
+border-top-width: 0;
+}
+
+
+/* Holly Hack for IE \*/
+* html .index_navigation_page_Menu{height: 1%;} /*Holly Hack for IE7 and below*/
+
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass{
+position: absolute;
+top: 12px;
+right: 7px;
+}
+
+.rightarrowclass{
+position: absolute;
+top: 6px;
+right: 5px;
+}
+
+/* ######### CSS for shadow added to sub menus  ######### */
+
+.ddshadow{ /*shadow for NON CSS3 capable browsers*/
+position: absolute;
+left: 0;
+top: 0;
+width: 0;
+height: 0;
+background: silver;
+}
+
+.toplevelshadow{ /*shadow opacity for NON CSS3 capable browsers. Doesn't work in IE*/
+opacity: 0.8;
+}
+
+
+#index_navigation_animate,#index_navigation_animate_1,#index_navigation_animate_2{-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	-webkit-animation-duration: 1s;
+	-webkit-animation-delay: .2s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-duration: 1s;
+	-moz-animation-delay: .2s;
+	-moz-animation-timing-function: ease;
+	-moz-animation-fill-mode: both;
+	-ms-animation-duration: 1s;
+	-ms-animation-delay: .2s;
+	-ms-animation-timing-function: ease;
+	-ms-animation-fill-mode: both;
+	animation-duration: 1s;
+	animation-delay: .2s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;}

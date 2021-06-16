@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<php>
+    if($data41[5]==''){
+    $data41[5] = 90;
+    }
+    if($data41[6]==''){
+    $data41[6] = 90;
+    }
+</php>
+<style>
+    #aboutus2{
+        padding-top:{$data41[5]}px;padding-bottom:{$data41[6]}px;
+    }
+    .aboutus__content--right__more a,.aboutus2-prev:hover,.aboutus2-next:hover{
+        background: #{$color};
+    }
+</style>
+
+
+
+<!--aboutus2 start-->
+<div id="aboutus2" class="module">
+        <div class="aboutus__content--left lf">
+            <div class="aboutus__picbox">
+                <div class="swiper-container aboutus2-swiper">
+                    <div class="swiper-wrapper">
+                    	<if condition="$data41[7]">
+                            <div class="swiper-slide aboutus2-slide">
+                            <a href="javascript:void(0);" id="adv_video" data-video="{$data41[8]}"><img src="{:getindeximgurl($data41[7])}" /></a>
+                            </div>
+                        </if>
+                        <if condition="$data41[2]">
+                            <div class="swiper-slide aboutus2-slide">
+                                <img src="{:getindeximgurl($data41[2])}" alt=""/>
+                            </div>
+                        </if>
+                        <if condition="$data41[3]">
+                            <div class="swiper-slide aboutus2-slide">
+                                <img src="{:getindeximgurl($data41[3])}" alt=""/>
+                            </div>
+                        </if>
+                        <if condition="$data41[4]">
+                            <div class="swiper-slide aboutus2-slide">
+                                <img src="{:getindeximgurl($data41[4])}" alt=""/>
+                            </div>
+                        </if>
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next aboutus2-next"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-button-prev aboutus2-prev"><i class="fa fa-angle-left"></i></div>
+            </div>
+        </div>
+        <div class="aboutus__content--right rt">
+            <div class="aboutus__content--right__box">
+                    <h3>{$data[0]} <span>{$data[1]}</span></h3>
+                    <div class="aboutus__content--right__box__text">{:HtmlEncode(subtxt($company_info['description'],100))}</div>
+                <div class="aboutus__content--right__more"><a href="{:U('/aboutus')}">更多详情 <i class="fa fa-long-arrow-right "></i></a></div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+
+</div>
+<!--aboutus2 end-->

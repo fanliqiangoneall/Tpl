@@ -1,0 +1,63 @@
+<extend name="WH01:basein" />
+<block name="content">
+    <style>
+        .main_page .current{
+            padding:3px 8px; background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+    </style>
+    <Include file="./Tpl/WH01/in_banner.html" />
+<div class="r_mbx"> <Include file="./Tpl/WH01/bread.html" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/product')}">Products</a>&nbsp;>&nbsp;{$type}</div>
+
+<div class="page_nei_main">
+<Include file="./Tpl/WH01/left.html" />
+<div class="page_RightMain">
+    <php>
+        $hot = "Hot Products";
+        if($type==$hot and $data9[3]){
+        $type=$data9[3];
+        }
+
+    </php>
+    <div class="page_class_head_1">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01/img/protitle_bg.png" alt="protitle_bg.png"><span>{$type}</span><img src="__TMPL__WH01/img/protitle_bg2.png">
+        </div>
+    </div>
+    <div class="page_Main">
+       <volist empty="" name="pro" id="pro" key="k">
+           <div class="asd">
+               <div class="img"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></div>
+               <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a></div>
+               <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                   <div class="rsp"></div>
+                   <div class="text" style=" top:0px;">
+                                                               <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+<!--孙改-->
+                       <div class="rsp_more" style=" position:relative; top:68px;">{$pro['pro_name']}</div>
+                       </div>
+                   </div>
+               </a>
+           </div>
+           <if condition="$data1[4]">
+               <if condition="$k%3 neq 0">
+                   <li style="width:39px; height:50px; float:left;list-style: none"></li>
+                   <else/>
+                   <li class="clear" style="height: 18px;"></li>
+               </if>
+               <else/>
+               <if condition="$k%4 neq 0">
+                   <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                   <else/>
+                   <li class="clear" style="height: 18px;"></li>
+               </if>
+           </if>
+        </volist>  
+       <div class="clear"></div>
+       <div class="main_page">{$page}</div>
+    </div>
+    <div style="clear:both"></div>
+  </div>  
+</div>
+
+</block>

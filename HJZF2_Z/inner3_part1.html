@@ -1,0 +1,42 @@
+<style>
+    .inner-3__cateprofile__part5{width: 100%;margin: auto;padding-top: 20px;}
+    .cateprofile__part5box{width: calc(50% - 10px);padding:200px 50px 280px;text-align: center;}
+    .cateprofile__part5--leftname{font-size: 0.4rem;line-height: 0.6rem;color: #ffffff;font-weight: bold;margin-bottom: 100px;text-transform: uppercase}
+    .cateprofile__part5--more{
+        position:relative;overflow:hidden;display: inline-block;padding: 10px 50px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;background: #{$inner_data[1]};}
+    .cateprofile__part5--more:before{content: '';display: block;width: 320px;height: 200px;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;position: absolute;
+        top: 0;left: 0; z-index: 1;transform: scale(0);-moz-transform: scale(0);-webkit-transform: scale(0);transition: 0.6s;background: #fff;}
+    .cateprofile__part5--left{float: left;}
+    .cateprofile__part5--right{float: right;}
+    .cateprofile__part5--more:hover:before{transform: scale(1.4);-moz-transform: scale(1.4); -webkit-transform: scale(1.4);transition: 0.6s;}
+    .cateprofile__part5--more span{color: #fff;font-size: 0.16rem;line-height: 0.24rem;text-transform: uppercase;position: relative;z-index: 2;}
+    .cateprofile__part5--more:hover span{
+        color: #{$inner_data[1]};
+    }
+    @media (max-width:768px) {
+        .cateprofile__part5box{width: 100%;float: none;padding:100px 20px 140px;}
+        .cateprofile__part5box:first-child{margin-bottom: 20px;}
+    }
+</style>
+<div class="inner-3__cateprofile__part5" data-id="{$procate['class_name']}">
+    <div class="cateprofile__part5box cateprofile__part5--left wow fadeInLeft" data-wow-delay="0" data-wow-duration="1s">
+        <div class="cateprofile__part5--leftname">{$procate['class_name']}</div>
+        <a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}" class="cateprofile__part5--more"><span>show more</span></a>
+    </div>
+    <div class="cateprofile__part5box cateprofile__part5--right wow fadeInRight" data-wow-delay="0" data-wow-duration="1s">
+        <div class="cateprofile__part5--leftname">
+			<if condition="$inner_data[14]">
+				{$inner_data[14]}
+				<else/>
+			More products
+			</if>
+		</div>
+		<if condition="$inner_data[15]">
+			<a href="{$inner_data[15]}" class="cateprofile__part5--more">
+				<else/>
+			<a href="{:U('/product')}" class="cateprofile__part5--more">
+		</if>
+			<span>show more</span></a>
+    </div>
+    <div class="clear"></div>
+</div>

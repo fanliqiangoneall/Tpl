@@ -1,0 +1,38 @@
+<!--{$pagename}-->
+<if condition="$data95[0]">
+    <style>
+        .new_hjzf_aboutus2-2HJ02 .HJ02-aboutus2-left{
+            background: url({:getindeximgurl($data95[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<if condition="$data95[1]">
+    <style>
+        .new_hjzf_aboutus2-2HJ02 .HJ02-aboutus2-right{
+            background: url({:getindeximgurl($data95[1])}) repeat center;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_aboutus2-2HJ02 .HJ02-aboutus2-content a{
+        background: #{$color};
+    }
+</style>
+
+
+<div id="HJ02-aboutus2">
+    <div class="HJ02-aboutus2-left ">
+
+    </div>
+    <div class="HJ02-aboutus2-right ">
+        <div class="HJ02-aboutus2-content" id="HJ02-aboutus2-content">
+            <h3>{$data95[2]}</h3>
+            <div class="HJ02-abus_content">
+                {:HtmlEncode(subtxt($company_info['description'],420))}&nbsp;&nbsp;
+            </div>
+            <a href="{:U('/aboutus')}">Read More</a>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,37 @@
+<extend name="demo3:base" />
+<block name="content">
+    <Include file="./Tpl/demo3/in_head.html" />
+
+    <div id="">
+        <if condition="$banner neq ''">
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+            </volist>
+            <else/>
+            <div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+        </if>
+    </div>
+    <div class="r_mbx"><img src="__TMPL__demo3/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;资料下载&nbsp;>&nbsp;{$download['title']}</div>
+    <div class="clear"></div>
+<!--代码块结�?-->
+
+
+<!--代码块开�?-->
+    <div style="width: 1190px;margin:0 auto">
+        <Include file="./Tpl/demo3/leftdownload.html" />
+            <div class="page_Main">
+                <div class="page_RightTitle"><span>{$download['title']}</span></div>
+                <div style="margin-top: 45px;">
+                    <div class="click_to_download"><a href="{:getimgurl($download['linkurl'])}" target="_blank">{$download['title']}</a><span class="right_time"><a href="{:getimgurl($download['linkurl'])}" target="_blank">下载</a></span></div>
+                </div>
+
+                <div style="clear:both"></div>
+            </div>
+
+        <div style="clear:both"></div>
+    </div>
+    <Include file="./Tpl/demo3/index_page/bottom.html" />
+    <div style="clear:both;"></div>
+    <Include file="./Tpl/demo3/index_page/bottom-2.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-3.html" /><div style="clear:both;"></div><Include file="./Tpl/demo3/index_page/bottom-4.html" /><Include file="./Tpl/demo3/index_page/bottom-5.html" />
+<!--代码块结�?-->
+</block>

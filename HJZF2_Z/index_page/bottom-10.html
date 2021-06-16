@@ -1,0 +1,64 @@
+<!--{$pagename}-->
+<php>
+    if($data177[0]){
+    $bg_img=getindeximgurl($data177[0]);
+}
+if($data177[2]){
+$bg_img2=getindeximgurl($data177[2]);
+}
+$bcolor=explode(",",$data177[3]);
+$bcolor_left = $bcolor[0];
+$bcolor_right = $bcolor[1];
+</php>
+<style>
+.hjzf_bottom-12{
+    background: url({$bg_img}) no-repeat center bottom/contain #{$data177[1]} ;
+}
+.hjzf_bottom-12 .footerBat {
+    background: url({$bg_img2}) center top no-repeat;
+}
+.footerBatMask {
+    background: linear-gradient(-45deg,#{$bcolor_left} 10%,#{$bcolor_right} 90%);
+}
+.footerBat_right  ul li.bot-12_color,.footerBat_right  ul li.bot-12_color a{
+    color: #{$data177[13]};
+}
+@media(max-width: 991px) {
+    .hjzf_bottom-12 .footerBat{
+        background-image: none;
+    }
+}
+</style>
+<section class="hjzf_bottom-12">
+    <div class="container">
+        <div class="row">
+            <div class="hjzf_bottom-12_content">
+                <div class="footerBat wow zoomInDown flex">
+                    <div class="footerBat_left col-xs-12 col-lg-4 col-lg-offset-1">
+                        <if condition="$data177[4]"><img src="{:getindeximgurl($data177[4])}" alt=""/></if>
+                    </div>
+                    <div class="footerBat_right col-xs-12 col-lg-7">
+                        <ul class="flex">
+                            <li class="bot-12_color index_text"><if condition="$data177[5]"><img src="{:getindeximgurl($data177[5])}" alt="{$data177[9]}"/></if>{$data177[9]} <span>{:chaifen($about['phone'],0)}</span></li>
+                            <li class="bot-12_color index_text"><if condition="$data177[6]"><img src="{:getindeximgurl($data177[6])}" alt="{$data177[10]}"/></if>{$data177[10]}  <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,2);" >{:chaifen($about['email'],0)}</a></li>
+                            <li class="bot-12_color index_text"><if condition="$data177[7]"><img src="{:getindeximgurl($data177[7])}" alt="{$data177[11]}"/></if>{$data177[11]} <span>{:chaifen($about['mobile'],0)}</span></li>
+                            <li class="bot-12_color index_text"><if condition="$data177[8]"><img src="{:getindeximgurl($data177[8])}" alt="{$data177[12]}"/></if><span class="firs">{$data177[12]}</span> <span>{$about['address']}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footerBatMask wow zoomInDown"></div>
+                <span class="ewm clearfix">
+                    <php>
+                        $arr = get_list_val($data177[14]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <span>
+                        <img src="{$a[img]}">
+                        <p>{$a[info]}</p>
+                        </span>
+                    </volist>
+                </span>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,132 @@
+<extend name="Wap2:base" />
+<block name="content">
+<php>
+if(!$inner_data[0]){
+	$swiper_pagination_bullet_width=40;
+}else{
+	$swiper_pagination_bullet_width=$inner_data[0];	
+}
+</php>
+<style>
+.product_detail{ padding:10px;}
+.swiper-slide img{ width:100%;}
+.product_detail .swiper-pagination-bullet img,.product_detail .swiper-pagination-bullet{ 
+width:{$swiper_pagination_bullet_width}px;
+}
+.product_detail__proname{ font-size:18px; color:#333; font-weight:bold; padding:10px; text-align:center;}
+.product_detail__Breadcrumbs, .product_detail__Breadcrumbs a{ text-decoration:none; color:#333; font-size:14px;}
+.product_detail__submit_title,.product_detail__product_detail_editor_content{width: 100%;height: auto;text-align: left;background: #fff;float: left;color: #333;font-size: 16px;line-height: 27px;}
+.product_detail__swiper-container{ margin:0 -10px; overflow:hidden;}
+.product_detail_editor_content{margin-bottom: 20px;overflow-x: auto;}
+.product_detail_editor_content img{max-width: 100%; height: auto !important;}
+</style>
+<link rel="stylesheet" href="__TMPL__/Wap2/css/swiper.min.css">
+    <div class="product_detail">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+                <div class="product_detail__Breadcrumbs">
+                    <div class="product_detail__Breadcrumbs_down">
+                        <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>
+                        &nbsp;>>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a>&nbsp;>>&nbsp;<span class="current">{$product['pro_name']}</span>
+                    </div>
+                </div>
+<article>
+<!--banner-->
+  	<h1 class="product_detail__proname">{$product['pro_name']}</h1>
+    <div class="product_detail__swiper-container">
+        <div class="swiper-wrapper">
+            <if condition="$product['main_img']">
+              <div class="swiper-slide">
+                <img  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if> src="{:getmainimgurl($product['main_img'])}"/>
+              </div>
+              
+        <volist name="proimg" id="proimg">
+            <div class="swiper-slide">
+                <img src="{:getfimgurl($proimg['field_auxiliary_fid'])}"   <if condition="$proimg['field_auxiliary_title'] eq ''">alt="{$product['pro_name']}"<else/>alt="{$proimg['field_auxiliary_title']}"</if>/>
+            </div>
+        </volist>      
+              
+            </if>	
+        </div>
+    <div class="product_detail__swiper-pagination"></div>
+    </div>
+    <!--banner--> 
+    <!--内容-->            
+    <div class="product_detail_editor_content">
+    <php>
+        if($product['is_pc_to_mobile']==1){
+        	$html=str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile']));
+        }else{
+       		$html=str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile_mobile']));
+        }
+     </php>
+        {$html}
+        <div class="clear"></div>
+    </div>
+	<!--内容--> 
+</article>                            
+                            <section>
+                                <!--询盘-->
+                                <div>
+                                    <div class="product_detail__submit_title"><span>{:__('Immediately consult')}</span></div>
+                                    <div style="clear:both;"></div>
+                                    <Include file="./Tpl/Wap2/submit.html" />
+                                </div>
+                                <div style="clear:both;"></div>
+                            </section>
+                            
+                            <section>
+                                <if condition="get_productkeyword($product['pid']) neq ''">
+                                    <include file="Wap2:keywords" />
+                                </if>
+                                
+
+                                <include file="Wap2:relationinfo" />
+                                <include file="Wap2:relationnew" />
+                                <include file="Wap2:otherpro" />
+                                <include file="Wap2:prohot" />
+                            </section>
+                            
+                            
+
+                        </div>
+                        <div style="clear:both;height: 30px;"></div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+<script>
+require(['jquery', 'swiper'], function ($,Swiper){
+	var imgs=[];
+	$(".swiper-slide img").each(function(index, element) {
+        imgs.push($(this).attr("src"));
+    });
+    var swiper = new Swiper('.product_detail__swiper-container', {
+      pagination: {
+        el: '.product_detail__swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + '<img src="'+imgs[index]+'"/>' + '</span>';
+        },
+      },
+    });	
+});
+</script>
+
+
+
+</block>

@@ -1,0 +1,48 @@
+<!--{$pagename}-->
+<style>
+
+</style>
+
+
+<section class="hjzf_produtCategory index_pd">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="hjzf_produtCategory__title index_title pb40">{$data185[2]}</h2>
+                </div>
+                <div class="hjzf_produtCategory__list">
+                    <volist empty="" name="allclass" id="allclass_index">
+                        <if condition="($key+1)%4 eq 0">
+                            <div class="hjzf_produtCategory__item item_four">
+                                <else/>
+                                <div class="hjzf_produtCategory__item">
+                        </if>
+                            <div class="hjzf_produtCategory__itemBox">
+                                <a href="">
+                                    <div class="item_img"><img src="{:getimgurl($allclass_index['fid'])}" alt="{$allclass_index['class_name']}"/></div>
+                                    <div class="item_name index_sub_title">{$allclass_index['class_name']}</div>
+                                    <div class="item_desc index_text">{$allclass_index['readme']}</div>
+                                    <php>
+                                        $prolist=get_index_products_category($allclass_index['pcid'],5);
+                                    </php>
+                                    <if condition="$prolist neq ''">
+                                        <div class="item_prolist">
+                                            <volist empty="" name="prolist" id="pro_index">
+                                                <div class="index_sub_title">{$pro_index['pro_name']}</div>
+                                            </volist>
+                                        </div>
+                                    </if>
+                                    <div class="item_more"><span>{:__('Read More')}</span></div>
+                                </a>
+                            </div>
+                        </div>
+                    </volist>
+                <div class="clear"></div>
+                </div>
+                <div class="hjzf_produtCategory__down flex" style="background: url({:getindeximgurl($data185[3])}) no-repeat center/cover;">
+                    <p class="index_title">{:HtmlEncode($data185[4])}</p>
+                    <div class="index_sub_title"><i class="fa fa-envelope"></i><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,5);">{:chaifen($about['email'],0)}</a></div>
+                </div>
+            </div>
+        </div>
+</section>

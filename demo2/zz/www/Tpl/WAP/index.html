@@ -1,0 +1,82 @@
+<extend name="WAP:base" />
+<block name="content">
+<script>
+$(document).ready(function () {
+	$('#menu1').removeClass().addClass("menuon1");
+});
+</script>
+<link href="__TMPL__WAP/css/flexslider.css" rel="stylesheet" type="text/css">
+<script src="__TMPL__WAP/scripts/jquery.flexslider-min.js" ></script>
+<script src="__TMPL__WAP/scripts/custom.js" ></script>
+<div class="flexslider" style="width:100%;">
+  <ul class="slides">
+	<li class="ui-block-a"><a href="{:U('/aboutus')}"><img src="__TMPL__WAP/img/banner1.jpg" width="100%" border="0"/></a></li>
+	<li class="ui-block-a"><a href="{:U('/')}"><img src="__TMPL__WAP/img/banner2.jpg" width="100%" border="0"/></a></li>
+	<li class="ui-block-a"><a href="{:U('/')}"><img src="__TMPL__WAP/img/banner3.jpg" width="100%" border="0"/></a></li>
+  </ul>
+</div>
+<div data-role="content" style="padding-top:16px;">
+  <div class="indexlm">
+    <div class="lmtitle"><a data-ajax="false" href="{:U('/product')}">Product Categories</a></div>
+    <div style="font-size: 17px;color: #7f7f7f;text-align: center;">Glass Bottles, Jars & Containers Manufacturer</div> 
+  </div>
+  <div style="width: 96%margin: auto;margin-top: 20px;margin-bottom: 20px;">
+    <div class="index_flcon">
+        <li>
+           <div style="text-align: center;height: 75px;"><a href="{:U('/product_category/GLASS-BOTTLE')}"><img src="__TMPL__demo2/img/fl1.png" style="height: 60px"></a></div>
+           <div class="index_flcon2"><a href="{:U('/product_category/GLASS-BOTTLE')}">GLASS BOTTLE</a></div>
+        </li>
+        <li>
+           <div style="text-align: center;height: 75px;"><a href="{:U('/product_category/CERAMIC%20BOTTLE')}"><img src="__TMPL__demo2/img/fl2.png"  style="height: 60px"></a></div>
+           <div class="index_flcon2"><a href="{:U('/product_category/CERAMIC%20BOTTLE')}">CERAMICS  BOTTLE</a></div>
+        </li>
+        <li>
+           <div style="text-align: center;height: 75px;"><a href="{:U('/product_category/PLASTIC')}"><img src="__TMPL__demo2/img/fl3.png" style="height: 60px"></a></div>
+           <div class="index_flcon2"><a href="{:U('/product_category/PLASTIC')}">PET  BOTTLE</a></div>
+        </li>
+        <div style="clear: both;"></div>
+     </div>
+  </div>
+  <div class="indexlm">
+    <div class="lmtitle"><a data-ajax="false" href="{:U('/product')}">Products</a></div>
+  </div>
+  <div class="indexclass" id="class">
+    <ul>
+    <volist name="indexpro" id="indexpro" key="k" offset="0" length="6">
+        <li><a data-ajax="false" href="{:U('/product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getpcimgurl($indexpro['main_img'])}" width="100%" style="display:block;" alt="{$indexpro['pro_name']}">{$indexpro['pro_name']}</a></li>
+        <if condition="$k%3 neq 0">
+        <div style="width:2%; float:left; height:10px; background:none;"></div>
+        </if>
+    </volist>
+    </ul>
+    <div style="clear:both;"></div>
+  </div>
+  <div style="width:120px; margin:auto; margin-top:20px; padding:8px 20px; border:1px solid #333; text-align:center;border-radius: 15px;"><a data-ajax="false" href="{:U('/product')}" onFocus="blur()" style="color:#333; font-size:14px;">Read More</a></div>
+  <div class="indexlm_blank"></div>
+  <div style="clear:both;"></div>
+  <div style="width: 100%;background: url(__TMPL__WAP/img/aboutusbg.jpg) no-repeat;">
+    <div class="indexlm">
+        <div class="lmtitle2">About us</div>
+    </div>
+  <div class="page_body">{:htmlspecialchars_decode(subtxt($company_info['description'],430,'utf-8'))}</div>
+  <div style="width:120px;  margin:auto; margin-top:20px; padding:8px 20px; border:1px solid #333; text-align:center;border-radius: 15px;"><a data-ajax="false" href="{:U('/aboutus')}" onFocus="blur()" style="color:#333; font-size:14px; text-transform:uppercase;">Read more</a></div>
+  <div style="clear:both; height:25px;"></div>
+  </div>
+  <div class="indexlm2">
+      <div class="indexlm">
+          <div class="lmtitle">news center</div>
+      </div>
+      <div class="newslist">
+        <ul>
+          <volist empty="" name="news[1769]" id="news" offset="0" length="5">
+              <li><a href="{:U('/new_detail',array('nid'=>$news["nid"]))}" title="{$news['title']}"><span style="font-size:18px; color:#343535;">{$news['title']}</span><br />{:date('M d, Y',$news['created'])}<br /><span style="font-size:14px; color:#333333;">{:subtxt($news['news_description'],100)}</span></a></li>
+          </volist>
+        </ul>
+      </div>
+      <div style="clear:both;"></div>
+      <div style="width:120px; margin:auto; margin-top:20px; padding:8px 20px; border:1px solid #aeaeae; text-align:center;border-radius: 15px;"><a data-ajax="false" href="{:U('/new_category/classid/1692')}" onFocus="blur()" style="color:#333; font-size:14px; text-transform:uppercase;">Read more</a></div>
+    </div>
+</div>
+
+</block>
+

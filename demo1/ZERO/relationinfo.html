@@ -1,0 +1,20 @@
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+<div class="pro_title">相关产品</div>
+<div class="page_RightMain" style="padding-top:15px; border:none; width:700px;">
+<volist empty="" id="labelprodlist" name="labelprodlist" key="k">
+    <div class="page_pro">
+        <div class="page_proimg"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getpcimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> /></a></div>
+        <div class="page_proname"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">{$labelprodlist['pro_name']}</a></div>
+    </div> 
+    <if condition="$k%2 neq 0">
+        <div style="width:48px; float:left; height:10px; background:none;"></div>
+    <else/>
+        <div style="clear:both; overflow:hidden; height:0px;"></div>
+    </if>
+</volist>
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</if>

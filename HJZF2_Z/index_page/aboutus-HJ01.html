@@ -1,0 +1,95 @@
+<!--{$pagename}-->
+<if condition="$data54[0]">
+    <style>
+        .HJZF_z__aboutus-HJ01{
+            background: url({:getindeximgurl($data54[0])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .aboutus-HJ01-page .swiper-pagination-bullet{
+        background: #{$color};
+    }
+    .aboutus-HJ01__changeItem .swiper-slide-thumb-active{
+        background-color: #{$data54[1]};
+    }
+    .aboutus-HJ01__changeItem .swiper-slide-thumb-active .aboutus-HJ01__itemCont{
+        color: #{$data54[19]};
+    }
+    .aboutus-HJ01-textContent_title,.aboutus-HJ01-textContent_Text{
+        color: #{$data54[21]};
+    }
+    .aboutus-HJ01-mainTitle{
+        color: #{$data54[20]};
+    }
+</style>
+<section class="HJZF_z__aboutus-HJ01 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6 aboutus-HJ01-textContent">
+                <div class="aboutus-HJ01-mainTitle index_title pb40">{$data54[2]}</div>
+                <div class="swiper-container aboutus-HJ01-textContentWrap">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="aboutus-HJ01-textContent_title index_sub_title pb20">{$data54[3]}</div>
+                            <p class="aboutus-HJ01-textContent_Text index_text">{:HtmlEncode($data54[4])}</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="aboutus-HJ01-textContent_title index_sub_title pb20">{$data54[5]}</div>
+                            <p class="aboutus-HJ01-textContent_Text index_text">{:HtmlEncode($data54[6])}</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="aboutus-HJ01-textContent_title index_sub_title pb20">{$data54[7]}</div>
+                            <p class="aboutus-HJ01-textContent_Text index_text">{:HtmlEncode($data54[8])}</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="aboutus-HJ01-textContent_title index_sub_title pb20">{$data54[9]}</div>
+                            <p class="aboutus-HJ01-textContent_Text index_text">{:HtmlEncode($data54[10])}</p>
+                        </div>
+                    </div>
+					<div class="aboutus-HJ01-button">
+						<div class="swiper-button-prev nav-hidden-pc swiper-button-white"></div>
+						<div class="swiper-button-next nav-hidden-pc swiper-button-white"></div>
+					</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-xs-12">
+                <div class="aboutus-HJ01__changeWrap">
+                    <div class="swiper-container aboutus-HJ01__changeItem">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide  aboutus-HJ01__item">
+                                <div class="aboutus-HJ01__itemImgBox">
+                                    <div class="aboutus-HJ01__itemImg"><img src="{:getindeximgurl($data54[11])}" alt="{$data54[3]}"/><img
+                                            src="{:getindeximgurl($data54[15])}" alt="{$data54[3]}"/></div>
+                                </div>
+                                <div class="aboutus-HJ01__itemCont index_text">{$data54[3]}</div>
+                            </div>
+                            <div class="swiper-slide  aboutus-HJ01__item">
+                                <div class="aboutus-HJ01__itemImgBox">
+                                    <div class="aboutus-HJ01__itemImg"><img src="{:getindeximgurl($data54[12])}" alt="{$data54[5]}"/><img src="{:getindeximgurl($data54[16])}" alt="{$data54[5]}"/></div>
+                                </div>
+                                <div class="aboutus-HJ01__itemCont index_text">{$data54[5]}</div>
+                            </div>
+                            <div class="swiper-slide  aboutus-HJ01__item">
+                                <div class="aboutus-HJ01__itemImgBox">
+                                    <div class="aboutus-HJ01__itemImg"><img src="{:getindeximgurl($data54[13])}" alt="{$data54[7]}"/><img src="{:getindeximgurl($data54[17])}" alt="{$data54[7]}"/></div>
+                                </div>
+                                <div class="aboutus-HJ01__itemCont index_text">{$data54[7]}</div>
+                            </div>
+                            <div class="swiper-slide  aboutus-HJ01__item">
+                                <div class="aboutus-HJ01__itemImgBox">
+                                    <div class="aboutus-HJ01__itemImg"><img src="{:getindeximgurl($data54[14])}" alt="{$data54[9]}"/><img src="{:getindeximgurl($data54[18])}" alt="{$data54[9]}"/></div>
+                                </div>
+                                <div class="aboutus-HJ01__itemCont index_text">{$data54[9]}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination aboutus-HJ01-page"></div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

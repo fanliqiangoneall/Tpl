@@ -1,0 +1,54 @@
+<!--{$pagename}-->
+<php>
+    if($data291[4]){ $other_bg=getindeximgurl($data291[4]);}
+</php> 
+<style>
+    .other_39_wrapper a:hover,
+    .other_39_wrapper a i {
+        color: #{$data291[0]};
+    }
+    .hjzf2_other_39{
+    background: url({$other_bg}) no-repeat center/cover;
+    
+}
+</style>
+<section class="hjzf2_other_39 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title pb40">
+                {$data291[1]}
+            </div>
+            <php>
+                $bottom_nav_str2=explode("\\n",$data291[2]); foreach($bottom_nav_str2 as $k=>$bottom_nav_arr2) { $bottom_navs2=explode(":",$bottom_nav_arr2);
+                $bottom_nav2[$k]['name']=$bottom_navs2[0]; $bottom_nav2[$k]['href']=$bottom_navs2[1]; }
+            </php>
+            <php>
+                    if($data291[3]){
+                        $imgs=[];$imgs_mobile=[];
+                        $matches=getimages(htmlspecialchars_decode($data291[3]));
+                        if(isset($matches[1])){
+                            $imgs=$matches[1];
+                            $imgs_mobile=$matches[1];
+                        }
+                    }
+                    $img_index=0;
+                    $img_index_mobile = 0;
+                </php>
+            <ul class="clearfix row-little other_39_wrapper">
+                <if condition="$bottom_nav2">
+                    <volist name="bottom_nav2" id="nav">
+                        <php>
+                            $tuji=$imgs[$img_index]; $img_index++;
+                        </php>
+                        <li class="col-xs-6 col-md-3">
+                            <if condition="$nav['href']"><a href="{$nav['href']}"><else/><a href="javascript:void(0);"></if>
+                                <img src="{$tuji}" class="img-responsive" alt="{$nav['name']}">
+                                <p class="index_text">{$nav['name']} <i class="fa fa-angle-right"></i></p>
+                            </a>
+                        </li>
+                    </volist>
+                </if>
+            </ul>
+        </div>
+    </div>
+</section>

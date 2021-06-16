@@ -1,0 +1,80 @@
+<div class="HJZF_Z__inner--left__content product6_leftnav_cont">
+    <div class="container">
+        <div class="row">
+
+            <!-- 左边一级 右边二级 start -->
+            <ul class="product6_leftnav_cont_side">
+                <volist empty="" name="allclass" id="allclass_left">
+                    <li class="clearfix">
+                        <span <if
+                            condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="yiji
+                            on"
+                            <else />class="yiji"</if>>
+                            <a
+                                href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>:
+                        </span>
+                        <if condition='$allclass_left["childs"] neq ""'>
+                            <span class="left_second">
+                                <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}"
+                                        <if
+                                        condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="child
+                                        on"
+                                        <else />class="child"</if>>{$allclass_leftchild['class_name']}
+                        </a>
+                </volist>
+                </span>
+                </if>
+                </li>
+                </volist>
+            </ul>
+            <!-- 左边一级 右边二级 end -->
+
+            <if condition='$allclass_lefta["childs"] neq ""'>
+                <!-- 当前分类 start -->
+                <div class="sideBar_erji">
+                    <volist empty="" name="allclass" id="allclass_lefta">
+                        <volist empty="" name="allclass_lefta['childs']" id="allclass_leftchilda">
+                            <if
+                                condition="$classid eq $allclass_leftchilda['pcid'] or $prolist['parent_id'] eq $allclass_leftchilda['pcid'] or $product['class_id'] eq $allclass_leftchilda['pcid'] or $procate['parent_id'] eq $allclass_leftchilda['pcid']">
+                                <div class="onerji">
+                                    <if condition="$prolist['banner']">
+                                        <img src="{:getimgurl($prolist['banner'])}" alt="" />
+                                        <elseif condition="$banner neq '' " />
+                                        <volist name="banner" id="bannercate" offset="0" length="1">
+                                            <img src="{:getimgurl($bannercate['ad_pic'])}" alt="" />
+                                        </volist>
+                                        <else />
+                                        <imgsrc="{:getindeximgurl($inner_data[0])}" alt="" />
+                                    </if>
+                                    <span>
+                                        {$allclass_leftchilda['class_name']}
+                                    </span>
+                                </div>
+                                <ul class="onerji_list">
+                                    <volist empty="" name="allclass_leftchilda['childs']" id="allclass_leftchildb">
+                                        <li <if
+                                            condition="$classid eq $allclass_leftchildb['pcid'] or $prolist['parent_id'] eq $allclass_leftchildb['pcid'] or $product['class_id'] eq $allclass_leftchildb['pcid'] or $procate['parent_id'] eq $allclass_leftchildb['pcid']">
+                                            class="third on"
+                                            <else />class="third"
+                            </if>
+                            >
+                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchildb['pcid'])}">
+                                <span>
+                                    <img src="{:getimgurl($allclass_leftchildb['fid'])}" alt="">
+                                </span>
+                                {$allclass_leftchildb['class_name']}
+                            </a>
+                            </li>
+                        </volist>
+                        </ul>
+            </if>
+            </volist>
+            </volist>
+        </div>
+        <!-- 当前分类 end -->
+        </if>
+
+    </div>
+</div>
+</div>

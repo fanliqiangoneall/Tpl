@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+<php>
+    if($data211[6]){
+        $btn_color = $data211[6];
+    }else{
+        $btn_color = $data211[5];
+    }
+    </php>
+<style>
+    <if condition="$data211[7]">
+        .hjzf2_other-20{
+        background: url({:getindeximgurl($data211[7])}) no-repeat center top/cover;
+        }<else/>  
+    .hjzf2_other-20{
+        background: #{$data211[0]};
+    }
+    </if>
+    .hjzf2_other-20_font{
+        color: #{$data211[5]};
+    }
+    .hjzf2_other-20_more:hover:before{
+        background: #{$btn_color}; /*颜色*/
+    }
+    .hjzf2_other-20_more:hover{
+        border-color: #{$btn_color};
+    }
+    .hjzf2_other-20_more:hover span{
+        color: #{$data211[0]};
+     }
+	 .hjzf2_other-20_more img{
+		 margin-right: 10px;
+	 }
+	 .hjzf2_other-20_more{
+		 display: flex;
+		 align-items: center;
+	 }
+	 .hjzf2_other-20_more:before,.hjzf2_other-20_more:after{
+		 display: none;
+	 }
+</style>
+<section class="hjzf2_other-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-9">
+                <if condition="$data211[1]">
+                <div class="index_title hjzf2_other-20_title hjzf2_other-20_font pb20">{$data211[1]}</div>
+                </if>
+                <if condition="$data211[2]">
+                    <p class="index_sub_title hjzf2_other-20_font">{$data211[2]}</p>
+                </if>
+            </div>
+            <div class="col-xs-12 col-lg-3">
+                <a href="{$data211[4]}" class="hjzf2_other-20_more pull-right">
+					<if condition="$data211[8]">
+						<img src="{:getindeximgurl($data211[8])}" alt="{$data211[3]}">
+					</if>
+					<span class="hjzf2_other-20_font">{$data211[3]}</span></a>
+            </div>
+        </div>
+    </div>
+</section>

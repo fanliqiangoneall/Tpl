@@ -1,0 +1,369 @@
+<div class="sideBar_bottom_en">
+    <style>
+        .mfb-component__button--main {
+            background-color: #{$color};
+            display: inline-block;
+            position: relative;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+
+            -webkit-user-drag: none;
+            color: #f1f1f1;
+            text-align: center;
+            line-height: 40px;
+            font-size: 25px;
+            height: 40px;
+            width: 40px;
+            z-index: 20;
+        }
+
+        .mobile_down {
+            background: #{$color};
+        }
+
+        .mobile_down_empty {
+            height: 50px;
+        }
+
+        .qrcode {
+            position: relative;
+        }
+
+        .qrcode img {
+            position: absolute;
+            left: 0;
+            bottom: 50px;
+            display: none;
+        }
+    </style>
+    <ul class="mobile_sidebar hidden-lg hidden-xl">
+
+        <if condition="$data50[20]">
+            <style>
+                .cs_bottom_a {
+                    display: block;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    box-shadow: 0 0 4px rgb(0 0 0 / 14%), 0 4px 8px rgb(0 0 0 / 28%);
+                    background-color: #{$color};
+                }
+                .cs_bottom_a img {
+                    max-width: 40px;
+                }
+                .csyddzd {
+                    position: absolute;
+                    display: flex;
+                    right: 130%;
+                    bottom: 0;
+                    max-width: 300px;
+                    min-width: 250px;
+                    background-color: #fff;
+                    z-index: 9999;
+                    padding: 10px;
+                    padding-top: 35px;
+                    border-radius: 10px;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(30px);
+                    box-shadow: 0 0 5px 2px rgba(0,0,0,.2);
+                    transition: all .5s;
+                }
+                .csyddzd.on{
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+                .csyddzd ul{
+                    width: 100%;
+                }
+                .csyddzd .csyddzd_close{
+                    position: absolute;
+                    border: 1px solid #999;
+                    width: 25px; 
+                    height: 25px;
+                    right: 10px;
+                    top: 10px;
+                    border-radius: 50%;
+                }
+                .csyddzd_close:before,.csyddzd_close:after{
+                    content: '';
+                    position: absolute;
+                    height: 2px;
+                    width: 80%;
+                    top: 50%;
+                    left: 10%;
+                    margin-top: -1px;
+                    background: #999;
+                }
+                .csyddzd_close:before{
+                    transform: rotate(45deg);
+                }
+                .csyddzd_close:after{
+                    transform: rotate(-45deg);
+                }
+                .csyddzd li{
+                    margin: 0;
+                    padding: 0;
+                    display: block;
+                    margin-bottom: 10px;
+                    border-bottom: 1px solid #f5f5f5;
+                    padding-bottom: 5px;
+                }
+                .csyddzd li span{
+                    font-size: 14px;
+                }
+                .csyddzd li span:first-child{
+                    max-width: 45px;
+                }
+                .csyddzd li span img{
+                    max-width: 100%;
+                }
+                .csyddzd li img{
+                    max-width: 40px;
+                }
+            </style>
+            <li class="cs_bottom">
+                <a class="cs_bottom_a">
+                    <img src="{:getindeximgurl($data50[21])}">
+                </a>
+            </li>
+            <script>
+                $(function () {
+                    $('.cs_bottom').click(function () {
+                        $('.csyddzd').addClass('on');
+                    });
+                    $('.csyddzd_close').click(function () {
+                        $('.csyddzd').removeClass('on');
+                    });
+                });
+            </script>
+        </if>
+        <php>
+            $arrcs = get_list_val($data50[22]);
+        </php>
+        <if condition="$data50[22]">
+            <div class="csyddzd">
+                <div class="csyddzd_close"></div>
+                <ul>
+                    <volist name="arrcs" id="a">
+                        <li>
+                            <span><img src="{$a['ico']}"></span>
+                            <span>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                {$a['txt']}
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </span>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </if>
+
+        <li><a class="mfb-component__button--main mfb-component__button--back" href="javascript:history.go(-1);"><i
+                    class="fa fa-reply"></i></a></li>
+        <li><a class="mfb-component__button--main mfb-component__button--top" href="javascript:goTop();"><i
+                    class="fa fa-angle-up"></i></a></li>
+    </ul>
+    <script>
+
+    </script>
+    <div class="mobile_down_empty hidden-lg hidden-xl"></div>
+    <div class="mobile_down sideSelect hidden-lg hidden-xl">
+        <ul>
+            <if condition="$webid eq '780' or $webid eq '1697'">
+                <li><a href="{:U('/')}"><i class="fa fa-home"></i><br />{:__('Home')}</a></li>
+            </if>
+            <if condition="$webid eq '72' or $webid eq '822' or $webid eq '180' or $webid eq '200' or $webid eq '75' or $webid eq '1820' or $data50[23] neq ''">
+                <li><a onclick="turn_sta(8,2)"
+                        href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"><i
+                            class="fa fa-whatsapp"></i><br />WhatsApp</a></li>
+                <elseif condition="$webid eq '716'" />
+                <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['phone'],0)}"><i
+                            class="fa fa-phone"></i><br />{:__('MP')}</a></li>
+                <elseif condition="$webid eq '1697'" />
+                <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['mobile'],0)}"><i
+                            class="fa fa-phone"></i><br />Syntop</a></li>
+                <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['mobile'],1)}"><i
+                            class="fa fa-phone"></i><br />Wang</a></li>
+                <elseif condition="$webid neq '937' and chaifen($about['mobile'],0) neq ''" />
+                <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['mobile'],0)}"><i
+                            class="fa fa-phone"></i><br />{:__('Tel')}</a></li>
+                <elseif condition="chaifen($about['phone'],0) neq ''" />
+                <li><a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['phone'],0)}"><i
+                            class="fa fa-phone"></i><br />{:__('Tel')}</a></li>
+            </if>
+
+            <if condition="$webid eq '937'">
+                <li><a onclick="turn_sta(4,2)" href="skype:{:chaifen($about['msn'],0)}?chat"><i
+                            class="fa fa-skype"></i><br />Skype</a></li>
+            </if>
+
+            <if condition="$webid eq '180'">
+                <li class="qrcode"><a><i class="fa fa-qrcode"></i><br />WeChat</a><img
+                        src="{:getindeximgurl($data50[1])}"></li>
+            </if>
+            <if condition="$webid eq '780'">
+                <div style="display: none;">
+            </if>
+            <if condition="strstr(chaifen($about['msn'],0),'http') neq false">
+                <li><a onclick="turn_sta(4,2)" href="{:chaifen($about['msn'],0)}"><i
+                            class="fa fa-facebook"></i><br />FaceBook</a></li>
+                <elseif condition="$webid eq '716' or $webid eq '937'" />
+                <li><a onclick="turn_sta(8,2)"
+                        href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"><i
+                            class="fa fa-whatsapp"></i><br />WhatsApp</a></li>
+                <elseif condition="chaifen($about['msn'],0) neq ''" />
+                <li><a onclick="turn_sta(4,2)" href="skype:{:chaifen($about['msn'],0)}?chat"><i
+                            class="fa fa-skype"></i><br />Skype</a></li>
+            </if>
+            <if condition="$webid eq '780'">
+    </div>
+    </if>
+	
+	<if condition="$webid eq '1824'">
+        <li><a onclick="turn_sta(8,2)" href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"><i
+                    class="fa fa-whatsapp"></i><br />WhatsApp</a></li>
+	</if>
+	
+	
+    <li><a onclick="turn_sta(3,2)" href="mailto:{:chaifen($about['email'],0)}"><i
+                class="fa fa-envelope"></i><br />{:__('E-mail')}</a></li>
+    <if condition="$webid eq '1611' or $webid eq '1555' or $webid eq '1322'">
+        <li><a onclick="turn_sta(8,2)" href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"><i
+                    class="fa fa-whatsapp"></i><br />WhatsApp</a></li>
+        <elseif condition="$webid neq '1697' and $webid neq '426'" />
+        <li><a onclick="turn_sta(2,2)" href="{:U('/contactus')}"><i class="fa fa-user"></i><br />{:__('Contact')}</a>
+        </li>
+        <elseif condition="$webid eq '426'" />
+        <li><a onclick="turn_sta(2,2)" href="{:U('/contactus')}"><i class="fa fa-user"></i><br />{:__('Inquiry')}</a>
+        </li>
+    </if>
+    <if condition="$webid neq '1697' and $webid neq '426' and $webid neq '937'">
+        <li><a onclick="turn_sta(1,2)" href="{:U('/Inquiry')}"><i
+                    class="fa fa-commenting"></i><br />{:__('Inquiry')}</a>
+        </li>
+        <elseif condition="$webid eq '426'" />
+        <li><a onclick="turn_sta(1,2)" href="{:U('/product')}"><i
+                    class="fa fa-picture-o"></i><br />{:__('Products')}</a>
+        </li>
+    </if>
+    </ul>
+</div>
+</div>
+
+<if condition="$data50[17]">
+    <style>
+		@media(min-width: 768px) {
+			.sideSelect,
+			.side {
+				display: none !important;
+			}
+		}
+        @media(max-width: 767px) {
+			.sidea{
+				display: none;
+			}
+		}
+
+        .sidea {
+            position: fixed;
+            width: 48px;
+            right: 0;
+            top: 250px;
+            z-index: 999;
+            color: #fff;
+            display: none;
+        }
+
+        .sidea ul li {
+            width: 48px;
+            height: 48px;
+            float: left;
+            position: relative;
+            list-style: none;
+            margin-bottom: 2px;
+            background-color: #{$color};
+        }
+
+        .sidea ul li .sidebox {
+            position: absolute;
+            width: 48px;
+            text-align: left;
+            height: 48px;
+            top: 0;
+            right: 0;
+            transition: all 0.3s;
+            color: #333333;
+            font: 14px "Arial";
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .sidea ul li:not(:last-child) .sidebox img {
+            max-width: 45px;
+        }
+
+        .sidea ul li:hover .sidebox_content {
+            -webkit-transform: translateX(-20px);
+            transform: translateX(-20px)
+        }
+    </style>
+    <div class="sidea">
+        <ul>
+            <php>
+                $arr = get_list_val($data50[17]);
+            </php>
+            <volist name="arr" id="a">
+                <li>
+                    <div class="sidebox">
+                        <if condition="$a[link]">
+                            <a href="{$a[link]}" target="_blank">
+                        </if>
+                        <img src="{$a[ico]}" border="0">
+                        <if condition="$a[link]">
+                            </a>
+                        </if>
+                    </div>
+                    <div class="sidebox_content">
+                        <span>
+                            <b> <a href="{$a[link]}" target="_blank" onfocus="blur()">{$a[txt]}</a></b>
+                        </span>
+                    </div>
+                </li>
+            </volist>
+            <li>
+                <div class="sidebox"><a href="javascript:goTop();"><img src="__TMPL__HJZF2_Z/img/side-sprites2.png"
+                            border="0" alt="Top" style="position: absolute;left:0;top:0;"></a></div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            var h = $(window).width()
+            if (h < 1200) {
+                $('.sidea').hide();
+            } else {
+                $(window).scroll(function () {
+                    var t = $(this).scrollTop();
+                    if (t > 400) {
+                        $('.sidea').fadeIn();
+                    } else {
+                        $('.sidea').fadeOut();
+                    }
+                });
+            }
+        });
+    </script>
+</if>

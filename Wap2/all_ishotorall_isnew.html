@@ -1,0 +1,65 @@
+<extend name="Wap2:base" />
+<block name="content">
+<style>
+.all_ishotorall_isnew{padding:10px;}
+.all_ishotorall_isnew__pro{ width:33%; box-sizing:border-box; float:left;}
+.all_ishotorall_isnew__title{ font-size:18px; font-weight:200;margin-top:20px;}
+.all_ishotorall_isnew__every__pro{ padding:5px;}
+.all_ishotorall_isnew__every__pro img{ width:100%;}
+.all_ishotorall_isnew__pro__name a{ font-size:13px; text-decoration:none; font-weight:200px; color:#3d3d3d;}
+.all_ishotorall_isnew__main_page{}
+.all_ishotorall_isnew__main_page{ margin-top:5px;}
+.all_ishotorall_isnew__main_page,.all_ishotorall_isnew__main_page a{ 
+text-align:center; padding:10px; 
+}
+.all_ishotorall_isnew__main_page a{ 
+border-radius:5px;
+color:#fff;
+text-decoration:none;
+background:#{$color}
+}
+</style>
+    <div class="all_ishotorall_isnew" >
+
+
+        <div class="Breadcrumbs">
+            <div class="Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;>>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp;>>&nbsp;<span class="current">{$type}</span></div>
+        </div>
+
+        <div class="" >
+            
+            <section class="">
+                <div class="">
+                    <div class="">
+                        <!--<h5 class="all_ishotorall_isnew__main_page__title">{$type}</h5>-->
+                        <div class="">
+                            <volist empty="" name="pro" id="labelprodlist" key="k">
+                                <div class="all_ishotorall_isnew__pro">
+                                    <div class="all_ishotorall_isnew__every__pro">
+                                            <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                                            <if condition="$labelprodlist['main_img']">
+                                                <img src="{:getmainimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> />
+                                            </if>
+                                            </a>
+                                        <div class="all_ishotorall_isnew__pro__name">
+                                            <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+                                                <div class=""><h6 title="{$labelprodlist['pro_name']}">{:subtxt($labelprodlist['pro_name'],60)}</h6></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <if condition="($k)%3 eq 0">
+                                    <div class="clear"></div>
+                                </if>
+                            </volist>
+                            <div class="clear"></div>
+                            <div class="all_ishotorall_isnew__main_page">{$page}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

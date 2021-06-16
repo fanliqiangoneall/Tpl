@@ -1,0 +1,224 @@
+<!--{$pagename}-->
+<if condition="$data147[1]">
+    <style>
+        .HJZF2_Z__news-7{
+            background: url({:getindeximgurl($data147[1])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+.HJZF2_Z__news-7__list .entry-time a > span:after,.HJZF2_Z__news-7__list2 .HJZF2_Z__news-7__content .HJZF2_Z__news-7__date .category-link:after{
+	background:#{$color};
+}
+.HJZF2_Z__news-7__list .entry-time a > span.entry-year:after{
+	background:none;
+}
+.HJZF2_Z__news-7__list2 .HJZF2_Z__news-7__content .HJZF2_Z__news-7__date span a,.HJZF2_Z__news-7__list2 .HJZF2_Z__news-7__content .HJZF2_Z__news-7__name:hover a{
+	color:#{$color};
+}
+.HJZF2_Z__news-7__list .HJZF2_Z__news-7__content .HJZF2_Z__news-7__more {
+	background:#{$color};
+	border-color:#{$color};
+}
+</style>
+
+<section class="HJZF2_Z__news-7 index_pd">
+<div class="container">
+  <div class="row">
+    <div class="HJZF2_Z__news-7__container">
+        <div class="HJZF2_Z__news-7__mainTitle index_title pb40 wow fadeInUpBig">{$data147[0]}</div>
+        <div class="HJZF2_Z__news-7__swiperBox">
+            <div class="col-sm-12 col-lg-6 col-xl-6">
+                <div class="HJZF2_Z__news-7__left wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <volist name="indexnews" id="indexnew" offset="0" length="1" key="k">
+                        <div class="HJZF2_Z__news-7__list">
+                            <div class="HJZF2_Z__news-7__img">
+                                <div class="HJZF2_Z__news-7__date">
+                                    <php>
+                                        $news_calss = get_wap_news_class_name($indexnew['news_class']);
+                                    </php>
+                                    <span class="category-link"><a href="{:U('/new_category',array('classid'=>$indexnew['news_class']))}">{$news_calss}</a></span>
+                                    <span class="entry-time"><a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()">
+                                        <if condition="C('Language') eq 'cn'">
+                                            <span class="entry-month">{:date('m',$indexnew['created'])}</span>
+                                            <else/>
+                                            <span class="entry-month">{:date('M',$indexnew['created'])}</span>
+                                        </if>
+
+                                       <span class="entry-day">{:date('d',$indexnew['created'])}</span>
+                                       <span class="entry-year">{:date('Y',$indexnew['created'])}</span>
+                                    </a></span>
+                                </div>
+                                <a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()" class="post-thumbnail-rollover"><if condition="$indexnew['new_pro']"><img src="{:getimgurl($indexnew['new_pro'])}" border="0" alt="{$indexnew['title']}" /><else/><img src="{:getindeximgurl($data147[2])}" border="0" alt="{$indexnew['title']}"></if></a>
+                            </div>
+                            <div class="HJZF2_Z__news-7__content">
+                                <div class="HJZF2_Z__news-7__name"><a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()" class="index_sub_title">{:subtxt($indexnew['title'],60)}</a></div>
+                                
+                                <div class="HJZF2_Z__news-7__desc index_text">
+                                    {$indexnew['news_description']}
+                                </div>
+                                <a href="{:U('/new_detail',array('nid'=>$indexnew['nid']))}" onFocus="blur()" class="HJZF2_Z__news-7__more">{:__('Read More')} <i class="fa fa-caret-right"></i></a>
+
+                                <if condition="$data147[4]">
+                                    <style>
+                                        .HJZF2_Z__news-7__list_share{
+                                            display: inline-block;float: right;transform: translateY(7px);                                     
+                                        }
+                                        .HJZF2_Z__news-7__list_share li,.HJZF2_Z__news-7__list_share>div{float: left;margin-right: 7px;}
+                                        .HJZF2_Z__news-7__list_share .HJZF2_Z__news-7__content .HJZF2_Z__news-7__more{
+                                            margin-bottom: 15px;
+                                        }
+                                    </style>
+                                    <ul class="HJZF2_Z__news-7__list_share">
+                                        <php>
+                                            $arra = get_list_val($data147[4]);
+                                        </php>
+                                        <div>{$data147[5]}</div>
+                                        <volist name="arra" id="a">
+                                            <li>
+                                                <a href="{$a[link]}" target="_blank" class="img-par">
+                                                    <img src="{$a[ico]}" class="normal">
+                                                    <if condition="$a[icoh]">
+                                                    <img src="{$a[icoh]}" class="hover">
+                                                    </if>
+                                                </a>
+                                            </li>
+                                        </volist>
+                                    </ul>
+                                </if>
+                                
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+            
+            <if condition="$data147[3]">
+                <style>
+                    .HJZF2_Z__news-7__swiperBox{display: flex;-webkit-display: flex;justify-items: stretch;}
+                    
+                    .have_tab{background: #fff;padding: 20px 50px;height: 100%;border: 1px solid #e5e5e5;}
+.HJZF2_Z__news-7__left{background: #fff;padding: 30px 30px;border: 1px solid #e5e5e5;height: 100%;}
+.have_tab ul{width: 100%;margin-bottom: 30px;}
+.have_tab ul li{margin-right: 30px;float: left;}
+.have_tab ul li a{font-size: 24px;line-height: 30px;color: #333;cursor: pointer;}
+.have_tab ul li.active a{
+    color: #{$color};}
+.tab_box{display: none;}
+.tab_box.active{display: block;}
+.HJZF2_Z__news-7__list2 .HJZF2_Z__news-7__content .HJZF2_Z__news-7__date .category-link:after{display: none;}
+.HJZF2_Z__news-7__list2 .HJZF2_Z__news-7__content .HJZF2_Z__news-7__name{font-size: 18px;
+    line-height: 26px;margin-bottom: 14px;}
+.HJZF2_Z__news-7__list2 .HJZF2_Z__news-7__content .HJZF2_Z__news-7__name a{font-weight: normal;}
+.HJZF2_Z__news-7__list .HJZF2_Z__news-7__content .HJZF2_Z__news-7__desc{margin-bottom: 30px;}
+.HJZF2_Z__news-7__list2:hover .HJZF2_Z__news-7__name a{
+    color: #{$color};
+}
+.HJZF2_Z__news-7__desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+@media(max-width: 1200px){
+    .HJZF2_Z__news-7__desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+}
+@media screen and (max-width: 991px){
+    .HJZF2_Z__news-7__list {
+    margin-bottom: 40px;
+}
+.HJZF2_Z__news-7__swiperBox{flex-direction: column;}
+    .HJZF2_Z__news-7__right{
+        margin-top: 20px;
+    }
+    .have_tab{padding: 20px 30px;}
+    .HJZF2_Z__news-7__desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+}
+
+
+                </style>
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                    <div class="HJZF2_Z__news-7__right wow fadeInRight have_tab" data-wow-duration="1s" data-wow-delay="1s">
+                        <php>
+                            $arr_str=$data147[3];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                                $list[$k]['name']=get_wap_news_class_name($a);
+                                $list[$k]['data']=get_index_news_category($a,4);
+                            }
+                        </php>
+                        <ul class="tab_list">
+                            <volist name="list" id="li" >
+                                <li <if condition="$key eq 0">class="class_name1 active"<else/>class="class_name1"</if>><a>{$li['name']}</a></li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                        <volist name="list" id="li">
+                            <div <if condition="$key eq 0">class="tab_box active"<else/>class="tab_box"</if>>
+                                <volist name="li['data']" id="indexnew2" offset="0" length="4" key="h">
+                                    <div class="HJZF2_Z__news-7__list2">
+                                        <div class="HJZF2_Z__news-7__img">
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()"><if condition="$indexnew2['new_pro']"><img src="{:getimgurl($indexnew2['new_pro'])}" border="0" alt="{$indexnew2['title']}"/><else/><img src="{:getindeximgurl($data147[2])}" border="0" alt="{$indexnew2['title']}"></if></a>
+                                        </div>
+                                        <div class="HJZF2_Z__news-7__content">
+                                            <div class="HJZF2_Z__news-7__name index_sub_title"><a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()">{:subtxt($indexnew2['title'],40)}</a></div>
+                                            
+                                            <if condition="$indexnew2['news_description']"><div class="HJZF2_Z__news-7__desc">{$indexnew2['news_description']}</div></if>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </volist>
+                            </div>
+                        </volist>                       
+                    </div>
+                </div>
+                <else/>
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                    <div class="HJZF2_Z__news-7__right wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s">
+                        <volist name="indexnews" id="indexnew2" offset="1" length="5" key="k2">
+                            <div class="HJZF2_Z__news-7__list2">
+                                <div class="HJZF2_Z__news-7__img">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()"><if condition="$indexnew2['new_pro']"><img src="{:getimgurl($indexnew2['new_pro'])}" border="0" alt="{$indexnew2['title']}" /><else/><img src="{:getindeximgurl($data147[2])}" border="0" alt="{$indexnew2['title']}"></if></a>
+                                </div>
+                                <div class="HJZF2_Z__news-7__content">
+                                    <div class="HJZF2_Z__news-7__name index_sub_title"><a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()">{:subtxt($indexnew2['title'],40)}</a></div>
+                                    <div class="HJZF2_Z__news-7__date index_text">
+                                     
+                                        <php>
+                                            $news_calss2 = get_wap_news_class_name($indexnew2['news_class']);
+                                        </php>
+                                        <span class="category-link"><a href="{:U('/new_category',array('classid'=>$indexnew2['news_class']))}">{$news_calss2}</a></span>
+                                        <span class="entry-time"><a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()">{:date('Y-m-d',$indexnew2['created'])}</a></span>
+                                    </div>
+                                    <if condition="$indexnew2['news_description']"><div class="HJZF2_Z__news-7__desc ellipsis_three">{$indexnew2['news_description']}</div></if>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </if>
+            
+        </div>
+    </div>
+  </div>
+</div>
+</section>

@@ -1,0 +1,59 @@
+<!--{$pagename}-->
+<php>
+    if($data459[1]){
+    $color = $data459[1];
+    }
+</php>
+<style>
+    .HJZF2_Z__news_26_right_con .more:hover{
+        background-color: #{$color};
+        color: #fff;
+    }
+    .HJZF2_Z__news_26_right_con a.more {
+        border-color: #{$color};
+        color: #{$color};
+    }
+    .HJZF2_Z__news_26_right_name:hover h5 {
+        color: #{$color}
+    }
+	.HJZF2_Z__news_26_list_left_img:after,.HJZF2_Z__news_26_list_left_img:before{
+		background-color: #{$color};
+	}
+</style>
+<section class="HJZF2_Z__news_26 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-xl-6 HJZF2_Z__news_26_list_left nav-hidden-mobile">
+                <volist name="indexnews" id="indexn" offset="0" length="5" key="k2">
+                    <div class="HJZF2_Z__news_26_list_left_img">
+                        <img src="{:getimgurl($indexn['new_pro'])}" alt="{$indexn['title']}" class="img-fluid">
+                    </div>
+                </volist>
+            </div>
+            <div class="col-xs-12 col-xl-6 HJZF2_Z__news_26_right">
+                <div class="index_title pb20">
+                    {$data459[2]}
+                </div>
+                <ul class="HJZF2_Z__news_26_right_list">
+                    <volist name="indexnews" id="indexnew2" offset="0" length="5" key="k2">
+                        <li>
+                            <div class="HJZF2_Z__news_26_right_name">
+                                <h5 class="index_text">{$indexnew2['title']}</h5>
+                                <i class="fa fa-angle-down inactive_icon"></i>
+                            </div>
+                            <div class="HJZF2_Z__news_26_right_con">
+                                <img src="{:getimgurl($indexnew2['new_pro'])}" alt="{$indexnew2['title']}">
+                                <div class="HJZF2_Z__news_26_right_con_a">
+                                    <p>{:subtxt($indexnew2['news_description'],150)}</p>
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()"
+                                        class="more">{:__('Read More')}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

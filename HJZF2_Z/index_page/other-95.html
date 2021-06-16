@@ -1,0 +1,65 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-08 10:05:10
+ * @LastEditTime: 2020-12-29 10:39:15
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \undefined\\wenjian\www\Pc\Tpl\HJZF2_Z\index_page\other-95.html
+-->
+<!--{$pagename}-->
+<php>
+    if($data494[0]){
+    $color = $data494[0];
+    }
+</php>
+<style>
+    <if condition="$data494[1]">
+        .HJZF2_Z_other_95{
+            background: url({:getindeximgurl($data494[1])}) no-repeat center/cover;
+        }
+        </if>
+    .HJZF2_Z_other_95_wrapper li:hover a.index_btn{
+        background-color: #{$color};
+    }
+    .HJZF2_Z_other_95_wrapper li:hover .index_sub_title a{
+        color: #{$color};
+    }
+    
+</style>
+<section class="HJZF2_Z_other_95 index_pd">
+    <div class="container">
+        <div class="row">
+            <if condition="$data494[2]">
+                <div class="col-xs-12 text-center">
+                    <div class="index_title pb40">
+                        {$data494[2]}
+                    </div>
+                </div>
+            </if>
+            <div class="col-xs-12">
+                <php>
+                    $arr = get_list_val($data494[3]);
+                </php>
+                <ul class="HJZF2_Z_other_95_wrapper">
+                    <volist name="arr" id="a">
+                        <li>
+                            <a href="{$a[src]}" class="HJZF2_Z_other_95_wrapper_img fx-center">
+                                <img src="{$a[img]}" class="normal" alt="{$a[title]}">
+                                <if condition="$a[imgh]">
+                                <img src="{$a[imgh]}" class="hover" alt="{$a[title]}">
+                                </if>
+                            </a>
+                            <div class="index_sub_title">
+                                <a href="{$a[src]}">{$a[title]}</a>
+                            </div>
+                            <p>
+                                {$a[info]}
+                            </p>
+                            <a href="{$a[src]}" class="more index_btn">{$data494[4]}</a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

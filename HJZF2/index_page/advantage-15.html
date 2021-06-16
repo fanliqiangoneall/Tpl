@@ -1,0 +1,41 @@
+<style>
+
+
+</style>
+<if condition="$data145[0]">
+    <style>
+        .HJZF2_advantage15{
+            background: url({:getindeximgurl($data145[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<section class="HJZF2_advantage15">
+    <div class="container">
+        <div class="HJZF2_advantage15__title">{$data145[2]}</div>
+        <if condition="$data145[3]">
+            <p class="HJZF2_advantage15__subtitle">{$data145[3]}</p>
+        </if>
+        <div class="HJZF2_advantage15__content wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="200">
+            <ul class="flex">
+                <php>
+                    for($i=4;$i<18;$i=$i+3){
+                </php>
+                    <li class="HJZF2_advantage15__item">
+                        <div class="HJZF2_advantage15__itemImg">
+                            <img src="{:getindeximgurl($data145[$i+2])}" alt="{$data145[$i]}"/>
+                            <div class="HJZF2_advantage15__itemName">
+                                <a href="{$data145[19]}">{$data145[$i]}</a>
+                            </div>
+                        </div>
+
+                        <div class="HJZF2_advantage15__itemDesc">
+                            {:HtmlEncode(subtxt($data145[$i+1],400))}
+                        </div>
+                    </li>
+                <php>
+                    }
+                </php>
+            </ul>
+        </div>
+    </div>
+</section>

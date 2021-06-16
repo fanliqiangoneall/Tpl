@@ -1,0 +1,233 @@
+
+<!--{$pagename}-->
+<if condition="$data13[21]">
+	<style>
+		.bottom_copyright{
+			background: url({:getindeximgurl($data13[21])}) center  repeat;
+		}
+		.bottom_copyright > div{
+		color: {$data13[22]};
+		}
+		.bottom_copyright > div a{
+		color: {$data13[22]};
+		}
+	</style>
+	<else/>
+	<style>
+		.bottom_copyright{
+			background: #{$color};
+		}
+	</style>
+</if>
+<style>
+	.HJ01_bottom{
+		background: url({:getindeximgurl($data13[17])}) center  no-repeat;
+	}
+	.HJ01_bottom_down_item_content ul >li a h3:hover{
+	color: {$data1[0]};
+	}
+	.HJ01_bottom_down_item_content ul >li a h2:hover{
+	color: {$data1[0]};
+	}
+
+	.HJ01_bottom_down_item_content ul >li:hover:before{
+	color:{$data1[0]};
+	}
+	.HJ01_bottom_down_item h5{
+		color: #{$color};
+	}
+</style>
+
+<!--foot start-->
+<div class="HJ01_bottom">
+	<div class="container upper-footer" style="min-height: 300px;margin-bottom: 10px;">
+
+		<if condition="$data13[13] neq ''">
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data13[13]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<p>   {:HtmlEncode(subtxt($company_info['description'],300))}</p>
+				</div>
+			</div>
+		</if>
+		<if condition="$data13[27] neq ''">
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data13[14]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<ul>
+						<php>
+
+							for($bo=28;$bo<39;$bo=$bo+2){
+						</php>
+						<if condition="$data13[$bo] neq ''">
+							<li><a href="{$data13[$bo+1]}">{$data13[$bo]}</a></li>
+						</if>
+						<php>
+							}
+						</php>
+					</ul>
+				</div>
+			</div>
+			<else/>
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data13[14]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<ul>
+						<volist empty="No data" name="allclass" id="allclass2" offset="0" length="6">
+							<li><a href="{:U('/product_category','','')}/{:getprocatename($allclass2['pcid'])}">{$allclass2['class_name']}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</if>
+
+		<if condition="$data13[15] neq ''">
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data13[15]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+					<ul>
+						<volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+							<li id="menu{$key}"><div class="footnav_bg"></div><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</if>
+		<if condition="$data13[16] neq ''">
+			<div class="HJ01_bottom_down_item">
+				<h5 class="margin-25px-bottom">{$data13[16]}</h5>
+				<div class="HJ01_bottom_down_item_content">
+
+					<div class="ewm" <if condition="$data13[19] neq ''">style="display: block"<else/>style="display: none"</if>>
+					<img src="{:getindeximgurl($data13[19])}" alt=""/>
+				</div>
+
+				<div <if condition="$data13[19] neq ''">style="display: none"<else/>style="display: block"</if>>
+				<p class="margin-20px-bottom">{$about['address']}</p>
+				<p class="margin-20px-bottom"> <if condition="chaifen($about['email'],0) neq ''">Email: <a href="mailto:{:chaifen($about['email'],0)}?chat" onclick="turn_sta(4,4);" onfocus="blur()">{:chaifen($about['email'],0)}</a></if>
+					<br/>
+					<if condition="chaifen($about['email'],1) neq ''">Email: <a href="mailto:{:chaifen($about['email'],1)}?chat" onclick="turn_sta(4,4);" onfocus="blur()">{:chaifen($about['email'],1)}</a></if>
+					<br/>
+					<if condition="chaifen($about['phone'],0) neq ''">Phone: {:chaifen($about['phone'],0)}</if>
+					<br/>
+					<if condition="chaifen($about['phone'],1) neq ''">Phone: {:chaifen($about['phone'],1)}</if>
+				</p>
+			</div>
+
+			<div class="HJ01_bottom_share">
+				<div class="ins-social-icons social-icons-small social-icons-colorful icon-colored social-icons-colored social-icons-round social-icons-effect-none icons-align-left" style="margin-top:-20px;">
+					<a href="{$data1[2]}" style="color: #fff;" class="social icon-twitter" target="_blank"><i class="fa fa-twitter icon-primary"></i></a>
+					<a href="{$data1[1]}" style="color: #fff;" class="social icon-facebook" target="_blank"><i class="fa fa-facebook icon-primary"></i></a>
+					<a href="{$data1[4]}" style="color: #fff;" class="social icon-linkedin" target="_blank"><i class="fa fa-linkedin icon-primary"></i></a>
+					<a href="{$data1[3]}" style="color: #fff;" class="social icon-instagram" target="_blank"><i class="fa fa-instagram icon-primary"></i></a></div>
+			</div>
+	</div>
+
+</div>
+</if>
+<div class="clear margin-20px-bottom"></div>
+<php>
+	if(!$data1[13]){
+		$data1[13] = 462;
+	}
+</php>
+<if condition="$data1[13] neq ''">
+	<style>
+		#wrapper{
+		margin-bottom: {$data1[13]}px;}
+	</style>
+</if>
+<if condition="$data1[12] neq ''">
+	<style>
+		.Page_Footlan{width: 100%;margin-bottom: 20px;}
+		.Page_Footlan li{text-align: left;display: inline-block;width: 12%;line-height: 24px;}
+		.Page_Footlan li a{color: #6d8190;}
+	</style>
+	<div>
+		<ul class="Page_Footlan">
+
+			<li><a href="javascript:translator('en|Cn')"><img src="__TMPL__HJ01/img/lang/ico_cn.gif" width="20" height="13" alt="" /> 中文</a></li>
+
+			<li><a href="javascript:translator('en|hr')"><img src="__TMPL__HJ01/img/lang/ico_hr.gif" width="20" height="13" /> Hrvatska</a></li>
+
+			<li><a href="javascript:translator('en|fr')"><img src="__TMPL__HJ01/img/lang/ico_fr.gif" width="20" height="13" alt="" /> Français</a></li>
+
+			<li><a href="javascript:translator('en|it')"><img src="__TMPL__HJ01/img/lang/ico_it.gif" width="20" height="13" alt="" /> Italiano</a></li>
+
+			<li><a href="javascript:translator('en|pt')"><img src="__TMPL__HJ01/img/lang/ico_pt.gif" width="20" height="13" alt="" /> Português</a></li>
+
+			<li><a href="javascript:translator('en|ja')"><img src="__TMPL__HJ01/img/lang/ico_ja.gif" width="20" height="13" alt="" /> 日本の</a></li>
+
+			<li><a href="javascript:translator('en|ko')"><img src="__TMPL__HJ01/img/lang/ico_ko.gif" width="20" height="13" alt="" /> 한국어</a></li>
+
+			<li><a href="javascript:translator('en|ar')"><img src="__TMPL__HJ01/img/lang/ico_ar.gif" width="20" height="13"  alt=""/> العربية</a></li>
+
+			<li><a href="javascript:translator('en|de')"><img src="__TMPL__HJ01/img/lang/ico_de.gif" width="20" height="13" alt="" /> Deutsch</a></li>
+
+			<li><a href="javascript:translator('en|cs')"><img src="__TMPL__HJ01/img/lang/ico_cs.gif" width="20" height="13"  alt=""/> česky</a></li>
+
+			<li><a href="javascript:translator('en|da')"><img src="__TMPL__HJ01/img/lang/ico_da.gif" width="20" height="13"  alt=""/> Dansk</a></li>
+
+			<li><a href="javascript:translator('en|nl')"><img src="__TMPL__HJ01/img/lang/ico_nl.gif" width="20" height="13"  alt=""/> Nederlands</a></li>
+
+			<li><a href="javascript:translator('en|fi')"><img src="__TMPL__HJ01/img/lang/ico_fi.gif" width="20" height="13"  alt=""/> suomi</a></li>
+
+			<li><a href="javascript:translator('en|el')"><img src="__TMPL__HJ01/img/lang/ico_el.gif" width="20" height="13" alt="" /> Ελληνικά</a></li>
+
+			<li><a href="javascript:translator('en|hi')"><img src="__TMPL__HJ01/img/lang/ico_hi.gif" width="20" height="13"  alt=""/> हिन्दी</a></li>
+
+			<li><a href="javascript:translator('en|no')"><img src="__TMPL__HJ01/img/lang/ico_no.gif" width="20" height="13" alt="" /> norsk</a></li>
+
+			<li><a href="javascript:translator('en|tr')"><img src="__TMPL__HJ01/img/lang/ico_tr.gif" width="20" height="13"  alt=""/> Türkiye</a></li>
+
+			<li><a href="javascript:translator('en|th')"><img src="__TMPL__HJ01/img/lang/ico_th.gif" width="20" height="13" alt="" /> ประเทศไทย</a></li>
+
+			<li><a href="javascript:translator('en|bg')"><img src="__TMPL__HJ01/img/lang/ico_bg.gif" width="20" height="13"  alt=""/> български</a></li>
+
+			<li><a href="javascript:translator('en|ru')"><img src="__TMPL__HJ01/img/lang/ico_ru.gif" width="20" height="13"  alt=""/> русский</a></li>
+
+			<li><a href="javascript:translator('en|sv')"><img src="__TMPL__HJ01/img/lang/ico_sv.gif" width="20" height="13" alt="" /> Svenska</a></li>
+
+			<li><a href="javascript:translator('en|pl')"><img src="__TMPL__HJ01/img/lang/ico_pl.gif" width="20" height="13"  alt=""/> Polski</a></li>
+
+			<li><a href="javascript:translator('en|ro')"><img src="__TMPL__HJ01/img/lang/ico_ro.gif" width="20" height="13"  alt=""/> Română</a></li>
+
+			<li><a href="javascript:translator('en|vi')"><img src="__TMPL__HJ01/img/lang/ico_vi.gif" width="20" height="13" alt="" /> Việt Nam</a></li>
+
+
+		</ul>
+	</div>
+</if>
+</div>
+
+
+<if condition="$friend_link neq ''">
+	<div class="friendlink" style="margin-top: 0px;">
+		<div class="container">
+			<div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">FriendLink: &nbsp;&nbsp;</span>
+				<volist name="friend_link" id="friend_link">
+					<if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+						<div style="float:left; text-align:center;color: #fff;line-height: 28px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+					</if>
+				</volist>
+				<!--<div style="clear:both"></div>-->
+			</div>
+		</div>
+
+		<div style="clear:both"></div>
+	</div>
+</if>
+<div class="bottom_copyright">
+	<div class="container">
+		<php>
+			$nowtime=date("Y",time());
+			$currtime=$data13[18];
+		</php>
+		<if condition="$nowtime gt $currtime">CopyRight&nbsp;&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} All Rights Reserved.&nbsp;&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()">&nbsp;Sitemap&nbsp;</a>&nbsp;&nbsp;<a href="{:U('/alltag','','')}">All tags</a>
+		&nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a><if condition="$webid eq '988'"><span style="color:#fff;">&nbsp;&nbsp;IPV6</span></if>
+	</div>
+</div>
+
+</div>
+<!--foot end-->

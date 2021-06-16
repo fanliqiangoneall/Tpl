@@ -1,0 +1,72 @@
+<!--{$pagename}-->
+<php>
+	if($data714[0]){
+		$color = $data714[0];
+	}
+</php>
+<style>
+.abouts_32_left a.index_btn{
+	color: #{$color};
+	border: 1px solid #{$color};
+}
+.abouts_32_left a.index_btn:hover{
+	color: #fff;
+	background-color: #{$color};
+}
+.abouts_32_left a.index_btn:hover .hover{
+	opacity: 1;
+}
+</style>
+<section class="aboutus_32 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-lg-6 wow fadeInLeft">
+				<div class="abouts_32_left">
+					<div class="index_title">{$data714[1]}</div>
+					<div class="index_text">{$data714[2]}</div>
+					<div class="my-40">
+						{:HtmlEncode($data714[3])}
+					</div>
+					<ul class="abouts_32_left_list">
+						<php>
+							$arr = get_list_val($data714[4]);
+						</php>
+						<volist name="arr" id="a">
+							<li>
+								<a href="{$a[link]}">
+									<span>
+										<img src="{$a[ico]}" alt="">
+									</span>
+									<p>{$a[title]}</p>
+								</a>
+							</li>
+						</volist>
+					</ul>
+					<a href="{$data714[5]}" class="index_btn">
+						<if condition="$data714[6]">
+							{$data714[6]}
+							<else />
+							{:__('Read More')}
+						</if>
+						<if condition="$data714[7]">
+							<div class="par">
+								<img src="{:getindeximgurl($data714[7])}" class="normal">
+								<img src="{:getindeximgurl($data714[9])}" class="hover" alt="">
+							</div>
+						</if>
+					</a>
+				</div>
+			</div>
+			<php>
+				$arra = get_list_val($data714[8]);
+			</php>
+			<div class="col-xs-12 col-lg-6 wow fadeInRight">
+				<volist name="arra" id="a" offset="0" length="1">
+					<div class="abouts_32_right" data-url="{$a[url]}">
+						<img src="{$a[img]}" class="img-fluid">
+					</div>
+				</volist>
+			</div>
+		</div>
+	</div>
+</section>

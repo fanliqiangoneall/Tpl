@@ -1,0 +1,90 @@
+<!--{$pagename}-->
+<php>
+    if($data285[0]){
+    $color = $data285[0];
+    }
+    if($data285[9]){
+        $len = $data285[9];
+    }else{
+        $len = 3;
+    }
+</php>
+<style>
+    <if condition="$data285[1]">.products_21 {
+        background-image: url({:getindeximgurl($data285[1])
+    }
+
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    }
+
+    </if>.products_21_left .index_title span,
+    .products_21_left .index_title em,
+    .products_21_bottom a,
+    .products_21_bottom {
+        color: #{$color};
+    }
+    .products_21_right_pag span.swiper-pagination-bullet-active{
+        background-color: #{$color};
+    }
+</style>
+<script>
+    var $len = '<?php echo $len;?>';
+</script>
+
+<section class="products_21 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-4 text-center products_21_left mb-20">
+                <div class="index_title pb40">
+                    <span>{$data285[2]}</span>{$data285[3]}
+                    <em>{$data285[4]}</em>
+                </div>
+                <div class="index_text pb20">
+                    {:HtmlEncode($data285[5])}
+                </div>
+                <div class="products_21_bottom index_text">
+                    <a href="{$data285[7]}">{$data285[6]}</a>
+                    <p>{$data285[8]}</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-8">
+                <div class="products_21_right swiper-container">
+                    <ul class="swiper-wrapper">
+                        <volist name="indexpro" id="indexpro5" offset="0" length="$lena">
+                            <li class="swiper-slide products_21_right_con">
+                                <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+                                    <img src="{:getmainimgurl($indexpro5['main_img'])}" alt="{$indexpro5['pro_name']}" class="img-fluid">
+                                </a>
+                                <p class="pb20">
+                                    <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+                                        {$indexpro5['pro_name']}
+                                    </a>
+                                </p>
+                                <php>
+                                    $pro_list = get_index_products_categoryname($indexpro5['class_id']);
+                                </php>
+                                <span>
+                                    <if condition="$indexpro5['pro_model']">
+                                    <b>
+                                        <a href="{:U('/Product','','')}/{:getproname($indexpro5['pid'])}">
+                                            {$indexpro5['pro_model']}
+                                        </a>
+                                    </b>
+                                    </if>
+                                    <em>
+                                        <a href="{:U('/product_category','','')}/{:getprocatename($pro_list['pcid'])}">{$pro_list['class_name']}</a>
+                                    </em>
+                                </span>
+                            </li>
+                        </volist>
+                    </ul>
+                    <div class="swiper-pagination products_21_right_pag"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

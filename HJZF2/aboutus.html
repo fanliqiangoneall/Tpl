@@ -1,0 +1,58 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        ul.InsidePages_left_navlist>li:hover >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$inner_data[0]};
+        }
+        .Breadcrumbs span.current{
+            color: #{$inner_data[0]};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$inner_data[0]};
+        }
+    </style>
+    <if condition="$inner_data[2]">
+        <style>
+            .InsidePages_content-left,.InsidePages_content-right_content_title{display: none!important;}
+            .InsidePages_content-right{width: 100%;}
+        </style>
+    </if>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+<a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+                <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                 </a>
+                </volist>
+             <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data47[10])}) center no-repeat"></div>
+            </if>
+
+        </div>
+        <div class="Breadcrumbs">
+            <div class="Breadcrumbs_down">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$intro_class['class_name']}</span>
+            </div>
+        </div>
+        <div class="InsidePages_content" id="main-content-wrapper">
+
+            <section class="InsidePages_content-left"  <if condition="count($navrs) gt 0">style="display:block"<else/> style="display:none"</if>>
+                <Include file="./Tpl/HJZF2/otherleft.html" />
+            </section>
+            <section <if condition="count($navrs) gt 0">class="InsidePages_content-right" <else/> class="InsidePages_content-right2" </if>>
+                <div class="InsidePages_content-right_content">
+                    <if condition="count($navrs) gt 0">
+                        <h5 class="InsidePages_content-right_content_title">{$intro_class['class_name']}</h5>
+                    </if>
+                        <div class="InsidePages_content-right_content-main" id="payment">{:htmlspecialchars_decode($intro_class['readme'])}</div>
+                        <div class="page_nei_space"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

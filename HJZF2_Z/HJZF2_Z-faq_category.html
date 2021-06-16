@@ -1,0 +1,156 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,.main_newslist li:hover .main_news_title h5,.main_news_dowm a:hover{
+            color: #{$color};
+        }
+        .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li:hover{
+            background: #{$color};
+
+        }
+        .main-content_inner_news>ul>li.yijion_news a h3,.main-content_inner_news>ul>li:hover a h3{
+            color: #fff;
+        }
+        .main_page .current{
+            background: #{$color};border: 1px solid #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+        .faq_class_more{
+            cursor: pointer;
+        }
+        .faq_class_more i{
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .faq_class_content .faq_class_more a,
+        .faq_class_content .faq_dropdown {
+            display: block;
+            background: #f5f5f5;
+            padding: 10px 15px;
+            position: relative;
+            color: #000;
+            line-height: 28px;
+            list-style: none;
+        }
+        .faq_wrapper {
+            margin-bottom: 10px;
+        }
+        .faq_class_content .faq_dropdown {
+            display: none;
+            overflow: hidden;
+        }
+
+        .faq_class_content .faq_class_more a:hover,
+        .faq_class_content .faq_class_more .on {
+            background-color: #{$color};
+        }
+        .faq_class_content .faq_dropdown a {
+            color: #{$color};
+        }
+
+        .faq_class_content .faq_class_more a:hover,
+        .faq_class_content .faq_class_more .on {
+            color: #fff;
+        }
+
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$newscate['banner'] neq '0'">
+                <div class="in_banner"><img
+                        src="{:getimgurl($newscate['banner'])}" alt=""/></div>
+                <elseif condition="$banner neq ''"/>
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img
+                            src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img
+                        src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                            href="{:U('/faqs')}">{:__('Faq')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent">
+            <div class="container">
+                <div class="row">
+                    <section class="hidden-xs hidden-sm hidden-md col-lg-12">
+                        <Include file="./Tpl/HJZF2_Z/faqleft.html" />
+                    </section>
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftfaq_mobile.html" />
+                    </section>
+                    <section class="col-xs-12 InsidePages_content-right2">
+                        <div class="InsidePages_content-right__wrap">
+                            <div class="InsidePages_content-right_content-main">
+                                <div class="HJ01_main_news faq_class_content">
+                                    <if condition="$newscatelist neq ''">
+                                        <ul class="main_newslist" data-myli="1">
+                                            <else/>
+                                            <ul class="main_newslist" data-myli="0">
+                                    </if>
+                                    <volist name="newscatelist" id="newscatelist">
+
+                                        <div class="faq_wrapper">
+                                                    <div class="faq_class_more">
+                                                        <a class="top_more"><i class="fa fa-plus fr"></i>{$newscatelist['title']}</a>
+                                                    </div>
+                                                    <div class="faq_dropdown">
+                                                        <p>
+                                                            {$newscatelist['news_description']}
+                                                        </p>
+                                                        <!-- <a href="{:U('/faq_detail',array('nid'=>$newscatelist["nid"]))}">{:__('Read
+                                                            More')}</a> -->
+                                                    </div>
+                                                </div>
+                                    </volist>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="footer_js">
+    <script>
+        $(function () {
+            $('.faq_class_more').click(function (e) {
+                var self = $(this);
+                var dropdown = self.next('.faq_dropdown');
+                var par = self.parent();
+                self.find('.top_more').toggleClass('on').find('i').toggleClass('fa-plus').toggleClass('fa-minus');
+                dropdown.slideToggle(300);
+                // 其他收起来
+                par.siblings().find('.top_more').removeClass('on').find('i').addClass('fa-plus').removeClass('fa-minus');
+                par.siblings().find('.faq_dropdown').slideUp(300);
+               
+            })
+        })
+    </script>
+
+</block>

@@ -1,0 +1,58 @@
+<!--{$pagename}-->
+
+<style>
+    /* <if condition="$data438[2]">
+    .HJZF2_Z_other_79{
+        background: url({:getindeximgurl($data438[2])}) no-repeat center/cover;
+    }
+    </if> */
+    .HJZF2_Z_other_81_con em {
+        background-color: #{$color};
+    }
+</style>
+<section class="HJZF2_Z_other_81 index_pd">
+    <div class="container">
+        <div class="row">
+
+            <div class="text-center pb40">
+                <div class="index_title pb20">{$data438[0]}</div>
+                <div class="index_sub_title">{$data438[1]}</div>
+            </div>
+
+            <div class="HJZF2_Z_other_81_wrapper">
+                <div class="HJZF2_Z_other_81_inquiry col-xs-12 col-lg-6">
+                    <if condition="C('language') eq 'cn'">
+                        <div class="page_Main"><Include file="./Tpl/HJZF2_Z/subinquiry.html" /></div>
+                        <else/>
+                        <div class="page_Main"><Include file="./Tpl/HJZF2_Z/subinquiry_en.html" /></div>
+                    </if>
+                </div>
+                <div class="HJZF2_Z_other_81_con col-xs-12 col-lg-6">
+                    <span class="index_sub_title pb20 d-block">{$data438[3]}</span>
+                    <p class="pb20">{$data438[4]}</p>
+                    <if condition="$data438[5]">
+                        <em><a href="{$data438[6]}" class="index_text">{$data438[5]}</a></em>
+                    </if>
+                    <ul>
+                        <php>
+                            $arr = get_list_val($data438[7]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <li>
+                                <if condition="$a[link]">
+                                    <a href="{$a[link]}">
+                                </if>
+                                <img src="{$a[img]}" class="img-fluid">
+                                <if condition="$a[link]">
+                                    </a>
+                                </if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

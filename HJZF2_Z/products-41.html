@@ -1,0 +1,119 @@
+<!--{$pagename}-->
+<php>
+    $arrbg = get_list_val($data546[6]);
+    if($data546[0]){
+    $color = $data546[0];
+    }
+</php>
+<style>
+    <if condition="$data546[1]">.hjzf2_products_41 {
+        background-image: url({:getindeximgurl($data546[1])
+    }
+
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    }
+
+    </if>.hjzf2_products_41_title li {
+        background: url({$arrbg[0][bg]}) center;
+    }
+
+    .hjzf2_products_41_title li:hover,
+    .hjzf2_products_41_title li.on {
+        background: url({$arrbg[0][bgh]}) center;
+    }
+
+    .hjzf2_products_41_title ul li {
+        border: 2px solid #{$color};
+    }
+
+    .hjzf2_products_41_con_left .hjzf2_products_41_con_left_text {
+        font-size: 18px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #{$color};
+    }
+
+    .hjzf2_products_41_con_left_text em {
+        color: #{$color};
+    }
+</style>
+<section class="hjzf2_products_41 index_pd">
+    <div class="container">
+        <div class="text-center pb40">
+            <div class="ruiyi_title">
+                <div class="index_title">
+                    {$data546[2]}
+                </div>
+                <div class="index_text">
+                    {$data546[3]}
+                </div>
+            </div>
+        </div>
+        <php>
+            $arr_str=$data546[4];
+            $arr=explode(',',$arr_str);
+            foreach($arr as $k=>$a){
+            $list[$k]=get_index_products_categoryname($a);
+            }
+            $arr_stra=$data546[4];
+            $arra=explode(',',$arr_stra);
+            foreach($arra as $ks=>$aa){
+            $lista[$ks]=get_index_products_category($aa, 7);
+            }
+            $arrImg = get_list_val($data546[5]);
+        </php>
+        <div class="hjzf2_products_41_title text-center">
+            <ul>
+                <volist empty="" name="list" id="li" key="key">
+                    <li>
+                        <a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">
+                            <div class="img-par">
+                                <img src="{$arrImg[$key][ico]}" class="normal" alt="{$li['class_name']}">
+                                <img src="{$arrImg[$key][icoh]}" class="hover" alt="{$li['class_name']}">
+                            </div>
+                            <h4>{$li['class_name']}</h4>
+                        </a>
+                    </li>
+                </volist>
+
+            </ul>
+        </div>
+        <volist empty="" name="lista" id="lia" key="keya">
+            <div class="hjzf2_products_41_con">
+                <ul class="row">
+                    <div class="d-flex hjzf2_products_41_con_wrapper">
+                        <volist empty="" name="lia" id="lib" key="keya" length="1" offset="0">
+                            <div class="hjzf2_products_41_con_left">
+                                <a href="{:U('/Product','','')}/{:getproname($lib['pid'])}">
+                                    <img src="{:getimgurl($lib['main_img'])}" alt="{$lib['pro_name']}"
+                                        class="img-fluid">
+                                    <div class="hjzf2_products_41_con_left_text">
+                                        {$lib['pro_name']}
+                                        <em></em>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                        <ul class="hjzf2_products_41_con_right">
+                            <volist empty="" name="lia" id="lic" key="keya" length="6" offset="1">
+                                <li>
+                                    <a href="{:U('/Product','','')}/{:getproname($lic['pid'])}">
+                                        <img src="{:getimgurl($lic['main_img'])}" alt="{$lic['pro_name']}"
+                                            class="img-fluid">
+                                        <div class="hjzf2_products_41_con_left_text">
+                                            {$lic['pro_name']}
+                                        </div>
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </volist>
+
+    </div>
+</section>

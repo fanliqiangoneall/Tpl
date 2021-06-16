@@ -1,0 +1,63 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style>
+        .HJZF_Z__Breadcrumbs span.current{
+            color: #{$color};
+        }
+        .selInfo dl dd button{
+            background: #{$color};
+        }
+		.jobs3_item:hover {
+			background: #{$color}; 		
+		}
+    </style>
+    <div id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner"><img src="{:getimgurl($banner['ad_pic'])}" alt=""/></div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[0])}" alt=""/></div>
+            </if>
+
+        </div>
+
+        <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+            <div class="container">
+                <div class="row"><div class="col-xs-12"><a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('Jobs')}</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                	<div class="col-xs-12">
+                    <section class="HJZF_Z__innerContent">
+                        <div class="InsidePages_content-right_content-main">
+                            <div class="HJZF_Z__innerContent_jobs3_list">
+                            	<volist name="jobs" id="jobs" key="k">
+                            	<div class="col-xs-12 col-md-6 wow fadeInUp jobs3_item">
+                                    <a href="{:U('/job',array('jobid'=>$jobs['jobid']))}">
+                                        <div class="jobs3_title index_sub_title">{$jobs['jobname']}</div>
+                                        <div class="jobs3_intro index_text ellipsis_one"><if condition="$jobs['people']"><b>{:__('Number of demand: ')}</b>{$jobs['people']}</if></div>
+                                        <div class="jobs3_description index_text ellipsis_four">{:htmlspecialchars_decode($jobs['content'])}</div>
+                                        <div class="jobs3_date index_text">{:date('Y/m/d',$jobs['updatetime'])}<span>{:__('Release')}</span></div>
+                                    </a>
+                                </div>
+                                </volist>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="page_nei_space"></div>
+                    </section>
+                    <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+

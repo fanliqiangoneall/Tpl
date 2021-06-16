@@ -1,0 +1,75 @@
+<extend name="demo1:base" />
+<block name="content">
+<Include file="./Tpl/demo1/index_page/head.html" />
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url({:getindeximgurl($data1[4])}) center no-repeat"></div>
+</if>
+</div>
+
+<Include file="./Tpl/demo1/top_search.html" />
+<div class="page_Main">
+   <div class="page_inleft">
+      <div class="in_tophead">新闻中心</div>
+      <div class="page_LeftClass">
+      	<volist name="allnewclass" id="newclass">
+         <div class="parent"><a href="{:U('/new_category',array('classid'=>$newclass["classid"]))}" onFocus="blur()">{$newclass['class_name']}</a></div>
+        </volist> 
+      </div>
+      <div class="left_contact">
+         <ul>
+            <li style="padding-left:30px;">全国服务热线<br /><span>{:chaifen($about['phone'],0)}</span></li>
+         </ul>
+      </div>
+   </div>
+   <div class="in_right">
+        <div class="page_RightTitle"><span class="r_mbx"><img src="__TMPL__demo1/img/in_home.jpg" style="vertical-align:middle; border:none;" />&nbsp;<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$newclass['class_name']}</span>{$newclass['class_name']}</div>
+        <div class="page_RightMain">
+          <div class="news">
+          <div id="news_detail">
+            <div class="body">
+              <h1 class="fc_107fd0 fs_16 bold">{$news['title']}</h1>
+              <div class="news_view"><span class="right red">浏览次数：{$news['click_num']}</span><span class="right time">{:date('m/d/Y',$news['created'])}&nbsp;&nbsp;</span></div>
+              <div class="clear"></div>
+              <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+              <div class="bt" style="margin-top:22px;"><a href="javascript:history.back()" onfocus="blur()" style="display:block; font-size:13px; text-align:center; line-height:24px; color:#fff;">返回</a></div>
+            </div>
+          </div>
+        </div>
+              
+        <div class="prev_next">
+            <ul>
+              <li>上一条：
+               <if condition="$newprev[0]['title'] eq ''">
+                无
+               <else/>
+                <a href="{:U('/new_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">{$newprev[0]['title']}</a>
+               </if>
+              </li>
+              <li>下一条：
+                <if condition="$newnext[0]['title'] eq ''">
+                无
+               <else/>
+                <a href="{:U('/new_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">{$newnext[0]['title']}</a>
+               </if>
+              </li>
+            </ul>
+          </div>
+         <if condition="newscomment_show() eq 1">
+          <include file="demo1:newscomment" />
+        </if>
+        <div style="clear:both; height:20px;"></div>
+        <include file="demo1:relationinfo" />
+        <include file="demo1:relationnew" />
+        <include file="demo1:relationcase" />
+        <div style="clear:both"></div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+</div>
+<Include file="./Tpl/demo1/index_page/bottom.html" />
+</block>

@@ -1,0 +1,184 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+		.inner5__newslist{
+			position:relative;
+			margin-top:40px;
+		}
+		.inner5_newslist__line{
+			position: absolute;
+			width: 1px;
+			height: 100%;
+			top: 0;
+			left: 50%;
+			background: #eee;
+			margin-left: -0.5px;
+			z-index:0;
+		}
+		.inner5_newlist__row{
+			position:relative;
+			width:50%;
+			margin-top:52px;
+		}
+		.inner5_newlist__row a{
+			padding: 34px 24px;
+			border: 1px solid #e5e5e5;
+			position:relative;
+			width:90%;
+			display:block;
+		}
+		.inner5_newlist__row.rt a{
+			margin-left:10%;
+		}
+		.InsidePages_content-right_content-main .inner5_newlist__row:first-child{ margin-top:0;}
+		.inner5_newlist__row:before{
+			width: 10px;
+			height: 10px;
+			content: "";
+			border-radius: 50%;
+			z-index: 92;
+			position: absolute;
+			top: 32px;
+			background: #{$color};
+		}
+		.inner5_newlist__row.lf:before {
+			right: 0;
+			margin-right:-5px;
+		}
+		.inner5_newlist__row.rt:before {
+			left: 0;
+			margin-left:-5px;
+		}
+		.inner5_newlist__row a:after{
+			width: 17px;
+			height: 22px;
+			content: "";
+			z-index: 2;
+			background: url(__TMPL__HJZF2_Z/img/newsArr.jpg) no-repeat;
+			position: absolute;
+			top: 26px;
+		}
+		.inner5_newlist__row.lf a:after {
+			right: -17px;
+		}
+		.inner5_newlist__row.rt a:after {
+			left: -17px;
+			transform: rotate(180deg);
+		}
+		.inner5_newlist__words{
+			width:100%;
+			text-align:right;
+		}
+		.inner5_newlist__row.rt .inner5_newlist__words{
+			text-align:left;
+		}
+		.inner5_newlist__date span{
+			display:block;
+			color:#{$color};
+		}
+		.inner5_newlist__pic{
+			width: 100%;
+			overflow: hidden;
+			margin-top: 16px;
+		}
+		.inner5_newlist__pic img{
+			width: 100%;
+			object-fit: cover;
+			transition: all .4s ease;
+		}
+		.inner5_newlist__row:hover .inner5_newlist__title{
+			color: #{$color};
+		}
+		.inner5_newlist__row:hover .inner5_newlist__pic img{transform: scale(1.1);}
+        .main_newslist3 li:hover a.more{
+            background-color: #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-color: #{$color};
+        }
+        .main_page .current{
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+		.main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li.yiji_news:hover,.main-content_inner_news>ul>li:first-child,.mian_content_casebox>ul>li.main_caseitem:hover .hj05-news-pic{
+            background: #{$color};
+
+        }
+        .main-content_inner_news>ul>li.yijion_news a h3,.main-content_inner_news>ul>li.yiji_news:hover a h3,.main-content_inner_news>ul>li:first-child a h3{
+            color: #fff;
+        }
+		.inner_cases4_item:hover .inner_cases4_more{
+			background: #{$color};
+			border-color: #{$color};
+		}
+		@media(max-width:767px){
+		.inner5_newslist__line{
+			display:none;
+		}
+		.inner5_newlist__row{ 
+			width:100%;
+		}	
+		.inner5_newlist__row:before,.inner5_newlist__row a:after{
+			display:none;
+		}
+		.inner5_newlist__row a{
+			width:100%;
+			padding:20px 18px;	
+		}
+		.inner5_newlist__row.rt a{
+			margin-left:0;
+		}
+		.inner5_newlist__words{
+			text-align:left;
+		}
+		}
+    </style>
+    <div class="cases_inner5__wrapper" id="HJZF_Z__wrapper">
+        <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/cases_bread3.html" />
+        <div class="container">
+            <div class="row">
+                <Include file="./Tpl/HJZF2_Z/inner/cases_left5.html" />
+                <section class="col-xs-12 InsidePages_content5">
+                    <div class="InsidePages_content-right__wrap inner5__newslist">
+                    	<i class="inner5_newslist__line"></i>
+                        <div class="InsidePages_content-right_content-main">
+							<php>
+								$no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+							</php>
+                                <volist empty="$no_empty" name="allnews" id="allnews" key="k_cases5">
+                                    <div <if condition="$k_cases5%2 eq 1">class="inner5_newlist__row lf wow fadeInUp"<else/>class="inner5_newlist__row rt wow fadeInUp"</if>>
+                                    	<a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">
+                                        <div class="inner5_newlist__words">
+                                            <div class="inner5_newlist__date">
+												<if condition="$webid neq '1721'">
+													<span class="index_title">{:date('m-d',$allnews['created'])}</span>
+												</if>
+												<span class="index_sub_title">{:date('Y',$allnews['created'])}</span></div>
+                                            <div class="inner5_newlist__title index_sub_title ellipsis_two">{$allnews['title']}</div>
+                                            
+                                        </div>
+                                        <div class="inner5_newlist__pic">
+                                            <img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"<else/>src="{:getindeximgurl($inner_data[2])}"</if> border="0" />
+                                        </div>
+                                        </a>
+                                        <div class="clear"></div>
+                                    </div>
+                                </volist>
+								<div class="clear"></div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</block>

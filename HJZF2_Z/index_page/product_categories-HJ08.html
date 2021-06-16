@@ -1,0 +1,41 @@
+<!--{$pagename}-->
+<section class="hjzf_procate index_pd index_wrapper">
+    <div class="index_inner">
+        <ul class="hjzf_procate_wrapper row-little">
+            <php>
+                $pro_cate=explode("\\r\\n",$data277[2]); foreach($pro_cate as $k=>$procate_a){ $procate_b=explode(":",$procate_a); $procate_c[$k]['yiji']=$procate_b[0];
+                $procate_c[$k]['erji']=$procate_b[1]; }
+            </php>
+            <volist empty="" name="procate_c" id="li" key="keya">
+                <php>
+                    $pro_list = get_index_products_categoryname($li['yiji']); $arr_str = $li['erji']; $arr=explode(',',$arr_str); foreach($arr
+                    as $k=>$arrlist){ $list[$k]=get_index_products_categoryname($arrlist); }
+                    $keyab = $keya * 2;
+                </php>
+                <li class="wow zoomIn" data-wow-delay=".{$keyab}s">
+                    <span class="transform-scale">
+                        <img src="{:getmainimgurl($pro_list['fid'])}" class="w-100" alt="{$pro_list['class_name']}">
+                        <dl class="wow fadeIn">
+                            <div class="lines">
+                                <i class="lines_w"></i>
+                                <i class="lines_h"></i>
+                                <i class="lines_w"></i>
+                                <i class="lines_h"></i>
+                            </div>
+                            <dt>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($pro_list['pcid'])}">{$pro_list['class_name']}</a>
+                            </dt>
+                            <volist empty="" name="list" id="li" key="k">
+                                <if condition="$li">
+                                    <dd>
+                                        <a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a>
+                                    </dd>
+                                </if>
+                            </volist>
+                        </dl>
+                    </span>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</section>

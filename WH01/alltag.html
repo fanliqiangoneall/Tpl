@@ -1,0 +1,41 @@
+<extend name="WH01:basein" />
+<block name="content">
+
+	<div>
+		<Include file="./Tpl/WH01/in_banner.html" />
+	</div>
+	<div class="r_mbx"><Include file="./Tpl/WH01/bread.html" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;All tags</div>
+
+	<div class="page_nei_main">
+		<Include file="./Tpl/WH01/left.html" />
+		<div class="page_RightMain">
+			<div class="page_class_head_1">
+				<div class="indpro_title">
+					<span>All tags</span><img src="__TMPL__WH01/img/protitle_bg2.png">
+				</div>
+			</div>
+
+			<div class="page_Main">
+				<volist name="labels" id="label">
+				<a class="taglabel"  target="new" href="{:U('/tag','','')}/keyword/{$label['id']}">{$label['labelname']}</a>
+			</volist></div>
+			<div style="clear:both;height: 50px;"></div>
+		</div>
+	</div>
+
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

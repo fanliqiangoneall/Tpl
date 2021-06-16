@@ -1,0 +1,116 @@
+<!--{$pagename}-->
+<if condition="$data[9]">
+    <style>
+        #aboutus{
+            background:url({:getindeximgurl($data4[9])}) no-repeat;
+        }
+    </style>
+</if>
+<php>
+
+    if($data4[10]==""){
+    $data4[10] = 345;
+    }
+    if($data4[12]==""){
+    $data4[12] = 15;
+    }
+    if($data4[14]==""){
+    $data4[14] = 70;
+    }
+    if($data4[15]==""){
+    $data4[15] = 0;
+    }
+</php>
+
+<style>
+    #aboutus{
+        padding-top: {$data4[14]}px;padding-bottom:{$data4[15]}px;;
+    }
+    .hj02_abus_pagination .swiper-pagination-bullet-active{
+        background: #{$color};
+    }
+    .hj02_abus_left_title{
+        color: #333;
+    }
+    .hj02_abus_right h4{
+        color:#333;margin-bottom: {$data4[12]}px;
+    }
+    #tip ul li.current{
+        background: #{$color};
+    }
+    .hj02_abus_right_honor{
+    height: {$data4[10]}px;
+    }
+</style>
+
+
+
+<!--about us start-->
+<div id="aboutus" class="margin-60px-bottom">
+    <div class="container">
+        <div class="hj02_abus_left">
+            <h3 class="hj02_abus_left_title margin-30px-bottom">{$data4[0]}</h3>
+            <div class="hj02_abus_left_content">
+                <div class="hj02_abus_left_content_left">
+                    <div id="ab_picbox" >
+                        <div id="pic" class="page_indexpic">
+                            <ul>
+                                <php>
+                                    $imgs=aboutusimg();
+                                    if(!$data4[11]){
+                                    $data4[11]=3;
+                                    }
+                                </php>
+                                <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[11]">
+                                    <if condition="$banerimg['imgurl'] neq ''">
+                                        <li ><a href="javascript:void(0);" <if condition="$data4[13]">id="adv_video{$k1}"</if> data-video="{$data4[13]}"><img src="{$banerimg['imgurl']}" border="0" /></a></li>
+                                    </if>
+                                </volist>
+                            </ul>
+
+                        </div>
+
+                        <div id="tip">
+                            <ul>
+                                <volist name="imgs" id="banerimg" key="k1" offset="0" length="$data4[5]">
+                                    <if condition="$banerimg['imgurl'] neq ''">
+                                        <li id="smallimg_{$k1}" onMouseOver="change({$k1})"></li>
+                                    </if>
+                                </volist>
+                            </ul>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="hj02_abus_left_content_right">
+                    {:HtmlEncode(subtxt($company_info['description'],500))}&nbsp;&nbsp;<a href="{:U('/aboutus')}" style="color: #{$color};">Read More -</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="hj02_abus_right">
+            <h4 class="margin-15px-bottom">{$data4[2]}</h4>
+            <div class="swiper-container hj02_abus_right_honor">
+                <div class="hj02_abus_right_honor_box">
+                    <div class="swiper-wrapper">
+                        <php>for($i=3;$i<8;$i=$i+1){</php>
+
+                        <if condition="$data4[$i] neq ''">
+                            <div class="hj02_honor_item swiper-slide" id="count{$i}">
+                                <img src="{:getindeximgurl($data4[$i])}" alt=""/>
+                            </div>
+                        </if>
+                        <php>}</php>
+                    </div>
+                    <div class="swiper-pagination hj02_abus_pagination"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+</div>
+<!--about us end-->

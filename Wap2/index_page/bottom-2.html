@@ -1,0 +1,114 @@
+<!--{$pagename}-->
+<php>
+    $nowtime=date("Y",time());
+    if(!$data31[3]){
+    $currtime=2019;
+    }else{
+    $currtime=$data31[3];
+    }
+$new_hjzf_bottom_2__CopyRight__bj=$data31[0] or $new_hjzf_bottom_2__CopyRight__bj="#1f2229";  
+$new_hjzf_bottom_2__CopyRight__color=$data31[1] or $new_hjzf_bottom_2__CopyRight__color="#818387";
+$new_hjzf_bottom_2__emial__color=$data31[2] or $new_hjzf_bottom_2__emial__color="#818387";
+</php>
+<style>
+.new_hjzf_bottom_2__CopyRight{
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+	padding:20px 20px;
+	background:{$new_hjzf_bottom_2__CopyRight__bj};
+}
+.new_hjzf_bottom_2__ul{ 
+background:#{$color};
+}
+.new_hjzf_bottom_2__emial{ 
+height:38px; line-height:38px; width:100%; text-align:center;
+background:#{$color};
+color:{$new_hjzf_bottom_2__emial__color};
+}
+.new_hjzf_bottom_2__CopyRight,.new_hjzf_bottom_2__CopyRight a{
+	text-decoration:none;
+	color:{$new_hjzf_bottom_2__CopyRight__color};
+	
+}
+.new_hjzf_bottom_2__emial img{ position:relative; top:6px; right:5px;}
+.new_hjzf_bottom_2__emial a{ 
+text-decoration:none;font-size:16px;
+color:{$new_hjzf_bottom_2__emial__color};
+}
+.new_hjzf_bottom_2__ul li{
+color:{$new_hjzf_bottom_2__emial__color};
+font-size: 14px;
+}
+</style>
+<php>
+    if($data31[4]){
+    $siderNav="block";
+    }else{
+    $siderNav="none";
+    }
+    $lan = HtmlEncode($data31[4]);
+
+</php>
+<style>
+    .siderNav{
+        position: fixed;bottom: 100px;right: 0;display: {$siderNav};z-index:96;
+    }
+</style>
+<script>
+    var lan_str = "<?php echo $lan;?>";
+</script>
+<footer>
+
+<div class="new_hjzf_bottom_2__emial">
+<a onclick="turn_sta(3,2)" href="mailto:{:chaifen($about['email'],0)}">
+<i class="fa fa-envelope" style="margin-right: 10px;"></i>{:chaifen($about['email'],0)}
+</a>
+</div>
+
+
+<div class="new_hjzf_bottom_2__CopyRight">
+<if condition="$nowtime gt $currtime">
+CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}
+<else/>
+CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-
+</if>
+    <br/> {$about['company_name']} <br/>{:__('All rights reserved')}<br/>
+<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">
+{:__('All tags')}
+</a>
+</span>
+&nbsp;&nbsp;
+
+<if condition="C('language') eq 'cn'">
+    <a id="mianze" title="常州网络公司中环互联网" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+    <a href="https://www.one-all.com" title="常州网络公司" target="_blank">中环互联网设计制作</a>
+<elseif condition="C('language') eq 'rus'" />
+    проектировщик <a href="https://www.one-all.com" title="Zhonghuan интернет" target="_blank">Zhonghuan интернет</a>
+    <elseif condition="C('language') eq 'ja' or C('language') eq 'jp'" />
+    <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internetが設計</a>
+    <else/>
+        Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a>
+</if>
+</div>
+<div class="new_hjzf_bottom_2__foot_nav">
+    <if condition="C('LANGUAGE') eq 'cn'">
+        <ul class="new_hjzf_bottom_2__ul">
+            <a href="{:U('/')}"><li><i class="fa fa-university"></i><br/>{:__('Home')}</li></a>
+            <a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['phone'],0)}"><li><i class="fa fa-phone"></i><br/>电话</li></a>
+            <a onclick="turn_sta(5,2)"  href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes"><li><i class="fa fa-qq"></i><br/>QQ</li></a>
+            <a onclick="turn_sta(3,2)" href="{:U('/Inquiry')}"><li><i class="fa fa-user"></i><br/>联系我们</li></a>
+            <a onclick="turn_sta(3,2)"  href="mailto:{:chaifen($about['email'],0)}"><li><i class="fa fa-envelope"></i><br/>邮箱</li></a>
+
+        </ul>
+        <else/>
+        <ul class="new_hjzf_bottom_2__ul">
+            <a onclick="turn_sta(6,2)" href="tel:{:chaifen($about['mobile'],0)}"><li><i class="fa fa-phone"></i><br/>{:__('Tel')}</li></a>
+            <a onclick="turn_sta(4,2)" href="skype:{:chaifen($about['msn'],0)}?chat"><li><i class="fa fa-skype"></i><br/>Skype</li></a>
+            <a onclick="turn_sta(3,2)"  href="mailto:{:chaifen($about['email'],0)}"><li><i class="fa fa-envelope"></i><br/>{:__('E-mail')}</li></a>
+            <a href="https://api.whatsapp.com/send?phone=86{:chaifen($about['whatsapp'],0)}"><li><i class="fa fa-whatsapp"></i><br/>WhatsApp</li></a>
+            <a onclick="turn_sta(2,2)" href="{:U('/contactus')}"><li style="border:none;"><i class="fa fa-user"></i><br/>{:__('Contact')}</li></a>
+        </ul>
+    </if>
+</div>
+</footer>

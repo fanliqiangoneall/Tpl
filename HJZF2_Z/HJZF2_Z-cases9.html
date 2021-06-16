@@ -1,0 +1,92 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <style type="text/css">
+        .HJZF_Z__Breadcrumbs span.current,.main_newslist li:hover .main_news_title h5,.main_news_dowm a:hover{
+            color: #{$color};
+        }
+        .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li.yiji_news:hover,.main-content_inner_news>ul>li:first-child,.mian_content_casebox>ul>li.main_caseitem:hover .hj05-news-pic{
+            background: #{$color};
+
+        }
+        .main-content_inner_news>ul>li.yijion_news a h3,.main-content_inner_news>ul>li.yiji_news:hover a h3,.main-content_inner_news>ul>li:first-child a h3{
+            color: #fff;
+        }
+        .main_page .current{
+            background: #{$color};
+			border: 1px solid #{$color};
+        }
+        .InsidePages_left_content-main{
+            border-top: 2px solid #{$color};
+        }
+    </style>
+    <div class="index_wrapper" id="HJZF_Z__wrapper">
+        <div id="HJZF_Z__innerBanner">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner">
+                        <img src="{:getimgurl($banner['ad_pic'])}" alt=""/>
+                    </div>
+                </volist>
+                <else/>
+                <div class="in_banner"><img src="{:getindeximgurl($inner_data[2])}" alt=""/></div>
+            </if>
+        </div>
+        <div class="index_inner container">
+            <div class="row">
+                <div class="HJZF_Z__inner9--text wow bounceIn">
+                    <div class="index_title">{$inner_data[0]}</div>
+                    <div class="index_text">{$inner_data[1]}</div>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__inner9--leftcate">
+            <div class="index_inner container">
+                <div class="row">
+                    <Include file="./Tpl/HJZF2_Z/caseleft9.html" />
+                    <section class="hidden-lg hidden-xl col-xs-12 HJZF_Z__inner__mobileLeftMenu">
+                        <Include file="./Tpl/HJZF2_Z/leftcases_mobile.html" />
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="HJZF_Z__innerContent" id="main-content-wrapper">
+            <div class="index_inner container">
+                <div class="row">
+                    <section class="col-xs-12 InsidePages_content2">
+                        <div class="InsidePages_content-right_content-main">
+                            <div class="mian_content_casebox">
+                                <ul>
+                                    <php>
+                                        $no_empty = '<span class="norecords">'.__('No Cases').'...</span>';
+                                    </php>
+                                    <volist empty="$no_empty" name="allnews" id="allnews" key="k">
+                                        <li class="col-xs-12 col-sm-12 col-md-6 wow fadeInUp inner9_caseitem">
+                                              <div class="inner9_cases_pic">
+                                                  <a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($allnews['new_pro'])}" border="0" width="100%"/>
+                                                  <div class="inner9_cases_lines">
+                                                      <i class="lines_w"></i>
+                                                      <i class="lines_h"></i>
+                                                      <i class="lines_w"></i>
+                                                      <i class="lines_h"></i>
+                                                  </div>
+                                                  </a>
+                                              </div>
+                                              <div class="inner9_cases_info">
+                                                  <div class="index_sub_title ellipsis_two case_item-title"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">{:subtxt($allnews['title'],100)}</a></div>
+                                                  <div class="index_text ellipsis_two case_item-ms"><a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()">{:subtxt($allnews['news_description'],100)}</a></div>
+                                              </div>
+                                        </li>
+                                    </volist>
+                                    <div style="clear:both"></div>
+                                </ul>
+                            </div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </section>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</block>

@@ -1,0 +1,49 @@
+<!--{$pagename}-->
+<div class="index_about_aboutbg">
+ <div style="width: 1020px;margin: auto;position: relative;height: 640px">
+ <div id="index_about_animate_1" style="display: none">
+   <div class="about_title">{$data4[0]}</div>
+   <div class="index_about_con">{:HtmlEncode(subtxt($company_info['description'],380))}</div>
+<!--   <div style="position: absolute;font-size: 18px;color: #fff;left: 157px;top: 199px;"><img src="{:getindeximgurl($data4[4])}"></div>
+   <div style="position: absolute;font-size: 18px;color: #fff;left: 99px;top: 296px;">{$data4[1]}</div>
+   <div style="position: absolute;font-size: 18px;color: #fff;left: 476px;top: 205px;"><img src="{:getindeximgurl($data4[5])}"></div>
+   <div style="position: absolute;font-size: 18px;color: #fff;left: 387px;top: 296px;">{$data4[2]}</div>
+   <div style="position: absolute;font-size: 18px;color: #fff;left: 791px;top: 199px;"><img src="{:getindeximgurl($data4[6])}"></div>
+   <div style="position: absolute;font-size: 18px;color: #fff;left: 741px;top: 296px;">{$data4[3]}</div>-->
+
+<div style="width:100%;">
+    <div class="about_div" style="width:33%">
+    	<div class="about_img" style="background:url({:getindeximgurl($data4[4])}) no-repeat center center; background-size:contain;"></div>
+        <div class="about_txt">{$data4[1]}</div>
+    </div>
+
+    <div class="about_div" style="width:33%">
+    	<div class="about_img" style="background:url({:getindeximgurl($data4[5])}) no-repeat center center; background-size:contain;"></div>
+        <div class="about_txt">{$data4[2]}</div>
+    </div>
+
+    <div class="about_div" style="width:33%">
+    	<div class="about_img" style="background:url({:getindeximgurl($data4[6])}) no-repeat center center; background-size:contain;"></div>
+        <div class="about_txt">{$data4[3]}</div>
+    </div>
+    
+<div class="clear"></div>
+</div>
+    </div>
+    <div class="index_aboutimg">
+    	 <img src="{:getindeximgurl($data4[7])}"> 
+    </div>
+   </div>  
+ </div> 
+ 
+ 
+ <style>
+ .about_txt{
+	    font-size: 18px;
+    color: #fff;
+	margin:40px 0px;
+
+	}	
+	.about_div{ text-align:center;	float:left;} 
+	.about_img{ width:64px; height:64px; margin:20px auto;}
+ </style>

@@ -1,0 +1,149 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[0]){
+		$color = $inner_data[0];
+		}
+	</php>
+	<style>
+		.chengshe_right{
+			margin-left: 3vw;
+		}
+		.chengshe_right li{
+			display: block;
+			position: relative;
+			margin-bottom: 30px;
+			overflow: hidden;
+		}
+		.chengshe_right li a{
+			display: block;
+			position: relative;
+		}
+		.chengshe_right li span{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			margin-top: 50px;
+			color: #fff;
+			z-index: 10;
+			opacity: 0;
+			transition: all .4s;
+		}
+		.chengshe_right li:hover span{
+			margin-top: 0;
+			opacity: 1;
+		}
+		.chengshe_right li a{
+			position: relative;
+			display: block;
+		}
+		.chengshe_right li a:before{
+			position: absolute;
+			display: block;
+			content:'';
+			width: 100%;
+			height: 100%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			background: rgba(0,0,0,.2);
+			transform: scale(1.05);
+			z-index: 9;
+			opacity: 0;
+			transition: all .6s;
+		}
+		.chengshe_right li:hover a:before{
+			opacity: 1;
+		}
+		.chengshe_right li img{
+			transition: all .6s ease-in-out;
+			width: 100%;
+		}
+		.chengshe_right li:hover img{
+			transform: scale(1.05);
+		}
+		.chengshe_right li{
+			flex: 0 0 100%;
+			width: 100%;
+			align-items: flex-start;
+		}
+		.chengshe_right li:nth-child(3n+1){
+			flex: 0 0 43%;
+			width: 43%;
+			margin-right: 2%;
+		}
+		.chengshe_right li:nth-child(3n+2){
+			flex: 0 0 55%;
+			width: 55%;
+		}
+		.chengshe_right li:nth-child(6n+1){
+			flex: 0 0 55%;
+			width: 55%;
+			margin-right: 2%;
+		}
+		.chengshe_right li:nth-child(6n+2){
+			flex: 0 0 55%;
+			width: 55%;
+			flex: 0 0 43%;
+			width: 43%;
+		}
+		.chengshe_right li:first-child{
+			width: 100%;
+			flex: 0 0 100%;
+			margin-right: 0;
+		}
+		.chengshe_right li:nth-child(2){
+			flex: 0 0 55%;
+			width: 55%;
+		}
+		.chengshe_right li:nth-child(3){
+			flex: 0 0 43%;
+			width: 43%;
+			margin-left: 2%;
+		}
+		
+	</style>
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner_pic" offset="0" length="1">
+					<if condition="$banner_pic['use_video']">
+						<a id="case_video_src" data-src="{$banner_pic['ad_link']}" style="cursor: pointer">
+							<div class="in_banner">
+								<img src="{:getimgurl($banner_pic['ad_pic'])}" alt="" />
+							</div>
+						</a>
+						<else />
+						<div class="in_banner">
+							<img src="{:getimgurl($banner_pic['ad_pic'])}" alt="" />
+						</div>
+					</if>
+				</volist>
+				<else />
+				<div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" alt="" /></div>
+			</if>
+		</div>
+
+
+		<!-- 图片列表 -->
+		<div class="chengshe_cate">
+		<Include file="./Tpl/HJZF2_Z/inner/case_left_chengshe.html" />
+			<div class="chengshe_right">
+				<ul class="d-flex">
+					<volist name="newscatelist" id="allnews">
+						<li class="wow fadeInUp">
+							<a href="{:U('/case_detail',array('nid'=>$allnews["nid"]))}">
+								<img src="{:getimgurl($allnews['new_pro'])}" class="img-responsive" alt="{$allnews['title']}">
+								<span>{$allnews['title']}</span>
+							</a>
+						</li>
+					</volist>
+				</ul>
+			</div>
+		</div>
+
+
+	</div>
+</block>

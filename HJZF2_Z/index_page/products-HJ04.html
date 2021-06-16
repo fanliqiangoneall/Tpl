@@ -1,0 +1,115 @@
+<!--{$pagename}-->
+<php>
+if($data101[4]){
+$imgs=[];
+$matches=getimages(htmlspecialchars_decode($data101[4]));
+if(isset($matches[1])){
+	$imgs=$matches[1];
+}
+}
+</php>
+<style>
+    .products-hj04__content--down__wrap li .products-hj04__item:hover .products-hj04__proName{
+        background: #{$data101[1]};
+    }
+    .products-hj04__categroy li.swiper-slide-thumb-active div,.products-hj04__categroy li:hover div,.products-hj04__categroy li.swiper-slide-active div{
+        color: #{$data101[1]};
+    }
+    
+</style>
+<if condition="$data101[0]">
+    <style>
+        #products-hj04{
+            background: url({:getindeximgurl($data101[0])}) no-repeat center;
+        }
+    </style>
+</if>
+<script>
+    <if condition="$data101[0]">
+    var pro_hj04_num = <?php echo $data101[5] ?>;
+    <else/>
+    var pro_hj04_num = 5;
+    </if>
+</script>
+<section id="products-hj04" class="index_pd"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="products-hj04__title index_title">{$data101[2]}</div>
+                <div class="products-hj04__content">
+                   <div class="products-hj04__contentTop">
+                       <div class="products-hj04__box">
+                           <div class="products-hj04__categroy swiper-container gallery-thumbs">
+                               <div class="swiper-wrapper">
+                                   <php>
+                                       $arr_str=$data101[3];
+                                       $arr=explode(',',$arr_str);
+                                       foreach($arr as $k=>$a){
+                                       $list[$k]=get_index_products_categoryname($a);
+                                       }
+                                   </php>
+                                   <volist empty="" name="list" id="li" key="k">
+                                       <if condition="$li">
+                                           <li class="swiper-slide"><div>{$li['class_name']}</div></li>
+                                       </if>
+                                   </volist>
+
+
+                               </div>
+                           </div>
+                           <div class="swiper-button-next swiper-next-product2"><i class="fa fa-angle-right"></i></div>
+                           <div class="swiper-button-prev swiper-prev-product2"><i class="fa fa-angle-left"></i></div>
+                       </div>
+                   </div>
+
+
+                    <div class="products-hj04__content--down swiper-container gallery-top wow bounceInLeft" data-wow-duration="1s">
+                        <ul class="products-hj04__content--down__wrap swiper-wrapper">
+                            <php>
+                                $arr_str=$data101[3];
+                                $arr=explode(',',$arr_str);
+                                foreach($arr as $k=>$a){
+                                $list[$k]=get_index_products_categoryname($a);
+                                }
+                                $img_index=0;
+                            </php>
+                            <volist empty="" name="list" id="li" key="k">
+                            <php> 
+                            $tuji=$imgs[$img_index];
+                            $img_index++;
+                            </php>
+                                <li class="products-hj04__content__itemBox swiper-slide">
+                                    <div class="products-hj04__itemLeft" style=" background:url({$tuji}); background-position:center; background-size:contain; background-repeat:no-repeat;">
+                                        <div>
+                                            <h3 class="index_sub_title">{$li['class_name']}</h3>
+                                            <div class="products-hj04__itemLeft_desc index_text">{:HtmlEncode($li['readme'])}</div>
+                                            <div class="products-hj04__itemLeft_more"><a href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{:__('Read More')}</a><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                                            <div class="products-hj04__itemLeft_classImg">
+                                            
+                                            <!--<img
+                                                    src="{$imgs[$img_index]}" alt="{$li['class_name']}"/>--></div>
+                                        </div>
+                                    </div>
+                                    <div class="products-hj04__itemRight">
+                                        <php>
+                                            $class['data']=get_index_products_category($li['pcid'],4);
+                                        </php>
+                                        <volist empty="" name="class['data']" id="indexpro" key="k" >
+                                            <div class="products-hj04__item">
+                                                <div class="products-hj04__proImg"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img class="lazyload" src="{:getmainimgurl($indexpro['main_img'])}" alt="{$indexpro['pro_name']}" /> </a></div>
+                                                <div class="products-hj04__proName"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">{$indexpro['pro_name']}</a></div>
+                                            </div>
+                                        </volist>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            </volist>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

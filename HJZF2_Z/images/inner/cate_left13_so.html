@@ -1,0 +1,160 @@
+<style>
+.search_cate{border:1px solid #efefef}
+.attr_group_div{display:flex; margin:0 50px; padding:20px 0; border-bottom:1px solid #efefef; align-items:center;}
+ul.InsidePages_left_navlist{
+border:0px;
+}
+ul.InsidePages_left_navlist > li{
+	border:0px;
+}
+.attr h3{ padding:0 20px;}
+.search_cate a{ cursor:pointer;}
+.search_checkbox_check { color:#{$color};
+}
+.sreach_rs_btn_colse svg{ width:10px; cursor:pointer;}
+.search_rs{ margin:0 20px; padding:20px 0;}
+.sreach_rs_btn{ padding-right:10px;}
+</style>
+
+
+<foreach name="all_search_cates" item="one_search_cate">
+<php>
+$fid=$key;
+</php>
+<if condition="$fid eq $classid">
+<div class="search_cate">		
+		<volist name="one_search_cate" id="all_search_cate">
+        <ul attrs_f="{$fid}" class="attr_group InsidePages_left_navlist" >
+        <div class="attr_group_div">
+        <li find_f="{$fid}"  class="yiji"  ><a href="javascript:">
+          <h3 class="index_sub_title">{$all_search_cate['class_name']}{:__(":")}</h3>
+          </a>
+         </li>
+          <foreach name="all_search_cate['son']" item="cate_son">
+            <li class="child"><a href="javascript:">
+              <h3 class="index_text">{$cate_son['class_name']}</h3>
+              </a>
+              </li>
+             
+          
+              	<foreach  name="cate_son['attr']" item="attr">
+     
+                <li  class="third" cfid="{$cate_son['pcid']}"><a fid="{$fid}" id="attr_{$attr['pid']}" class="attr" count="{$attr['count']}" pid="{$attr['pid']}">
+                  <h3 class="index_text search_checkbox">{$attr['pro_name']}({$attr['count']})</h3>
+                 
+                  </a></li>
+                 </foreach> 
+                 
+              
+            
+            </foreach>
+    
+            <foreach  name="all_search_cate['attr']" item="attr">
+            <li 1 class="third" cfid="{$all_search_cate['pcid']}"><a class="attr" fid="{$fid}" id="attr_{$attr['pid']}" count="{$attr['count']}" pid="{$attr['pid']}">
+              <h3 class="index_text search_checkbox">{$attr['pro_name']}({$attr['count']})</h3>
+              </a></li>
+             </foreach> 
+        </div> 
+       </ul>
+        </volist>
+        <div class="search_rs index_text"></div>
+ </div>    
+ </if> 
+</foreach>
+
+
+
+<script>
+require(['jquery'],function($){
+	
+
+
+init_set();
+
+
+$(".attr").on("click",function(){
+	var count=$(this).attr("count");
+	var pid=$(this).attr("pid");
+	var fid=$(this).attr("fid");
+	if(count>0){
+		if($(".attr[pid='"+pid+"']").find(".search_checkbox").hasClass("search_checkbox_check")){
+			$(".attr[pid='"+pid+"']").find(".search_checkbox").removeClass("search_checkbox_check");	
+		}else{
+			$(".attr[pid='"+pid+"']").find(".search_checkbox").addClass("search_checkbox_check");
+			$(".attr[fid!='"+fid+"']").find(".search_checkbox").removeClass("search_checkbox_check");
+		}
+		creat_url();
+	}else{
+		$(".attr[pid='"+pid+"']").find(".search_checkbox").removeClass("search_checkbox_check");	
+	}
+	return false;
+})
+
+
+
+function creat_url(){
+	var search_classid;
+	
+	//var cur_url=window.location.href.replace(<literal>/\\?search=.*/g</literal>,"");
+	console.log("cur_url",cur_url);
+	var parms=[];
+	$(".search_checkbox_check").each(function(index, element) {
+		var val=$(this).parents(".attr").attr('pid');
+		if($.inArray(val,parms)==-1){
+        	parms.push(val);
+		}
+		search_classid=$(this).parent().attr("fid");
+    });
+	//console.log("parms",parms);
+	var cur_url="{:U('/product_category','','')}/{$classid}";
+	console.log("parms",parms);
+	if(parms){
+		var parms_str=parms.join(',');
+	}
+	
+	console.log("parms_str",parms_str);
+	
+	if(parms_str){
+		var jump_url=cur_url+"?search="+parms_str;
+	}else{
+		var jump_url=cur_url;
+	}
+	console.log("jump_url",jump_url);
+	var top=$(document).scrollTop();
+	if(!jump_url||!search_classid){
+		jump_url="{:U('/product_category')}";
+		window.location.href=jump_url;
+	}else{
+	window.location.href=jump_url+"&top="+top+"&search_classid="+search_classid;
+	}
+	
+}
+
+$(document).on("click",".sreach_rs_btn_colse",function(){
+	
+	var pid=$(this).parent().attr("pid");
+	$('.attr[pid="'+pid+'"] .search_checkbox').removeClass("search_checkbox_check");
+	$(this).parent().remove();
+	creat_url();
+	return false;
+})
+
+function init_set(){
+	var search_word_str="{$Think.get.search}";
+	var search_words=search_word_str.split(",");
+	$.each(search_words,function(index,v){
+		//var zv=vv.split("-");
+		//f=zv[0];
+		//v=zv[1];
+		if(v){
+		$(".attr[pid='"+v+"']").find(".search_checkbox").addClass("search_checkbox_check");
+		var sreach_rs_btn_html='<span class="sreach_rs_btn" pid="'+v+'"><span>'+$(".attr[pid='"+v+"'] h3").html()+'</span><span class="sreach_rs_btn_colse"><svg viewBox="0 0 16 16"><path d="M10.645 8.004l4.949-4.953a1.4 1.4 0 000-1.98l-.66-.66a1.4 1.4 0 00-1.98 0l-4.95 4.952L3.05.41a1.4 1.4 0 00-1.98 0l-.66.66a1.4 1.4 0 000 1.98l4.952 4.954-4.953 4.95a1.4 1.4 0 000 1.98l.66.66a1.4 1.4 0 001.98 0l4.954-4.95 4.95 4.95a1.4 1.4 0 001.98 0l.66-.66a1.4 1.4 0 000-1.98zm0 0"></path></svg></span></span>';
+		$(".search_rs").append(sreach_rs_btn_html);
+		}
+	});	
+}
+
+});
+</script>
+
+

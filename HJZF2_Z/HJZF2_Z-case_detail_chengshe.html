@@ -1,0 +1,60 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+	<php>
+		if($inner_data[0]){
+		$color = $inner_data[0];
+		}
+	</php>
+	<style type="text/css">
+		.chengshe_cate {
+			padding: 75px;
+		}
+		@media(max-width: 1199px) {
+			.chengshe_cate {
+				padding: 15px;
+			}
+		}
+	</style>
+
+	<div id="HJZF_Z__wrapper">
+		<div id="HJZF_Z__innerBanner">
+			<if condition="$banner neq ''">
+				<volist name="banner" id="banner_pic" offset="0" length="1">
+					<if condition="$banner_pic['use_video']">
+						<a id="case_video_src" data-src="{$banner_pic['ad_link']}" style="cursor: pointer">
+							<div class="in_banner">
+								<img src="{:getimgurl($banner_pic['ad_pic'])}" alt="" />
+							</div>
+						</a>
+						<else />
+						<div class="in_banner">
+							<img src="{:getimgurl($banner_pic['ad_pic'])}" alt="" />
+						</div>
+					</if>
+				</volist>
+				<else />
+				<div class="in_banner"><img src="{:getindeximgurl($inner_data[1])}" alt="" /></div>
+			</if>
+		</div>
+
+		<!-- <div class="HJZF_Z__Breadcrumbs" navcrumbs>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/cases')}"><if condition="$inner_data[3]">{$inner_data[3]}<else/>{:__('Cases')}</if></a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$newscate['class_name']}</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+		<div class="chengshe_cate">
+			<div class="index_title">
+				{$news['title']}
+			</div>
+			{:htmlspecialchars_decode($news['body'])}
+		</div>
+	</div>
+	</div>
+	</div>
+</block>

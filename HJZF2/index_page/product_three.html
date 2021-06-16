@@ -1,0 +1,67 @@
+<php>
+    if($data39[0]){
+    $procat_bg = getindeximgurl($data39[0]);
+    }
+    if($data39[1]) {
+    $procat_bgcolor = $data39[1];
+    }
+    if($data39[5]){
+    $procat_icon = getindeximgurl($data39[5]);
+    }
+</php>
+<style>
+    .hjzf_prothree{
+        background: url({$procat_bg}) no-repeat center;background-size: cover;
+    }
+    .hjzf_prothree{
+        background-color: #{$procat_bgcolor};
+    }
+    .hjzf_procate-3_page span.swiper-pagination-bullet-active{
+        background: #{$data39[2]};
+    }
+    .hjzf_prothree__proitem .pro_cate{
+        color: #{$data39[2]};
+    }
+    .pil-laes-artikel{
+        background-image: url({$procat_icon});
+    }
+</style>
+
+    <div class="hjzf_prothree">
+        <div class="container">
+
+
+            <ul class="hjzf_prothree_procatelist">
+                <volist empty="" name="allclass" id="allclass_three">
+                    <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_three['pcid'])}"><img src="{:getmainimgurl($allclass_three['fid'])}" alt=""/></a></li>
+                </volist>
+                <div class="clear"></div>
+            </ul>
+            <div class="hjzf_prothree__titlewrap">
+                <h3 class="product_three_title wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">{$data[3]}</h3>
+                <p class="product_three_title2 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="0">{$data[4]}</p>
+            </div>
+            <div class="hjzf_prothree__probox">
+                <div class="swiper-container  hjzf_prothree__swiper">
+                    <div class="swiper-wrapper">
+                        <volist empty="" name="indexpro" id="indexprothree" key="k" offset="0" length="12">
+                            <php>
+                                $class_name=get_index_products_categoryname($indexprothree['class_id']);
+                            </php>
+                            <div class="swiper-slide hjzf_prothree__proitem">
+                                <div class="img"><img src="{:getmainimgurl($indexprothree['main_img'])}" <if condition="$indexprothree['proalt'] neq ''">alt="{$indexprothree['proalt']}"<else/>alt="{$indexprothree['pro_name']}"</if> /></div>
+                                <div class="hjzf_prothree__proitemtext">
+                                    <div class="pro_cate">{$class_name['class_name']}</div>
+                                    <div class="hjzf_prothree__proname">
+                                        <a href="{:U('/Product','','')}/{:getproname($indexprothree['pid'])}" class="ellipsis_two">{$indexprothree['pro_name']}</a>
+                                        <div class="pil-laes-artikel"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                    <div class="swiper-pagination hjzf_procate-3_page"></div>
+                </div>
+            </div>
+        </div>
+    </div>

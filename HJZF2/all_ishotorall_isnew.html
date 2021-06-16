@@ -1,0 +1,82 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+
+    <style>
+        .main_proitem_second .hj05-index-more{
+            background: #{$inner_data[0]};
+        }
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$inner_data[0]};
+        }
+
+        .main_product_more span{
+            color: #{$inner_data[0]};
+        }
+
+        .main_product_more:hover span{
+            color:#fff;
+        }
+        .main_product_title_right a:hover{
+            background: #{$inner_data[0]};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+            <div class="page-title-inner flex">
+                <div class="container">
+                    <div class="Breadcrumbs"><div class="Breadcrumbs_top_title">{:__('Products')}</div>
+                        <div class="Breadcrumbs_down">
+                            <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$type}</span></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left">
+                <Include file="./Tpl/HJZF2/left.html" />
+            </section>
+            <section class="InsidePages_content-right">
+                <div class="InsidePages_content-right_content ">
+                    <div class="InsidePages_content-right_content-main">
+                        <h5 class="InsidePages_content-right_content_title">{$type}</h5>
+                        <div class="mainpage_probox">
+                            <volist empty="" name="pro" id="pro" key="k">
+                                <div class="main_proitem">
+                                    <div class="main_proitem_box">
+                                        <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+                                        <div class="main_proitem_second">
+                                            <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                            <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],60)}</h6></div>
+                                                <div class="hj05-index-more">{:__('Read More')}</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <if condition="($k)%3 neq 0">
+                                    <div style="width:28px; height:10px; background:none; float:left;"></div>
+                                </if>
+                            </volist>
+                            <div class="clear"></div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>

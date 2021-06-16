@@ -1,0 +1,90 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        .main-content_inner_news>ul>li.yijion_news,.main-content_inner_news>ul>li.yiji_news:hover{
+            background: #{$inner_data[0]};
+        }
+        .main-content_inner_news>ul>li.yijion_news>a>h3,.main-content_inner_news>ul>li.yiji_news:hover >a>h3{color: #fff}
+        .main_newslist li:hover .main_news_title a h5{
+            color: #{$inner_data[0]};
+        }
+        .main_news_dowm span a:hover{
+            color: #{$inner_data[0]};
+        }
+        .Breadcrumbs span.current{
+            color: #{$inner_data[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                <a href="<if condition="$banner['ad_link']">{:($banner['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner['pic_title']}" >
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                    </a>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+                <div class="Breadcrumbs">
+                    <div class="Breadcrumbs_down">
+                        <a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{:__('News')}</span>
+                    </div>
+                </div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left2">
+                <Include file="./Tpl/HJZF2/newleft.html" />
+            </section>
+            <section class="InsidePages_content-right2">
+                <div class="InsidePages_content-right_content">
+                    <div class="InsidePages_content-right_content-main">
+                        <ul class="main_newslist ul_li_list">
+                            <volist name="allnews" id="allnews">
+                                <li id="new_list{$key}">
+                                    <div class="main_newsimg">
+                                    	<a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" <if condition="$allnews['nav_way'] eq 1">target="_blank"</if>><img <if condition="$allnews['new_pro']">src="{:getimgurl($allnews['new_pro'])}"<else/>src="{:getindeximgurl($inner_data[2])}"</if> border="0" /></a>
+                                    </div>
+                                    <div class="main_news_right">
+                                        <div class="main_news_right_content lf">
+                                            <div class="main_news_title margin-20px-bottom"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" <if condition="$allnews['nav_way'] eq 1">target="_blank"</if>><h5>{$allnews['title']}</h5></a></div>
+                                            <div class="main_news_desc">{:subtxt($allnews['news_description'],200)}</div>
+                                        </div>
+                                        <div class="main_news_right_date rt">
+                                            <if condition="LANGUAGE eq 'en' || LANGUAGE eq 'rus'|| LANGUAGE eq 'spa'|| LANGUAGE eq 'esp'">
+                                                <p>{:date('d M ',$allnews['created'])}</p>
+                                                <elseif condition="LANGUAGE eq 'rus'" />
+                                                <p>{:date('d M ',$allnews['created'])}</p>
+                                                <else/>
+                                                <p>{:date('m月d  ',$allnews['created'])}</p>
+                                            </if>
+
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="main_news_dowm"><span><img src="__TMPL__HJ02/img/view.png" alt=""/>{$allnews['click_num']}</span><span style="line-height: 30px;">|</span><span><img src="__TMPL__HJ02/img/view_right.png" alt=""/><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" <if condition="$allnews['nav_way'] eq 1">target="_blank"</if>>{:__('Read More')}</a></span></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            </volist>
+                        </ul>
+                        <div class="clearfix"></div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+        <script>
+            $(function(){
+                $(".main-content_inner_news >ul li:first-child").addClass("yijion_news")
+            })
+        </script>
+    </div>
+</block>

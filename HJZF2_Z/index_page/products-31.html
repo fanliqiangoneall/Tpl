@@ -1,0 +1,123 @@
+<!--{$pagename}-->
+<if condition="$data503[0]">
+    <style>
+        .new_hjzf_product31 {
+            background: url({:getindeximgurl($data503[0])
+        }
+
+        ) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+    .new_hjzf_product31_list ul li:hover a,
+    .new_hjzf_product31_list ul li.on a {
+        background-color: #{$color};
+        color: #fff;
+    }
+
+    .new_hjzf_product31_pagination .swiper-pagination-bullet-active,
+    .new_hjzf_product31__proMask {
+        background:#{$data503[3]};
+    }
+
+    .new_hjzf_product31__classname h3 {
+        color:#{$data503[3]};
+    }
+
+    .new_hjzf_product31_paginationlist span.swiper-pagination-bullet-active {
+        background-color: #{$color};
+    }
+</style>
+
+<section class="new_hjzf_product31 index_pd">
+    <div class="new_hjzf_product31_title">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="new_hjzf_product7_title_main index_title pb20 text-center">{$data503[1]}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center new_hjzf_product31_list">
+                    <php>
+                        $arr = get_list_val($data503[4]);
+                    </php>
+                    <ul>
+                        <volist name="arr" id="a">
+                            <php>
+                                $lista = get_index_products_categoryname($a[proId]);
+                            </php>
+                            <li><a
+                                    href="{:U('/product_category','','')}/{:getprocatename($lista['pcid'])}">{$lista['class_name']}</a>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <volist name="arr" id="b" offset="0" key="ka">
+
+            <div class="col-xs-12 new_hjzf_product31_Content">
+                <div class="new_hjzf_product31_productWrap">
+                    <div class="new_hjzf_product31_product{$ka} swiper-container">
+                        <div class="swiper-wrapper">
+                            <php>
+                                $listb = get_index_products_category($b[proId],12);
+                            </php>
+                            <volist empty="" name="listb" id="indexprohjzf_products_HJ01" key="k" offset="0"
+                                length="12">
+                                <div class="swiper-slide new_hjzf_product31_productItem">
+                                    <div class="new_hjzf_product31_productItemBox">
+                                        <div class="new_hjzf_product31_productItemBox_img"><a
+                                                href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}"><img
+                                                    src="{:getmainimgurl($indexprohjzf_products_HJ01['main_img'])}" <if
+                                                    condition="$indexprohjzf_products_HJ01['proalt'] neq ''">alt="{$indexprohjzf_products_HJ01['proalt']}"
+                                                <else />alt="{$indexprohjzf_products_HJ01['pro_name']}"</if> />
+                                            </a></div>
+                                        <div class="new_hjzf_product31_productItemBox_name">
+                                            <a
+                                                href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}">
+                                                <h3 class="index_sub_title">{$indexprohjzf_products_HJ01['pro_name']}
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <php>
+                                            $class_id = $indexprohjzf_products_HJ01['class_id'];
+                                            $class_name = get_index_products_categoryname($class_id)['class_name'];
+                                        </php>
+                                        <div class="new_hjzf_product31__classname">
+                                            <h3 class="index_text">{$class_name}</h3>
+                                        </div>
+                                        <a
+                                            href="{:U('/Product','','')}/{:getproname($indexprohjzf_products_HJ01['pid'])}">
+                                            <div class="new_hjzf_product31__proMask">
+                                                <div
+                                                    class="new_hjzf_product31__proMask__name new_hjzf_product31__proMask__font index_sub_title">
+                                                    {$indexprohjzf_products_HJ01['pro_name']}</div>
+                                                <div
+                                                    class="new_hjzf_product31__proMask__desc new_hjzf_product31__proMask__font index_text">
+                                                    {$indexprohjzf_products_HJ01['pro_model']}</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </div>
+                    <div
+                        class="swiper-pagination text-center new_hjzf_product31_pagination{$ka} new_hjzf_product31_paginationlist">
+                    </div>
+                </div>
+            </div>
+
+        </volist>
+
+    </div>
+    </div>
+    <div class="clear"></div>
+</section>

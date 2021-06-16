@@ -1,0 +1,82 @@
+<!--{$pagename}-->
+<php>
+    if($data382[9]){
+        $color = $data382[9];
+    }
+    </php>
+<style>
+    .hjzf_aboutus_21_hx {
+        background-color: #{$color};
+    }
+    .hjzf_aboutus_21_left .index_text {
+        color: #888;
+        line-height: 2;
+    }
+    .hjzf_aboutus_21_left a.more {
+        border: 1px solid #{$color};
+        background-color: #{$color};
+        color: #fff;
+        border-radius: 50px;
+        transition: all .5s;
+        margin-bottom: 30px;
+    }
+
+    .hjzf_aboutus_21_left a:hover {
+        background-color: #fff;
+        color: #{$color};
+    }
+
+    <if condition="$data382[0]">.hjzf_aboutus_21 {
+        background:url({:getindeximgurl($data382[0])
+    }
+
+    ) no-repeat center top;
+    }
+
+    </if>
+    .hjzf_aboutus_21_sub{
+        color: #{$color};
+    }
+</style>
+<section class="hjzf_aboutus_21 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 wow fadeInLeft">
+                <div class="index_title pb20">
+                    {$data382[1]}
+                </div>
+                <if condition="$data382[8]">
+                    <div class="index_sub_title hjzf_aboutus_21_sub pb20">
+                        {$data382[8]}
+                    </div>
+                </if>
+                <if condition="$data382[2]">
+                <div class="hjzf_aboutus_21_hx"></div>
+                </if>
+            </div>
+            <div class="clearfix"></div>
+            <div class="hjzf_aboutus_21_wrapper">
+                <div class="col-xs-12 col-md-6 hjzf_aboutus_21_left wow fadeInLeft">
+                    <p class="index_text pb40">
+                        {$data382[3]}
+                    </p>
+                    <a href="{$data382[4]}" class="more index_btn">{$data382[5]}</a>
+                    <ul class="hjzf_aboutus_21_img">
+                        <php>
+                            $arr = get_list_val($data382[6]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <li>
+                                <a href="{$a[link]}">
+                                    <img src="{$a[img]}" alt="{$data382[1]}" class="img-fluid">
+                                </a>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-md-6 wow fadeInRight hjzf_aboutus_21_right_img">
+                    <img src="{:getindeximgurl($data382[7])}" class="img-fluid" alt="{$data382[1]}"></div>
+            </div>
+        </div>
+    </div>
+</section>

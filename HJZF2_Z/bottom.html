@@ -1,0 +1,124 @@
+<style>
+    .HJZF2_Z__bottom{
+        background: url({:getindeximgurl($data13[3])}) no-repeat center;background-size: cover;
+    }
+    .bottomInfo__more{
+        background: #{$data13[2]};
+    }
+</style>
+<footer class="HJZF2_Z__bottom">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__bottom_content">
+                <div class="hidden-xs hidden-sm col-md-3 HJZF2_Z__bottomItem bottomInfo">
+                    <div class="bottomInfo__logo">
+                        <img src="{:getindeximgurl($data13[0])}" alt=""/>
+                    </div>
+                    <div class="bottomInfo__context">
+                        {:HtmlEncode($data13[1])}
+                    </div>
+                    <a href="{:U('/aboutus')}" class="bottomInfo__more">{:__('Read More')}</a>
+                </div>
+                <div class="hidden-xs hidden-sm  col-md-3 HJZF2_Z__bottomItem classInfo">
+                    <div class="HJZF2_Z__bottomItem__title">{$data13[6]}</div>
+                    <ul class="classInfo__list">
+                        <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                            <li id="menu{$key}"><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if>onFocus="blur()">{$vo['title']}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-3 HJZF2_Z__bottomItem contctInfo">
+                    <div class="HJZF2_Z__bottomItem__title">{$data13[4]}</div>
+                    <ul>
+                        <if condition="$about['contact']">
+                            <li>
+                                <span>{:__('Contact: ')}</span><br/>
+                                {:chaifen($about['contact'],0)}
+                            </li>
+                        </if>
+                        <li>
+                            <span>{:__('Email: ')}</span><br/>
+                            <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);" >{:chaifen($about['email'],0)}</a>
+                        </li>
+                        <li>
+                            <span>{:__('Mobile: ')}</span><br/>
+                            {:chaifen($about['mobile'],0)}
+                        </li>
+                        <li>
+                            <span>{:__('Phone: ')}</span><br/>
+                            {:chaifen($about['phone'],0)}
+                        </li>
+                        <li>
+                            <span>{:__('Add: ')}</span><br/>
+                            {$about['address']}
+                        </li>
+                    </ul>
+                    <div class="contctInfo__social">
+                        <if condition="$data1[1]">
+                            <a href="{$data1[1]}" target="_blank">
+                                <span class="fa fa-facebook"></span>
+                                <span class="screen-reader-text">Facebook</span>
+                            </a>
+                        </if>
+                        <if condition="$data1[2]">
+                            <a href="{$data1[2]}" target="_blank">
+                                <span class="fa fa-twitter"></span>
+                                <span class="screen-reader-text">twitter</span>
+                            </a>
+                        </if>
+                        <if condition="$data1[3]">
+                            <a href="{$data1[3]}" target="_blank">
+                                <span class="fa fa-linkedin"></span>
+                                <span class="screen-reader-text">linkedin</span>
+                            </a>
+                        </if>
+                        <if condition="$data1[3]">
+                            <a href="{$data1[3]}" target="_blank">
+                                <span class="fa fa-youtube-play"></span>
+                                <span class="screen-reader-text">youtube</span>
+                            </a>
+                        </if>
+                    </div>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-3 HJZF2_Z__bottomItem productInfo">
+                    <div class="HJZF2_Z__bottomItem__title">{$data13[5]}</div>
+                    <ul class="productInfo__list">
+                        <volist empty="" name="allclass" id="allclassDown">
+                            <li>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclassDown['pcid'])}">{$allclassDown['class_name']}</a>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="HJZF2_Z__bottom__copyrightContent">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 HJZF2_Z__bottom__copyright--left">
+                    <php>
+                        $nowtime=date("Y",time());
+                        if(!$data13[6]){
+                        $currtime=2019;
+                        }else{
+                        $currtime=$data13[6];
+                        }
+                    </php>
+                    <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+                    &nbsp; {$about['company_name']} &nbsp;{:__('All rights reserved')}
+                </div>
+                <div class="col-xs-12 col-md-6 HJZF2_Z__bottom__copyright--right">
+                    <a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="常州网络公司中环互联网" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                        <a href="https://www.one-all.com" title="常州网络公司" target="_blank">中环互联网设计制作</a>
+                        <else/>
+                        Designed by <a href="https://www.one-all.com" title="Zhinghuan Internet" target="_blank">Zhonghuan Internet</a>
+                    </if>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

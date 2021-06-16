@@ -1,0 +1,242 @@
+<!--{$pagename}-->
+<if condition="$data418[1]">
+    <style>
+        .HJZF2_Z__news-24{
+            background: url({:getindeximgurl($data418[1])}) no-repeat center/cover;
+        }
+    </style>
+</if>
+<style>
+.HJZF2_Z__news-24__list .entry-time a > span:after,.HJZF2_Z__news-24__list2 .HJZF2_Z__news-24__content .HJZF2_Z__news-24__date .category-link:after{
+	background:#{$color};
+}
+.HJZF2_Z__news-24__list .entry-time a > span.entry-year:after{
+	background:none;
+}
+.HJZF2_Z__news-24__list2 .HJZF2_Z__news-24__content .HJZF2_Z__news-24__date span a,.HJZF2_Z__news-24__list2 .HJZF2_Z__news-24__content .HJZF2_Z__news-24__name:hover a{
+	color:#{$color};
+}
+.HJZF2_Z__news-24__list .HJZF2_Z__news-24__content .HJZF2_Z__news-24__more {
+	background:#{$color};
+	border-color:#{$color};
+}
+</style>
+
+<section class="HJZF2_Z__news-24 index_pd">
+<div class="container">
+  <div class="row">
+    <div class="HJZF2_Z__news-24__container">
+        <div class="HJZF2_Z__news-24__mainTitle index_title pb40">{$data418[0]}</div>
+        <div class="HJZF2_Z__news-24__swiperBox">
+            <div class="col-sm-12 col-lg-6 col-xl-6">
+                <div class="HJZF2_Z__news-24__left wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <volist name="indexnews" id="indexnew" offset="0" length="1" key="k">
+                        <div class="HJZF2_Z__news-24__list">
+                            <div class="HJZF2_Z__news-24__img">                                
+                                <a href="{$data418[6]}" onFocus="blur()" class="post-thumbnail-rollover"><img src="{:getindeximgurl($data418[2])}" border="0" alt="{$data418[3]}" />
+                                    
+                                    <!-- 孙润舒要做的功能 -->
+                                    <if condition="$data418[7]">
+                                        <style>
+                                            .HJZF2_Z__news-24__img a{
+                                                display: block;
+                                                position: relative;
+                                            }
+                                            .HJZF2_Z__news-24__img a .news_24_left_name{
+                                                position: absolute;
+                                                left: 10px;
+                                                top: 10px;
+                                                background-color: rgba(0,0,0,.5);
+                                                color: #fff;
+                                                z-index: 9;
+                                                padding:3px 10px;
+                                            }
+                                            .news_24_right_data{
+                                                position: absolute;
+                                                right: 10px;
+                                                top: 10px;
+                                                background-color: #fff;
+                                                color: #333;
+                                                z-index: 9;
+                                                display: flex;
+                                                flex-direction: column;
+                                                padding: 5px 10px;
+                                                justify-content: center;
+                                                align-items: center;
+                                            }
+                                            .news_24_right_data em{
+                                                margin: 5px 0;
+                                                padding: 5px 0;
+                                                border-top: 1px solid #ccc;
+                                                border-bottom: 1px solid #ccc;
+                                                font-style: normal;
+                                                font-size: 18px;
+                                                font-weight: bold;
+                                            }
+                                            .news_24_right_data i{
+                                                font-style: normal;
+                                            }
+                                        </style>
+                                    <div class="news_24_left_name">{$data418[7]}</div>
+                                    <div class="news_24_right_data">
+                                        <span>{:date('M',$indexnew['created'])}</span>
+                                        <em>{:date('Y',$indexnew['created'])}</em>
+                                        <i>{:date('d',$indexnew['created'])}</i>
+                                    </div>
+                                    </if>
+                                </a>
+                            </div>
+                            <div class="HJZF2_Z__news-24__content">
+                                <div class="HJZF2_Z__news-24__name"><a href="{$data418[6]}" onFocus="blur()" class="index_sub_title">{:subtxt($data418[3],60)}</a></div>
+                                
+                                <div class="HJZF2_Z__news-24__desc index_text">
+                                    {$data418[4]}
+                                </div>
+                                <a href="{$data418[6]}" onFocus="blur()" class="HJZF2_Z__news-24__more">{:__('Read More')} <i class="fa fa-caret-right"></i></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+            
+            <if condition="$data418[5]">
+                <style>
+                    .HJZF2_Z__news-24__swiperBox{display: flex;-webkit-display: flex;justify-items: stretch;}
+                    .have_tab{background: #fff;padding: 20px 50px;height: 100%;border: 1px solid #e5e5e5;}
+.HJZF2_Z__news-24__left{background: #fff;padding: 30px 30px;border: 1px solid #e5e5e5;height: 100%;}
+.have_tab ul{width: 100%;margin-bottom: 30px;}
+.have_tab ul li{margin-right: 30px;float: left;}
+.have_tab ul li a{font-size: 24px;line-height: 30px;color: #333;cursor: pointer;}
+.have_tab ul li.active a{
+    color: #{$color};}
+.tab_box{display: none;}
+.tab_box.active{display: block;}
+.HJZF2_Z__news-24__list2 .HJZF2_Z__news-24__content .HJZF2_Z__news-24__date .category-link:after{display: none;}
+.HJZF2_Z__news-24__list2 .HJZF2_Z__news-24__content .HJZF2_Z__news-24__name{font-size: 18px;
+    line-height: 26px;margin-bottom: 14px;}
+.HJZF2_Z__news-24__list2 .HJZF2_Z__news-24__content .HJZF2_Z__news-24__name a{font-weight: normal;}
+.HJZF2_Z__news-24__list .HJZF2_Z__news-24__content .HJZF2_Z__news-24__desc{margin-bottom: 30px;}
+.HJZF2_Z__news-24__list2:hover .HJZF2_Z__news-24__name a{
+    color: #{$color};
+}
+.HJZF2_Z__news-24__desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+@media(max-width: 1200px){
+    .HJZF2_Z__news-24__desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+}
+@media screen and (max-width: 991px){
+    .HJZF2_Z__news-24__list {
+    margin-bottom: 40px;
+}
+.HJZF2_Z__news-24__swiperBox{flex-direction: column;}
+    .HJZF2_Z__news-24__right{
+        margin-top: 20px;
+    }
+    .have_tab{padding: 20px 30px;}
+    .HJZF2_Z__news-24__desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+}
+
+
+                </style>
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                    <div class="HJZF2_Z__news-24__right wow fadeInRight have_tab" data-wow-duration="1s" data-wow-delay="1s">
+                        <php>
+                            $arr_str=$data418[5];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                                $list[$k]['name']=get_wap_news_class_name($a);
+                                $list[$k]['data']=get_index_news_category($a,4);
+                            }
+                        </php>
+                        <ul class="tab_list">
+                            <volist name="list" id="li" >
+                                <li <if condition="$key eq 0">class="class_name1 active"<else/>class="class_name1"</if>><a>{$li['name']}</a></li>
+                            </volist>
+                            <if condition="$webid eq 1558"><div style="float:right;"><a style="color:#c01920; font-size:16px;" href="{:U('/news','','')}">更多>></a></div></if>
+                            <div class="clear"></div>
+                        </ul>
+                        <volist name="list" id="li">
+                            <div <if condition="$key eq 0">class="tab_box active"<else/>class="tab_box"</if>>
+                                <volist name="li['data']" id="indexnew2" offset="0" length="4" key="h">
+                                    <div class="HJZF2_Z__news-24__list2">
+                                        <div class="HJZF2_Z__news-24__img">
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()"><if condition="$indexnew2['new_pro']"><img src="{:getimgurl($indexnew2['new_pro'])}" border="0" alt="{$indexnew2['title']}"/><else/><img src="{:getindeximgurl($data418[2])}" border="0" alt="{$indexnew2['title']}"></if></a>
+                                        </div>
+                                        <div class="HJZF2_Z__news-24__content">
+                                            <div class="HJZF2_Z__news-24__name index_sub_title"><a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()">{:subtxt($indexnew2['title'],40)}</a></div>
+                                            
+                                            <if condition="$indexnew2['news_description']"><div class="HJZF2_Z__news-24__desc">{$indexnew2['news_description']}</div></if>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </volist>
+                            </div>
+                        </volist>                       
+                    </div>
+                </div>
+                <else/>
+                <div class="col-sm-12 col-lg-6 col-xl-6">
+                    <div class="HJZF2_Z__news-24__right wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s" data="offset">
+                       
+                            <if condition="$webid eq '1797'">
+                                <php>
+                                    $offs_new_24 = 0;
+                                    $lenInews_24 = 4;
+                                </php>
+                            <else/>
+                            <php>
+                                $offs_new_24 = 1;
+                                $lenInews_24 = 5;
+                            </php>
+                        </if>
+                        <volist name="indexnews" id="indexnew2" offset="$offs_new_24" length="$lenInews_24" key="k2">
+                            <div class="HJZF2_Z__news-24__list2">
+                                <div class="HJZF2_Z__news-24__img">
+                                    <a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()"><if condition="$indexnew2['new_pro']"><img src="{:getimgurl($indexnew2['new_pro'])}" border="0" alt="{$indexnew2['title']}" /><else/><img src="{:getindeximgurl($data418[2])}" border="0" alt="{$indexnew2['title']}"></if></a>
+                                </div>
+                                <div class="HJZF2_Z__news-24__content">
+                                    <div class="HJZF2_Z__news-24__name index_sub_title"><a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()">{:subtxt($indexnew2['title'],40)}</a></div>
+                                    <div class="HJZF2_Z__news-24__date index_text">
+                                     
+                                        <php>
+                                            $news_calss2 = get_wap_news_class_name($indexnew2['news_class']);
+                                        </php>
+                                        <span class="category-link"><a href="{:U('/new_category',array('classid'=>$indexnew2['news_class']))}">{$news_calss2}</a></span>
+                                        <span class="entry-time"><a href="{:U('/new_detail',array('nid'=>$indexnew2['nid']))}" onFocus="blur()">{:date('Y-m-d',$indexnew2['created'])}</a></span>
+                                    </div>
+                                    <if condition="$indexnew2['news_description']"><div class="HJZF2_Z__news-24__desc ellipsis_three">{$indexnew2['news_description']}</div></if>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </if>
+            
+        </div>
+    </div>
+  </div>
+</div>
+</section>

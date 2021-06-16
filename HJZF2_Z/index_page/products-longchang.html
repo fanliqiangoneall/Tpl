@@ -1,0 +1,206 @@
+<!--{$pagename}-->
+<link rel="stylesheet" href="__TMPL__HJZF2_Z/css/products-longchang.css">
+<style>
+.compList2 dd{ box-sizing:content-box;}
+.h3TxtArea,.prodList,.compList2,.tableWrap{ display:none;}
+.h3TxtArea.on,.prodList.on,.compList2.on,.tableWrap.on{ display:block;}
+.productTits, .Product_Use{ display:none;}
+.productTit:before {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+	margin-top:-1px;
+    left: 0;
+    background: #{$color};
+}
+.tableType1 table tbody td{ text-align:left; padding-left:0px;}
+.tableWrap .tableTit{ padding-top:40px;}
+.tabBtn a.on {
+    background: #{$color};
+    border-color: #{$color};
+    color: #fff;
+    font-family: "NotoSans-Bold", arial, sans-serif;
+    font-weight: normal;
+}
+/* .compList2 dt p{
+    display: table;
+    position: relative;
+    width: 165px;
+    height: 190px;
+    margin: 0 auto;
+    background: url(__TMPL__HJZF2_Z/img/compList2_dt_icon.png), url({:getindeximgurl($data517[1])});
+    background-repeat: no-repeat, no-repeat;
+    background-position: center 50px ,0 0;
+} */
+.prodList li{ cursor:pointer;}
+.compList2 span{ cursor:pointer;}
+</style>
+<php>
+foreach($allclass as $a){
+    foreach($a['childs'] as $b){
+        if($b['pcid'] == $data517[0]){
+            $class=$b;   
+        }
+    }    
+}
+
+</php>
+
+
+
+	
+   
+    <div class="" id="cBody" chooseid="{$Think.get.in}">
+    <h3>{$class['class_name']}</h3>
+    <div class="subWrap" >
+        <div class="inner cdInfo">
+            <div class="h3TxtArea" style="display:block">
+                <p class="txt">{$class['readme']}</p>
+            </div>
+            
+            <div class="tabBtn">
+                <foreach name="class['childs']" item="one_child">
+                    <a pcid="{$one_child['pcid']}" href="javascript:;" >{:strip_tags($one_child['class_name'])}</a>
+                </foreach>    
+            </div>
+            
+            <foreach name="class['childs']" item="one_child">
+            <div class="h3TxtArea prodTab" pcid="{$one_child['pcid']}" fpcid="{$one_child['parent_id']}">
+            <p class="sTit">
+            {:strip_tags($one_child['class_name'])}
+            </p>
+            
+            <p class="sTitSub">
+            {:strip_tags($one_child['readme'])}
+            </p>
+            
+            <p class="txt">
+			{:strip_tags($one_child['cate_profile'])}
+            </p>
+            </div>
+            </foreach>
+            
+    <div class="borT">
+                <p class="productTit Product_Use">Choose your Fabrication Process type</p>
+                <foreach name="class['childs']" item="one_child" >
+                    <ul class="prodList" fpcid="{$one_child['parent_id']}" pcid="{$one_child['pcid']}">
+                    	<foreach name="one_child['childs']" item="two_child">
+                        <li fpcid="{$two_child['parent_id']}" pcid="{$two_child['pcid']}">
+                            <p class="icon"><img src="{:getimgurl($two_child['fid'])}" alt="{$two_child['class_name']}"></p>
+                            <p class="txt">{:strip_tags($two_child['class_name'])}</p>
+                        </li>
+                        </foreach>
+                        </ul>
+                </foreach>
+                
+                <p class="productTit productTits">Characteristics, Features</p>
+         
+                    <volist name="class['childs']" id="one_child" >
+                        <foreach name="one_child['childs']" item="two_child">
+                        <dl class="compList2" pcid="{$two_child['pcid']}" fpcid="{$two_child['parent_id']}" >
+                        
+                        <dt>
+                        <!-- <p>
+                            <span>Application</span>
+                        </p> -->
+                <p class="productTit Product_Use">Choose your Application Industry type</p>
+
+                        </dt>
+                            <foreach name="two_child['childs']" item="three_child">
+                                <dd class="nav-hidden-mobile" <if condition="$three_child['fid']">style="background: url({:getimgurl($three_child['fid'])}) no-repeat 0 0;"</if>>
+                                    <if condition="$three_child['fid']">
+                                <p data-v-test>
+                                    <style>
+                                        p[data-v-test]{
+                                            background: transparent !important;
+                                            color: #fff;
+                                        }
+                                        </style>
+                                    <else/>
+                                    <p>
+                                </if>
+                                    <span pcid="{$three_child['pcid']}" fpcid="{$three_child['parent_id']}" class="three_child_btn">
+                                        <em>{:strip_tags($three_child['class_name'])}</em>
+                                        </span>
+                                </p>
+                                </dd>
+                                <!-- 移动端 -->
+                                <div class="nav-hidden-pc mb-10">
+                                    <dd class="" <if condition="$three_child['fid']">style="background: url({:getimgurl($three_child['fid'])}) no-repeat 0 0;"</if>>
+                                        <if condition="$three_child['fid']">
+                                            <p data-v-test>
+                                                <style>
+                                                    p[data-v-test]{
+                                                        background: transparent !important;
+                                                        color: #fff;
+                                                    }
+                                                    </style>
+                                                <else/>
+                                            <p>
+                                        </if>
+                                        <span pcid="{$three_child['pcid']}" fpcid="{$three_child['parent_id']}" class="three_child_btn mobile_three_child_btn">
+                                            <em>{:strip_tags($three_child['class_name'])}</em>
+                                        </span>
+                                    </dd>
+                                    
+                                </div>
+                                <!-- 移动端 -->
+                                
+                            </foreach> 
+                        </dl>        
+                        </foreach>
+                    </volist> 
+                <p class="productTit">Category</p>
+<php>
+$child0_cates=get_child0_cate();
+</php>
+                    
+                    <foreach name="child0_cates" item="three_child">
+                    <div class="tableWrap" fpcid="{$three_child['parent_id']}" pcid="{$three_child['pcid']}" path="{$three_child['parent_path']}">
+                        <p class="tableTit">{:strip_tags($three_child['class_name'])}</p>
+                                <div class="tableType1">
+                                    <table class="pc"><!-- pc일 경우  -->
+                                        
+                                        <thead>
+                                            <tr>
+                                                <th>Product(GRADE)</th>
+												<if condition="$three_child['pcid'] eq 42427">
+												<th>Mooney viscosity, ML (1+4) 100℃</th>
+												<else/>
+												<th>Melt mass flow rate,g/10min</th>
+												</if>
+                                                <th>Usage</th>
+                                                <th>PDF</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                            
+                             <php>
+                             	$products=get_allproducts_category_on_index($three_child['pcid'],100);
+                             </php>         
+                            
+                            <volist name="products" id="product">
+                            <tr>
+                                <td>{$product['pro_name']}</td>
+                                <td>{:strip_tags(htmlspecialchars_decode($product['pro_description']))}</td>
+                                <td>{:strip_tags(htmlspecialchars_decode($product['pro_profile']))}</td>
+                                <td><if condition="$product['pro_file']"><a target="_blank" href="{:getimgurl($product['pro_file'])}">DOWNLOAD</a><else/>{:__('NO DOWNLOAD')}</if></td>
+                                </tr>
+                            </volist>    
+                            
+                            </tbody>
+                                    </table>
+                                    
+                                </div>
+                                </div>
+                             </foreach>
+  
+                        
+                    </div>
+        </div>
+    </div>
+    </div>
+

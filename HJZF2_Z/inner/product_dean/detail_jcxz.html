@@ -1,0 +1,48 @@
+<style>
+    .dean_news_title {
+        font-size: 25px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .news_time_share {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .news_time_share .baidu_share {
+        margin-left: 15px;
+    }
+    .doct_info_con{
+        line-height: 30px;
+    }
+</style>
+<div class="pro_cate_18_left dean_left">
+    <div class="text-center pro_cate_18_left_title">
+        <h5 class="dean_news_title">{$product['pro_name']}</h5>
+        <div class="news_time_share">
+            <div class="news_time">
+                <span>时间：{:date('Y-m-d',$product['created'])}</span>
+                <span>查看：{:__('View:')}{$product['click_no']}</span>
+            </div>
+            <!-- <div class="baidu_share">
+                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1606379908568"><a href="#"
+                        class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"
+                        title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a
+                        href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren"
+                        data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin"
+                        title="分享到微信"></a></div>
+                <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+            </div> -->
+        </div>
+    </div>
+    <div class="doct_info_con">
+        {:str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile']))}
+    </div>
+    <div class="clearfix"></div>
+    
+</div>

@@ -1,0 +1,102 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[1]){
+            $color = $inner_data[1];
+        }
+    </php>
+    <style>
+        .HJZF_Z__Breadcrumbs span.current,
+        .news_detail2_prev ul li a:hover,
+        .news_detail2_prev ul li {
+            color: #{$color};
+        }
+    </style>
+    <div id="HJZF_Z__wrapper_detail3">
+        <Include file="./Tpl/HJZF2_Z/inner/banner3.html" />
+        <Include file="./Tpl/HJZF2_Z/inner/cases_bread_detail3.html" />
+        <!-- title start -->
+        <div class="HJZF_Z__wrapper_detail3_title">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="news_detail2_title text-center fz28">{$news['title']}</h1>
+                        <div class="news_view">
+                            <span class="time">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{:date('Y-m-d ',$news['created'])}</span>
+                            <span>|</span>
+                            <span class="red">
+                                <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;{:__('View:')}{$news['click_num']}</span>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- title end -->
+        <if condition="$webid eq '1721'">
+            <style>
+                .InsidePages_content-right_content-body{
+                    max-width: 700px;
+                    margin: 0 auto;
+                }
+            </style>
+            </if>
+        <!-- body start -->
+        <div class="HJZF_Z__innerContent news_detail3_maincontent" id="main-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section class="InsidePages_content-right2">
+                            <div class="InsidePages_content-right_wrap">
+                                <div class="InsidePages_content-right_content-body">
+                                    <div class="news">
+                                        <div id="news_detail">
+                                            <div class="body">
+
+                                                <div class="news_body">{:htmlspecialchars_decode($news['body'])}</div>
+                                                <div class="news_detail2_prev">
+                                                    <ul>
+                                                        <if condition="$newprev[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_prev">
+                                                                {:__('Prev: ')}
+                                                                <a href="{:U('/case_detail',array('nid'=>$newprev[0]['nid']))}" onfocus="blur()">
+                                                                    {$newprev[0]['title']}
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <if condition="$newnext[0]['title'] eq ''">
+
+                                                            <else/>
+                                                            <li class="news_next">
+                                                                {:__('Next: ')}
+                                                                <a href="{:U('/case_detail',array('nid'=>$newnext[0]['nid']))}" onfocus="blur()">
+                                                                    {$newnext[0]['title']}
+                                                                </a>
+                                                            </li>
+                                                        </if>
+                                                        <div class="clear"></div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="newscomment_show() eq 1">
+                                        <include file="HJZF2_Z:newscomment" />
+                                    </if>
+                                    <div style="clear:both"></div>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- body end -->
+
+
+    </div>
+</block>

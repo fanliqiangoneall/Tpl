@@ -1,0 +1,20 @@
+<if condition="$labelnewlists neq ''">       
+<style>
+
+.relationnew__title{ font-size:18px; font-weight:200;margin-top:20px;}
+.relationnew__newslist a{  font-size:13px; text-decoration:none; font-weight:200px; color:#3d3d3d;}
+.relationnew__newslist a span{ float:right;}
+</style>                     
+	<h5 class="relationnew__title">{:__('Related news')}</h5>                  
+    <div class="relationnew__news">
+        <ul class="relationnew__newslist">
+            <volist empty="" id="labelnewlists" name="labelnewlists" key="k">
+                <li><a href="{:U('/new_detail',array('nid'=>$labelnewlists["nid"]))}">{$k}.{$labelnewlists['title']} <span>{:date('d/m/Y',$labelnewlists['created'])}</span></a></li>
+                <div class="clear"></div>
+            </volist>
+        </ul>
+
+    </div>
+</if>
+
+<div class="clear"></div>

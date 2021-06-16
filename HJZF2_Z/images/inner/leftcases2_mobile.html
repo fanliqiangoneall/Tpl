@@ -1,0 +1,21 @@
+<style>
+.leftcases2_navlist li a:hover{
+    color: #fff;
+}
+.leftcases2_navlist li a:hover:after{
+	width:100%;
+	background:#{$color};
+}
+</style>
+<div class="HJZF_Z__inner_case4_mobile">
+    <div class="InsidePages_left_content-main">
+        <div class="leftcases2_title index_title">{:__('Cases')}</div>
+        <ul class="leftcases2_navlist">
+            <volist empty="" name="allnewclass" id="new">
+                <li><a style="cursor:pointer;" href="{:U('/case_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+

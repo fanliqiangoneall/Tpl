@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="__TMPL__Wap2/css/screen.css">
+<link rel="stylesheet" href="__TMPL__Wap2/yanzheng/style.css">
+<style>
+.submit—text{ font-size:13px; padding:10px 0px;}
+textarea.error,input.error {
+    border: 1px solid red;
+}
+.submit_form_input{ width:100%; height:25px; line-height:25px; border:1px solid #ccc;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box; }
+.submit_form_textarea{ height:100px; width:100%;line-height:25px;border:1px solid #ccc;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+.submit_form_submit{ 
+border-radius:5px;
+color:#fff;
+border:0px;
+margin:10px 0; padding:5px 10px; background-color:#{$color};
+}
+.codehidden.error,.codehidden{ width:0px; height:0px; border:0px; background:none; padding:0px; margin:0px; display:block;}
+
+</style>
+<form action="{:U('/saveinquiry','','')}"  id="submit_form" method="get">
+<div class="submit—text">{:__('Message: ')} *</div>
+<textarea class="submit_form_textarea" name="message"></textarea>
+<div class="submit—text">{:__('Name: ')} *</div>
+<input class="submit_form_input" name="linkname" type="text">
+<div class="submit—text">{:__('Phone: ')} <if condition="C('LANGUAGE') eq 'cn'">*</if></div>
+<input class="submit_form_input" name="phone" type="text">
+<div class="submit—text">{:__('E-mail: ')} <if condition="C('LANGUAGE') eq 'en'">*</if></div>
+<input class="submit_form_input" name="email" type="text">
+<div class="submit—text">{:__('Verification code: ')} *</div>
+<input name="code" class="codehidden">
+<div class="tncode"></div>
+<div class="clear"></div>
+<input class="submit_form_submit" type="submit" value="{:__('Submit')}">
+</form >
+<script>
+require(['jquery','tn_code','jquery.validate'], function ($,tncode,undefined){
+var $TN = tncode;
+var _old_onload = window.onload;
+window.onload = function(){
+    if(typeof _old_onload == 'function'){
+        _old_onload();
+    }
+    tncode.init("{:__('Click the button to verify')}","{:__('Drag the left slider to complete the puzzle above')}","{:__('loading')}","{:__('√verify successfully')}","{:__('verification failed')}");
+};
+
+$TN.onsuccess(function(){
+//验证通过
+$('input[name="code"]').val("ok");
+$('#code-error').html('');
+});
+
+
+
+
+
+$.validator.addMethod("phone_en", function(value, element) {
+    return this.optional(element) || (value.length>0 && /[\\u4E00-\\u9FA5a-zA-Z]/.test(value));
+}, "{:__('Telephone information is wrong!')} ");
+
+
+	$().ready(function() {
+	 $("#submit_form").validate(
+	 {
+		rules: {
+			message: "required",
+			email: {
+				<if condition="C('LANGUAGE') eq 'en'">
+				required: true,
+				</if>
+				email: true
+			},
+			linkname: "required",
+			phone:{
+				<if condition="C('LANGUAGE') eq 'cn'">
+				required: true,
+				</if>
+				phone_en:true,
+			},
+			code:{
+				required:true,
+			}
+		},
+		messages: {
+			linkname:"{:__('This field is required')}",
+			phone:{
+				required:"{:__('This field is required')}"
+				},
+			linkname:"{:__('This field is required')}",
+   			message: "*{:__('Consulting content cannot be empty')}",
+			email:{
+				required: "*{:__('The email can not be empty')}",
+				email: "*{:__('Email format error')}"
+			},
+			code:"*{:__('Verification failed,Click the button to verify')}",
+	 	}
+	}
+	);
+
+	});
+
+
+
+});
+</script>

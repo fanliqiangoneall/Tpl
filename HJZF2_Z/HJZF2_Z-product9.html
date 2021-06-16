@@ -1,0 +1,77 @@
+<extend name="HJZF2_Z:basein" />
+<block name="content">
+    <php>
+        if($inner_data[0]){
+            $color = $inner_data[0];
+        }
+    </php>
+    <style>
+        .HJZF_Z__innerContent_product_box_a:before {
+            background-color: #{$color};
+        }
+
+        .HJZF_Z__innerContentproduct_categroy9 .main_page .current {
+            background-color: #{$color};
+            border-color: #{$color};
+        }
+
+        .InsidePages_left_content-main {
+            border-top-color: #{$color};
+        }
+
+        .product6_leftnav_cont_side li span.left_second a:hover,
+        .product6_leftnav_cont_side li span.left_second a.on {
+            background-color: #{$color};
+            color: #fff;
+        }
+        .onerji_list li:hover span,.onerji_list li:hover,.onerji_list li.on,.onerji_list li.on span{
+            background-color: #{$color};
+            color: #fff;
+        }  
+		.HJZF_Z__innerContent_categroy9_box_text:after{
+			background-color: #{$color};
+		}
+		.product_categroy9__item .yiji_type ul li a:hover h3{
+			color: #{$color};
+		}
+    </style>
+    <!-- bread start -->
+    <if condition="$inner_data[1] eq ''">
+    <div class="index_wrapper HJZF_Z_product_categroy9_breadcrumbs">
+        <Include file="./Tpl/HJZF2_Z/inner/product_left9.html" />
+    </div>
+    </if>
+    <!-- bread end -->
+
+    <!-- pro list start-->
+    <div class="index_wrapper HJZF_Z__innerContentproduct_categroy9" style="margin-bottom: 20px;">
+        <div class="index_inner container">
+            <ul class="row HJZF_Z__innerContent_product_categroy9 clearfix">
+            	<div class="HJZF_Z__innerContent_categroy9_text">{:__('Products')}</div>
+                <div class="row_little">
+                    <php>
+                        $no_empty = '<span class="norecords">'.__('No Products').'...</span>';
+                    </php>
+                    <volist empty="$no_empty" name="allpro" id="allpro" key="k" offset="0">
+                        <li class="col-xs-6 col-md-4 wow fadeInUp">
+                            <div class="HJZF_Z__innerContent_categroy9--item">
+                                <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">
+                                    <div class="HJZF_Z__innerContent_categroy9_box_img">
+                                            <img src="{:getmainimgurl($allpro['main_img'])}" class="img-responsive" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"<else/>alt="{$allpro['pro_name']}"</if> />
+                                    </div>
+                                    <div class="HJZF_Z__innerContent_categroy9_box_text">
+                                        <p class="ellipsis_one index_sub_title">{$allpro['pro_name']}</p>
+                                        <span class="ellipsis_two index_text">{:HtmlEncode(subtxt($allpro['pro_description'],100))}</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </volist>
+                </div>
+            </ul>
+            <div class="main_page">{$page}</div>
+        </div>
+    </div>
+    <!-- pro list end -->
+
+</block>

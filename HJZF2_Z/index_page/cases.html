@@ -1,0 +1,61 @@
+<!--{$pagename}-->
+
+<style>
+    .hjzf2_Z_case{
+        background: url({:getindeximgurl($data10[32])}) no-repeat center/100%;
+    }
+    .hjzf2_Z_caseItemMore{
+        background: #{$data10[1]};border-color: #{$data10[1]};
+    }
+    @media (max-width: 1200px) {
+        .hjzf2_Z_case{
+        background:#{$data10[33]};
+    }
+    }
+</style>
+
+<!--news start-->
+<section class="hjzf2_Z_case index_pd">
+        <div class="container">
+            <div class="row">
+                <h3 class="hjzf2_Z_caseTitle wow fadeInUp index_title pb40" data-wow-duration="2s" data-wow-delay="0">{$data[0]}</h3>
+            </div>
+        </div>
+        <div class="HJ05-news-content wow fadeInUp" data-wow-duration="2s" data-wow-delay="0">
+            <div class="swiper-container hjzf2_Z_caseSwiper">
+                <div class="swiper-wrapper">
+                    <php>
+                        for($i=2;$i<31;$i=$i+5){
+                    </php>
+                    <if condition="$data10[$i]">
+                        <div class="swiper-slide hjzf2_Z_caseItem">
+                            <div class="box">
+                                <div class="hjzf2_Z_caseItemImg">
+                                    <a href="{$data10[$i+2]}">
+                                        <img src="{:getindeximgurl($data10[$i+3])}" alt="{$data10[$i]}"/>
+                                    </a>
+                                </div>
+                                <div class="hjzf2_Z_caseItemText">
+                                    <h3 class="hjzf2_Z_caseItemName index_sub_title">{$data10[$i]}</h3>
+                                    <div class="hjzf2_Z_caseItemdesc index_text">  {:HtmlEncode($data10[$i+1])}</div>
+                                </div>
+                                <div class="hjzf2_Z_caseItemMore">
+                                    <a href="{$data10[$i+2]}">{:__('Button')}<i class="fa fa-play-circle" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="hjzf2_Z_caseItemImg-s">
+                                    <img src="{:getindeximgurl($data10[$i+4])}" alt="{$data10[$i]}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </if>
+                    <php>}</php>
+                </div>
+            </div>
+
+        </div>
+        <div class="swiper-pagination HJZF_Z_case_pagination"></div>
+
+</section>
+
+<!--news end-->
+

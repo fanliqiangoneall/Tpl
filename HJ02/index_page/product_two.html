@@ -1,0 +1,227 @@
+<!--{$pagename}-->
+<if condition="$data37[12]">
+    <style>
+        .hj02_proclasslist li {
+            padding: 2px 15px;
+            margin: 0 3px;
+            float: left;
+            background: #{$data37[12]};
+        }
+        .hj02_proclasslist li a{color: #fff;}
+        .hj02_pro_more {
+            font-size: 14px;
+            line-height: 24px;
+            float: right;
+            padding: 4px 8px;
+            background: #{$data37[12]};
+            color: #fff;
+        }
+        .hj02_pro_more:hover{color: #fff;}
+    </style>
+</if>
+<style>
+    /*#index_product_title_left1 h3{
+        color: #{$color};
+    }*/
+    .hj02_proclasslist li:hover{
+        background: #{$color};}
+    .hj02_proclasslist li:hover a{
+        color: #fff;
+    }
+    .hj02_pro_more:hover{
+        color: #{$color};
+    }
+    .index_proitem_name h6{
+        color: #333
+    }
+    .index_proitem_box:after{
+        background: #{$color};
+    }
+    .hj02_proclasslist li.proClass_on{
+        background: #{$color};
+    }
+    .hj02_proclasslist li.proClass_on a{
+        color: #fff;
+    }
+
+    .index_product_more:hover{
+    background: {$data1[0]};color:#fff;
+    }
+    .index_proitem_img a:before{
+    background: {$data1[0]};
+    }
+
+    .index_proitem_more{
+        color:{$data1[0]};
+    }
+    .index_proitem_more:hover:after{
+    background: {$data1[0]};
+        width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+    }
+    /*.slick-prev:before, .slick-next:before{
+        color: #{$color};
+    }*/
+    #index_prolist .slick-prev:hover:before,  #index_prolist .slick-next:hover:before{
+    color: {$data1[0]};
+    }
+   .index_pro_slickbox:hover .hj02-pro-prev{
+        background: #{$color};display: block;left: 1px;transition: .6s;
+    }
+    .index_pro_slickbox:hover  .hj02-pro-next{
+        background: #{$color};display: block;right: 1px;transition: .6s;
+    }
+</style>
+<if condition="$data37[12]">
+    <style>
+        .hj02_pro_more:hover{
+            background: #{$color};color: #fff;
+        }
+    </style>
+</if>
+<php>
+    if($data37[12]==""){
+    $data37[12]=30;
+    }
+</php>
+<style>
+    .page_probg{
+        padding-bottom: {$data37[12]}px;
+    }
+</style>
+<!--index-product start-->
+<div class="page_probg">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left" >
+                <div id="index_product_title_left1"><h3>{$data37[0]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right1">
+                    <a href="{:U('/Product')}" class="hj02_pro_more">More -</a>
+                    <ul class="hj02_proclasslist hj02_proclasslist2">
+                        <php>for($a=1;$a<10;$a=$a+2){</php>
+                            <if condition="$data37[$a]">
+                                <li><a href="{$data37[$a+1]}">{$data37[$a]}</a></li>
+                            </if>
+
+                        <php>}</php>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <php>
+            $arr_str=$data37[11];
+            $arr=explode(',',$arr_str);
+            foreach($arr as $k=>$a){
+            $list[$k]['data']=get_index_products_category($a,$all_pro);
+            }
+
+        </php>
+
+        <style>
+            .hj02-index-pro2-item-imgbox{position: relative}
+            .hj02-index-pro2-left,.hj02-index-pro2-right{width: 580px;float: left;min-height: 600px;}
+            .hj02-index-pro2-right{float: right}
+            .index_prolist_wai2{height: auto;min-height: 600px;}
+            .hj02-index-pro2-item{width: 270px;height: auto;float: left;margin-bottom: 25px;box-shadow: 0 2px 20px 0 rgba(0,0,0,0.06);}
+            .hj02-index-pro2-left .hj02-index-pro2-item{width: 580px;height: calc(100% - 26px);float: left;}
+            .hj02-index-pro2-item-img{width: 270px;height: auto;overflow: hidden;position: relative}
+            .hj02-index-pro2-item-img img{width: 100%;transition: .6s;}
+            .hj02-index-pro2-item-img a {position: relative;display: block;width: 100%;height: 100%;}
+            .hj02-index-pro2-left .hj02-index-pro2-item .hj02-index-pro2-item-img{width: 580px;height: auto;}
+            .hj02-index-pro2-left .hj02-index-pro2-item-second{padding: 20px 10px;}
+            .hj02-index-pro2-item-second{padding: 10px;}
+            .hj02-index-pro2-left .hj02-index-pro2-item-second-name{margin-bottom: 10px;}
+            .hj02-index-pro2-item-second-name h6{text-overflow: ellipsis;font-size: 16px;color: #333}
+            .hj02-index-pro2-item-second-desc{margin-bottom: 0;font-family: Ubuntu;line-height: 25px;font-weight: 400;font-style: normal;color: #999;font-size: 15px;min-height: 25px;word-break: keep-all;}
+            .ellipsis_one{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;display: block;}
+            .hj02-index-pro2-left .hj02-index-pro2-item .hj02-index-pro2-item-second-name h6{font-size: 20px;}
+            .hj02-index-pro2-item-img a:after {position: absolute;top: 0;left: 0;content: "";transition: .3s;background: url(__TMPL__HJ02/img/product_more.png) no-repeat center 50% rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 99;
+                right: 0;
+                text-align: center;
+                color: #fff;
+                opacity: 0;
+                visibility: hidden;
+            }
+            .hj02-index-pro2-item:hover .hj02-index-pro2-item-img a:after {
+                opacity: 1;
+                visibility: visible;
+            }
+            .hj02-index-pro2-item:hover .hj02-index-pro2-item-img img{
+                transform: scale(1.1);-webkit-transform: scale(1.1);-moz-transform: scale(1.1);transition: .6s;
+            }
+            .hj02-index-pro2-right .hj02-index-pro2-item-img{max-height: 270px;}
+        </style>
+        <div class="index_prolist_wai2" id="index_prolist_wai">
+            <div class="index_prolist_waibox index_prolist_waibox2">
+                <volist empty="" name="list" id="li" key="k">
+                    <div class="index_prolist_wai_cont">
+
+                            <div class="hj02-index-pro2-left">
+                                <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="1">
+                                    <div class="hj02-index-pro2-item ">
+                                         <div class="hj02-index-pro2-item-box">
+                                            <div class="hj02-index-pro2-item-img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                            <div class="hj02-index-pro2-item-second">
+                                                <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                                                <div class="hj02-index-pro2-item-second-name"><h6 title="{:subtxt($indexpro['pro_name'],80)}" class="ellipsis_one">{:subtxt($indexpro['pro_name'],40)}</h6></div>
+                                                <div class="hj02-index-pro2-item-second-desc">{:subtxt($indexpro['pro_description'],100)}</div>
+                                                 </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </volist>
+
+                            </div>
+                            <div class="hj02-index-pro2-right">
+                                <volist empty="" name="li['data']" id="indexpro" key="k" offset="1" length="4">
+                                    <div class="hj02-index-pro2-item ">
+                                        <div class="hj02-index-pro2-item-box">
+                                            <div class="hj02-index-pro2-item-img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                            <div class="hj02-index-pro2-item-second">
+                                                <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                                                    <div class="hj02-index-pro2-item-second-name"><h6 title="{:subtxt($indexpro['pro_name'],80)}" class="ellipsis_one">{:subtxt($indexpro['pro_name'],40)}</h6></div>
+                                                    <div class="hj02-index-pro2-item-second-desc ellipsis_one">{:subtxt($indexpro['pro_description'],40)}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="($k)%2 neq 0">
+                                        <div style="width:30px; height:10px; background:none; float:left;"></div>
+                                    </if>
+                                </volist>
+                                <div class="clear"></div>
+                            </div>
+                        <div class="clear"></div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div style="clear: both;"></div>
+<script>
+    $(document).ready(function(){
+        var waibox_width=1190*$(".index_prolist_wai_cont").length;
+        $(".index_prolist_waibox").css("width",waibox_width+'px');
+        $(".hj02_proclasslist2 li:first-child").addClass("proClass_on");
+        $(".hj02_proclasslist2 li").hover(function(){
+            var class_index = $(this).index();
+            $(this).addClass("proClass_on").siblings().removeClass("proClass_on");
+            var waibox_width_left = -1190*class_index;
+            $(".index_prolist_waibox2").stop().animate({left:waibox_width_left+"px"},600);
+
+        });
+
+    })
+    window.onload = function(){
+        var left_height = $(".hj02-index-pro2-right").height();
+        $(".hj02-index-pro2-left").height(left_height);
+        $(".index_prolist_wai2").height(left_height);
+    }
+</script>
+<!--index-product end-->

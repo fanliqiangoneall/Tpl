@@ -1,0 +1,62 @@
+<!--{$pagename}-->
+<style>
+    .HJZF2_Z__news--left__newsItem:hover .HJZF2_Z--left__newsTitle a,.HJZF2_Z--left--newsMore:hover,.HJZF2_Z--left--newsMore:hover i{
+        color: #{$data8[2]};
+    }
+    .HJZF2_Z__news__title:before,.HJZF2_Z__news-next,.HJZF2_Z__news-prev,.HJZF2_Z--right--newsMore,.HJZF2_Z__news--left__date span:before{
+        background: #{$data8[2]};
+    }
+</style>
+<section class="HJZF2_Z__news index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="HJZF2_Z__news__title index_title">{$data8[0]}</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-8 HJZF2_Z__news--left">
+
+                    <volist name="indexnews" id="indexnews1" offset="0" length="3" key="h">
+                        <div class="col-xs-12 col-md-6 col-lg-4 HJZF2_Z__news--left__newsItem">
+                            <div class="HJZF2_Z__news--left__nwesImg">
+                                <p class="HJZF2_Z__news--left__date"><span class="month">{:date('M',$indexnews1['created'])}</span><span class="day">{:date('d ',$indexnews1['created'])}</span><span class="year">{:date('Y ',$indexnews1['created'])}</span></p>
+                                <a href="{:U('/new_detail',array('nid'=>$indexnews1['nid']))}" onFocus="blur()" ><img <if condition="$indexnews1['new_pro']">src="{:getimgurl($indexnews1['new_pro'])}"<else/>src="{:getindeximgurl($data47[13])}"</if> border="0" alt="{$indexnews1['title']}"/></a>
+                            </div>
+                            <div class="HJZF2_Z--left__newsInfo">
+                                <div class="HJZF2_Z--left__newsTitle ellipsis_two"><a href="{:U('/new_detail',array('nid'=>$indexnews1["nid"]))}" onFocus="blur()" class="index_sub_title">{:subtxt($indexnews1['title'],60)}</a></div>
+                                <div class="HJZF2_Z--left--newsDesc index_text">{:subtxt($indexnews1['news_description'],100)}</div>
+                                <a href="{:U('/new_detail',array('nid'=>$indexnews1['nid']))}" class="HJZF2_Z--left--newsMore index_text">{:__('Read More')} <i class="fa fa-caret-right"></i></a>
+                            </div>
+                        </div>
+                    </volist>
+
+
+                </div>
+                <div class="col-xs-12  col-md-12 col-lg-4 HJZF2_Z__news--right pull-right">
+                    <div class="swiper-container HJZF2_Z__news--right--swiper">
+                        <div class="swiper-wrapper">
+                            <volist name="indexnews" id="indexnews2" offset="3" length="4" key="h">
+                                <div class="swiper-slide HJZF2_Z__news--right__newsItem">
+                                    <div class="HJZF2_Z__news--right__nwesImg">
+                                        <div class="HJZF2_Z__news--right__nwesImgWrap">
+                                            <p class="HJZF2_Z__news--left__date"><span class="month">{:date('M',$indexnews2['created'])}</span><span class="day">{:date('d ',$indexnews2['created'])}</span><span class="year">{:date('Y ',$indexnews2['created'])}</span></p>
+                                            <a href="{:U('/new_detail',array('nid'=>$indexnews2['nid']))}" onFocus="blur()" ><img <if condition="$indexnews2['new_pro']">src="{:getimgurl($indexnews2['new_pro'])}"<else/>src="{:getindeximgurl($data47[13])}"</if> border="0" alt="{$indexnews2['title']}" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="HJZF2_Z--right__newsInfo">
+                                        <div class="HJZF2_Z--left__newsTitle ellipsis_two"><a href="{:U('/new_detail',array('nid'=>$indexnews2["nid"]))}" onFocus="blur()" class="index_sub_title">{:subtxt($indexnews2['title'],60)}</a></div>
+                                        <div class="HJZF2_Z--left--newsDesc index_text">{:subtxt($indexnews2['news_description'],100)}</div>
+                                        <div style="text-align: center"><a href="{:U('/new_detail',array('nid'=>$indexnews2['nid']))}" class="HJZF2_Z--right--newsMore index_text">{:__('Read More')}</a></div>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next HJZF2_Z__news-next"><i class="fa fa-angle-right"></i></div>
+                        <div class="swiper-button-prev HJZF2_Z__news-prev"><i class="fa fa-angle-left"></i></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>

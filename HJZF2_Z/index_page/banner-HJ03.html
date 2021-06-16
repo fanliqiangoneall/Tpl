@@ -1,0 +1,239 @@
+<!--{$pagename}-->
+<style>
+.new_hjzf_banner-HJ03 .hj_banner_next:hover{
+    background: #{$data72[0]};
+}
+.new_hjzf_banner-HJ03 .hj_banner_prev:hover{
+    background: #{$data72[0]};
+}
+.new_hjzf_banner-HJ03 .HJ03-banner-box .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: #{$data72[0]};
+    opacity: 1;
+}
+@media (max-width: 768px) {
+    .new_hjzf_banner-HJ03 .HJ03-banner-box .hj03_banner .swiper-pagination{
+        bottom: 0;
+    }
+}
+</style>
+<script>
+    var guan = "<?php echo $data72[14] ?>";
+    var autoLa = "<?php echo $data72[17] ?>";
+</script>
+<section class="hj-banner HJ03-banner-box">
+    <div id="HJ03-banner">
+        <div class="swiper-container hj03_banner">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k" offset="0" length="1">
+                    <div class="swiper-slide hj_banner_item">
+                        <if condition="$banner_pic['ad_pic']">
+                            <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg img-responsive has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg  has_nowapbanner"</if>>
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_wap']">
+                            <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                                <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_video']">
+                            <a href="javascript:void(0)" style="width: 100%;height: 100%">
+                                <else/>
+                             <a href="{:($banner_pic['ad_link'])}" style="width: 100%;height: 100%">
+                        </if>
+                        <div class="container ">
+                            <div class="row">
+                                <div class="banner_wrap flex ">
+                                    <if condition="$data72[2]"><div class="b_item1"><img src="{:getindeximgurl($data72[2])}"/></div></if>
+                                    <if condition="$data72[3]"><div class="b_item2"><img src="{:getindeximgurl($data72[3])}"/></div></if>
+                                    <if condition="$data72[4]"><div class="b_item3"><img src="{:getindeximgurl($data72[4])}"/></div></if>
+                                </div>
+                            </div>
+                        </div>
+                        <if condition="$banner_pic['use_video']">
+                            <if condition="$data72[16]">
+                                <div class="hjzf_banner_videoBox">
+                                    <div class="lay_video_open" data-src="{$banner_pic['ad_link']}"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""></div>
+                                </div>
+                                <else/>
+                                <div class="hjzf_banner_videoBox">
+                                    <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-mobile" muted></video>
+                                    <video src="{$banner_pic['ad_link']}" controls webkit-playsinline playsinline x5-playsinline poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-pc" muted></video>
+                                </div>
+                            </if>
+                        </if>
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="1" length="1">
+                    <div class="swiper-slide hj_banner_item">
+                        <if condition="$banner_pic['ad_pic']">
+                            <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg img-responsive has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg  has_nowapbanner"</if>>
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_wap']">
+                            <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                                <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_video']">
+                            <a href="javascript:void(0)" style="width: 100%;height: 100%">
+                                <else/>
+                                <a href="{:($banner_pic['ad_link'])}" style="width: 100%;height: 100%">
+                        </if>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="banner_wrap flex ">
+                                        <if condition="$data72[5]"><div class="b_item1"><img src="{:getindeximgurl($data72[5])}"/></div></if>
+                                        <if condition="$data72[6]"><div class="b_item2"><img src="{:getindeximgurl($data72[6])}"/></div></if>
+                                        <if condition="$data72[7]"><div class="b_item3"><img src="{:getindeximgurl($data72[7])}"/></div></if>
+                                    </div>
+                                </div>
+                            </div>
+                            <if condition="$banner_pic['use_video']">
+                                <if condition="$data72[16]">
+                                    <div class="hjzf_banner_videoBox">
+                                        <div class="lay_video_open" data-src="{$banner_pic['ad_link']}"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""></div>
+                                    </div>
+                                    <else/>
+                                    <div class="hjzf_banner_videoBox">
+                                        <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-mobile" muted></video>
+                                        <video src="{$banner_pic['ad_link']}" controls webkit-playsinline playsinline x5-playsinline poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-pc" muted></video>
+                                    </div>
+                                </if>
+                            </if>
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="2" length="1">
+                    <div class="swiper-slide hj_banner_item">
+                        <if condition="$banner_pic['ad_pic']">
+                            <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg img-responsive has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg  has_nowapbanner"</if>>
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_wap']">
+                            <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                                <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_video']">
+                            <a href="javascript:void(0)" style="width: 100%;height: 100%">
+                                <else/>
+                             <a href="{:($banner_pic['ad_link'])}" style="width: 100%;height: 100%">
+                        </if>
+                            <div class="container ">
+                                <div class="row">
+                                    <div class="banner_wrap flex ">
+                                        <if condition="$data72[8]"><div class="b_item1"><img src="{:getindeximgurl($data72[8])}"/></div></if>
+                                        <if condition="$data72[9]"><div class="b_item2"><img src="{:getindeximgurl($data72[9])}"/></div></if>
+                                        <if condition="$data72[10]"><div class="b_item3"><img src="{:getindeximgurl($data72[10])}"/></div></if>
+                                    </div>
+                                </div>
+                            </div>
+                            <if condition="$banner_pic['use_video']">
+                                <if condition="$data72[16]">
+                                    <div class="hjzf_banner_videoBox">
+                                        <div class="lay_video_open" data-src="{$banner_pic['ad_link']}"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""></div>
+                                    </div>
+                                    <else/>
+                                    <div class="hjzf_banner_videoBox">
+                                        <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-mobile" muted></video>
+                                        <video src="{$banner_pic['ad_link']}" controls webkit-playsinline playsinline x5-playsinline poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-pc" muted></video>
+                                    </div>
+                                </if>
+                            </if>
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="3" length="1">
+                    <div class="swiper-slide hj_banner_item">
+                        <if condition="$banner_pic['ad_pic']">
+                            <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg img-responsive has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg  has_nowapbanner"</if>>
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_wap']">
+                            <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                                <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_video']">
+                            <a href="javascript:void(0)" style="width: 100%;height: 100%">
+                                <else/>
+                            <a href="{:($banner_pic['ad_link'])}" style="width: 100%;height: 100%">
+                        </if>
+                        <div class="container ">
+                            <div class="row">
+                                <div class="banner_wrap flex">
+                                    <if condition="$data72[11]"><div class="b_item1"><img src="{:getindeximgurl($data72[11])}"/></div></if>
+                                    <if condition="$data72[12]"><div class="b_item2"><img src="{:getindeximgurl($data72[12])}"/></div></if>
+                                    <if condition="$data72[13]"><div class="b_item3"><img src="{:getindeximgurl($data72[13])}"/></div></if>
+                                </div>
+                            </div>
+                        </div>
+                        <if condition="$banner_pic['use_video']">
+                            <if condition="$data72[16]">
+                                <div class="hjzf_banner_videoBox">
+                                    <div class="lay_video_open" data-src="{$banner_pic['ad_link']}"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""></div>
+                                </div>
+                                <else/>
+                                <div class="hjzf_banner_videoBox">
+                                    <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-mobile" muted></video>
+                                    <video src="{$banner_pic['ad_link']}" controls webkit-playsinline playsinline x5-playsinline poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-pc" muted></video>
+                                </div>
+                            </if>
+                        </if>
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="4">
+                    <div class="swiper-slide hj_banner_item">
+                        <if condition="$banner_pic['ad_pic']">
+                            <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg img-responsive has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg  has_nowapbanner"</if>>
+                                <img src="{:getimgurl($banner_pic['ad_pic'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                         </if>
+                        <if condition="$banner_pic['use_wap']">
+                            <div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-xl">
+                                <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%" class="img-responsive"/>
+                            </div>
+                        </if>
+                        <if condition="$banner_pic['use_video']">
+                            <a href="javascript:void(0)" style="width: 100%;height: 100%">
+                                <else/>
+                            <a href="{:($banner_pic['ad_link'])}" style="width: 100%;height: 100%">
+                        </if>
+                        <if condition="$banner_pic['use_video']">
+                            <if condition="$data72[16]">
+                                <div class="hjzf_banner_videoBox">
+                                    <div class="lay_video_open" data-src="{$banner_pic['ad_link']}"><img src="{:getimgurl($banner_pic['ad_pic'])}" alt=""></div>
+                                </div>
+                                <else/>
+                                <div class="hjzf_banner_videoBox">
+                                    <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-mobile" muted></video>
+                                    <video src="{$banner_pic['ad_link']}" controls webkit-playsinline playsinline x5-playsinline poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video nav-hidden-pc" muted></video>
+                                </div>
+                            </if>
+                        </if>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+            <if condition="$banner_pic['use_video']">
+            <div class="hjzf_banner_videoPlay">
+                <a href="javascript:void(0);"></a>
+            </div>
+            </if>
+            <div class="swiper-pagination hj_banner_pagination"></div>
+            <div class="swiper-button-next hj_banner_next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hj_banner_prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+        <if condition="$data72[15]">
+        <div class="banner-hj03-btn">
+            <img src="{:getindeximgurl($data72[15])}">
+        </div>
+        </if>
+    </div>
+</section>

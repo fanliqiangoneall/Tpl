@@ -1,0 +1,109 @@
+<script>
+$(function(){
+$("#content").focus(function(){
+$("#content_alert").html("");
+});
+
+$("#code_char2").focus(function(){
+$("#code_char2_alert").html("");
+});
+
+
+$("#getcode_char2").click(function(){
+		$(this).attr("src",'__APP__/code_char2.php?' + Math.random());
+	});
+
+$("#getcode_char12").click(function(){
+		$("#getcode_char2").attr("src",'__APP__/code_char2.php?' + Math.random());
+	});
+
+})
+
+
+function yz_comment(){
+var count=0;
+var content =Trims($("#content ").val());
+
+if(content .length<=0){
+$("#content_alert").html("*评论内容不能为空！");
+count++;
+}
+else{
+$("#content_alert").html("");
+}
+
+
+var code_char2 = jQuery("#code_char2").val();
+jQuery.ajax({
+   type: "POST",
+   url: "__APP__/chk_code2.php?act=char",
+   async:false,
+   data: {code:code_char2},
+   success: function(data){
+   
+  if(data==1){
+	jQuery("#code_char2_alert").html("");
+  }else{
+   count++;
+   jQuery("#code_char2_alert").html("验证码输入错误");
+  }
+  }            
+});
+
+if(count>0){
+return false;
+}
+else{
+jQuery("#commentsubmit").attr("disabled","true");
+return true;
+}
+}
+function Trims(str)
+{
+return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+} 
+</script>
+
+<div class="inquiry" style="margin-bottom:10px; border-top:1px dashed #ccc;">
+ <div class="commentTitle"><h5><span><a href="{:U('/newscommentlist',array('nid'=>$news['nid']))}" target="_blank">查看更多(共{:newscommentlistcount($news['nid'])})</a></span>评论列表</h5></div>
+ <div class="commentlist">
+ <if condition="newscommentlistcount($news['nid']) eq 0">
+  <font style="color:#999999;">暂无内容</font>
+ <else />
+   <volist empty="暂无内容" name="commentlist" id="commentlist" key="k">
+     <ul>
+       <li>{$k}. {$commentlist["content"]} [评论时间：{:date("Y-m-d",$commentlist["adddate"])}]</li>
+     </ul>
+   </volist>
+  </if>
+   <div class="clear"></div>
+ </div>
+</div>
+
+
+<div class="inquiry">
+<div class="inquiry_Title"><h5 style="font-size:18px;">我要评论</h5></div>
+<form action="__APP__/newssavecontent" method="post" onsubmit="return yz_comment();">
+  <div class="inquiryinfo">
+    <div class="inquiryleft">内容 *</div>
+	<div class="inquiryright" style="position:relative;"><textarea name="content" id="content" style="height:150px; width:99%;"></textarea><span class="yz_alert" id="content_alert" style="color:#f00; position:absolute; top:5px; right:10px; z-index:99;"></span>
+	<div class="clear"></div>
+ </div>
+ <div class="clear"></div>
+</div>
+
+
+<div class="inquiryinfo">
+    <div class="inquiryleft">验证码 *</div>
+	<div class="inquiryright" style="position:relative;"><input type="text" class="input" id="code_char2" name="code2" maxlength="6" style="width:250px; height:25px; border:1px solid #a9a9a9;" />&nbsp;<a href="javascript:void(0);" id="getcode_char12" style="color:#000"><img src="__APP__/code_char2.php" id="getcode_char2" title="点击刷新" align="absmiddle"></a><span class="yz_alert" id="code_char2_alert" style="color:#f00; position:absolute; top:5px; right:10px; z-index:99;"></span></div>
+	<div class="clear"></div>
+</div>
+
+<div class="inquiryinfo">
+<input type="hidden" name="nid" value="{$news['nid']}" />
+<input class="bt" id="commentsubmit" type="submit" value="提&nbsp;交"  name="submit"/>
+</div>
+</form>
+
+<div class="clear"></div>
+</div>

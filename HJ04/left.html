@@ -1,0 +1,73 @@
+<style>
+    .proLeftContainer{
+        background: {$data47[12]};
+        color: {$data47[14]};
+    }
+    .proLeftTitle{
+        border-bottom: 2px solid {$data47[15]};
+    }
+    .proLeftContent a h3{
+        color: {$data47[14]};
+        font-size: 15px;
+        font-weight:normal;
+    }
+    .proLeftIcon{
+        background: {$data47[17]};
+    }
+    .proLeftIcon2,.proLeftIcon3{
+        background-image: url('{:getindeximgurl($data47[16])}');
+    }
+    .proLeftContent>li.leftParent{
+        background: {$data47[13]};
+    }
+    .proLeftTwoContainer{
+        background: {$data47[13]};
+    }
+</style>
+<div class="lf">
+    <div class="proLeftContainer">
+        <div class="proLeftTitle">{$data47[11]}</div>
+        <ul class="proLeftContent">
+            <volist name="allclass" id="allclass_left">
+                <li <if condition="$classid eq $allclass_left['pcid'] or $prolist['parent_id'] eq $allclass_left['pcid'] or $product['class_id'] eq $allclass_left['pcid'] or $procate['parent_id'] eq $allclass_left['pcid']">class="leftParent"<else/>class="leftParent2"</if>>
+                <div class="proLeftList">
+                    <a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a>
+                    <div class="proLeftIcon"></div>
+                    <div class="proLeftIcon2"></div>
+                </div>
+                <if condition='$allclass_left["childs"] neq ""'>
+                    <div class="proLeftTwoContainer">
+                        <ul class="proLeftChildContainer">
+                            <volist empty="" name="allclass_left['childs']" id="allclass_leftchild">
+                                <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_leftchild['pcid'] or $product['class_id'] eq $allclass_leftchild['pcid'] or $procate['parent_id'] eq $allclass_leftchild['pcid']">class="child"<else/>class="child2"</if>>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}">{$allclass_leftchild['class_name']}</a>
+                                <div class="proLeftIcon3"></div>
+                                </li>
+                                <if condition="$allclass_leftchild['childs'] neq ''">
+                                    <ul class="proLeftThreeContainer">
+                                        <volist name="allclass_leftchild['childs']" id="allclass_three">
+                                            <li <if condition="$classid eq $allclass_leftchild['pcid'] or $prolist['parent_id'] eq $allclass_three['pcid'] or $product['class_id'] eq $allclass_three['pcid'] or $procate['parent_id'] eq $allclass_three['pcid']">class="child3"<else/>class="child4"</if>>
+                                            <a href="{:U('/product_category','','')}/{:getprocatename($allclass_three['pcid'])}">{$allclass_three['class_name']}</a>
+                                            </li>
+                                        </volist>
+                                        <div class="borderDiv"></div>
+                                    </ul>
+                                </if>
+                            </volist>
+                            <div class="borderDiv"></div>
+                        </ul>
+                    </div>
+                </if>
+                </li>
+            </volist>
+        </ul>
+    </div>
+    <if condition="$data47[25]">
+        <div class="proLeftImgContainer">
+            <a href="{$data47[26]}">
+                <img src="{:getindeximgurl($data47[25])}" alt=""/>
+            </a>
+        </div>
+    </if>
+
+</div>

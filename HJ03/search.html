@@ -1,0 +1,133 @@
+<extend name="HJ03:basein" />
+<block name="content">
+
+    <style>
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem_name h6{
+            overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 16px;
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$color};
+        }
+        .main_proitem:after{
+            content: '';display: table;width: 0;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+        .main_proitem:hover:after{
+            content: '';display: table;width: 100%;height: 1px;background: #{$color};bottom: 0;transition: .6s;
+        }
+
+        .main_product_more span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[16])}) no-repeat center;
+        }
+        .main_product_more:hover span{
+            color:#{$color};
+        }
+        .main_product_more:hover span:after{
+            content: '';display: table;width: 10px;height: 10px;position:absolute;right:-18px;top:25px;background: url({:getindeximgurl($data1[17])}) no-repeat center;
+        }
+
+    </style>
+    <if condition="$data47[2] neq ''">
+        <style>
+            .Breadcrumbs{width: 50%;float: right;}
+        </style>
+    </if>
+    <if condition="$data47[2] eq ''">
+        <style>
+            .main-content-right {
+                width: 880px;
+                float: right;
+            }
+            .page-title-inner{margin-top: 20px;}
+            .main-content-right .main-cases-detail-title{text-align: left}
+            .main_proitem{width: 280px;min-height: 250px;margin-bottom: 28px;}
+            .main_proitem_img{width: 240px;height: 164px;}
+            .main_proitem_box{height: 250px;}
+            .jiange{width: 20px;}
+            .main_proitem_second{padding: 12px 10px 12px;}
+            .main_proitem_name h6{
+                overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 16px;
+            }
+            .main_proitem_desc{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+        </style>
+    </if>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <div class="in_banner" style="background:url({:getindeximgurl($data47[0])}) center no-repeat"></div>
+        </div>
+        <div class="page-title-inner" style="margin-bottom: 30px;">
+            <div class="container">
+
+                <div class="Breadcrumbs">
+                    Your location: <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}"><if condition="$data47[3] neq ''">{$data47[3]} <else/>Product center</if></a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">Search result</span>
+                </div>
+                <if condition="$data47[2] neq ''">
+                    <section class="main-content-top">
+                        <Include file="./Tpl/HJ03/left_2.html" />
+                    </section>
+                </if>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <if condition="$searchpro neq ''">
+            <div class="page_nei_main" id="main-content-wrapper" data-myli="1">
+                <section class="main-content-left"<if condition="$data47[2] neq ''">style="display:none;" <else/>style="display:block;"</if>>
+                    <Include file="./Tpl/HJ03/left.html" />
+                </section>
+                <section <if condition="$data47[2] neq ''">class="main-content-dowm"<else/>class="main-content-right" </if>>
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <h5 class="main-cases-detail-title">Search Result</h5>
+                            <div class="mainpage_probox margin-30px-top">
+                                <volist empty="" name="searchpro" id="pro" key="k">
+                                    <div class="main_proitem">
+                                        <div class="main_proitem_box">
+                                            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+                                            <div class="main_proitem_second">
+                                                <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                    <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],40)}</h6></div>
+                                                    <div class="main_proitem_desc">{:subtxt($pro['pro_description'],50)}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="($k)%3 neq 0">
+                                        <div class="jiange"></div>
+
+                                    </if>
+                                </volist>
+                                <div class="clear"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+            <else/>
+            <div class="page_nei_main" id="main-content-wrapper" data-myli="0" style="min-height: 500px;">
+                <section class="main-content-right2">
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <h3 class="nosecrch_title margin-40px-bottom">Search on this site</h3>
+                            <div class="nosearch_box">
+                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                    <li style="float: left;width: 540px;height: 60px;"><input style="height: 60px;width:530px;border-width:0px;padding-left: 10px;color:#888888;outline: none;background: transparent" type="text" value="keyword" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)"></li>
+                                    <li style="float: left;width:60px;height: 60px;"><button type="submit" id="search-submit" style="outline: none;border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;border: 1px solid #00468c;"><img
+                                            src="__TMPL__HJ03_CN/img/head_search.png" alt=""  width="30px" height="30px"/></button></li>
+                                    <div class="clear"></div>
+                                </form>
+                            </div>
+                            <p style="font-family: OpenSans;font-size: 16px;color: #333333;letter-spacing: 0;text-align: center;line-height: 24px;" class="margin-40px-top">No results found, please change your search keywords! </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </if>
+
+
+    </div>
+</block>

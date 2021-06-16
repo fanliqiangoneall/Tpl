@@ -1,0 +1,213 @@
+<style>
+	.productbutton {
+		background: #{$inner_data[0]};
+	}
+</style>
+<php>
+	$lan_submit = C('Language');
+</php>
+<script>
+	jQuery(function(){
+
+		jQuery("#message").focus(function(){
+			jQuery("#message_alert").html("");
+		});
+		jQuery("#linkname").focus(function(){
+			jQuery("#linkname_alert").html("");
+		});
+		jQuery("#phone").focus(function(){
+			jQuery("#phone_alert").html("");
+		});
+		jQuery("#email").focus(function(){
+			jQuery("#email_alert").html("");
+		});
+		jQuery("#code_char").focus(function(){
+			jQuery("#code_char_alert").html("");
+		});
+
+
+		jQuery("#getcode_char").click(function(){
+			jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char1").click(function(){
+			jQuery("#getcode_char").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+
+	})
+
+
+
+
+	function yz_submit(){
+		var language = '<?php echo $lan_submit;?>';
+		var count=0;
+		var message=Trims(jQuery("#message").val());
+		var linkname=Trims(jQuery("#linkname").val());
+		var phone=Trims(jQuery("#phone").val());
+		var email=Trims(jQuery("#email").val());
+
+
+		if(linkname.length<=0){
+			if(language == 'esp' || language == 'spa'){
+				jQuery("#linkname_alert").html("El nombre no puede estar vacío!");
+			}else{
+				jQuery("#linkname_alert").html("имя не может быть пустым!");
+			}
+			count++;
+		}
+		else{
+			jQuery("#linkname_alert").html("");
+		}
+
+
+		
+		if(phone.length>0 && is_phone(jQuery('#phone').val()))
+		{
+			if(language == 'esp' || language == 'spa'){
+				jQuery("#phone_alert").html("La información del teléfono es incorrecta!");
+			}else{
+				jQuery("#phone_alert").html("ошибка в телефонной информации!");
+			}
+
+			count++;
+		}else{
+			jQuery("#phone_alert").html("");
+		}
+
+
+
+		if(email.length<=0){
+			if(language == 'esp' || language == 'spa'){
+				jQuery("#email_alert").html("El correo electrónico no puede estar vacío!");
+			}else{
+				jQuery("#email_alert").html("почта не может быть пустой!");
+			}
+
+			count++;
+		}
+		else{
+			
+			if(!is_email(email)){
+				jQuery("#email_alert").html("ошибка формата электронной почты");
+				count++;
+			}
+			else {
+				jQuery("#email_alert").html("");
+			}
+		}
+
+
+		if(message.length<=0){
+			if(language == 'esp' || language == 'spa'){
+				jQuery("#message_alert").html("¡El contenido de consulta no puede estar vacío!");
+			}else{
+				jQuery("#message_alert").html("Содержание запроса не может быть пустым!");
+			}
+			count++;
+		}
+		else{
+			jQuery("#message_alert").html("");
+		}
+
+		var code_char = jQuery("#code_char").val();
+		
+		jQuery.ajax({
+			type: "POST",
+			url: "{:U('/verification','','')}",
+			async:false,
+			data: {code:code_char},
+			success: function(data){
+			console.log(data);
+				if(data==1){
+					
+					jQuery("#code_char_alert").html("");
+				}else{
+					count++;
+					if(language == 'esp' || language == 'spa'){
+						jQuery("#code_char_alert").html("Error de código de verificación");
+					}else{
+						jQuery("#code_char_alert").html("Ошибка проверки кода");
+					}
+
+				}
+			}
+		});
+
+
+		if(count>0){
+			return false;
+		}
+		else{
+			if(language == 'esp' || language == 'spa'){
+				jQuery("#inbut").html('<h5 style="color:#F00;">por favor espera</h5>');
+			}else{
+				jQuery("#inbut").html('<h5 style="color:#F00;">Минуточку.</h5>');
+			}
+			return true;
+		}
+
+	}
+
+
+</script>
+<div class="inquiry" id="zixun">
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+		<div  class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Name: ')}<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="linkname" id="linkname"><span class="yz_alert" id="linkname_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Mobile: ')}</div>
+				<div class="inquiryright"><input type="text" name="phone" id="phone"><span class="yz_alert" id="phone_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<if condition="$webid eq '1559'">
+			<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Company Name: ')}</div>
+				<div class="inquiryright"><input type="text" name="companyname" id="company"><span class="yz_alert"
+						id="company_name"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		</if>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('E-mail: ')}<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" name="email" id="email"><span class="yz_alert" id="email_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Message: ')}<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><textarea name="message" id="message" style="padding:5px; height:210px;">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">{:__('Verification code: ')}<span style="color:#f00">*</span></div>
+				<div class="inquiryright"><input type="text" class="input" id="code_char" name="code" maxlength="6" width="30%"/>&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1"><img
+						src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -4px;top: -1px;height: 32px;"/></a><span class="yz_alert" id="code_char_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="inquiryinfo">
+				<input type="hidden" name="prodid" value="{$product['pid']}"/>
+				<div id="inbut"><input  class="productbutton" type="submit" value="{:__('Submit')}"  name="submit" /></div>
+			</div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>

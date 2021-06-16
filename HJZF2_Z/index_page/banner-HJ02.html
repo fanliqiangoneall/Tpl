@@ -1,0 +1,77 @@
+<!--{$pagename}-->
+<style>
+    .banner-HJ02_color{
+        color: #fff;
+    }
+    .banner-HJ02_page ul li:before{
+        background-color: #{$data84[7]};
+    }
+    .hjzf2_banner-HJ02{
+        height: {$data84[8]}px;
+    }
+</style>
+<if condition="$banner[0]['use_wap']">
+    <style>
+        @media (max-width: 991px) {
+            .hjzf2_banner-HJ02{height: auto;}
+        }
+    </style>
+</if>
+<section class="hjzf2_banner-HJ02">
+    <div class="swiper-container banner-HJ02_swiper">
+        <div class="banner-HJ02_swiperimg">
+            <img src="{:getindeximgurl($data84[0])}"/>
+        </div>
+        <div class="swiper-wrapper sliderBox">
+
+            <volist name="banner" id="banner_pic" key="k" offset="0" length="3">
+                <div class="swiper-slide hj-banner-item">
+                    <if condition="$banner_pic['ad_pic']">
+                        <div <if condition="$banner_pic['use_wap']"> class="hjzf_banner_bg hjzf_bannerpc_bg has_wapbanner" <else/> class="hjzf_banner_bg hjzf_bannerpc_bg has_nowapbanner"</if> style="background:url('{:getimgurl($banner_pic['ad_pic'])}') no-repeat center/cover">
+                </div>
+                </if>
+                <if condition="$banner_pic['use_wap']">
+                    <div class="hjzf_banner_bg hjzf_bannerwap_bg  hidden-lg hidden-xl">
+                        <img src="{:getimgurl($banner_pic['logo_wap_bg'])}" alt="{$banner_pic['pic_title']}" width="100%"/>
+                    </div>
+                </if>
+                <if condition="$banner_pic['use_video']">
+                    <div class="hjzf_banner_videoBox">
+                        <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video" muted></video>
+                    </div>
+                    <elseif condition="$banner_pic['ad_link']"/>
+                    <a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}" class="hjzf_banner_link"></a>
+                    <else/>
+                    <a href="javascript:void(0)" title="{$banner_pic['pic_title']}"  class="hjzf_banner_link"></a>
+                </if>
+        </div>
+        </volist>
+        </div>
+    <div class="banner-HJ02_page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="flex slidernav">
+                        <php>
+                            for($b=1;$b<6;$b+=2){
+                        </php>
+                        <li class="banner-HJ02_color">
+                            <div class="slidernavFt">
+                                <div class="sildernavMainTit">{$data84[$b]}</div>
+                                <div class="sildernavSubTit">{$data84[$b+1]}</div>
+                            </div>
+                            <div class="slidernavIco">
+                                <div class="silderIco iconfont icon-next"><i class="fa fa-long-arrow-right"></i></div>
+                                <div class="sildernavSvg"><svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="25" r="23" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="339" stroke-dashoffset="339"></circle></svg></div>
+                            </div>
+                        </li>
+                        <php>
+                            }
+                        </php>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

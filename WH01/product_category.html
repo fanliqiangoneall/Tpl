@@ -1,0 +1,66 @@
+<extend name="WH01:basein" />
+<block name="content">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+    <Include file="./Tpl/WH01/in_banner.html" />
+</if>
+
+
+<div class="page_nei_main">
+<div class="r_mbx">
+    <Include file="./Tpl/WH01/bread.html" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/product')}">Products</a>
+    <volist name="path" id="path">&nbsp;>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($path['pcid'])}">{$path['class_name']}</a>
+    </volist>&nbsp;>&nbsp;{$prolist['class_name']}</div>
+        <Include file="./Tpl/WH01/left.html" />
+           <div class="page_RightMain">
+               <div class="page_class_head_1">
+                   <div class="indpro_title">
+                       <img src="__TMPL__WH01/img/protitle_bg.png" alt="protitle_bg.png"><span>{$prolist['class_name']}</span><img src="__TMPL__WH01/img/protitle_bg2.png">
+                   </div>
+               </div>
+             <div class="page_Main">
+               <if condition="$prolist['cate_profile']">
+                   <div style="width: 100%;font-size: 14px;color: #333;font-weight: normal;line-height: 20px;padding-top: 30px;padding-right: 20px;">{:str_replace('&nbsp;',' ',htmlspecialchars_decode($prolist['cate_profile']))}</div>
+
+               </if>
+
+                 <div class="page_pro">
+                     <volist empty="" name="pro" id="pro" key="k">
+                         <div class="asd">
+                             <div class="img"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></div>
+                             <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">{$pro['pro_name']}</a></div>
+                             <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                 <div class="rsp"></div>
+                                 <div class="text" style=" top:0px; margin:0px;">
+                                                                   <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                                     <div  style=" position:relative; top:68px;" class="rsp_more">{$pro['pro_name']}</div>
+                                     </div>
+                                 </div>
+                             </a>
+                         </div>
+                         <if condition="$data1[4]">
+                             <if condition="$k%3 neq 0">
+                                 <li style="width:39px; height:50px; float:left;list-style: none"></li>
+                                 <else/>
+                                 <li class="clear" style="height: 18px;"></li>
+                             </if>
+                             <else/>
+                             <if condition="$k%4 neq 0">
+                                 <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                                 <else/>
+                                 <li class="clear" style="height: 18px;"></li>
+                             </if>
+                         </if>
+                     </volist>
+                 </div>
+          <div class="clear"></div>
+          <div class="main_page">{$page}</div>
+       </div>
+ </div>
+</div>
+
+</block>

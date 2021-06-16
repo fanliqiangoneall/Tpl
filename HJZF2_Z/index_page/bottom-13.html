@@ -1,0 +1,150 @@
+<!--{$pagename}-->
+<style>
+    <if condition="$data412[0]">
+        .new_hjzf_bottom-13 .HJ05-bottom{
+        background: url({:getindeximgurl($data412[0])})  center /cover no-repeat !important;
+    }
+        </if>
+        <if condition="$data412[1]">
+        .new_hjzf_bottom-13 .HJ05-bottom{
+        background: #{$data412[1]}
+    }
+        </if>
+    .new_hjzf_bottom-13 .hj-bottom-item>p:after {
+        position: absolute;content: "";display: block;background: #{$data412[2]};width: 35px;height: 3px;margin-top: 15px;
+    }
+    .new_hjzf_bottom-13 .hj-bottom-item ul li:hover a h2,.new_hjzf_bottom-13 .hj-bottom-item ul li:hover a h3,.new_hjzf_bottom-13 .hj-bottom-item ul li:hover span,.new_hjzf_bottom-13 .hj-bottom-item ul li:hover:before,.new_hjzf_bottom-13 .hj-bottom-item ul li:hover:before,.new_hjzf_bottom-13 .hj-bottom_contact ul li a:hover{
+        color: #{$data412[2]};
+    }
+    .new_hjzf_bottom-13 .hj-bottom-item>p{
+        color: #{$data412[9]};
+    }
+    .new_hjzf_bottom-13 .hj-bottom-item ul li a h2,.new_hjzf_bottom-13 .hj-bottom-item ul li a h3,.new_hjzf_bottom-13 .hj-bottom_contact ul li,.new_hjzf_bottom-13 .hj-bottom_contact ul li a,.new_hjzf_bottom-13 .hj-copy, .new_hjzf_bottom-13 .hj-copy a{
+        color: #{$data412[10]};
+    }
+</style>
+<php>
+    $nav_titlel_list = get_list_val($data412[3]);   
+</php>
+<div class="hj-bottom HJ05-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="HJ05_bottom_list hidden-xs hidden-sm hidden-md">
+                    <li class="hj-bottom-item hj-bottom_nav">
+                        <p>{$nav_titlel_list[0]['title']}</p>
+                        <if condition="$data412[7] eq ''">
+                            <ul>
+                                <volist name="web_navigation" id="vo" offset="0" length='7' key="key">
+                                    <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                                </volist>
+                            </ul>
+                            <else/>
+                            <ul>
+                                <php>
+                                    $nav_li = get_list_val($data412[7]);
+                                </php>
+                                <volist name="nav_li" id="li">                            
+                                        <li><a href="{$li['src']}" onFocus="blur()"><h2>{$li['name']}</h2></a></li>
+                                </volist>
+                            </ul>
+        
+                        </if>
+        
+                    </li>
+                    <li class="hj-bottom-item hj-bottom_class">
+                        <p>{$nav_titlel_list[1]['title']}</p>
+                        <ul>
+                            <volist empty="" name="allclass" id="allclass_left" offset="0" length='7'>
+                                <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}">{$allclass_left['class_name']}</a></li>
+                            </volist>
+                        </ul>
+                    </li>
+                    <li class="hj-bottom-item hj-bottom_contact">
+                        <p>{$nav_titlel_list[2]['title']}</p>
+                        <ul>
+                            <if condition="$about['contact']"><li><i class="fa fa-user"></i>{:__('Contact: ')}<span>{:chaifen($about['contact'],0)}</span></li></if>
+                            <if condition="$about['phone']"><li><i class="fa fa-phone"></i>{:__('Tel: ')}<span>{:chaifen($about['phone'],0)}</span></li></if>
+                            <if condition="$about['mobile']"><li><i class="fa fa-mobile fa-lg"></i>{:__('Mobile: ')}<span>{:chaifen($about['mobile'],0)}</span></li></if>
+                            <if condition="$about['email']"><li><i class="fa fa-envelope"></i>{:__('Email: ')}<a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);">{:chaifen($about['email'],0)}</a></li></if>
+                            <if condition="$about['whatsapp']"><li><i class="fa fa-whatsapp"></i>{:__('WhatsApp: ')}<span><a href="https://api.whatsapp.com/send?phone=86{$about['whatsapp']}" target="_blank" onclick="turn_sta(8,2);"><font>+86-</font><span>{$about['whatsapp']}</span></a></span></li></if>
+                            <if condition="$about['msn'] and C('Language') eq 'en'"><li><i class="fa fa-skype"></i>{:__('Skype: ')}<span><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,2);" target="_blank">{:chaifen($about[msn],0)}</a></span></li></if>
+                            <if condition="$about['msn'] and C('Language') eq 'cn'"><li><i class="fa fa-qq"></i>QQ：<span><a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,2)" target="_blank">{:chaifen($about['msn'],0)}</a></span></li></if>
+                            <if condition="$data50[5]"><li><i class="fa fa-weixin"></i>{:__('Wechat: ')}<span>{$data50[5]}</span></li></if>
+                            <if condition="$about['address']"><li><i class="fa fa-map-marker"></i>{:__('Add: ')}<span>{$about['address']}</span></li></if>
+                            <if condition="$about['website']"><li><i class="fa fa-joomla"></i>{:__('Website: ')}<span><a href="{$about['website']}" target="_blank">{$about['website']}</a></span></li></if>
+                        </ul>
+                    </li>
+                    <li class="hj-bottom-item hj-bottom_share" <if condition="$nav_titlel_list[3] eq ''">style="display:none"</if> >
+                        <p>{$nav_titlel_list[3]['title']}</p>
+                        <div class="ewm"><img src="{:getindeximgurl($data412[4])}" alt="{$nav_titlel_list[3]['title']}"/></div>
+                    <div class="hj-bottom_share_share">
+                        <php>
+                            $share_list = get_list_val($data412[8]);
+                        </php>
+                        <volist name="share_list" id="li">
+                            <div><a href="{$li['src']}" target="_blank"><img src="{$li['img']}"/></a></div>
+                        </volist>
+                        
+                    </div>
+        
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="hj-copy">
+                    <if condition="$webid eq '1765'">
+                        <div class="fr">
+                            <volist name="share_list" id="lia">
+                                <a href="{$lia['src']}" target="_blank"><img src="{$lia['img']}"/></a>
+                            </volist>
+                        </div>
+                    </if>
+                    <php>
+                        $nowtime=date("Y",time());
+                        if(!$data412[5]){
+                        $currtime=2019;
+                        }else{
+                        $currtime=$data412[5];
+                        }
+        
+                    </php>
+                    <div>
+                    <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>
+                    &nbsp; {$about['company_name']} &nbsp;{:__('All rights reserved')}&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a style="" href="{:U('/sitemap')}" onfocus="blur()">{:__('Sitemap')}</a>&nbsp;&nbsp;<span><a  href="{:U('/alltag','','')}">{:__('All tags')}</a></span>&nbsp;&nbsp;
+                    <if condition="C('language') eq 'cn'">
+                        <a id="mianze" title="免责声明" target="_blank" style="cursor:pointer;">免责声明</a>&nbsp;&nbsp;
+                        <if condition="$data412[6] eq ''">
+                            <span><a href="https://www.one-all.com" title="常州网络公司" target="_blank">中环互联网设计制作</a></span>
+                        </if>
+                        
+                    <elseif condition="C('language') eq 'rus'" />
+                        <span>проектировщик <a href="https://www.one-all.com" title="Zhonghuan интернет" target="_blank">Zhonghuan интернет</a></span>
+                        <else/>
+                        <if condition="$data412[6] eq ''">
+                            <span>Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank">Zhonghuan Internet</a></span>
+                        </if>
+                            
+                    </if>
+                </div>
+        
+                <if condition="$friend_link neq ''">
+                    <div class="friendlink">
+        
+                            <div class="link"><span style="float:left; margin-right:5px;">{:__('FriendLink: ')}</span>
+                                <volist name="friend_link" id="friend_link_down">
+                                    <if condition="$friend_link_down['linkurl'] neq ''" ><a target="_new" href="{$friend_link_down['link_url']}"><img style="width:30px; height:25px; float:left;" src="{:getimgurl($friend_link_down['linkurl'])}"/></a><else/>
+                                        <div style="float:left; text-align:center;color: #fff;line-height: 24px;margin-right: 10px;"><a target="_new" href="{$friend_link_down['link_url']}">{$friend_link_down['link_title']}</a></div>
+                                    </if>
+                                </volist>
+                                <!--<div style="clear:both"></div>-->
+                            </div>
+                            <div style="clear:both"></div>
+        
+                    </div>
+                </if>
+            </div>            
+        </div>            
+        </div>        
+    </div>
+</div>
+

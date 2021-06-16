@@ -1,0 +1,134 @@
+<!--{$pagename}-->
+<if condition="$data52[16]">
+    <style>
+        .new_hjzf_banner-HJ01{margin-bottom: 200px;}
+    </style>
+</if>
+<style>
+    .swiper-slide .b_item1{
+        transform:translateY(-200px);
+        opacity:0;
+        transition:all .4s;
+    }
+
+    .ani-slide .b_item1{
+        transform:translateY(0);
+        opacity:1;
+    }
+    .new_hjzf_banner-HJ01 .ban_dowmitem_more a{
+        color: #{$data52[15]};
+    }
+    .new_hjzf_banner-HJ01 .ban_dowmitem_more a:after{
+        background: #{$data52[15]};
+    }
+    .new_hjzf_banner-HJ01 .hj05-banner .hj-banner-next,.hj05-banner .hj-banner-prev{background: rgba(113, 114, 115, 0.3);}
+    .new_hjzf_banner-HJ01 .hj05-banner .hj-banner-next i,.hj05-banner .hj-banner-prev i{font-size: 24px;line-height: 70px;text-align: center;font-weight: normal;color: #fff;}
+    .new_hjzf_banner-HJ01 .hj05-banner:hover .hj-banner-next{
+        right: 40px;}
+    .new_hjzf_banner-HJ01 .hj-banner-next:hover{
+        background: #{$data52[15]}
+    }
+    .new_hjzf_banner-HJ01 .hj05-banner:hover .hj-banner-prev{
+        left: 40px;}
+    .new_hjzf_banner-HJ01 .hj-banner-prev:hover{
+        background: #{$data52[15]}
+    }
+</style>
+<section class="hj-banner HJ05-banner1-box">
+    <div id="HJ05-banner1">
+        <div class="swiper-container hj05-banner">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k" offset="0" length="1">
+                    <div class="swiper-slide HJ-banner-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <div class="banner_wrap flex">
+                            <if condition="$data52[12]"><div class="b_item1"><img src="{:getindeximgurl($data52[12])}" alt=""/></div></if>
+
+                        </div>
+                        <if condition="$banner_pic['use_video']">
+                            <div class="hjzf_banner_videoBox">
+                                <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video" muted></video>
+                            </div>
+                        </if>
+
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="1" length="1">
+                    <div class="swiper-slide HJ-banner-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <div class="banner_wrap flex">
+                            <if condition="$data52[13]"><div class="b_item1"><img src="{:getindeximgurl($data52[13])}" alt=""/></div></if>
+
+                        </div>
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="2" length="1">
+                    <div class="swiper-slide HJ-banner-item"style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <div class="banner_wrap flex">
+                            <if condition="$data52[14]"><div class="b_item1"><img src="{:getindeximgurl($data52[14])}" alt=""/></div></if>
+
+                        </div>
+                        </a>
+                    </div>
+                </volist>
+                <volist name="banner" id="banner_pic" key="k" offset="3">
+                    <div class="swiper-slide HJ-banner-item" style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;">
+                        <a href="<if condition="$banner_pic['ad_link']">{:($banner_pic['ad_link'])}<else/>javascript:void(0)</if>" title="{$banner_pic['pic_title']}" style="width: 100%;height: 100%">
+                        <if condition="$banner_pic['use_video']">
+                            <div class="hjzf_banner_videoBox">
+                                <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video" muted></video>
+                            </div>
+                        </if>
+                        </a>
+                        
+                    </div>
+                </volist>
+            </div>
+            <if condition="$banner_pic['use_video']">
+            <div class="hjzf_banner_videoPlay">
+                <a href="javascript:void(0);"></a>
+            </div>
+            </if>
+            <div class="swiper-pagination hj-banner-pagination"></div>
+            <div class="swiper-button-next hj-banner-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hj-banner-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+
+        <if condition="$data52[0] neq ''">
+            <div class="HJ01_banner_down">
+                <div class="container">
+                    <ul class="HJ01_banner_downlist">
+                        <php>
+                            for($b=0;$b<11;$b=$b+4){
+                        </php>
+                        <if condition="$data52[$b] neq ''">
+                            <li id="ban_dowmitem{$b}" >
+                                <div class="ban_dowmitem_img margin-20px-bottom"><img src="{:getindeximgurl($data52[$b])}" alt=""/></div>
+                                <div class="ban_dowmitem_content">
+                                    <h6 class="ban_dowmitem_title margin-10px-bottom font-weight-600 letter-spacing-1">{$data52[$b+1]}</h6>
+                                    <p class="ban_dowmitem_text margin-20px-bottom">{$data52[$b+2]}</p>
+                                    <div class="ban_dowmitem_more"><a href="{$data52[$b+3]}">{:__('Read More')}</a></div>
+                                </div>
+                            </li>
+                        </if>
+
+                        <php>
+                            }
+                        </php>
+                    </ul>
+                </div>
+            </div>
+        </if>
+
+    </div>
+
+</section>
+
+
+
+
+
+

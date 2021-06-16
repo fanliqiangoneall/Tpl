@@ -1,0 +1,50 @@
+<!--{$pagename}-->
+<php>
+	if($data684[6]){
+		$color = $data684[6];
+	}else{
+		$color = '333';
+	};
+</php>
+<style>
+  <if condition="$data684[0]">
+    .hjzf_other_109{
+        background: url({:getindeximgurl($data684[0])}) no-repeat center/ cover;
+        color:#{$color};
+    }
+    </if>
+    
+    .hjzf_other_109 a.index_btn{
+		border-radius: 50px;
+        border: 1px solid #{$color};
+        color: #{$color};
+    }
+</style>
+
+<section class="hjzf_other_109 index_pd">
+    <div class="container">
+        <div class="row hjzf_other_109_wrapper">
+            
+            <div class="col-xs-12 col-md-12 col-lg-6 hjzf_other_109_wrapper_con">
+                <div class="index_title pb40">
+                    {$data684[2]}
+                </div>
+                <div class="index_text pb40">
+                    {:HtmlEncode($data684[3])}
+                </div>
+                <a href="{$data684[4]}" class="index_btn">
+                    {$data684[5]}
+                </a>
+            </div>
+			<if condition="$data684[1]">
+				<div class="col-xs-12  col-md-12 col-lg-6">
+				<div class="row-little">
+					<img src="{:getindeximgurl($data684[1])}" class="img-fluid" alt="{$data684[3]}">
+				</div>
+				</div>
+			</if>
+            
+            
+        </div>
+    </div>
+</section>

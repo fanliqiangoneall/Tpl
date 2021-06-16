@@ -1,0 +1,55 @@
+
+
+<!--{$pagename}-->
+<style>
+    .new_hjzf_banner-HJ01 .hjzf_hj01-banner-next:hover,.new_hjzf_banner-HJ01 .hjzf_hj01-banner-prev:hover,.new_hjzf_banner-HJ01 .hjzf_hj01_swiper .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #{$data52[0]};opacity: 1;
+    }
+</style>
+<php>
+    if(!$data52[1]){
+    $data52[1] = 600;
+    }
+</php>
+<style>
+    .new_hjzf_banner-HJ01 .hjzf-hj01_bannerbox{
+        height: {$data52[1]}px;
+    }
+    @media (max-width: 1440px) {
+        .new_hjzf_banner-HJ01 .hjzf-hj01_bannerbox{
+            height: 460px;
+        }
+    }
+</style>
+<section class="hj-banner hjzf-hj01_bannerbox">
+    <div id="hjzf-hj01_banner">
+        <div class="swiper-container hjzf_hj01_swiper">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="banner_pic" key="k" offset="0" length="10">
+                    <div class="swiper-slide hj-banner-item">
+                        <if condition="$banner_pic['ad_pic']"><div class="hjzf_banner_bg hjzf_bannerpc_bg hidden-xs hidden-sm " style="background: url({:getimgurl($banner_pic['ad_pic'])}) no-repeat center ;background-size: cover;"></div></if>
+                        <if condition="$banner_pic['logo_wap_bg']"><div class="hjzf_banner_bg hjzf_bannerwap_bg hidden-md hidden-lg hidden-lg " style="background: url({:getimgurl($banner_pic['logo_wap_bg'])}) no-repeat center ;background-size: cover;"></div></if>
+                        <if condition="$banner_pic['use_video']">
+                            <div class="hjzf_banner_videoBox">
+                                <video data-src="{$banner_pic['ad_link']}" poster="{:getimgurl($banner_pic['ad_pic'])}" class="hjzf_banner_video" muted></video>
+                            </div>
+                            <elseif condition="$banner_pic['ad_link']"/>
+                            <a href="{$banner_pic['ad_link']}" title="{$banner_pic['pic_title']}" class="hjzf_banner_video_link"></a>
+                            <else/>
+                            <a href="javascript:void(0)" title="{$banner_pic['pic_title']}"  class="hjzf_banner_video_link"></a>
+                        </if>
+
+                    </div>
+                </volist>
+            </div>
+            <if condition="$banner_pic['use_video']">
+            <div class="hjzf_banner_videoPlay">
+                <a href="javascript:void(0);"></a>
+            </div>
+            </if>
+            <div class="swiper-pagination hjzf_pagination-hj01"></div>
+            <div class="swiper-button-next hjzf_hj01-banner-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev hjzf_hj01-banner-prev"><i class="fa fa-angle-left"></i></div>
+        </div>
+    </div>
+</section>

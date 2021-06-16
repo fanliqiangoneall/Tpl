@@ -1,0 +1,41 @@
+<!--{$pagename}-->
+<style>
+    .partner-1 .index_top_title,.partner-1-btn div:hover {
+        color: #{$data312[3]};
+    }
+    .partner-1{
+        color: #{$data312[4]};
+        <if condition="$data312[5]">
+        background: url({:getindeximgurl($data312[5])}) no-repeat center/cover;
+        </if>
+    }
+</style>
+<section class="partner-1 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pb40">
+                    <div class="index_top_title pb20 index_text wow fadeInLeftBig" data-wow-duration="1S" data-wow-delay="0">{$data312[0]}</div>
+                    <div class="index_title pb20 wow fadeInLeftBig" data-wow-duration="1S" data-wow-delay="0.2s">{:HtmlEncode($data312[1])}</div>
+                    <div class="index_sub_title wow fadeInLeftBig" data-wow-duration="1S" data-wow-delay="0.4s">{:HtmlEncode($data312[2])}</div>
+                </div>
+                <div class="partner-1-btn pb20">
+                    <div class="partner-1-btn-next"><i class="fa fa-angle-left"></i></div>
+                    <div class="partner-1-btn-prev"><i class="fa fa-angle-right"></i></div>
+                </div>
+                <div class="swiper-container partner-1-container">
+                    <div class="swiper-wrapper">
+                        <php>
+                            $arr = get_list_val($data312[6]);
+                        </php>
+                        <volist name="arr" id="a">
+                            <div class="swiper-slide"><img src="{$a[img]}" class="img-full"></div>
+                        </volist>
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

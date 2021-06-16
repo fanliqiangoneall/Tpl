@@ -1,0 +1,23 @@
+ <div class="page_ser">
+   <div class="page_ser2">
+      <div class="ser_title">{$data14[0]}</div>
+      <div style="margin-top: 25px;">
+         <div class="Page_Search">
+            <form name="find" action="{:U('/search')}" method="post"  accept-charset="UTF-8"  onsubmit="return CheckForm(this);">
+              <ul>
+                <li style="width:490px; height:47px; line-height:47px;float: left;">
+                  <input type="text" name="keywords" id="keywords1" value="Please enter the keywords" style="height:47px;padding-left: 15px;width: 475px;background: #fff;font-size: 14px;color: #ababab" onfocus="OnFocusFun(this,&#39;Please enter the keywords&#39;)" onblur="OnBlurFun(this,&#39;Please enter the keywords&#39;)">
+                </li>
+                <li style="width: 128px;float:left;margin-top: 20px;">
+                  <input type="image" src="{:getindeximgurl($data14[1])}" name="submit" class="submit" value=" " style="height: 52px;">
+                </li>
+              </ul>
+            </form>
+          </div>
+      </div>
+
+      <div style="position: absolute;font-size: 18px;color: #fff;right: 0px;bottom: -25px;">
+       <img src="{:getindeximgurl($data14[2])}"> 
+    </div>
+   </div>
+ </div>

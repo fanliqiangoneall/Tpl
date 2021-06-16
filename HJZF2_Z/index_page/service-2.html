@@ -1,0 +1,60 @@
+<!--{$pagename}-->
+<style>
+    .HJZF3_service2{
+        background: url({:getindeximgurl($data166[1])}) no-repeat center /cover;height:100%
+    }
+	.HJZF3_service2_item_line{
+	    border-bottom:3px solid #{$color};
+	}
+	.HJZF3_service2_item{
+		border-color: #{$color};
+	}
+	.HJZF3_service2_line_with_icon:before, .HJZF3_service2_line_with_icon:after {
+		background: #{$color};
+	}
+	.HJZF3_service2_line_with_icon i{
+		color: #{$color};
+	}
+</style>
+<section class="HJZF3_service2 flex">
+  <div class="container">
+     <div class="row">
+        <div class="HJZF3_service2__container">
+            <div class="HJZF3_service2__inner index_pd">
+                <div class="HJZF3_service2_titleBox">
+                    <h1 class="wow fadeInUp index_title">{$data166[0]}</h1>
+                    <div class="HJZF3_service2_line_with_icon">
+                        <div class="aio-icon"><i class="fa fa-chevron-down"></i></div>
+                    </div>
+                </div>
+                <div class="HJZF3_service2_list">
+                    <php>
+                        for($adv=2,$d=0.2;$adv<=19,$d<=1.9;$adv=$adv+3,$d=$d+0.3){
+    
+                    </php>
+                      <div class="col-sm-12 col-lg-4 col-xl-4">
+                        <div class="HJZF3_service2_item wow fadeInLeft" id="HJZF3_service2_item" data-wow-duration="1s" data-wow-delay="{$d}s">
+                            <div class="HJZF3_service2_item--left">
+                                <img src="{:getindeximgurl($data166[$adv])}" alt="{$data166[$adv+1]}"/>
+                            </div>
+                            <div class="HJZF3_service2_item--right">
+                                <div class="HJZF3_service2_item_header">
+                                    <h3 class="index_sub_title">{$data166[$adv+1]}</h3>
+                                </div>
+                                <div class="HJZF3_service2_item_desc index_text">
+                                    {:HtmlEncode($data166[$adv+2])}
+                                </div>
+                            </div>
+                            <div class="HJZF3_service2_item_line"></div>
+                        </div>
+                      </div>
+                    <php>
+                        }
+                    </php>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+     </div>
+  </div>
+</section>

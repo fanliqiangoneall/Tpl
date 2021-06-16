@@ -1,0 +1,97 @@
+<!--{$pagename}-->
+<style>
+    .hjzf2_other_70_slide_box:after {
+        position: absolute;
+        z-index: 0;
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-color: #{$data403[0]};
+        content: '';
+        z-index: -2;
+    }
+
+    .hjzf2_other_70_slide_box.my-mask-l:before {
+        background-color: #fff;
+        z-index: -1;
+    }
+
+    .hjzf2_other_70_slide {
+        overflow: hidden;
+    }
+
+    .hjzf2_other_70_slide_box:hover {
+        color: #{$data403[0]};
+    }
+
+    .hjzf2_other_70_slide img {
+        transition: all 1.2s;
+    }
+
+    .hjzf2_other_70_slide:hover img {
+        transform: scale(1.1);
+    }
+
+    .hjzf2_other_70_slide_box {
+        width: 157px;
+    }
+
+    .hjzf2_other_70_slide_text_box {
+        padding: 10px;
+        border: 1px solid #{$color};
+        position: absolute;
+        right: -5px;
+        bottom: 5px;
+        z-index: 90;
+        width: 167px;
+        height: 58px;
+        transition: all .5s;
+    }
+    .hjzf2_other_70_slide_text:hover .hjzf2_other_70_slide_text_box{
+        border-color: #fff;
+    }
+    
+    @media(max-width: 767px) {
+        .hjzf2_other_70_slide_text_box {
+            left: -5px;
+            bottom: -5px;
+            width: 167px;
+            height: 54px;
+        }
+        .hjzf2_other_70_slide_text p{
+            margin-bottom: 10px;
+        }
+    }
+</style>
+<section class="hjzf2_other_70">
+    <php>
+        $arra = get_list_val($data403[1]);
+    </php>
+    <div class="hjzf2_other_70_container">
+        <volist name="arra" id="a">
+            <div class="hjzf2_other_70_slide">
+                <div class="hjzf2_other_70_slide_img">
+                    <img src="{$a[img]}" class="img-responsive" alt="{$a[title]}">
+                </div>
+                <div class="hjzf2_other_70_slide_text wow fadeInUp">
+                    <p class="index_title">{$a[title]}</p>
+                    <p class="index_text">{$a[des]}</p>
+                    <if condition="$webid eq '1678'">
+                        <div class="hjzf2_other_70_slide_text_box">
+                        </div>
+                        <a class="my-mask-l hjzf2_other_70_slide_box" <if condition="$a[link]">href="{$a[link]}"
+                            <else />href="javascript:;"
+                    </if>><span class="index_text">{$a[btn]}</span><i class="fa fa-chevron-circle-right"></i></a>
+                    <else />
+                    <a class="my-mask-l hjzf2_other_70_slide_box" <if condition="$a[link]">href="{$a[link]}"
+                        <else />href="javascript:;"</if>><span class="index_text">{$a[btn]}</span><i
+                            class="fa fa-chevron-circle-right"></i></a>
+                    </if>
+                </div>
+            </div>
+        </volist>
+        <div class="clearfix"></div>
+    </div>
+</section>

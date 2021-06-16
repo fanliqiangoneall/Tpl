@@ -1,0 +1,80 @@
+<!--{$pagename}-->
+<if condition="$data78[3]">
+    <style>
+        .new_hjzf_cases-HJ03 .hj03_cases{
+            background: url({:getindeximgurl($data78[3])}) no-repeat center;
+        }
+    </style>
+</if>
+<style type="text/css">
+
+    .new_hjzf_cases-HJ03 .hj02_proclasslist li.hj02_proclasslist_on{
+        background: #{$color};
+    }
+    .new_hjzf_cases-HJ03 .hj02_proclasslist li:hover{
+        background: #{$color};
+    }
+    .new_hjzf_cases-HJ03 .hj02_proclasslist li:hover a{
+        color: white;
+    }
+</style>
+
+<section class="hj03_cases module">
+    <php>
+        $case = get_wap_case_class_name(627);
+
+    </php>
+
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left wow fadeInUp" data-wow-duration="2s" data-wow-delay="0" data-wow-offset="200">
+                <div id="index_product_title_left1"><p>{$data78[0]}</p><span>{$data78[1]}</span></div>
+            </div>
+            <div class="index_product_title_right wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.3s" data-wow-offset="200">
+                <ul class="hj02_proclasslist">
+                    <php>
+                        $arr_str=$data78[2];
+                        $arr=explode(',',$arr_str);
+                        foreach($arr as $k=>$a){
+                        $list[$k]=get_wap_case_class_name($a);
+                        }
+                    </php>
+                    <li class="hj02_proclasslist_on"><a href="{:U('/cases')}">{:__('All')}</a></li>
+                    <volist empty="" name="list" id="li" key="k">
+                        <if condition="$li">
+                            <li><a data-ajax='false' href="{:U('/new_category',array('classid'=>$a))}">{$li}</a></li>
+                        </if>
+                    </volist>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </section>
+        <div class="index_prolist_wai2">
+            <div  id="index_caselist">
+                    <volist name="indexcases" id="indexcase" offset="0" length="3">
+                        <php>
+                            $case_name=get_wap_case_class_name($indexcase['cates_class']);
+                        </php>
+                        <div class="index_caseitem wow fadeInUp"  data-wow-delay="0" data-wow-offset="150">
+                            <div class="index_caseitem_box">
+                                <div class="index_caseitem_img"> <a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><if condition="$indexcase['new_pro'] eq 0 or $indexcase['new_pro'] eq ''"><img src="__TMPL__ZL01/img/case_nopic.jpg" border="0" /><else/><img src="{:getpcimgurl($indexcase['new_pro'])}" alt="{$indexcase['title']}" /></if></a></div>
+                               <div class="index_caseitem_down_wai">
+                                   <div class="index_caseitem_down">
+                                       <div class="index_case_title "><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}" title="{$indexcase['title']}"><h4>{:subtxt($indexcase['title'],30)}</h4></a></div>
+                                       <div class="index_case_class "><a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}"><h6>{$case_name}</h6></a></div>
+                                       <if condition="$indexcase['news_description']">
+                                           <div class="index_case_title2">{:subtxt($indexcase['news_description'],100)}</div>
+                                       </if>
+                                   </div>
+                               </div>
+                            </div>
+
+                        </div>
+                    </volist>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

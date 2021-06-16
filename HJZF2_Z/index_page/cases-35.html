@@ -1,0 +1,107 @@
+<!--{$pagename}-->
+<php>
+</php>
+<style>
+	<if condition="$data707[5]">
+		.cases_35{
+			background: #{$data707[5]};
+		}
+	</if>
+	.cases_35_left .index_title:before {
+		background-color: #{$color};
+	}
+</style>
+<section class="cases_35 index_pd">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="text-center index_title pb40">
+					{$data707[0]}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cases_35_bg" style="background: url({:getindeximgurl($data707[1])}) no-repeat center;">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-lg-6 cases_35_left">
+					<php>
+						$arr = get_list_val($data707[2]);
+					</php>
+					<volist name="arr" id="a" offset="0" length="1">
+						<div class="index_title pb40">
+							{$a[title]}
+						</div>
+						<div class="index_text mb40">
+							{$a[info]}
+						</div>
+						<a href="{$a[link]}" class="index_btn" style="background: url({$a[bgico]}) no-repeat center;">{$a[text]}<if condition="$a[ico]">
+							<img src="{$a[ico]}" alt=""></if>
+						</a>
+					</volist>
+				</div>
+				<div class="col-xs-12 col-lg-6">
+					<img src="{:getindeximgurl($data707[3])}" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="cases_35_list swiper-container">
+					<ul class="swiper-wrapper">
+ 						<if condition="$data707[6] eq ''">
+						<volist name="indexcases" id="indexcase">
+							<li class="swiper-slide">
+								<a href="{:U('/case_detail',array('nid'=>$indexcase["nid"]))}">
+									<div class="cases_35_img">
+										<img src="{:getimgurl($indexcase['new_pro'])}" class="img-fluid" alt="{$indexcase['title']}">
+									</div>
+									<div class="cases_35_text">
+										<div class="cases_35_title">
+											{$indexcase['title']}
+										</div>
+										<div class="cases_35_info">
+											{:subtxt($indexcase['news_description'], 70)}
+										</div>
+										<em class="more" style="background: url({:getindeximgurl($data707[4])}) no-repeat center;">
+											{:__('Read More')}
+										</em>
+									</div>
+								</a>
+							</li>
+						</volist>
+						<else/>
+						<php>
+							$arrsa = get_list_val($data707[6]);
+						</php>
+						<volist name="arrsa" id="v">
+							<li class="swiper-slide">
+								<a href="{$v[link]}">
+									<div class="cases_35_img">
+										<img src="{$v[img]}" class="img-fluid" alt="{$v[title]}">
+									</div>
+									<div class="cases_35_text">
+									<div class="cases_35_title">
+										{$v[title]}
+									</div>
+									<div class="cases_35_info">
+										{$v[info]}
+									</div>
+									<em class="more" style="background: url({:getindeximgurl($data707[4])}) no-repeat center;">{:__('Read More')}</em>
+								</div>
+								</a>
+							</li>
+						</volist>
+						</if>
+					</ul>
+					<div class="cases_35_btn">
+						<div class="swiper-button-prev swiper-button-black"></div>
+						<div class="swiper-button-next swiper-button-black"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

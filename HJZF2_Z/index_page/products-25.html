@@ -1,0 +1,125 @@
+<!--{$pagename}-->
+<php>
+    if($data421[7]){
+    $color = $data421[7];
+    }
+</php>
+<style>
+    .products_25_container_inner_box_left a.index_btn{
+        transition: all .5s;
+    }
+    .products_25_container_title,
+    .products_25_container_tell,
+    .products_25_container_inner_box_left span,
+    .products_25_container_inner_box_left a.index_btn:hover {
+        background-color: #{$color};
+    }
+    .products_25_container_inner_box_left a.index_btn:hover{
+        border-color: #{$color};
+    }
+    .products_25_container_inner_box_left .index_sub_title{
+        color: #{$color};
+    }
+    .products_25_container_inner_box_left a.index_btn:hover{
+        color: #fff;
+    }
+</style>
+<section class="products_25 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <div class="index_title pb20">
+                    {$data421[0]}
+                </div>
+                <div class="index_sub_title pb40">
+                    {$data421[1]}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-xs-12">
+                <div class="products_25_container_title text-center color-white">
+                    {$data421[2]}
+                </div>
+                <ul class="products_25_container_list">
+                    <php>
+                        $pro_cate=explode(",",$data421[3]);
+                    </php>
+                    <volist empty="" name="pro_cate" id="li" key="keya">
+                        <php>
+                            $pro_list = get_index_products_categoryname($li);
+                        </php>
+                        <li>
+                            <a
+                                href="javascript:;">{$pro_list['class_name']}</a>
+                        </li>
+                    </volist>
+                </ul>
+                <div class="products_25_container_tell text-center">
+                    <if condition="$data421[4]">
+                        <p>{$data421[4]}</p>
+                    </if>
+                    <if condition="$data421[5]">
+                        <span>
+                            {$data421[5]}<br>
+                        </span>
+                    </if>
+                    <if condition="$data421[6]">
+                        <span>
+                            {$data421[6]}
+                        </span>
+                    </if>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-9">
+
+                <volist empty="" name="pro_cate" id="lia" key="keya">
+                    <php>
+                        $pro_lista = get_index_products_categoryname($lia);
+                    </php>
+                    <div class="products_25_container_inner">
+                        <div class="products_25_container_inner_box">
+                            <div class="products_25_container_inner_box_left">
+                                <div class="index_sub_title">
+                                    {$pro_lista['class_name']}
+                                </div>
+                                <span></span>
+                                <p>
+                                    {$pro_lista['readme']}
+                                </p>
+                                <a href="{:U('/product_category','','')}/{:getprocatename($pro_lista['pcid'])}" class="index_btn">
+                                    {:__('Read More')}</a>
+                            </div>
+                            <div class="products_25_container_inner_box_right">
+                                <img src="{:getmainimgurl($pro_lista['fid'])}" alt="{$pro_lista['class_name']}"
+                                    class="img-fluid">
+                            </div>
+                        </div>
+                        <php>
+                            $pro_listb = get_index_products_category($pro_lista['pcid'],3);
+                        </php>
+                        <div class="products_25_container_inner_bottom">
+                            <volist empty="" name="pro_listb" id="prob">
+                                <a href="{:U('/Product','','')}/{:getproname($prob['pid'])}">
+                                    <img src="{:getmainimgurl($prob['main_img'])}" alt="{$prob['pro_name']}"
+                                        class="img-fluid">
+                                    <span>
+                                        {$prob['pro_name']}
+                                    </span>
+                                </a>
+                            </volist>
+                        </div>
+
+
+                    </div>
+                </volist>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</section>

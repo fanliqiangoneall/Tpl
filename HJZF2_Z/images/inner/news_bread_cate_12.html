@@ -1,0 +1,44 @@
+<style>
+    .news_11 li h3{
+        font-size: 14px;
+        color: #333;
+    }
+    .news_11{
+        display: flex;
+    }
+    .news_11 li{
+        background-color: #eee;
+        padding: 10px;
+        margin-left: 5px;
+        transition: all .5s;
+    }
+    .news_11 li:hover,.news_11 li.on{
+        background-color: #{$color};
+    }
+    .news_11 li h3{
+        transition: all .5s;
+    }
+    .news_11 li:hover h3,.news_11 li.on h3{
+        color: #fff;
+    }
+    .news_bread_11{
+        border-bottom: 1px  solid #eee;
+    }
+    .HJZF_Z__inner__mobileLeftMenu{
+        width: 100%;
+        margin-top: 15px;
+    }
+    .news_11_left a{
+        color: #333;
+    }
+</style>
+<div class="container pb40">
+    <div class="row ">
+        <div class="col-xs-12 news_bread_11 pb20 d-flex justify-content-between">
+            <div class="news_11_left">
+                <a href="{:U('/')}">{:__('Home')}</a>&nbsp;|&nbsp;<a
+                href="{:U('/news')}">{:__('News')}</a> &nbsp;|&nbsp;<span class="current">{$newscate['class_name']}</span>
+            </div>
+        </div>
+    </div>
+</div>

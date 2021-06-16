@@ -1,0 +1,375 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style type="text/css">
+
+        .main_proitem_second .hj05-index-more{
+            background: #{$inner_data[0]};
+        }
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$inner_data[0]};
+        }
+
+        .main_product_more span{
+            color: #{$inner_data[0]};}
+
+        .main_product_more:hover span{
+            color:#fff;
+        }
+        .main_product_title_right a:hover{
+            background: #{$inner_data[0]};
+        }
+        .pro_info_box h3{
+            font-size: 24px;letter-spacing: 0;font-weight: normal;color: #{$data1[6]};
+        }
+        .s{overflow: auto }
+
+        .detail_inquiry{
+            background: #{$color};
+        }
+        .detail_down{
+            background: #{$color};
+        }
+        .detail_inquiry:hover{
+            background: #{$inner_data[0]};
+        }
+        .detail_down:hover{
+            background: #{$inner_data[0]};
+        }
+        .mod18 .listBox ul li:hover{
+            border: 1px solid #{$inner_data[0]}
+        }
+        .mod18 .listBox ul li.hover{
+            border: 1px solid #{$inner_data[0]};
+        }
+        .mod18 .prev:hover:before,.mod18 .next:hover:before{
+            color: #{$inner_data[0]};
+        }
+        .relatenewsList li a:hover{
+            color: #{$inner_data[0]};
+        }
+    </style>
+
+    <div id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">{:__('Products')}</a>
+                    &nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product_category','','')}/{:getprocatename($procate['pcid'])}">{$procate['class_name']}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$product['pro_name']}</span></div>
+            </div>
+        </div>
+
+
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+            <section class="inner_module2__inPage-left">
+                <if condition="$inner_data[2]">
+                    <Include file="./Tpl/HJZF2/left_2_second.html" />
+                    <else/>
+                    <Include file="./Tpl/HJZF2/left_2.html" />
+                </if>
+            </section>
+            <section class="inner_module2__inPage-right">
+                <div class="inner_module2__inPageRight-content">
+                    <div class="inner_module2__inPageRight-content-box">
+                        <div id="product_detail">
+                            <div class="left">
+                                <div id="box" class="pro_detail_fangda1">
+                                    <div id="smallbox">
+                                        <img src="{:getmainimgurl($product['main_img'])}" alt="{:getmainimgurl($product['main_img'])}"  <if condition="$product['proalt'] neq ''">title="{$product['proalt']}"<else/>title="{$product['pro_name']}"</if>/>
+                                        <span id="mask"></span>
+                                    </div>
+                                    <div id="bigbox">
+                                        <img src="{:getmainimgurl($product['main_img'])}" alt="" style="position: absolute;left:0;top:0;">
+                                    </div>
+                                </div>
+                                <div class="pic_list smallImgList smallImgList_lightbox">
+                                    <div class="mod18"> <span id="prev" class="btn prev"></span> <span id="next" class="btn next"></span>
+                                        <div id="listBox" class="listBox">
+                                            <ul class="cf">
+                                                <li class="hover"><a href="{:getmainimgurl($product['main_img'])}" title="{$product['pro_name']}"><img src="{:getmainimgurl($product['main_img'])}" <if condition="$product['proalt'] neq ''">alt="{$product['proalt']}" title="{$product['proalt']}"<else/>alt="{$product['pro_name']}" title="{$product['pro_name']}"</if> class="jqzoom"></a></li>
+                                                <volist name="proimg" id="proimg">
+                                                    <if condition="getfimgurl($proimg['field_auxiliary_fid']) neq '/Public/img/nopic.gif'">
+                                                        <li><a href="{:getfimgurl($proimg['field_auxiliary_fid'])}" ><img src="{:getfimgurl($proimg['field_auxiliary_fid'])}" class="jqzoom"  <if condition="$proimg['field_auxiliary_title'] eq ''">alt="{$product['pro_name']}"<else/>alt="{$proimg['field_auxiliary_title']}"</if>/></a></li>
+                                                    </if>
+                                                </volist>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="product_info">
+                                <div class="pro_info_box">
+                                    <h3 class="margin-10px-bottom">{$product['pro_name']}</h3>
+                                    <if condition="$product['price']">
+                                        <style>
+                                            .product_price{width: 100%;font-size: 16px;}
+                                            .product_price i{line-height: 24px;color: #333;font-style: normal}
+                                            .product_price span{line-height: 24px;color: #333;}
+                                        </style>
+                                        <div class="product_price">
+                                            {:__('Price: ')} <i>$</i><span>{$product['price']}</span>
+                                        </div>
+                                    </if>
+                                    <div class="pro_info_desc">{:HtmlEncode(subtxt($product['pro_description'],600))}</div>
+
+                                    <div class="margin-30px-top pro_info_box_contact" >
+                                        <div class="hj02_detail_mail padding-10px-bottom"><i class="fa fa-envelope-o"></i><a href="mailto:{:chaifen($about['email'],0)}" onclick="turn_sta(5,3);" onfocus="blur()">{:chaifen($about['email'],0)}</a>
+                                            <if condition="$inner_data[3]">
+                                                <br style="display: none;"/><a href="mailto:{:chaifen($about['email'],1)}" onclick="turn_sta(5,3);" onfocus="blur()" style="padding-left: 26px">{:chaifen($about['email'],1)}</a>
+                                                <br/><a href="mailto:{:chaifen($about['email'],2)}" onclick="turn_sta(5,3);" onfocus="blur()" style="padding-left: 26px">{:chaifen($about['email'],2)}</a>
+                                                <br style="display: none;"/><a href="mailto:{:chaifen($about['email'],3)}" onclick="turn_sta(5,3);" onfocus="blur()" style="padding-left: 26px">{:chaifen($about['email'],3)}</a>
+                                                <br/><a href="mailto:{:chaifen($about['email'],4)}" onclick="turn_sta(5,3);" onfocus="blur()" style="padding-left: 26px">{:chaifen($about['email'],4)}</a>
+                                            </if>
+                                        </div>
+                                        <div class="margin-15px-top">
+                                            <div class="detail_inquiry"><a onclick="javascript:jumpto()"><span><img src="__TMPL__HJZF2/img/side-sprites.png" alt="" style="position: relative;left: -727px;top: -15px;"/></span>{:__('Inquiry Now')}</a></div>
+                                            <if  condition="$product['pro_file'] neq ''and $product['pro_file'] neq 0">
+                                                <div class="detail_down"><a href="{:getimgurl($product['pro_file'])}" target="_blank"><img src="__TMPL__HJ02/img/pdf.png" alt="" style="position: relative;left: -10px;top:0;"/>{:__('Download')}</a></div>
+                                            </if>
+                                            <div class="clear"></div>
+                                            <if condition="$product['price']">
+                                                <style>
+                                                    #zoid-paypal-buttons-ecdccbe617_mda6mjq6mtc{max-width: 185px!important;}
+                                                </style>
+                                                <div>
+                                                    <div style="width: 185px;margin-top: 20px;overflow: hidden;border-radius: 4px;height: 35px;float: left">
+                                                        <div id="paypal-button-container"></div>
+                                                    </div>
+                                                    <p style="float: left;line-height: 30px;padding-top: 24px;padding-left: 10px;font-size: 12px;">Please click the button to pay</p>
+                                                </div>
+
+                                            </if>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <script>
+                                $(document).ready(function(){
+                                    var left_height = $("#product_detail .left").height();
+                                    $("#product_detail .product_info").css("height",left_height);
+                                })
+                            </script>
+                            <div class="clear" style="height:20px;"></div>
+                            <div class="product_detail_editor_content">
+                                <!--more editors-->
+                                <if condition="$editor_count eq 1">
+                                    <div class="pro_detail" id="gx1" style="display:block;">{:str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile']))}</div>
+                                    <else/>
+                                    <style>
+                                        .mainDetail-tabs {
+                                            width: 100%;
+                                            position: relative;
+                                            border-bottom: 1px solid #e3e3e3;
+                                        }
+                                        .tabsTitle {
+                                            display: inline-block;
+                                            line-height: 36px;
+                                            font-weight: 500;
+                                            letter-spacing: 0.5px;
+                                            font-size: 16px;
+                                            vertical-align: middle;
+                                            cursor: pointer;
+                                            color: #{$color};
+                                            padding: 14px 40px;
+                                            box-sizing: border-box;
+                                            -webkit-transition: background .2s ease-in-out,color .2s ease-in-out;
+                                            -o-transition: background .2s ease-in-out,color .2s ease-in-out;
+                                            transition: background .2s ease-in-out,color .2s ease-in-out;
+                                            border-bottom-width: 2px !important;
+                                        }
+                                        .tabsTitle.active {
+                                        border-bottom: 2px solid {$data47[9]};
+                                        color: #333;
+                                        }
+
+                                    </style>
+                                    <ul class="mainDetail-tabs">
+
+                                        <for start="1" end="$editor_count+1">
+                                            <li index="{$i}" class="tabsTitle  <if condition="$i eq 1"> active </if>">{$data9[$i+1]}</li>
+                                        </for>
+                                    </ul>
+                                    <for start="1" end="$editor_count+1">
+                                        <php>
+                                            if($i==1){
+                                            $edit_name="pro_profile";
+                                            }else{
+                                            $edit_name="pro_profile".$i;
+                                            }
+                                        </php>
+
+                                        <div index="{$i}" class="pro_detail"  <if condition="$i neq 1"> style="display:none" </if>  >{:str_replace('&nbsp;',' ',htmlspecialchars_decode($producteditors[$edit_name]))}</div>
+                                    </for>
+                                </if>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="product_detail_editor_content">
+                                <!--询盘-->
+                                <div id="inquiry" class="HJ01_product_detail_title2">
+                                    <span>{:__('Inquiry Now')}</span>
+                                </div>
+                                <div class="proinquiry">
+                                    <if condition="C('language') eq 'en'">
+                                        <Include file="./Tpl/HJZF2/submitinquiry.html" />
+                                        <elseif condition="C(Language) eq 'de'"/>
+                                        <Include file="./Tpl/HJZF2/submitinquiry_de.html" />
+                                    <else/>
+                                        <Include file="./Tpl/HJZF2/submitinquiry_cn.html" /></div>
+                                    </if>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <section>
+                                <if condition="comment_show() eq 1">
+                                    <include file="HJZF2:comment" />
+                                </if>
+                                <if condition="get_productkeyword($product['pid']) neq ''">
+                                    <include file="HJZF2:keywords" />
+                                </if>
+                                <if condition="$labelprodlist neq ''">
+                                    <h5 class="inner_module2__inPage-title">{:__('Related products')}</h5>
+                                </if>
+                                    <include file="HJZF2:relationinfo_2" />
+                                <if condition="$labelnewlists neq ''">
+                                    <h5 class="inner_module2__inPage-title">{:__('Related news')}</h5>
+                                </if>
+                                    <include file="HJZF2:relationnew_2" />
+                            </section>
+                            <section>
+                                <if condition="$otherpro neq ''">
+                                    <div class="inner_module2__inPageRight-content">
+                                        <div class="inner_module2__inPageRight-content-box">
+                                            <h5 class="inner_module2__inPage-title">{:__('Other products')}</h5>
+                                            <div class="inner_module2__inPage-list">
+                                                <volist empty="" name="otherpro" id="otherpro" key="k" offset="0" length="3">
+                                                    <div class="inner_module2__inPage-proitem">
+                                                        <div class="inner_module2__inPage-proitem-in">
+                                                            <div class="inner_module2__inPage-proitemImg"><a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}"><img src="{:getmainimgurl($otherpro['main_img'])}" <if condition="$otherpro['proalt'] neq ''">alt="{$otherpro['proalt']}"<else/>alt="{$otherpro['pro_name']}"</if> /></a></div>
+                                                            <div class="inner_module2__inPage-proitemText">
+                                                                <a href="{:U('/Product','','')}/{:getproname($otherpro['pid'])}">
+                                                                    <div class="inner_module2__inPage-proitemName ">{$otherpro['pro_name']}</div>
+                                                                    <if condition="$otherpro['pro_description']"></if><div class="inner_module2__inPage-proitemDes">{:subtxt($otherpro['pro_description'],50)}</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <if condition="($k)%3 neq 0">
+                                                        <div class="inner_module2__inPage-jiange"></div>
+                                                    </if>
+                                                </volist>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </if>
+
+                                <if condition="$hotpro neq ''">
+                                    <div class="inner_module2__inPageRight-content">
+                                        <div class="inner_module2__inPageRight-content-box">
+                                            <h5 class="inner_module2__inPage-title">{:__('Hot products')}</h5>
+                                            <div class="inner_module2__inPage-list">
+                                                <volist empty="" name="hotpro" id="hotpro" key="k" offset="0" length="3">
+                                                    <div class="inner_module2__inPage-proitem">
+                                                        <div class="inner_module2__inPage-proitem-in">
+                                                            <div class="inner_module2__inPage-proitemImg"><a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}"><img src="{:getmainimgurl($hotpro['main_img'])}" <if condition="$hotpro['proalt'] neq ''">alt="{$hotpro['proalt']}"<else/>alt="{$hotpro['pro_name']}"</if> /></a></div>
+                                                            <div class="inner_module2__inPage-proitemText">
+                                                                <a href="{:U('/Product','','')}/{:getproname($hotpro['pid'])}">
+                                                                    <div class="inner_module2__inPage-proitemName ">{$hotpro['pro_name']}</div>
+                                                                    <if condition="$hotpro['pro_description']"></if><div class="inner_module2__inPage-proitemDes">{:subtxt($hotpro['pro_description'],50)}</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <if condition="($k)%3 neq 0">
+                                                        <div class="inner_module2__inPage-jiange"></div>
+                                                    </if>
+                                                </volist>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </if>
+                            </section>
+
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    <script type="text/javascript" src="__TMPL__HJZF2/js/hj01_prodetail.js"></script>
+    <if condition="$product['price']">
+        <!--AWo0bwUWFk7WiWj6-xTzyNpn9ITP2nDMqJHwZ1BBcSCB7XHCK9IPMA1wixO4PcZtFJpNtMHzw0XpNBP5-->
+        <!--Test: AQnWwOLXDpx7eWIgaimhvt09l5KbmkW6Yp1fNQcFbh0b9CDXN1_AgubOtBZZw-csmgDlAuQrR7CEMFBX-->
+        <script
+                src="https://www.paypal.com/sdk/js?client-id=AWo0bwUWFk7WiWj6-xTzyNpn9ITP2nDMqJHwZ1BBcSCB7XHCK9IPMA1wixO4PcZtFJpNtMHzw0XpNBP5&locale=en_AM&disable-funding=credit,card"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+        </script>
+        <script>
+
+
+            paypal.Buttons({
+
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: "{$product['price']}"
+                            }
+                        }]
+                    });
+                },
+
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+
+                        jQuery.ajax({
+                            type: "POST",
+                            url: "/insertPayrecord",
+                            async:false,
+                            data: {
+                                email_address:details.payer.email_address,
+                                price:'{$product['price']}'
+                            }
+                        });
+                        alert('Transaction completed by ' + details.payer.name.given_name + '.   orderID:'+data.orderID);
+                        // Call your server to save the transaction
+                        return fetch('/paypal-transaction-complete', {
+                            method: 'post',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                orderID: data.orderID
+                            })
+                        });
+
+                    });
+                }
+            }).render('#paypal-button-container');
+
+        </script>
+    </if>
+    </div>
+
+
+
+
+
+
+</block>

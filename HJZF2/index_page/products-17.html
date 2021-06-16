@@ -1,0 +1,113 @@
+<!--{$pagename}-->
+<style>
+    .new_hjzf_products-17 .index_proitem_name h6{
+        color: #333
+    }
+  .new_hjzf_products-17 .hj02_proclasslist li:hover a,.new_hjzf_products-17 .hj02_proclasslist li.proClass_on a,.new_hjzf_products-17 .index_product_more:hover,.new_hjzf_products-17 .hj02_pro_more{color: #fff;}
+    .new_hjzf_products-17 .index_proitem_more:hover:after{
+    background: #{$data179[1]};
+    width:100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+    }
+    .new_hjzf_products-17 .index_proitem_more,.new_hjzf_products-17 #index_prolist .slick-prev:hover:before,  .new_hjzf_products-17 #index_prolist .slick-next:hover:before{
+    color: #{$data179[1]};
+    }
+    .new_hjzf_products-17 .hj02_proclasslist li:hover,.new_hjzf_products-17 .index_proitem_box:after,.new_hjzf_products-17 .proClass_on,.new_hjzf_products-17 .index_proitem_img a:before,.new_hjzf_products-17 .index_pro_slickbox:hover .hj02-pro-prev,.new_hjzf_products-17 .index_pro_slickbox:hover .hj02-pro-next,.new_hjzf_products-17 .index_product_more:hover,.new_hjzf_products-17 .hj02_pro_more{
+        background: #{$data179[1]}
+    }
+
+</style>
+
+
+<if condition="$data179[0]">
+        <style>
+            .new_hjzf_products-17 .page_probg{
+                background: url({:getindeximgurl($data179[0])}) no-repeat center;
+            }
+        </style>
+    </if>
+<php>
+    if($data85[12]==""){
+    $data85[12]=30;
+    }
+    if($data85[15]==""){
+    $data85[15]=30;
+    }
+</php>
+<style>
+    .new_hjzf_products-17 .page_probg{
+        padding-bottom: {$data85[12]}px;
+        padding-top: {$data85[15]}px;
+    }
+</style>
+<php>
+    $line=$data179[4]? $data179[4]:2;
+</php>
+<script>
+    var line = "<?php echo $line;?>";
+</script>
+<!--index-product start-->
+<div class="page_probg">
+    <div class="container">
+        <section class="index_product_title">
+            <div class="index_product_title_left" >
+                <div id="index_product_title_left1"><h3>{$data179[3]}</h3></div>
+            </div>
+            <div class="index_product_title_right">
+                <div id="index_product_title_right1">
+                    <a href="{:U('/Product')}" class="hj02_pro_more">{:__('More')}</a>
+                    <ul class="hj02_proclasslist hj02_proclasslist1">
+                        <php>
+                            $arr_str=$data179[2];
+                            $arr=explode(',',$arr_str);
+                            foreach($arr as $k=>$a){
+                            $list[$k]=get_index_products_categoryname($a);
+                            $list[$k]['data']=get_index_products_category($a,$all_pro);
+                            }
+                        </php>
+                        <volist empty="" name="list" id="li" key="k">
+                            <if condition="$li">
+                                <li><a data-ajax='false' href="{:U('/product_category','','')}/{:getprocatename($li['pcid'])}">{$li['class_name']}</a></li>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </section>
+
+        <div class="index_prolist_wai" id="index_prolist_wai">
+            <div class="index_prolist_waibox index_prolist_waibox1">
+                <volist empty="" name="list" id="li" key="k"> 
+                    <div class="index_prolist_wai_cont">
+                        <div class="swiper-container index_pro_slickbox index_pro_slickbox">
+                            <div class="swiper-wrapper">
+                                <volist empty="" name="li['data']" id="indexpro" key="k" offset="0" length="12">
+                                    <div class="swiper-slide index_proitem">
+                                        <div class="index_proitem_box">
+                                            <div class="index_proitem_img"><a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}"><img src="{:getmainimgurl($indexpro['main_img'])}" <if condition="$indexpro['proalt'] neq ''">alt="{$indexpro['proalt']}"<else/>alt="{$indexpro['pro_name']}"</if> /></a></div>
+                                            <div class="index_proitem_second">
+                                                <a href="{:U('/Product','','')}/{:getproname($indexpro['pid'])}">
+                                                    <div class="index_proitem_name"><h6 title="{:subtxt($indexpro['pro_name'],80)}">{:subtxt($indexpro['pro_name'],60)}</h6></div>
+                                                    <if condition="$indexpro['pro_description']"><div class="index_proitem_desc">{:subtxt($indexpro['pro_description'],60)}</div></if>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </volist>
+
+                            </div>
+                            <div class="swiper-pagination hj02-pro-pagination"></div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next hj02-pro-next"></div>
+                            <div class="swiper-button-prev hj02-pro-prev"></div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div style="clear: both;"></div>
+
+<!--index-product end-->

@@ -1,0 +1,13 @@
+<div class="product_detail_editor_content">
+    <div class="product_detail_editor_content_title">
+        <if condition="$inner_data[4]">
+            {$inner_data[4]}
+            <else />
+            {:__('Keywords')}
+        </if>
+    </div>
+    <div class="reationkeywords">
+        {:get_productkeyword($product['pid'])}
+    </div>
+</div>
+<div class="clear"></div>

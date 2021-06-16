@@ -1,0 +1,75 @@
+<extend name="HJ02_CN:basein" />
+<block name="content">
+    <style>
+        .main_newslist li:hover .main_news_title a h5{
+            color: #{$color};
+        }
+        .main_news_dowm span a:hover{
+            color: #{$color};
+        }
+    </style>
+    <script type="text/javascript" src="__TMPL__HJ02_CN/js/jquery.lightbox-0.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__TMPL__HJ02_CN/css/jquery.lightbox-0.5.css"/>
+    <div id="wrapper" style="background: #fff">
+        <div id="inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($data1[0])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="page-title-inner">
+            <div class="container">
+                <div class="Breadcrumbs"><a href="{:U('/')}">首页</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">新闻</span></div>
+            </div>
+        </div>
+        <div class="page_nei_main" id="main-content-wrapper">
+            <section class="main-content-left2">
+                <Include file="./Tpl/HJ02_CN/newleft.html" />
+            </section>
+            <section class="main-content-right2">
+                <div class="page_RightMain">
+                    <div class="page_Main">
+                        <div class="HJ01_main_news">
+                            <ul class="main_newslist ul_li_list">
+                                <volist name="allnews" id="allnews" empty="暂无内容">
+                                    <li id="new_list{$key}">
+                                        <div class="main_newsimg">
+                                            <a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}" onFocus="blur()" ><img src="{:getimgurl($allnews['new_pro'])}" border="0" /></a>
+                                        </div>
+                                        <div class="main_news_right">
+                                            <div class="main_news_right_content left">
+                                                <div class="main_news_title margin-20px-bottom"><a href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}"><h5>{$allnews['title']}</h5></a></div>
+                                                <div class="main_news_desc">{:subtxt($allnews['news_description'],200)}</div>
+                                            </div>
+                                            <div class="main_news_right_date right">
+                                                <p>{:date('m月 d  ',$allnews['created'])}</p>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="main_news_dowm"><span><img src="__TMPL__HJ02_CN/img/view.png" alt=""/>{$allnews['click_num']}</span><span style="line-height: 30px;">|</span><span><img src="__TMPL__HJ02_CN/img/view_right.png" alt=""/><a
+                                                    href="{:U('/new_detail',array('nid'=>$allnews["nid"]))}">更多</a></span></div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </li>
+
+                                </volist>
+
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".main_left_news .main-content_inner_news>ul li:first-child").addClass("yijion_news")
+        })
+    </script>
+
+</block>

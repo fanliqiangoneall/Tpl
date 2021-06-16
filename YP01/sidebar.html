@@ -1,0 +1,82 @@
+<style type="text/css">
+  .sidebar{display: none}
+ .sidebar{
+-webkit-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+backface-visibility: hidden;
+
+-webkit-animation-duration: 1s;
+-webkit-animation-delay: .2s;
+-webkit-animation-timing-function: ease;
+-webkit-animation-fill-mode: both;
+-moz-animation-duration: 1s;
+-moz-animation-delay: .2s;
+-moz-animation-timing-function: ease;
+-moz-animation-fill-mode: both;
+-ms-animation-duration: 1s;
+-ms-animation-delay: .2s;
+-ms-animation-timing-function: ease;
+-ms-animation-fill-mode: both;
+animation-duration: 1s;
+animation-delay: .2s;
+animation-timing-function: ease;
+animation-fill-mode: both;
+}
+</style>
+
+<div class="sidebar">
+  <ul>
+    <!--<li style="height:61px;"><div class="sidebox"><img src="__TMPL__ZERO/img/r_tel2.png" border="0"><span style="line-height:60px; color:#fff"><b>+86-{:chaifen($about['whatsapp'],0)}</b></span></div></li>
+   <li style="height:61px"><div class="sidebox3"><img src="__TMPL__ZERO/img/r_skype.png" border="0"><span style="line-height:60px; color:#fff"><b><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(5,4)" style="color:#fff">{:chaifen($about['msn'],0)}</a></b></span> </div></li> --> 
+    <li style="height:61px"><div class="sidebox2"><img src="__TMPL__YP01/img/r_email.png" border="0"><span style="line-height:60px; color:#fff"><b><a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4)" style="color:#fff">{:chaifen($about['email'],0)}</a></b></span></div></li>
+    <li style="height:61px"><div class="sidebox1"><a href="{:U('/contactus#inquiry')}"><img src="__TMPL__YP01/img/r_xp.png" border="0"></a></div></li>
+    <li style="height:60px;background:#{$color};"><a href="javascript:goTop();" class="sidetop"><img src="__TMPL__YP01/img/r_top.png" width="60" height="60" alt="top" border="0"/></a></li>
+  </ul>
+</div>
+<style>
+/*右侧二维码*/
+.sidebar{ width:60px; position:fixed;top:250px; right:0px; z-index:99999}
+.sidebar ul li{ position:relative; list-style:none; height:61px;}
+.sidebar ul li img{ float:left;}
+.sidebar ul li .sidebox{position:absolute;width:60px; height:60px;top:0;right:0;transition:all 0.3s;
+  overflow:hidden;color:#fff; font-size:14px;
+  background:#{$color};
+}
+.sidebar ul li .sidebox1{
+  position:absolute;
+  width:60px; 
+  height:60px;
+  top:0;
+  right:0;
+  transition:all 0.3s;
+  overflow:hidden;
+  color:#fff;
+  font-size:14px;
+  background:#{$color};
+}
+.sidebar ul li .sidebox1:hover{
+ background:#{$color};
+}
+.sidebar ul li .sidebox2{
+  position:absolute;width:60px; height:60px;top:0;right:0;transition:all 0.3s;
+  overflow:hidden;
+  color:#fff; 
+  font-size:14px;
+  background:#{$color};
+}
+.sidebar ul li .sidebox3{position:absolute;width:60px; height:60px;top:0;right:0;transition:all 0.3s;
+  overflow:hidden;color:#fff; font-size:14px;
+  background:#{$color};
+}
+.mobile-container {width: 60px; height: 60px;background: url(__TMPL__YP01/img/r_ewm.png) no-repeat #fa913e;float:left;}
+.mobile-container:hover{ background:url(__TMPL__YP01/img/r_ewm.png) no-repeat #2a96f5;}
+.mobile-show {width: 140px;min-height: 120px; background: #fff; border-radius: 10px; border: 1px solid #dddddd; position: absolute; left: -155px; top: -80px; }
+.mobile-show .mobile-sanjiao {width:0; height: 0; border-style: solid; border-color: transparent transparent transparent #ffffff; border-width: 6px; left: 140px; top: 120px; position: absolute; z-index: 2;}
+.mobile-show .mobile-sanjiao-big { width: 0; height: 0; border-style: solid; border-color: transparent transparent transparent #dddddd; border-width: 8px; left: 141px; top: 118px; position: absolute; }
+.mobile-show .mobile-txt{ float:left; width:124px; padding:10px 12px 20px; text-align:center; font-size:15px; color:#4c4c4c; }
+.mobile-show .mobile-txt ul li{ width:124px;min-height:120px;line-height:15px;}
+</style>
+
+
+

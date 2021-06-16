@@ -1,0 +1,56 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_service_27_more a {
+        background-color: #{$data376[9]};
+        border: 1px solid #{$data376[9]};
+    }
+
+    .hjzf_service_27_more a:hover {
+        background-color: transparent;
+        color: #{$data376[9]};
+    }
+
+    .hjzf_service_27 {
+        background-color: #{$data376[12]};
+        color: #{$data376[13]};  
+    }
+</style>
+
+<section class="hjzf_service_27 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="index_title pb40 text-center wow fadeInUp">
+                {:HtmlEncode($data376[0])}
+            </div>
+            <ul class="hjzf_service_27_wrapper clearfix pb40">
+                <li class="col-xs-12 col-md-6 text-center wow fadeInLeft">
+                    <a href="{$data376[10]}">
+                        <if condition="$data376[1]">
+                            <img src="{:getindeximgurl($data376[1])}" alt="{$data376[2]}" class="pb20 img-fluid">
+                        </if>
+                        <if condition="$data376[2]">
+                            <div class="index_sub_title pb20">
+                                {$data376[2]}
+                            </div>
+                        </if>
+                        <if condition="$data376[2]">
+                            <p class="index_text">{$data376[3]}</p>
+                        </if>
+                    </a>
+                </li>
+                <li class="col-xs-12 col-md-6 text-center wow fadeInRight">
+                    <a href="{$data376[11]}">
+                        <img src="{:getindeximgurl($data376[4])}" alt="{$data376[5]}" class="pb20 img-fluid">
+                        <div class="index_sub_title pb20">
+                            {$data376[5]}
+                        </div>
+                        <p class="index_text">{$data376[6]}</p>
+                    </a>
+                </li>
+            </ul>
+            <div class="hjzf_service_27_more tac"><a href="{$data376[7]}" class="index_btn index_text">{$data376[8]}</a>
+            </div>
+
+        </div>
+    </div>
+</section>

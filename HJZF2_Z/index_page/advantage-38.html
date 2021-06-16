@@ -1,0 +1,39 @@
+<!--{$pagename}-->
+
+<style>
+   <if condition="$data451[0]">
+    .hjzf_advantage_38 {
+        background: url({:getindeximgurl($data451[0])}) no-repeat center top;
+    }
+    </if>
+    .hjzf_advantage_38_about{
+        color:#{$data451[4]};
+    }
+    @media(max-width: 1200px) {
+        .hjzf_advantage_38{
+            background-size: cover;
+        }
+        .hjzf_advantage_38_about{
+            margin-top: 30px;
+        }
+    }
+</style>
+<section class="hjzf_advantage_38 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-6 wow fadeInLeft">
+                <img src="{:getindeximgurl($data451[1])}" alt="{$data451[2]}" class="img-fluid">
+            </div>
+            <div class="col-xs-12 col-lg-6 hjzf_advantage_38_about  wow fadeInRight">
+                <div class="index_sub_title">
+                    {$data451[2]}
+                </div>
+                <em></em>
+                <div class="index_text pb40">
+                    {$data451[3]}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

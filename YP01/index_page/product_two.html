@@ -1,0 +1,146 @@
+<!--{$pagename}-->
+<style>
+.inpage_list{ display:none;}
+.hotProTitle{
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+   .hotProTitle li{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-around;
+       align-content: center;
+       align-items: center;
+       margin-left: 35px;
+   }
+.page_indexpic ul li{
+    height: 279px;
+    overflow: hidden;
+}
+.page_indexpic ul li div.asd{
+    margin-left: 3px;
+}
+.page_indexpic ul li div.asd:first-child{
+    margin-left: 0;
+}
+.hotProTitle li img{
+    margin-right: 12px;
+}
+    .hotProTitle li a{
+        font-size: 20px;
+        color: #333;
+    }
+.hotProTitle li a h3{
+    font-weight: normal;
+}
+.hotProTitle li.iconActive a{
+    border-bottom: 1px solid #{$color};
+}
+    .hotProTitle li.iconActive a{
+        color: #{$color};
+    }
+</style>
+<div class="index_products">
+ <div style="width: 1020px;margin: auto;position: relative;height: 587px;">
+ <div id="index_products_animate">
+  <div class="index_product_title">
+     {$data37[0]}
+     <div style="font-size: 14px;color: #a2a2a2;margin-top: 22px;font-weight: normal;">{$data37[1]}</div>
+  </div>
+</div>
+     <ul class="hotProTitle">
+         <php>
+             for($i =0;$i<3;$i++){
+         </php>
+         <volist empty="no" name="allclass" id="allclass_List"  offset="0" length="3">
+             <li  onMouseOver="change({$i})" id="hot_{$i}">
+                 <img src="{:getindeximgurl($data37[$i+1])}" alt=""/>
+                 <a href="{:U('/product_category','','')}/{:getprocatename($allclass_List['pcid'])}">
+                     {$allclass_List['class_name']}
+                 </a>
+             </li>
+         </volist>
+         <php>
+             }
+         </php>
+         <div class="clear"></div>
+     </ul>
+     <script>
+         $(document).ready(function(){
+             $(".hotProTitle li").eq(0).addClass("iconActive")
+         })
+     </script>
+
+   <div class="inpage_list">
+
+       <div style="width: 400px;margin-left: 400px;" >
+              <volist empty="no" name="allclass" id="allclass_left"  offset="0" length="2">
+                   <div class="page_list"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_left['pcid'])}" style="cursor:pointer;">{$allclass_left['class_name']}</a></div>
+               </volist>
+       </div> 
+  </div>
+
+  <div class="page_indexpic" id="pic">
+      <ul class="c2_lc">
+          <li class="poster-item">
+              <volist empty="" name="indexhotpro" id="indexpro1" offset="0">
+                  <if condition="$indexpro1['class_id'] eq $allclass[0]['pcid'] or $indexpro1['class_id'] eq $allclass[0]['childs'][0]['pcid'] or $indexpro1['class_id'] eq $allclass[0]['childs'][1]['pcid'] or $indexpro1['class_id'] eq $allclass[0]['childs'][2]['pcid']">
+                      <div class="asd">
+                          <div class="img">
+                              <a href="{:U('/Product','','')}/{:getproname($indexpro1['pid'])}">
+                                  <img src="{:getpcimgurl($indexpro1['main_img'])}" <if condition="$indexpro1['proalt'] neq ''">alt="{$indexpro1['proalt']}"<else/>alt="{$indexpro1['pro_name']}"</if> />
+                              </a>
+                          </div>
+                          <div class="in_proname">
+                              <a href="{:U('/Product','','')}/{:getproname($indexpro1['pid'])}" alt="{$indexpro1['pro_name']}" title="{$indexpro1['pro_name']}">{:HtmlEncode(subtxt($indexpro1['pro_name'],30))}</a>
+                          </div>
+                      </div>
+                  </if>
+              </volist>
+          </li>
+          <li class="poster-item">
+            <volist empty="" name="indexhotpro" id="indexpro2">
+                <if condition="$indexpro2['class_id'] eq $allclass[1]['pcid'] or $indexpro2['class_id'] eq $allclass[1]['childs'][0]['pcid'] or $indexpro2['class_id'] eq $allclass[1]['childs'][1]['pcid']">
+                    <div class="asd">
+                        <div class="img"><a href="{:U('/Product','','')}/{:getproname($indexpro2['pid'])}"><img src="{:getpcimgurl($indexpro2['main_img'])}" <if condition="$indexpro2['proalt'] neq ''">alt="{$indexpro2['proalt']}"<else/>alt="{$indexpro2['pro_name']}"</if> /></a>
+                        </div>
+                        <div class="in_proname">
+                            <a href="{:U('/Product','','')}/{:getproname($indexpro2['pid'])}" title="{$indexpro2['pro_name']}">{:HtmlEncode(subtxt($indexpro2['pro_name'],30))}</a>
+                        </div>
+                    </div>
+                </if>
+            </volist>  
+          </li>
+          <li class="poster-item">
+            <volist empty="" name="indexhotpro" id="indexpro3">
+                <if condition="$indexpro3['class_id'] eq $allclass[2]['pcid']">
+                    <div class="asd">
+                        <div class="img" ><a href="{:U('/Product','','')}/{:getproname($indexpro3['pid'])}"><img src="{:getpcimgurl($indexpro3['main_img'])}" <if condition="$indexpro3['proalt'] neq ''">alt="{$indexpro3['proalt']}"<else/>alt="{$indexpro3['pro_name']}"</if> /></a>
+                        </div>
+
+                        <div class="in_proname">
+                            <a href="{:U('/Product','','')}/{:getproname($indexpro3['pid'])}" alt="{$indexpro3['pro_name']}" title="{$indexpro3['pro_name']}">{:HtmlEncode(subtxt($indexpro3['pro_name'],30))}</a>
+                        </div>
+                    </div>
+                    <!--<if condition="($key+1)%4 eq 0">-->
+                        <!--<div style="clear:both; width: 100%; height:26px;"></div>-->
+                        <!--<else/>-->
+                        <!--<div style="width:3px; height:10px; background:none; float:left;"></div>-->
+                    <!--</if>-->
+                </if>
+            </volist>  
+          </li>
+    </ul>
+  </div>
+  <div class="page_otherbtn" id="tip">
+      <ul>
+          <li id="smallimg_1" onMouseOver="change(1)" class="current"></li>
+          <li id="smallimg_2" onMouseOver="change(2)" class=""></li>
+          <li id="smallimg_3" onMouseOver="change(3)" class=""></li>
+      </ul>
+  </div>
+    
+ </div>
+</div>

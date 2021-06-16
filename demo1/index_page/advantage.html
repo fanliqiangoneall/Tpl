@@ -1,0 +1,169 @@
+<!--{$pagename}-->
+<style>
+.index_advantage_banner {
+    width: 1190px;
+    margin: auto;
+    margin-top: 60px;
+    height: 196px;
+    background: url({:getindeximgurl($data6[0])}) center no-repeat;
+}
+.index_advantage_headbg {
+    min-width: 1190px;
+    max-width: 1920px;
+    margin: auto;
+    margin-top: 34px;
+    height: 286px;
+    background: url({:getindeximgurl($data6[1])}) center no-repeat;
+}
+.index_advantage_list {
+    width: 1190px;
+    margin: auto;
+    margin-top: 38px;
+    background: url({:getindeximgurl($data6[2])}) center top no-repeat;
+}
+.index_adv_text ul li{ 
+font-size:13px; color:#4e4e4e; line-height:22px; background:url({:getindeximgurl($data6[63])}) left 8px no-repeat; padding-left:12px;
+}
+</style>
+<link rel="stylesheet" href="__TMPL__demo1/css/advantage.css"/>
+<div id="index_advantage_animate" style="display:none;">
+<div class="index_advantage_banner">
+   <div class="index_advantage_rightzx">
+      <ul>
+         <li><a href="{:U('/contactus#inquiry')}" onClick="turn_sta(1,5)" class="ys_zx">立即咨询</a></li>
+         <li style="margin-top:5px;">欢迎广大客户咨询参观：<span>{:chaifen($about['phone'],0)}</span></li>
+      </ul>
+   </div>
+</div>
+</div>
+
+<div id="index_advantage_animate_1" style="display:none;">
+<div class="index_advantage_headbg">
+   <div class="index_advantage_head">{$data6[64]}</div>
+</div>
+</div>
+
+<div class="index_advantage_list">
+    <div id="index_advantage_animate_2" style="display:none;">
+    <div class="index_advantage_1">
+        <div class="index_adv_xh"><img src="{:getindeximgurl($data6[3])}" border="0" /></div>
+        <div style="float:right; margin-top:20px;">
+            <div class="index_adv_title"><span>{$data6[4]}</span><br />{$data6[5]}</div>
+            <div class="index_adv_text">
+               <ul>
+               <volist name="data6" id="vo" offset="6" length="9">
+               <li>{$vo}</li>
+               </volist>
+               </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+    <div class="clear"></div>
+    <div id="index_advantage_animate_3" style="display:none;">
+    <div class="index_advantage_2">
+        <div class="index_adv_xh"><img src="{:getindeximgurl($data6[15])}" border="0" /></div>
+        <div style="float:right; margin-top:20px;">
+            <div class="index_adv_title"><span>{$data6[16]}</span><br />{$data6[16]}</div>
+            <div class="index_adv_text">
+               <ul>
+               <volist name="data6" id="vo" offset="17" length="9">
+               <li>{$vo}</li>
+               </volist>
+               </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+    <div class="clear"></div>
+    <div id="index_advantage_animate_4" style="display:none;">
+    <div class="index_advantage_1" style="height:369px;">
+        <div class="index_adv_xh"><img src="{:getindeximgurl($data6[27])}" border="0" /></div>
+        <div style="float:right; margin-top:20px;">
+            <div class="index_adv_title"><span>{$data6[28]}</span><br />{$data6[29]}</div>
+            <div class="index_adv_text">
+               <ul>
+               <volist name="data6" id="vo" offset="30" length="9">
+               <li>{$vo}</li>
+               </volist>
+               </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+    <div class="clear"></div>
+    <div id="index_advantage_animate_5" style="display:none;">
+    <div class="index_advantage_2" style="height:355px;">
+        <div class="index_adv_xh"><img src="{:getindeximgurl($data6[39])}" border="0" /></div>
+        <div style="float:right; margin-top:20px;">
+            <div class="index_adv_title"><span>{$data6[40]}</span><br />{$data6[41]}</div>
+            <div class="index_adv_text">
+               <ul>
+               <volist name="data6" id="vo" offset="42" length="9">
+               <li>{$vo}</li>
+               </volist>
+               </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+    <div class="clear"></div>
+    <div id="index_advantage_animate_6" style="display:none;">
+    <div class="index_advantage_1" style="height:250px;">
+        <div class="index_adv_xh"><img src="{:getindeximgurl($data6[51])}" border="0" /></div>
+        <div style="float:right; margin-top:20px;">
+            <div class="index_adv_title"><span>{$data6[52]}</span><br />{$data6[53]}</div>
+            <div class="index_adv_text">
+               <ul>
+               <volist name="data6" id="vo" offset="54" length="9">
+               <li>{$vo}</li>
+               </volist>
+               </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<script>
+$(window).scroll( function() {
+	scrollTop=$(document).scrollTop();
+	//alert(scrollTop);
+	
+	if(scrollTop>700){	
+	$('#index_advantage_animate').show();
+	$('#index_advantage_animate').removeClass().addClass('fadeInDown');
+	}
+	if(scrollTop>900){
+	$('#index_advantage_animate_1').show();
+	$('#index_advantage_animate_1').removeClass().addClass('fadeInDown');
+	}
+	if(scrollTop>1200){
+	$('#index_advantage_animate_2').show();
+	$('#index_advantage_animate_2').removeClass().addClass('fadeInRight');
+	}
+	if(scrollTop>1600){
+	$('#index_advantage_animate_3').show();
+	$('#index_advantage_animate_3').removeClass().addClass('fadeInLeft');
+	}
+	if(scrollTop>2000){
+	$('#index_advantage_animate_4').show();
+	$('#index_advantage_animate_4').removeClass().addClass('fadeInRight');
+	}
+	if(scrollTop>2400){
+	$('#index_advantage_animate_5').show();
+	$('#index_advantage_animate_5').removeClass().addClass('fadeInLeft');
+	}
+	if(scrollTop>2800){
+	$('#index_advantage_animate_6').show();
+	$('#index_advantage_animate_6').removeClass().addClass('fadeInRight');
+	}
+
+});
+</script>

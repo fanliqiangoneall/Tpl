@@ -1,0 +1,42 @@
+<if condition="$labelprodlist neq ''">
+<div class="reation">
+    <div style="color: #303030;height:42px;line-height:42px;font-size: 20px;background: url(__TMPL__WH01/img/detail_line.png) no-repeat 0 35px;clear: both;">
+        <span style="font-weight:normal;font-size: 24px;color: #333333;">Verwandte Produkte</span>
+    </div>
+
+<div style="margin-top:15px;">
+<volist empty="" id="labelprodlist" name="labelprodlist" key="k">
+  <div class="asd" onmouseover="hide('tb{$k}')" onmouseout="show('tb{$k}')">
+      <div class="img">
+          <img src="{:getpcimgurl($labelprodlist['main_img'])}" <if condition="$labelprodlist['proalt'] neq ''">alt="{$labelprodlist['proalt']}"<else/>alt="{$labelprodlist['pro_name']}"</if> />
+      </div>
+      <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">{$labelprodlist['pro_name']}</a></div>
+      <a href="{:U('/Product','','')}/{:getproname($labelprodlist['pid'])}">
+      <div class="rsp"></div>
+          <div class="text">
+                               <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+              <div class="rsp_more" style=" position:relative; top:68px;">{$labelprodlist['pro_name']}</div>
+              </div>
+          </div>
+      </a>
+  </div>
+    <if condition="$data1[4]">
+        <if condition="$k%3 neq 0">
+            <li style="width:39px; height:50px; float:left;list-style: none"></li>
+            <else/>
+            <li class="clear" style="height: 18px;"></li>
+        </if>
+        <else/>
+        <if condition="$k%4 neq 0">
+            <li style="width:16px; height:50px; float:left;list-style: none"></li>
+            <else/>
+            <li class="clear" style="height: 18px;"></li>
+        </if>
+    </if>
+</volist>
+<div class="clear"></div>
+</div>
+</div>
+<div class="clear"></div>
+</if>

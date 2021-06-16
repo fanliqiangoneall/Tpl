@@ -1,0 +1,99 @@
+<extend name="HJ05:basein" />
+<block name="content">
+    <style>
+        .main_proitem_second .hj05-index-more{
+            background: #{$data47[9]};
+        }
+        .Breadcrumbs span.current {
+            color: #{$data47[9]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$data47[9]};
+        }
+
+        .main_product_more span{
+            color: #{$data47[9]};}
+
+        .main_product_more:hover span{
+            color:#fff;
+        }
+        .main_product_title_right a:hover{
+            background: #{$data47[9]};
+        }
+    </style>
+    <div id="wrapper">
+        <div id="inbanner_box">
+            <div class="in_banner" style="background:url({:getindeximgurl($data47[10])}) center no-repeat"></div>
+            <div class="page-title-inner flex">
+                <div class="container">
+                    <div class="Breadcrumbs">
+                        <div class="Breadcrumbs_top_title">Products</div>
+                        <div class="Breadcrumbs_down">
+                        <a href="{:U('/')}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a href="{:U('/product')}">Products</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">Search Results</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <if condition="$searchpro neq ''">
+            <div class="page_nei_main" id="main-content-wrapper" data-myli="1">
+                <section class="main-content-left">
+                    <Include file="./Tpl/HJ05/left.html" />
+                </section>
+                <section class="main-content-right">
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <h5 class="main-cases-detail-title">Search Results</h5>
+                            <div class="mainpage_probox margin-30px-top">
+                                <volist empty="" name="searchpro" id="pro" key="k">
+                                    <div class="main_proitem">
+                                        <div class="main_proitem_box">
+                                            <div class="main_proitem_img"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}"><img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> /></a></div>
+                                            <div class="main_proitem_second">
+                                                <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                    <div class="main_proitem_name margin-10px-bottom"><h6 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],60)}</h6></div>
+                                                    <div class="hj05-index-more">Read More</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <if condition="($k)%3 neq 0">
+                                        <div style="width:28px; height:10px; background:none; float:left;"></div>
+                                    </if>
+                                </volist>
+                                <div class="clear"></div>
+                                <div class="main_page">{$page}</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="clear"></div>
+            </div>
+            <else/>
+            <div class="page_nei_main" id="main-content-wrapper" data-myli="0" style="min-height: 500px;">
+                <section class="main-content-right2">
+                    <div class="page_RightMain ">
+                        <div class="page_Main">
+                            <h3 class="nosecrch_title margin-40px-bottom"> SEARCH ON THIS WEBSITE</h3>
+                            <div class="nosearch_box">
+                                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                    <li style="float: left;width: 540px;height: 60px;"><input style="height: 60px;width:530px;border-width:0px;padding-left: 10px;color:#888888;outline: none;background: transparent" type="text" value="Search" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;Search&#39;)" onblur="OnBlurFun(this,&#39;Search&#39;)"></li>
+                                    <li style="float: left;width:60px;height: 60px;"><button type="submit" id="search-submit" style="padding-top:16px;outline: none"><img
+                                            src="__TMPL__HJ02/img/head_search.png" alt=""  width="30px" height="30px"/></button></li>
+                                    <div class="clear"></div>
+                                </form>
+                            </div>
+                            <p style="font-family: OpenSans;font-size: 16px;color: #333333;letter-spacing: 0;text-align: center;line-height: 24px;" class="margin-40px-top">No results found, please change search keywords! </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </if>
+
+
+    </div>
+</block>

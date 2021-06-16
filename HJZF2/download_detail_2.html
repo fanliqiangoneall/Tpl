@@ -1,0 +1,49 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <div id="inner_module2__wrapper">
+        <div id="inner_module2__inbanner_box">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="inner_module2__in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="inner_module2__in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+        </div>
+        <div class="inner_module2__bread">
+            <div class="container">
+                <div class="Breadcrumbs">{:__('Your location: ')}<a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i><a
+                        href="{:U('/download')}">{:__('Download')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$download['title']}</span></div>
+            </div>
+        </div>
+
+        <div class="inner_module2__inPage" id="main-content-wrapper">
+            <section class="inner_module2__inPage-left">
+                <Include file="./Tpl/HJZF2/leftdownload_2.html" />
+            </section>
+            <section class="inner_module2__inPage-right">
+                <div class="inner_module2__inPageRight-content">
+
+                    <div class="inner_module2__inPageRight-content-box">
+                        <h5 class="inner_module2__inPage-title">{$download['title']}</h5>
+                        <div class="product_detail_editor_content">
+                            <div class="download">
+                                <div>
+                                    <a href="{:getimgurl($download['linkurl'])}" target="_blank">
+                                        <div class="download_detail_content">{$download['content']}</div>
+                                    </a>
+                                    <p style="text-align: right"><span class="download_detail_button"><a href="{:getimgurl($download['linkurl'])}" target="_blank">{:__('Download')}</a></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page_nei_space"></div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>
+
+
+

@@ -1,0 +1,77 @@
+<!--{$pagename}-->
+<php>
+    if($data129[0]){
+    $bg_img=getindeximgurl($data129[0]);
+    }
+</php>
+<style>
+    .hjzf2_adv-10{
+        background: url({$bg_img}) no-repeat center/cover;
+    }
+    .ideaBg2{
+        background: linear-gradient(172deg,rgba(0,255,234,0) 0,rgba(0,255,234,0) 50%,#{$data129[1]} 50%,#{$data129[1]} 100%);
+    }
+    .hjzf2_adv-10_leftul li span{
+        background-color: #{$data129[1]};
+    }
+    .hjzf2_adv-10_right .number,
+    .hjzf2_adv-10_leftul,
+    .adv_10_color,.hjzf2_adv-10_page{
+        color: #{$data129[20]};
+    }
+    .ideaBtnAct{
+        border-color: #{$data129[20]};
+    }
+    .ideaBtn,.ideaBtnAct .ideaInner{
+        background-color: #{$data129[20]};
+    }
+</style>
+
+<section class="hjzf2_adv-10">
+
+    <div class="hjzf2_adv-10_swiperbox index_pd">
+        <div class="ideaBg" data-swiper-parallax="-30%" data-swiper-parallax-duration="3000"></div>
+        <div class="swiper-container hjzf2_adv-10_swiper">
+            <div class="hjzf2_adv-10_titlebox text-center adv_10_color">
+                <div class="index_title pb20">{$data129[3]}</div>
+                <div class="index_sub_title pb40">{$data129[4]}</div>
+            </div>
+            <div class="swiper-wrapper">
+                <php>
+                    for($a=5;$a<19;$a=$a+3){
+                </php>
+                <if condition="$data129[$a]">
+                <div class="swiper-slide hjzf2_adv-10_slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="flex hjzf2_adv-10_slideitem">
+                                <div <if condition="$a eq '5'">class="col-xs-12 col-lg-3 hjzf2_adv-10_left adv_10_color wow fadeInLeftBig"<else/>class="col-xs-12 col-lg-3 hjzf2_adv-10_left adv_10_color"</if> data-wow-duration="1s" data-swiper-parallax="-700">
+                                    <div class="hjzf2_adv-10_leftname">{$data129[$a]}</div>
+                                    <ul class="hjzf2_adv-10_leftul ">
+                                        <li><span></span><div>{$data129[$a+1]}</div></li>
+                                    </ul>
+                                </div>
+                                <div <if condition="$a eq '5'">class="col-xs-12 col-lg-8 hjzf2_adv-10_right adv_10_color wow fadeInRightBig"<else/>class="col-xs-12 col-lg-8 hjzf2_adv-10_right adv_10_color"</if> data-wow-duration="1s">
+                                    <img src="{:getindeximgurl($data129[$a+2])}" alt="01" class="first"/>
+                                    <div class="number wow fadeInRightBig" data-wow-duration="1s" data-swiper-parallax="-1500">01</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </if>
+                <php>}</php>
+            </div>
+            <div class="container page_margin">
+                <div class="row">
+                    <div class="col-xs-12 text-center" style="position: relative;">
+                        <div class="swiper-pagination hjzf2_adv-10_page"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ideaBg2"></div>
+
+        </div>
+    </div>
+</section>

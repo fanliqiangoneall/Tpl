@@ -1,0 +1,48 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_other_64_wrapper_xp .form_item {
+        width: 100%;
+        float: none;
+        margin-left: 0;
+    }
+    .hjzf2_other_64 .index_sub_title{
+        color: #{$color};
+    }
+	.form_item #form_submit input{
+        background-color: #{$data392[3]};
+        border-color: #{$data392[3]};
+    }
+</style>
+<section class="hjzf2_other_64 index_pd">
+    <div class="container">
+        <div class="row">
+
+            <!-- left -->
+            <div class="col-xs-12 col-lg-8 hjzf_other_64_wrapper_left">
+                <div class="index_title pb20">
+                    {$data392[0]}
+                </div>
+                <div class="index_sub_title pb40">
+                    {$data392[1]}
+                </div>
+                <div class="index_text">
+                    {$data392[2]}
+                </div>
+            </div>
+            <!-- right -->
+            <div class="col-xs-12 col-lg-4 hjzf_other_64_wrapper_right">
+                <div class="hjzf_other_64_wrapper_xp">
+                    <div class="index_sub_title text-center pb20">
+                        {$data392[4]}
+                    </div>
+                    <if condition="C('language') eq 'cn'">
+                        <Include file="./Tpl/HJZF2_Z/submit_service_31.html" />
+                        <else />
+                        <Include file="./Tpl/HJZF2_Z/submit_service_31_en.html" />
+                    </if>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

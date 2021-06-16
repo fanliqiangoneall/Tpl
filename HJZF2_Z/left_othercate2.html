@@ -1,0 +1,13 @@
+<div class="InsidePages-left_content col-xs-12 hidden-xs hidden-sm hidden-md">
+    <div class="InsidePages_navswiper swiper-container">
+        <ul class="InsidePages_list swiper-wrapper">  
+            <volist empty="" name="navrs" id="nav">               
+                <li <if condition="$nav['introclassid'] eq $intro_class['classid']">class="yijion swiper-slide"<else/>class="yiji swiper-slide"</if> pro-class-id="{$nav['nav_belong']}"><a href="{$nav['url']}#nav" >{$nav['title']}</a></li>
+
+            </volist>
+        </ul>
+    </div>
+    <div class="swiper-button-next InsidePages_list-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev InsidePages_list-prev"><i class="fa fa-angle-left"></i></div>
+    <div class="clear"></div>
+</div>

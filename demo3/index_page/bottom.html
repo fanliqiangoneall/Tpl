@@ -1,0 +1,204 @@
+<!--{$pagename}-->
+<!--{:dump(has_mould('bottom'))}-->
+<if condition="has_mould('bottom') eq false">
+<style>
+#bottom1{ display:none}
+</style>
+<else/>
+<link href="__TMPL__demo3/css/bottom.css" rel="stylesheet">
+</if>
+<div id="bottom1" >
+
+
+<style>
+
+<php>
+if($data13[8]){
+	$botom_txt_color=$data13[8];
+}else{
+	$botom_txt_color="fff";	
+}
+</php>
+#bottom1 .index_bottom_left_d li{
+	color:#{$botom_txt_color}
+}
+#bottom1 .index_bottom_nav li h2{
+	color:#{$botom_txt_color}
+}
+.index_bottom_left_d{margin-top:10px !important;}
+.index_bottom_footer {
+    width: 100%;
+    clear: both;
+    margin: auto;
+    min-width: 1190px;
+    max-width: 1920px !important;
+    background: url({:getindeximgurl($data13[1])}) center center no-repeat !important;
+    height: 305px;
+}
+</style>
+<div id="bottom1" class="index_bottom_footer">
+ <div style="width: 1190px;height: 260px;margin: 0 auto">
+   <div class="index_bottom_nav">
+      <volist name="web_navigation" id="vo" offset="0" length='9' key="key">
+            <li id="menu{$key}"><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+          </volist>
+   </div>
+   
+ <!--  <div class="" style=" height:1px; width:100%; background:#D7D5D5"></div>-->
+   
+ <div class="index_bottom_left">
+   <div class="index_bottom_left_d">
+     <if condition="$about['contact']">
+         <li>联系人： {$about['contact']}</li>
+     </if>
+
+         <li>
+           电话： <if condition="chaifen($about['phone'],0)">{:chaifen($about['phone'],0)}&nbsp; </if><if condition="chaifen($about['phone'],1)">{:chaifen($about['phone'],1)}&nbsp; </if><if condition="chaifen($about['mobile'],0)">{:chaifen($about['mobile'],0)}</if>
+         </li>
+
+	<if condition="chaifen($about['email'],0)">     
+     <li>
+       邮箱： <a href="mailto:{:chaifen($about[email],0)}" onclick="turn_sta(3,4);gtag_report_conversion_email();" style="color:#fff">{:chaifen($about['email'],0)}</a>&nbsp;&nbsp;&nbsp;<if condition="chaifen($about[email],1)"><a href="mailto:{:chaifen($about[email],1)}" onclick="turn_sta(3,4);gtag_report_conversion_email();" style="color:#fff">{:chaifen($about['email'],1)}</a></if>
+     </li>
+     </if>
+     <if condition="$about['company_name']"> 
+         <li>
+           公司名字：{$about['company_name']}
+         </li>
+     </if>
+     <if condition="$about['address']"> 
+     <li>
+       地址： {$about['address']}
+     </li>
+     </if>
+   </div>
+ </div>
+ 
+ 
+ 
+ <div class="index_bottom_right" style="width:150px;">
+ <if condition="$data13[0]">
+    <div style="padding: 0px;padding-bottom: 10px">
+      <span style="width: 150px;float: right;height: 150px;"><img src="{:getindeximgurl($data13[0])}" style="width: 150px;"></span>
+      <div style="clear: both;"></div>
+    </div>
+ </if>   
+
+ </div>
+ 
+ 
+   <div style="clear: both;height: 20px;width: 100%">
+                           <div style="float: right;">
+       <p style="float:left; height:20px; line-height:20px; font-size: 13px;color: #{$botom_txt_color};font-weight: normal;font-family: Microsoft YaHei;margin-top: 3px;">分享到：</p>
+          <div style="float:left; margin-left:5px; height:20px; line-height:20px; ">
+                                            
+                                            <div>
+                                                <div class="bdsharebuttonbox detail-share-box" data-tag="share_2">
+                                                    <a href="#" class="bds_more" data-cmd="more"></a>
+                                                    <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+                                                    <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+                                                    <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+                                                    <a href="#" class="bds_renren" data-cmd="renren"></a>
+                                                    <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+       </div>
+       <div class="clear"></div>
+   </div>
+   <!-- <div class="" style=" height:1px; width:100%; background:#D7D5D5"></div>-->
+   <div class="index_bottom_bottom2">
+    <div style="width: 1190px;margin: 0 auto;margin-top:25px;color: #{$botom_txt_color}">
+       <php>
+            $nowtime=date("Y",time());
+            if(!$data13[2]){
+            $currtime=2018;
+            }else{
+            $currtime=$data13[2];
+           	}
+            if(!$data13[4]){
+            	$data13[4]="http://beian.miit.gov.cn/";
+            }
+            </php>
+            <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>             
+             &nbsp; {$about['company_name']} &nbsp;&nbsp;&nbsp;<if condition="$data13[3]"><a href="{$data13[4]}" target="_blank" style="color:#{$data13[5]}">{$data13[3]}</a></if>
+            <div class="" style="float:right;color:#{$botom_txt_color}">
+            <a  style="color:#{$botom_txt_color}" target="new" href="https://www.one-all.com/mianze.html" title="中环免责声明">免责声明
+			</a><a style="color:#{$botom_txt_color}" href="{:U('/sitemap')}" onfocus="blur()">网站地图</a>&nbsp;&nbsp;<span style="font-size:16px;  color:#{$botom_txt_color};"><a style="color:#{$botom_txt_color}" href="{:U('/alltag','','')}">所有标签</a></span>&nbsp;&nbsp;<if condition="$data13[7]"><a href="https://www.one-all.com" title="中环互联网" target="_blank" style="display:none; color:#{$botom_txt_color}">常州网络公司</a>&nbsp;&nbsp;<span style="display: none; color:#{$botom_txt_color}">中环互联网设计制作</span><else/><a href="https://www.one-all.com" title="中环互联网" target="_blank" style="display: inline-block;color:#{$botom_txt_color}">常州网络公司</a>&nbsp;&nbsp;<span style="display: inline-block">中环互联网设计制作</span></if>&nbsp;&nbsp;<if condition="get_txtBeiAn()"><a href="https://beian.miit.gov.cn" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a></if>
+            </div>
+  {:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}</div>
+    </div>
+  </div>
+</div>
+
+ <if condition="$friend_link neq ''">
+        <div class="friendlink" style="margin-top: 0px;">
+            <div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">友情链接: </span>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; text-align:center;color: #fff;line-height: 20px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                    </if>
+                </volist>
+                <!--<div style="clear:both"></div>-->
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </if>
+
+
+ <script type="text/javascript">
+   function CheckForm(theForm)
+  {
+    if (theForm.keywords.value=="Search")
+    {
+      alert('请输入搜索关键词！');
+      theForm.keywords.focus();
+      return false;
+    }
+    
+    return true; 
+  }
+  function OnFocusFun(element,elementvalue)
+    {
+      if(element.value==elementvalue)
+      {
+        element.value="";
+        element.style.color="#888888";
+      }
+    }
+    //离开输入框时触发事件
+    function OnBlurFun(element,elementvalue)
+    {
+      if(element.value==""||element.value.replace(/\s/g,"")=="")
+      {
+        element.value=elementvalue;    
+        element.style.color="#888888";
+      }
+    }
+jQuery('#index_navigation_animate').removeClass().addClass('fadeInLeft');
+jQuery(".index_navigation_page_Menu ul li").each(function() {
+  jQuery(this).mouseenter(function(){
+       var a=jQuery(".index_navigation_page_Menu ul li").index(jQuery(this));
+       var num=a+1;
+       if(num==5){
+         }
+       else{
+       jQuery(".index_navigation_page_Menu ul li b:eq("+a+")").show();
+       jQuery("#frn_l_"+num).show();
+       }
+     }).mouseleave(function(){
+        var a=jQuery(".index_navigation_page_Menu ul li").index(jQuery(this));
+        var num=a+1;
+        jQuery(".index_navigation_page_Menu ul li b:eq("+a+")").hide();
+        jQuery("#frn_l_"+num).hide();
+       })
+  });
+ </script>
+<script type="text/javascript">
+jQuery('#index_bottom_animate').removeClass().addClass('fadeInDown');
+jQuery('#index_bottom_animate_1').removeClass().addClass('fadeInLeft');
+jQuery('#index_bottom_animate_2').removeClass().addClass('fadeInRight');
+</script>
+</div>

@@ -1,0 +1,258 @@
+<style>
+    .p_content>h4 {
+        text-align: center;
+        font-size: 24px;
+        color: #111111;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .p_content>h4 span {
+        font-weight: 300;
+    }
+
+    .p_content>h4 b {
+        font-weight: 700;
+        display: inline-block !important;
+    }
+
+    .doct_info_con .doct_con {
+        width: 100%;
+    }
+
+    .info_news_type2 li {
+        margin-right: 2.3%;
+        margin-bottom: 2.3%;
+    }
+
+    .info_news_type ul li {
+        width: 31%;
+        float: left;
+        text-align: center;
+    }
+
+    .info_news_type2 li.kskf_act a {
+        background: #009098;
+        text-align: left;
+    }
+
+    .info_news_type ul li a {
+        display: block;
+        line-height: 46px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        position: relative;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .info_news_type2 li.kskf_act a span {
+        color: #fff;
+        margin-left: 10%;
+    }
+
+    .info_news_type ul li a span {
+        font-size: 16px;
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: 35px;
+        display: inline-block;
+        height: 100%;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+        color: #666;
+    }
+
+    .ksjs_content .ksjs_kf .info_news_type2 li.kskf_act a {
+        background: #009098;
+        text-align: left;
+    }
+
+    .info_news_type2 li:hover a {
+        background: #009098;
+        text-align: left;
+    }
+
+    .info_news_type2 li.kskf_act a span {
+        color: #fff;
+        margin-left: 10%;
+    }
+
+    .info_news_type2 .kskf_act a span {
+        color: #fff;
+        margin-left: 10%;
+    }
+
+    .info_news_type2 li:hover a span {
+        color: #fff;
+        margin-left: 10%;
+    }
+
+    .info_news_type ul li a i {
+        display: block;
+        width: 26px;
+        height: 26px;
+        background: url(__TMPL__HJZF2_Z/images/more_btn.png) no-repeat center;
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        margin-top: -13px;
+        transition: 250ms ease;
+        -webkit-transition: 250ms ease;
+    }
+
+    .info_news_type2 li.kskf_act:nth-of-type(1) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico11.png");
+    }
+
+    .info_news_type2 li.kskf_act:nth-of-type(2) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico22.png");
+    }
+
+    .info_news_type2 li.kskf_act:nth-of-type(3) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico33.png");
+    }
+
+    .info_news_type2 li.kskf_act:nth-of-type(4) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico44.png");
+    }
+
+    .info_news_type2 li.kskf_act:nth-of-type(5) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico55.png");
+    }
+
+    .info_news_type2 li.kskf_act:nth-of-type(6) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico66.png");
+    }
+
+    .info_news_type2 li:nth-of-type(1) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico1.png");
+    }
+
+    .info_news_type2 li:nth-of-type(2) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico2.png");
+    }
+
+    .info_news_type2 li:nth-of-type(3) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico3.png");
+    }
+
+    .info_news_type2 li:nth-of-type(4) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico4.png");
+    }
+
+    .info_news_type2 li:nth-of-type(5) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico5.png");
+    }
+
+    .info_news_type2 li:nth-of-type(6) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico6.png");
+    }
+
+    .info_news_type2 li:hover:nth-of-type(1) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico11.png");
+    }
+
+    .info_news_type2 li:hover:nth-of-type(2) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico22.png");
+    }
+
+    .info_news_type2 li:hover:nth-of-type(3) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico33.png");
+    }
+
+    .info_news_type2 li:hover:nth-of-type(4) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico44.png");
+    }
+
+    .info_news_type2 li:hover:nth-of-type(5) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico55.png");
+    }
+
+    .info_news_type2 li:hover:nth-of-type(6) span {
+        background-image: url("__TMPL__HJZF2_Z/images/kfyx_ico66.png");
+    }
+
+    .swiper-container-ksjs .swiper-slide ul {
+        overflow: hidden;
+        margin: 2% 0;
+    }
+
+    .swiper-container-ksjs .swiper-slide ul li {
+        float: left;
+        width: 32%;
+        margin-left: 2%;
+    }
+
+    .swiper-container-ksjs .swiper-slide ul li:nth-of-type(1) {
+        margin-left: 0;
+    }
+</style>
+<div class="pro_cate_18_left dean_left">
+    <div class="doct_info_con">
+        <div class="doct_con">
+            <div class="p_content">
+                <p>{:str_replace('&nbsp;',' ',htmlspecialchars_decode($product['pro_profile']))}</p>
+                <p><br></p>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+</div>
+
+<script>
+    $(document).on("click", ".info_news_type2 a", function () {
+        var a_id = $(this).attr("a_id");
+        if (a_id == 26) {
+            var index = 0;
+        }
+        if (a_id == 29) {
+            var index = 1;
+        }
+        if (a_id == 32) {
+            var index = 2;
+        }
+        if (a_id == 28) {
+            var index = 3;
+        }
+        if (a_id == 27) {
+            var index = 4;
+        }
+        if (a_id == 31) {
+            var index = 5;
+        }
+        $(".swiper-wrapper .swiper-slide").hide();
+        $(".swiper-wrapper .swiper-slide").eq(index).show();
+        var par = $(this).parent('li');
+        par.addClass('kskf_act').siblings('li').removeClass('kskf_act');
+    })
+    //26,29,32,28,27,31
+    $(document).ready(function (e) {
+        var a_id = $(".a_id").html();
+        if (a_id == 1) {
+            var a_ids = "26";
+        }
+        if (a_id == 31) {
+            var a_ids = "29";
+        }
+        if (a_id == 27) {
+            var a_ids = "32";
+        }
+        if (a_id == 28) {
+            var a_ids = "28";
+        }
+
+        if (a_id == 32) {
+            var a_ids = "27";
+        }
+        if (a_id == 29) {
+            var a_ids = "31";
+        }
+
+        $("a[a_id='" + a_ids + "']").parent().addClass("kskf_act");
+        $("a[a_id='" + a_ids + "']").trigger("click");
+
+    });
+</script>

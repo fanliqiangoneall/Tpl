@@ -1,0 +1,177 @@
+<!--{$pagename}-->
+<style>
+    #bottom-2{display: none;}
+</style>
+<if condition="has_mould('head-1') eq true">
+
+<style>
+    #bottom-2{display: block}
+    .foot{padding-bottom: 0;display: none;}
+    .foot_nav{width: 320px;}
+    .ft_cont{width: 560px;}
+    .Page_Footlan{width: 100%;margin-bottom: 20px;}
+    .Page_Footlan li{text-align: left;display: inline-block;width: 12%;line-height: 24px;}
+    .Page_Footlan li a{color: #fff;}
+    .bottom_footer{width: 1190px;margin: auto;color: #fff;text-align: center;font-size: 14px;clear: both;line-height: 40px;}
+.index_bottom_footer {
+    width: 100%;
+    clear: both;
+    margin: auto;
+    min-width: 1190px;
+    max-width: 1920px !important;
+    background: url({:getindeximgurl($data13[1])}) center center no-repeat !important;
+    height: 305px;
+}
+.footnav_bg{width: 5px;height: 5px;background: #fff;float: left;margin-top: 12px;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;}
+.foot_nav li:hover .footnav_bg{
+    background: #{$color};
+}
+.foot_nav li:hover a h2{
+color: #{$color};
+}
+.ft_cla_name:hover h3{
+    color: #{$color};
+}
+<if condition="$data31[9]">
+.foot-2 {
+    width: 100%;
+    min-height: 255px;
+    background: url({:getindeximgurl($data31[9])});
+    clear: both;
+    position: relative;
+	background-repeat:no-repeat;
+	background-position:center;	
+}
+</if>
+</style>
+</if>
+<if condition="$data13[4] eq ''">
+    <style>
+        .foot_hot {
+            width: 390px;
+            float: left;
+            height: auto;
+            margin-right: 116px;
+        }
+    </style>
+</if>
+
+<!--foot start-->
+<div id="bottom-2">
+    <div class="foot-2">
+        <div class="foot_mian">
+            <div class="foot_nav">
+                <p class="foot_title">{$data31[0]}</p>
+                <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                    <li id="menu{$key}"><div class="footnav_bg"></div><a href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()">{$vo['title']}</a></li>
+                </volist>
+            </div>
+            <div class="ft_cont">
+                <p class="foot_title">{$data31[1]}</p>
+                <ul>
+
+                    <if condition="chaifen($about['mobile'],0) neq '' ">
+                        <li style="background: url({:getindeximgurl($data31[4])}) no-repeat 0 3px;">Tel: {:chaifen($about['mobile'],0)}</li>
+                    </if>
+                    <if condition="chaifen($about['email'],0) neq '' ">
+                        <li style="background: url({:getindeximgurl($data31[5])}) no-repeat 0 4px;;">E-mail:<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,2)" style="color: #ffffff"> {:chaifen($about['email'],0)}</a></li>
+                    </if>
+                    <if condition="chaifen($about['address'],0) neq '' ">
+                        <li style="background: url({:getindeximgurl($data31[6])}) no-repeat 0 0;">Add: {$about['address']}</li>
+                    </if>
+
+                </ul>
+            </div>
+
+            <div class="ft_ewm" style="float: right;margin-right: 0;">
+                <p class="foot_title">{$data31[2]}</p>
+                <img src="{:getindeximgurl($data31[3])}" style="width: 111px;height: 111px;" >
+            </div>
+            <div class="clear" style="padding-top: 18px;margin-bottom: 10px;border-bottom: 1px solid rgba(255,255,255,0.2)"></div>
+            <ul class="Page_Footlan">
+
+                <li><a href="javascript:translator('en|Cn')"><img src="__TMPL__WH01/img/lang/ico_cn.gif" width="20" height="13" alt="" /> 中文</a></li>
+
+                <li><a href="javascript:translator('en|hr')"><img src="__TMPL__WH01/img/lang/ico_hr.gif" width="20" height="13" /> Hrvatska</a></li>
+
+                <li><a href="javascript:translator('en|fr')"><img src="__TMPL__WH01/img/lang/ico_fr.gif" width="20" height="13" alt="" /> Français</a></li>
+
+                <li><a href="javascript:translator('en|it')"><img src="__TMPL__WH01/img/lang/ico_it.gif" width="20" height="13" alt="" /> Italiano</a></li>
+
+                <li><a href="javascript:translator('en|pt')"><img src="__TMPL__WH01/img/lang/ico_pt.gif" width="20" height="13" alt="" /> Português</a></li>
+
+                <li><a href="javascript:translator('en|ja')"><img src="__TMPL__WH01/img/lang/ico_ja.gif" width="20" height="13" alt="" /> 日本の</a></li>
+
+                <li><a href="javascript:translator('en|ko')"><img src="__TMPL__WH01/img/lang/ico_ko.gif" width="20" height="13" alt="" /> 한국어</a></li>
+
+                <li><a href="javascript:translator('en|ar')"><img src="__TMPL__WH01/img/lang/ico_ar.gif" width="20" height="13"  alt=""/> العربية</a></li>
+
+                <li><a href="javascript:translator('en|de')"><img src="__TMPL__WH01/img/lang/ico_de.gif" width="20" height="13" alt="" /> Deutsch</a></li>
+
+                <li><a href="javascript:translator('en|cs')"><img src="__TMPL__WH01/img/lang/ico_cs.gif" width="20" height="13"  alt=""/> česky</a></li>
+
+                <li><a href="javascript:translator('en|da')"><img src="__TMPL__WH01/img/lang/ico_da.gif" width="20" height="13"  alt=""/> Dansk</a></li>
+
+                <li><a href="javascript:translator('en|nl')"><img src="__TMPL__WH01/img/lang/ico_nl.gif" width="20" height="13"  alt=""/> Nederlands</a></li>
+
+                <li><a href="javascript:translator('en|fi')"><img src="__TMPL__WH01/img/lang/ico_fi.gif" width="20" height="13"  alt=""/> suomi</a></li>
+
+                <li><a href="javascript:translator('en|el')"><img src="__TMPL__WH01/img/lang/ico_el.gif" width="20" height="13" alt="" /> Ελληνικά</a></li>
+
+                <li><a href="javascript:translator('en|hi')"><img src="__TMPL__WH01/img/lang/ico_hi.gif" width="20" height="13"  alt=""/> हिन्दी</a></li>
+
+                <li><a href="javascript:translator('en|no')"><img src="__TMPL__WH01/img/lang/ico_no.gif" width="20" height="13" alt="" /> norsk</a></li>
+
+                <li><a href="javascript:translator('en|tr')"><img src="__TMPL__WH01/img/lang/ico_tr.gif" width="20" height="13"  alt=""/> Türkiye</a></li>
+
+                <li><a href="javascript:translator('en|th')"><img src="__TMPL__WH01/img/lang/ico_th.gif" width="20" height="13" alt="" /> ประเทศไทย</a></li>
+
+                <li><a href="javascript:translator('en|bg')"><img src="__TMPL__WH01/img/lang/ico_bg.gif" width="20" height="13"  alt=""/> български</a></li>
+
+                <li><a href="javascript:translator('en|ru')"><img src="__TMPL__WH01/img/lang/ico_ru.gif" width="20" height="13"  alt=""/> русский</a></li>
+
+                <li><a href="javascript:translator('en|sv')"><img src="__TMPL__WH01/img/lang/ico_sv.gif" width="20" height="13" alt="" /> Svenska</a></li>
+
+                <li><a href="javascript:translator('en|pl')"><img src="__TMPL__WH01/img/lang/ico_pl.gif" width="20" height="13"  alt=""/> Polski</a></li>
+
+                <li><a href="javascript:translator('en|ro')"><img src="__TMPL__WH01/img/lang/ico_ro.gif" width="20" height="13"  alt=""/> Română</a></li>
+
+                <li><a href="javascript:translator('en|vi')"><img src="__TMPL__WH01/img/lang/ico_vi.gif" width="20" height="13" alt="" /> Việt Nam</a></li>
+
+
+            </ul>
+            <!--foot-text end-->
+        </div>
+        <div style="background: rgba(0,0,0,0.2);">
+            <div class="bottom_footer">
+                <php>
+                    $nowtime=date("Y",time());
+                    $currtime=$data31[8];
+                </php>
+                <if condition="$nowtime gt $currtime">CopyRight&nbsp;©&nbsp;{$currtime}-{$nowtime}<else/>CopyRight&nbsp;©&nbsp;{$nowtime}&nbsp;-</if>&nbsp;{$about['company_name']} All Rights Reserved.&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">{:htmlspecialchars_decode(get_txtBeiAn())}</a>&nbsp;<a href="{:U('/sitemap')}" onfocus="blur()" style="color: #fff;cursor: pointer;">&nbsp;Sitemap&nbsp;</a>&nbsp;&nbsp;<a href="{:U('/alltag','','')}" style="color: #fff;cursor: pointer;">All tags</a>
+
+                &nbsp;&nbsp;Designed by <a href="https://www.one-all.com" title="Zhonghuan Internet" target="_blank" style="color: #fff;cursor: pointer;">Zhonghuan Internet</a>&nbsp;&nbsp;{:htmlspecialchars_decode(get_web_analysis())}{:htmlspecialchars_decode(get_google())}
+            </div>
+        </div>
+    </div>
+    <!--foot end-->
+
+    <if condition="$friend_link neq ''">
+        <div class="friendlink" style="margin-top: 0px;">
+            <div class="link"><span style="font-size:14px; font-weight:bold; float:left;line-height:30px;color: #333">FriendLink: </span>
+                <volist name="friend_link" id="friend_link">
+                    <if condition="$friend_link['linkurl'] neq ''" ><a target="_new" href="{$friend_link['link_url']}"><img style="width:70px; height:25px; float:left;" src="{:getimgurl($friend_link['linkurl'])}"/></a><else/>
+                        <div style="float:left; text-align:center;color: #fff;line-height: 20px;margin-right: 10px;"><a target="_new" href="{$friend_link['link_url']}">{$friend_link['link_title']}</a></div>
+
+                    </if>
+                </volist>
+                <!--<div style="clear:both"></div>-->
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </if>
+</div>
+
+
+
+

@@ -1,0 +1,226 @@
+<style>
+	.productbutton {
+		background: #{$color};
+	}
+	::-webkit-input-placeholder { /* WebKit browsers */
+	  color: rgba(255,255,255,.8);
+	  font-size: 16px;
+	}
+	
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	  color: rgba(255,255,255,.8);
+	  font-size: 16px;
+	}
+	
+	:-ms-input-placeholder { /* Internet Explorer 10+ */
+	  color: rgba(255,255,255,.8);
+	  font-size: 16px;
+	}  
+	.yz_alert{ position:absolute; right:10px; top:10px; z-index:9;} 
+	.inner9_title{
+	   border: 0;
+	   height: 40px !important;
+       color: rgba(255,255,255,.8);
+	   padding:0;
+	}
+</style>
+<php>
+	$lan_submit = C('Language');
+</php>
+<script>
+	jQuery(function(){
+
+		jQuery("#message").focus(function(){
+			jQuery("#message_alert").html("");
+		});
+		jQuery("#linkname").focus(function(){
+			jQuery("#linkname_alert").html("");
+		});
+		jQuery("#phone").focus(function(){
+			jQuery("#phone_alert").html("");
+		});
+		jQuery("#email").focus(function(){
+			jQuery("#email_alert").html("");
+		});
+		jQuery("#code_char").focus(function(){
+			jQuery("#code_char_alert").html("");
+		});
+
+
+		jQuery("#getcode_char").click(function(){
+			jQuery(this).attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+		jQuery("#getcode_char1").click(function(){
+			jQuery("#getcode_char").attr("src",'//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};');
+		});
+
+
+	})
+
+
+
+
+	function yz_submit(){
+		var language = '<?php echo $lan_submit;?>';
+		var count=0;
+		var message=Trims(jQuery("#message").val());
+		var linkname=Trims(jQuery("#linkname").val());
+		var phone=Trims(jQuery("#phone").val());
+		var email=Trims(jQuery("#email").val());
+
+
+		if(linkname.length<=0){
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#linkname_alert").html("名称不能为空！");
+			}else{
+				jQuery("#linkname_alert").html("The name cannot be empty!");
+			}
+			count++;
+		}
+		else{
+			jQuery("#linkname_alert").html("");
+		}
+
+
+
+		if(language == 'cn' || language == 'zh'){
+			if(phone.length<=0){
+				jQuery("#phone_alert").html("电话不能为空！");
+				count++;
+			}else{
+				if(is_phone(jQuery('#phone').val())){
+					jQuery("#phone_alert").html("电话格式有误！");
+				}
+			}
+		}else{
+			if(phone.length>0 && is_phone(jQuery('#phone').val()))
+			{
+			jQuery("#phone_alert").html("Telephone information is wrong!");
+				count++;
+			}else{
+				jQuery("#phone_alert").html("");
+			}
+		}
+
+
+
+		if(language == 'cn' || language == 'zh'){
+			if(email.length>0 &&!is_email(email)){
+				jQuery("#email_alert").html("*邮箱格式有误！");
+				count++;
+			}
+			else {
+				jQuery("#email_alert").html("");
+			}
+		}else{
+			if(email.length<=0){
+				if(language == 'cn' || language == 'zh'){
+					jQuery("#email_alert").html("电子邮件不能为空！");
+				}else{
+					jQuery("#email_alert").html("The email can not be empty!");
+				}
+
+				count++;
+			}
+			else{
+				if(!is_email(email)){
+					jQuery("#email_alert").html("Email format error!");
+					count++;
+				}
+				else {
+					jQuery("#email_alert").html("");
+				}
+			}
+		}
+
+		if(message.length<=0){
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#message_alert").html("咨询内容不能为空！");
+			}else{
+				jQuery("#message_alert").html("Consulting content cannot be empty!");
+			}
+			count++;
+		}
+		else{
+			jQuery("#message_alert").html("");
+		}
+
+		var code_char = jQuery("#code_char").val();
+		jQuery.ajax({
+			type: "POST",
+			url: "/verification",
+			async:false,
+			data: {code:code_char},
+			success: function(data){
+
+				if(data==1){
+					jQuery("#code_char_alert").html("");
+				}else{
+					count++;
+					if(language == 'cn' || language == 'zh'){
+						jQuery("#code_char_alert").html("验证码错误");
+					}else{
+						jQuery("#code_char_alert").html("Verification code error");
+					}
+
+				}
+			}
+		});
+
+
+		if(count>0){
+			return false;
+		}
+		else{
+			if(language == 'cn' || language == 'zh'){
+				jQuery("#inbut").html('<h5 style="color:#F00;">请稍等</h5>');
+			}else{
+				jQuery("#inbut").html('<h5 style="color:#F00;">Please wait</h5>');
+			}
+			return true;
+		}
+
+	}
+
+
+</script>
+<div class="inquiry" id="zixun">
+	<form action="__APP__/saveinquiry" method="post" onsubmit="return yz_submit();">
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft"><input type="text" name="linkname" id="linkname" placeholder="{:__('Name: ')} *"><span class="yz_alert" id="linkname_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+            <div class="inquiryinfo">
+				<div class="inquiryleft"><if condition="C('Language') eq 'cn' or C('Language') eq 'zh'"><input type="text" name="phone" id="phone" placeholder="{:__('Mobile: ')} *"><else/><input type="text" name="phone" id="phone" placeholder="{:__('Mobile: ')}"></if><span class="yz_alert" id="phone_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+            <div class="inquiryinfo">
+				<div class="inquiryleft"><if condition="C('Language') eq 'cn' or C('Language') eq 'zh'"><input type="text" name="email" id="email" placeholder="{:__('E-mail: ')}"><else/><input type="text" name="email" id="email" placeholder="{:__('E-mail: ')} *"></if><span class="yz_alert" id="email_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+            <div class="inquiryinfo">
+				<div class="inquiryleft"><input type="text" class="input" id="code_char" name="code" placeholder="{:__('Verification code: ')} *" maxlength="3" style="width:30%" />&nbsp;<img alt="" src="//{$Think.EWMWEBURL}/code_char.php?webid={$webid}&time={:rand(0,1000000000000000)}{:time()};" style="position:relative; top:-1px;" id="getcode_char" height="32" title="Generate a new captcha" align="absmiddle">&nbsp;<a href="javascript:void(0);" id="getcode_char1"><img
+						src="__TMPL__HJ02/img/click_resh.jpg" alt="" style="position: relative;left: -4px;top: -1px;height: 32px;"/></a><span class="yz_alert" id="code_char_alert"></span></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-6">
+			<div class="inquiryinfo">
+				<div class="inquiryleft">
+                	<textarea name="message" id="message" placeholder="{:__('Message: ')} *">{$product["pro_name"]}</textarea><span class="yz_alert" id="message_alert"></span>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="inquiryinfo">
+				<input type="hidden" name="prodid" value="{$product['pid']}"/>
+				<div id="inbut"><input  class="productbutton" type="submit" value="{:__('Submit')}"  name="submit" /></div>
+			</div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>

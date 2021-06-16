@@ -1,0 +1,67 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_service_25_wrapper li:not(:last-child) {
+        border-color: #{$data372[1]};
+    }
+
+    .hjzf_service_25_wrapper li:not(:last-child):after {
+        border-right-color: #{$data372[1]};
+        border-bottom-color: #{$data372[1]};
+    }
+
+    .hjzf_service_25_wrapper li:last-child {
+        background-color: #{$data372[0]};
+    }
+
+    .hjzf_service_25_wrapper li:not(:last-child):hover .index_sub_title,
+    .hjzf_service_25_wrapper li span em {
+        color: #{$data372[0]};
+    }
+
+    .hjzf_service_25_wrapper li:not(:last-child):hover {
+        border-color: #{$data372[0]};
+    }
+
+    .hjzf_service_25_wrapper li:not(:last-child):hover:after {
+        border-right-color: #{$data372[0]};
+        border-bottom-color: #{$data372[0]};
+    }
+</style>
+
+<section class="hjzf_service_25 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title pb40 tac wow fadeInUp">{$data372[2]}</div>
+                <ul class="hjzf_service_25_wrapper">
+                    <php>
+                        $arr = get_list_val($data372[3]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li class="tac">
+                            <a href="{$a[link]}">
+                                <if condition="$a[img]">
+                                    <div class="pb40">
+                                        <img src="{$a[img]}" alt="{$a[title]}">
+                                    </div>
+                                </if>
+                                <p class="index_sub_title pb20">{$a[title]}</p>
+                                <p class="index_text">{$a[sub]}</p>
+
+                            </a>
+                        </li>
+                    </volist>
+                    <li class="tac">
+                        <a href="{$data372[6]}">
+                            <span>
+                                <div class="index_sub_title pb20">{:HtmlEncode($data372[4])}</div>
+                                <i></i>
+                                <em>{$data372[5]}</em>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,87 @@
+<!--left style-->
+<style>
+  .inner_module2__inPageLeft_title{
+      background: #{$inner_data[1]};
+  }
+  .inner_module2__inPageLeft-box >ul{
+      border:1px solid #{$inner_data[1]};
+  }
+  .inner_module2__inPageLeft-box > ul > li > ul>li:hover a h3{
+      color: #{$color};text-decoration: underline;
+  }
+  .inner_module2__inPageLeft-box > ul > li.module2_yijion>a{
+      background:#f0f0f0;
+  }
+  .inner_module2__inPageLeft-box > ul > li.module2_yijion>a>h3{
+      color: #{$inner_data[1]};
+  }
+  .inner_module2__inPageLeft-box > ul > li:hover >a{
+      background: #{$inner_data[1]};
+  }
+  .inner_module2__inPageLeft-box > ul > li:hover >a>h3{
+      color: #fff;
+  }
+  ul.inner_module2__inPageLeft-list > li>span.class_button i{
+      color: #{$inner_data[0]};
+  }
+  .inner_module2__inPageLeft-box > ul > li:hover >span.class_button i{
+      color: #fff;
+  }
+  .inner_module2__inPageLeft-box > ul > li.module2_yijion > ul>li.module2_childon >a>h3{
+      color:#{$color};
+  }
+
+</style>
+<!--left style-->
+<script>
+  $(document).ready(function(){
+      $(".class_button").on("click",function(){
+          if( $(this).next('ul').css("display")=="none"){
+              $(this).parent().addClass("module2_yijion").siblings("li").removeClass("module2_yijion").addClass("module2_yiji");
+          }else{
+              $(this).parent().removeClass("module2_yijion").addClass("module2_yiji");
+          }
+      })
+  })
+</script>
+<div class="inner_module2__inPageLeft-content">
+  <div class="inner_module2__inPageLeft-box">
+      <div class="inner_module2__inPageLeft_title">{:__('News Categories')}</div>
+      <ul class="inner_module2__inPageLeft-list">
+        <volist empty="" name="allnewclass" id="news_left">
+          <li <if condition="$newscate['classid'] eq $news_left['classid'] or $newclass['classid'] eq $news_left['classid']">class="module2_yijion"<else/>class="module2_yiji"</if>><a href="{:U('/new_category',array('classid'=>$news_left["classid"]))}">{$news_left['class_name']}</a></li>
+       </volist>
+      </ul>
+  </div>
+  <div class="clear"></div>
+    <div class="inner_module2__inPageLeft-box inner_module2__inPageLeft-box__contact">
+        <div class="inner_module2__inPageLeft_title">{:__('Contact Us')}</div>
+        <ul class="inner_module2__inPageLeft__contact">
+            <if condition="$about['contact']">
+            <li class="inner_module2__inPageLeft__contactItem">
+                <span>{:__('Contact: ')}</span><div>{:chaifen($about['contact'],0)}</div>
+            </li>
+            </if>
+            <if condition="$about['phone']">
+            <li class="inner_module2__inPageLeft__contactItem">
+                <span>{:__('Phone: ')}</span><div>{:chaifen($about['phone'],0)}</div>
+            </li>
+            </if>
+            <if condition="$about['mobile']">
+            <li class="inner_module2__inPageLeft__contactItem">
+                <span>{:__('Mobile: ')}</span><div>{:chaifen($about['mobile'],0)}</div>
+            </li>
+            </if>
+            <if condition="$about['msn'] and C('Language') eq 'en'">
+                <li class="inner_module2__inPageLeft__contactItem">
+                    <span>{:__('Skype: ')}</span><div><a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,2);" target="_blank">{:chaifen($about[msn],0)}</a></div>
+                </li>
+            </if>
+            <if condition="$about['msn'] and C('Language') eq 'cn'">
+                <li class="inner_module2__inPageLeft__contactItem">
+                    <span>QQ：</span><div><a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,2)" target="_blank">{:chaifen($about['msn'],0)}</a></div>
+                </li>
+            </if>
+        </ul>
+    </div>
+</div>

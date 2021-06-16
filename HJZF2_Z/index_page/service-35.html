@@ -1,0 +1,74 @@
+<!--{$pagename}-->
+<php>
+    if($data422[1]){
+        $color = $data422[1];
+    }
+    </php>
+<style>
+	<if condition="$data422[3]">
+    .hjzf_service_35 {
+        background-image: url({:getindeximgurl($data422[3])});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</if>
+.hjzf_service_35_pagination span.swiper-pagination-bullet-active{
+    background-color: #{$color};
+}
+
+</style>
+<section class="hjzf_service_35 index_pd">
+    <div class="index_title text-center pb40">
+        {$data422[0]}
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- PC端 -->
+            <div class="col-xs-12 nav-hidden-mobile">
+                <ul class="hjzf_service_35_wrapper hjzf_service_35_wrapper_pc">
+                    <php>
+                        $arr = get_list_val($data422[2]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li>
+                            <if condition="$a[link]">
+                                <a href="$a[link]">
+                            </if>
+                            <i></i>
+                            <img src="{$a[ico]}" alt="{$a[title]}">
+                            <p class="text-center">{$a[title]}</p>
+                            <if condition="$a[link]">
+                                </a>
+                            </if>
+                        </li>
+                    </volist>
+
+                </ul>
+            </div>
+            <!-- 移动端 -->
+            <div class="col-xs-12 nav-hidden-pc">
+                <div class="swiper-container hjzf_service_35_wrapper hjzf_service_35_wrapper_mb">
+                    <div class="swiper-wrapper">
+
+                        <volist name="arr" id="b">
+                            <li class="swiper-slide">
+                                <if condition="$b[link]">
+                                    <a href="$b[link]">
+                                </if>
+                                <i></i>
+                                <img src="{$b[ico]}" alt="{$b[title]}">
+                                <p class="text-center">{$b[title]}</p>
+                                <if condition="$b[link]">
+                                    </a>
+                                </if>
+                            </li>
+                        </volist>
+
+                    </div>
+                    <div class="hjzf_service_35_pagination text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+<extend name="demo2:basein" />
+<block name="content">
+
+    <div id="">
+        <if condition="$banner neq ''">
+            <volist name="banner" id="banner" offset="0" length="1">
+                <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+            </volist>
+            <else/>
+            <div class="in_banner" style="background:url({:getindeximgurl($data3[0])}) center no-repeat"></div>
+        </if>
+    </div>
+    <div class="r_mbx"><img src="__TMPL__demo2/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;Download&nbsp;>&nbsp;{$download['title']}</div>
+
+    <div class="clear"></div>
+<!--代码块结束-->
+<!--代码块开始-->
+    <div style="width: 1190px;margin:0 auto">
+        <Include file="./Tpl/demo2/leftdownload.html" />
+            <div class="page_Main">
+                <div class="page_RightTitle"><span>{$downcate['class_name']}</span></div>
+                        <div class="download">
+                            <div class="body" style="margin-top: 45px;">
+                                <ul class="donload_list">
+                                    <volist name="download" id="download" key="k">
+                                        <li><span class="right_time"><a href="{:getimgurl($download['linkurl'])}" target="_blank">Donwload</a></span><a href="{:U('/download_detail',array('id'=>$download["id"]))}" >{$download['title']}</a></li>
+                                    </volist>
+                                </ul>
+                            </div>
+                            <div class="main_page">{$page}</div>
+                        </div>
+
+
+                <div style="clear:both"></div>
+            </div>
+        <div style="clear:both"></div>
+    </div>
+
+
+
+<!--代码块结束-->
+</block>

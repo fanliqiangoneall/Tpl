@@ -1,0 +1,40 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_service_29_wrapper .index_btn{
+        background-color: #{$data378[1]};
+        color: #fff;
+    }
+</style>
+<section class="hjzf_service_29 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 index_text text-center pb40">
+                {:HtmlEncode($data378[0])}
+            </div>
+            <div class="clearfix"></div>
+            <php>
+                $arr = get_list_val($data378[2]);
+            </php>
+            <ul class="hjzf_service_29_wrapper">
+                <volist name="arr" id="a">
+                    <li class="col-xs-12 col-lg-4">
+                        <a href="{$a[link]}">
+                            <if condition="$a[img]">
+                                <img src="{$a[img]}" alt="{$a[title]}" class="img-fluid pb20">
+                            </if>
+                            <div class="hjzf_service_29_wrapper_info">
+                                <div class="index_sub_title pb20">
+                                    {$a[title]}
+                                </div>
+                                <div class="index_text pb20">
+                                    {$a[con]}
+                                </div>
+                                <span class="index_btn">{$data378[3]}</span>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</section>

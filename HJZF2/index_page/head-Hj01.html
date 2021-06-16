@@ -1,0 +1,102 @@
+<!--{$pagename}-->
+<php>
+    $language = HtmlEncode($data213[1]);
+</php>
+<script>
+    var lan_str = "<?php echo $language;?>";
+</script>
+    <style>
+    .head_seach li{
+        border-bottom: 2px solid #{$data213[0]};
+	}
+    .head_seach li:nth-child(2) button{
+        background: #{$data213[0]};
+    }
+    .new_hjzf_head-Hj01 .hj-nav>li.menu_on>a>h2,.new_hjzf_head-Hj01 .hj-nav>li:hover>a>h2{
+        color: #{$data213[0]};
+	}
+    .new_hjzf_head-Hj01 .hj-dropdown-menu{
+        border-color:#{$data213[0]};
+    }
+    </style>
+    <header id="header" class="hj01_header">
+        <section class="header_wapper">
+            <div class="container">
+                <div class="page_Logo">
+                    <a href="{:U('/')}" style="float: left;">{$logo}</a>
+                </div>
+
+                <div class=" logo_right rt">
+                    <if condition="$data213[1]">
+                        <div class="head_langauge rt">
+                            <i class="fa fa-language"></i><span>{:__('Language')}</span>
+                            <ul id="lang_ul" class="language_ul"></ul>
+                        </div>
+                    </if>
+                    <if condition="C(language) eq 'en'">
+                        <div class="head_mail rt">
+
+                            <span class="telNum">E-mail: <a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,1)"> {:chaifen($about['email'],0)}</a></span>
+                        </div>
+                        <else/>
+                        <div class="head_mail rt">
+
+                            <span class="telNum font-weight-500">全国服务热线：<a href="javascript:void(0);" onFocus="blur()" onClick="turn_sta(3,1)" style="cursor: default"> {:chaifen($about['phone'],0)}</a></span>
+                        </div>
+                    </if>
+                    <div class="head_seach rt">
+                            <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                                <ul>
+                                    <li style="float: left;width: 200px;height: 36px;"><input style="height: 36px;width:190px;border-width:0px;padding-left: 10px;color:#999999;outline: none;" type="text" value="{:__('Product Search')}" name="keywords" id="keyword" onfocus="OnFocusFun(this,&#39;keyword&#39;)" onblur="OnBlurFun(this,&#39;keyword&#39;)"></li>
+                                    <li style="float: left;width:36px;height: 36px;"><button type="submit" id="search-submit"><i class="fa fa-search"></i></button></li>
+                                    <div class="clear"></div>
+                                </ul>
+
+                            </form>
+                    </div>
+                </div>
+
+
+
+                <div class="clear"></div>
+            </div>
+        </section>
+        <section class="header_navwapper HJ03_head_menu">
+            <div class="container" style="position:relative;">
+                <nav class="hj-navbar " role="navigation">
+                        <ul class="hj-nav">
+                            <volist name="web_navigation" id="vo" offset="0" length='8' key="key">
+                                <li id="menu{$key}" <if condition="$vo[child] neq '' ">class="nav_more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>_t_nav="product" class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                                <if condition="$vo[child] neq '' ">
+                                    <ul class="hj-dropdown-menu hj01-menu">
+    
+                                        <volist name="vo['child']" id="v" offset="0"  key="key" >
+                                            <li>
+                                                <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+    
+                                            </li>
+                                        </volist>
+    
+                                    </ul>
+                                </if>
+                                </li>
+                            </volist>
+                        </ul>
+                </nav>
+                <div class="navigation-down">
+                    <div id="product" class="nav-down-menu menu-1" style="display: none;" _t_nav="product">
+                        <div class="top_product_menu">
+                           <volist empty="" name="allclass" id="allclass_top" key="k_class">
+                               <div class="head-Hj01_item"><a href="{:U('/product_category','','')}/{:getprocatename($allclass_top['pcid'])}">{$allclass_top['class_name']}</a></div>
+                               <if condition="$k_class%5 eq 0">
+                               <div class="clear" style="border-top:1px solid #ececec;"></div>
+                               </if>
+                           </volist>
+                           <div class="clear"></div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </section>
+    
+    </header>

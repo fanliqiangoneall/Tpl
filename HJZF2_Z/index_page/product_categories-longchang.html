@@ -1,0 +1,222 @@
+<!--{$pagename}-->
+<php>
+$zq_classid=I('classid');
+$cur_class_info=get_products_category_info($zq_classid);
+$map['parent_id']=$cur_class_info['parent_id'];
+$map['pcid']=array('neq',$zq_classid);
+$f_products_categorys=get_other_products_category_info($map);
+$map1['parent_id']=$zq_classid;
+$child_class_infos=get_other_products_category_info($map1);
+$btns = get_list_val($data521[0]);
+</php>
+<style>
+.zq_container .row{margin-left: -15px;margin-right: -15px;display: flex;flex-wrap: wrap;}
+.zq_container .row:before,.zq_container .row:after{display: none;}
+.product_categories-longchang_banner{ width:100%;}
+.product_categories-longchang_banner img{ width:100%;}
+.product_categories-longchang_class_name{ padding:20px 0px; padding-top:80px; }
+.product_categories-longchang_readme{ padding-bottom:30px;}
+.product_categories-longchang_child_cate_card{ padding:15px 0px; cursor:pointer;}
+.product_categories-longchang_child_cate_card_padding{ padding:5px 0px;}
+.product_categories-longchang_child_cate_card_class_name{ font-weight:bold; font-size:20px;}
+.product_categories-longchang_child_cate_card_readme{font-size:16px; max-height: ;}
+.product_categories-longchang_child_cate_card_Learn_more{ cursor:pointer; color:#{$color}}
+.product_categories-longchang_child_f_card{ position:relative; margin:10px 0px;}
+.product_categories-longchang_child_f_card_class_name{ position:absolute; bottom:0px; width:100%; color:#fff;text-align:center; font-size:16px; }
+.product_categories-longchang_child_f_card_class_name>div{background:rgba(0,0,0,0.6);padding:10px 0px;white-space: nowrap;}
+/* tableType */
+.tableWrap {position:relative;}
+.tableWrap .tableTit {font-size:20px; font-family:"NotoSans-Bold", arial, sans-serif; font-weight:normal; color:#000; margin-bottom:20px;}/* ��ǰ �з� table */
+
+/* 2018-11-06 ���� */
+.tableWrap .downBtn {position:absolute; top:-62px; right:0; display:inline-block; padding:19px 30px; background:#545a66; border-radius:3px; }
+.tableWrap .downBtn span {color:#fff; font-family:"NotoSans-Bold", arial, sans-serif; font-weight:normal; background:url("../img/down_icon.png") no-repeat right center; padding-right:36px;} 
+.tableWrap .downBtn.hoverG:hover {background:#8bbf45;}
+.tableWrap .downBtn span.bgNo {background:none; padding-right:0}
+
+.tableType1 {border-top:2px solid #000; margin-bottom:40px;} 
+.tableType1:last-child {margin-bottom:0}
+.tableType1 table {width:100%; table-layout:fixed;}
+.tableType1 table thead th {font-size:18px; color:#000; font-family:"NotoSans-Bold", arial, sans-serif; font-weight:normal; padding:20px 0; border-bottom:1px solid #e0e0e0; word-break:  break-word;}
+.tableType1 table tbody td {padding:20px 30px; border-bottom:1px solid #e0e0e0; text-align:center; line-height:1.3;}
+.tableType1 .mobile {display:none;}
+.tableType1 .tableTxt {margin-top:30px;}
+.tableType1 .tableTxt .dotT {position:relative; padding-left:12px; line-height:26px;}
+.tableType1 .tableTxt .dotT:before {content:""; display:block; position:absolute; top:0; left:0; width:2px; height:26px; background:url("../img/dot_2x2.gif") no-repeat 0 center;}
+.tableType1 .tableTxt .dotT strong {display:inline-block; font-family:"NotoSans-Bold", arial, sans-serif; font-weight:normal; margin-right:25px;}
+.tableType1 .scrollDiv {overflow-x:auto;}
+.tableType1 .scrollDiv::-webkit-scrollbar { height: 2px; }
+.tableType1 .scrollDiv::-webkit-scrollbar-thumb { background: #a9a9a9; }
+.tableType1 table tbody td.borL {border-left:1px solid #e0e0e0;}
+.tableWrap{ display:none;}
+.tableWrap.on{ display:block;}
+.product_categories-longchang_btn{ background-color:#002F6C; text-align:center; margin:10px}
+.product_categories-longchang_btn a{ display:inline-block; padding:10px 50px; font-size:18px; color:#fff;}
+</style>
+
+
+
+     
+            <div class="product_categories-longchang_banner">
+            <img src="{:getimgurl($cur_class_info['banner'])}">
+            </div>
+   
+
+
+<div class="container zq_container">
+
+    <div class="row">
+        <div class="col-xs-12">    
+            <h1 class="product_categories-longchang_class_name">{$cur_class_info['class_name']}</h1>
+        </div>
+        <div class="col-xs-9">    
+            <div class="product_categories-longchang_readme">{$cur_class_info['readme']}</div>
+        </div>
+        <div class="col-xs-3">
+        <volist name="btns" id="btn" key="key">
+        	<div id="product_categories-longchang_btn_{$key}" class="product_categories-longchang_btn nav-hidden-mobile" ><a style="color:{$btn['color']}" href="{$btn['link']}">{$btn['txt']}</a></div>
+        	<style>
+            #product_categories-longchang_btn_{$key}
+			{
+				background:{$btn['bgcolor']}
+			}			
+            #product_categories-longchang_btn_{$key}:hover
+			{
+				background:{$btn['gbgcolor']}
+			}
+			.tableType1 table tbody td{ text-align:left; padding-left:0px;}
+.tableWrap .tableTit{ padding-top:40px;}
+            </style>
+        </volist>    
+        </div>        
+    </div>   
+    <div class="row">
+          
+            <volist name="child_class_infos" id="f_products_category">
+            <div class="col-xs-12 col-md-6"> 
+            <div class="row product_categories-longchang_child_cate_card" pcid="{$f_products_category['pcid']}">
+            	<div class="col-xs-12 col-md-3"> 
+              
+                	<img class="img-fluid f_img-responsive" src="{:getimgurl($f_products_category['fid'])}">
+                    
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <div class="product_categories-longchang_child_cate_card_padding product_categories-longchang_child_cate_card_class_name">{$f_products_category['class_name']}</div>
+                    <div class="product_categories-longchang_child_cate_card_padding product_categories-longchang_child_cate_card_readme">{$f_products_category['readme']}</div>
+                    <div class="product_categories-longchang_child_cate_card_padding product_categories-longchang_child_cate_card_Learn_more">Learn more></div>
+                </div>    
+                
+            </div>
+            </div>
+            </volist>
+    	
+    </div>
+    
+<div id="tableWraps">
+<volist name="child_class_infos" id="three_child">
+    <div class="tableWrap" fpcid="{$three_child['parent_id']}" pcid="{$three_child['pcid']}" path="{$three_child['parent_path']}{$three_child['other_class_id']}">
+        <p class="tableTit">{:strip_tags($three_child['class_name'])}</p>
+        <div class="tableType1">
+            <table class="pc">
+                <thead>
+                <tr>
+                <th>Product(GRADE)</th>
+                <th>Melt mass flow rate,g/10min</th>
+                <th>Usage</th>
+                <th>PDF</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <php>
+                    $products=get_allproducts_category_on_index($three_child['pcid'],100);
+                    </php>         
+                    
+                    <volist name="products" id="product">
+                    <tr>
+                    <td>{$product['pro_name']}</td>
+                    <td>{:strip_tags(htmlspecialchars_decode($product['pro_description']))}</td>
+                    <td>{:strip_tags(htmlspecialchars_decode($product['pro_profile']))}</td>
+                    <td><if condition="$product['pro_file']"><a target="_blank" href="{:getimgurl($product['pro_file'])}">DOWNLOAD</a><else/>{:__('NO DOWNLOAD')}</if></td>
+                    </tr>
+                    </volist>    
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </volist>
+</div>
+    
+    <h2 class="product_categories-longchang_class_name">
+    	Industries and applications
+    <h2>
+  
+    <div class="row">
+    <volist name="f_products_categorys" id="f_products_category">
+        	<div class="col-xs-6 col-md-3">
+            	<a href="{$data521[1]}classid={$f_products_category['pcid']}">
+                <div class="product_categories-longchang_child_f_card">
+                    <img class="img-responsive" src="{:getimgurl($f_products_category['fid'])}">
+                    <div class="product_categories-longchang_child_f_card_class_name"><div>{$f_products_category['class_name']}</div></div>
+                </div>
+                </a>
+            </div>
+    </volist>
+    </div>
+
+<div class="" style="width:100%; height:80px"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<script>
+require(['jquery'],function($){
+	$(document).on("click",".product_categories-longchang_child_cate_card",function(){
+		var pcid=$(this).attr("pcid");
+		showproduct(pcid);
+		return false;		
+	});
+
+function showproduct(pcid){
+	console.log("showproduct",pcid);
+	$(".tableWrap").removeClass("on");	
+	$(".tableWrap").each(function(index, element) {
+		var path=$(this).attr("path");
+		console.log("indexOfpcid",pcid);
+		if(path.indexOf(","+pcid+",")!=-1){
+			console.log("indexOf",path);
+			$(this).addClass("on");
+		}
+	$(".tableWrap[pcid='"+pcid+"']").addClass("on");		
+	});
+	jump();
+}
+
+	
+function jump(){
+	var position = $("#tableWraps").offset();
+	position.top = position.top-77;
+	$("html,body").animate({scrollTop:position.top}, 100);
+}
+	
+})
+</script>

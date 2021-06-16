@@ -1,0 +1,160 @@
+<extend name="HJZF2:basein" />
+<block name="content">
+    <style>
+        ul.InsidePages_left_navlist>li:hover >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion>ul li:hover >a>h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yiji:hover >a >h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yiji:hover >span.class_button:before{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion:hover >span.class_button:before{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion>ul>li.child:hover >span.class_button:before{
+             color: #{$inner_data[0]};
+         }
+        ul.InsidePages_left_navlist>li.yijion>ul>li.childon:hover >span.class_button:before{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion>ul>li.childon>ul>li.sanjion>a>h3{
+            color: #{$inner_data[0]};
+        }
+        ul.InsidePages_left_navlist>li.yijion>ul>li.childon>a>h3{
+            color: #{$inner_data[0]};
+        }
+        .main_proitem_second .hj05-index-more{
+            background: #{$inner_data[0]};
+        }
+        .main_proitem_second .hj05-index-more{
+            background: #{$inner_data[0]};
+        }
+        .Breadcrumbs span.current {
+            color: #{$inner_data[0]};
+        }
+        .main_page .current{
+            background:#{$color}; color:#fff;border:1px solid #{$color};
+        }
+        .main_proitem:hover .main_proitem_name h6{
+            color: #{$inner_data[0]};
+        }
+
+        .main_product_more span{
+            color: #{$inner_data[0]};
+        }
+
+        .main_product_more:hover span{
+            color:#fff;
+        }
+        .main_product_title_right a:hover{
+            background: #{$inner_data[0]};
+        }
+        .InsidePages_content-left__contact2 h2{
+            color: #{$inner_data[0]};
+        }
+    </style>
+
+    <if condition="$inner_data[2] neq ''">
+            <style>
+                .main_proitem_second h6{
+                    font-size: {$inner_data[2]}px;
+                }    
+            </style>
+        </if>
+    <div id="wrapper">
+        <div id="inbanner_box" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0" data-wow-offset="0">
+            <if condition="$banner neq ''">
+                <volist name="banner" id="banner" offset="0" length="1">
+                    <div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+                </volist>
+                <else/>
+                <div class="in_banner" style="background:url({:getindeximgurl($inner_data[1])}) center no-repeat"></div>
+            </if>
+
+        </div>
+
+        <div class="Breadcrumbs"><div class="Breadcrumbs_down"><a href="{:U('/')}">{:__('Home')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<a
+                        href="{:U('/product')}">{:__('Products')}</a>&nbsp;<i class="fa fa-angle-right"></i>&nbsp;<span class="current">{$prolist['class_name']}</span></div></div>
+
+        <div class="InsidePages_content" id="main-content-wrapper">
+            <section class="InsidePages_content-left">
+                <Include file="./Tpl/HJZF2/left.html" />
+                <if condition="$inner_data[6]">
+                    <div class="InsidePages_content-left__contact" style="background:url({:getindeximgurl($inner_data[5])}) center top no-repeat">
+                        <div class="InsidePages_content-left__contactwrap">
+                            <div class="InsidePages_content-left__contactName">
+                                {$about['company_name']}
+                            </div>
+                            <ul>
+                                <li><span>{:__('Free sales hotline: ')}</span><p>{:chaifen($about['phone'],0)}</p></li>
+                                <li><span>{:__('Tel: ')}</span><p>{:chaifen($about['phone'],1)}<br/>{:chaifen($about['phone'],2)}</p></li>
+                                <li><span>{:__('Fax: ')}</span><p>{:chaifen($about['fax'],0)}</p></li>
+                                <li><span>{:__('Email: ')}</span><p><a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,3);">{:chaifen($about['email'],0)}</a></p></li>
+                                <li><span>{:__('Add: ')}</span><p>{$about['address']}</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <elseif condition="$inner_data[7]"/>
+                    <div class="InsidePages_content-left__contact2">
+                        <img src="{:getindeximgurl($inner_data[8])}">
+                        <h2>{:__('Contact Us')}</h2>
+                        <ul>
+                            <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[9])}">{:__('Contact: ')}{:chaifen($about['contact'],0)}</li>
+                            <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[10])}">{:__('Tel: ')}{:chaifen($about['phone'],0)}</li>
+                            <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[11])}">{:__('Mobile: ')}{:chaifen($about['mobile'],0)}</li>
+                            <li style="line-height:30px; padding-top:8px;"><img src="{:getindeximgurl($inner_data[12])}">{:__('Email: ')}<a href="mailto:{:chaifen($about['email'],0)}" onClick="turn_sta(3,3)" rel="nofollow">{:chaifen($about['email'],0)}</a></li>
+                            <if condition="C('language') eq 'en'">
+                                <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[13])}">Skype: <a href="skype:{:chaifen($about['msn'],0)}?chat" onclick="turn_sta(4,3)" rel="nofollow">{:chaifen($about['msn'],0)}</a></li>
+                                <elseif condition="C('language') eq 'cn'"/>
+                                <li style="padding-top:3px;"><img src="{:getindeximgurl($inner_data[13])}">QQ: <a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,4)" target="_blank">{:chaifen($about['msn'],0)}</a></li>
+                            </if>
+
+                        </ul>
+                    </div>
+                </if>
+            </section>
+            <section class="InsidePages_content-right">
+                <div class="InsidePages_content-right_content">
+                    <div class="InsidePages_content-right_content-main">
+                        <h5 class="InsidePages_content-right_content_title">{$prolist['class_name']}</h5>
+
+                            <div class="mainpage_probox">
+                                <volist empty="" name="pro" id="pro" key="k">
+                                    <div class="main_proitem_6">
+                                        <div class="main_proitem_box_6">
+                                            <div class="main_proitem_img_6"><a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <if condition="$pro['main_img']">
+                                                    <img src="{:getmainimgurl($pro['main_img'])}" <if condition="$pro['proalt'] neq ''">alt="{$pro['proalt']}"<else/>alt="{$pro['pro_name']}"</if> />
+                                                    <else/>
+                                                    <img src="{:getindeximgurl($inner_data[3])}" alt=""/>
+                                                </if>
+                                                </a></div>
+                                            <div class="main_proitem_second_6">
+                                                <a href="{:U('/Product','','')}/{:getproname($pro['pid'])}">
+                                                <div class="main_proitem_name_6"><h3 title="{$pro['pro_name']}">{:subtxt($pro['pro_name'],60)}</h3></div>
+                                                 <div class="main_proitem_desc_6">{:HtmlEncode($pro['pro_description'])}</div>
+                                                 </a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                </volist>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="main_page">{$page}</div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</block>

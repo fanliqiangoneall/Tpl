@@ -1,0 +1,53 @@
+<extend name="demo2:base" />
+<block name="content">
+
+<div id="animate_banner">
+<if condition="$banner neq ''">
+<volist name="banner" id="banner" offset="0" length="1">
+<div class="in_banner" style="background:url({:getimgurl($banner['ad_pic'])}) center no-repeat"></div>
+</volist>
+<else/>
+<div class="in_banner" style="background:url(__TMPL__demo2/img/inbanner.jpg) center no-repeat"></div>
+</if>
+</div>
+
+<div class="prolist_in">
+    <volist empty="no" name="allclass" id="allclass_left2"  offset="0" length="21">
+     <li><a style="cursor:pointer;" href="{:U('/product_category','','')}/{:getprocatename($allclass_left2['pcid'])}">{$allclass_left2['class_name']}</a></li>
+       
+  </volist>
+</div>
+
+
+<div class="r_mbx"><img src="__TMPL__demo2/img/in_home.jpg" border="0" style="vertical-align:middle;" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;Products</div>
+
+<div style="width: 1190px;margin:0 auto">
+<Include file="./Tpl/demo2/left.html" />
+<div class="page_Main">
+    <div class="page_RightTitle">Products center</div>
+    <div class="page_RightMain" style="padding-bottom:20px;">
+      <volist empty="" name="allpro" id="allpro">
+            <div class="asd2">
+                <div class="img2" ><a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}"><img src="{:getpcimgurl($allpro['main_img'])}" <if condition="$allpro['proalt'] neq ''">alt="{$allpro['proalt']}"<else/>alt="{$allpro['pro_name']}"</if> /></a>
+                </div>
+                  <div class="in_proname2">
+                   <a href="{:U('/Product','','')}/{:getproname($allpro['pid'])}">{$allpro['pro_name']}</a>
+                </div>
+              </div>
+            <if condition="($key+1)%3 eq 0">
+              <div style="clear:both; width: 100%; height:39px;"></div>
+          <else/>
+              <div style="width:33px; height:10px; background:none; float:left;"></div>
+          </if>  
+        </volist>  
+       <div style="clear:both;"></div>
+         <div class="main_page">{$page}</div>
+    </div>
+
+
+
+    <div style="clear:both; height:40px;"></div>
+</div>
+</div>
+
+</block>

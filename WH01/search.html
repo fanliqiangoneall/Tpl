@@ -1,0 +1,57 @@
+<extend name="WH01:basein" />
+<block name="content">
+<div>
+    <Include file="./Tpl/WH01/in_banner.html" />
+</div>
+
+
+<div class="r_mbx"> <Include file="./Tpl/WH01/bread.html" />&nbsp;<a href="{:U('/')}">Home</a>&nbsp;>&nbsp;<a href="{:U('/product')}">Products</a>&nbsp;>&nbsp;Search Result</div>
+
+<div  class="page_nei_main">
+<Include file="./Tpl/WH01/left.html" />
+<div class="page_RightMain">
+    <div class="page_class_head_1">
+        <div class="indpro_title">
+            <img src="__TMPL__WH01/img/protitle_bg.png" alt="protitle_bg.png"><span>Search Result</span><img src="__TMPL__WH01/img/protitle_bg2.png">
+        </div>
+    </div>
+    <div class="page_Main">
+        <div class="page_pro">
+
+        </div>
+        <volist empty="" name="searchpro" id="searchpro" key="k">
+            <div class="asd">
+                <div class="img"><img src="{:getmainimgurl($searchpro['main_img'])}" <if condition="$searchpro['proalt'] neq ''">alt="{$searchpro['proalt']}"<else/>alt="{$searchpro['pro_name']}"</if> /></div>
+                <div class="in_proname_a"><a href="{:U('/Product','','')}/{:getproname($searchpro['pid'])}">{$searchpro['pro_name']}</a></div>
+                <a href="{:U('/Product','','')}/{:getproname($searchpro['pid'])}">
+                    <div class="rsp"></div>
+                    <div class="text">
+                                         <div class=""  style="    width: 284px;
+    height: 214px; background:rgba(0,0,0,0.5);">
+                        <div class="rsp_more" style=" position:relative; top:68px;">{$searchpro['pro_name']}</div></div>
+                    </div>
+                </a>
+            </div>
+            <if condition="$data1[4]">
+                <if condition="$k%3 neq 0">
+                    <li style="width:39px; height:50px; float:left;list-style: none"></li>
+                    <else/>
+                    <li class="clear" style="height: 18px;"></li>
+                </if>
+                <else/>
+                <if condition="$k%4 neq 0">
+                    <li style="width:16px; height:50px; float:left;list-style: none"></li>
+                    <else/>
+                    <li class="clear" style="height: 18px;"></li>
+                </if>
+            </if>
+        </volist>
+       <div class="clear"></div>
+       <div class="main_page">{$page}</div>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+
+</div>
+
+</block>

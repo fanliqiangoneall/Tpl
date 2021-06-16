@@ -1,0 +1,63 @@
+<extend name="demo2:base" />
+<block name="content">
+<if condition="$navparentid eq 10745" >
+<script>
+$(document).ready(function () {
+	$('#menu5').removeClass().addClass("menuon");	
+});
+</script>
+<else/>
+<script>
+$(document).ready(function () {
+	$('#menu2').removeClass().addClass("menuon");	
+});
+</script>
+</if>
+<script>
+$(document).ready(function () {	
+	$('#payment a').has('img').not(".pdf").lightBox();
+});
+</script>
+<script type="text/javascript" src="__TMPL__demo2/js/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__TMPL__demo2/css/jquery.lightbox-0.5.css"/>
+<div id="animate6">
+<div class="in_banner_bg">
+	<div class="in_banner"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="page_Main">
+   <if condition="$navparentid neq 10745" >
+   <div class="Page_classbg">
+       <div class="left2">
+           <div class="page_LeftClass">
+               <volist empty="" name="navrs" id="allclass_left">
+                    <div <if condition="$intro_class['classid'] eq $allclass_left['introclassid']">class="parent1"<else/>class="parent"</if>><a href="{$allclass_left['url']}">→ {$allclass_left['title']}</a></div>
+               </volist>
+           </div>
+           <div class="child_div"></div>
+       </div>
+       <div class="left_contacttitle"></div>
+       <div class="left_contact_in">
+         <ul>
+            <li>电话：{:chaifen($about['phone'],0)}</li>
+            <li>手机：{:chaifen($about['mobile'],0)}</li>
+            <li>传真：{:chaifen($about['fax'],0)}</li>
+            <li>邮箱：<a href="mailto:{:chaifen($about['email'],0)}" onFocus="blur()" onClick="turn_sta(3,3)">{:chaifen($about['email'],0)}</a></li>
+            <li>地址：{$about['address']}</li>
+         </ul>
+       </div>
+       <div class="left_map"></div>
+   </div>
+   <else/>
+   <Include file="./Tpl/demo2/left.html" />
+   </if>
+   <div class="page_right">
+       <div class="page_RightTitle"><span>当前位置：<a href="{:U('/')}">首页</a>&nbsp;>&nbsp;{$intro_class['class_name']}</span>{$intro_class['class_name']}</div>
+       <div class="page_RightMain" id="payment">{:get_zifu(htmlspecialchars_decode($intro_class['readme']))}</div>
+   </div>
+   <div style="clear:both"></div>
+</div>
+</div>
+</block>

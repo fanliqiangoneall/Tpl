@@ -1,0 +1,29 @@
+<if condition="$banner[0]['use_wap']">
+    <div class="nav-hidden-pc">
+        <foreach name="banner" item="bannera" offset="0" length="1">
+            <div class="in_banner"><img src="{:getimgurl($bannera['logo_wap_bg'])}" class="img-fluid" />
+            </div>
+        </foreach>
+    </div>
+    <div class="nav-hidden-mobile">
+        <if condition="$banner neq ''">
+            <foreach name="banner" item="bannerb" offset="0" length="1">
+                <div class="in_banner"><img src="{:getimgurl($bannerb['ad_pic'])}" class="img-fluid" />
+                </div>
+            </foreach>
+        </if>
+    </div>
+</if>
+<if condition="$banner[0]['use_wap'] eq '0' or $banner[0]['use_wap'] eq ''">
+    <if condition="$procate['banner']">
+        <div class="pro_detailBanner" data="{$procate['banner']}">
+        <div class="in_banner" data="procate"><img src="{:getimgurl($procate['banner'])}" class="img-fluid" /></div>
+        </div>
+        <elseif condition="$banner neq ''" />
+        <foreach name="banner" item="banner" offset="0" length="1">
+            <div class="in_banner" data="banner"><img src="{:getimgurl($banner['ad_pic'])}" class="img-fluid" /></div>
+        </foreach>
+        <else/>
+        <div class="in_banner" data="inner"><img src="{:getindeximgurl($inner_data[1])}" class="img-fluid" /></div>
+    </if>
+</if>

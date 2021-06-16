@@ -1,0 +1,19 @@
+<style>
+.reation{width:96%;padding:10px 0;margin:0 auto;}
+.reation h2{border-bottom:1px solid #ccc;padding-bottom:5px; font-family:'微软雅黑';margin-bottom:20px;color:#333333;}
+.reationproduct{width:23%;float:left;border:1px #f2f2f2 solid;}
+.reation-left{margin-right:5px;}
+.reation-prodname{text-align:center;line-height:20px;}
+</style>
+
+<div class="reation">
+<h2>跟此产品相关的产品</h2>
+<volist id="labelprodlist" name="labelprodlist" key="k">
+<div class="reationproduct <if condition='$k neq 4'>reation-left</if>">
+ <div><a  href="{:U('/product','','')}/{:getproname($labelprodlist['pid'])}"><img src="{:getpcimgurl($labelprodlist['main_img'])}" border="0" width="100%"/></a></div>
+ <div class="reation-prodname"><a  href="{:U('/product','','')}/{:getproname($labelprodlist['pid'])}">{$labelprodlist["pro_name"]}</a></div>
+ <div class="clear"></div>
+</div>
+</volist>
+<div class="clear"></div>
+</div>

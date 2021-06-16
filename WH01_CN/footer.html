@@ -1,0 +1,110 @@
+<script src="__TMPL__WH01_CN/js/statitics.js"></script>
+    <script>
+//导航自动选定的方法
+jQuery(function(){
+	//var color="#{$color}";
+	var color = "#333";
+	var url=window.location.href;
+
+	jQuery("#index_navigation_animate_2 li a").each(function(){
+		/*var nav_id = jQuery(this).parent().attr("nav-id");*/
+		var href=jQuery(this).attr("href");
+		href=href.toLowerCase();
+		url=url.toLowerCase();
+		//区分出啥是啥，主要就是区分出new pro case 优先找顶级，找不到在按规则排
+		if(href==url){
+			jQuery(this).parents("li").addClass("menu_on");
+			return false;
+		}else{
+			//说明是关于我们
+			url=url.toLowerCase();
+			if(url.indexOf("aboutus")!=-1){
+				if(href.indexOf("aboutus")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			//说明是产品页
+			if(url.indexOf("product")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("all_ishot")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("all_isnew")!=-1){
+				if(href.indexOf("product")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			//说明是新闻页
+			if(url.indexOf("news")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("cases")!=-1){
+				if(href.indexOf("cases")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("new_category")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("case_category")!=-1){
+				if(href.indexOf("cases")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("case_detail")!=-1){
+				if(href.indexOf("cases")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("new_detail")!=-1){
+				if(href.indexOf("news")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("download_detail")!=-1){
+				if(href.indexOf("download")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+
+			if(url.indexOf("inquiry")!=-1){
+				if(href.indexOf("inquiry")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+			if(url.indexOf("job")!=-1){
+				if(href.indexOf("jobs")!=-1){
+					jQuery(this).parents("li").addClass("menu_on");
+				}
+			}
+		}
+	});
+
+	/* console.log(current_nav_id);*/
+	/*jQuery(".index_nav2>ul>li").each(function(){
+
+
+		if(nav_id==(current_nav_id)){
+
+			jQuery(this).addClass("ba_on").siblings("li").removeClass("menu_on")
+			return false;
+		}
+	})*/
+})
+var path="";
+    </script>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<Include file="./Tpl/WH01_CN/sidebar.html" />
+  </body>
+</html>
+

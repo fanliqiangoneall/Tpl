@@ -1,0 +1,125 @@
+<!--{$pagename}-->
+<php>
+	if($data574[0]){
+	$color = $data574[0];
+	}
+</php>
+<style>
+	.pro_zuanshi_left li.on {
+		background-color: #{$color};
+		border-bottom-color: #{$color};
+	}
+
+	.pro_zuanshi_left li.on:after {
+		border-left-color: #{$color};
+	}
+
+	.pro_zuanshi_right_tab li {
+		border: 1px solid #{$color};
+		background-color: #{$color};
+	}
+	.pro_zuanshi_shape_con_container .swiper-pagination span.swiper-pagination-bullet-active{
+		background-color: #{$color};
+	}
+	.pro_zuanshi_left li i {
+		color:#{$color};
+	}
+</style>
+
+<php>
+	$arr = get_children($data574[4]);
+</php>
+<section class="pro_zuanshi">
+	<div class="zuanshi_bread">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-right">
+					<a href="{:U('/')}">{:__('Your location:')}{:__('Home')}</a>&nbsp;<i
+						class="fa fa-angle-right"></i>&nbsp;<span class="current">Education</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="pro_zuanshi_wrapper">
+					<ul class="pro_zuanshi_left">
+						<volist name="arr" id="a">
+							<li>
+								<i class="fa"></i>
+								<h4>{$a['class_name']}</h4>
+							</li>
+						</volist>
+
+					</ul>
+
+					<volist name="arr" id="a">
+						<php>
+							$arr_child = get_children($a['pcid']);
+						</php>
+						<div class="pro_zuanshi_right">
+							<ul class="pro_zuanshi_right_tab">
+								<volist name="arr_child" id="b">
+									<li>{$b['class_name']}</li>
+								</volist>
+							</ul>
+							<volist name="arr_child" id="b">
+								<if condition="$b['child'] eq '0'">
+									<div class="pro_zuanshi_right_con">
+										{:htmlspecialchars_decode($b['cate_profile'])}
+									</div>
+									<else />
+									<php>
+										$arr_c = get_children($b['pcid']);
+									</php>
+									<div class="pro_zuanshi_right_con">
+										<ul class="pro_zuanshi_shape">
+											<foreach name="arr_c" item="vo">
+												<li>
+													<img src="{:getmainimgurl($vo['fid'])}">
+												</li>
+											</foreach>
+										</ul>
+										<foreach name="arr_c" item="v">
+											<div class="pro_zuanshi_shape_con">
+												{:htmlspecialchars_decode($v['cate_profile'])}
+												<if condition="$v['child'] neq '0'">
+													<php>
+														$arr_d = get_children($v['pcid']);
+													</php>
+													<div class="swiper-container pro_zuanshi_shape_con_container">
+														<div class="swiper-wrapper">
+															<foreach name="arr_d" item="d">
+															<div class="swiper-slide">
+																{:htmlspecialchars_decode($d['cate_profile'])}
+															</div>
+															</foreach>
+														</div>
+														<div class="swiper-pagination pro_zuanshi_shape_con_container_pagination"></div>
+													</div>
+													
+												</if>
+												
+											</div>
+										</foreach>
+
+									</div>
+
+								</if>
+							</volist>
+
+
+						</div>
+					</volist>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</section>

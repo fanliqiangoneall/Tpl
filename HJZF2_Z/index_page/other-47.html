@@ -1,0 +1,84 @@
+<!--{$pagename}-->
+<php>
+    if($data331[1]) {
+    $hight_color = $data331[1];
+    }else{
+    $hight_color = $color;
+    }
+</php>
+<script>
+    var hjzf_other_47_video = '<?php echo $data331[6];?>';
+</script>
+<style>
+    .hjzf2_other_47_fix span {
+        background-color: #{$hight_color};
+    }
+
+    <if condition="$data331[0]">.hjzf2_other_47 {
+        background: url({:getindeximgurl($data331[0])
+    }
+
+    ) no-repeat center top/100% 100%;
+    }
+
+    </if>.hjzf2_other_47 i,
+    .hjzf2_other_47 a.index_btn:hover,
+    .hjzf2_other_47 a {
+        color: #{$hight_color};
+    }
+
+    .hjzf2_other_47 .more a {
+        border-color: #{$hight_color};
+    }
+
+    .hjzf2_other_47 a.index_btn {
+        border: 1px solid #{$hight_color};
+        background-color: #{$hight_color};
+        transition: all .45s;
+    }
+
+    .hjzf2_other_47 a.index_btn:hover {
+        color: #{$hight_color};
+        background-color: transparent;
+    }
+
+    @media (max-width:1200px) {
+        .hjzf2_other_47 a.index_btn {
+            background-color: #{$hight_color};
+        }
+
+        .hjzf2_other_47 {
+            background: none;
+        }
+    }
+    @media screen and (max-width: 1100px){
+
+        .layui-layer-iframe{
+            overflow:visible ;       
+        }
+    }
+</style>
+<section class="index_pd hjzf2_other_47">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="index_title text-center pb40 wow fadeInUp">
+                    {$data331[2]}
+                </div>
+                <div class="text-center index_text pb40 wow fadeInUp hjzf2_other_47_text">
+                    {:HtmlEncode($data331[3])}
+                </div>
+                <div class="more text-center pb40 wow fadeInUp">
+                    <a class="layui-btn layui-btn-primary layer-demolist video">
+                        <i class="fa fa-play"></i>
+                    </a>
+                </div>
+                <div class="text-center hjzf2_other_47_bottom wow fadeInUp">
+                    <a href="{$data331[5]}" class="index_btn index_text">{$data331[4]}<i
+                            class="fa fa-angle-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

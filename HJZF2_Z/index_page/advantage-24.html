@@ -1,0 +1,65 @@
+<!--{$pagename}-->
+<style>
+    .hjzf_advantage_24{
+        background-color: #{$data383[5]};
+        color: #fff;
+    }
+    <if condition="$data383[6]">
+    .hjzf_advantage_24{
+        background:url({:getindeximgurl($data383[6])}) no-repeat center/cover;
+    }    
+    </if>
+    .hjzf_advantage_24 .text-center .index_text{
+        color: #{$color};
+    }
+    .hjzf_advantage_24_wrapper .swiper-pagination span.swiper-pagination-bullet-active{
+        border-color: #{$color};
+        background-color: #{$color};
+    }
+    .hjzf_advantage_24_shipin a{
+        background-color: #{$color};
+    }
+    .hjzf_advantage_24_shipin a:before,.hjzf_advantage_24_shipin a:after{
+        border-color: #{$color};
+    }
+    .hjzf_advantage_24_shipin a{
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    var hjzf_advantage_24_video = '<?php echo $data383[0];?>';
+</script>
+<div class="hjzf_advantage_24 index_pd">
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <div class="hjzf_advantage_24_shipin pb40">
+                    <a>
+                        <i class="fa fa-play"></i>
+                    </a>
+                </div>
+                <div class="index_text pb20">
+                    {$data383[1]}
+                </div>
+                <div class="index_title pb40">
+                    {$data383[2]}
+                </div>
+            </div>
+            <div class="hjzf_advantage_24_wrapper swiper-container">
+                <ul class="swiper-wrapper">
+                    <php>
+                        $arr = get_list_val($data383[4]);
+                    </php>
+                    <volist name="arr" id="a">
+                        <li class="swiper-slide">
+                            <img src="{$a[img]}" class="img-fluid" alt="{$data383[1]}">
+                        </li>
+                    </volist>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

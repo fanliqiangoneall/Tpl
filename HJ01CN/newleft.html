@@ -1,0 +1,63 @@
+<if condition="$data14[17]">
+    <style>
+        .main_content_slogan{
+            background: url({:getindeximgurl($data14[17])}) no-repeat center;
+
+        }
+    </style>
+    <else/>
+    <style>
+        .main_content_slogan{
+            background:  #{$color};
+        }
+    </style>
+</if>
+<style type="text/css">
+    .main-content_inner > ul >li:hover >a:before{
+    background: {$data1[0]};
+    }
+    .main-content_inner > ul >li.yijion >a:before{
+    background: {$data1[0]};
+    }
+    .main-content_inner > ul >li >a > h3{
+        color: #{$color};
+    }
+    .main-content_inner_contact{
+        background:url({:getindeximgurl($data14[8])}) no-repeat center;
+    }
+
+    .main_content_slogan_right_more a{
+    background: {$data1[0]};
+    border-color:{$data1[0]};
+    }
+    .main_content_slogan_right_more a:hover{
+        background: transparent;border-color:#fff;
+    }
+</style>
+
+<div class="main_left">
+    <div class="main-content_inner">
+        <ul class="margin-20px-bottom">
+            <volist empty="no" name="allnewclass" id="new"  offset="0" length="21">
+                <li <if condition="$newscate['classid'] eq $new['classid']">class="yijion"<else/>class="yiji"</if>><a style="cursor:pointer;" href="{:U('/new_category',array('classid'=>$new["classid"]))}">{$new['class_name']}</a></li>
+            </volist>
+        </ul>
+        <div class="main-content_inner_contact margin-30px-top">
+            <div class="margin-15px-bottom"><h4 class="text-center main-content_inner_contact_title">{$data14[9]}</h4></div>
+            <div class="main-content_conlist">
+                <if condition="chaifen($about['msn'],0) neq ''"><p>QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin={:chaifen($about['msn'],0)}&site=qq&menu=yes" onclick="turn_sta(5,3)" >{:chaifen($about['msn'],0)}</a></p></if>
+
+                <if condition="chaifen($about['email'],0) neq ''"><p>邮箱：<a href="mailto:{:chaifen($about['email'],0)}?chat" onclick="turn_sta(4,3);" onfocus="blur()">{:chaifen($about['email'],0)}</a></p></if>
+
+                <if condition="chaifen($about['email'],1) neq ''"><p><span style="opacity: 0">邮箱： </span><a href="mailto:{:chaifen($about['email'],1)}?chat" onclick="turn_sta(4,3);" onfocus="blur()">{:chaifen($about['email'],1)}</a></p></if>
+
+                <if condition="chaifen($about['phone'],0) neq ''"><p>电话：{:chaifen($about['phone'],0)}</p></if>
+
+                <if condition="chaifen($about['phone'],1) neq ''"><p><span style="opacity: 0">电话：</span>{:chaifen($about['phone'],1)}</p></if>
+
+                <if condition="$about['address'] neq ''"><p>地址：{$about['address']}</p></if>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

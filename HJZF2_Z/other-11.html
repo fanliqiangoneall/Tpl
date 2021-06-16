@@ -1,0 +1,34 @@
+<!--{$pagename}-->
+<section class="hjzf2_z_other-11 index_pd">
+    <if condition="$data157[3]">
+        <div class="hjzf2_z_other-11_content">
+            <if condition="$data157[0]">
+            <p class="hjzf2_z_other-11_text index_title pb40">{:HtmlEncode($data157[0])}</p>
+            </if>
+            <div class="hjzf2_z_other-11_img tp">
+                <picture>
+                    <source media="(min-width: 768px)" srcset="{:getindeximgurl($data157[1])}">
+                    <img src="{:getindeximgurl($data157[2])}">
+                </picture>
+        </div>
+    </div>
+        <else/>
+        <div class="container">
+            <div class="row">
+                <div class="hjzf2_z_other-11_content">
+                    <if condition="$data157[0]">
+                        <p class="hjzf2_z_other-11_text index_title pb40">{:HtmlEncode($data157[0])}</p>
+                        </if>
+                    <div class="hjzf2_z_other-11_img">
+    
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="{:getindeximgurl($data157[1])}">
+                            <img src="{:getindeximgurl($data157[2])}">
+                        </picture>
+                </div>
+            </div>
+        </div>
+        </div>
+        </if>
+    
+</section>

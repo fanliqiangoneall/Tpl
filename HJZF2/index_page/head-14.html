@@ -1,0 +1,97 @@
+<style>
+    .HJZF2__header-14__menu li:hover >a>h2:before{
+        background: #{$data187[1]};width: 100%;transition: 0.6s;-moz-transition: 0.6s;-webkit-transition: 0.6s;
+    }
+    .HJZF2__header-14__menu>li > ul>li:hover a h3,.HJZF2__header-14__dropMenu_ImgLeft>ul>li>ul>li:hover >a>h3{
+        color: #{$data187[1]};
+    }
+</style>
+<header class="HJZF2__header-14">
+    <div class="container flex">
+        <div class="HJZF2__header-14__logo"><a href="{:U('/')}">{$logo}</a></div>
+        <div class="HJZF2__header-14__menu">
+            <volist name="web_navigation" id="vo" offset="0" length='10' key="key">
+                <li id="menu{$key}" <if condition="$vo['child'] neq '' ">class="nav_more"</if>><a menu_data="{$vo['id']}" href="{$vo['url']}" <if condition="strstr($vo['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"<elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>class="menu_product"</if> onFocus="blur()">{$vo['title']}</a>
+                <if condition="$vo['child'] neq '' ">
+                    <ul class="hj02-menu">
+                        <volist name="vo['child']" id="v" offset="0"  key="key" >
+                            <li>
+                                <a menu_data="{$v['id']}" href="{$v['url']}" <if condition="strstr($v['url'],'/contactus.html') eq '/contactus.html'">onclick="turn_sta(2,1)"</if> onFocus="blur()"><h3>{$v['title']}</h3></a>
+
+                            </li>
+                        </volist>
+                    </ul>
+
+                <elseif condition="strstr($vo['url'],'/product.html') eq '/product.html'"/>
+                    <php>
+                        $data187[6] ? $length_drop = $data187[6] : $length_drop = '2';
+                    </php>
+                    <div class="HJZF2__header-14__dropMenu">
+                        <div class="container">
+                            <div class="HJZF2__header-14__dropMenu_Title">
+                                {$data187[3]} <span>{$data187[4]}</span>
+                            </div>
+                            <div class="HJZF2__header-14__dropMenu_content">
+                                <if condition="$data187[5]">
+                                    <div class="HJZF2__header-14__dropMenu_Img">
+                                        <img src="{:getindeximgurl($data187[5])}" alt=""/>
+                                    </div>
+                                </if>
+                                <div class="HJZF2__header-14__dropMenu_ImgLeft">
+                                    <ul class="hj02-menu hj02-pro-menu">
+                                        <volist empty="no" name="allclass" id="allclass_head"  offset="0" length="$length_drop">
+                                            <li>
+                                                <a href="{:U('/product_category','','')}/{:getprocatename($allclass_head['pcid'])}">{$allclass_head['class_name']}</a>
+                                                <if condition="$allclass_head['childs'] neq ''">
+                                                    <ul>
+                                                        <volist empty="" name="allclass_head['childs']" id="allclass_leftchild">
+                                                            <li><a href="{:U('/product_category','','')}/{:getprocatename($allclass_leftchild['pcid'])}#pro_head">{$allclass_leftchild['class_name']}</a></li>
+                                                        </volist>
+                                                    </ul>
+                                                </if>
+                                            </li>
+                                        </volist>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </if>
+
+                </li>
+            </volist>
+        </div>
+        <div class="head-14__Language" <if condition="$data187[2] eq ''">style="display:none"</if>>
+
+            <php>
+                $lan = HtmlEncode($data187[2]);
+                $origin_url =C
+            </php>
+            <script>
+                var lan_str = "<?php echo $lan;?>";
+                console.log(lan_str);
+            </script>
+            <ul>
+                <li><p data-count="English">English</p>
+                    <ul id="lang_ul">
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="HJZF2__header-14__search">
+            <a><img src="__TMPL__HJZF2/img/header_14_search.png" alt="" width="24" height="24"/></a>
+            <div class="HJZF2__header-14__searchBox">
+                <form action="{:U('/search')}" method=Post onSubmit="return CheckForm(this)" ID="searchALL">
+                    <li style="float: left;width: 160px;height: 32px;"><input style="height: 32px;width:150px;border-width:0px;padding-left: 10px;color:#888888;outline: none;" type="text" value="{:__('Product Search')}" name="keywords" data-language="{:C('Language')}" <if condition="C('language') eq 'cn'">id="keyword2"<else/>id="keyword"</if> onfocus="OnFocusFun(this,&#39;{:__('Product Search')}&#39;)" onblur="OnBlurFun(this,&#39;{:__('Product Search')}&#39;)"></li>
+                    <li style="float: left;width:auto;height: 32px;"><button type="submit" id="search-submit" style="padding-top:0;outline: none"><img
+                            src="__TMPL__HJZF2/img/header_14_search.png" alt=""  width="24" height="24"/></button></li>
+                    <div class="clear"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</header>
